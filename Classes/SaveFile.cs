@@ -71,6 +71,7 @@ namespace Scramble.Classes
 
             Stream.WriteByte(0);
             Stream.WriteByte(0);
+            Stream.WriteByte(0);
             return Stream.ToArray();
         }
     }
