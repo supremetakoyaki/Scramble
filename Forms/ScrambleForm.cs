@@ -28,7 +28,7 @@ namespace Scramble
             InitializeComponent();
 
             this.DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm tt";
-            this.Height = 150;
+            this.Height = 148;
             this.Width = 300;
         }
 
