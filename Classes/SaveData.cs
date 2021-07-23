@@ -13,24 +13,35 @@ namespace Scramble.Classes
     {
         public int Id; // 0 = autosave
 
-        private const int UNIX_OFFSET = 0;
-        private const int UNIX_LENGTH = 4;
+        public const int VALID_OFFSET = 0;
+        public const int VALID_LENGTH = 1;
 
-        private const int HASH_OFFSET = 4;
-        private const int HASH_LENGTH = 32;
+        public const int UNIX_OFFSET = 1;
+        public const int UNIX_LENGTH = 4;
 
-        private const int DATA_OFFSET = 36;
-        private const int DATA_LENGTH = 319952;
+        public const int HASH_OFFSET = 5;
+        public const int HASH_LENGTH = 32;
 
-        private const int UNKNOWN_FLAG_OFFSET = 319953;
+        public const int DATA_OFFSET = 37;
+        public const int DATA_LENGTH = 319952;
 
-        private byte[] UnixTimestamp;
+        public byte IsValid;
 
-        public byte[] Hash
+        public bool IsValid_Boolean
+        {
+            get
+            {
+                return IsValid >= (byte)1;
+            }
+        }
+
+        public byte[] UnixTimestamp
         {
             get;
             private set;
         }
+
+        private byte[] Hash;
 
         public byte[] Data
         {
@@ -68,23 +79,54 @@ namespace Scramble.Classes
             Hash = new byte[HASH_LENGTH];
             Data = new byte[DATA_LENGTH];
 
+            IsValid = FullData[VALID_OFFSET];
             Array.Copy(FullData, UNIX_OFFSET, UnixTimestamp, 0, UNIX_LENGTH);
             Array.Copy(FullData, HASH_OFFSET, Hash, 0, HASH_LENGTH);
             Array.Copy(FullData, DATA_OFFSET, Data, 0, DATA_LENGTH);
 
-            UnknownFlag = BitConverter.ToBoolean(FullData, UNKNOWN_FLAG_OFFSET);
-
-            File.WriteAllBytes("slot" + Id + ".txt", Data);
+            //testing: File.WriteAllBytes("slot" + Id + ".txt", Data);
+        }
+        public void UpdateUnix(DateTime Date)
+        {
+            int Timestamp = Convert.ToInt32(((DateTimeOffset)Date).ToUnixTimeSeconds());
+            UnixTimestamp = BitConverter.GetBytes(Timestamp);
         }
 
-        public bool ChecksumValid()
+        public void UpdateOffset_Byte(int Offset, byte Value)
         {
-            return Hash == Hash_Valid;
+            Data[Offset] = Value;
         }
 
-        public void FixHash()
+        public void UpdateOffset_Int16(int Offset, short Value)
         {
-            Hash = Hash_Valid;
+            byte[] UpdatedInt16 = BitConverter.GetBytes(Value);
+            Data[Offset] = UpdatedInt16[0];
+            Data[Offset + 1] = UpdatedInt16[1];
+        }
+
+        public void UpdateOffset_Int32(int Offset, int Value)
+        {
+            byte[] UpdatedInt32 = BitConverter.GetBytes(Value);
+            Data[Offset] = UpdatedInt32[0];
+            Data[Offset + 1] = UpdatedInt32[1];
+            Data[Offset + 2] = UpdatedInt32[2];
+            Data[Offset + 3] = UpdatedInt32[3];
+        }
+
+        // to-do: get offset methods?
+        public void WriteToStream(MemoryStream Stream, ref int CurrentPointer)
+        {
+            Stream.WriteByte(IsValid);
+            CurrentPointer += VALID_LENGTH;
+
+            Stream.Write(UnixTimestamp, 0, UNIX_LENGTH);
+            CurrentPointer += UNIX_LENGTH;
+
+            Stream.Write(Hash_Valid, 0, HASH_LENGTH);
+            CurrentPointer += HASH_LENGTH;
+
+            Stream.Write(Data, 0, DATA_LENGTH);
+            CurrentPointer += DATA_LENGTH;
         }
 
         private byte[] CalculateNewChecksum()

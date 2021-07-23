@@ -1,12 +1,5 @@
 ﻿using Scramble.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Scramble.GameData;
@@ -17,9 +10,24 @@ namespace Scramble
     {
         public SaveFile OpenedSaveFile;
 
+        public SaveData SelectedSlot
+        {
+            get
+            {
+                if (OpenedSaveFile == null)
+                {
+                    return null;
+                }
+
+                return OpenedSaveFile.GetSaveSlot(SaveSlotsListBox.SelectedIndex);
+            }
+        }
+
         public ScrambleForm()
         {
             InitializeComponent();
+
+            this.DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm tt";
             this.Height = 150;
             this.Width = 300;
         }
@@ -74,12 +82,21 @@ namespace Scramble
         }
         private void SelectSlot(int Id)
         {
-            SaveData ThisSlot = OpenedSaveFile.GetSaveSlot(Id);
+            if (SelectedSlot.UnixTimestamp_Integer == 0)
+            {
+                DateOfSavePicker.Value = DateOfSavePicker.MinDate;
+            }
+            else
+            {
+                DateOfSavePicker.Value = DateTimeOffset.FromUnixTimeSeconds(SelectedSlot.UnixTimestamp_Integer).DateTime;
+            }
 
-            DateOfSavePicker.Value = DateTimeOffset.FromUnixTimeSeconds(ThisSlot.UnixTimestamp_Integer).DateTime;
-            DifficultyCombo.SelectedIndex = Convert.ToInt32(ThisSlot.Data[Offsets.Difficulty]);
-            CurrentLevelNUpDown.Value = BitConverter.ToUInt32(ThisSlot.Data, Offsets.CurrentLevel);
-            MoneyNUpDown.Value = BitConverter.ToUInt32(ThisSlot.Data, Offsets.Money);
+            //to-do: make get offset data methods @SaveData class
+            InitializedSlotCheckbox.Checked = SelectedSlot.IsValid_Boolean;
+            DifficultyCombo.SelectedIndex = Convert.ToInt32(SelectedSlot.Data[Offsets.Difficulty]);
+            CurrentLevelNUpDown.Value = BitConverter.ToUInt32(SelectedSlot.Data, Offsets.CurrentLevel);
+            MoneyNUpDown.Value = BitConverter.ToUInt32(SelectedSlot.Data, Offsets.Money);
+            FpNumericUpDown.Value = BitConverter.ToUInt16(SelectedSlot.Data, Offsets.Fp);
         }
 
         private void SaveSlotsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -89,5 +106,59 @@ namespace Scramble
                 SelectSlot(SaveSlotsListBox.SelectedIndex);
             }
         }
+        private void DateOfSavePicker_ValueChanged(object sender, EventArgs e)
+        {
+            SelectedSlot.UpdateUnix(DateOfSavePicker.Value.Date);
+        }
+
+        private void TimeOfSavePicker_ValueChanged(object sender, EventArgs e)
+        {
+            SelectedSlot.UpdateUnix(DateOfSavePicker.Value.Date);
+        }
+
+        private void DifficultyCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectedSlot.UpdateOffset_Byte(Offsets.Difficulty, (byte)DifficultyCombo.SelectedIndex);
+        }
+        private void CurrentLevelNUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            SelectedSlot.UpdateOffset_Int16(Offsets.CurrentLevel, (short)CurrentLevelNUpDown.Value);
+        }
+
+        private void MoneyNUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            SelectedSlot.UpdateOffset_Int32(Offsets.Money, (int)MoneyNUpDown.Value);
+        }
+
+        private void FpNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            SelectedSlot.UpdateOffset_Int16(Offsets.Fp, (short)FpNumericUpDown.Value);
+        }
+
+        private void InitializedSlotCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            SelectedSlot.IsValid = InitializedSlotCheckbox.Checked ? (byte)1 : (byte)0;
+        }
+
+        private void SaveChangesButton_Click(object sender, EventArgs e)
+        {
+            if (BackupCheckbox.Checked == false)
+            {
+                if (ShowPrompt(DialogMessages.BackupCheckboxNotChecked) == false)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                // make a copy of the unmodified save file...
+                File.Copy(OpenedSaveFile.FilePath, OpenedSaveFile.FilePath + " (" + DateTime.Now.ToString("yyyy-MM-dd HHmmss") + ").bak");
+            }
+
+            File.WriteAllBytes(OpenedSaveFile.FilePath, OpenedSaveFile.ToBytes());
+            ShowNotice(DialogMessages.SaveDataSaved);
+        }
+
+
     }
 }

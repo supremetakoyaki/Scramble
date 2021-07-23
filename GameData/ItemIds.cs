@@ -10,6 +10,4 @@ namespace Scramble.GameData
     {
 
     }
-
-
 }
