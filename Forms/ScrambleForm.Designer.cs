@@ -48,11 +48,15 @@ namespace Scramble
             this.FpNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BackupCheckbox = new System.Windows.Forms.CheckBox();
             this.InitializedSlotCheckbox = new System.Windows.Forms.CheckBox();
+            this.ExperienceLabel = new System.Windows.Forms.Label();
+            this.ExpNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.LvLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentLevelNUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FpNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // OpenSaveFileButton
@@ -148,7 +152,7 @@ namespace Scramble
             // MoneyLabel
             // 
             this.MoneyLabel.AutoSize = true;
-            this.MoneyLabel.Location = new System.Drawing.Point(157, 249);
+            this.MoneyLabel.Location = new System.Drawing.Point(157, 283);
             this.MoneyLabel.Name = "MoneyLabel";
             this.MoneyLabel.Size = new System.Drawing.Size(47, 15);
             this.MoneyLabel.TabIndex = 11;
@@ -156,7 +160,7 @@ namespace Scramble
             // 
             // MoneyNUpDown
             // 
-            this.MoneyNUpDown.Location = new System.Drawing.Point(239, 247);
+            this.MoneyNUpDown.Location = new System.Drawing.Point(239, 281);
             this.MoneyNUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -196,7 +200,7 @@ namespace Scramble
             // CurrentLevelLabel
             // 
             this.CurrentLevelLabel.AutoSize = true;
-            this.CurrentLevelLabel.Location = new System.Drawing.Point(157, 220);
+            this.CurrentLevelLabel.Location = new System.Drawing.Point(157, 254);
             this.CurrentLevelLabel.Name = "CurrentLevelLabel";
             this.CurrentLevelLabel.Size = new System.Drawing.Size(80, 15);
             this.CurrentLevelLabel.TabIndex = 9;
@@ -204,7 +208,7 @@ namespace Scramble
             // 
             // CurrentLevelNUpDown
             // 
-            this.CurrentLevelNUpDown.Location = new System.Drawing.Point(239, 218);
+            this.CurrentLevelNUpDown.Location = new System.Drawing.Point(239, 252);
             this.CurrentLevelNUpDown.Maximum = new decimal(new int[] {
             99,
             0,
@@ -228,7 +232,7 @@ namespace Scramble
             // FpLabel
             // 
             this.FpLabel.AutoSize = true;
-            this.FpLabel.Location = new System.Drawing.Point(157, 278);
+            this.FpLabel.Location = new System.Drawing.Point(157, 312);
             this.FpLabel.Name = "FpLabel";
             this.FpLabel.Size = new System.Drawing.Size(23, 15);
             this.FpLabel.TabIndex = 13;
@@ -236,7 +240,7 @@ namespace Scramble
             // 
             // FpNumericUpDown
             // 
-            this.FpNumericUpDown.Location = new System.Drawing.Point(239, 276);
+            this.FpNumericUpDown.Location = new System.Drawing.Point(239, 310);
             this.FpNumericUpDown.Maximum = new decimal(new int[] {
             999,
             0,
@@ -270,11 +274,46 @@ namespace Scramble
             this.InitializedSlotCheckbox.UseVisualStyleBackColor = true;
             this.InitializedSlotCheckbox.CheckedChanged += new System.EventHandler(this.InitializedSlotCheckbox_CheckedChanged);
             // 
+            // ExperienceLabel
+            // 
+            this.ExperienceLabel.AutoSize = true;
+            this.ExperienceLabel.Location = new System.Drawing.Point(157, 225);
+            this.ExperienceLabel.Name = "ExperienceLabel";
+            this.ExperienceLabel.Size = new System.Drawing.Size(67, 15);
+            this.ExperienceLabel.TabIndex = 15;
+            this.ExperienceLabel.Text = "Experience:";
+            // 
+            // ExpNumericUpDown
+            // 
+            this.ExpNumericUpDown.Location = new System.Drawing.Point(239, 223);
+            this.ExpNumericUpDown.Maximum = new decimal(new int[] {
+            961500,
+            0,
+            0,
+            0});
+            this.ExpNumericUpDown.Name = "ExpNumericUpDown";
+            this.ExpNumericUpDown.Size = new System.Drawing.Size(102, 23);
+            this.ExpNumericUpDown.TabIndex = 16;
+            this.ExpNumericUpDown.ValueChanged += new System.EventHandler(this.ExpNumericUpDown_ValueChanged);
+            // 
+            // LvLabel
+            // 
+            this.LvLabel.AutoSize = true;
+            this.LvLabel.ForeColor = System.Drawing.Color.MediumBlue;
+            this.LvLabel.Location = new System.Drawing.Point(347, 227);
+            this.LvLabel.Name = "LvLabel";
+            this.LvLabel.Size = new System.Drawing.Size(27, 15);
+            this.LvLabel.TabIndex = 17;
+            this.LvLabel.Text = "Lv.1";
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 311);
+            this.ClientSize = new System.Drawing.Size(514, 361);
+            this.Controls.Add(this.LvLabel);
+            this.Controls.Add(this.ExpNumericUpDown);
+            this.Controls.Add(this.ExperienceLabel);
             this.Controls.Add(this.InitializedSlotCheckbox);
             this.Controls.Add(this.BackupCheckbox);
             this.Controls.Add(this.FpNumericUpDown);
@@ -301,6 +340,7 @@ namespace Scramble
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentLevelNUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FpNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,6 +365,9 @@ namespace Scramble
         private System.Windows.Forms.NumericUpDown FpNumericUpDown;
         private System.Windows.Forms.CheckBox BackupCheckbox;
         private System.Windows.Forms.CheckBox InitializedSlotCheckbox;
+        private System.Windows.Forms.Label ExperienceLabel;
+        private System.Windows.Forms.NumericUpDown ExpNumericUpDown;
+        private System.Windows.Forms.Label LvLabel;
     }
 }
 

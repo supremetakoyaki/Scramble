@@ -27,7 +27,7 @@ namespace Scramble
         {
             InitializeComponent();
 
-            this.DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm tt";
+            this.DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
             this.Height = 148;
             this.Width = 300;
         }
@@ -76,7 +76,7 @@ namespace Scramble
                 }
 
                 this.SaveSlotsListBox.SelectedIndex = 0;
-                this.Height = 350;
+                this.Height = 400;
                 this.Width = 550;
             }
         }
@@ -97,6 +97,7 @@ namespace Scramble
             CurrentLevelNUpDown.Value = BitConverter.ToUInt32(SelectedSlot.Data, Offsets.CurrentLevel);
             MoneyNUpDown.Value = BitConverter.ToUInt32(SelectedSlot.Data, Offsets.Money);
             FpNumericUpDown.Value = BitConverter.ToUInt16(SelectedSlot.Data, Offsets.Fp);
+            ExpNumericUpDown.Value = BitConverter.ToUInt32(SelectedSlot.Data, Offsets.Experience);
         }
 
         private void SaveSlotsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,6 +160,10 @@ namespace Scramble
             ShowNotice(DialogMessages.SaveDataSaved);
         }
 
-
+        private void ExpNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            SelectedSlot.UpdateOffset_Int32(Offsets.Experience, (int)ExpNumericUpDown.Value);
+            LvLabel.Text = "Lv." + LevelTable.GetLevel((int)ExpNumericUpDown.Value);
+        }
     }
 }
