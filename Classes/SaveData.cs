@@ -97,7 +97,7 @@ namespace Scramble.Classes
             Data[Offset] = Value;
         }
 
-        public void UpdateOffset_Int16(int Offset, short Value)
+        public void UpdateOffset_UInt16(int Offset, ushort Value)
         {
             byte[] UpdatedInt16 = BitConverter.GetBytes(Value);
             Data[Offset] = UpdatedInt16[0];
@@ -113,7 +113,21 @@ namespace Scramble.Classes
             Data[Offset + 3] = UpdatedInt32[3];
         }
 
-        // to-do: get offset methods?
+        public byte RetrieveOffset_Byte(int Offset)
+        {
+            return Data[Offset];
+        }
+
+        public ushort RetrieveOffset_UInt16(int Offset)
+        {
+            return BitConverter.ToUInt16(Data, Offset);
+        }
+
+        public int RetrieveOffset_Int32(int Offset)
+        {
+            return BitConverter.ToInt32(Data, Offset);
+        }
+
         public void WriteToStream(MemoryStream Stream, ref int CurrentPointer)
         {
             Stream.WriteByte(IsValid);

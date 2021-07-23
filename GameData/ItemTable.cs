@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Scramble.GameData
 {
@@ -2625,8 +2621,13 @@ namespace Scramble.GameData
         {
             return ItemSaveIndexes[SaveIndex];
         }
+
+        public static ItemType GetItemType(int Id)
+        {
+            return ItemTypes[Id];
+        }
     }
-    enum ItemType
+    public enum ItemType
     {
         Pin = 0,
         Thread = 1,

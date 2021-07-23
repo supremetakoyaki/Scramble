@@ -91,13 +91,12 @@ namespace Scramble
                 DateOfSavePicker.Value = DateTimeOffset.FromUnixTimeSeconds(SelectedSlot.UnixTimestamp_Integer).DateTime;
             }
 
-            //to-do: make get offset data methods @SaveData class
             InitializedSlotCheckbox.Checked = SelectedSlot.IsValid_Boolean;
-            DifficultyCombo.SelectedIndex = Convert.ToInt32(SelectedSlot.Data[Offsets.Difficulty]);
-            CurrentLevelNUpDown.Value = BitConverter.ToUInt32(SelectedSlot.Data, Offsets.CurrentLevel);
-            MoneyNUpDown.Value = BitConverter.ToUInt32(SelectedSlot.Data, Offsets.Money);
-            FpNumericUpDown.Value = BitConverter.ToUInt16(SelectedSlot.Data, Offsets.Fp);
-            ExpNumericUpDown.Value = BitConverter.ToUInt32(SelectedSlot.Data, Offsets.Experience);
+            DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
+            ExpNumericUpDown.Value = SelectedSlot.RetrieveOffset_Int32(Offsets.Experience);
+            CurrentLevelNUpDown.Value = SelectedSlot.RetrieveOffset_UInt16(Offsets.CurrentLevel);
+            MoneyNUpDown.Value = SelectedSlot.RetrieveOffset_Int32(Offsets.Money);
+            FpNumericUpDown.Value = SelectedSlot.RetrieveOffset_UInt16(Offsets.Fp);
         }
 
         private void SaveSlotsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -123,7 +122,7 @@ namespace Scramble
         }
         private void CurrentLevelNUpDown_ValueChanged(object sender, EventArgs e)
         {
-            SelectedSlot.UpdateOffset_Int16(Offsets.CurrentLevel, (short)CurrentLevelNUpDown.Value);
+            SelectedSlot.UpdateOffset_UInt16(Offsets.CurrentLevel, (ushort)CurrentLevelNUpDown.Value);
         }
 
         private void MoneyNUpDown_ValueChanged(object sender, EventArgs e)
@@ -133,7 +132,7 @@ namespace Scramble
 
         private void FpNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            SelectedSlot.UpdateOffset_Int16(Offsets.Fp, (short)FpNumericUpDown.Value);
+            SelectedSlot.UpdateOffset_UInt16(Offsets.Fp, (ushort)FpNumericUpDown.Value);
         }
 
         private void InitializedSlotCheckbox_CheckedChanged(object sender, EventArgs e)
