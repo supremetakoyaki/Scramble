@@ -34,12 +34,14 @@ namespace Scramble.Forms
             this.RecordInvListView = new System.Windows.Forms.ListView();
             this.SaveIDHeader = new System.Windows.Forms.ColumnHeader();
             this.ItemIDHeader = new System.Windows.Forms.ColumnHeader();
+            this.TypeHeader = new System.Windows.Forms.ColumnHeader();
             this.ItemNameHeader = new System.Windows.Forms.ColumnHeader();
             this.UnlockedHeader = new System.Windows.Forms.ColumnHeader();
             this.FlagHeader = new System.Windows.Forms.ColumnHeader();
             this.UnlockAllButton = new System.Windows.Forms.Button();
             this.ChangeLockStatusButton = new System.Windows.Forms.Button();
             this.ChangeSeeStatusButton = new System.Windows.Forms.Button();
+            this.UnseeAllButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +50,7 @@ namespace Scramble.Forms
             this.groupBox1.Controls.Add(this.RecordInvListView);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(508, 330);
+            this.groupBox1.Size = new System.Drawing.Size(514, 330);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Items";
@@ -58,13 +60,14 @@ namespace Scramble.Forms
             this.RecordInvListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.SaveIDHeader,
             this.ItemIDHeader,
+            this.TypeHeader,
             this.ItemNameHeader,
             this.UnlockedHeader,
             this.FlagHeader});
             this.RecordInvListView.HideSelection = false;
             this.RecordInvListView.Location = new System.Drawing.Point(6, 22);
             this.RecordInvListView.Name = "RecordInvListView";
-            this.RecordInvListView.Size = new System.Drawing.Size(496, 302);
+            this.RecordInvListView.Size = new System.Drawing.Size(502, 302);
             this.RecordInvListView.TabIndex = 0;
             this.RecordInvListView.UseCompatibleStateImageBehavior = false;
             this.RecordInvListView.View = System.Windows.Forms.View.Details;
@@ -79,6 +82,11 @@ namespace Scramble.Forms
             this.ItemIDHeader.Text = "Item ID";
             this.ItemIDHeader.Width = -2;
             // 
+            // TypeHeader
+            // 
+            this.TypeHeader.Text = "Type";
+            this.TypeHeader.Width = -2;
+            // 
             // ItemNameHeader
             // 
             this.ItemNameHeader.Text = "Name";
@@ -91,7 +99,7 @@ namespace Scramble.Forms
             // 
             // FlagHeader
             // 
-            this.FlagHeader.Text = "Seen";
+            this.FlagHeader.Text = "Not seen yet";
             this.FlagHeader.Width = -2;
             // 
             // UnlockAllButton
@@ -101,33 +109,47 @@ namespace Scramble.Forms
             this.UnlockAllButton.Name = "UnlockAllButton";
             this.UnlockAllButton.Size = new System.Drawing.Size(102, 23);
             this.UnlockAllButton.TabIndex = 1;
-            this.UnlockAllButton.Text = "Unlock all";
+            this.UnlockAllButton.Text = "(Un)lock all";
             this.UnlockAllButton.UseVisualStyleBackColor = false;
             this.UnlockAllButton.Click += new System.EventHandler(this.UnlockAllButton_Click);
             // 
             // ChangeLockStatusButton
             // 
-            this.ChangeLockStatusButton.Location = new System.Drawing.Point(290, 348);
+            this.ChangeLockStatusButton.Location = new System.Drawing.Point(296, 348);
             this.ChangeLockStatusButton.Name = "ChangeLockStatusButton";
             this.ChangeLockStatusButton.Size = new System.Drawing.Size(112, 23);
-            this.ChangeLockStatusButton.TabIndex = 2;
+            this.ChangeLockStatusButton.TabIndex = 3;
             this.ChangeLockStatusButton.Text = "(Un)lock selected";
             this.ChangeLockStatusButton.UseVisualStyleBackColor = true;
+            this.ChangeLockStatusButton.Click += new System.EventHandler(this.ChangeLockStatusButton_Click);
             // 
             // ChangeSeeStatusButton
             // 
-            this.ChangeSeeStatusButton.Location = new System.Drawing.Point(408, 348);
+            this.ChangeSeeStatusButton.Location = new System.Drawing.Point(414, 348);
             this.ChangeSeeStatusButton.Name = "ChangeSeeStatusButton";
             this.ChangeSeeStatusButton.Size = new System.Drawing.Size(112, 23);
-            this.ChangeSeeStatusButton.TabIndex = 3;
+            this.ChangeSeeStatusButton.TabIndex = 4;
             this.ChangeSeeStatusButton.Text = "(Un)see selected";
             this.ChangeSeeStatusButton.UseVisualStyleBackColor = true;
+            this.ChangeSeeStatusButton.Click += new System.EventHandler(this.ChangeSeeStatusButton_Click);
+            // 
+            // UnseeAllButton
+            // 
+            this.UnseeAllButton.BackColor = System.Drawing.Color.AliceBlue;
+            this.UnseeAllButton.Location = new System.Drawing.Point(120, 348);
+            this.UnseeAllButton.Name = "UnseeAllButton";
+            this.UnseeAllButton.Size = new System.Drawing.Size(102, 23);
+            this.UnseeAllButton.TabIndex = 2;
+            this.UnseeAllButton.Text = "(Un)see all";
+            this.UnseeAllButton.UseVisualStyleBackColor = false;
+            this.UnseeAllButton.Click += new System.EventHandler(this.UnseeAllButton_Click);
             // 
             // RecordsEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 383);
+            this.ClientSize = new System.Drawing.Size(538, 383);
+            this.Controls.Add(this.UnseeAllButton);
             this.Controls.Add(this.ChangeSeeStatusButton);
             this.Controls.Add(this.ChangeLockStatusButton);
             this.Controls.Add(this.UnlockAllButton);
@@ -153,5 +175,7 @@ namespace Scramble.Forms
         private System.Windows.Forms.Button UnlockAllButton;
         private Button ChangeLockStatusButton;
         private Button ChangeSeeStatusButton;
+        private ColumnHeader TypeHeader;
+        private Button UnseeAllButton;
     }
 }
