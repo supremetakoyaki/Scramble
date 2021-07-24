@@ -55,6 +55,7 @@ namespace Scramble
             this.OpenSocialEditButton = new System.Windows.Forms.Button();
             this.OpenInvEditorButton = new System.Windows.Forms.Button();
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
+            this.DumpSlotDebugButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -362,11 +363,22 @@ namespace Scramble
             this.GeneralGroupBox.TabStop = false;
             this.GeneralGroupBox.Text = "Global data";
             // 
+            // DumpSlotDebugButton
+            // 
+            this.DumpSlotDebugButton.Location = new System.Drawing.Point(417, 37);
+            this.DumpSlotDebugButton.Name = "DumpSlotDebugButton";
+            this.DumpSlotDebugButton.Size = new System.Drawing.Size(111, 23);
+            this.DumpSlotDebugButton.TabIndex = 22;
+            this.DumpSlotDebugButton.Text = "Dump this Slot";
+            this.DumpSlotDebugButton.UseVisualStyleBackColor = true;
+            this.DumpSlotDebugButton.Click += new System.EventHandler(this.DumpSlotDebugButton_Click);
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 370);
+            this.Controls.Add(this.DumpSlotDebugButton);
             this.Controls.Add(this.GeneralGroupBox);
             this.Controls.Add(this.OpenInvEditorButton);
             this.Controls.Add(this.OpenSocialEditButton);
@@ -420,6 +432,7 @@ namespace Scramble
         private System.Windows.Forms.Button OpenSocialEditButton;
         private System.Windows.Forms.Button OpenInvEditorButton;
         private System.Windows.Forms.GroupBox GeneralGroupBox;
+        private System.Windows.Forms.Button DumpSlotDebugButton;
     }
 }
 

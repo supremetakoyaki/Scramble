@@ -78,8 +78,6 @@ namespace Scramble.Classes
             Array.Copy(FullData, UNIX_OFFSET, UnixTimestamp, 0, UNIX_LENGTH);
             Array.Copy(FullData, HASH_OFFSET, Hash, 0, HASH_LENGTH);
             Array.Copy(FullData, DATA_OFFSET, Data, 0, DATA_LENGTH);
-
-            //testing: File.WriteAllBytes("slot" + Id + ".txt", Data);
         }
         public void UpdateUnix(DateTime Date)
         {
@@ -152,6 +150,10 @@ namespace Scramble.Classes
 
                 return FlippedHash;
             }
+        }
+        public void DumpData(string FilePath)
+        {
+            File.WriteAllBytes(FilePath, Data);
         }
     }
 }

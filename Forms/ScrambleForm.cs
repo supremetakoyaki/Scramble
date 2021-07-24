@@ -5,6 +5,7 @@ using System.IO;
 using Scramble.GameData;
 using Scramble.Forms;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace Scramble
 {
@@ -192,7 +193,48 @@ namespace Scramble
 
         private void AboutLabel_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/supremetakoyaki/Scramble");
+            OpenSite("https://github.com/supremetakoyaki/Scramble");
+        }
+        private void OpenSite(string url)
+        {
+            try
+            {
+                Process.Start(url);
+            }
+            catch
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        private void DumpSlotDebugButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog DumpDialog = new SaveFileDialog();
+            DumpDialog.Filter = "Scramble Save Slot (*.slot)|*.slot";
+            DumpDialog.DefaultExt = "slot";
+            DumpDialog.AddExtension = true;
+
+            if (DumpDialog.ShowDialog() == DialogResult.OK)
+            {
+                SelectedSlot.DumpData(DumpDialog.FileName);
+                ShowNotice(DialogMessages.SaveSlotDumped);
+            }
         }
     }
 }

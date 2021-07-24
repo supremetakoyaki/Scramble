@@ -16,5 +16,8 @@
 
         public static string SaveDataSaved =
             "The changes have been successfully made to the save file.";
+
+        public static string SaveSlotDumped =
+            "The save slot has been dumped.";
     }
 }
