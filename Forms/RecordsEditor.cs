@@ -25,18 +25,19 @@ namespace Scramble.Forms
         {
             var RecordDic = ItemTable.GetRecordDictionary();
             
-            int CurrentPointer = Offsets.RecordInv_First;
             foreach (int Key in RecordDic.Keys)
             {
                 int SaveId = Key;
                 int ItemId = RecordDic[Key];
                 string Name = ItemTable.GetItemName(ItemId);
                 string TypeStr = ItemTable.GetItemType(ItemId).ToString();
+
+                int CurrentPointer = Offsets.RecordInv_First + (SaveId * 2);
+
                 bool Unlocked = SelectedSlot.RetrieveOffset_Byte(CurrentPointer) == 1;
                 bool Flag = SelectedSlot.RetrieveOffset_Byte(CurrentPointer + 1) == 1;
 
                 RecordInvListView.Items.Add(new ListViewItem(new string[] { SaveId.ToString(), ItemId.ToString(), TypeStr, Name, Unlocked ? "yes" : "no", Flag ? "yes" : "no" }));
-                CurrentPointer += 2;
             }
 
             
@@ -48,13 +49,12 @@ namespace Scramble.Forms
 
             RecordInvListView.Items.Clear();
 
-            int CurrentPointer = Offsets.RecordInv_First;
-
-            for (int i = 0; i < ItemTable.GetRecordDictionary().Count; i++)
+            foreach (ListViewItem Item in RecordInvListView.Items)
             {
-                SelectedSlot.UpdateOffset_Byte(CurrentPointer, Change);
+                
+                int CurrentPointer = Offsets.RecordInv_First + (Convert.ToInt32(Item.SubItems[0].Text) * 2);
 
-                CurrentPointer += 2;
+                SelectedSlot.UpdateOffset_Byte(CurrentPointer, Change);
             }
 
             Serialize();
@@ -62,17 +62,16 @@ namespace Scramble.Forms
 
         private void UnseeAllButton_Click(object sender, EventArgs e)
         {
-            byte Change = RecordInvListView.Items[0].SubItems[5].Text == "yes" ? (byte)0 : (byte)1;
+            byte Change = RecordInvListView.Items[0].SubItems[4].Text == "yes" ? (byte)0 : (byte)1;
 
             RecordInvListView.Items.Clear();
 
-            int CurrentPointer = Offsets.RecordInv_First;
-
-            for (int i = 0; i < ItemTable.GetRecordDictionary().Count; i++)
+            foreach (ListViewItem Item in RecordInvListView.Items)
             {
-                SelectedSlot.UpdateOffset_Byte(CurrentPointer + 1, Change);
 
-                CurrentPointer += 2;
+                int CurrentPointer = Offsets.RecordInv_First + (Convert.ToInt32(Item.SubItems[0].Text) * 2);
+
+                SelectedSlot.UpdateOffset_Byte(CurrentPointer + 1, Change);
             }
 
             Serialize();
