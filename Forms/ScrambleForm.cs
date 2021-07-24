@@ -112,14 +112,10 @@ namespace Scramble
                 SelectSlot(SaveSlotsListBox.SelectedIndex);
             }
         }
+
         private void DateOfSavePicker_ValueChanged(object sender, EventArgs e)
         {
-            SelectedSlot.UpdateUnix(DateOfSavePicker.Value.Date);
-        }
-
-        private void TimeOfSavePicker_ValueChanged(object sender, EventArgs e)
-        {
-            SelectedSlot.UpdateUnix(DateOfSavePicker.Value.Date);
+            SelectedSlot.UpdateUnix(DateOfSavePicker.Value.Date + DateOfSavePicker.Value.TimeOfDay);
         }
 
         private void DifficultyCombo_SelectedIndexChanged(object sender, EventArgs e)
