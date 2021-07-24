@@ -61,7 +61,7 @@ namespace Scramble.Forms
 
         private void UnseeAllButton_Click(object sender, EventArgs e)
         {
-            byte Change = RecordInvListView.Items[0].SubItems[4].Text == "yes" ? (byte)0 : (byte)1;
+            byte Change = RecordInvListView.Items[0].SubItems[5].Text == "yes" ? (byte)0 : (byte)1;
 
             foreach (ListViewItem Item in RecordInvListView.Items)
             {
