@@ -2626,6 +2626,11 @@ namespace Scramble.GameData
         {
             return ItemTypes[Id];
         }
+
+        public static Dictionary<int, int> GetRecordDictionary()
+        {
+            return ItemSaveIndexes;
+        }
     }
     public enum ItemType
     {

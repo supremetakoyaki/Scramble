@@ -51,6 +51,7 @@ namespace Scramble
             this.ExperienceLabel = new System.Windows.Forms.Label();
             this.ExpNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LvLabel = new System.Windows.Forms.Label();
+            this.OpenRecordEditButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -209,11 +210,6 @@ namespace Scramble
             // CurrentLevelNUpDown
             // 
             this.CurrentLevelNUpDown.Location = new System.Drawing.Point(239, 252);
-            this.CurrentLevelNUpDown.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
             this.CurrentLevelNUpDown.Minimum = new decimal(new int[] {
             1,
             0,
@@ -306,11 +302,22 @@ namespace Scramble
             this.LvLabel.TabIndex = 17;
             this.LvLabel.Text = "Lv.1";
             // 
+            // OpenRecordEditButton
+            // 
+            this.OpenRecordEditButton.Location = new System.Drawing.Point(391, 312);
+            this.OpenRecordEditButton.Name = "OpenRecordEditButton";
+            this.OpenRecordEditButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenRecordEditButton.TabIndex = 18;
+            this.OpenRecordEditButton.Text = "Records Editor";
+            this.OpenRecordEditButton.UseVisualStyleBackColor = true;
+            this.OpenRecordEditButton.Click += new System.EventHandler(this.OpenRecordEditButton_Click);
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 361);
+            this.Controls.Add(this.OpenRecordEditButton);
             this.Controls.Add(this.LvLabel);
             this.Controls.Add(this.ExpNumericUpDown);
             this.Controls.Add(this.ExperienceLabel);
@@ -368,6 +375,7 @@ namespace Scramble
         private System.Windows.Forms.Label ExperienceLabel;
         private System.Windows.Forms.NumericUpDown ExpNumericUpDown;
         private System.Windows.Forms.Label LvLabel;
+        private System.Windows.Forms.Button OpenRecordEditButton;
     }
 }
 

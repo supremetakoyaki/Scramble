@@ -84,7 +84,7 @@ namespace Scramble.Classes
             Array.Copy(FullData, HASH_OFFSET, Hash, 0, HASH_LENGTH);
             Array.Copy(FullData, DATA_OFFSET, Data, 0, DATA_LENGTH);
 
-            //testing: File.WriteAllBytes("slot" + Id + ".txt", Data);
+            File.WriteAllBytes("slot" + Id + ".txt", Data);
         }
         public void UpdateUnix(DateTime Date)
         {

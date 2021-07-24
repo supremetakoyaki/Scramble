@@ -3,12 +3,14 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 using Scramble.GameData;
+using Scramble.Forms;
 
 namespace Scramble
 {
     public partial class ScrambleForm : Form
     {
         public SaveFile OpenedSaveFile;
+        public RecordsEditor RecordsEditor;
 
         public SaveData SelectedSlot
         {
@@ -163,6 +165,12 @@ namespace Scramble
         {
             SelectedSlot.UpdateOffset_Int32(Offsets.Experience, (int)ExpNumericUpDown.Value);
             LvLabel.Text = "Lv." + LevelTable.GetLevel((int)ExpNumericUpDown.Value);
+        }
+
+        private void OpenRecordEditButton_Click(object sender, EventArgs e)
+        {
+            RecordsEditor = new RecordsEditor();
+            RecordsEditor.ShowDialog();
         }
     }
 }
