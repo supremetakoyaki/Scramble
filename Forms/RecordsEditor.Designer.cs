@@ -1,4 +1,5 @@
-﻿
+﻿using System.Windows.Forms;
+
 namespace Scramble.Forms
 {
     partial class RecordsEditor
@@ -37,6 +38,8 @@ namespace Scramble.Forms
             this.UnlockedHeader = new System.Windows.Forms.ColumnHeader();
             this.FlagHeader = new System.Windows.Forms.ColumnHeader();
             this.UnlockAllButton = new System.Windows.Forms.Button();
+            this.ChangeLockStatusButton = new System.Windows.Forms.Button();
+            this.ChangeSeeStatusButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,38 +72,64 @@ namespace Scramble.Forms
             // SaveIDHeader
             // 
             this.SaveIDHeader.Text = "Save ID";
+            this.SaveIDHeader.Width = -2;
             // 
             // ItemIDHeader
             // 
             this.ItemIDHeader.Text = "Item ID";
+            this.ItemIDHeader.Width = -2;
             // 
             // ItemNameHeader
             // 
             this.ItemNameHeader.Text = "Name";
+            this.ItemNameHeader.Width = -2;
             // 
             // UnlockedHeader
             // 
             this.UnlockedHeader.Text = "Unlocked";
+            this.UnlockedHeader.Width = -2;
             // 
             // FlagHeader
             // 
-            this.FlagHeader.Text = "Flag";
+            this.FlagHeader.Text = "Seen";
+            this.FlagHeader.Width = -2;
             // 
             // UnlockAllButton
             // 
+            this.UnlockAllButton.BackColor = System.Drawing.Color.PaleGreen;
             this.UnlockAllButton.Location = new System.Drawing.Point(12, 348);
             this.UnlockAllButton.Name = "UnlockAllButton";
             this.UnlockAllButton.Size = new System.Drawing.Size(102, 23);
             this.UnlockAllButton.TabIndex = 1;
             this.UnlockAllButton.Text = "Unlock all";
-            this.UnlockAllButton.UseVisualStyleBackColor = true;
+            this.UnlockAllButton.UseVisualStyleBackColor = false;
             this.UnlockAllButton.Click += new System.EventHandler(this.UnlockAllButton_Click);
+            // 
+            // ChangeLockStatusButton
+            // 
+            this.ChangeLockStatusButton.Location = new System.Drawing.Point(290, 348);
+            this.ChangeLockStatusButton.Name = "ChangeLockStatusButton";
+            this.ChangeLockStatusButton.Size = new System.Drawing.Size(112, 23);
+            this.ChangeLockStatusButton.TabIndex = 2;
+            this.ChangeLockStatusButton.Text = "(Un)lock selected";
+            this.ChangeLockStatusButton.UseVisualStyleBackColor = true;
+            // 
+            // ChangeSeeStatusButton
+            // 
+            this.ChangeSeeStatusButton.Location = new System.Drawing.Point(408, 348);
+            this.ChangeSeeStatusButton.Name = "ChangeSeeStatusButton";
+            this.ChangeSeeStatusButton.Size = new System.Drawing.Size(112, 23);
+            this.ChangeSeeStatusButton.TabIndex = 3;
+            this.ChangeSeeStatusButton.Text = "(Un)see selected";
+            this.ChangeSeeStatusButton.UseVisualStyleBackColor = true;
             // 
             // RecordsEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(532, 383);
+            this.Controls.Add(this.ChangeSeeStatusButton);
+            this.Controls.Add(this.ChangeLockStatusButton);
             this.Controls.Add(this.UnlockAllButton);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -122,5 +151,7 @@ namespace Scramble.Forms
         private System.Windows.Forms.ColumnHeader UnlockedHeader;
         private System.Windows.Forms.ColumnHeader FlagHeader;
         private System.Windows.Forms.Button UnlockAllButton;
+        private Button ChangeLockStatusButton;
+        private Button ChangeSeeStatusButton;
     }
 }

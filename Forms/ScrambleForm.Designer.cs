@@ -52,19 +52,23 @@ namespace Scramble
             this.ExpNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.LvLabel = new System.Windows.Forms.Label();
             this.OpenRecordEditButton = new System.Windows.Forms.Button();
+            this.OpenSocialEditButton = new System.Windows.Forms.Button();
+            this.OpenInvEditorButton = new System.Windows.Forms.Button();
+            this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentLevelNUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpNumericUpDown)).BeginInit();
+            this.GeneralGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // OpenSaveFileButton
             // 
-            this.OpenSaveFileButton.Location = new System.Drawing.Point(157, 12);
+            this.OpenSaveFileButton.Location = new System.Drawing.Point(168, 12);
             this.OpenSaveFileButton.Name = "OpenSaveFileButton";
-            this.OpenSaveFileButton.Size = new System.Drawing.Size(115, 74);
+            this.OpenSaveFileButton.Size = new System.Drawing.Size(119, 74);
             this.OpenSaveFileButton.TabIndex = 1;
             this.OpenSaveFileButton.Text = "Open Save File...";
             this.OpenSaveFileButton.UseVisualStyleBackColor = true;
@@ -113,7 +117,7 @@ namespace Scramble
             // DateOfSavePicker
             // 
             this.DateOfSavePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateOfSavePicker.Location = new System.Drawing.Point(157, 155);
+            this.DateOfSavePicker.Location = new System.Drawing.Point(6, 57);
             this.DateOfSavePicker.MaxDate = new System.DateTime(2037, 12, 31, 0, 0, 0, 0);
             this.DateOfSavePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.DateOfSavePicker.Name = "DateOfSavePicker";
@@ -124,7 +128,7 @@ namespace Scramble
             // DateSavedLabel
             // 
             this.DateSavedLabel.AutoSize = true;
-            this.DateSavedLabel.Location = new System.Drawing.Point(157, 137);
+            this.DateSavedLabel.Location = new System.Drawing.Point(6, 39);
             this.DateSavedLabel.Name = "DateSavedLabel";
             this.DateSavedLabel.Size = new System.Drawing.Size(124, 15);
             this.DateSavedLabel.TabIndex = 5;
@@ -133,9 +137,9 @@ namespace Scramble
             // SaveChangesButton
             // 
             this.SaveChangesButton.BackColor = System.Drawing.Color.PowderBlue;
-            this.SaveChangesButton.Location = new System.Drawing.Point(278, 12);
+            this.SaveChangesButton.Location = new System.Drawing.Point(292, 12);
             this.SaveChangesButton.Name = "SaveChangesButton";
-            this.SaveChangesButton.Size = new System.Drawing.Size(115, 74);
+            this.SaveChangesButton.Size = new System.Drawing.Size(119, 74);
             this.SaveChangesButton.TabIndex = 2;
             this.SaveChangesButton.Text = "Save Changes";
             this.SaveChangesButton.UseVisualStyleBackColor = false;
@@ -144,16 +148,18 @@ namespace Scramble
             // AboutLabel
             // 
             this.AboutLabel.AutoSize = true;
-            this.AboutLabel.Location = new System.Drawing.Point(89, 71);
+            this.AboutLabel.ForeColor = System.Drawing.Color.DarkBlue;
+            this.AboutLabel.Location = new System.Drawing.Point(12, 321);
             this.AboutLabel.Name = "AboutLabel";
-            this.AboutLabel.Size = new System.Drawing.Size(62, 15);
+            this.AboutLabel.Size = new System.Drawing.Size(93, 30);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "made by T";
+            this.AboutLabel.Text = "Scramble ver.0.2\r\nmade by T";
+            this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // MoneyLabel
             // 
             this.MoneyLabel.AutoSize = true;
-            this.MoneyLabel.Location = new System.Drawing.Point(157, 283);
+            this.MoneyLabel.Location = new System.Drawing.Point(6, 185);
             this.MoneyLabel.Name = "MoneyLabel";
             this.MoneyLabel.Size = new System.Drawing.Size(47, 15);
             this.MoneyLabel.TabIndex = 11;
@@ -161,7 +167,7 @@ namespace Scramble
             // 
             // MoneyNUpDown
             // 
-            this.MoneyNUpDown.Location = new System.Drawing.Point(239, 281);
+            this.MoneyNUpDown.Location = new System.Drawing.Point(88, 183);
             this.MoneyNUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -175,7 +181,7 @@ namespace Scramble
             // DifficultyLabel
             // 
             this.DifficultyLabel.AutoSize = true;
-            this.DifficultyLabel.Location = new System.Drawing.Point(157, 192);
+            this.DifficultyLabel.Location = new System.Drawing.Point(6, 94);
             this.DifficultyLabel.Name = "DifficultyLabel";
             this.DifficultyLabel.Size = new System.Drawing.Size(58, 15);
             this.DifficultyLabel.TabIndex = 7;
@@ -191,7 +197,7 @@ namespace Scramble
             "Normal",
             "Hard",
             "Ultimate"});
-            this.DifficultyCombo.Location = new System.Drawing.Point(239, 189);
+            this.DifficultyCombo.Location = new System.Drawing.Point(88, 91);
             this.DifficultyCombo.MaxDropDownItems = 4;
             this.DifficultyCombo.Name = "DifficultyCombo";
             this.DifficultyCombo.Size = new System.Drawing.Size(102, 23);
@@ -201,7 +207,7 @@ namespace Scramble
             // CurrentLevelLabel
             // 
             this.CurrentLevelLabel.AutoSize = true;
-            this.CurrentLevelLabel.Location = new System.Drawing.Point(157, 254);
+            this.CurrentLevelLabel.Location = new System.Drawing.Point(6, 156);
             this.CurrentLevelLabel.Name = "CurrentLevelLabel";
             this.CurrentLevelLabel.Size = new System.Drawing.Size(80, 15);
             this.CurrentLevelLabel.TabIndex = 9;
@@ -209,7 +215,7 @@ namespace Scramble
             // 
             // CurrentLevelNUpDown
             // 
-            this.CurrentLevelNUpDown.Location = new System.Drawing.Point(239, 252);
+            this.CurrentLevelNUpDown.Location = new System.Drawing.Point(88, 154);
             this.CurrentLevelNUpDown.Minimum = new decimal(new int[] {
             1,
             0,
@@ -228,7 +234,7 @@ namespace Scramble
             // FpLabel
             // 
             this.FpLabel.AutoSize = true;
-            this.FpLabel.Location = new System.Drawing.Point(157, 312);
+            this.FpLabel.Location = new System.Drawing.Point(6, 214);
             this.FpLabel.Name = "FpLabel";
             this.FpLabel.Size = new System.Drawing.Size(23, 15);
             this.FpLabel.TabIndex = 13;
@@ -236,7 +242,7 @@ namespace Scramble
             // 
             // FpNumericUpDown
             // 
-            this.FpNumericUpDown.Location = new System.Drawing.Point(239, 310);
+            this.FpNumericUpDown.Location = new System.Drawing.Point(88, 212);
             this.FpNumericUpDown.Maximum = new decimal(new int[] {
             999,
             0,
@@ -252,7 +258,7 @@ namespace Scramble
             this.BackupCheckbox.AutoSize = true;
             this.BackupCheckbox.Checked = true;
             this.BackupCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.BackupCheckbox.Location = new System.Drawing.Point(399, 12);
+            this.BackupCheckbox.Location = new System.Drawing.Point(417, 12);
             this.BackupCheckbox.Name = "BackupCheckbox";
             this.BackupCheckbox.Size = new System.Drawing.Size(111, 19);
             this.BackupCheckbox.TabIndex = 2;
@@ -262,7 +268,7 @@ namespace Scramble
             // InitializedSlotCheckbox
             // 
             this.InitializedSlotCheckbox.AutoSize = true;
-            this.InitializedSlotCheckbox.Location = new System.Drawing.Point(157, 120);
+            this.InitializedSlotCheckbox.Location = new System.Drawing.Point(6, 22);
             this.InitializedSlotCheckbox.Name = "InitializedSlotCheckbox";
             this.InitializedSlotCheckbox.Size = new System.Drawing.Size(98, 19);
             this.InitializedSlotCheckbox.TabIndex = 4;
@@ -273,7 +279,7 @@ namespace Scramble
             // ExperienceLabel
             // 
             this.ExperienceLabel.AutoSize = true;
-            this.ExperienceLabel.Location = new System.Drawing.Point(157, 225);
+            this.ExperienceLabel.Location = new System.Drawing.Point(6, 127);
             this.ExperienceLabel.Name = "ExperienceLabel";
             this.ExperienceLabel.Size = new System.Drawing.Size(67, 15);
             this.ExperienceLabel.TabIndex = 15;
@@ -281,7 +287,7 @@ namespace Scramble
             // 
             // ExpNumericUpDown
             // 
-            this.ExpNumericUpDown.Location = new System.Drawing.Point(239, 223);
+            this.ExpNumericUpDown.Location = new System.Drawing.Point(88, 125);
             this.ExpNumericUpDown.Maximum = new decimal(new int[] {
             961500,
             0,
@@ -296,15 +302,15 @@ namespace Scramble
             // 
             this.LvLabel.AutoSize = true;
             this.LvLabel.ForeColor = System.Drawing.Color.MediumBlue;
-            this.LvLabel.Location = new System.Drawing.Point(347, 227);
+            this.LvLabel.Location = new System.Drawing.Point(196, 129);
             this.LvLabel.Name = "LvLabel";
-            this.LvLabel.Size = new System.Drawing.Size(27, 15);
+            this.LvLabel.Size = new System.Drawing.Size(39, 15);
             this.LvLabel.TabIndex = 17;
-            this.LvLabel.Text = "Lv.1";
+            this.LvLabel.Text = "Lv.100";
             // 
             // OpenRecordEditButton
             // 
-            this.OpenRecordEditButton.Location = new System.Drawing.Point(391, 312);
+            this.OpenRecordEditButton.Location = new System.Drawing.Point(417, 333);
             this.OpenRecordEditButton.Name = "OpenRecordEditButton";
             this.OpenRecordEditButton.Size = new System.Drawing.Size(111, 23);
             this.OpenRecordEditButton.TabIndex = 18;
@@ -312,29 +318,61 @@ namespace Scramble
             this.OpenRecordEditButton.UseVisualStyleBackColor = true;
             this.OpenRecordEditButton.Click += new System.EventHandler(this.OpenRecordEditButton_Click);
             // 
+            // OpenSocialEditButton
+            // 
+            this.OpenSocialEditButton.Enabled = false;
+            this.OpenSocialEditButton.Location = new System.Drawing.Point(417, 304);
+            this.OpenSocialEditButton.Name = "OpenSocialEditButton";
+            this.OpenSocialEditButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenSocialEditButton.TabIndex = 19;
+            this.OpenSocialEditButton.Text = "Social Editor";
+            this.OpenSocialEditButton.UseVisualStyleBackColor = true;
+            // 
+            // OpenInvEditorButton
+            // 
+            this.OpenInvEditorButton.Enabled = false;
+            this.OpenInvEditorButton.Location = new System.Drawing.Point(417, 275);
+            this.OpenInvEditorButton.Name = "OpenInvEditorButton";
+            this.OpenInvEditorButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenInvEditorButton.TabIndex = 20;
+            this.OpenInvEditorButton.Text = "Inventory Editor";
+            this.OpenInvEditorButton.UseVisualStyleBackColor = true;
+            // 
+            // GeneralGroupBox
+            // 
+            this.GeneralGroupBox.Controls.Add(this.InitializedSlotCheckbox);
+            this.GeneralGroupBox.Controls.Add(this.DateOfSavePicker);
+            this.GeneralGroupBox.Controls.Add(this.DateSavedLabel);
+            this.GeneralGroupBox.Controls.Add(this.MoneyLabel);
+            this.GeneralGroupBox.Controls.Add(this.LvLabel);
+            this.GeneralGroupBox.Controls.Add(this.MoneyNUpDown);
+            this.GeneralGroupBox.Controls.Add(this.ExpNumericUpDown);
+            this.GeneralGroupBox.Controls.Add(this.DifficultyLabel);
+            this.GeneralGroupBox.Controls.Add(this.ExperienceLabel);
+            this.GeneralGroupBox.Controls.Add(this.DifficultyCombo);
+            this.GeneralGroupBox.Controls.Add(this.CurrentLevelLabel);
+            this.GeneralGroupBox.Controls.Add(this.CurrentLevelNUpDown);
+            this.GeneralGroupBox.Controls.Add(this.FpNumericUpDown);
+            this.GeneralGroupBox.Controls.Add(this.FpLabel);
+            this.GeneralGroupBox.Location = new System.Drawing.Point(168, 107);
+            this.GeneralGroupBox.Name = "GeneralGroupBox";
+            this.GeneralGroupBox.Size = new System.Drawing.Size(243, 249);
+            this.GeneralGroupBox.TabIndex = 21;
+            this.GeneralGroupBox.TabStop = false;
+            this.GeneralGroupBox.Text = "Global data";
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 361);
+            this.ClientSize = new System.Drawing.Size(540, 370);
+            this.Controls.Add(this.GeneralGroupBox);
+            this.Controls.Add(this.OpenInvEditorButton);
+            this.Controls.Add(this.OpenSocialEditButton);
             this.Controls.Add(this.OpenRecordEditButton);
-            this.Controls.Add(this.LvLabel);
-            this.Controls.Add(this.ExpNumericUpDown);
-            this.Controls.Add(this.ExperienceLabel);
-            this.Controls.Add(this.InitializedSlotCheckbox);
             this.Controls.Add(this.BackupCheckbox);
-            this.Controls.Add(this.FpNumericUpDown);
-            this.Controls.Add(this.FpLabel);
-            this.Controls.Add(this.CurrentLevelNUpDown);
-            this.Controls.Add(this.CurrentLevelLabel);
-            this.Controls.Add(this.DifficultyCombo);
-            this.Controls.Add(this.DifficultyLabel);
-            this.Controls.Add(this.MoneyNUpDown);
-            this.Controls.Add(this.MoneyLabel);
             this.Controls.Add(this.AboutLabel);
             this.Controls.Add(this.SaveChangesButton);
-            this.Controls.Add(this.DateSavedLabel);
-            this.Controls.Add(this.DateOfSavePicker);
             this.Controls.Add(this.SaveSlotsGroupBox);
             this.Controls.Add(this.LogoPictureBox);
             this.Controls.Add(this.OpenSaveFileButton);
@@ -348,6 +386,8 @@ namespace Scramble
             ((System.ComponentModel.ISupportInitialize)(this.CurrentLevelNUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FpNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpNumericUpDown)).EndInit();
+            this.GeneralGroupBox.ResumeLayout(false);
+            this.GeneralGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,6 +416,9 @@ namespace Scramble
         private System.Windows.Forms.NumericUpDown ExpNumericUpDown;
         private System.Windows.Forms.Label LvLabel;
         private System.Windows.Forms.Button OpenRecordEditButton;
+        private System.Windows.Forms.Button OpenSocialEditButton;
+        private System.Windows.Forms.Button OpenInvEditorButton;
+        private System.Windows.Forms.GroupBox GeneralGroupBox;
     }
 }
 

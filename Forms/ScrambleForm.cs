@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.IO;
 using Scramble.GameData;
 using Scramble.Forms;
+using System.Diagnostics;
 
 namespace Scramble
 {
@@ -32,6 +33,7 @@ namespace Scramble
             this.DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
             this.Height = 148;
             this.Width = 300;
+            this.Text = "Scramble";
         }
 
         private void ShowWarning(string Message)
@@ -78,8 +80,9 @@ namespace Scramble
                 }
 
                 this.SaveSlotsListBox.SelectedIndex = 0;
-                this.Height = 400;
-                this.Width = 550;
+                this.Height = 409;
+                this.Width = 556;
+                this.Text = "Scramble — NEO TWEWY Save Editor";
             }
         }
         private void SelectSlot(int Id)
@@ -122,8 +125,15 @@ namespace Scramble
         {
             SelectedSlot.UpdateOffset_Byte(Offsets.Difficulty, (byte)DifficultyCombo.SelectedIndex);
         }
+
         private void CurrentLevelNUpDown_ValueChanged(object sender, EventArgs e)
         {
+            ushort MaxTheoreticalLevel = (ushort)LevelTable.GetLevel((int)ExpNumericUpDown.Value);
+            if ((ushort)CurrentLevelNUpDown.Value > MaxTheoreticalLevel)
+            {
+                CurrentLevelNUpDown.Value = MaxTheoreticalLevel;
+            }
+
             SelectedSlot.UpdateOffset_UInt16(Offsets.CurrentLevel, (ushort)CurrentLevelNUpDown.Value);
         }
 
@@ -171,6 +181,11 @@ namespace Scramble
         {
             RecordsEditor = new RecordsEditor();
             RecordsEditor.ShowDialog();
+        }
+
+        private void AboutLabel_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/supremetakoyaki/Scramble");
         }
     }
 }
