@@ -19,5 +19,14 @@
 
         public static string SaveSlotDumped =
             "The save slot has been dumped.";
+
+        public static string BackupNotPossibleFileNotFound =
+            "Note that I couldn't make a backup because the original file stopped existing for some reason (did you delete or move it?)";
+
+        public static string InvalidSlotFile =
+            "This slot file is invalid. Size must be exactly 319,952 bytes.";
+
+        public static string OverwriteSlotPrompt =
+            "Are you sure you want to overwrite this save slot?";
     }
 }

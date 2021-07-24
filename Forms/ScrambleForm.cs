@@ -1,11 +1,11 @@
 ﻿using Scramble.Classes;
-using System;
-using System.Windows.Forms;
-using System.IO;
-using Scramble.GameData;
 using Scramble.Forms;
+using Scramble.GameData;
+using System;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Scramble
 {
@@ -164,12 +164,34 @@ namespace Scramble
             }
             else
             {
-                // make a copy of the unmodified save file...
-                File.Copy(OpenedSaveFile.FilePath, OpenedSaveFile.FilePath + " (" + DateTime.Now.ToString("yyyy-MM-dd HHmmss") + ").bak");
+                if (File.Exists(OpenedSaveFile.FilePath))
+                {
+                    File.Copy(OpenedSaveFile.FilePath, OpenedSaveFile.FilePath + " (" + DateTime.Now.ToString("yyyy-MM-dd HHmmss") + ").bak");
+                }
+                else
+                {
+                    ShowWarning(DialogMessages.BackupNotPossibleFileNotFound);
+                }
             }
 
-            File.WriteAllBytes(OpenedSaveFile.FilePath, OpenedSaveFile.ToBytes());
-            ShowNotice(DialogMessages.SaveDataSaved);
+            if (File.Exists(OpenedSaveFile.FilePath))
+            {
+                File.WriteAllBytes(OpenedSaveFile.FilePath, OpenedSaveFile.ToBytes());
+                ShowNotice(DialogMessages.SaveDataSaved);
+            }
+            else
+            {
+                SaveFileDialog NewDialog = new SaveFileDialog();
+                NewDialog.FileName = "gamesave";
+                NewDialog.AddExtension = false;
+
+                if (NewDialog.ShowDialog() == DialogResult.OK)
+                {
+                    OpenedSaveFile.FilePath = NewDialog.FileName;
+                    File.WriteAllBytes(OpenedSaveFile.FilePath, OpenedSaveFile.ToBytes());
+                    ShowNotice(DialogMessages.SaveDataSaved);
+                }
+            }
         }
 
         private void ExpNumericUpDown_ValueChanged(object sender, EventArgs e)

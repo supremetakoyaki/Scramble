@@ -55,7 +55,8 @@ namespace Scramble
             this.OpenSocialEditButton = new System.Windows.Forms.Button();
             this.OpenInvEditorButton = new System.Windows.Forms.Button();
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
-            this.DumpSlotDebugButton = new System.Windows.Forms.Button();
+            this.DumpSlotDataButton = new System.Windows.Forms.Button();
+            this.ImportSlotDataButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -306,9 +307,9 @@ namespace Scramble
             this.LvLabel.ForeColor = System.Drawing.Color.MediumBlue;
             this.LvLabel.Location = new System.Drawing.Point(196, 129);
             this.LvLabel.Name = "LvLabel";
-            this.LvLabel.Size = new System.Drawing.Size(39, 15);
+            this.LvLabel.Size = new System.Drawing.Size(27, 15);
             this.LvLabel.TabIndex = 17;
-            this.LvLabel.Text = "Lv.100";
+            this.LvLabel.Text = "Lv.1";
             // 
             // OpenRecordEditButton
             // 
@@ -363,22 +364,32 @@ namespace Scramble
             this.GeneralGroupBox.TabStop = false;
             this.GeneralGroupBox.Text = "Global data";
             // 
-            // DumpSlotDebugButton
+            // DumpSlotDataButton
             // 
-            this.DumpSlotDebugButton.Location = new System.Drawing.Point(417, 37);
-            this.DumpSlotDebugButton.Name = "DumpSlotDebugButton";
-            this.DumpSlotDebugButton.Size = new System.Drawing.Size(111, 23);
-            this.DumpSlotDebugButton.TabIndex = 22;
-            this.DumpSlotDebugButton.Text = "Dump this Slot";
-            this.DumpSlotDebugButton.UseVisualStyleBackColor = true;
-            this.DumpSlotDebugButton.Click += new System.EventHandler(this.DumpSlotDebugButton_Click);
+            this.DumpSlotDataButton.Location = new System.Drawing.Point(417, 34);
+            this.DumpSlotDataButton.Name = "DumpSlotDataButton";
+            this.DumpSlotDataButton.Size = new System.Drawing.Size(111, 23);
+            this.DumpSlotDataButton.TabIndex = 22;
+            this.DumpSlotDataButton.Text = "Dump Slot Data";
+            this.DumpSlotDataButton.UseVisualStyleBackColor = true;
+            this.DumpSlotDataButton.Click += new System.EventHandler(this.DumpSlotDebugButton_Click);
+            // 
+            // ImportSlotDataButton
+            // 
+            this.ImportSlotDataButton.Location = new System.Drawing.Point(417, 63);
+            this.ImportSlotDataButton.Name = "ImportSlotDataButton";
+            this.ImportSlotDataButton.Size = new System.Drawing.Size(111, 23);
+            this.ImportSlotDataButton.TabIndex = 23;
+            this.ImportSlotDataButton.Text = "Import Slot Data";
+            this.ImportSlotDataButton.UseVisualStyleBackColor = true;
             // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 370);
-            this.Controls.Add(this.DumpSlotDebugButton);
+            this.Controls.Add(this.ImportSlotDataButton);
+            this.Controls.Add(this.DumpSlotDataButton);
             this.Controls.Add(this.GeneralGroupBox);
             this.Controls.Add(this.OpenInvEditorButton);
             this.Controls.Add(this.OpenSocialEditButton);
@@ -432,7 +443,8 @@ namespace Scramble
         private System.Windows.Forms.Button OpenSocialEditButton;
         private System.Windows.Forms.Button OpenInvEditorButton;
         private System.Windows.Forms.GroupBox GeneralGroupBox;
-        private System.Windows.Forms.Button DumpSlotDebugButton;
+        private System.Windows.Forms.Button DumpSlotDataButton;
+        private System.Windows.Forms.Button ImportSlotDataButton;
     }
 }
 
