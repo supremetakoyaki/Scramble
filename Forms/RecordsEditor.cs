@@ -47,15 +47,14 @@ namespace Scramble.Forms
         {
             byte Change = RecordInvListView.Items[0].SubItems[4].Text == "yes" ? (byte)0 : (byte)1;
 
-            RecordInvListView.Items.Clear();
-
             foreach (ListViewItem Item in RecordInvListView.Items)
             {
-                
-                int CurrentPointer = Offsets.RecordInv_First + (Convert.ToInt32(Item.SubItems[0].Text) * 2);
+                int CurrentPointer = Offsets.RecordInv_First + (Convert.ToInt32(Item.Text) * 2);
 
                 SelectedSlot.UpdateOffset_Byte(CurrentPointer, Change);
             }
+
+            RecordInvListView.Items.Clear();
 
             Serialize();
         }
@@ -64,16 +63,14 @@ namespace Scramble.Forms
         {
             byte Change = RecordInvListView.Items[0].SubItems[4].Text == "yes" ? (byte)0 : (byte)1;
 
-            RecordInvListView.Items.Clear();
-
             foreach (ListViewItem Item in RecordInvListView.Items)
             {
-
-                int CurrentPointer = Offsets.RecordInv_First + (Convert.ToInt32(Item.SubItems[0].Text) * 2);
+                int CurrentPointer = Offsets.RecordInv_First + (Convert.ToInt32(Item.Text) * 2);
 
                 SelectedSlot.UpdateOffset_Byte(CurrentPointer + 1, Change);
             }
 
+            RecordInvListView.Items.Clear();
             Serialize();
         }
 
