@@ -59,6 +59,7 @@ namespace Scramble
             this.ImportSlotDataButton = new System.Windows.Forms.Button();
             this.OpenNoisepediaEditButton = new System.Windows.Forms.Button();
             this.OpenCharacterEditButton = new System.Windows.Forms.Button();
+            this.OpenClothEditButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -156,9 +157,9 @@ namespace Scramble
             this.AboutLabel.ForeColor = System.Drawing.Color.DarkBlue;
             this.AboutLabel.Location = new System.Drawing.Point(12, 321);
             this.AboutLabel.Name = "AboutLabel";
-            this.AboutLabel.Size = new System.Drawing.Size(93, 30);
+            this.AboutLabel.Size = new System.Drawing.Size(96, 30);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "Scramble ver.0.2\r\nmade by T";
+            this.AboutLabel.Text = "Scramble ver.0.3 \nmade by T";
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // MoneyLabel
@@ -326,7 +327,7 @@ namespace Scramble
             // OpenSocialEditButton
             // 
             this.OpenSocialEditButton.Enabled = false;
-            this.OpenSocialEditButton.Location = new System.Drawing.Point(417, 174);
+            this.OpenSocialEditButton.Location = new System.Drawing.Point(417, 145);
             this.OpenSocialEditButton.Name = "OpenSocialEditButton";
             this.OpenSocialEditButton.Size = new System.Drawing.Size(111, 23);
             this.OpenSocialEditButton.TabIndex = 19;
@@ -336,12 +337,13 @@ namespace Scramble
             // OpenInvEditorButton
             // 
             this.OpenInvEditorButton.Enabled = false;
-            this.OpenInvEditorButton.Location = new System.Drawing.Point(417, 145);
+            this.OpenInvEditorButton.Location = new System.Drawing.Point(417, 174);
             this.OpenInvEditorButton.Name = "OpenInvEditorButton";
             this.OpenInvEditorButton.Size = new System.Drawing.Size(111, 23);
             this.OpenInvEditorButton.TabIndex = 20;
-            this.OpenInvEditorButton.Text = "Inventory Editor";
+            this.OpenInvEditorButton.Text = "Pins Editor";
             this.OpenInvEditorButton.UseVisualStyleBackColor = true;
+            this.OpenInvEditorButton.Click += new System.EventHandler(this.OpenInvEditorButton_Click);
             // 
             // GeneralGroupBox
             // 
@@ -388,6 +390,7 @@ namespace Scramble
             // 
             // OpenNoisepediaEditButton
             // 
+            this.OpenNoisepediaEditButton.Enabled = false;
             this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(417, 304);
             this.OpenNoisepediaEditButton.Name = "OpenNoisepediaEditButton";
             this.OpenNoisepediaEditButton.Size = new System.Drawing.Size(111, 23);
@@ -404,11 +407,22 @@ namespace Scramble
             this.OpenCharacterEditButton.Text = "Character Editor";
             this.OpenCharacterEditButton.UseVisualStyleBackColor = true;
             // 
+            // OpenClothEditButton
+            // 
+            this.OpenClothEditButton.Enabled = false;
+            this.OpenClothEditButton.Location = new System.Drawing.Point(417, 203);
+            this.OpenClothEditButton.Name = "OpenClothEditButton";
+            this.OpenClothEditButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenClothEditButton.TabIndex = 26;
+            this.OpenClothEditButton.Text = "Clothing Editor";
+            this.OpenClothEditButton.UseVisualStyleBackColor = true;
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 370);
+            this.Controls.Add(this.OpenClothEditButton);
             this.Controls.Add(this.OpenCharacterEditButton);
             this.Controls.Add(this.OpenNoisepediaEditButton);
             this.Controls.Add(this.ImportSlotDataButton);
@@ -470,6 +484,7 @@ namespace Scramble
         private System.Windows.Forms.Button ImportSlotDataButton;
         private System.Windows.Forms.Button OpenNoisepediaEditButton;
         private System.Windows.Forms.Button OpenCharacterEditButton;
+        private System.Windows.Forms.Button OpenClothEditButton;
     }
 }
 

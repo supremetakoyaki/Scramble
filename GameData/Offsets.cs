@@ -9,5 +9,6 @@
         public const int Fp = 15056; // 16-bit
 
         public const int RecordInv_First = 3344; // byte & byte
+        public const int PinInv_First = 15216; // int16, int16, int16, int16. (there's space for 554368 pins..................)
     }
 }

@@ -13,6 +13,7 @@ namespace Scramble
     {
         public SaveFile OpenedSaveFile;
         public RecordsEditor RecordsEditor;
+        public PinInventoryEditor PinInvEditor;
 
         public SaveData SelectedSlot
         {
@@ -278,6 +279,12 @@ namespace Scramble
                     SelectSlot(SelectedSlot.Id);
                 }
             }
+        }
+
+        private void OpenInvEditorButton_Click(object sender, EventArgs e)
+        {
+            PinInvEditor = new PinInventoryEditor();
+            PinInvEditor.ShowDialog();
         }
     }
 }
