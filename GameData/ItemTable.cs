@@ -3619,7 +3619,7 @@ namespace Scramble.GameData
             { 5110, 1 }
         };
 
-        private static Dictionary<int, byte> PinLevelUpType = new Dictionary<int, byte>()
+        private static Dictionary<int, byte> PinLevelUpTypes = new Dictionary<int, byte>()
         {
             { 100, 1 },
             { 101, 1 },
@@ -3960,7 +3960,7 @@ namespace Scramble.GameData
         /// byte: pin level up type
         /// short[]: experience required for up to level 15.
         /// </summary>
-        private static Dictionary<byte, short[]> PinExperienceForLevel = new Dictionary<byte, short[]>()
+        private static Dictionary<byte, short[]> PinExperienceForLevelUpType = new Dictionary<byte, short[]>()
         {
             { 0, new short[15] { 0, 16, 35, 58, 86, 116, 149, 186, 227, 270, 315, 362, 411, 463, 518} },
             { 1, new short[15] { 0, 22, 49, 81, 120, 163, 210, 262, 319, 379, 442, 508, 577, 650, 727} },
@@ -4003,9 +4003,54 @@ namespace Scramble.GameData
             return GetItemName(GetItemIdWithPinId(PinId));
         }
 
-        public static int GetPinMaxLevelWithPinId(int PinId)
+        public static byte  GetPinMaxLevelWithPinId(int PinId)
         {
             return PinMaxLevels[PinId];
+        }
+
+        public static byte GetPinLevelUpTypeWithPinId(int PinId)
+        {
+            return PinLevelUpTypes[PinId];
+        }
+
+        public static int GetPinExperienceWithPinIdAndLevel(int PinId, byte Level)
+        {
+            byte PinLevelUpType = GetPinLevelUpTypeWithPinId(PinId);
+            byte MaxLevel = GetPinMaxLevelWithPinId(PinId);
+
+            if (Level > MaxLevel)
+            {
+                Level = MaxLevel;
+            }
+
+            return (PinExperienceForLevelUpType[PinLevelUpType])[Level - 1];
+        }
+
+        public static byte GetPinLevelWithPinIdAndExperience(int PinId, short Experience)
+        {
+            byte PinLevelUpType = PinLevelUpTypes[PinId];
+            byte MaxLevel = GetPinMaxLevelWithPinId(PinId);
+            short MaxExperience = (PinExperienceForLevelUpType[PinLevelUpType])[MaxLevel - 1];
+
+            if (Experience > MaxExperience)
+            {
+                Experience = MaxExperience;
+                return MaxLevel;
+            }
+
+            byte Level = 1;
+            
+            for (int i = 0; i < MaxLevel; i++)
+            {
+                short ExpNeeded = (PinExperienceForLevelUpType[PinLevelUpType])[i]; // Experience needed for level i+1
+
+                if (ExpNeeded <= Experience)
+                {
+                    Level = (byte)(i + 1);
+                }
+            }
+
+            return Level;
         }
 
         public static ItemType GetItemType(int Id)
