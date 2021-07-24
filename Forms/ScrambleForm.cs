@@ -32,7 +32,7 @@ namespace Scramble
 
             this.DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
             this.Height = 148;
-            this.Width = 300;
+            this.Width = 309;
             this.Text = "Scramble";
         }
 
@@ -174,7 +174,14 @@ namespace Scramble
         private void ExpNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             SelectedSlot.UpdateOffset_Int32(Offsets.Experience, (int)ExpNumericUpDown.Value);
-            LvLabel.Text = "Lv." + LevelTable.GetLevel((int)ExpNumericUpDown.Value);
+
+            int TheoreticalLevel = LevelTable.GetLevel((int)ExpNumericUpDown.Value);
+            LvLabel.Text = "Lv." + TheoreticalLevel;
+
+            if (CurrentLevelNUpDown.Value > TheoreticalLevel)
+            {
+                CurrentLevelNUpDown.Value = TheoreticalLevel;
+            }
         }
 
         private void OpenRecordEditButton_Click(object sender, EventArgs e)

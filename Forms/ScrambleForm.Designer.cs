@@ -148,6 +148,7 @@ namespace Scramble
             // AboutLabel
             // 
             this.AboutLabel.AutoSize = true;
+            this.AboutLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AboutLabel.ForeColor = System.Drawing.Color.DarkBlue;
             this.AboutLabel.Location = new System.Drawing.Point(12, 321);
             this.AboutLabel.Name = "AboutLabel";
