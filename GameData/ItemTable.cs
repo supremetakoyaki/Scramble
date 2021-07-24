@@ -4003,6 +4003,15 @@ namespace Scramble.GameData
             return GetItemName(GetItemIdWithPinId(PinId));
         }
 
+        public static string GetPinSpriteWithPinId(int PinId)
+        {
+            if (PinSprites.ContainsKey(PinId))
+            {
+                return PinSprites[PinId];
+            }
+            return string.Empty;
+        }
+
         public static byte  GetPinMaxLevelWithPinId(int PinId)
         {
             return PinMaxLevels[PinId];
@@ -4011,6 +4020,11 @@ namespace Scramble.GameData
         public static byte GetPinLevelUpTypeWithPinId(int PinId)
         {
             return PinLevelUpTypes[PinId];
+        }
+
+        public static bool PinIsMasterable(int PinId)
+        {
+            return GetPinLevelUpTypeWithPinId(PinId) != 6;
         }
 
         public static int GetPinExperienceWithPinIdAndLevel(int PinId, byte Level)

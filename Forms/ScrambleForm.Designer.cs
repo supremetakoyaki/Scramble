@@ -336,7 +336,6 @@ namespace Scramble
             // 
             // OpenInvEditorButton
             // 
-            this.OpenInvEditorButton.Enabled = false;
             this.OpenInvEditorButton.Location = new System.Drawing.Point(417, 174);
             this.OpenInvEditorButton.Name = "OpenInvEditorButton";
             this.OpenInvEditorButton.Size = new System.Drawing.Size(111, 23);
