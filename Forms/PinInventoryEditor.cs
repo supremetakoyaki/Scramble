@@ -2,12 +2,6 @@
 using Scramble.GameData;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scramble.Forms
@@ -30,6 +24,7 @@ namespace Scramble.Forms
         {
             InitializeComponent();
             Serialize();
+            SerializeGlobal();
         }
 
         public void Serialize()
@@ -49,6 +44,11 @@ namespace Scramble.Forms
                 if (PinId != EMPTY_PIN_ID)
                 {
                     ushort Level = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer + 2);
+                    if (Level == 0x81) // investigate this.
+                    {
+                        Level = 1;
+                    }
+
                     ushort Experience = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer + 4);
                     // UNUSED?: ushort Unknown = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer + 6);
 
@@ -71,22 +71,127 @@ namespace Scramble.Forms
 
             foreach (InventoryPin Pin in InventoryPins)
             {
-                string Name = ItemTable.GetPinNameWithPinId(Pin.PinId);
-                string Icon = ItemTable.GetPinSpriteWithPinId(Pin.PinId) + ".png";
+                InsertPinToListView(Pin);
+            }
+
+            if (MyPinInventoryView.Items.Count > 0)
+            {
+                MyPinInventoryView.Items[0].Selected = true;
+                MyPinInventoryView.Select();
+            }
+        }
+
+        public void SerializeGlobal()
+        {
+            var AllPins = ItemTable.GetPinDictionary();
+            
+            foreach (int PinId in AllPins.Keys)
+            {
+                string PinName = ItemTable.GetPinNameWithPinId(PinId);
+                string PinIcon = ItemTable.GetPinSpriteWithPinId(PinId) + ".png";
 
                 ListViewItem PinToAdd = new ListViewItem(new string[]
-                    {
+                {
+                    PinName,
+                    PinId.ToString()
+                });
+
+                PinToAdd.ImageKey = PinIcon;
+                AllPinsListView.Items.Add(PinToAdd);
+            }
+        }
+
+        private void InsertPinToListView(InventoryPin Pin)
+        {
+            string Name = ItemTable.GetPinNameWithPinId(Pin.PinId);
+            string Icon = ItemTable.GetPinSpriteWithPinId(Pin.PinId) + ".png";
+
+            string MasteredSymbol = "—";
+            if (ItemTable.PinIsMasterable(Pin.PinId))
+            {
+                MasteredSymbol = PinIsMastered(Pin.PinId, (byte)Pin.Level) ? "★" : "no";
+            }
+
+            ListViewItem PinToAdd = new ListViewItem(new string[]
+                   {
                         Name,
                         Pin.PinId.ToString(),
                         Pin.Level.ToString(),
                         Pin.Experience.ToString(),
-                        PinIsMastered(Pin.PinId, (byte)Pin.Level) ? "★" : "no",
+                        MasteredSymbol,
                         Pin.Amount.ToString()
-                    });
+                   });
 
-                PinToAdd.ImageKey = Icon;
-                MyPinInventoryView.Items.Add(PinToAdd);
+            PinToAdd.ImageKey = Icon;
+            MyPinInventoryView.Items.Add(PinToAdd);
+        }
+
+        private void SelectPin()
+        {
+            if (MyPinInventoryView.Items.Count < 1)
+            {
+                PinNameLabel.Text = "(No selected pin)";
+
+                RemovePinButton.Enabled = false;
+                MasterPinButton.Enabled = false;
+                UpdatePinButton.Enabled = false;
+                PinAmountUpDown.Enabled = false;
+                PinImagePictureBox.Image = null;
+
+                PinLevelNUpDown.Enabled = false;
+                ExperienceNUpDown.Enabled = false;
+                PinAmountUpDown.Enabled = false;
+
+                MasteredLabel.Text = string.Empty;
+
+                PinLevelNUpDown.Value = 1;
+                ExperienceNUpDown.Value = 0;
+                PinAmountUpDown.Value = 1;
+                return;
             }
+
+            if (MyPinInventoryView.SelectedItems.Count != 1)
+            {
+                return;
+            }
+
+            InventoryPin Pin = InventoryPins[MyPinInventoryView.SelectedIndices[0]];
+
+            string PinName = ItemTable.GetPinNameWithPinId(Pin.PinId);
+            string PinSprite = ItemTable.GetPinSpriteWithPinId(Pin.PinId) + ".png";
+
+            PinNameLabel.Text = PinName;
+            PinImagePictureBox.Image = this.PinImageList_Big.Images[PinSprite];
+
+            RemovePinButton.Enabled = true;
+            UpdatePinButton.Enabled = true;
+            PinAmountUpDown.Enabled = true;
+
+            PinLevelNUpDown.Enabled = true;
+            ExperienceNUpDown.Enabled = true;
+            PinAmountUpDown.Enabled = true;
+
+            if (ItemTable.PinIsMasterable(Pin.PinId))
+            {
+                MasterPinButton.Enabled = true;
+
+                if (PinIsMastered(Pin.PinId, (byte)Pin.Level))
+                {
+                    MasteredLabel.Text = "★";
+                }
+                else
+                {
+                    MasteredLabel.Text = string.Empty;
+                }
+            }
+            else
+            {
+                MasterPinButton.Enabled = false;
+            }
+
+            PinLevelNUpDown.Value = Pin.Level;
+            ExperienceNUpDown.Value = Pin.Experience;
+            PinAmountUpDown.Value = Pin.Amount;
         }
 
         private void UpdatePinButton_Click(object sender, EventArgs e)
@@ -96,7 +201,7 @@ namespace Scramble.Forms
 
         private void MyPinInventoryView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            SelectPin();
         }
 
         private bool PinIsMastered(ushort PinId, byte Level)

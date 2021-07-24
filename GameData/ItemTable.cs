@@ -4076,6 +4076,11 @@ namespace Scramble.GameData
         {
             return ItemCollectionSaveIndexes;
         }
+
+        public static Dictionary<int, int> GetPinDictionary()
+        {
+            return PinItemIds;
+        }
         #endregion
     }
     public enum ItemType
