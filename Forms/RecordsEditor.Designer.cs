@@ -157,7 +157,7 @@ namespace Scramble.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "RecordsEditor";
-            this.Text = "Records Editor";
+            this.Text = "Collection Editor";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

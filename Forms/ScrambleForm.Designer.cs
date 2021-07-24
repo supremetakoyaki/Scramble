@@ -57,6 +57,8 @@ namespace Scramble
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
             this.DumpSlotDataButton = new System.Windows.Forms.Button();
             this.ImportSlotDataButton = new System.Windows.Forms.Button();
+            this.OpenNoisepediaEditButton = new System.Windows.Forms.Button();
+            this.OpenCharacterEditButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -317,14 +319,14 @@ namespace Scramble
             this.OpenRecordEditButton.Name = "OpenRecordEditButton";
             this.OpenRecordEditButton.Size = new System.Drawing.Size(111, 23);
             this.OpenRecordEditButton.TabIndex = 18;
-            this.OpenRecordEditButton.Text = "Records Editor";
+            this.OpenRecordEditButton.Text = "Collection Editor";
             this.OpenRecordEditButton.UseVisualStyleBackColor = true;
             this.OpenRecordEditButton.Click += new System.EventHandler(this.OpenRecordEditButton_Click);
             // 
             // OpenSocialEditButton
             // 
             this.OpenSocialEditButton.Enabled = false;
-            this.OpenSocialEditButton.Location = new System.Drawing.Point(417, 304);
+            this.OpenSocialEditButton.Location = new System.Drawing.Point(417, 174);
             this.OpenSocialEditButton.Name = "OpenSocialEditButton";
             this.OpenSocialEditButton.Size = new System.Drawing.Size(111, 23);
             this.OpenSocialEditButton.TabIndex = 19;
@@ -334,7 +336,7 @@ namespace Scramble
             // OpenInvEditorButton
             // 
             this.OpenInvEditorButton.Enabled = false;
-            this.OpenInvEditorButton.Location = new System.Drawing.Point(417, 275);
+            this.OpenInvEditorButton.Location = new System.Drawing.Point(417, 145);
             this.OpenInvEditorButton.Name = "OpenInvEditorButton";
             this.OpenInvEditorButton.Size = new System.Drawing.Size(111, 23);
             this.OpenInvEditorButton.TabIndex = 20;
@@ -384,11 +386,31 @@ namespace Scramble
             this.ImportSlotDataButton.UseVisualStyleBackColor = true;
             this.ImportSlotDataButton.Click += new System.EventHandler(this.ImportSlotDataButton_Click);
             // 
+            // OpenNoisepediaEditButton
+            // 
+            this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(417, 304);
+            this.OpenNoisepediaEditButton.Name = "OpenNoisepediaEditButton";
+            this.OpenNoisepediaEditButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenNoisepediaEditButton.TabIndex = 24;
+            this.OpenNoisepediaEditButton.Text = "Noisepedia Editor";
+            this.OpenNoisepediaEditButton.UseVisualStyleBackColor = true;
+            // 
+            // OpenCharacterEditButton
+            // 
+            this.OpenCharacterEditButton.Location = new System.Drawing.Point(417, 116);
+            this.OpenCharacterEditButton.Name = "OpenCharacterEditButton";
+            this.OpenCharacterEditButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenCharacterEditButton.TabIndex = 25;
+            this.OpenCharacterEditButton.Text = "Character Editor";
+            this.OpenCharacterEditButton.UseVisualStyleBackColor = true;
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 370);
+            this.Controls.Add(this.OpenCharacterEditButton);
+            this.Controls.Add(this.OpenNoisepediaEditButton);
             this.Controls.Add(this.ImportSlotDataButton);
             this.Controls.Add(this.DumpSlotDataButton);
             this.Controls.Add(this.GeneralGroupBox);
@@ -446,6 +468,8 @@ namespace Scramble
         private System.Windows.Forms.GroupBox GeneralGroupBox;
         private System.Windows.Forms.Button DumpSlotDataButton;
         private System.Windows.Forms.Button ImportSlotDataButton;
+        private System.Windows.Forms.Button OpenNoisepediaEditButton;
+        private System.Windows.Forms.Button OpenCharacterEditButton;
     }
 }
 
