@@ -258,5 +258,30 @@ namespace Scramble
                 ShowNotice(DialogMessages.SaveSlotDumped);
             }
         }
+
+        private void ImportSlotDataButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ImportDialog = new OpenFileDialog();
+            ImportDialog.Filter = "Scramble Save Slot (*.slot)|*.slot";
+            ImportDialog.DefaultExt = "slot";
+            ImportDialog.AddExtension = true;
+
+            if (ImportDialog.ShowDialog() == DialogResult.OK)
+            {
+                byte[] ImportedData = File.ReadAllBytes(ImportDialog.FileName);
+
+                if (ImportedData.Length != 319952)
+                {
+                    ShowWarning(DialogMessages.InvalidSlotFile);
+                    return;
+                }
+
+                if (ShowPrompt(DialogMessages.OverwriteSlotPrompt))
+                {
+                    SelectedSlot.ImportData(ImportedData);
+                    SelectSlot(SelectedSlot.Id);
+                }
+            }
+        }
     }
 }

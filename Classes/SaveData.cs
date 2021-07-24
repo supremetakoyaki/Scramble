@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
+using System.Windows.Forms.VisualStyles;
 
 namespace Scramble.Classes
 {
@@ -154,6 +155,10 @@ namespace Scramble.Classes
         public void DumpData(string FilePath)
         {
             File.WriteAllBytes(FilePath, Data);
+        }
+        public void ImportData(byte[] Import)
+        {
+            this.Data = Import; // the fact that it's so straight-forward seems a bit suspicious.
         }
     }
 }

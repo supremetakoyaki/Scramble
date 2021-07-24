@@ -382,6 +382,7 @@ namespace Scramble
             this.ImportSlotDataButton.TabIndex = 23;
             this.ImportSlotDataButton.Text = "Import Slot Data";
             this.ImportSlotDataButton.UseVisualStyleBackColor = true;
+            this.ImportSlotDataButton.Click += new System.EventHandler(this.ImportSlotDataButton_Click);
             // 
             // ScrambleForm
             // 
