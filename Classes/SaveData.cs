@@ -1,17 +1,12 @@
-﻿using Scramble.GameData;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scramble.Classes
 {
     public class SaveData
     {
-        public int Id; // 0 = autosave
+        public int Id;
 
         public const int VALID_OFFSET = 0;
         public const int VALID_LENGTH = 1;
@@ -84,7 +79,7 @@ namespace Scramble.Classes
             Array.Copy(FullData, HASH_OFFSET, Hash, 0, HASH_LENGTH);
             Array.Copy(FullData, DATA_OFFSET, Data, 0, DATA_LENGTH);
 
-            File.WriteAllBytes("slot" + Id + ".txt", Data);
+            //testing: File.WriteAllBytes("slot" + Id + ".txt", Data);
         }
         public void UpdateUnix(DateTime Date)
         {
