@@ -9,6 +9,10 @@
         public const int Fp = 15056; // 16-bit
 
         public const int RecordInv_First = 3344; // byte & byte
+
+        public const int PinInv_Count = 15208; // int32
+        public const int PinInv_LastIndex = 15212; // int32, basically count minus one.
+
         public const int PinInv_First = 15216; // int16, int16, int16, int16.
         public const int PinInv_Last = 292415;
     }

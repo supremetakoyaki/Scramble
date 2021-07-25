@@ -50,6 +50,9 @@ namespace Scramble.Forms
             // int16: experience
             // int16: i have no idea.
 
+            // IDEA: I could, for the sake of convenience, use the value in offset "PinInv_Count".
+            // I will think about it.
+
             for (int CurrentPointer = Offsets.PinInv_First; CurrentPointer < Offsets.PinInv_Last; CurrentPointer += 8)
             {
                 ushort PinId = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer);
@@ -123,6 +126,7 @@ namespace Scramble.Forms
             // int16: i have no idea.
 
             int CurrentPointer = Offsets.PinInv_First;
+            int PinCount = 0;
 
             foreach (InventoryPin Pin in InventoryPins)
             {
@@ -134,6 +138,7 @@ namespace Scramble.Forms
                     SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 6, 0);
 
                     CurrentPointer += 8;
+                    PinCount += 1;
                 }
             }
 
@@ -145,6 +150,9 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_UInt16(i + 4, 0);
                 SelectedSlot.UpdateOffset_UInt16(i + 6, 0);
             }
+
+            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_Count, PinCount);
+            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_LastIndex, PinCount - 1);
         }
 
         private void InsertPinToListView(InventoryPin Pin)
