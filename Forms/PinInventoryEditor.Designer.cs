@@ -34,6 +34,8 @@ namespace Scramble.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PinInventoryEditor));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BrandLabel = new System.Windows.Forms.Label();
+            this.BrandPictureBox = new System.Windows.Forms.PictureBox();
             this.MasteredLabel = new System.Windows.Forms.Label();
             this.RemoveAllPinsButton = new System.Windows.Forms.Button();
             this.PinAmountUpDown = new System.Windows.Forms.NumericUpDown();
@@ -64,7 +66,9 @@ namespace Scramble.Forms
             this.GlobalPinNameHeader = new System.Windows.Forms.ColumnHeader();
             this.GlobalPinIdHeader = new System.Windows.Forms.ColumnHeader();
             this.PinImageList_Big = new System.Windows.Forms.ImageList(this.components);
+            this.BrandImageList = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BrandPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PinAmountUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExperienceNUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PinLevelNUpDown)).BeginInit();
@@ -74,6 +78,8 @@ namespace Scramble.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.BrandLabel);
+            this.groupBox1.Controls.Add(this.BrandPictureBox);
             this.groupBox1.Controls.Add(this.MasteredLabel);
             this.groupBox1.Controls.Add(this.RemoveAllPinsButton);
             this.groupBox1.Controls.Add(this.PinAmountUpDown);
@@ -91,10 +97,27 @@ namespace Scramble.Forms
             this.groupBox1.Controls.Add(this.MyPinInventoryView);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(497, 540);
+            this.groupBox1.Size = new System.Drawing.Size(603, 540);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pin Inventory";
+            // 
+            // BrandLabel
+            // 
+            this.BrandLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BrandLabel.Location = new System.Drawing.Point(303, 487);
+            this.BrandLabel.Name = "BrandLabel";
+            this.BrandLabel.Size = new System.Drawing.Size(170, 15);
+            this.BrandLabel.TabIndex = 16;
+            this.BrandLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BrandPictureBox
+            // 
+            this.BrandPictureBox.Location = new System.Drawing.Point(303, 424);
+            this.BrandPictureBox.Name = "BrandPictureBox";
+            this.BrandPictureBox.Size = new System.Drawing.Size(170, 60);
+            this.BrandPictureBox.TabIndex = 15;
+            this.BrandPictureBox.TabStop = false;
             // 
             // MasteredLabel
             // 
@@ -118,7 +141,7 @@ namespace Scramble.Forms
             // PinAmountUpDown
             // 
             this.PinAmountUpDown.Enabled = false;
-            this.PinAmountUpDown.Location = new System.Drawing.Point(439, 435);
+            this.PinAmountUpDown.Location = new System.Drawing.Point(545, 435);
             this.PinAmountUpDown.Maximum = new decimal(new int[] {
             99,
             0,
@@ -136,7 +159,7 @@ namespace Scramble.Forms
             // AmountLabel
             // 
             this.AmountLabel.AutoSize = true;
-            this.AmountLabel.Location = new System.Drawing.Point(385, 437);
+            this.AmountLabel.Location = new System.Drawing.Point(491, 437);
             this.AmountLabel.Name = "AmountLabel";
             this.AmountLabel.Size = new System.Drawing.Size(54, 15);
             this.AmountLabel.TabIndex = 12;
@@ -182,7 +205,7 @@ namespace Scramble.Forms
             this.AutoUpdateCheckbox.AutoSize = true;
             this.AutoUpdateCheckbox.Checked = true;
             this.AutoUpdateCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AutoUpdateCheckbox.Location = new System.Drawing.Point(285, 515);
+            this.AutoUpdateCheckbox.Location = new System.Drawing.Point(391, 514);
             this.AutoUpdateCheckbox.Name = "AutoUpdateCheckbox";
             this.AutoUpdateCheckbox.Size = new System.Drawing.Size(94, 19);
             this.AutoUpdateCheckbox.TabIndex = 8;
@@ -242,7 +265,7 @@ namespace Scramble.Forms
             // UpdatePinButton
             // 
             this.UpdatePinButton.Enabled = false;
-            this.UpdatePinButton.Location = new System.Drawing.Point(385, 491);
+            this.UpdatePinButton.Location = new System.Drawing.Point(491, 491);
             this.UpdatePinButton.Name = "UpdatePinButton";
             this.UpdatePinButton.Size = new System.Drawing.Size(106, 43);
             this.UpdatePinButton.TabIndex = 2;
@@ -265,18 +288,19 @@ namespace Scramble.Forms
             this.MyPinInventoryView.Location = new System.Drawing.Point(6, 22);
             this.MyPinInventoryView.MultiSelect = false;
             this.MyPinInventoryView.Name = "MyPinInventoryView";
-            this.MyPinInventoryView.Size = new System.Drawing.Size(485, 374);
+            this.MyPinInventoryView.Size = new System.Drawing.Size(591, 374);
             this.MyPinInventoryView.SmallImageList = this.PinImageList_Small;
             this.MyPinInventoryView.TabIndex = 1;
             this.MyPinInventoryView.UseCompatibleStateImageBehavior = false;
             this.MyPinInventoryView.View = System.Windows.Forms.View.Details;
             this.MyPinInventoryView.SelectedIndexChanged += new System.EventHandler(this.MyPinInventoryView_SelectedIndexChanged);
+            this.MyPinInventoryView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MyPinInventoryView_KeyDown);
             // 
             // PinNameHeader
             // 
             this.PinNameHeader.DisplayIndex = 1;
             this.PinNameHeader.Text = "Name";
-            this.PinNameHeader.Width = 188;
+            this.PinNameHeader.Width = 275;
             // 
             // PinIdHeader
             // 
@@ -654,7 +678,7 @@ namespace Scramble.Forms
             this.groupBox2.Controls.Add(this.AddAllPinsButton);
             this.groupBox2.Controls.Add(this.AddPinButton);
             this.groupBox2.Controls.Add(this.AllPinsListView);
-            this.groupBox2.Location = new System.Drawing.Point(515, 12);
+            this.groupBox2.Location = new System.Drawing.Point(621, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(307, 540);
             this.groupBox2.TabIndex = 1;
@@ -1056,18 +1080,41 @@ namespace Scramble.Forms
             this.PinImageList_Big.Images.SetKeyName(331, "ID332_sozai.png");
             this.PinImageList_Big.Images.SetKeyName(332, "ID333_sozai.png");
             // 
+            // BrandImageList
+            // 
+            this.BrandImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.BrandImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BrandImageList.ImageStream")));
+            this.BrandImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.BrandImageList.Images.SetKeyName(0, "brand_01.png");
+            this.BrandImageList.Images.SetKeyName(1, "brand_02.png");
+            this.BrandImageList.Images.SetKeyName(2, "brand_03.png");
+            this.BrandImageList.Images.SetKeyName(3, "brand_04.png");
+            this.BrandImageList.Images.SetKeyName(4, "brand_05.png");
+            this.BrandImageList.Images.SetKeyName(5, "brand_06.png");
+            this.BrandImageList.Images.SetKeyName(6, "brand_07.png");
+            this.BrandImageList.Images.SetKeyName(7, "brand_08.png");
+            this.BrandImageList.Images.SetKeyName(8, "brand_09.png");
+            this.BrandImageList.Images.SetKeyName(9, "brand_10.png");
+            this.BrandImageList.Images.SetKeyName(10, "brand_11.png");
+            this.BrandImageList.Images.SetKeyName(11, "brand_12.png");
+            this.BrandImageList.Images.SetKeyName(12, "brand_13.png");
+            this.BrandImageList.Images.SetKeyName(13, "brand_14.png");
+            this.BrandImageList.Images.SetKeyName(14, "brand_15.png");
+            // 
             // PinInventoryEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 558);
+            this.ClientSize = new System.Drawing.Size(963, 558);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PinInventoryEditor";
             this.Text = "Pin Inventory Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PinInventoryEditor_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BrandPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PinAmountUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExperienceNUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PinLevelNUpDown)).EndInit();
@@ -1111,5 +1158,8 @@ namespace Scramble.Forms
         private System.Windows.Forms.Button RemoveAllPinsButton;
         private System.Windows.Forms.Button AddAllPinsButton;
         private System.Windows.Forms.CheckBox AddedPinIsMasteredCheckbox;
+        private System.Windows.Forms.PictureBox BrandPictureBox;
+        private System.Windows.Forms.ImageList BrandImageList;
+        private System.Windows.Forms.Label BrandLabel;
     }
 }

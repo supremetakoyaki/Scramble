@@ -131,7 +131,7 @@ namespace Scramble
             }
             else
             {
-                CurrentLevelNUpDown.Value = CurrentLevelNUpDown.Maximum;
+                CurrentLevelNUpDown.Value = LevelTable.GetLevel(Player_Current_Level);
             }
 
             if (Player_Money >= MoneyNUpDown.Minimum && Player_Money <= MoneyNUpDown.Maximum)

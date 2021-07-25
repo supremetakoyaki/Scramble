@@ -157,9 +157,9 @@ namespace Scramble
             this.AboutLabel.ForeColor = System.Drawing.Color.DarkBlue;
             this.AboutLabel.Location = new System.Drawing.Point(12, 321);
             this.AboutLabel.Name = "AboutLabel";
-            this.AboutLabel.Size = new System.Drawing.Size(105, 30);
+            this.AboutLabel.Size = new System.Drawing.Size(96, 30);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "Scramble ver.0.2.1 \nmade by T";
+            this.AboutLabel.Text = "Scramble ver.0.3 \nmade by T";
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // MoneyLabel
@@ -336,7 +336,6 @@ namespace Scramble
             // 
             // OpenInvEditorButton
             // 
-            this.OpenInvEditorButton.Enabled = false;
             this.OpenInvEditorButton.Location = new System.Drawing.Point(417, 174);
             this.OpenInvEditorButton.Name = "OpenInvEditorButton";
             this.OpenInvEditorButton.Size = new System.Drawing.Size(111, 23);

@@ -103,11 +103,17 @@ namespace Scramble.Forms
 
         private void SaveAllData()
         {
+            // Pin data:
+            // int16: pin ID
+            // int16: level
+            // int16: experience
+            // int16: i have no idea.
+
             int CurrentPointer = Offsets.PinInv_First;
 
             foreach (InventoryPin Pin in InventoryPins)
             {
-                for (int i = 0; i < Pin.Amount || CurrentPointer < Offsets.PinInv_Last; i++)
+                for (int i = 0; i < Pin.Amount; i++)
                 {
                     SelectedSlot.UpdateOffset_UInt16(CurrentPointer, Pin.PinId);
                     SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 2, Pin.Level);
@@ -119,12 +125,12 @@ namespace Scramble.Forms
             }
 
             // Fill in the blanks.
-            for (;  CurrentPointer < Offsets.PinInv_Last; CurrentPointer += 8)
+            for (int i = CurrentPointer; i < Offsets.PinInv_Last; i += 8)
             {
-                SelectedSlot.UpdateOffset_UInt16(CurrentPointer, EMPTY_PIN_ID);
-                SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 2, 0);
-                SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 4, 0);
-                SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 6, 0);
+                SelectedSlot.UpdateOffset_UInt16(i, EMPTY_PIN_ID);
+                SelectedSlot.UpdateOffset_UInt16(i + 2, 0);
+                SelectedSlot.UpdateOffset_UInt16(i + 4, 0);
+                SelectedSlot.UpdateOffset_UInt16(i + 6, 0);
             }
         }
 
@@ -164,6 +170,7 @@ namespace Scramble.Forms
                 UpdatePinButton.Enabled = false;
                 PinAmountUpDown.Enabled = false;
                 PinImagePictureBox.Image = null;
+                BrandPictureBox.Image = null;
 
                 PinLevelNUpDown.Enabled = false;
                 ExperienceNUpDown.Enabled = false;
@@ -184,11 +191,16 @@ namespace Scramble.Forms
 
             InventoryPin Pin = InventoryPins[MyPinInventoryView.SelectedIndices[0]];
 
+            byte BrandId = ItemTable.GetPinBrandWithPinId(Pin.PinId);
+
             string PinName = ItemTable.GetPinNameWithPinId(Pin.PinId);
             string PinSprite = ItemTable.GetPinSpriteWithPinId(Pin.PinId) + ".png";
+            string BrandSprite = ItemTable.GetBrandSprite(BrandId) + ".png";
 
             PinNameLabel.Text = PinName;
+            BrandLabel.Text = ItemTable.GetBrandName(BrandId);
             PinImagePictureBox.Image = this.PinImageList_Big.Images[PinSprite];
+            BrandPictureBox.Image = this.BrandImageList.Images[BrandSprite];
 
             RemovePinButton.Enabled = true;
             UpdatePinButton.Enabled = true;
@@ -245,14 +257,43 @@ namespace Scramble.Forms
 
                 MyPinInventoryView.Items.RemoveAt(ThisIndex);
                 InventoryPins.Remove(Pin);
-            }
 
-            SelectPin();
+                if (ThisIndex > 0)
+                {
+                    if (MyPinInventoryView.Items.Count > ThisIndex)
+                    {
+                        MyPinInventoryView.Items[ThisIndex].Selected = true;
+                        MyPinInventoryView.Select();
+                    }
+                    else if (MyPinInventoryView.Items.Count == ThisIndex)
+                    {
+                        MyPinInventoryView.Items[ThisIndex - 1].Selected = true;
+                        MyPinInventoryView.Select();
+                    }
+                    else
+                    {
+                        SelectPin();
+                    }
+
+                }
+                else
+                {
+                    SelectPin();
+                }
+            }
         }
 
         private void PinInventoryEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveAllData();
+        }
+
+        private void MyPinInventoryView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                RemovePinButton_Click(sender, e);
+            }
         }
     }
 }
