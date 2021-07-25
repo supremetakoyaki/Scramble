@@ -2,7 +2,7 @@
 
 namespace Scramble.GameData
 {
-    public class CharacterTable
+    public static class CharacterTable
     {
         private static Dictionary<int, string> CharacterNames = new Dictionary<int, string>()
         {
@@ -15,7 +15,7 @@ namespace Scramble.GameData
             { 7, "Minamimoto" }
         };
 
-        public string GetCharacterName(int Id)
+        public static string GetCharacterName(int Id)
         {
             if (CharacterNames.ContainsKey(Id))
             {

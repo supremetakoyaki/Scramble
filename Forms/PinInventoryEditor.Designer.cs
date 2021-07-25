@@ -70,6 +70,10 @@ namespace Scramble.Forms
             this.GlobalPinIdHeader = new System.Windows.Forms.ColumnHeader();
             this.PinImageList_Big = new System.Windows.Forms.ImageList(this.components);
             this.BrandImageList = new System.Windows.Forms.ImageList(this.components);
+            this.EquippedLabel = new System.Windows.Forms.Label();
+            this.EquippedByCharacterComboBox = new System.Windows.Forms.ComboBox();
+            this.CharacterIconPictureBox = new System.Windows.Forms.PictureBox();
+            this.EquippedDeckComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BrandPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PinAmountUpDown)).BeginInit();
@@ -77,10 +81,15 @@ namespace Scramble.Forms
             ((System.ComponentModel.ISupportInitialize)(this.PinLevelNUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PinImagePictureBox)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CharacterIconPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.EquippedDeckComboBox);
+            this.groupBox1.Controls.Add(this.CharacterIconPictureBox);
+            this.groupBox1.Controls.Add(this.EquippedByCharacterComboBox);
+            this.groupBox1.Controls.Add(this.EquippedLabel);
             this.groupBox1.Controls.Add(this.MaxLevelLabel_Value);
             this.groupBox1.Controls.Add(this.MaxLevelLabel_Info);
             this.groupBox1.Controls.Add(this.BrandLabel);
@@ -102,7 +111,7 @@ namespace Scramble.Forms
             this.groupBox1.Controls.Add(this.MyPinInventoryView);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(603, 540);
+            this.groupBox1.Size = new System.Drawing.Size(603, 601);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pin Inventory";
@@ -112,7 +121,7 @@ namespace Scramble.Forms
             this.MaxLevelLabel_Value.AutoSize = true;
             this.MaxLevelLabel_Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.MaxLevelLabel_Value.ForeColor = System.Drawing.Color.MediumBlue;
-            this.MaxLevelLabel_Value.Location = new System.Drawing.Point(234, 437);
+            this.MaxLevelLabel_Value.Location = new System.Drawing.Point(303, 448);
             this.MaxLevelLabel_Value.Name = "MaxLevelLabel_Value";
             this.MaxLevelLabel_Value.Size = new System.Drawing.Size(0, 15);
             this.MaxLevelLabel_Value.TabIndex = 18;
@@ -121,7 +130,7 @@ namespace Scramble.Forms
             // 
             this.MaxLevelLabel_Info.AutoSize = true;
             this.MaxLevelLabel_Info.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.MaxLevelLabel_Info.Location = new System.Drawing.Point(177, 437);
+            this.MaxLevelLabel_Info.Location = new System.Drawing.Point(246, 448);
             this.MaxLevelLabel_Info.Name = "MaxLevelLabel_Info";
             this.MaxLevelLabel_Info.Size = new System.Drawing.Size(66, 15);
             this.MaxLevelLabel_Info.TabIndex = 17;
@@ -130,7 +139,7 @@ namespace Scramble.Forms
             // BrandLabel
             // 
             this.BrandLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BrandLabel.Location = new System.Drawing.Point(303, 487);
+            this.BrandLabel.Location = new System.Drawing.Point(427, 486);
             this.BrandLabel.Name = "BrandLabel";
             this.BrandLabel.Size = new System.Drawing.Size(170, 15);
             this.BrandLabel.TabIndex = 16;
@@ -138,7 +147,7 @@ namespace Scramble.Forms
             // 
             // BrandPictureBox
             // 
-            this.BrandPictureBox.Location = new System.Drawing.Point(303, 424);
+            this.BrandPictureBox.Location = new System.Drawing.Point(427, 421);
             this.BrandPictureBox.Name = "BrandPictureBox";
             this.BrandPictureBox.Size = new System.Drawing.Size(170, 60);
             this.BrandPictureBox.TabIndex = 15;
@@ -148,7 +157,7 @@ namespace Scramble.Forms
             // 
             this.MasteredLabel.AutoSize = true;
             this.MasteredLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MasteredLabel.Location = new System.Drawing.Point(249, 430);
+            this.MasteredLabel.Location = new System.Drawing.Point(318, 441);
             this.MasteredLabel.Name = "MasteredLabel";
             this.MasteredLabel.Size = new System.Drawing.Size(0, 27);
             this.MasteredLabel.TabIndex = 14;
@@ -156,9 +165,9 @@ namespace Scramble.Forms
             // RemoveAllPinsButton
             // 
             this.RemoveAllPinsButton.BackColor = System.Drawing.Color.Gainsboro;
-            this.RemoveAllPinsButton.Location = new System.Drawing.Point(119, 511);
+            this.RemoveAllPinsButton.Location = new System.Drawing.Point(6, 567);
             this.RemoveAllPinsButton.Name = "RemoveAllPinsButton";
-            this.RemoveAllPinsButton.Size = new System.Drawing.Size(91, 23);
+            this.RemoveAllPinsButton.Size = new System.Drawing.Size(107, 23);
             this.RemoveAllPinsButton.TabIndex = 7;
             this.RemoveAllPinsButton.Text = "Remove all";
             this.RemoveAllPinsButton.UseVisualStyleBackColor = false;
@@ -167,7 +176,7 @@ namespace Scramble.Forms
             // PinAmountUpDown
             // 
             this.PinAmountUpDown.Enabled = false;
-            this.PinAmountUpDown.Location = new System.Drawing.Point(545, 435);
+            this.PinAmountUpDown.Location = new System.Drawing.Point(188, 504);
             this.PinAmountUpDown.Maximum = new decimal(new int[] {
             99,
             0,
@@ -186,7 +195,7 @@ namespace Scramble.Forms
             // AmountLabel
             // 
             this.AmountLabel.AutoSize = true;
-            this.AmountLabel.Location = new System.Drawing.Point(491, 437);
+            this.AmountLabel.Location = new System.Drawing.Point(122, 506);
             this.AmountLabel.Name = "AmountLabel";
             this.AmountLabel.Size = new System.Drawing.Size(54, 15);
             this.AmountLabel.TabIndex = 12;
@@ -195,7 +204,7 @@ namespace Scramble.Forms
             // ExperienceNUpDown
             // 
             this.ExperienceNUpDown.Enabled = false;
-            this.ExperienceNUpDown.Location = new System.Drawing.Point(119, 463);
+            this.ExperienceNUpDown.Location = new System.Drawing.Point(188, 475);
             this.ExperienceNUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -209,7 +218,7 @@ namespace Scramble.Forms
             // ExpLabel
             // 
             this.ExpLabel.AutoSize = true;
-            this.ExpLabel.Location = new System.Drawing.Point(76, 466);
+            this.ExpLabel.Location = new System.Drawing.Point(122, 477);
             this.ExpLabel.Name = "ExpLabel";
             this.ExpLabel.Size = new System.Drawing.Size(30, 15);
             this.ExpLabel.TabIndex = 10;
@@ -218,7 +227,7 @@ namespace Scramble.Forms
             // PinLevelNUpDown
             // 
             this.PinLevelNUpDown.Enabled = false;
-            this.PinLevelNUpDown.Location = new System.Drawing.Point(119, 434);
+            this.PinLevelNUpDown.Location = new System.Drawing.Point(188, 446);
             this.PinLevelNUpDown.Minimum = new decimal(new int[] {
             1,
             0,
@@ -239,7 +248,7 @@ namespace Scramble.Forms
             this.AutoUpdateCheckbox.AutoSize = true;
             this.AutoUpdateCheckbox.Checked = true;
             this.AutoUpdateCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AutoUpdateCheckbox.Location = new System.Drawing.Point(391, 514);
+            this.AutoUpdateCheckbox.Location = new System.Drawing.Point(491, 522);
             this.AutoUpdateCheckbox.Name = "AutoUpdateCheckbox";
             this.AutoUpdateCheckbox.Size = new System.Drawing.Size(94, 19);
             this.AutoUpdateCheckbox.TabIndex = 8;
@@ -249,7 +258,7 @@ namespace Scramble.Forms
             // LevelLabel
             // 
             this.LevelLabel.AutoSize = true;
-            this.LevelLabel.Location = new System.Drawing.Point(76, 437);
+            this.LevelLabel.Location = new System.Drawing.Point(122, 448);
             this.LevelLabel.Name = "LevelLabel";
             this.LevelLabel.Size = new System.Drawing.Size(37, 15);
             this.LevelLabel.TabIndex = 7;
@@ -259,7 +268,7 @@ namespace Scramble.Forms
             // 
             this.PinNameLabel.AutoSize = true;
             this.PinNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PinNameLabel.Location = new System.Drawing.Point(76, 413);
+            this.PinNameLabel.Location = new System.Drawing.Point(122, 421);
             this.PinNameLabel.Name = "PinNameLabel";
             this.PinNameLabel.Size = new System.Drawing.Size(101, 15);
             this.PinNameLabel.TabIndex = 6;
@@ -269,7 +278,7 @@ namespace Scramble.Forms
             // 
             this.RemovePinButton.BackColor = System.Drawing.Color.WhiteSmoke;
             this.RemovePinButton.Enabled = false;
-            this.RemovePinButton.Location = new System.Drawing.Point(6, 511);
+            this.RemovePinButton.Location = new System.Drawing.Point(6, 540);
             this.RemovePinButton.Name = "RemovePinButton";
             this.RemovePinButton.Size = new System.Drawing.Size(107, 23);
             this.RemovePinButton.TabIndex = 6;
@@ -281,7 +290,7 @@ namespace Scramble.Forms
             // 
             this.MasterPinButton.Enabled = false;
             this.MasterPinButton.ForeColor = System.Drawing.Color.MediumBlue;
-            this.MasterPinButton.Location = new System.Drawing.Point(177, 463);
+            this.MasterPinButton.Location = new System.Drawing.Point(246, 475);
             this.MasterPinButton.Name = "MasterPinButton";
             this.MasterPinButton.Size = new System.Drawing.Size(97, 23);
             this.MasterPinButton.TabIndex = 4;
@@ -291,7 +300,7 @@ namespace Scramble.Forms
             // 
             // PinImagePictureBox
             // 
-            this.PinImagePictureBox.Location = new System.Drawing.Point(6, 417);
+            this.PinImagePictureBox.Location = new System.Drawing.Point(28, 442);
             this.PinImagePictureBox.Name = "PinImagePictureBox";
             this.PinImagePictureBox.Size = new System.Drawing.Size(64, 64);
             this.PinImagePictureBox.TabIndex = 3;
@@ -300,7 +309,7 @@ namespace Scramble.Forms
             // UpdatePinButton
             // 
             this.UpdatePinButton.Enabled = false;
-            this.UpdatePinButton.Location = new System.Drawing.Point(491, 491);
+            this.UpdatePinButton.Location = new System.Drawing.Point(491, 547);
             this.UpdatePinButton.Name = "UpdatePinButton";
             this.UpdatePinButton.Size = new System.Drawing.Size(106, 43);
             this.UpdatePinButton.TabIndex = 9;
@@ -716,7 +725,7 @@ namespace Scramble.Forms
             this.groupBox2.Controls.Add(this.AllPinsListView);
             this.groupBox2.Location = new System.Drawing.Point(621, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(307, 540);
+            this.groupBox2.Size = new System.Drawing.Size(307, 601);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "All Pins";
@@ -724,7 +733,7 @@ namespace Scramble.Forms
             // Add99Checkbox
             // 
             this.Add99Checkbox.AutoSize = true;
-            this.Add99Checkbox.Location = new System.Drawing.Point(171, 491);
+            this.Add99Checkbox.Location = new System.Drawing.Point(171, 547);
             this.Add99Checkbox.Name = "Add99Checkbox";
             this.Add99Checkbox.Size = new System.Drawing.Size(44, 19);
             this.Add99Checkbox.TabIndex = 11;
@@ -734,7 +743,7 @@ namespace Scramble.Forms
             // AddedPinIsMasteredCheckbox
             // 
             this.AddedPinIsMasteredCheckbox.AutoSize = true;
-            this.AddedPinIsMasteredCheckbox.Location = new System.Drawing.Point(226, 491);
+            this.AddedPinIsMasteredCheckbox.Location = new System.Drawing.Point(226, 547);
             this.AddedPinIsMasteredCheckbox.Name = "AddedPinIsMasteredCheckbox";
             this.AddedPinIsMasteredCheckbox.Size = new System.Drawing.Size(75, 19);
             this.AddedPinIsMasteredCheckbox.TabIndex = 12;
@@ -744,7 +753,7 @@ namespace Scramble.Forms
             // AddAllPinsButton
             // 
             this.AddAllPinsButton.BackColor = System.Drawing.Color.Azure;
-            this.AddAllPinsButton.Location = new System.Drawing.Point(171, 511);
+            this.AddAllPinsButton.Location = new System.Drawing.Point(171, 567);
             this.AddAllPinsButton.Name = "AddAllPinsButton";
             this.AddAllPinsButton.Size = new System.Drawing.Size(130, 23);
             this.AddAllPinsButton.TabIndex = 13;
@@ -754,7 +763,7 @@ namespace Scramble.Forms
             // 
             // AddPinButton
             // 
-            this.AddPinButton.Location = new System.Drawing.Point(6, 491);
+            this.AddPinButton.Location = new System.Drawing.Point(6, 547);
             this.AddPinButton.Name = "AddPinButton";
             this.AddPinButton.Size = new System.Drawing.Size(100, 43);
             this.AddPinButton.TabIndex = 10;
@@ -770,7 +779,7 @@ namespace Scramble.Forms
             this.AllPinsListView.HideSelection = false;
             this.AllPinsListView.Location = new System.Drawing.Point(6, 22);
             this.AllPinsListView.Name = "AllPinsListView";
-            this.AllPinsListView.Size = new System.Drawing.Size(295, 463);
+            this.AllPinsListView.Size = new System.Drawing.Size(295, 519);
             this.AllPinsListView.SmallImageList = this.PinImageList_Big;
             this.AllPinsListView.TabIndex = 0;
             this.AllPinsListView.UseCompatibleStateImageBehavior = false;
@@ -1149,11 +1158,55 @@ namespace Scramble.Forms
             this.BrandImageList.Images.SetKeyName(13, "brand_14.png");
             this.BrandImageList.Images.SetKeyName(14, "brand_15.png");
             // 
+            // EquippedLabel
+            // 
+            this.EquippedLabel.AutoSize = true;
+            this.EquippedLabel.Location = new System.Drawing.Point(122, 570);
+            this.EquippedLabel.Name = "EquippedLabel";
+            this.EquippedLabel.Size = new System.Drawing.Size(60, 15);
+            this.EquippedLabel.TabIndex = 19;
+            this.EquippedLabel.Text = "Equipped:";
+            // 
+            // EquippedByCharacterComboBox
+            // 
+            this.EquippedByCharacterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EquippedByCharacterComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EquippedByCharacterComboBox.FormattingEnabled = true;
+            this.EquippedByCharacterComboBox.Items.AddRange(new object[] {
+            "(no one)"});
+            this.EquippedByCharacterComboBox.Location = new System.Drawing.Point(216, 567);
+            this.EquippedByCharacterComboBox.Name = "EquippedByCharacterComboBox";
+            this.EquippedByCharacterComboBox.Size = new System.Drawing.Size(127, 23);
+            this.EquippedByCharacterComboBox.TabIndex = 20;
+            // 
+            // CharacterIconPictureBox
+            // 
+            this.CharacterIconPictureBox.Location = new System.Drawing.Point(189, 567);
+            this.CharacterIconPictureBox.Name = "CharacterIconPictureBox";
+            this.CharacterIconPictureBox.Size = new System.Drawing.Size(23, 23);
+            this.CharacterIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CharacterIconPictureBox.TabIndex = 21;
+            this.CharacterIconPictureBox.TabStop = false;
+            // 
+            // EquippedDeckComboBox
+            // 
+            this.EquippedDeckComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EquippedDeckComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EquippedDeckComboBox.FormattingEnabled = true;
+            this.EquippedDeckComboBox.Items.AddRange(new object[] {
+            "Deck 1",
+            "Deck 2",
+            "Deck 3"});
+            this.EquippedDeckComboBox.Location = new System.Drawing.Point(349, 567);
+            this.EquippedDeckComboBox.Name = "EquippedDeckComboBox";
+            this.EquippedDeckComboBox.Size = new System.Drawing.Size(67, 23);
+            this.EquippedDeckComboBox.TabIndex = 22;
+            // 
             // PinInventoryEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 558);
+            this.ClientSize = new System.Drawing.Size(943, 624);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1170,6 +1223,7 @@ namespace Scramble.Forms
             ((System.ComponentModel.ISupportInitialize)(this.PinImagePictureBox)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CharacterIconPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1213,5 +1267,9 @@ namespace Scramble.Forms
         private System.Windows.Forms.CheckBox AutoUpdateCheckbox;
         private System.Windows.Forms.Button UpdatePinButton;
         private System.Windows.Forms.CheckBox Add99Checkbox;
+        private System.Windows.Forms.ComboBox EquippedDeckComboBox;
+        private System.Windows.Forms.PictureBox CharacterIconPictureBox;
+        private System.Windows.Forms.ComboBox EquippedByCharacterComboBox;
+        private System.Windows.Forms.Label EquippedLabel;
     }
 }

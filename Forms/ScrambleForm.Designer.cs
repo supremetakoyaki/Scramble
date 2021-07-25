@@ -29,6 +29,7 @@ namespace Scramble
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrambleForm));
             this.OpenSaveFileButton = new System.Windows.Forms.Button();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
@@ -60,6 +61,14 @@ namespace Scramble
             this.OpenNoisepediaEditButton = new System.Windows.Forms.Button();
             this.OpenCharacterEditButton = new System.Windows.Forms.Button();
             this.OpenClothEditButton = new System.Windows.Forms.Button();
+            this.PartyMembersLabel = new System.Windows.Forms.Label();
+            this.PartyMember1_PictureBox = new System.Windows.Forms.PictureBox();
+            this.CharacterIconImageList = new System.Windows.Forms.ImageList(this.components);
+            this.PartyMember2_PictureBox = new System.Windows.Forms.PictureBox();
+            this.PartyMember3_PictureBox = new System.Windows.Forms.PictureBox();
+            this.PartyMember6_PictureBox = new System.Windows.Forms.PictureBox();
+            this.PartyMember5_PictureBox = new System.Windows.Forms.PictureBox();
+            this.PartyMember4_PictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -67,6 +76,12 @@ namespace Scramble
             ((System.ComponentModel.ISupportInitialize)(this.FpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpNumericUpDown)).BeginInit();
             this.GeneralGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember1_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember2_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember3_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember6_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember5_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember4_PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // OpenSaveFileButton
@@ -264,7 +279,7 @@ namespace Scramble
             this.BackupCheckbox.AutoSize = true;
             this.BackupCheckbox.Checked = true;
             this.BackupCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.BackupCheckbox.Location = new System.Drawing.Point(417, 12);
+            this.BackupCheckbox.Location = new System.Drawing.Point(424, 12);
             this.BackupCheckbox.Name = "BackupCheckbox";
             this.BackupCheckbox.Size = new System.Drawing.Size(111, 19);
             this.BackupCheckbox.TabIndex = 2;
@@ -310,13 +325,13 @@ namespace Scramble
             this.LvLabel.ForeColor = System.Drawing.Color.MediumBlue;
             this.LvLabel.Location = new System.Drawing.Point(196, 129);
             this.LvLabel.Name = "LvLabel";
-            this.LvLabel.Size = new System.Drawing.Size(27, 15);
+            this.LvLabel.Size = new System.Drawing.Size(39, 15);
             this.LvLabel.TabIndex = 17;
-            this.LvLabel.Text = "Lv.1";
+            this.LvLabel.Text = "Lv.100";
             // 
             // OpenRecordEditButton
             // 
-            this.OpenRecordEditButton.Location = new System.Drawing.Point(417, 333);
+            this.OpenRecordEditButton.Location = new System.Drawing.Point(552, 333);
             this.OpenRecordEditButton.Name = "OpenRecordEditButton";
             this.OpenRecordEditButton.Size = new System.Drawing.Size(111, 23);
             this.OpenRecordEditButton.TabIndex = 18;
@@ -327,7 +342,7 @@ namespace Scramble
             // OpenSocialEditButton
             // 
             this.OpenSocialEditButton.Enabled = false;
-            this.OpenSocialEditButton.Location = new System.Drawing.Point(417, 145);
+            this.OpenSocialEditButton.Location = new System.Drawing.Point(552, 145);
             this.OpenSocialEditButton.Name = "OpenSocialEditButton";
             this.OpenSocialEditButton.Size = new System.Drawing.Size(111, 23);
             this.OpenSocialEditButton.TabIndex = 19;
@@ -336,7 +351,7 @@ namespace Scramble
             // 
             // OpenInvEditorButton
             // 
-            this.OpenInvEditorButton.Location = new System.Drawing.Point(417, 174);
+            this.OpenInvEditorButton.Location = new System.Drawing.Point(552, 174);
             this.OpenInvEditorButton.Name = "OpenInvEditorButton";
             this.OpenInvEditorButton.Size = new System.Drawing.Size(111, 23);
             this.OpenInvEditorButton.TabIndex = 20;
@@ -346,6 +361,13 @@ namespace Scramble
             // 
             // GeneralGroupBox
             // 
+            this.GeneralGroupBox.Controls.Add(this.PartyMember6_PictureBox);
+            this.GeneralGroupBox.Controls.Add(this.PartyMember5_PictureBox);
+            this.GeneralGroupBox.Controls.Add(this.PartyMember4_PictureBox);
+            this.GeneralGroupBox.Controls.Add(this.PartyMember3_PictureBox);
+            this.GeneralGroupBox.Controls.Add(this.PartyMember2_PictureBox);
+            this.GeneralGroupBox.Controls.Add(this.PartyMember1_PictureBox);
+            this.GeneralGroupBox.Controls.Add(this.PartyMembersLabel);
             this.GeneralGroupBox.Controls.Add(this.InitializedSlotCheckbox);
             this.GeneralGroupBox.Controls.Add(this.DateOfSavePicker);
             this.GeneralGroupBox.Controls.Add(this.DateSavedLabel);
@@ -362,16 +384,16 @@ namespace Scramble
             this.GeneralGroupBox.Controls.Add(this.FpLabel);
             this.GeneralGroupBox.Location = new System.Drawing.Point(168, 107);
             this.GeneralGroupBox.Name = "GeneralGroupBox";
-            this.GeneralGroupBox.Size = new System.Drawing.Size(243, 249);
+            this.GeneralGroupBox.Size = new System.Drawing.Size(375, 249);
             this.GeneralGroupBox.TabIndex = 21;
             this.GeneralGroupBox.TabStop = false;
             this.GeneralGroupBox.Text = "Global data";
             // 
             // DumpSlotDataButton
             // 
-            this.DumpSlotDataButton.Location = new System.Drawing.Point(417, 34);
+            this.DumpSlotDataButton.Location = new System.Drawing.Point(424, 34);
             this.DumpSlotDataButton.Name = "DumpSlotDataButton";
-            this.DumpSlotDataButton.Size = new System.Drawing.Size(111, 23);
+            this.DumpSlotDataButton.Size = new System.Drawing.Size(108, 23);
             this.DumpSlotDataButton.TabIndex = 22;
             this.DumpSlotDataButton.Text = "Dump Slot Data";
             this.DumpSlotDataButton.UseVisualStyleBackColor = true;
@@ -379,9 +401,9 @@ namespace Scramble
             // 
             // ImportSlotDataButton
             // 
-            this.ImportSlotDataButton.Location = new System.Drawing.Point(417, 63);
+            this.ImportSlotDataButton.Location = new System.Drawing.Point(424, 63);
             this.ImportSlotDataButton.Name = "ImportSlotDataButton";
-            this.ImportSlotDataButton.Size = new System.Drawing.Size(111, 23);
+            this.ImportSlotDataButton.Size = new System.Drawing.Size(108, 23);
             this.ImportSlotDataButton.TabIndex = 23;
             this.ImportSlotDataButton.Text = "Import Slot Data";
             this.ImportSlotDataButton.UseVisualStyleBackColor = true;
@@ -390,7 +412,7 @@ namespace Scramble
             // OpenNoisepediaEditButton
             // 
             this.OpenNoisepediaEditButton.Enabled = false;
-            this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(417, 304);
+            this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(552, 304);
             this.OpenNoisepediaEditButton.Name = "OpenNoisepediaEditButton";
             this.OpenNoisepediaEditButton.Size = new System.Drawing.Size(111, 23);
             this.OpenNoisepediaEditButton.TabIndex = 24;
@@ -400,7 +422,7 @@ namespace Scramble
             // OpenCharacterEditButton
             // 
             this.OpenCharacterEditButton.Enabled = false;
-            this.OpenCharacterEditButton.Location = new System.Drawing.Point(417, 116);
+            this.OpenCharacterEditButton.Location = new System.Drawing.Point(552, 116);
             this.OpenCharacterEditButton.Name = "OpenCharacterEditButton";
             this.OpenCharacterEditButton.Size = new System.Drawing.Size(111, 23);
             this.OpenCharacterEditButton.TabIndex = 25;
@@ -410,18 +432,90 @@ namespace Scramble
             // OpenClothEditButton
             // 
             this.OpenClothEditButton.Enabled = false;
-            this.OpenClothEditButton.Location = new System.Drawing.Point(417, 203);
+            this.OpenClothEditButton.Location = new System.Drawing.Point(552, 203);
             this.OpenClothEditButton.Name = "OpenClothEditButton";
             this.OpenClothEditButton.Size = new System.Drawing.Size(111, 23);
             this.OpenClothEditButton.TabIndex = 26;
             this.OpenClothEditButton.Text = "Clothing Editor";
             this.OpenClothEditButton.UseVisualStyleBackColor = true;
             // 
+            // PartyMembersLabel
+            // 
+            this.PartyMembersLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PartyMembersLabel.Location = new System.Drawing.Point(256, 91);
+            this.PartyMembersLabel.Name = "PartyMembersLabel";
+            this.PartyMembersLabel.Size = new System.Drawing.Size(108, 15);
+            this.PartyMembersLabel.TabIndex = 18;
+            this.PartyMembersLabel.Text = "Your party";
+            this.PartyMembersLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PartyMember1_PictureBox
+            // 
+            this.PartyMember1_PictureBox.Location = new System.Drawing.Point(256, 112);
+            this.PartyMember1_PictureBox.Name = "PartyMember1_PictureBox";
+            this.PartyMember1_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember1_PictureBox.TabIndex = 19;
+            this.PartyMember1_PictureBox.TabStop = false;
+            // 
+            // CharacterIconImageList
+            // 
+            this.CharacterIconImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.CharacterIconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("CharacterIconImageList.ImageStream")));
+            this.CharacterIconImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.CharacterIconImageList.Images.SetKeyName(0, "0.png");
+            this.CharacterIconImageList.Images.SetKeyName(1, "1.png");
+            this.CharacterIconImageList.Images.SetKeyName(2, "2.png");
+            this.CharacterIconImageList.Images.SetKeyName(3, "3.png");
+            this.CharacterIconImageList.Images.SetKeyName(4, "4.png");
+            this.CharacterIconImageList.Images.SetKeyName(5, "5.png");
+            this.CharacterIconImageList.Images.SetKeyName(6, "6.png");
+            this.CharacterIconImageList.Images.SetKeyName(7, "7.png");
+            // 
+            // PartyMember2_PictureBox
+            // 
+            this.PartyMember2_PictureBox.Location = new System.Drawing.Point(294, 112);
+            this.PartyMember2_PictureBox.Name = "PartyMember2_PictureBox";
+            this.PartyMember2_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember2_PictureBox.TabIndex = 20;
+            this.PartyMember2_PictureBox.TabStop = false;
+            // 
+            // PartyMember3_PictureBox
+            // 
+            this.PartyMember3_PictureBox.Location = new System.Drawing.Point(332, 112);
+            this.PartyMember3_PictureBox.Name = "PartyMember3_PictureBox";
+            this.PartyMember3_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember3_PictureBox.TabIndex = 21;
+            this.PartyMember3_PictureBox.TabStop = false;
+            // 
+            // PartyMember6_PictureBox
+            // 
+            this.PartyMember6_PictureBox.Location = new System.Drawing.Point(332, 150);
+            this.PartyMember6_PictureBox.Name = "PartyMember6_PictureBox";
+            this.PartyMember6_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember6_PictureBox.TabIndex = 24;
+            this.PartyMember6_PictureBox.TabStop = false;
+            // 
+            // PartyMember5_PictureBox
+            // 
+            this.PartyMember5_PictureBox.Location = new System.Drawing.Point(294, 150);
+            this.PartyMember5_PictureBox.Name = "PartyMember5_PictureBox";
+            this.PartyMember5_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember5_PictureBox.TabIndex = 23;
+            this.PartyMember5_PictureBox.TabStop = false;
+            // 
+            // PartyMember4_PictureBox
+            // 
+            this.PartyMember4_PictureBox.Location = new System.Drawing.Point(256, 150);
+            this.PartyMember4_PictureBox.Name = "PartyMember4_PictureBox";
+            this.PartyMember4_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember4_PictureBox.TabIndex = 22;
+            this.PartyMember4_PictureBox.TabStop = false;
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 370);
+            this.ClientSize = new System.Drawing.Size(675, 370);
             this.Controls.Add(this.OpenClothEditButton);
             this.Controls.Add(this.OpenCharacterEditButton);
             this.Controls.Add(this.OpenNoisepediaEditButton);
@@ -449,6 +543,12 @@ namespace Scramble
             ((System.ComponentModel.ISupportInitialize)(this.ExpNumericUpDown)).EndInit();
             this.GeneralGroupBox.ResumeLayout(false);
             this.GeneralGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember1_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember2_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember3_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember6_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember5_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember4_PictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,6 +585,14 @@ namespace Scramble
         private System.Windows.Forms.Button OpenNoisepediaEditButton;
         private System.Windows.Forms.Button OpenCharacterEditButton;
         private System.Windows.Forms.Button OpenClothEditButton;
+        private System.Windows.Forms.PictureBox PartyMember6_PictureBox;
+        private System.Windows.Forms.PictureBox PartyMember5_PictureBox;
+        private System.Windows.Forms.PictureBox PartyMember4_PictureBox;
+        private System.Windows.Forms.PictureBox PartyMember3_PictureBox;
+        private System.Windows.Forms.PictureBox PartyMember2_PictureBox;
+        private System.Windows.Forms.PictureBox PartyMember1_PictureBox;
+        private System.Windows.Forms.Label PartyMembersLabel;
+        private System.Windows.Forms.ImageList CharacterIconImageList;
     }
 }
 

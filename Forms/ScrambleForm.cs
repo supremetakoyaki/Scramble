@@ -2,6 +2,7 @@
 using Scramble.Forms;
 using Scramble.GameData;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -86,11 +87,18 @@ namespace Scramble
                     return;
                 }
 
-                this.SaveSlotsListBox.SelectedIndex = 0;
-                this.SaveSlotsListBox.Select();
+                if (this.SaveSlotsListBox.SelectedIndex == -1)
+                {
+                    this.SaveSlotsListBox.SelectedIndex = 0;
+                    this.SaveSlotsListBox.Select();
+                }
+                else
+                {
+                    SelectSlot(this.SaveSlotsListBox.SelectedIndex);
+                }
 
                 this.Height = 409;
-                this.Width = 556;
+                this.Width = 691;
                 this.Text = "Scramble — NEO TWEWY Save Editor";
             }
         }
@@ -157,6 +165,49 @@ namespace Scramble
             else
             {
                 FpNumericUpDown.Value = FpNumericUpDown.Maximum;
+            }
+
+            SerializePartyMembers();
+        }
+
+        private void SerializePartyMembers()
+        {
+            // Clear the images first
+            PartyMember1_PictureBox.Image = null;
+            PartyMember2_PictureBox.Image = null;
+            PartyMember3_PictureBox.Image = null;
+            PartyMember4_PictureBox.Image = null;
+            PartyMember5_PictureBox.Image = null;
+            PartyMember6_PictureBox.Image = null;
+
+            foreach (PartyMember Member in SelectedSlot.GetPartyMembers().Values)
+            {
+                switch (Member.Id)
+                {
+                    case 1:
+                        PartyMember1_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        break;
+
+                    case 2:
+                        PartyMember2_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        break;
+
+                    case 3:
+                        PartyMember3_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        break;
+
+                    case 4:
+                        PartyMember4_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        break;
+
+                    case 5:
+                        PartyMember5_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        break;
+
+                    case 6:
+                        PartyMember6_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        break;
+                }
             }
         }
 

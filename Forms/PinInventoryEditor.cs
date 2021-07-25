@@ -32,6 +32,8 @@ namespace Scramble.Forms
         private bool ReadyForUserInput = false; // flag that indicates whether the editor is working on changing values on its own.    
         private bool WarnedAboutZeroPins = false;
 
+        private Dictionary<byte, int> Character_EquippedPins;
+
         public PinInventoryEditor()
         {
             InitializeComponent();
@@ -44,6 +46,7 @@ namespace Scramble.Forms
         public void Serialize()
         {
             InventoryPins = new List<InventoryPin>();
+            Character_EquippedPins = new Dictionary<byte, int>();
 
             // Pin data:
             // int16: pin ID
