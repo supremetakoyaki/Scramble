@@ -29,7 +29,8 @@ namespace Scramble.Forms
         private List<InventoryPin> InventoryPins;
         private InventoryPin SelectedPin;
 
-        bool ReadyForUserInput = false; // flag that indicates whether the editor is working on changing values on its own.    
+        private bool ReadyForUserInput = false; // flag that indicates whether the editor is working on changing values on its own.    
+        private bool WarnedAboutZeroPins = false;
 
         public PinInventoryEditor()
         {
@@ -552,6 +553,12 @@ namespace Scramble.Forms
 
             if (Sukuranburu.ShowPrompt(DialogMessages.DeleteAllPinsAreYouSure))
             {
+                if (!WarnedAboutZeroPins)
+                {
+                    Sukuranburu.ShowNotice(DialogMessages.ZeroPinsWarning);
+                    WarnedAboutZeroPins = true;
+                }
+
                 MyPinInventoryView.Items.Clear();
                 InventoryPins.Clear();
                 SelectedPin = null;

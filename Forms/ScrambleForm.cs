@@ -79,9 +79,16 @@ namespace Scramble
                 {
                     ShowWarning(DialogMessages.InvalidSaveFile);
                     OpenedSaveFile = null;
+
+                    this.Height = 148;
+                    this.Width = 309;
+                    this.Text = "Scramble";
+                    return;
                 }
 
                 this.SaveSlotsListBox.SelectedIndex = 0;
+                this.SaveSlotsListBox.Select();
+
                 this.Height = 409;
                 this.Width = 556;
                 this.Text = "Scramble — NEO TWEWY Save Editor";
