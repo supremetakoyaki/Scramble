@@ -99,11 +99,58 @@ namespace Scramble
             }
 
             InitializedSlotCheckbox.Checked = SelectedSlot.IsValid_Boolean;
-            DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
-            ExpNumericUpDown.Value = SelectedSlot.RetrieveOffset_Int32(Offsets.Experience);
-            CurrentLevelNUpDown.Value = SelectedSlot.RetrieveOffset_UInt16(Offsets.CurrentLevel);
-            MoneyNUpDown.Value = SelectedSlot.RetrieveOffset_Int32(Offsets.Money);
-            FpNumericUpDown.Value = SelectedSlot.RetrieveOffset_UInt16(Offsets.Fp);
+
+            // Check for valid data
+            byte Player_Difficulty = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
+            int Player_Experience = SelectedSlot.RetrieveOffset_Int32(Offsets.Experience);
+            ushort Player_Current_Level = SelectedSlot.RetrieveOffset_UInt16(Offsets.CurrentLevel);
+            int Player_Money = SelectedSlot.RetrieveOffset_Int32(Offsets.Money);
+            ushort Player_Fp = SelectedSlot.RetrieveOffset_UInt16(Offsets.Fp);
+
+            if (Player_Difficulty < 4)
+            {
+                DifficultyCombo.SelectedIndex = Player_Difficulty;
+            }
+            else
+            {
+                DifficultyCombo.SelectedIndex = 1;
+            }
+
+            if (Player_Experience >= ExpNumericUpDown.Minimum && Player_Experience <= ExpNumericUpDown.Maximum)
+            {
+                ExpNumericUpDown.Value = Player_Experience;
+            }
+            else
+            {
+                ExpNumericUpDown.Value = ExpNumericUpDown.Maximum;
+            }
+
+            if (Player_Current_Level >= CurrentLevelNUpDown.Minimum && Player_Current_Level <= CurrentLevelNUpDown.Maximum)
+            {
+                CurrentLevelNUpDown.Value = Player_Current_Level;
+            }
+            else
+            {
+                CurrentLevelNUpDown.Value = CurrentLevelNUpDown.Maximum;
+            }
+
+            if (Player_Money >= MoneyNUpDown.Minimum && Player_Money <= MoneyNUpDown.Maximum)
+            {
+                MoneyNUpDown.Value = Player_Money;
+            }
+            else
+            {
+                MoneyNUpDown.Value = MoneyNUpDown.Maximum;
+            }
+
+            if (Player_Fp >= FpNumericUpDown.Minimum && Player_Fp <= FpNumericUpDown.Maximum)
+            {
+                FpNumericUpDown.Value = Player_Fp;
+            }
+            else
+            {
+                FpNumericUpDown.Value = FpNumericUpDown.Maximum;
+            }
         }
 
         private void SaveSlotsListBox_SelectedIndexChanged(object sender, EventArgs e)

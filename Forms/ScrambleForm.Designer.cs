@@ -157,9 +157,9 @@ namespace Scramble
             this.AboutLabel.ForeColor = System.Drawing.Color.DarkBlue;
             this.AboutLabel.Location = new System.Drawing.Point(12, 321);
             this.AboutLabel.Name = "AboutLabel";
-            this.AboutLabel.Size = new System.Drawing.Size(96, 30);
+            this.AboutLabel.Size = new System.Drawing.Size(105, 30);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "Scramble ver.0.3 \nmade by T";
+            this.AboutLabel.Text = "Scramble ver.0.2.1 \nmade by T";
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // MoneyLabel
@@ -175,7 +175,7 @@ namespace Scramble
             // 
             this.MoneyNUpDown.Location = new System.Drawing.Point(88, 183);
             this.MoneyNUpDown.Maximum = new decimal(new int[] {
-            99999,
+            9999999,
             0,
             0,
             0});
@@ -250,7 +250,7 @@ namespace Scramble
             // 
             this.FpNumericUpDown.Location = new System.Drawing.Point(88, 212);
             this.FpNumericUpDown.Maximum = new decimal(new int[] {
-            999,
+            9999,
             0,
             0,
             0});
@@ -336,6 +336,7 @@ namespace Scramble
             // 
             // OpenInvEditorButton
             // 
+            this.OpenInvEditorButton.Enabled = false;
             this.OpenInvEditorButton.Location = new System.Drawing.Point(417, 174);
             this.OpenInvEditorButton.Name = "OpenInvEditorButton";
             this.OpenInvEditorButton.Size = new System.Drawing.Size(111, 23);
@@ -399,6 +400,7 @@ namespace Scramble
             // 
             // OpenCharacterEditButton
             // 
+            this.OpenCharacterEditButton.Enabled = false;
             this.OpenCharacterEditButton.Location = new System.Drawing.Point(417, 116);
             this.OpenCharacterEditButton.Name = "OpenCharacterEditButton";
             this.OpenCharacterEditButton.Size = new System.Drawing.Size(111, 23);

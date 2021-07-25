@@ -101,6 +101,33 @@ namespace Scramble.Forms
             }
         }
 
+        private void SaveAllData()
+        {
+            int CurrentPointer = Offsets.PinInv_First;
+
+            foreach (InventoryPin Pin in InventoryPins)
+            {
+                for (int i = 0; i < Pin.Amount || CurrentPointer < Offsets.PinInv_Last; i++)
+                {
+                    SelectedSlot.UpdateOffset_UInt16(CurrentPointer, Pin.PinId);
+                    SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 2, Pin.Level);
+                    SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 4, Pin.Experience);
+                    SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 6, 0);
+
+                    CurrentPointer += 8;
+                }
+            }
+
+            // Fill in the blanks.
+            for (;  CurrentPointer < Offsets.PinInv_Last; CurrentPointer += 8)
+            {
+                SelectedSlot.UpdateOffset_UInt16(CurrentPointer, EMPTY_PIN_ID);
+                SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 2, 0);
+                SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 4, 0);
+                SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 6, 0);
+            }
+        }
+
         private void InsertPinToListView(InventoryPin Pin)
         {
             string Name = ItemTable.GetPinNameWithPinId(Pin.PinId);
@@ -207,6 +234,25 @@ namespace Scramble.Forms
         private bool PinIsMastered(ushort PinId, byte Level)
         {
             return ItemTable.GetPinMaxLevelWithPinId(PinId) == Level && ItemTable.PinIsMasterable(PinId);
+        }
+
+        private void RemovePinButton_Click(object sender, EventArgs e)
+        {
+            if (MyPinInventoryView.Items.Count > 0 && MyPinInventoryView.SelectedIndices.Count > 0)
+            {
+                int ThisIndex = MyPinInventoryView.SelectedIndices[0];
+                InventoryPin Pin = InventoryPins[ThisIndex];
+
+                MyPinInventoryView.Items.RemoveAt(ThisIndex);
+                InventoryPins.Remove(Pin);
+            }
+
+            SelectPin();
+        }
+
+        private void PinInventoryEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveAllData();
         }
     }
 }

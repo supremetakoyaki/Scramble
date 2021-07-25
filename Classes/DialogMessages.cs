@@ -28,5 +28,11 @@
 
         public static string OverwriteSlotPrompt =
             "Are you sure you want to overwrite this save slot?";
+
+        public static string DeleteAllPinsAreYouSure =
+            "Are you sure you want to remove all pins from your inventory?";
+
+        public static string AddAllPinsAreYouSure =
+            "Are you sure you want to add every pins to your inventory?";
     }
 }

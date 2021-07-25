@@ -218,6 +218,7 @@ namespace Scramble.Forms
             this.RemovePinButton.TabIndex = 5;
             this.RemovePinButton.Text = "Remove this pin";
             this.RemovePinButton.UseVisualStyleBackColor = false;
+            this.RemovePinButton.Click += new System.EventHandler(this.RemovePinButton_Click);
             // 
             // MasterPinButton
             // 
@@ -1064,6 +1065,7 @@ namespace Scramble.Forms
             this.Controls.Add(this.groupBox1);
             this.Name = "PinInventoryEditor";
             this.Text = "Pin Inventory Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PinInventoryEditor_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PinAmountUpDown)).EndInit();
