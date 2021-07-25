@@ -34,5 +34,11 @@
 
         public static string AddAllPinsAreYouSure =
             "Are you sure you want to add every pins to your inventory?";
+
+        public static string NoPinToAddSelected =
+            "You didn't select any pin to add.";
+
+        public static string YouCantAddMorePins =
+            "You can't add more pins of this kind. Maximum value is 99.";
     }
 }

@@ -61,6 +61,7 @@ namespace Scramble.Forms
             this.AmountHeader = new System.Windows.Forms.ColumnHeader();
             this.PinImageList_Small = new System.Windows.Forms.ImageList(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Add99Checkbox = new System.Windows.Forms.CheckBox();
             this.AddedPinIsMasteredCheckbox = new System.Windows.Forms.CheckBox();
             this.AddAllPinsButton = new System.Windows.Forms.Button();
             this.AddPinButton = new System.Windows.Forms.Button();
@@ -708,6 +709,7 @@ namespace Scramble.Forms
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Add99Checkbox);
             this.groupBox2.Controls.Add(this.AddedPinIsMasteredCheckbox);
             this.groupBox2.Controls.Add(this.AddAllPinsButton);
             this.groupBox2.Controls.Add(this.AddPinButton);
@@ -719,13 +721,23 @@ namespace Scramble.Forms
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "All Pins";
             // 
+            // Add99Checkbox
+            // 
+            this.Add99Checkbox.AutoSize = true;
+            this.Add99Checkbox.Location = new System.Drawing.Point(171, 491);
+            this.Add99Checkbox.Name = "Add99Checkbox";
+            this.Add99Checkbox.Size = new System.Drawing.Size(44, 19);
+            this.Add99Checkbox.TabIndex = 11;
+            this.Add99Checkbox.Text = "x99";
+            this.Add99Checkbox.UseVisualStyleBackColor = true;
+            // 
             // AddedPinIsMasteredCheckbox
             // 
             this.AddedPinIsMasteredCheckbox.AutoSize = true;
             this.AddedPinIsMasteredCheckbox.Location = new System.Drawing.Point(226, 491);
             this.AddedPinIsMasteredCheckbox.Name = "AddedPinIsMasteredCheckbox";
             this.AddedPinIsMasteredCheckbox.Size = new System.Drawing.Size(75, 19);
-            this.AddedPinIsMasteredCheckbox.TabIndex = 11;
+            this.AddedPinIsMasteredCheckbox.TabIndex = 12;
             this.AddedPinIsMasteredCheckbox.Text = "Mastered";
             this.AddedPinIsMasteredCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -735,9 +747,10 @@ namespace Scramble.Forms
             this.AddAllPinsButton.Location = new System.Drawing.Point(171, 511);
             this.AddAllPinsButton.Name = "AddAllPinsButton";
             this.AddAllPinsButton.Size = new System.Drawing.Size(130, 23);
-            this.AddAllPinsButton.TabIndex = 12;
+            this.AddAllPinsButton.TabIndex = 13;
             this.AddAllPinsButton.Text = "Add each of every pin";
             this.AddAllPinsButton.UseVisualStyleBackColor = false;
+            this.AddAllPinsButton.Click += new System.EventHandler(this.AddAllPinsButton_Click);
             // 
             // AddPinButton
             // 
@@ -747,6 +760,7 @@ namespace Scramble.Forms
             this.AddPinButton.TabIndex = 10;
             this.AddPinButton.Text = "Add pin";
             this.AddPinButton.UseVisualStyleBackColor = true;
+            this.AddPinButton.Click += new System.EventHandler(this.AddPinButton_Click);
             // 
             // AllPinsListView
             // 
@@ -1198,5 +1212,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.Label MaxLevelLabel_Info;
         private System.Windows.Forms.CheckBox AutoUpdateCheckbox;
         private System.Windows.Forms.Button UpdatePinButton;
+        private System.Windows.Forms.CheckBox Add99Checkbox;
     }
 }

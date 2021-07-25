@@ -2,6 +2,7 @@
 using Scramble.GameData;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace Scramble.Forms
@@ -460,6 +461,18 @@ namespace Scramble.Forms
             ExperienceNUpDown.Value = MaxPossibleExperience;
             PinLevelNUpDown.Value = MaxPossibleLevel;
 
+            if (ItemTable.PinIsMasterable(SelectedPin.PinId))
+            {
+                if (PinIsMastered(SelectedPin.PinId, (byte)PinLevelNUpDown.Value))
+                {
+                    MasteredLabel.Text = "★";
+                }
+                else
+                {
+                    MasteredLabel.Text = string.Empty;
+                }
+            }
+
             if (AutoUpdateCheckbox.Checked)
             {
                 UpdateLevelAndExperience();
@@ -539,6 +552,99 @@ namespace Scramble.Forms
             }
 
             ReadyForUserInput = true;
+        }
+
+        private void AddPinButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (AllPinsListView.SelectedIndices.Count < 1)
+            {
+                Sukuranburu.ShowWarning(DialogMessages.NoPinToAddSelected);
+                ReadyForUserInput = true;
+                return;
+            }
+
+            ListViewItem Item = AllPinsListView.SelectedItems[0];
+
+            AddPin(Item, true);
+
+            SelectPin();
+            ReadyForUserInput = true;
+        }
+
+        private void AddAllPinsButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+            ReadyForUserInput = false;
+
+            foreach (ListViewItem Item in AllPinsListView.Items)
+            {
+                AddPin(Item, false);
+            }
+
+            SelectPin();
+            ReadyForUserInput = true;
+        }
+
+        private void AddPin(ListViewItem Item, bool Individual) //individual= adding this pin through "Add pin" button.
+        {
+            ushort PinId = Convert.ToUInt16(Item.SubItems[1].Text);
+
+            ushort Level = 1;
+            ushort Experience = 0;
+
+            if (ItemTable.PinIsMasterable(PinId) && AddedPinIsMasteredCheckbox.Checked)
+            {
+                Level = ItemTable.GetPinMaxLevelWithPinId(PinId);
+                Experience = (ushort)ItemTable.GetPinExperienceWithPinIdAndLevel(PinId, (byte)Level);
+            }
+
+            InventoryPin PinToAdd = new InventoryPin(PinId, Level, Experience);
+
+            if (InventoryPins.Contains(PinToAdd))
+            {
+                int Index = InventoryPins.IndexOf(PinToAdd);
+                if (Individual && InventoryPins[Index].Amount == 99)
+                {
+                    Sukuranburu.ShowWarning(DialogMessages.YouCantAddMorePins);
+                    ReadyForUserInput = true;
+                    return;
+                }
+
+                if (Add99Checkbox.Checked)
+                {
+                    InventoryPins[Index].Amount = 99;
+                }
+                else
+                {
+                    InventoryPins[Index].Amount += 1;
+                }
+
+                MyPinInventoryView.Items[Index].SubItems[5].Text = InventoryPins[Index].Amount.ToString();
+            }
+            else
+            {
+                if (Add99Checkbox.Checked)
+                {
+                    PinToAdd.Amount = 99;
+                }
+                else
+                {
+                    PinToAdd.Amount = 1;
+                }
+
+                InventoryPins.Add(PinToAdd);
+                InsertPinToListView(PinToAdd);
+            }
         }
     }
 }
