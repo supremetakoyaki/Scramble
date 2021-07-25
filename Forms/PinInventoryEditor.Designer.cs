@@ -34,6 +34,8 @@ namespace Scramble.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PinInventoryEditor));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.MaxLevelLabel_Value = new System.Windows.Forms.Label();
+            this.MaxLevelLabel_Info = new System.Windows.Forms.Label();
             this.BrandLabel = new System.Windows.Forms.Label();
             this.BrandPictureBox = new System.Windows.Forms.PictureBox();
             this.MasteredLabel = new System.Windows.Forms.Label();
@@ -78,6 +80,8 @@ namespace Scramble.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.MaxLevelLabel_Value);
+            this.groupBox1.Controls.Add(this.MaxLevelLabel_Info);
             this.groupBox1.Controls.Add(this.BrandLabel);
             this.groupBox1.Controls.Add(this.BrandPictureBox);
             this.groupBox1.Controls.Add(this.MasteredLabel);
@@ -102,6 +106,26 @@ namespace Scramble.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pin Inventory";
             // 
+            // MaxLevelLabel_Value
+            // 
+            this.MaxLevelLabel_Value.AutoSize = true;
+            this.MaxLevelLabel_Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.MaxLevelLabel_Value.ForeColor = System.Drawing.Color.MediumBlue;
+            this.MaxLevelLabel_Value.Location = new System.Drawing.Point(234, 437);
+            this.MaxLevelLabel_Value.Name = "MaxLevelLabel_Value";
+            this.MaxLevelLabel_Value.Size = new System.Drawing.Size(0, 15);
+            this.MaxLevelLabel_Value.TabIndex = 18;
+            // 
+            // MaxLevelLabel_Info
+            // 
+            this.MaxLevelLabel_Info.AutoSize = true;
+            this.MaxLevelLabel_Info.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.MaxLevelLabel_Info.Location = new System.Drawing.Point(177, 437);
+            this.MaxLevelLabel_Info.Name = "MaxLevelLabel_Info";
+            this.MaxLevelLabel_Info.Size = new System.Drawing.Size(66, 15);
+            this.MaxLevelLabel_Info.TabIndex = 17;
+            this.MaxLevelLabel_Info.Text = "Max level:  ";
+            // 
             // BrandLabel
             // 
             this.BrandLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -123,7 +147,7 @@ namespace Scramble.Forms
             // 
             this.MasteredLabel.AutoSize = true;
             this.MasteredLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MasteredLabel.Location = new System.Drawing.Point(177, 460);
+            this.MasteredLabel.Location = new System.Drawing.Point(249, 430);
             this.MasteredLabel.Name = "MasteredLabel";
             this.MasteredLabel.Size = new System.Drawing.Size(0, 27);
             this.MasteredLabel.TabIndex = 14;
@@ -134,9 +158,10 @@ namespace Scramble.Forms
             this.RemoveAllPinsButton.Location = new System.Drawing.Point(119, 511);
             this.RemoveAllPinsButton.Name = "RemoveAllPinsButton";
             this.RemoveAllPinsButton.Size = new System.Drawing.Size(91, 23);
-            this.RemoveAllPinsButton.TabIndex = 2;
+            this.RemoveAllPinsButton.TabIndex = 7;
             this.RemoveAllPinsButton.Text = "Remove all";
             this.RemoveAllPinsButton.UseVisualStyleBackColor = false;
+            this.RemoveAllPinsButton.Click += new System.EventHandler(this.RemoveAllPinsButton_Click);
             // 
             // PinAmountUpDown
             // 
@@ -149,12 +174,13 @@ namespace Scramble.Forms
             0});
             this.PinAmountUpDown.Name = "PinAmountUpDown";
             this.PinAmountUpDown.Size = new System.Drawing.Size(52, 23);
-            this.PinAmountUpDown.TabIndex = 13;
+            this.PinAmountUpDown.TabIndex = 5;
             this.PinAmountUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.PinAmountUpDown.ValueChanged += new System.EventHandler(this.PinAmountUpDown_ValueChanged);
             // 
             // AmountLabel
             // 
@@ -176,7 +202,8 @@ namespace Scramble.Forms
             0});
             this.ExperienceNUpDown.Name = "ExperienceNUpDown";
             this.ExperienceNUpDown.Size = new System.Drawing.Size(52, 23);
-            this.ExperienceNUpDown.TabIndex = 11;
+            this.ExperienceNUpDown.TabIndex = 3;
+            this.ExperienceNUpDown.ValueChanged += new System.EventHandler(this.ExperienceNUpDown_ValueChanged);
             // 
             // ExpLabel
             // 
@@ -191,14 +218,20 @@ namespace Scramble.Forms
             // 
             this.PinLevelNUpDown.Enabled = false;
             this.PinLevelNUpDown.Location = new System.Drawing.Point(119, 434);
+            this.PinLevelNUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.PinLevelNUpDown.Name = "PinLevelNUpDown";
             this.PinLevelNUpDown.Size = new System.Drawing.Size(52, 23);
-            this.PinLevelNUpDown.TabIndex = 9;
+            this.PinLevelNUpDown.TabIndex = 2;
             this.PinLevelNUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.PinLevelNUpDown.ValueChanged += new System.EventHandler(this.PinLevelNUpDown_ValueChanged);
             // 
             // AutoUpdateCheckbox
             // 
@@ -238,7 +271,7 @@ namespace Scramble.Forms
             this.RemovePinButton.Location = new System.Drawing.Point(6, 511);
             this.RemovePinButton.Name = "RemovePinButton";
             this.RemovePinButton.Size = new System.Drawing.Size(107, 23);
-            this.RemovePinButton.TabIndex = 5;
+            this.RemovePinButton.TabIndex = 6;
             this.RemovePinButton.Text = "Remove this pin";
             this.RemovePinButton.UseVisualStyleBackColor = false;
             this.RemovePinButton.Click += new System.EventHandler(this.RemovePinButton_Click);
@@ -247,12 +280,13 @@ namespace Scramble.Forms
             // 
             this.MasterPinButton.Enabled = false;
             this.MasterPinButton.ForeColor = System.Drawing.Color.MediumBlue;
-            this.MasterPinButton.Location = new System.Drawing.Point(177, 433);
+            this.MasterPinButton.Location = new System.Drawing.Point(177, 463);
             this.MasterPinButton.Name = "MasterPinButton";
             this.MasterPinButton.Size = new System.Drawing.Size(97, 23);
             this.MasterPinButton.TabIndex = 4;
             this.MasterPinButton.Text = "Master this pin";
             this.MasterPinButton.UseVisualStyleBackColor = true;
+            this.MasterPinButton.Click += new System.EventHandler(this.MasterPinButton_Click);
             // 
             // PinImagePictureBox
             // 
@@ -268,7 +302,7 @@ namespace Scramble.Forms
             this.UpdatePinButton.Location = new System.Drawing.Point(491, 491);
             this.UpdatePinButton.Name = "UpdatePinButton";
             this.UpdatePinButton.Size = new System.Drawing.Size(106, 43);
-            this.UpdatePinButton.TabIndex = 2;
+            this.UpdatePinButton.TabIndex = 9;
             this.UpdatePinButton.Text = "Update values";
             this.UpdatePinButton.UseVisualStyleBackColor = true;
             this.UpdatePinButton.Click += new System.EventHandler(this.UpdatePinButton_Click);
@@ -300,7 +334,7 @@ namespace Scramble.Forms
             // 
             this.PinNameHeader.DisplayIndex = 1;
             this.PinNameHeader.Text = "Name";
-            this.PinNameHeader.Width = 275;
+            this.PinNameHeader.Width = 295;
             // 
             // PinIdHeader
             // 
@@ -691,7 +725,7 @@ namespace Scramble.Forms
             this.AddedPinIsMasteredCheckbox.Location = new System.Drawing.Point(226, 491);
             this.AddedPinIsMasteredCheckbox.Name = "AddedPinIsMasteredCheckbox";
             this.AddedPinIsMasteredCheckbox.Size = new System.Drawing.Size(75, 19);
-            this.AddedPinIsMasteredCheckbox.TabIndex = 3;
+            this.AddedPinIsMasteredCheckbox.TabIndex = 11;
             this.AddedPinIsMasteredCheckbox.Text = "Mastered";
             this.AddedPinIsMasteredCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -701,7 +735,7 @@ namespace Scramble.Forms
             this.AddAllPinsButton.Location = new System.Drawing.Point(171, 511);
             this.AddAllPinsButton.Name = "AddAllPinsButton";
             this.AddAllPinsButton.Size = new System.Drawing.Size(130, 23);
-            this.AddAllPinsButton.TabIndex = 2;
+            this.AddAllPinsButton.TabIndex = 12;
             this.AddAllPinsButton.Text = "Add each of every pin";
             this.AddAllPinsButton.UseVisualStyleBackColor = false;
             // 
@@ -710,7 +744,7 @@ namespace Scramble.Forms
             this.AddPinButton.Location = new System.Drawing.Point(6, 491);
             this.AddPinButton.Name = "AddPinButton";
             this.AddPinButton.Size = new System.Drawing.Size(100, 43);
-            this.AddPinButton.TabIndex = 1;
+            this.AddPinButton.TabIndex = 10;
             this.AddPinButton.Text = "Add pin";
             this.AddPinButton.UseVisualStyleBackColor = true;
             // 
@@ -1105,10 +1139,11 @@ namespace Scramble.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 558);
+            this.ClientSize = new System.Drawing.Size(943, 558);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "PinInventoryEditor";
             this.Text = "Pin Inventory Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PinInventoryEditor_FormClosing);
@@ -1128,7 +1163,6 @@ namespace Scramble.Forms
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button UpdatePinButton;
         private System.Windows.Forms.ListView MyPinInventoryView;
         private System.Windows.Forms.ColumnHeader PinIdHeader;
         private System.Windows.Forms.ColumnHeader PinNameHeader;
@@ -1143,7 +1177,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.Label PinNameLabel;
         private System.Windows.Forms.Button RemovePinButton;
         private System.Windows.Forms.Button MasterPinButton;
-        private System.Windows.Forms.CheckBox AutoUpdateCheckbox;
         private System.Windows.Forms.NumericUpDown PinLevelNUpDown;
         private System.Windows.Forms.NumericUpDown ExperienceNUpDown;
         private System.Windows.Forms.Label ExpLabel;
@@ -1161,5 +1194,9 @@ namespace Scramble.Forms
         private System.Windows.Forms.PictureBox BrandPictureBox;
         private System.Windows.Forms.ImageList BrandImageList;
         private System.Windows.Forms.Label BrandLabel;
+        private System.Windows.Forms.Label MaxLevelLabel_Value;
+        private System.Windows.Forms.Label MaxLevelLabel_Info;
+        private System.Windows.Forms.CheckBox AutoUpdateCheckbox;
+        private System.Windows.Forms.Button UpdatePinButton;
     }
 }

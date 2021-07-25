@@ -38,17 +38,17 @@ namespace Scramble
             this.Text = "Scramble";
         }
 
-        private void ShowWarning(string Message)
+        public void ShowWarning(string Message)
         {
             MessageBox.Show(Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        private void ShowNotice(string Message)
+        public void ShowNotice(string Message)
         {
             MessageBox.Show(Message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private bool ShowPrompt(string Message)
+        public bool ShowPrompt(string Message)
         {
             return MessageBox.Show(Message, "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }

@@ -4412,6 +4412,11 @@ namespace Scramble.GameData
 
         public static int GetPinExperienceWithPinIdAndLevel(int PinId, byte Level)
         {
+            if (Level < 1)
+            {
+                return 0;
+            }
+
             byte PinLevelUpType = GetPinLevelUpTypeWithPinId(PinId);
             byte MaxLevel = GetPinMaxLevelWithPinId(PinId);
 

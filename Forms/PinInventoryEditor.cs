@@ -16,15 +16,27 @@ namespace Scramble.Forms
             }
         }
 
+        public ScrambleForm Sukuranburu
+        {
+            get
+            {
+                return Program.Sukuranburu;
+            }
+        }
+
         public const int EMPTY_PIN_ID = 0xFFFF;
         private List<InventoryPin> InventoryPins;
-        
+        private InventoryPin SelectedPin;
+
+        bool ReadyForUserInput = false; // flag that indicates whether the editor is working on changing values on its own.    
 
         public PinInventoryEditor()
         {
             InitializeComponent();
+
             Serialize();
             SerializeGlobal();
+            ReadyForUserInput = true;
         }
 
         public void Serialize()
@@ -161,7 +173,9 @@ namespace Scramble.Forms
 
         private void SelectPin()
         {
-            if (MyPinInventoryView.Items.Count < 1)
+            ReadyForUserInput = false;
+
+            if (MyPinInventoryView.SelectedIndices.Count == 0 || MyPinInventoryView.SelectedItems.Count != 1 || MyPinInventoryView.Items.Count < 1)
             {
                 PinNameLabel.Text = "(No selected pin)";
 
@@ -176,20 +190,20 @@ namespace Scramble.Forms
                 ExperienceNUpDown.Enabled = false;
                 PinAmountUpDown.Enabled = false;
 
+                MaxLevelLabel_Value.Text = "—";
                 MasteredLabel.Text = string.Empty;
 
                 PinLevelNUpDown.Value = 1;
                 ExperienceNUpDown.Value = 0;
                 PinAmountUpDown.Value = 1;
-                return;
-            }
+                SelectedPin = null;
 
-            if (MyPinInventoryView.SelectedItems.Count != 1)
-            {
+                ReadyForUserInput = true;
                 return;
             }
 
             InventoryPin Pin = InventoryPins[MyPinInventoryView.SelectedIndices[0]];
+            SelectedPin = Pin;
 
             byte BrandId = ItemTable.GetPinBrandWithPinId(Pin.PinId);
 
@@ -209,6 +223,8 @@ namespace Scramble.Forms
             PinLevelNUpDown.Enabled = true;
             ExperienceNUpDown.Enabled = true;
             PinAmountUpDown.Enabled = true;
+
+            MaxLevelLabel_Value.Text = ItemTable.GetPinMaxLevelWithPinId(Pin.PinId).ToString();
 
             if (ItemTable.PinIsMasterable(Pin.PinId))
             {
@@ -231,11 +247,14 @@ namespace Scramble.Forms
             PinLevelNUpDown.Value = Pin.Level;
             ExperienceNUpDown.Value = Pin.Experience;
             PinAmountUpDown.Value = Pin.Amount;
+
+            ReadyForUserInput = true;
         }
 
         private void UpdatePinButton_Click(object sender, EventArgs e)
         {
-
+            UpdateLevelAndExperience();
+            UpdateAmount();
         }
 
         private void MyPinInventoryView_SelectedIndexChanged(object sender, EventArgs e)
@@ -294,6 +313,232 @@ namespace Scramble.Forms
             {
                 RemovePinButton_Click(sender, e);
             }
+        }
+
+        private void PinLevelNUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (SelectedPin == null || PinLevelNUpDown.Value < PinLevelNUpDown.Minimum)
+            {
+                PinLevelNUpDown.Value = PinLevelNUpDown.Minimum;
+                ReadyForUserInput = true;
+                return;
+            }
+            else if (PinLevelNUpDown.Value > PinLevelNUpDown.Maximum)
+            {
+                PinLevelNUpDown.Value = PinLevelNUpDown.Maximum;
+            }
+
+            // Check for validity
+            byte LevelToSet = (byte)PinLevelNUpDown.Value;
+            byte MaxPossibleLevel = ItemTable.GetPinMaxLevelWithPinId(SelectedPin.PinId);
+
+            if (LevelToSet > MaxPossibleLevel)
+            {
+                LevelToSet = MaxPossibleLevel;
+                PinLevelNUpDown.Value = LevelToSet;
+            }
+
+            ushort ExperienceToSet = (ushort)ExperienceNUpDown.Value;
+            int ReqExperienceAtThisLevel = ItemTable.GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, LevelToSet);
+            int MaxPossibleExperience = ItemTable.GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, MaxPossibleLevel);
+
+            if (ExperienceToSet > MaxPossibleExperience)
+            {
+                ExperienceToSet = (ushort)MaxPossibleExperience;
+                ExperienceNUpDown.Value = ExperienceToSet;
+            }
+            else
+            {
+                ExperienceToSet = (ushort)ReqExperienceAtThisLevel;
+                ExperienceNUpDown.Value = ExperienceToSet;
+            }
+
+            if (ItemTable.PinIsMasterable(SelectedPin.PinId))
+            {
+                if (PinIsMastered(SelectedPin.PinId, (byte)PinLevelNUpDown.Value))
+                {
+                    MasteredLabel.Text = "★";
+                }
+                else
+                {
+                    MasteredLabel.Text = string.Empty;
+                }
+            }
+
+            if (AutoUpdateCheckbox.Checked)
+            {
+                UpdateLevelAndExperience();
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void ExperienceNUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (SelectedPin == null || ExperienceNUpDown.Value < ExperienceNUpDown.Minimum)
+            {
+                ExperienceNUpDown.Value = ExperienceNUpDown.Minimum;
+                ReadyForUserInput = true;
+                return;
+            }
+            else if (ExperienceNUpDown.Value > ExperienceNUpDown.Maximum)
+            {
+                ExperienceNUpDown.Value = ExperienceNUpDown.Maximum;
+            }
+
+            // Check for validity
+            byte LevelToSet = (byte)PinLevelNUpDown.Value;
+            ushort ExperienceToSet = (ushort)ExperienceNUpDown.Value;
+            byte MaxPossibleLevel = ItemTable.GetPinMaxLevelWithPinId(SelectedPin.PinId);
+            ushort MaxPossibleExperience = (ushort)ItemTable.GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, MaxPossibleLevel);
+
+            if (ExperienceToSet >= MaxPossibleExperience)
+            {
+                ExperienceToSet = MaxPossibleExperience;
+                LevelToSet = MaxPossibleLevel;
+            }
+            else
+            {
+                LevelToSet = ItemTable.GetPinLevelWithPinIdAndExperience(SelectedPin.PinId, (short)ExperienceToSet);
+            }
+
+            ExperienceNUpDown.Value = ExperienceToSet;
+            PinLevelNUpDown.Value = LevelToSet;
+
+            if (ItemTable.PinIsMasterable(SelectedPin.PinId))
+            {
+                if (PinIsMastered(SelectedPin.PinId, (byte)PinLevelNUpDown.Value))
+                {
+                    MasteredLabel.Text = "★";
+                }
+                else
+                {
+                    MasteredLabel.Text = string.Empty;
+                }
+            }
+
+            if (AutoUpdateCheckbox.Checked)
+            {
+                UpdateLevelAndExperience();
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void MasterPinButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (SelectedPin == null)
+            {
+                ReadyForUserInput = true;
+                return;
+            }
+
+            byte MaxPossibleLevel = ItemTable.GetPinMaxLevelWithPinId(SelectedPin.PinId);
+            ushort MaxPossibleExperience = (ushort)ItemTable.GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, MaxPossibleLevel);
+
+            ExperienceNUpDown.Value = MaxPossibleExperience;
+            PinLevelNUpDown.Value = MaxPossibleLevel;
+
+            if (AutoUpdateCheckbox.Checked)
+            {
+                UpdateLevelAndExperience();
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void UpdateLevelAndExperience()
+        {
+            int Index = InventoryPins.IndexOf(SelectedPin);
+
+            SelectedPin.Level = (ushort)PinLevelNUpDown.Value;
+            SelectedPin.Experience = (ushort)ExperienceNUpDown.Value;
+
+            MyPinInventoryView.Items[Index].SubItems[2].Text = SelectedPin.Level.ToString();
+            MyPinInventoryView.Items[Index].SubItems[3].Text = SelectedPin.Experience.ToString();
+
+            if (ItemTable.PinIsMasterable(SelectedPin.PinId))
+            {
+                MyPinInventoryView.Items[Index].SubItems[4].Text = PinIsMastered(SelectedPin.PinId, (byte)SelectedPin.Level) ? "★" : "no";
+            }
+        }
+
+        private void PinAmountUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            ushort AmountToSet = (ushort)PinAmountUpDown.Value;
+
+            if (AmountToSet < (ushort)PinAmountUpDown.Minimum)
+            {
+                AmountToSet = (ushort)PinAmountUpDown.Minimum;
+            }
+            else if (AmountToSet > (ushort)PinAmountUpDown.Maximum)
+            {
+                AmountToSet = (ushort)PinAmountUpDown.Maximum;
+            }
+
+            if (AutoUpdateCheckbox.Checked)
+            {
+                UpdateAmount();
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void UpdateAmount()
+        {
+            int Index = InventoryPins.IndexOf(SelectedPin);
+
+            SelectedPin.Amount = (ushort)PinAmountUpDown.Value;
+            MyPinInventoryView.Items[Index].SubItems[5].Text = SelectedPin.Amount.ToString();
+        }
+
+        private void RemoveAllPinsButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (Sukuranburu.ShowPrompt(DialogMessages.DeleteAllPinsAreYouSure))
+            {
+                MyPinInventoryView.Items.Clear();
+                InventoryPins.Clear();
+                SelectedPin = null;
+
+                SelectPin();
+            }
+
+            ReadyForUserInput = true;
         }
     }
 }
