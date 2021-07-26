@@ -15,6 +15,7 @@ namespace Scramble
         public SaveFile OpenedSaveFile;
         public RecordsEditor RecordsEditor;
         public PinInventoryEditor PinInvEditor;
+        public FashionInventoryEditor ClothInvEditor;
 
         public SaveData SelectedSlot
         {
@@ -185,27 +186,27 @@ namespace Scramble
                 switch (Member.Id)
                 {
                     case 1:
-                        PartyMember1_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        PartyMember1_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
                         break;
 
                     case 2:
-                        PartyMember2_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        PartyMember2_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
                         break;
 
                     case 3:
-                        PartyMember3_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        PartyMember3_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
                         break;
 
                     case 4:
-                        PartyMember4_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        PartyMember4_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
                         break;
 
                     case 5:
-                        PartyMember5_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        PartyMember5_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
                         break;
 
                     case 6:
-                        PartyMember6_PictureBox.Image = CharacterIconImageList.Images[Member.CharacterId + ".png"];
+                        PartyMember6_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
                         break;
                 }
             }
@@ -391,5 +392,54 @@ namespace Scramble
             PinInvEditor = new PinInventoryEditor();
             PinInvEditor.ShowDialog();
         }
+
+        private void OpenClothEditButton_Click(object sender, EventArgs e)
+        {
+            ClothInvEditor = new FashionInventoryEditor();
+            ClothInvEditor.ShowDialog();
+        }
+
+        #region Get Image Lists Methods
+        public ImageList GetCharacterIconList()
+        {
+            return CharacterImageList_32x32;
+        }
+
+        public ImageList Get64x64PinImageList()
+        {
+            return PinImageList_64x64;
+        }
+
+        public ImageList Get32x32PinImageList()
+        {
+            return PinImageList_32x32;
+        }
+
+        public ImageList Get128x128FashionImageList()
+        {
+            return FashionImageList_128x128;
+        }
+
+        public ImageList Get64x64FashionImageList()
+        {
+            return FashionImageList_64x64;
+        }
+        public ImageList GetBrandImageList()
+        {
+            return BrandImageList_170x60;
+        }
+
+        public ImageList Get128x128FoodImageList()
+        {
+            return FoodImageList_128x128;
+        }
+
+        public ImageList Get64x64FoodImageList()
+        {
+            return FoodImageList_64x64;
+        }
+
+
+        #endregion
     }
 }

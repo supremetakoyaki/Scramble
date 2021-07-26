@@ -11,9 +11,13 @@
         public const int RecordInv_First = 3344; // byte & byte
 
         public const int PinInv_Count = 15208; // int32
-        public const int PinInv_LastIndex = 15212; // int32, basically count minus one.
+        public const int PinInv_CountOfIndexes = 15212; // int32, basically count minus one.
         public const int PinInv_First = 15216; // int16, int16, int16, int16.
-        public const int PinInv_Last = 292415;
+        public const int PinInv_VeryLast = 292415;
+
+        public const int ClothingInv_Count = 292416; // int 32
+        public const int ClothingInv_First = 292420; // just an int16.
+        public const int ClothingInv_Last = 296608;
 
         // Party member data. For the next 6 party members we just add +36.
         public const int PartyMember1_CharacterId = 296620; //Rindo. int32

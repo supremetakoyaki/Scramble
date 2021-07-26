@@ -58,7 +58,7 @@ namespace Scramble.Forms
             // I will think about it.
 
             int CurrentIndex = 0;
-            for (int CurrentPointer = Offsets.PinInv_First; CurrentPointer < Offsets.PinInv_Last; CurrentPointer += 8)
+            for (int CurrentPointer = Offsets.PinInv_First; CurrentPointer < Offsets.PinInv_VeryLast; CurrentPointer += 8)
             {
                 ushort PinId = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer);
 
@@ -145,7 +145,7 @@ namespace Scramble.Forms
                 this.EquippedDeckComboBox.Enabled = SelectedPin != null && ItemTable.PinIsMasterable(SelectedPin.PinId);
                 this.EquippedByCharacterComboBox.Enabled = false;
                 this.EquippedByCharacterComboBox.SelectedIndex = 0;
-                this.CharacterIconPictureBox.Image = CharacterIconImageList.Images["0.png"];//CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.SelectedValue)];
+                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];//CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.SelectedValue)];
                 return;
             }
 
@@ -157,7 +157,7 @@ namespace Scramble.Forms
             this.EquippedDeckComboBox.SelectedIndex = FirstDeck;
             this.EquippedByCharacterComboBox.Text = Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId);
 
-            this.CharacterIconPictureBox.Image = CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
+            this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
         }
 
         private void DisplayEquippedData(byte DeckId)
@@ -166,7 +166,7 @@ namespace Scramble.Forms
             {
                 this.EquippedByCharacterComboBox.Enabled = DeckId != 0;
                 this.EquippedByCharacterComboBox.SelectedIndex = 0;
-                this.CharacterIconPictureBox.Image = CharacterIconImageList.Images["0.png"];
+                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
                 return;
             }
 
@@ -174,14 +174,14 @@ namespace Scramble.Forms
             {
                 this.EquippedByCharacterComboBox.Enabled = false;
                 this.EquippedByCharacterComboBox.Text = "(no one)";
-                this.CharacterIconPictureBox.Image = CharacterIconImageList.Images["0.png"];
+                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
             }
             else
             {
                 byte MemberId = SelectedPin.DecksWithThisPin[DeckId];
                 this.EquippedByCharacterComboBox.Enabled = true;
                 this.EquippedByCharacterComboBox.Text = Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId);
-                this.CharacterIconPictureBox.Image = CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
+                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
             }
 
         }
@@ -259,7 +259,7 @@ namespace Scramble.Forms
             }
 
             // Fill in the blanks.
-            for (int i = CurrentPointer; i < Offsets.PinInv_Last; i += 8)
+            for (int i = CurrentPointer; i < Offsets.PinInv_VeryLast; i += 8)
             {
                 SelectedSlot.UpdateOffset_UInt16(i, EMPTY_PIN_ID);
                 SelectedSlot.UpdateOffset_UInt16(i + 2, 0);
@@ -268,7 +268,7 @@ namespace Scramble.Forms
             }
 
             SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_Count, PinIndexes);
-            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_LastIndex, PinIndexes - 1);
+            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_CountOfIndexes, PinIndexes - 1);
         }
 
         private void InsertPinToListView(InventoryPin Pin)
@@ -339,8 +339,8 @@ namespace Scramble.Forms
 
             PinNameLabel.Text = PinName;
             BrandLabel.Text = ItemTable.GetBrandName(BrandId);
-            PinImagePictureBox.Image = this.PinImageList_Big.Images[PinSprite];
-            BrandPictureBox.Image = this.BrandImageList.Images[BrandSprite];
+            PinImagePictureBox.Image = Sukuranburu.Get64x64PinImageList().Images[PinSprite];
+            BrandPictureBox.Image = Sukuranburu.GetBrandImageList().Images[BrandSprite];
 
             RemovePinButton.Enabled = true;
             PinAmountUpDown.Enabled = true;
@@ -793,7 +793,7 @@ namespace Scramble.Forms
                 }
 
                 ReadyForUserInput = true;
-                this.CharacterIconPictureBox.Image = CharacterIconImageList.Images["0.png"];
+                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
                 return;
             }
 
@@ -836,7 +836,7 @@ namespace Scramble.Forms
                 SelectedPin.DecksWithThisPin.Add(DeckId, (byte)NewMember.Id);
             }
 
-            this.CharacterIconPictureBox.Image = CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
+            this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
             ReadyForUserInput = true;
         }
     }

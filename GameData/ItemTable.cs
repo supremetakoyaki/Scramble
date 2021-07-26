@@ -4331,6 +4331,10 @@ namespace Scramble.GameData
         #endregion
 
         #region Clothing
+        private static Dictionary<int, int> ClothingItemIds = new Dictionary<int, int>()
+        {
+
+        };
         #endregion
 
         #region Methods
