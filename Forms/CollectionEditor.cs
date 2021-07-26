@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Scramble.Forms
 {
-    public partial class RecordsEditor : Form
+    public partial class CollectionEditor : Form
     {
         public SaveData SelectedSlot
         {
@@ -15,9 +15,19 @@ namespace Scramble.Forms
             }
         }
 
-        public RecordsEditor()
+        public ScrambleForm Sukuranburu
+        {
+            get
+            {
+                return Program.Sukuranburu;
+            }
+        }
+
+        public CollectionEditor()
         {
             InitializeComponent();
+            this.RecordInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
+
             Serialize();
         }
 
@@ -37,7 +47,13 @@ namespace Scramble.Forms
                 bool Unlocked = SelectedSlot.RetrieveOffset_Byte(CurrentPointer) == 1;
                 bool Flag = SelectedSlot.RetrieveOffset_Byte(CurrentPointer + 1) == 1;
 
-                RecordInvListView.Items.Add(new ListViewItem(new string[] { SaveId.ToString(), ItemId.ToString(), TypeStr, Name, Unlocked ? "yes" : "no", Flag ? "yes" : "no" }));
+                ListViewItem ItemToAdd = new ListViewItem(new string[] { Name, SaveId.ToString(), ItemId.ToString(), TypeStr, Unlocked ? "yes" : "no", Flag ? "yes" : "no" });
+                ItemToAdd.ImageKey = ItemTable.GetSpriteForGlobalItem(ItemId) + ".png";
+                if (ItemToAdd.ImageKey == ".png")
+                {
+                    MessageBox.Show(ItemId + " - " + Name + " - " + ItemToAdd.ImageKey);
+                }
+                RecordInvListView.Items.Add(ItemToAdd);
             }
 
             
@@ -84,7 +100,7 @@ namespace Scramble.Forms
 
             foreach (ListViewItem SelectedValue in RecordInvListView.SelectedItems)
             {
-                int SaveId = Convert.ToInt32(SelectedValue.Text);
+                int SaveId = Convert.ToInt32(SelectedValue.SubItems[1].Text);
                 int Offset = Offsets.RecordInv_First + (SaveId * 2);
 
                 if (Flag)
@@ -110,7 +126,7 @@ namespace Scramble.Forms
 
             foreach (ListViewItem SelectedValue in RecordInvListView.SelectedItems)
             {
-                int SaveId = Convert.ToInt32(SelectedValue.Text);
+                int SaveId = Convert.ToInt32(SelectedValue.SubItems[1].Text);
                 int Offset = Offsets.RecordInv_First + (SaveId * 2);
 
                 if (Flag)

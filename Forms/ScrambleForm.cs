@@ -13,7 +13,7 @@ namespace Scramble
     public partial class ScrambleForm : Form
     {
         public SaveFile OpenedSaveFile;
-        public RecordsEditor RecordsEditor;
+        public CollectionEditor RecordsEditor;
         public PinInventoryEditor PinInvEditor;
         public FashionInventoryEditor ClothInvEditor;
 
@@ -312,7 +312,7 @@ namespace Scramble
 
         private void OpenRecordEditButton_Click(object sender, EventArgs e)
         {
-            RecordsEditor = new RecordsEditor();
+            RecordsEditor = new CollectionEditor();
             RecordsEditor.ShowDialog();
         }
 
@@ -404,15 +404,14 @@ namespace Scramble
         {
             return CharacterImageList_32x32;
         }
+        public ImageList Get32x32AllCollectionIconsImageList()
+        {
+            return AllCollectionIconsImageList_32x32;
+        }
 
         public ImageList Get64x64PinImageList()
         {
             return PinImageList_64x64;
-        }
-
-        public ImageList Get32x32PinImageList()
-        {
-            return PinImageList_32x32;
         }
 
         public ImageList Get128x128FashionImageList()

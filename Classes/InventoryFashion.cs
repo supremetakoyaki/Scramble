@@ -8,16 +8,18 @@ namespace Scramble.Classes
 {
     public class InventoryFashion
     {
-        public int FashionId
+        public int Id
         {
             get;
             set;
         }
 
-        public byte WearType
+        public byte SlotType
         {
             get;
             set;
         }
+
+        
     }
 }

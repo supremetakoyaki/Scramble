@@ -36,6 +36,8 @@ namespace Scramble.Forms
         public PinInventoryEditor()
         {
             InitializeComponent();
+            this.MyPinInventoryView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
+            this.AllPinsListView.SmallImageList = Sukuranburu.Get64x64PinImageList();
 
             Serialize();
             SerializeGlobal();

@@ -36,7 +36,7 @@ namespace Scramble.Forms
             // 
             this.ClothingInvGroupBox.Location = new System.Drawing.Point(12, 12);
             this.ClothingInvGroupBox.Name = "ClothingInvGroupBox";
-            this.ClothingInvGroupBox.Size = new System.Drawing.Size(459, 314);
+            this.ClothingInvGroupBox.Size = new System.Drawing.Size(651, 391);
             this.ClothingInvGroupBox.TabIndex = 0;
             this.ClothingInvGroupBox.TabStop = false;
             this.ClothingInvGroupBox.Text = "Clothing Inventory";
