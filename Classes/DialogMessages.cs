@@ -42,9 +42,6 @@
             "You can't add more pins of this kind. Maximum value is 99.";
 
         public static string ZeroPinsWarning =
-            "Note that the game will crash if you have 0 pins. Just wanted to let you know that.\nMake sure you add enough pins and equip them to your characters.";
-
-        public static string OverwriteEquippedCharacter =
-            "{CharacterName} is equipping another pin. Do you wanna overwrite it?";
+            "Note that the game will crash if you have 0 pins.\nMake sure you add enough pins and equip them to your characters.";
     }
 }

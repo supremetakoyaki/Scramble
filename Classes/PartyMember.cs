@@ -44,5 +44,33 @@ namespace Scramble.Classes
             this.EquippedPinIndexes = EquippedPinIndexes;
             this.EquippedClothingIndexes = EquippedClothingIndexes;
         }
+
+        public bool IsEquippingPin(int PinIndex, out List<byte> DecksWithPin)
+        {
+            DecksWithPin = null;
+
+            if (PinIndex == -1)
+            {
+                return false;
+            }
+
+            bool ListMade = false;
+
+            for (byte Deck = 1; Deck < 4; Deck++)
+            {
+                if (EquippedPinIndexes[Deck] == PinIndex)
+                {
+                    if (ListMade == false)
+                    {
+                        DecksWithPin = new List<byte>();
+                        ListMade = true;
+                    }
+
+                    DecksWithPin.Add(Deck);
+                }
+            }
+
+            return ListMade;
+        }
     }
 }

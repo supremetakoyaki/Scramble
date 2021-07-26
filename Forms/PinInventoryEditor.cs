@@ -2,7 +2,8 @@
 using Scramble.GameData;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using System.Diagnostics.Eventing.Reader;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Scramble.Forms
@@ -32,8 +33,6 @@ namespace Scramble.Forms
         private bool ReadyForUserInput = false; // flag that indicates whether the editor is working on changing values on its own.    
         private bool WarnedAboutZeroPins = false;
 
-        private Dictionary<byte, int> Character_EquippedPins;
-
         public PinInventoryEditor()
         {
             InitializeComponent();
@@ -43,10 +42,11 @@ namespace Scramble.Forms
             ReadyForUserInput = true;
         }
 
-        public void Serialize()
+        private void Serialize()
         {
             InventoryPins = new List<InventoryPin>();
-            Character_EquippedPins = new Dictionary<byte, int>();
+
+            GenerateEquippedData();
 
             // Pin data:
             // int16: pin ID
@@ -57,6 +57,7 @@ namespace Scramble.Forms
             // IDEA: I could, for the sake of convenience, use the value in offset "PinInv_Count".
             // I will think about it.
 
+            int CurrentIndex = 0;
             for (int CurrentPointer = Offsets.PinInv_First; CurrentPointer < Offsets.PinInv_Last; CurrentPointer += 8)
             {
                 ushort PinId = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer);
@@ -78,6 +79,7 @@ namespace Scramble.Forms
                     if (Index == -1)
                     {
                         InventoryPins.Add(PinToAdd);
+                        PinToAdd.IntersectEquippingData(Sukuranburu.SelectedSlot.WhosEquippingThisPin(CurrentIndex));
                     }
                     else
                     {
@@ -85,8 +87,12 @@ namespace Scramble.Forms
                         {
                             InventoryPins[Index].Amount += 1;
                         }
+
+                        InventoryPins[Index].IntersectEquippingData(Sukuranburu.SelectedSlot.WhosEquippingThisPin(CurrentIndex));
                     }
                 }
+
+                CurrentIndex += 1;
             }
 
             foreach (InventoryPin Pin in InventoryPins)
@@ -99,9 +105,11 @@ namespace Scramble.Forms
                 MyPinInventoryView.Items[0].Selected = true;
                 MyPinInventoryView.Select();
             }
+
+            //Sukuranburu.ShowNotice(DialogMessages.PinEditorExperimentalNotice);
         }
 
-        public void SerializeGlobal()
+        private void SerializeGlobal()
         {
             var AllPins = ItemTable.GetPinDictionary();
             
@@ -121,8 +129,91 @@ namespace Scramble.Forms
             }
         }
 
+        private void GenerateEquippedData()
+        {
+            foreach (PartyMember Member in Sukuranburu.SelectedSlot.GetPartyMembers().Values)
+            {
+                this.EquippedByCharacterComboBox.Items.Add(Member.CharacterName);
+            }
+        }
+
+        private void DisplayDefaultEquippedData()
+        {
+            if (SelectedPin == null || SelectedPin.DecksWithThisPin == null || SelectedPin.DecksWithThisPin.Count < 1)
+            {
+                this.EquippedDeckComboBox.SelectedIndex = 0;
+                this.EquippedDeckComboBox.Enabled = SelectedPin != null && ItemTable.PinIsMasterable(SelectedPin.PinId);
+                this.EquippedByCharacterComboBox.Enabled = false;
+                this.EquippedByCharacterComboBox.SelectedIndex = 0;
+                this.CharacterIconPictureBox.Image = CharacterIconImageList.Images["0.png"];//CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.SelectedValue)];
+                return;
+            }
+
+            byte FirstDeck = SelectedPin.DecksWithThisPin.Keys.First();
+            byte MemberId = SelectedPin.DecksWithThisPin[FirstDeck];
+
+            this.EquippedDeckComboBox.Enabled = true;
+            this.EquippedByCharacterComboBox.Enabled = true;
+            this.EquippedDeckComboBox.SelectedIndex = FirstDeck;
+            this.EquippedByCharacterComboBox.Text = Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId);
+
+            this.CharacterIconPictureBox.Image = CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
+        }
+
+        private void DisplayEquippedData(byte DeckId)
+        {
+            if (SelectedPin == null || SelectedPin.DecksWithThisPin == null || SelectedPin.DecksWithThisPin.Count < 1 || !SelectedPin.DecksWithThisPin.ContainsKey(DeckId))
+            {
+                this.EquippedByCharacterComboBox.Enabled = DeckId != 0;
+                this.EquippedByCharacterComboBox.SelectedIndex = 0;
+                this.CharacterIconPictureBox.Image = CharacterIconImageList.Images["0.png"];
+                return;
+            }
+
+            if (DeckId == 0)
+            {
+                this.EquippedByCharacterComboBox.Enabled = false;
+                this.EquippedByCharacterComboBox.Text = "(no one)";
+                this.CharacterIconPictureBox.Image = CharacterIconImageList.Images["0.png"];
+            }
+            else
+            {
+                byte MemberId = SelectedPin.DecksWithThisPin[DeckId];
+                this.EquippedByCharacterComboBox.Enabled = true;
+                this.EquippedByCharacterComboBox.Text = Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId);
+                this.CharacterIconPictureBox.Image = CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
+            }
+
+        }
+
+        private string GetCharacterIconForPartyMember(string CharacterName)
+        {
+            if (CharacterName == "(no one)" || string.IsNullOrWhiteSpace(CharacterName))
+            {
+                return "0.png";
+            }
+
+            PartyMember Member = Sukuranburu.SelectedSlot.GetPartyMemberByName(CharacterName);
+            if (Member != null)
+            {
+                return Member.CharacterId + ".png";
+            }
+
+            return "0.png";
+        }
+
         private void SaveAllData()
         {
+            // First we're gonna clear out the pin equipped data
+
+            for (int i = 0; i < 6; i++)
+            {
+                int OffsetSum = 36 * i;
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck1 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck2 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck3 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+            }
+
             // Pin data:
             // int16: pin ID
             // int16: level
@@ -130,7 +221,7 @@ namespace Scramble.Forms
             // int16: i have no idea.
 
             int CurrentPointer = Offsets.PinInv_First;
-            int PinCount = 0;
+            int PinIndexes = 0;
 
             foreach (InventoryPin Pin in InventoryPins)
             {
@@ -141,8 +232,30 @@ namespace Scramble.Forms
                     SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 4, Pin.Experience);
                     SelectedSlot.UpdateOffset_UInt16(CurrentPointer + 6, 0);
 
+                    // Add the equipped data.
+                    if (Pin.DecksWithThisPin != null)
+                    {
+                        foreach (byte DeckId in Pin.DecksWithThisPin.Keys)
+                        {
+                            byte PartyMemberId = Pin.DecksWithThisPin[DeckId];
+                            int OffsetSum = 36 * (PartyMemberId - 1);
+                            int DeckOffsetSum = 4 * (DeckId - 1);
+
+                            // check if we didn't add the equipped data already, for a duplicate of this pin, for example.
+                            int ThisOffset = Offsets.PartyMember1_EquippedPinIndex_Deck1 + DeckOffsetSum + OffsetSum;
+                            int StoredValue = SelectedSlot.RetrieveOffset_Int32(ThisOffset);
+
+                            if (StoredValue == SaveData.NOT_ASSIGNED_DATA)
+                            {
+                                MessageBox.Show("Offset value at " + ThisOffset + " is " + StoredValue + " and we want it to be " + PinIndexes);
+                                SelectedSlot.UpdateOffset_Int32(ThisOffset, PinIndexes);
+                                SelectedSlot.GetPartyMemberWithId(PartyMemberId).EquippedPinIndexes[DeckId] = PinIndexes;
+                            }
+                        }
+                    }
+
                     CurrentPointer += 8;
-                    PinCount += 1;
+                    PinIndexes += 1;
                 }
             }
 
@@ -155,8 +268,8 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_UInt16(i + 6, 0);
             }
 
-            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_Count, PinCount);
-            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_LastIndex, PinCount - 1);
+            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_Count, PinIndexes);
+            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_LastIndex, PinIndexes - 1);
         }
 
         private void InsertPinToListView(InventoryPin Pin)
@@ -194,7 +307,6 @@ namespace Scramble.Forms
 
                 RemovePinButton.Enabled = false;
                 MasterPinButton.Enabled = false;
-                UpdatePinButton.Enabled = false;
                 PinAmountUpDown.Enabled = false;
                 PinImagePictureBox.Image = null;
                 BrandPictureBox.Image = null;
@@ -212,6 +324,8 @@ namespace Scramble.Forms
                 SelectedPin = null;
 
                 ReadyForUserInput = true;
+
+                DisplayDefaultEquippedData();
                 return;
             }
 
@@ -230,7 +344,6 @@ namespace Scramble.Forms
             BrandPictureBox.Image = this.BrandImageList.Images[BrandSprite];
 
             RemovePinButton.Enabled = true;
-            UpdatePinButton.Enabled = true;
             PinAmountUpDown.Enabled = true;
 
             PinLevelNUpDown.Enabled = true;
@@ -261,13 +374,8 @@ namespace Scramble.Forms
             ExperienceNUpDown.Value = Pin.Experience;
             PinAmountUpDown.Value = Pin.Amount;
 
+            DisplayDefaultEquippedData();
             ReadyForUserInput = true;
-        }
-
-        private void UpdatePinButton_Click(object sender, EventArgs e)
-        {
-            UpdateLevelAndExperience();
-            UpdateAmount();
         }
 
         private void MyPinInventoryView_SelectedIndexChanged(object sender, EventArgs e)
@@ -385,10 +493,7 @@ namespace Scramble.Forms
                 }
             }
 
-            if (AutoUpdateCheckbox.Checked)
-            {
-                UpdateLevelAndExperience();
-            }
+            UpdateLevelAndExperience();
 
             ReadyForUserInput = true;
         }
@@ -444,10 +549,7 @@ namespace Scramble.Forms
                 }
             }
 
-            if (AutoUpdateCheckbox.Checked)
-            {
-                UpdateLevelAndExperience();
-            }
+            UpdateLevelAndExperience();
 
             ReadyForUserInput = true;
         }
@@ -485,10 +587,7 @@ namespace Scramble.Forms
                 }
             }
 
-            if (AutoUpdateCheckbox.Checked)
-            {
-                UpdateLevelAndExperience();
-            }
+            UpdateLevelAndExperience();
 
             ReadyForUserInput = true;
         }
@@ -529,10 +628,7 @@ namespace Scramble.Forms
                 AmountToSet = (ushort)PinAmountUpDown.Maximum;
             }
 
-            if (AutoUpdateCheckbox.Checked)
-            {
-                UpdateAmount();
-            }
+            UpdateAmount();
 
             ReadyForUserInput = true;
         }
@@ -663,6 +759,86 @@ namespace Scramble.Forms
                 InventoryPins.Add(PinToAdd);
                 InsertPinToListView(PinToAdd);
             }
+        }
+
+        private void EquippedDeckComboBox_TextChanged(object sender, EventArgs e)
+        {
+            DisplayEquippedData((byte)EquippedDeckComboBox.SelectedIndex);
+        }
+
+        private void EquippedByCharacterComboBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+            
+            ReadyForUserInput = false;
+
+            byte DeckId = (byte)EquippedDeckComboBox.SelectedIndex;
+            if (DeckId == 0)
+            {
+                ReadyForUserInput = true;
+                return;
+            }
+            else if (EquippedByCharacterComboBox.Text == "(no one)")
+            {
+                if (SelectedPin.DecksWithThisPin != null)
+                {
+                    SelectedPin.DecksWithThisPin.Remove(DeckId);
+
+                    if (SelectedPin.DecksWithThisPin.Count == 0)
+                    {
+                        SelectedPin.DecksWithThisPin = null; // clear. necessary? idk
+                    }
+                }
+
+                ReadyForUserInput = true;
+                this.CharacterIconPictureBox.Image = CharacterIconImageList.Images["0.png"];
+                return;
+            }
+
+            // check for validity.
+
+            PartyMember OldMember = null;
+            if (SelectedPin.DecksWithThisPin != null)
+            {
+                if (SelectedPin.DecksWithThisPin.ContainsKey(DeckId))
+                {
+                    OldMember = Sukuranburu.SelectedSlot.GetPartyMemberWithId(SelectedPin.DecksWithThisPin[DeckId]);
+                }
+            }
+            else
+            {
+                SelectedPin.DecksWithThisPin = new Dictionary<byte, byte>();
+            }
+
+            PartyMember NewMember = Sukuranburu.SelectedSlot.GetPartyMemberByName(EquippedByCharacterComboBox.Text);
+            InventoryPin NewMember_PreviouslyEquippedPin = InventoryPins.FirstOrDefault(p 
+               => p.DecksWithThisPin != null
+               && p.DecksWithThisPin.ContainsKey(DeckId)
+               && p.DecksWithThisPin[DeckId] == NewMember.Id);
+
+            if (OldMember != null)
+            {
+                // do an exchange
+                if (NewMember_PreviouslyEquippedPin != null)
+                {
+                    NewMember_PreviouslyEquippedPin.DecksWithThisPin[DeckId] = (byte)OldMember.Id;
+                } // else I could do some warning, because old member never had an equipped pin in the first place °_°.
+            }
+
+            if (SelectedPin.DecksWithThisPin.ContainsKey(DeckId))
+            {
+                SelectedPin.DecksWithThisPin[DeckId] = (byte)NewMember.Id;
+            }
+            else
+            {
+                SelectedPin.DecksWithThisPin.Add(DeckId, (byte)NewMember.Id);
+            }
+
+            this.CharacterIconPictureBox.Image = CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
+            ReadyForUserInput = true;
         }
     }
 }
