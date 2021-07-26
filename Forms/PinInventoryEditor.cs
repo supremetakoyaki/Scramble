@@ -247,7 +247,6 @@ namespace Scramble.Forms
 
                             if (StoredValue == SaveData.NOT_ASSIGNED_DATA)
                             {
-                                MessageBox.Show("Offset value at " + ThisOffset + " is " + StoredValue + " and we want it to be " + PinIndexes);
                                 SelectedSlot.UpdateOffset_Int32(ThisOffset, PinIndexes);
                                 SelectedSlot.GetPartyMemberWithId(PartyMemberId).EquippedPinIndexes[DeckId] = PinIndexes;
                             }
