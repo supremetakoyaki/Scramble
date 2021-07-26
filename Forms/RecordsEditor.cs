@@ -76,17 +76,23 @@ namespace Scramble.Forms
 
         private void ChangeLockStatusButton_Click(object sender, EventArgs e)
         {
+            bool Flag = false;
+            if (RecordInvListView.SelectedItems.Count > 0)
+            {
+                Flag = RecordInvListView.SelectedItems[0].SubItems[4].Text == "yes";
+            }
+
             foreach (ListViewItem SelectedValue in RecordInvListView.SelectedItems)
             {
                 int SaveId = Convert.ToInt32(SelectedValue.Text);
                 int Offset = Offsets.RecordInv_First + (SaveId * 2);
 
-                if (SelectedValue.SubItems[4].Text == "yes")
+                if (Flag)
                 {
                     SelectedValue.SubItems[4].Text = "no";
                     SelectedSlot.UpdateOffset_Byte(Offset, 0);
                 }
-                else if (SelectedValue.SubItems[4].Text == "no")
+                else
                 {
                     SelectedValue.SubItems[4].Text = "yes";
                     SelectedSlot.UpdateOffset_Byte(Offset, 1);
@@ -96,17 +102,23 @@ namespace Scramble.Forms
 
         private void ChangeSeeStatusButton_Click(object sender, EventArgs e)
         {
+            bool Flag = false;
+            if (RecordInvListView.SelectedItems.Count > 0)
+            {
+                Flag = RecordInvListView.SelectedItems[0].SubItems[5].Text == "yes";
+            }
+
             foreach (ListViewItem SelectedValue in RecordInvListView.SelectedItems)
             {
                 int SaveId = Convert.ToInt32(SelectedValue.Text);
                 int Offset = Offsets.RecordInv_First + (SaveId * 2);
 
-                if (SelectedValue.SubItems[5].Text == "yes")
+                if (Flag)
                 {
                     SelectedValue.SubItems[5].Text = "no";
                     SelectedSlot.UpdateOffset_Byte(Offset + 1, 0);
                 }
-                else if (SelectedValue.SubItems[5].Text == "no")
+                else
                 {
                     SelectedValue.SubItems[5].Text = "yes";
                     SelectedSlot.UpdateOffset_Byte(Offset + 1, 1);

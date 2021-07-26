@@ -71,6 +71,7 @@ namespace Scramble.Forms
             this.RecordInvListView.TabIndex = 0;
             this.RecordInvListView.UseCompatibleStateImageBehavior = false;
             this.RecordInvListView.View = System.Windows.Forms.View.Details;
+            this.RecordInvListView.FullRowSelect = true;
             // 
             // SaveIDHeader
             // 
