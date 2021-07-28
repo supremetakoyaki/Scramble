@@ -207,7 +207,7 @@ namespace Scramble.Classes
             { "{NoClothingSelected}", "（衣類選択されていません）" },
             { "{Atk:}", "ＡＴＫ：" },
             { "{Def:}", "ＤＥＦ：" },
-            { "{Hp:}", "HP:" },
+            { "{Hp:}", "ＨＰ：" },
             { "{ReqStyle}", "必要なＳＥＮＳＥ:" },
             { "{Ability:}", "アビリティ：" },
             { "{RemoveThisClothing}", "この衣類の削除" },

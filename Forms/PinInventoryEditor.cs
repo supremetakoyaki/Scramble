@@ -75,7 +75,7 @@ namespace Scramble.Forms
                     ushort Level = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer + 2);
                     if (Level > 0x80) // this means this pin hasn't been seen yet (says "New")
                     {
-                        Level = (ushort)(Level - 0x80);
+                        Level -= (ushort)(Level - 0x80);
                     }
 
                     ushort Experience = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer + 4);
@@ -356,9 +356,9 @@ namespace Scramble.Forms
 
                 RemovePinButton.Enabled = false;
                 MasterPinButton.Enabled = false;
-                PinAmountUpDown.Enabled = false;
                 PinImagePictureBox.Image = null;
                 BrandPictureBox.Image = null;
+                BrandLabel.Text = string.Empty;
 
                 PinLevelNUpDown.Enabled = false;
                 ExperienceNUpDown.Enabled = false;

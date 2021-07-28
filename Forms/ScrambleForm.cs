@@ -523,6 +523,12 @@ namespace Scramble
         {
             return FoodImageList_64x64;
         }
+
+        public ImageList Get32x32MiscIconsImageList()
+        {
+            return MiscIconsImageList_32x32;
+        }
+
         #endregion
 
         #region NEO TWEWY Database instances Methods

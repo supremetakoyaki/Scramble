@@ -17,6 +17,12 @@ namespace Scramble.Classes
             set;
         }
 
+        public byte EquipperId // Party Member ID
+        {
+            get;
+            set;
+        }
+
         public ClothingItem BaseClothing
         {
             get
@@ -28,6 +34,19 @@ namespace Scramble.Classes
         public InventoryFashion(ushort Id)
         {
             this.Id = Id;
+        }
+
+        public byte WhosEquippingThis(int Index)
+        {
+            foreach (PartyMember Member in Program.Sukuranburu.SelectedSlot.GetPartyMembers().Values)
+            {
+                if (Member.EquippedClothingIndexes.Contains(Index))
+                {
+                    return (byte)Member.Id;
+                }
+            }
+
+            return 0;
         }
 
         public override bool Equals(object obj)
