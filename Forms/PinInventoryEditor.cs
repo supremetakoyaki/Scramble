@@ -43,9 +43,13 @@ namespace Scramble.Forms
             this.MyPinInventoryView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
             this.AllPinsListView.SmallImageList = Sukuranburu.Get64x64PinImageList();
 
+            DisplayLanguageStrings();
+
             Serialize();
             SerializeGlobal();
             ReadyForUserInput = true;
+
+
         }
 
         private void Serialize()
@@ -138,6 +142,43 @@ namespace Scramble.Forms
                     AllPinsListView.Items.Add(PinToAdd);
                 }
             }
+        }
+        private void DisplayLanguageStrings()
+        {
+            this.EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetString("{NoOne}"));
+
+            this.EquippedDeckComboBox.Items.AddRange(new object[] {
+            Sukuranburu.GetString("{None}"),
+            Sukuranburu.GetString("{DeckOne}"),
+            Sukuranburu.GetString("{DeckTwo}"),
+            Sukuranburu.GetString("{DeckThree}"),
+
+            });
+
+            this.Text = Sukuranburu.GetString("{PinsEditor}");
+            this.groupBox1.Text = Sukuranburu.GetString("{PinInventory}");
+            this.groupBox2.Text = Sukuranburu.GetString("{AllPins}");
+            this.PinIdHeader.Text = Sukuranburu.GetString("{Id}");
+            this.PinNameHeader.Text = Sukuranburu.GetString("{Name}");
+            this.PinIsMasteredHeader.Text = Sukuranburu.GetString("{Mastered}");
+            this.PinExperienceHeader.Text = Sukuranburu.GetString("{EXP}");
+            this.AmountHeader.Text = Sukuranburu.GetString("{Amount}");
+            this.GlobalPinIdHeader.Text = Sukuranburu.GetString("{PinId}");
+            this.GlobalPinNameHeader.Text = Sukuranburu.GetString("{Name}");
+
+            this.RemovePinButton.Text = Sukuranburu.GetString("{RemoveThisPin}");
+            this.RemoveAllPinsButton.Text = Sukuranburu.GetString("{RemoveAll}");
+            this.LevelLabel.Text = Sukuranburu.GetString("{Level:}");
+            this.ExpLabel.Text = Sukuranburu.GetString("{EXP:}");
+            this.AmountLabel.Text = Sukuranburu.GetString("{Amount:}");
+            this.EquippedLabel.Text = Sukuranburu.GetString("{Equipped}");
+            this.MaxLevelLabel_Info.Text = Sukuranburu.GetString("{MaxLevel}");
+            this.MasterPinButton.Text = Sukuranburu.GetString("{MasterThisPin}");
+
+            this.Add99Checkbox.Text = Sukuranburu.GetString("{x99}");
+            this.AddedPinIsMasteredCheckbox.Text = Sukuranburu.GetString("{Mastered}");
+            this.AddAllPinsButton.Text = Sukuranburu.GetString("{AddEachOfEveryPin}");
+            this.AddPinButton.Text = Sukuranburu.GetString("{AddPin}");
         }
 
         private void GenerateEquippedData()
@@ -290,7 +331,7 @@ namespace Scramble.Forms
             string MasteredSymbol = "—";
             if (Sukuranburu.GetItemManager().PinIsMasterable(Pin.BasePin))
             {
-                MasteredSymbol = PinIsMastered(Pin.PinId, (byte)Pin.Level) ? "★" : "no";
+                MasteredSymbol = PinIsMastered(Pin.PinId, (byte)Pin.Level) ? "★" : Sukuranburu.GetString("{NoLowercase}");
             }
 
             ListViewItem PinToAdd = new ListViewItem(new string[]
@@ -313,7 +354,7 @@ namespace Scramble.Forms
 
             if (MyPinInventoryView.SelectedIndices.Count == 0 || MyPinInventoryView.SelectedItems.Count != 1 || MyPinInventoryView.Items.Count < 1)
             {
-                PinNameLabel.Text = "(No selected pin)";
+                PinNameLabel.Text = Sukuranburu.GetString("{NoSelectedPin}");
 
                 RemovePinButton.Enabled = false;
                 MasterPinButton.Enabled = false;
@@ -614,7 +655,7 @@ namespace Scramble.Forms
 
             if (Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.PinId))
             {
-                MyPinInventoryView.Items[Index].SubItems[4].Text = PinIsMastered(SelectedPin.PinId, (byte)SelectedPin.Level) ? "★" : "no";
+                MyPinInventoryView.Items[Index].SubItems[4].Text = PinIsMastered(SelectedPin.PinId, (byte)SelectedPin.Level) ? "★" : Sukuranburu.GetString("{NoLowercase}");
             }
         }
 

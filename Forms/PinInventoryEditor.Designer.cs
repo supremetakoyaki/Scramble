@@ -112,20 +112,15 @@ namespace Scramble.Forms
             this.EquippedDeckComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EquippedDeckComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EquippedDeckComboBox.FormattingEnabled = true;
-            this.EquippedDeckComboBox.Items.AddRange(new object[] {
-            "(none)",
-            "Deck 1",
-            "Deck 2",
-            "Deck 3"});
             this.EquippedDeckComboBox.Location = new System.Drawing.Point(188, 567);
             this.EquippedDeckComboBox.Name = "EquippedDeckComboBox";
-            this.EquippedDeckComboBox.Size = new System.Drawing.Size(67, 23);
+            this.EquippedDeckComboBox.Size = new System.Drawing.Size(82, 23);
             this.EquippedDeckComboBox.TabIndex = 22;
             this.EquippedDeckComboBox.TextChanged += new System.EventHandler(this.EquippedDeckComboBox_TextChanged);
             // 
             // CharacterIconPictureBox
             // 
-            this.CharacterIconPictureBox.Location = new System.Drawing.Point(394, 561);
+            this.CharacterIconPictureBox.Location = new System.Drawing.Point(409, 561);
             this.CharacterIconPictureBox.Name = "CharacterIconPictureBox";
             this.CharacterIconPictureBox.Size = new System.Drawing.Size(32, 32);
             this.CharacterIconPictureBox.TabIndex = 21;
@@ -136,9 +131,7 @@ namespace Scramble.Forms
             this.EquippedByCharacterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EquippedByCharacterComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EquippedByCharacterComboBox.FormattingEnabled = true;
-            this.EquippedByCharacterComboBox.Items.AddRange(new object[] {
-            Program.Sukuranburu.GetString("{NoOne}")});
-            this.EquippedByCharacterComboBox.Location = new System.Drawing.Point(261, 567);
+            this.EquippedByCharacterComboBox.Location = new System.Drawing.Point(276, 567);
             this.EquippedByCharacterComboBox.Name = "EquippedByCharacterComboBox";
             this.EquippedByCharacterComboBox.Size = new System.Drawing.Size(127, 23);
             this.EquippedByCharacterComboBox.TabIndex = 20;
@@ -158,7 +151,7 @@ namespace Scramble.Forms
             this.MaxLevelLabel_Value.AutoSize = true;
             this.MaxLevelLabel_Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.MaxLevelLabel_Value.ForeColor = System.Drawing.Color.MediumBlue;
-            this.MaxLevelLabel_Value.Location = new System.Drawing.Point(303, 448);
+            this.MaxLevelLabel_Value.Location = new System.Drawing.Point(321, 448);
             this.MaxLevelLabel_Value.Name = "MaxLevelLabel_Value";
             this.MaxLevelLabel_Value.Size = new System.Drawing.Size(0, 15);
             this.MaxLevelLabel_Value.TabIndex = 18;
@@ -194,7 +187,7 @@ namespace Scramble.Forms
             // 
             this.MasteredLabel.AutoSize = true;
             this.MasteredLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MasteredLabel.Location = new System.Drawing.Point(318, 441);
+            this.MasteredLabel.Location = new System.Drawing.Point(336, 441);
             this.MasteredLabel.Name = "MasteredLabel";
             this.MasteredLabel.Size = new System.Drawing.Size(0, 27);
             this.MasteredLabel.TabIndex = 14;
@@ -315,9 +308,9 @@ namespace Scramble.Forms
             // 
             this.MasterPinButton.Enabled = false;
             this.MasterPinButton.ForeColor = System.Drawing.Color.MediumBlue;
-            this.MasterPinButton.Location = new System.Drawing.Point(246, 475);
+            this.MasterPinButton.Location = new System.Drawing.Point(246, 473);
             this.MasterPinButton.Name = "MasterPinButton";
-            this.MasterPinButton.Size = new System.Drawing.Size(97, 23);
+            this.MasterPinButton.Size = new System.Drawing.Size(116, 23);
             this.MasterPinButton.TabIndex = 4;
             this.MasterPinButton.Text = "Master this pin";
             this.MasterPinButton.UseVisualStyleBackColor = true;
@@ -325,9 +318,9 @@ namespace Scramble.Forms
             // 
             // PinImagePictureBox
             // 
-            this.PinImagePictureBox.Location = new System.Drawing.Point(28, 442);
+            this.PinImagePictureBox.Location = new System.Drawing.Point(9, 424);
             this.PinImagePictureBox.Name = "PinImagePictureBox";
-            this.PinImagePictureBox.Size = new System.Drawing.Size(64, 64);
+            this.PinImagePictureBox.Size = new System.Drawing.Size(100, 100);
             this.PinImagePictureBox.TabIndex = 3;
             this.PinImagePictureBox.TabStop = false;
             // 
@@ -408,7 +401,7 @@ namespace Scramble.Forms
             // Add99Checkbox
             // 
             this.Add99Checkbox.AutoSize = true;
-            this.Add99Checkbox.Location = new System.Drawing.Point(171, 547);
+            this.Add99Checkbox.Location = new System.Drawing.Point(176, 547);
             this.Add99Checkbox.Name = "Add99Checkbox";
             this.Add99Checkbox.Size = new System.Drawing.Size(44, 19);
             this.Add99Checkbox.TabIndex = 11;
@@ -428,9 +421,9 @@ namespace Scramble.Forms
             // AddAllPinsButton
             // 
             this.AddAllPinsButton.BackColor = System.Drawing.Color.Azure;
-            this.AddAllPinsButton.Location = new System.Drawing.Point(171, 567);
+            this.AddAllPinsButton.Location = new System.Drawing.Point(134, 567);
             this.AddAllPinsButton.Name = "AddAllPinsButton";
-            this.AddAllPinsButton.Size = new System.Drawing.Size(130, 23);
+            this.AddAllPinsButton.Size = new System.Drawing.Size(167, 23);
             this.AddAllPinsButton.TabIndex = 13;
             this.AddAllPinsButton.Text = "Add each of every pin";
             this.AddAllPinsButton.UseVisualStyleBackColor = false;
@@ -440,7 +433,7 @@ namespace Scramble.Forms
             // 
             this.AddPinButton.Location = new System.Drawing.Point(6, 547);
             this.AddPinButton.Name = "AddPinButton";
-            this.AddPinButton.Size = new System.Drawing.Size(100, 43);
+            this.AddPinButton.Size = new System.Drawing.Size(122, 43);
             this.AddPinButton.TabIndex = 10;
             this.AddPinButton.Text = "Add pin";
             this.AddPinButton.UseVisualStyleBackColor = true;

@@ -54,16 +54,16 @@ namespace Scramble.Forms
             this.groupBox1.Controls.Add(this.UnlockAllButton);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(600, 359);
+            this.groupBox1.Size = new System.Drawing.Size(656, 402);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Items";
             // 
             // ChangeSeeStatusButton
             // 
-            this.ChangeSeeStatusButton.Location = new System.Drawing.Point(482, 330);
+            this.ChangeSeeStatusButton.Location = new System.Drawing.Point(461, 363);
             this.ChangeSeeStatusButton.Name = "ChangeSeeStatusButton";
-            this.ChangeSeeStatusButton.Size = new System.Drawing.Size(112, 23);
+            this.ChangeSeeStatusButton.Size = new System.Drawing.Size(189, 30);
             this.ChangeSeeStatusButton.TabIndex = 4;
             this.ChangeSeeStatusButton.Text = "(Un)see selected";
             this.ChangeSeeStatusButton.UseVisualStyleBackColor = true;
@@ -72,9 +72,9 @@ namespace Scramble.Forms
             // UnseeAllButton
             // 
             this.UnseeAllButton.BackColor = System.Drawing.Color.AliceBlue;
-            this.UnseeAllButton.Location = new System.Drawing.Point(114, 330);
+            this.UnseeAllButton.Location = new System.Drawing.Point(6, 363);
             this.UnseeAllButton.Name = "UnseeAllButton";
-            this.UnseeAllButton.Size = new System.Drawing.Size(102, 23);
+            this.UnseeAllButton.Size = new System.Drawing.Size(189, 30);
             this.UnseeAllButton.TabIndex = 2;
             this.UnseeAllButton.Text = "(Un)see all";
             this.UnseeAllButton.UseVisualStyleBackColor = false;
@@ -82,9 +82,9 @@ namespace Scramble.Forms
             // 
             // ChangeLockStatusButton
             // 
-            this.ChangeLockStatusButton.Location = new System.Drawing.Point(364, 330);
+            this.ChangeLockStatusButton.Location = new System.Drawing.Point(461, 330);
             this.ChangeLockStatusButton.Name = "ChangeLockStatusButton";
-            this.ChangeLockStatusButton.Size = new System.Drawing.Size(112, 23);
+            this.ChangeLockStatusButton.Size = new System.Drawing.Size(189, 30);
             this.ChangeLockStatusButton.TabIndex = 3;
             this.ChangeLockStatusButton.Text = "(Un)lock selected";
             this.ChangeLockStatusButton.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@ namespace Scramble.Forms
             this.RecordInvListView.HideSelection = false;
             this.RecordInvListView.Location = new System.Drawing.Point(6, 22);
             this.RecordInvListView.Name = "RecordInvListView";
-            this.RecordInvListView.Size = new System.Drawing.Size(588, 302);
+            this.RecordInvListView.Size = new System.Drawing.Size(644, 302);
             this.RecordInvListView.TabIndex = 0;
             this.RecordInvListView.UseCompatibleStateImageBehavior = false;
             this.RecordInvListView.View = System.Windows.Forms.View.Details;
@@ -112,7 +112,7 @@ namespace Scramble.Forms
             // 
             this.ItemNameHeader.DisplayIndex = 2;
             this.ItemNameHeader.Text = "Name";
-            this.ItemNameHeader.Width = 250;
+            this.ItemNameHeader.Width = 270;
             // 
             // SaveIDHeader
             // 
@@ -136,20 +136,20 @@ namespace Scramble.Forms
             // 
             this.UnlockedHeader.Text = "Unlocked";
             this.UnlockedHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.UnlockedHeader.Width = 70;
+            this.UnlockedHeader.Width = 90;
             // 
             // FlagHeader
             // 
             this.FlagHeader.Text = "Unseen";
             this.FlagHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.FlagHeader.Width = 70;
+            this.FlagHeader.Width = 90;
             // 
             // UnlockAllButton
             // 
             this.UnlockAllButton.BackColor = System.Drawing.Color.PaleGreen;
             this.UnlockAllButton.Location = new System.Drawing.Point(6, 330);
             this.UnlockAllButton.Name = "UnlockAllButton";
-            this.UnlockAllButton.Size = new System.Drawing.Size(102, 23);
+            this.UnlockAllButton.Size = new System.Drawing.Size(189, 30);
             this.UnlockAllButton.TabIndex = 1;
             this.UnlockAllButton.Text = "(Un)lock all";
             this.UnlockAllButton.UseVisualStyleBackColor = false;
@@ -159,7 +159,7 @@ namespace Scramble.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 383);
+            this.ClientSize = new System.Drawing.Size(680, 424);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
