@@ -30,6 +30,8 @@ namespace Scramble.Forms
         private void InitializeComponent()
         {
             this.ClothingInvGroupBox = new System.Windows.Forms.GroupBox();
+            this.ReqStyleLabel = new System.Windows.Forms.Label();
+            this.HpLabel = new System.Windows.Forms.Label();
             this.DefenseLabel = new System.Windows.Forms.Label();
             this.ATKLabel = new System.Windows.Forms.Label();
             this.CharacterIconPictureBox = new System.Windows.Forms.PictureBox();
@@ -38,35 +40,64 @@ namespace Scramble.Forms
             this.BrandLabel = new System.Windows.Forms.Label();
             this.BrandPictureBox = new System.Windows.Forms.PictureBox();
             this.ClothingItem_NameLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.SlotType_PictureBox = new System.Windows.Forms.PictureBox();
             this.ClothingItem_PictureBox = new System.Windows.Forms.PictureBox();
             this.MyClothingInvListView = new System.Windows.Forms.ListView();
             this.ClthNameHeader = new System.Windows.Forms.ColumnHeader();
             this.ClthIdHeader = new System.Windows.Forms.ColumnHeader();
             this.ClthSlotHeader = new System.Windows.Forms.ColumnHeader();
-            this.HealthPointLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.AbilityLabel = new System.Windows.Forms.Label();
+            this.AbilityNameLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.WearTypeLabel = new System.Windows.Forms.Label();
+            this.RemoveAllClothingButton = new System.Windows.Forms.Button();
+            this.RemoveClothingButton = new System.Windows.Forms.Button();
+            this.AtkValueLabel = new System.Windows.Forms.Label();
+            this.DefValueLabel = new System.Windows.Forms.Label();
+            this.HpValueLabel = new System.Windows.Forms.Label();
+            this.ReqStyleValueLabel = new System.Windows.Forms.Label();
+            this.AllClothingItemsGroupBox = new System.Windows.Forms.GroupBox();
+            this.AllClothingItemsListView = new System.Windows.Forms.ListView();
+            this.GlobalClthNameHeader = new System.Windows.Forms.ColumnHeader();
+            this.GlobalClthIdHeader = new System.Windows.Forms.ColumnHeader();
+            this.AddClothingItemButton = new System.Windows.Forms.Button();
+            this.AddEachOfEveryClothingButton = new System.Windows.Forms.Button();
+            this.Add99Checkbox = new System.Windows.Forms.CheckBox();
+            this.AmountLabel = new System.Windows.Forms.Label();
+            this.AmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ClothingInvGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CharacterIconPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrandPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlotType_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClothingItem_PictureBox)).BeginInit();
+            this.AllClothingItemsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // ClothingInvGroupBox
             // 
-            this.ClothingInvGroupBox.Controls.Add(this.label2);
-            this.ClothingInvGroupBox.Controls.Add(this.HealthPointLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.AmountNumericUpDown);
+            this.ClothingInvGroupBox.Controls.Add(this.AmountLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.ReqStyleValueLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.HpValueLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.DefValueLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.AtkValueLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.RemoveClothingButton);
+            this.ClothingInvGroupBox.Controls.Add(this.RemoveAllClothingButton);
+            this.ClothingInvGroupBox.Controls.Add(this.WearTypeLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.label1);
+            this.ClothingInvGroupBox.Controls.Add(this.AbilityNameLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.BrandPictureBox);
+            this.ClothingInvGroupBox.Controls.Add(this.BrandLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.AbilityLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.ReqStyleLabel);
+            this.ClothingInvGroupBox.Controls.Add(this.HpLabel);
             this.ClothingInvGroupBox.Controls.Add(this.DefenseLabel);
             this.ClothingInvGroupBox.Controls.Add(this.ATKLabel);
             this.ClothingInvGroupBox.Controls.Add(this.CharacterIconPictureBox);
             this.ClothingInvGroupBox.Controls.Add(this.EquippedByCharacterComboBox);
             this.ClothingInvGroupBox.Controls.Add(this.EquippedLabel);
-            this.ClothingInvGroupBox.Controls.Add(this.BrandLabel);
-            this.ClothingInvGroupBox.Controls.Add(this.BrandPictureBox);
             this.ClothingInvGroupBox.Controls.Add(this.ClothingItem_NameLabel);
-            this.ClothingInvGroupBox.Controls.Add(this.label1);
             this.ClothingInvGroupBox.Controls.Add(this.SlotType_PictureBox);
             this.ClothingInvGroupBox.Controls.Add(this.ClothingItem_PictureBox);
             this.ClothingInvGroupBox.Controls.Add(this.MyClothingInvListView);
@@ -75,29 +106,43 @@ namespace Scramble.Forms
             this.ClothingInvGroupBox.Size = new System.Drawing.Size(609, 637);
             this.ClothingInvGroupBox.TabIndex = 0;
             this.ClothingInvGroupBox.TabStop = false;
-            this.ClothingInvGroupBox.Text = "Clothing Inventory";
+            this.ClothingInvGroupBox.Text = "{MyClothingInventory}";
+            // 
+            // ReqStyleLabel
+            // 
+            this.ReqStyleLabel.Location = new System.Drawing.Point(149, 469);
+            this.ReqStyleLabel.Name = "ReqStyleLabel";
+            this.ReqStyleLabel.Size = new System.Drawing.Size(91, 15);
+            this.ReqStyleLabel.TabIndex = 28;
+            this.ReqStyleLabel.Text = "Req. STYLE:";
+            // 
+            // HpLabel
+            // 
+            this.HpLabel.Location = new System.Drawing.Point(149, 454);
+            this.HpLabel.Name = "HpLabel";
+            this.HpLabel.Size = new System.Drawing.Size(88, 15);
+            this.HpLabel.TabIndex = 27;
+            this.HpLabel.Text = "HP:";
             // 
             // DefenseLabel
             // 
-            this.DefenseLabel.AutoSize = true;
-            this.DefenseLabel.Location = new System.Drawing.Point(174, 454);
+            this.DefenseLabel.Location = new System.Drawing.Point(149, 439);
             this.DefenseLabel.Name = "DefenseLabel";
-            this.DefenseLabel.Size = new System.Drawing.Size(30, 15);
+            this.DefenseLabel.Size = new System.Drawing.Size(88, 15);
             this.DefenseLabel.TabIndex = 26;
             this.DefenseLabel.Text = "DEF:";
             // 
             // ATKLabel
             // 
-            this.ATKLabel.AutoSize = true;
-            this.ATKLabel.Location = new System.Drawing.Point(174, 436);
+            this.ATKLabel.Location = new System.Drawing.Point(149, 424);
             this.ATKLabel.Name = "ATKLabel";
-            this.ATKLabel.Size = new System.Drawing.Size(30, 15);
+            this.ATKLabel.Size = new System.Drawing.Size(88, 15);
             this.ATKLabel.TabIndex = 25;
             this.ATKLabel.Text = "ATK:";
             // 
             // CharacterIconPictureBox
             // 
-            this.CharacterIconPictureBox.Location = new System.Drawing.Point(557, 549);
+            this.CharacterIconPictureBox.Location = new System.Drawing.Point(102, 593);
             this.CharacterIconPictureBox.Name = "CharacterIconPictureBox";
             this.CharacterIconPictureBox.Size = new System.Drawing.Size(32, 32);
             this.CharacterIconPictureBox.TabIndex = 24;
@@ -107,27 +152,26 @@ namespace Scramble.Forms
             // 
             this.EquippedByCharacterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EquippedByCharacterComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EquippedByCharacterComboBox.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EquippedByCharacterComboBox.FormattingEnabled = true;
-            this.EquippedByCharacterComboBox.Items.AddRange(new object[] {
-            Program.Sukuranburu.GetString("{NoOne}")});
-            this.EquippedByCharacterComboBox.Location = new System.Drawing.Point(419, 555);
+            this.EquippedByCharacterComboBox.Location = new System.Drawing.Point(6, 599);
             this.EquippedByCharacterComboBox.Name = "EquippedByCharacterComboBox";
-            this.EquippedByCharacterComboBox.Size = new System.Drawing.Size(132, 23);
+            this.EquippedByCharacterComboBox.Size = new System.Drawing.Size(91, 21);
             this.EquippedByCharacterComboBox.TabIndex = 23;
             // 
             // EquippedLabel
             // 
             this.EquippedLabel.AutoSize = true;
-            this.EquippedLabel.Location = new System.Drawing.Point(460, 533);
+            this.EquippedLabel.Location = new System.Drawing.Point(6, 581);
             this.EquippedLabel.Name = "EquippedLabel";
-            this.EquippedLabel.Size = new System.Drawing.Size(60, 15);
+            this.EquippedLabel.Size = new System.Drawing.Size(65, 15);
             this.EquippedLabel.TabIndex = 22;
-            this.EquippedLabel.Text = "Equipped:";
+            this.EquippedLabel.Text = "{Equipped}";
             // 
             // BrandLabel
             // 
             this.BrandLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BrandLabel.Location = new System.Drawing.Point(419, 474);
+            this.BrandLabel.Location = new System.Drawing.Point(433, 457);
             this.BrandLabel.Name = "BrandLabel";
             this.BrandLabel.Size = new System.Drawing.Size(170, 15);
             this.BrandLabel.TabIndex = 18;
@@ -135,7 +179,7 @@ namespace Scramble.Forms
             // 
             // BrandPictureBox
             // 
-            this.BrandPictureBox.Location = new System.Drawing.Point(419, 391);
+            this.BrandPictureBox.Location = new System.Drawing.Point(433, 394);
             this.BrandPictureBox.Name = "BrandPictureBox";
             this.BrandPictureBox.Size = new System.Drawing.Size(170, 60);
             this.BrandPictureBox.TabIndex = 17;
@@ -143,28 +187,16 @@ namespace Scramble.Forms
             // 
             // ClothingItem_NameLabel
             // 
-            this.ClothingItem_NameLabel.AutoSize = true;
             this.ClothingItem_NameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ClothingItem_NameLabel.Location = new System.Drawing.Point(174, 391);
+            this.ClothingItem_NameLabel.Location = new System.Drawing.Point(149, 391);
             this.ClothingItem_NameLabel.Name = "ClothingItem_NameLabel";
-            this.ClothingItem_NameLabel.Size = new System.Drawing.Size(107, 17);
+            this.ClothingItem_NameLabel.Size = new System.Drawing.Size(256, 19);
             this.ClothingItem_NameLabel.TabIndex = 4;
-            this.ClothingItem_NameLabel.Text = "{Clothing Name}";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Indigo;
-            this.label1.Location = new System.Drawing.Point(68, 531);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "{SlotType}";
+            this.ClothingItem_NameLabel.Text = "{ClothingName}";
             // 
             // SlotType_PictureBox
             // 
-            this.SlotType_PictureBox.Location = new System.Drawing.Point(30, 525);
+            this.SlotType_PictureBox.Location = new System.Drawing.Point(6, 516);
             this.SlotType_PictureBox.Name = "SlotType_PictureBox";
             this.SlotType_PictureBox.Size = new System.Drawing.Size(32, 32);
             this.SlotType_PictureBox.TabIndex = 2;
@@ -172,7 +204,7 @@ namespace Scramble.Forms
             // 
             // ClothingItem_PictureBox
             // 
-            this.ClothingItem_PictureBox.Location = new System.Drawing.Point(30, 391);
+            this.ClothingItem_PictureBox.Location = new System.Drawing.Point(6, 382);
             this.ClothingItem_PictureBox.Name = "ClothingItem_PictureBox";
             this.ClothingItem_PictureBox.Size = new System.Drawing.Size(128, 128);
             this.ClothingItem_PictureBox.TabIndex = 1;
@@ -197,7 +229,7 @@ namespace Scramble.Forms
             // 
             this.ClthNameHeader.DisplayIndex = 1;
             this.ClthNameHeader.Text = "Name";
-            this.ClthNameHeader.Width = 250;
+            this.ClthNameHeader.Width = 400;
             // 
             // ClthIdHeader
             // 
@@ -212,38 +244,231 @@ namespace Scramble.Forms
             this.ClthSlotHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ClthSlotHeader.Width = 120;
             // 
-            // HealthPointLabel
+            // AbilityLabel
             // 
-            this.HealthPointLabel.AutoSize = true;
-            this.HealthPointLabel.Location = new System.Drawing.Point(174, 474);
-            this.HealthPointLabel.Name = "HealthPointLabel";
-            this.HealthPointLabel.Size = new System.Drawing.Size(26, 15);
-            this.HealthPointLabel.TabIndex = 27;
-            this.HealthPointLabel.Text = "HP:";
+            this.AbilityLabel.AutoSize = true;
+            this.AbilityLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.AbilityLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.AbilityLabel.Location = new System.Drawing.Point(149, 519);
+            this.AbilityLabel.Name = "AbilityLabel";
+            this.AbilityLabel.Size = new System.Drawing.Size(59, 17);
+            this.AbilityLabel.TabIndex = 29;
+            this.AbilityLabel.Text = "{Ability:}";
             // 
-            // label2
+            // AbilityNameLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(174, 495);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 15);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Required STYLE:";
+            this.AbilityNameLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AbilityNameLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.AbilityNameLabel.Location = new System.Drawing.Point(243, 519);
+            this.AbilityNameLabel.Name = "AbilityNameLabel";
+            this.AbilityNameLabel.Size = new System.Drawing.Size(224, 23);
+            this.AbilityNameLabel.TabIndex = 30;
+            this.AbilityNameLabel.Text = "{AbilityName}";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.label1.Location = new System.Drawing.Point(149, 554);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(318, 69);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "{AbilityDesc}";
+            // 
+            // WearTypeLabel
+            // 
+            this.WearTypeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.WearTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.WearTypeLabel.Location = new System.Drawing.Point(44, 516);
+            this.WearTypeLabel.Name = "WearTypeLabel";
+            this.WearTypeLabel.Size = new System.Drawing.Size(90, 32);
+            this.WearTypeLabel.TabIndex = 32;
+            this.WearTypeLabel.Text = "{WearSlot}";
+            this.WearTypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // RemoveAllClothingButton
+            // 
+            this.RemoveAllClothingButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.RemoveAllClothingButton.Location = new System.Drawing.Point(473, 593);
+            this.RemoveAllClothingButton.Name = "RemoveAllClothingButton";
+            this.RemoveAllClothingButton.Size = new System.Drawing.Size(130, 38);
+            this.RemoveAllClothingButton.TabIndex = 34;
+            this.RemoveAllClothingButton.Text = "{RemoveAllClothingButton}";
+            this.RemoveAllClothingButton.UseVisualStyleBackColor = false;
+            // 
+            // RemoveClothingButton
+            // 
+            this.RemoveClothingButton.Location = new System.Drawing.Point(473, 537);
+            this.RemoveClothingButton.Name = "RemoveClothingButton";
+            this.RemoveClothingButton.Size = new System.Drawing.Size(130, 50);
+            this.RemoveClothingButton.TabIndex = 33;
+            this.RemoveClothingButton.Text = "{RemoveClothingButton}";
+            this.RemoveClothingButton.UseVisualStyleBackColor = true;
+            // 
+            // AtkValueLabel
+            // 
+            this.AtkValueLabel.AutoSize = true;
+            this.AtkValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AtkValueLabel.ForeColor = System.Drawing.Color.DarkCyan;
+            this.AtkValueLabel.Location = new System.Drawing.Point(243, 424);
+            this.AtkValueLabel.Name = "AtkValueLabel";
+            this.AtkValueLabel.Size = new System.Drawing.Size(53, 15);
+            this.AtkValueLabel.TabIndex = 35;
+            this.AtkValueLabel.Text = "+{Value}";
+            // 
+            // DefValueLabel
+            // 
+            this.DefValueLabel.AutoSize = true;
+            this.DefValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DefValueLabel.ForeColor = System.Drawing.Color.DarkCyan;
+            this.DefValueLabel.Location = new System.Drawing.Point(243, 439);
+            this.DefValueLabel.Name = "DefValueLabel";
+            this.DefValueLabel.Size = new System.Drawing.Size(53, 15);
+            this.DefValueLabel.TabIndex = 36;
+            this.DefValueLabel.Text = "+{Value}";
+            // 
+            // HpValueLabel
+            // 
+            this.HpValueLabel.AutoSize = true;
+            this.HpValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.HpValueLabel.ForeColor = System.Drawing.Color.DarkCyan;
+            this.HpValueLabel.Location = new System.Drawing.Point(243, 454);
+            this.HpValueLabel.Name = "HpValueLabel";
+            this.HpValueLabel.Size = new System.Drawing.Size(53, 15);
+            this.HpValueLabel.TabIndex = 37;
+            this.HpValueLabel.Text = "+{Value}";
+            // 
+            // ReqStyleValueLabel
+            // 
+            this.ReqStyleValueLabel.AutoSize = true;
+            this.ReqStyleValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ReqStyleValueLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.ReqStyleValueLabel.Location = new System.Drawing.Point(243, 469);
+            this.ReqStyleValueLabel.Name = "ReqStyleValueLabel";
+            this.ReqStyleValueLabel.Size = new System.Drawing.Size(45, 15);
+            this.ReqStyleValueLabel.TabIndex = 38;
+            this.ReqStyleValueLabel.Text = "{Value}";
+            // 
+            // AllClothingItemsGroupBox
+            // 
+            this.AllClothingItemsGroupBox.Controls.Add(this.Add99Checkbox);
+            this.AllClothingItemsGroupBox.Controls.Add(this.AddEachOfEveryClothingButton);
+            this.AllClothingItemsGroupBox.Controls.Add(this.AddClothingItemButton);
+            this.AllClothingItemsGroupBox.Controls.Add(this.AllClothingItemsListView);
+            this.AllClothingItemsGroupBox.Location = new System.Drawing.Point(627, 12);
+            this.AllClothingItemsGroupBox.Name = "AllClothingItemsGroupBox";
+            this.AllClothingItemsGroupBox.Size = new System.Drawing.Size(265, 637);
+            this.AllClothingItemsGroupBox.TabIndex = 1;
+            this.AllClothingItemsGroupBox.TabStop = false;
+            this.AllClothingItemsGroupBox.Text = "{AllClothingItems}";
+            // 
+            // AllClothingItemsListView
+            // 
+            this.AllClothingItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.GlobalClthNameHeader,
+            this.GlobalClthIdHeader});
+            this.AllClothingItemsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.AllClothingItemsListView.HideSelection = false;
+            this.AllClothingItemsListView.Location = new System.Drawing.Point(6, 22);
+            this.AllClothingItemsListView.Name = "AllClothingItemsListView";
+            this.AllClothingItemsListView.Size = new System.Drawing.Size(253, 509);
+            this.AllClothingItemsListView.TabIndex = 39;
+            this.AllClothingItemsListView.UseCompatibleStateImageBehavior = false;
+            this.AllClothingItemsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // GlobalClthNameHeader
+            // 
+            this.GlobalClthNameHeader.DisplayIndex = 1;
+            this.GlobalClthNameHeader.Text = "Name";
+            this.GlobalClthNameHeader.Width = 192;
+            // 
+            // GlobalClthIdHeader
+            // 
+            this.GlobalClthIdHeader.DisplayIndex = 0;
+            this.GlobalClthIdHeader.Text = "ID";
+            this.GlobalClthIdHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GlobalClthIdHeader.Width = 40;
+            // 
+            // AddClothingItemButton
+            // 
+            this.AddClothingItemButton.Location = new System.Drawing.Point(6, 537);
+            this.AddClothingItemButton.Name = "AddClothingItemButton";
+            this.AddClothingItemButton.Size = new System.Drawing.Size(148, 50);
+            this.AddClothingItemButton.TabIndex = 40;
+            this.AddClothingItemButton.Text = "{AddClothing}";
+            this.AddClothingItemButton.UseVisualStyleBackColor = true;
+            // 
+            // AddEachOfEveryClothingButton
+            // 
+            this.AddEachOfEveryClothingButton.BackColor = System.Drawing.Color.LightCyan;
+            this.AddEachOfEveryClothingButton.Location = new System.Drawing.Point(6, 593);
+            this.AddEachOfEveryClothingButton.Name = "AddEachOfEveryClothingButton";
+            this.AddEachOfEveryClothingButton.Size = new System.Drawing.Size(148, 38);
+            this.AddEachOfEveryClothingButton.TabIndex = 41;
+            this.AddEachOfEveryClothingButton.Text = "{AddEachOfEveryClothing}";
+            this.AddEachOfEveryClothingButton.UseVisualStyleBackColor = false;
+            // 
+            // Add99Checkbox
+            // 
+            this.Add99Checkbox.AutoSize = true;
+            this.Add99Checkbox.Location = new System.Drawing.Point(160, 612);
+            this.Add99Checkbox.Name = "Add99Checkbox";
+            this.Add99Checkbox.Size = new System.Drawing.Size(52, 19);
+            this.Add99Checkbox.TabIndex = 42;
+            this.Add99Checkbox.Text = "{x99}";
+            this.Add99Checkbox.UseVisualStyleBackColor = true;
+            // 
+            // AmountLabel
+            // 
+            this.AmountLabel.AutoSize = true;
+            this.AmountLabel.Location = new System.Drawing.Point(473, 484);
+            this.AmountLabel.Name = "AmountLabel";
+            this.AmountLabel.Size = new System.Drawing.Size(62, 15);
+            this.AmountLabel.TabIndex = 39;
+            this.AmountLabel.Text = "{Amount:}";
+            // 
+            // AmountNumericUpDown
+            // 
+            this.AmountNumericUpDown.Location = new System.Drawing.Point(550, 482);
+            this.AmountNumericUpDown.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.AmountNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AmountNumericUpDown.Name = "AmountNumericUpDown";
+            this.AmountNumericUpDown.Size = new System.Drawing.Size(53, 23);
+            this.AmountNumericUpDown.TabIndex = 40;
+            this.AmountNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // ClothingInventoryEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 661);
+            this.ClientSize = new System.Drawing.Size(904, 661);
+            this.Controls.Add(this.AllClothingItemsGroupBox);
             this.Controls.Add(this.ClothingInvGroupBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ClothingInventoryEditor";
-            this.Text = "Clothing Inventory Editor";
+            this.Text = "{ClothingEditor}";
             this.ClothingInvGroupBox.ResumeLayout(false);
             this.ClothingInvGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CharacterIconPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrandPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlotType_PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClothingItem_PictureBox)).EndInit();
+            this.AllClothingItemsGroupBox.ResumeLayout(false);
+            this.AllClothingItemsGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -257,7 +482,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.PictureBox ClothingItem_PictureBox;
         private System.Windows.Forms.PictureBox SlotType_PictureBox;
         private System.Windows.Forms.Label ClothingItem_NameLabel;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ColumnHeader ClthSlotHeader;
         private System.Windows.Forms.Label BrandLabel;
         private System.Windows.Forms.PictureBox BrandPictureBox;
@@ -266,7 +490,26 @@ namespace Scramble.Forms
         private System.Windows.Forms.Label EquippedLabel;
         private System.Windows.Forms.Label DefenseLabel;
         private System.Windows.Forms.Label ATKLabel;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label HealthPointLabel;
+        private System.Windows.Forms.Label ReqStyleLabel;
+        private System.Windows.Forms.Label HpLabel;
+        private System.Windows.Forms.Label AbilityNameLabel;
+        private System.Windows.Forms.Label AbilityLabel;
+        private System.Windows.Forms.Label ReqStyleValueLabel;
+        private System.Windows.Forms.Label HpValueLabel;
+        private System.Windows.Forms.Label DefValueLabel;
+        private System.Windows.Forms.Label AtkValueLabel;
+        private System.Windows.Forms.Button RemoveClothingButton;
+        private System.Windows.Forms.Button RemoveAllClothingButton;
+        private System.Windows.Forms.Label WearTypeLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox AllClothingItemsGroupBox;
+        private System.Windows.Forms.CheckBox Add99Checkbox;
+        private System.Windows.Forms.Button AddEachOfEveryClothingButton;
+        private System.Windows.Forms.Button AddClothingItemButton;
+        private System.Windows.Forms.ListView AllClothingItemsListView;
+        private System.Windows.Forms.ColumnHeader GlobalClthNameHeader;
+        private System.Windows.Forms.ColumnHeader GlobalClthIdHeader;
+        private System.Windows.Forms.NumericUpDown AmountNumericUpDown;
+        private System.Windows.Forms.Label AmountLabel;
     }
 }

@@ -48,8 +48,6 @@ namespace Scramble.Forms
             Serialize();
             SerializeGlobal();
             ReadyForUserInput = true;
-
-
         }
 
         private void Serialize()
@@ -391,7 +389,7 @@ namespace Scramble.Forms
 
             PinNameLabel.Text = PinName;
             BrandLabel.Text = Sukuranburu.GetGameString(PinBrand.Name);
-            PinImagePictureBox.Image = Sukuranburu.Get64x64PinImageList().Images[PinSprite];
+            PinImagePictureBox.Image = Sukuranburu.Get100x100PinImageList().Images[PinSprite];
             BrandPictureBox.Image = Sukuranburu.GetBrandImageList().Images[BrandSprite];
 
             RemovePinButton.Enabled = true;

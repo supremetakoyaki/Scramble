@@ -495,6 +495,11 @@ namespace Scramble
             return PinImageList_64x64;
         }
 
+        public ImageList Get100x100PinImageList()
+        {
+            return PinImageList_100x100;
+        }
+
         public ImageList Get128x128FashionImageList()
         {
             return FashionImageList_128x128;
