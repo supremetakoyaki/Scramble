@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NTwewyDb;
 using Scramble.Classes;
+using Scramble.GameData;
 
 namespace Scramble.Forms
 {
@@ -41,9 +42,13 @@ namespace Scramble.Forms
         {
             InitializeComponent();
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            
+            this.MyClothingInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
+            this.AllClothingItemsListView.SmallImageList = Sukuranburu.Get64x64FashionImageList();
+
 
             DisplayLanguageStrings();
+            Serialize();
+            SerializeGlobal();
 
             ReadyForUserInput = true;
         }
@@ -72,6 +77,71 @@ namespace Scramble.Forms
             this.AddClothingItemButton.Text = Sukuranburu.GetString("{AddClothing}");
             this.AddEachOfEveryClothingButton.Text = Sukuranburu.GetString("{AddEveryClothing}");
             this.Add99Checkbox.Text = Sukuranburu.GetString("{x99}");
+        }
+        private void Serialize()
+        {
+            InventoryClothes = new List<InventoryFashion>();
+            GenerateEquippedData();
+
+            //Clothing data
+            // int16 ID
+
+            int ClothesCount = SelectedSlot.RetrieveOffset_Int32(Offsets.ClothingInv_Count);
+
+            for (int Index = 0; Index < ClothesCount; Index++)
+            {
+                ushort ClothingId = SelectedSlot.RetrieveOffset_UInt16(Offsets.ClothingInv_First + (Index * 2));
+
+                if (ClothingId != EMPTY_CLOTHING_ID)
+                {
+                    InventoryFashion ClothingToAdd = new InventoryFashion(ClothingId);
+                    int invIndex = InventoryClothes.IndexOf(ClothingToAdd);
+
+                    if (invIndex == -1)
+                    {
+                        ClothingToAdd.Amount = 1;
+                        InventoryClothes.Add(ClothingToAdd);
+                    }
+                    else
+                    {
+                        if (InventoryClothes[invIndex].Amount < 99)
+                        {
+                            InventoryClothes[invIndex].Amount += 1;
+                        }
+                    }
+                }
+            }
+
+            foreach (InventoryFashion Piece in InventoryClothes)
+            {
+                InsertClothingToListView(Piece);
+            }
+        }
+
+        private void SerializeGlobal()
+        {
+
+        }
+
+        private void GenerateEquippedData()
+        {
+
+        }
+
+        private void InsertClothingToListView(InventoryFashion Piece)
+        {
+            string Name = Sukuranburu.GetGameString(Piece.BaseClothing.Name);
+            string Icon = string.Format("{0}.png", Piece.BaseClothing.Sprite);
+
+            ListViewItem ClothingToAdd = new ListViewItem(new string[]
+                   {
+                        Name,
+                        Piece.Id.ToString(),
+                        Sukuranburu.GetString(string.Format("{WearType{0}}", Piece.BaseClothing.SlotType))
+                   });
+
+            ClothingToAdd.ImageKey = Icon;
+            MyClothingInvListView.Items.Add(ClothingToAdd);
         }
     }
 }

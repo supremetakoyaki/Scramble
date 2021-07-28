@@ -91,7 +91,7 @@ namespace Scramble.Forms
                     }
                     else
                     {
-                        if (InventoryPins[Index].Amount < 100)
+                        if (InventoryPins[Index].Amount < 99)
                         {
                             InventoryPins[Index].Amount += 1;
                         }

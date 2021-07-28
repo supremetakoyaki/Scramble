@@ -25,16 +25,20 @@ namespace Scramble.Classes
             }
         }
 
+        public InventoryFashion(ushort Id)
+        {
+            this.Id = Id;
+        }
+
         public override bool Equals(object obj)
         {
             return obj is InventoryFashion fashion &&
-                   Id == fashion.Id &&
-                   Amount == fashion.Amount;
+                   Id == fashion.Id;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id, Amount);
+            return HashCode.Combine(Id);
         }
     }
 }
