@@ -40,6 +40,8 @@ namespace Scramble
         private GameLocaleManager GameLocManager;
         #endregion
 
+        public bool SwitchVersion = true;
+
         public ScrambleForm()
         {
             InitializeComponent();
@@ -549,6 +551,12 @@ namespace Scramble
 
         public string GetGameString(string Key)
         {
+            string Locale = GetGameLocaleManager().GetLocale(CurrentLanguage, Key);
+            if (Locale.StartsWith("<PF_"))
+            {
+                return GetGameLocaleManager().GetLocale(CurrentLanguage, string.Format("PF_{0}_{1}", SwitchVersion ? "SW" : "PS4", Key));
+            }
+
             return GetGameLocaleManager().GetLocale(CurrentLanguage, Key);
         }
 

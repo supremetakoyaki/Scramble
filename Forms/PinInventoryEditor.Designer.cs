@@ -144,7 +144,7 @@ namespace Scramble.Forms
             this.EquippedLabel.Name = "EquippedLabel";
             this.EquippedLabel.Size = new System.Drawing.Size(60, 15);
             this.EquippedLabel.TabIndex = 19;
-            this.EquippedLabel.Text = "Equipped:";
+            this.EquippedLabel.Text = "Equipado:";
             // 
             // MaxLevelLabel_Value
             // 

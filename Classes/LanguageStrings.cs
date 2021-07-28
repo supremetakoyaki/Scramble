@@ -79,7 +79,7 @@ namespace Scramble.Classes
             { "{MasterThisPin}", "Master this pin" },
             { "{AddPin}", "Add pin" },
             { "{x99}", "x99" },
-            { "{AddEachOfEveryPin}", "Add each of every pin" },
+            { "{AddEachOfEveryPin}", "Add one of each pin" },
 
             { "{WearType0}", "Headwear" },
             { "{WearType1}", "Top" },
@@ -99,7 +99,7 @@ namespace Scramble.Classes
             { "{RemoveThisClothing}", "Remove this piece" },
             { "{RemoveAllClothing}", "Remove all clothing" },
             { "{AddClothing}", "Add selected" },
-            { "{AddEveryClothing}", "Add each of every clothing" },
+            { "{AddEveryClothing}", "Add one of each piece" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
@@ -322,7 +322,7 @@ namespace Scramble.Classes
             { "{Atk:}", "ATQ:" },
             { "{Def:}", "DEF:" },
             { "{Hp:}", "PV:" },
-            { "{ReqStyle}", "ESTILO requerido:" },
+            { "{ReqStyle}", "ESTILO req.:" },
             { "{Ability:}", "Habilidad:" },
             { "{RemoveThisClothing}", "Quitar esta prenda" },
             { "{RemoveAllClothing}", "Quitar todas" },

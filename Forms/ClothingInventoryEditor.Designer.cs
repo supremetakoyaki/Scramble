@@ -143,7 +143,7 @@ namespace Scramble.Forms
             // 
             this.ReqStyleValueLabel.AutoSize = true;
             this.ReqStyleValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ReqStyleValueLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.ReqStyleValueLabel.ForeColor = System.Drawing.Color.RoyalBlue;
             this.ReqStyleValueLabel.Location = new System.Drawing.Point(243, 469);
             this.ReqStyleValueLabel.Name = "ReqStyleValueLabel";
             this.ReqStyleValueLabel.Size = new System.Drawing.Size(45, 15);
@@ -263,33 +263,37 @@ namespace Scramble.Forms
             // 
             // ReqStyleLabel
             // 
+            this.ReqStyleLabel.AutoSize = true;
             this.ReqStyleLabel.Location = new System.Drawing.Point(149, 469);
             this.ReqStyleLabel.Name = "ReqStyleLabel";
-            this.ReqStyleLabel.Size = new System.Drawing.Size(91, 15);
+            this.ReqStyleLabel.Size = new System.Drawing.Size(67, 15);
             this.ReqStyleLabel.TabIndex = 28;
             this.ReqStyleLabel.Text = "Req. STYLE:";
             // 
             // HpLabel
             // 
+            this.HpLabel.AutoSize = true;
             this.HpLabel.Location = new System.Drawing.Point(149, 454);
             this.HpLabel.Name = "HpLabel";
-            this.HpLabel.Size = new System.Drawing.Size(88, 15);
+            this.HpLabel.Size = new System.Drawing.Size(26, 15);
             this.HpLabel.TabIndex = 27;
             this.HpLabel.Text = "HP:";
             // 
             // DefenseLabel
             // 
+            this.DefenseLabel.AutoSize = true;
             this.DefenseLabel.Location = new System.Drawing.Point(149, 439);
             this.DefenseLabel.Name = "DefenseLabel";
-            this.DefenseLabel.Size = new System.Drawing.Size(88, 15);
+            this.DefenseLabel.Size = new System.Drawing.Size(30, 15);
             this.DefenseLabel.TabIndex = 26;
             this.DefenseLabel.Text = "DEF:";
             // 
             // ATKLabel
             // 
+            this.ATKLabel.AutoSize = true;
             this.ATKLabel.Location = new System.Drawing.Point(149, 424);
             this.ATKLabel.Name = "ATKLabel";
-            this.ATKLabel.Size = new System.Drawing.Size(88, 15);
+            this.ATKLabel.Size = new System.Drawing.Size(30, 15);
             this.ATKLabel.TabIndex = 25;
             this.ATKLabel.Text = "ATK:";
             // 
