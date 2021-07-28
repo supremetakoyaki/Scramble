@@ -73,9 +73,9 @@ namespace Scramble.Forms
                 if (PinId != EMPTY_PIN_ID)
                 {
                     ushort Level = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer + 2);
-                    if (Level == 0x81) // investigate this.
+                    if (Level > 0x80) // this means this pin hasn't been seen yet (says "New")
                     {
-                        Level = 1;
+                        Level = (ushort)(Level ^ 0x80);
                     }
 
                     ushort Experience = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer + 4);
