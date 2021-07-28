@@ -31,7 +31,7 @@ namespace Scramble.Forms
             }
         }
 
-        public const ushort EMPTY_CLOTHING_ID = 0x0000;
+        public const short EMPTY_CLOTHING_ID = -1;
         private List<InventoryFashion> InventoryClothes;
         private InventoryFashion SelectedClothing;
 
@@ -90,13 +90,17 @@ namespace Scramble.Forms
 
             for (int Index = 0; Index < ClothesCount; Index++)
             {
-                // you subtract 1 to the ID
+                int ClothingId = (int)(SelectedSlot.RetrieveOffset_UInt16(Offsets.ClothingInv_First + (Index * 2)));
+                ClothingId -= 1; // you subtract 1 to the ID
 
-                ushort ClothingId = (ushort)(SelectedSlot.RetrieveOffset_UInt16(Offsets.ClothingInv_First + (Index * 2)) - 1);
+                if (ClothingId > 0x8000)
+                {
+                    ClothingId = ClothingId - 0x8000; // this means the clothing is unseen (says "New" in the inventory).
+                }
 
                 if (ClothingId != EMPTY_CLOTHING_ID)
                 {
-                    InventoryFashion ClothingToAdd = new InventoryFashion(ClothingId);
+                    InventoryFashion ClothingToAdd = new InventoryFashion((ushort)ClothingId);
                     int invIndex = InventoryClothes.IndexOf(ClothingToAdd);
 
                     if (invIndex == -1)
