@@ -90,7 +90,9 @@ namespace Scramble.Forms
 
             for (int Index = 0; Index < ClothesCount; Index++)
             {
-                ushort ClothingId = SelectedSlot.RetrieveOffset_UInt16(Offsets.ClothingInv_First + (Index * 2));
+                // you subtract 1 to the ID
+
+                ushort ClothingId = (ushort)(SelectedSlot.RetrieveOffset_UInt16(Offsets.ClothingInv_First + (Index * 2)) - 1);
 
                 if (ClothingId != EMPTY_CLOTHING_ID)
                 {
@@ -137,7 +139,7 @@ namespace Scramble.Forms
                    {
                         Name,
                         Piece.Id.ToString(),
-                        Sukuranburu.GetString(string.Format("{WearType{0}}", Piece.BaseClothing.SlotType))
+                        Sukuranburu.GetString("{WearType" + Piece.BaseClothing.SlotType + "}")
                    });
 
             ClothingToAdd.ImageKey = Icon;
