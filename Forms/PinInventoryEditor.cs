@@ -119,19 +119,24 @@ namespace Scramble.Forms
         {
             var ItemDictionary = Sukuranburu.GetItemManager().GetItems();
             
-            foreach (PinItem Pin in ItemDictionary.Values)
+            foreach (IGameItem Item in ItemDictionary.Values)
             {
-                string PinName = Sukuranburu.GetGameString(Pin.Name);
-                string PinIcon = string.Format("{0}.png", Pin.Sprite);
-
-                ListViewItem PinToAdd = new ListViewItem(new string[]
+                if (Item is PinItem)
                 {
+                    PinItem Pin = Item as PinItem;
+
+                    string PinName = Sukuranburu.GetGameString(Pin.Name);
+                    string PinIcon = string.Format("{0}.png", Pin.Sprite);
+
+                    ListViewItem PinToAdd = new ListViewItem(new string[]
+                    {
                     PinName,
                     Pin.ParticularId.ToString()
-                });
+                    });
 
-                PinToAdd.ImageKey = PinIcon;
-                AllPinsListView.Items.Add(PinToAdd);
+                    PinToAdd.ImageKey = PinIcon;
+                    AllPinsListView.Items.Add(PinToAdd);
+                }
             }
         }
 
