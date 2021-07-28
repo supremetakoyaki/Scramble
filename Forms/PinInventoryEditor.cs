@@ -2,7 +2,7 @@
 using Scramble.GameData;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -36,6 +36,7 @@ namespace Scramble.Forms
         public PinInventoryEditor()
         {
             InitializeComponent();
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             this.MyPinInventoryView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
             this.AllPinsListView.SmallImageList = Sukuranburu.Get64x64PinImageList();
 
@@ -108,7 +109,7 @@ namespace Scramble.Forms
                 MyPinInventoryView.Select();
             }
 
-            //Sukuranburu.ShowNotice(DialogMessages.PinEditorExperimentalNotice);
+            //Sukuranburu.ShowNotice(GetString("DLG_PinEditorExperimentalNotice);
         }
 
         private void SerializeGlobal()
@@ -651,11 +652,11 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            if (Sukuranburu.ShowPrompt(DialogMessages.DeleteAllPinsAreYouSure))
+            if (Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_DeleteAllPinsAreYouSure")))
             {
                 if (!WarnedAboutZeroPins)
                 {
-                    Sukuranburu.ShowNotice(DialogMessages.ZeroPinsWarning);
+                    Sukuranburu.ShowNotice(Sukuranburu.GetString("DLG_ZeroPinsWarning"));
                     WarnedAboutZeroPins = true;
                 }
 
@@ -680,7 +681,7 @@ namespace Scramble.Forms
 
             if (AllPinsListView.SelectedIndices.Count < 1)
             {
-                Sukuranburu.ShowWarning(DialogMessages.NoPinToAddSelected);
+                Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_NoPinToAddSelected"));
                 ReadyForUserInput = true;
                 return;
             }
@@ -730,7 +731,7 @@ namespace Scramble.Forms
                 int Index = InventoryPins.IndexOf(PinToAdd);
                 if (Individual && InventoryPins[Index].Amount == 99)
                 {
-                    Sukuranburu.ShowWarning(DialogMessages.YouCantAddMorePins);
+                    Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_YouCantAddMorePins"));
                     ReadyForUserInput = true;
                     return;
                 }

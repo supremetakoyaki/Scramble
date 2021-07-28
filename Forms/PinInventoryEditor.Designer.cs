@@ -342,6 +342,7 @@ namespace Scramble.Forms
             this.PinIsMasteredHeader,
             this.AmountHeader});
             this.MyPinInventoryView.FullRowSelect = true;
+            this.MyPinInventoryView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.MyPinInventoryView.HideSelection = false;
             this.MyPinInventoryView.Location = new System.Drawing.Point(6, 22);
             this.MyPinInventoryView.MultiSelect = false;
@@ -362,9 +363,9 @@ namespace Scramble.Forms
             // PinIdHeader
             // 
             this.PinIdHeader.DisplayIndex = 0;
-            this.PinIdHeader.Text = "Pin ID";
+            this.PinIdHeader.Text = "ID";
             this.PinIdHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PinIdHeader.Width = 45;
+            this.PinIdHeader.Width = 40;
             // 
             // PinLevelHeader
             // 
@@ -382,13 +383,13 @@ namespace Scramble.Forms
             // 
             this.PinIsMasteredHeader.Text = "Mastered";
             this.PinIsMasteredHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PinIsMasteredHeader.Width = 67;
+            this.PinIsMasteredHeader.Width = 69;
             // 
             // AmountHeader
             // 
             this.AmountHeader.Text = "Amount";
             this.AmountHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.AmountHeader.Width = 67;
+            this.AmountHeader.Width = 69;
             // 
             // groupBox2
             // 

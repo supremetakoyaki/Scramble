@@ -51,11 +51,11 @@ namespace Scramble
             this.InitializedSlotCheckbox = new System.Windows.Forms.CheckBox();
             this.ExperienceLabel = new System.Windows.Forms.Label();
             this.ExpNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.LvLabel = new System.Windows.Forms.Label();
             this.OpenRecordEditButton = new System.Windows.Forms.Button();
             this.OpenSocialEditButton = new System.Windows.Forms.Button();
             this.OpenInvEditorButton = new System.Windows.Forms.Button();
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
+            this.LvLabel_Pre = new System.Windows.Forms.Label();
             this.OpenClothEditButton = new System.Windows.Forms.Button();
             this.PartyMember6_PictureBox = new System.Windows.Forms.PictureBox();
             this.OpenCharacterEditButton = new System.Windows.Forms.Button();
@@ -82,6 +82,9 @@ namespace Scramble
             this.GameSettingsEditorButton = new System.Windows.Forms.Button();
             this.AllCollectionIconsImageList_32x32 = new System.Windows.Forms.ImageList(this.components);
             this.MiscIconsImageList_32x32 = new System.Windows.Forms.ImageList(this.components);
+            this.SelectLanguageLabel = new System.Windows.Forms.Label();
+            this.LanguageSelectComboBox = new System.Windows.Forms.ComboBox();
+            this.LvLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -122,7 +125,7 @@ namespace Scramble
             this.SaveSlotsGroupBox.Controls.Add(this.SaveSlotsListBox);
             this.SaveSlotsGroupBox.Location = new System.Drawing.Point(12, 107);
             this.SaveSlotsGroupBox.Name = "SaveSlotsGroupBox";
-            this.SaveSlotsGroupBox.Size = new System.Drawing.Size(139, 198);
+            this.SaveSlotsGroupBox.Size = new System.Drawing.Size(139, 186);
             this.SaveSlotsGroupBox.TabIndex = 3;
             this.SaveSlotsGroupBox.TabStop = false;
             this.SaveSlotsGroupBox.Text = "Save Slots";
@@ -144,7 +147,7 @@ namespace Scramble
             "9"});
             this.SaveSlotsListBox.Location = new System.Drawing.Point(6, 22);
             this.SaveSlotsListBox.Name = "SaveSlotsListBox";
-            this.SaveSlotsListBox.Size = new System.Drawing.Size(127, 169);
+            this.SaveSlotsListBox.Size = new System.Drawing.Size(127, 154);
             this.SaveSlotsListBox.TabIndex = 4;
             this.SaveSlotsListBox.SelectedIndexChanged += new System.EventHandler(this.SaveSlotsListBox_SelectedIndexChanged);
             // 
@@ -183,12 +186,12 @@ namespace Scramble
             // 
             this.AboutLabel.AutoSize = true;
             this.AboutLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AboutLabel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.AboutLabel.Location = new System.Drawing.Point(12, 321);
+            this.AboutLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.AboutLabel.Location = new System.Drawing.Point(123, 71);
             this.AboutLabel.Name = "AboutLabel";
-            this.AboutLabel.Size = new System.Drawing.Size(96, 30);
+            this.AboutLabel.Size = new System.Drawing.Size(28, 15);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "Scramble ver.0.4 \nmade by T";
+            this.AboutLabel.Text = "v0.4";
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // MoneyLabel
@@ -228,10 +231,10 @@ namespace Scramble
             this.DifficultyCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DifficultyCombo.FormattingEnabled = true;
             this.DifficultyCombo.Items.AddRange(new object[] {
-            "Easy",
-            "Normal",
-            "Hard",
-            "Ultimate"});
+            "EASY",
+            "NORMAL",
+            "HARD",
+            "ULTIMATE"});
             this.DifficultyCombo.Location = new System.Drawing.Point(88, 91);
             this.DifficultyCombo.MaxDropDownItems = 4;
             this.DifficultyCombo.Name = "DifficultyCombo";
@@ -333,21 +336,11 @@ namespace Scramble
             this.ExpNumericUpDown.TabIndex = 16;
             this.ExpNumericUpDown.ValueChanged += new System.EventHandler(this.ExpNumericUpDown_ValueChanged);
             // 
-            // LvLabel
-            // 
-            this.LvLabel.AutoSize = true;
-            this.LvLabel.ForeColor = System.Drawing.Color.MediumBlue;
-            this.LvLabel.Location = new System.Drawing.Point(196, 129);
-            this.LvLabel.Name = "LvLabel";
-            this.LvLabel.Size = new System.Drawing.Size(39, 15);
-            this.LvLabel.TabIndex = 17;
-            this.LvLabel.Text = "Lv.100";
-            // 
             // OpenRecordEditButton
             // 
             this.OpenRecordEditButton.Location = new System.Drawing.Point(378, 134);
             this.OpenRecordEditButton.Name = "OpenRecordEditButton";
-            this.OpenRecordEditButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenRecordEditButton.Size = new System.Drawing.Size(160, 23);
             this.OpenRecordEditButton.TabIndex = 18;
             this.OpenRecordEditButton.Text = "Collection Editor";
             this.OpenRecordEditButton.UseVisualStyleBackColor = true;
@@ -358,7 +351,7 @@ namespace Scramble
             this.OpenSocialEditButton.Enabled = false;
             this.OpenSocialEditButton.Location = new System.Drawing.Point(378, 105);
             this.OpenSocialEditButton.Name = "OpenSocialEditButton";
-            this.OpenSocialEditButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenSocialEditButton.Size = new System.Drawing.Size(160, 23);
             this.OpenSocialEditButton.TabIndex = 19;
             this.OpenSocialEditButton.Text = "Social Editor";
             this.OpenSocialEditButton.UseVisualStyleBackColor = true;
@@ -367,7 +360,7 @@ namespace Scramble
             // 
             this.OpenInvEditorButton.Location = new System.Drawing.Point(378, 47);
             this.OpenInvEditorButton.Name = "OpenInvEditorButton";
-            this.OpenInvEditorButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenInvEditorButton.Size = new System.Drawing.Size(160, 23);
             this.OpenInvEditorButton.TabIndex = 20;
             this.OpenInvEditorButton.Text = "Pins Editor";
             this.OpenInvEditorButton.UseVisualStyleBackColor = true;
@@ -375,6 +368,7 @@ namespace Scramble
             // 
             // GeneralGroupBox
             // 
+            this.GeneralGroupBox.Controls.Add(this.LvLabel_Pre);
             this.GeneralGroupBox.Controls.Add(this.OpenClothEditButton);
             this.GeneralGroupBox.Controls.Add(this.PartyMember6_PictureBox);
             this.GeneralGroupBox.Controls.Add(this.OpenCharacterEditButton);
@@ -404,16 +398,26 @@ namespace Scramble
             this.GeneralGroupBox.Controls.Add(this.FpLabel);
             this.GeneralGroupBox.Location = new System.Drawing.Point(168, 107);
             this.GeneralGroupBox.Name = "GeneralGroupBox";
-            this.GeneralGroupBox.Size = new System.Drawing.Size(495, 249);
+            this.GeneralGroupBox.Size = new System.Drawing.Size(544, 249);
             this.GeneralGroupBox.TabIndex = 21;
             this.GeneralGroupBox.TabStop = false;
             this.GeneralGroupBox.Text = "This selected slot";
+            // 
+            // LvLabel_Pre
+            // 
+            this.LvLabel_Pre.AutoSize = true;
+            this.LvLabel_Pre.ForeColor = System.Drawing.Color.MediumBlue;
+            this.LvLabel_Pre.Location = new System.Drawing.Point(191, 127);
+            this.LvLabel_Pre.Name = "LvLabel_Pre";
+            this.LvLabel_Pre.Size = new System.Drawing.Size(21, 15);
+            this.LvLabel_Pre.TabIndex = 27;
+            this.LvLabel_Pre.Text = "Lv.";
             // 
             // OpenClothEditButton
             // 
             this.OpenClothEditButton.Location = new System.Drawing.Point(378, 76);
             this.OpenClothEditButton.Name = "OpenClothEditButton";
-            this.OpenClothEditButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenClothEditButton.Size = new System.Drawing.Size(160, 23);
             this.OpenClothEditButton.TabIndex = 26;
             this.OpenClothEditButton.Text = "Clothing Editor";
             this.OpenClothEditButton.UseVisualStyleBackColor = true;
@@ -432,7 +436,7 @@ namespace Scramble
             this.OpenCharacterEditButton.Enabled = false;
             this.OpenCharacterEditButton.Location = new System.Drawing.Point(378, 18);
             this.OpenCharacterEditButton.Name = "OpenCharacterEditButton";
-            this.OpenCharacterEditButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenCharacterEditButton.Size = new System.Drawing.Size(160, 23);
             this.OpenCharacterEditButton.TabIndex = 25;
             this.OpenCharacterEditButton.Text = "Character Editor";
             this.OpenCharacterEditButton.UseVisualStyleBackColor = true;
@@ -442,7 +446,7 @@ namespace Scramble
             this.OpenNoisepediaEditButton.Enabled = false;
             this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(378, 163);
             this.OpenNoisepediaEditButton.Name = "OpenNoisepediaEditButton";
-            this.OpenNoisepediaEditButton.Size = new System.Drawing.Size(111, 23);
+            this.OpenNoisepediaEditButton.Size = new System.Drawing.Size(160, 23);
             this.OpenNoisepediaEditButton.TabIndex = 24;
             this.OpenNoisepediaEditButton.Text = "Noisepedia Editor";
             this.OpenNoisepediaEditButton.UseVisualStyleBackColor = true;
@@ -501,7 +505,7 @@ namespace Scramble
             // 
             this.DumpSlotDataButton.Location = new System.Drawing.Point(424, 34);
             this.DumpSlotDataButton.Name = "DumpSlotDataButton";
-            this.DumpSlotDataButton.Size = new System.Drawing.Size(108, 23);
+            this.DumpSlotDataButton.Size = new System.Drawing.Size(132, 23);
             this.DumpSlotDataButton.TabIndex = 22;
             this.DumpSlotDataButton.Text = "Dump Slot Data";
             this.DumpSlotDataButton.UseVisualStyleBackColor = true;
@@ -511,7 +515,7 @@ namespace Scramble
             // 
             this.ImportSlotDataButton.Location = new System.Drawing.Point(424, 63);
             this.ImportSlotDataButton.Name = "ImportSlotDataButton";
-            this.ImportSlotDataButton.Size = new System.Drawing.Size(108, 23);
+            this.ImportSlotDataButton.Size = new System.Drawing.Size(132, 23);
             this.ImportSlotDataButton.TabIndex = 23;
             this.ImportSlotDataButton.Text = "Import Slot Data";
             this.ImportSlotDataButton.UseVisualStyleBackColor = true;
@@ -1799,9 +1803,9 @@ namespace Scramble
             // 
             this.GlobalGroupBox.Controls.Add(this.MiscFlagsEditorButton);
             this.GlobalGroupBox.Controls.Add(this.GameSettingsEditorButton);
-            this.GlobalGroupBox.Location = new System.Drawing.Point(546, 12);
+            this.GlobalGroupBox.Location = new System.Drawing.Point(562, 12);
             this.GlobalGroupBox.Name = "GlobalGroupBox";
-            this.GlobalGroupBox.Size = new System.Drawing.Size(117, 89);
+            this.GlobalGroupBox.Size = new System.Drawing.Size(150, 89);
             this.GlobalGroupBox.TabIndex = 24;
             this.GlobalGroupBox.TabStop = false;
             this.GlobalGroupBox.Text = "Global";
@@ -1811,7 +1815,7 @@ namespace Scramble
             this.MiscFlagsEditorButton.Enabled = false;
             this.MiscFlagsEditorButton.Location = new System.Drawing.Point(6, 51);
             this.MiscFlagsEditorButton.Name = "MiscFlagsEditorButton";
-            this.MiscFlagsEditorButton.Size = new System.Drawing.Size(105, 23);
+            this.MiscFlagsEditorButton.Size = new System.Drawing.Size(138, 23);
             this.MiscFlagsEditorButton.TabIndex = 1;
             this.MiscFlagsEditorButton.Text = "Misc. Editor";
             this.MiscFlagsEditorButton.UseVisualStyleBackColor = true;
@@ -1821,7 +1825,7 @@ namespace Scramble
             this.GameSettingsEditorButton.Enabled = false;
             this.GameSettingsEditorButton.Location = new System.Drawing.Point(6, 22);
             this.GameSettingsEditorButton.Name = "GameSettingsEditorButton";
-            this.GameSettingsEditorButton.Size = new System.Drawing.Size(105, 23);
+            this.GameSettingsEditorButton.Size = new System.Drawing.Size(138, 23);
             this.GameSettingsEditorButton.TabIndex = 0;
             this.GameSettingsEditorButton.Text = "Settings Editor";
             this.GameSettingsEditorButton.UseVisualStyleBackColor = true;
@@ -2611,11 +2615,48 @@ namespace Scramble
             this.MiscIconsImageList_32x32.Images.SetKeyName(4, "Item_icon_category_Next04.png");
             this.MiscIconsImageList_32x32.Images.SetKeyName(5, "Item_icon_category_Next05.png");
             // 
+            // SelectLanguageLabel
+            // 
+            this.SelectLanguageLabel.AutoSize = true;
+            this.SelectLanguageLabel.Location = new System.Drawing.Point(12, 327);
+            this.SelectLanguageLabel.Name = "SelectLanguageLabel";
+            this.SelectLanguageLabel.Size = new System.Drawing.Size(62, 15);
+            this.SelectLanguageLabel.TabIndex = 27;
+            this.SelectLanguageLabel.Text = "Language:";
+            // 
+            // LanguageSelectComboBox
+            // 
+            this.LanguageSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LanguageSelectComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LanguageSelectComboBox.FormattingEnabled = true;
+            this.LanguageSelectComboBox.Items.AddRange(new object[] {
+            "English",
+            "日本語",
+            "Español",
+            "Français"});
+            this.LanguageSelectComboBox.Location = new System.Drawing.Point(75, 324);
+            this.LanguageSelectComboBox.Name = "LanguageSelectComboBox";
+            this.LanguageSelectComboBox.Size = new System.Drawing.Size(76, 23);
+            this.LanguageSelectComboBox.TabIndex = 28;
+            this.LanguageSelectComboBox.TextChanged += new System.EventHandler(this.LanguageSelectComboBox_TextChanged);
+            // 
+            // LvLabel
+            // 
+            this.LvLabel.AutoSize = true;
+            this.LvLabel.ForeColor = System.Drawing.Color.MediumBlue;
+            this.LvLabel.Location = new System.Drawing.Point(218, 127);
+            this.LvLabel.Name = "LvLabel";
+            this.LvLabel.Size = new System.Drawing.Size(19, 15);
+            this.LvLabel.TabIndex = 17;
+            this.LvLabel.Text = "45";
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(675, 370);
+            this.ClientSize = new System.Drawing.Size(724, 370);
+            this.Controls.Add(this.LanguageSelectComboBox);
+            this.Controls.Add(this.SelectLanguageLabel);
             this.Controls.Add(this.GlobalGroupBox);
             this.Controls.Add(this.ImportSlotDataButton);
             this.Controls.Add(this.DumpSlotDataButton);
@@ -2671,7 +2712,6 @@ namespace Scramble
         private System.Windows.Forms.CheckBox InitializedSlotCheckbox;
         private System.Windows.Forms.Label ExperienceLabel;
         private System.Windows.Forms.NumericUpDown ExpNumericUpDown;
-        private System.Windows.Forms.Label LvLabel;
         private System.Windows.Forms.Button OpenRecordEditButton;
         private System.Windows.Forms.Button OpenSocialEditButton;
         private System.Windows.Forms.Button OpenInvEditorButton;
@@ -2702,6 +2742,10 @@ namespace Scramble
         private System.Windows.Forms.Button MiscFlagsEditorButton;
         private System.Windows.Forms.ImageList AllCollectionIconsImageList_32x32;
         private System.Windows.Forms.ImageList MiscIconsImageList_32x32;
+        private System.Windows.Forms.Label SelectLanguageLabel;
+        private System.Windows.Forms.ComboBox LanguageSelectComboBox;
+        private System.Windows.Forms.Label LvLabel_Pre;
+        private System.Windows.Forms.Label LvLabel;
     }
 }
 

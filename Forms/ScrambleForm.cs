@@ -2,8 +2,8 @@
 using Scramble.Forms;
 using Scramble.GameData;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -15,7 +15,7 @@ namespace Scramble
         public SaveFile OpenedSaveFile;
         public CollectionEditor RecordsEditor;
         public PinInventoryEditor PinInvEditor;
-        public FashionInventoryEditor ClothInvEditor;
+        public ClothingInventoryEditor ClothInvEditor;
 
         public SaveData SelectedSlot
         {
@@ -30,34 +30,84 @@ namespace Scramble
             }
         }
 
+        public LanguageStrings LangStrings;
+        public byte CurrentLanguage;
+
         public ScrambleForm()
         {
             InitializeComponent();
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
             this.DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
             this.Height = 148;
             this.Width = 309;
-            this.Text = "Scramble";
+
+            LangStrings = new LanguageStrings();
+            LanguageSelectComboBox.Text = "English";
+        }
+
+        public void DisplayLanguageStrings()
+        {
+            this.Text = OpenedSaveFile == null ? GetString("{ScrambleShortTitle}") : GetString("{ScrambleLongTitle}");
+            this.OpenSaveFileButton.Text = GetString("{OpenSaveFile}");
+            this.SaveChangesButton.Text = GetString("{SaveChanges}");
+
+            this.SaveSlotsGroupBox.Text = GetString("{SaveSlots}");
+            this.SaveSlotsListBox.Items.RemoveAt(0);
+            this.SaveSlotsListBox.Items.Insert(0, string.Format("0 ({0})", GetString("{Autosave}")));
+            this.SaveSlotsListBox.SelectedIndex = 0;
+
+            this.SelectLanguageLabel.Text = GetString("{Language}");
+
+            this.BackupCheckbox.Text = GetString("{BackupCheckbox}");
+            this.DumpSlotDataButton.Text = GetString("{DumpSlotData}");
+            this.ImportSlotDataButton.Text = GetString("{ImportSlotData}");
+            this.GlobalGroupBox.Text = GetString("{Global}");
+            this.GameSettingsEditorButton.Text = GetString("{SettingsEditor}");
+            this.MiscFlagsEditorButton.Text = GetString("{MiscEditor}");
+
+            this.GeneralGroupBox.Text = GetString("{ThisSelectedSlot}");
+            this.InitializedSlotCheckbox.Text = GetString("{InitializedSlotCheckbox}");
+            this.DateSavedLabel.Text = GetString("{DateAndTimeOfSave}");
+            this.DifficultyLabel.Text = GetString("{Difficulty}");
+            this.ExperienceLabel.Text = GetString("{Experience}");
+            this.CurrentLevelLabel.Text = GetString("{CurrentLevel}");
+            this.MoneyLabel.Text = GetString("{Money}");
+            this.FpLabel.Text = GetString("{FP}");
+            this.LvLabel_Pre.Text = GetString("{Lv}");
+            this.PartyMembersLabel.Text = GetString("{YourParty}");
+
+            this.OpenCharacterEditButton.Text = GetString("{CharacterEditor}");
+            this.OpenInvEditorButton.Text = GetString("{PinsEditor}");
+            this.OpenClothEditButton.Text = GetString("{ClothingEditor}");
+            this.OpenSocialEditButton.Text = GetString("{SocialEditor}");
+            this.OpenRecordEditButton.Text = GetString("{CollectionEditor}");
+            this.OpenNoisepediaEditButton.Text = GetString("{NoisepediaEditor}");
+        }
+
+        public string GetString(string Key)
+        {
+            return LangStrings.GetLanguageString(CurrentLanguage, Key);
         }
 
         public void ShowWarning(string Message)
         {
-            MessageBox.Show(Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show(Message, GetString("{Warning}"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         public void ShowNotice(string Message)
         {
-            MessageBox.Show(Message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(Message, GetString("{Notice}"), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public bool ShowPrompt(string Message)
         {
-            return MessageBox.Show(Message, "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            return MessageBox.Show(Message, GetString("{Hey}"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
         private void OpenSaveFileButton_Click(object sender, EventArgs e)
         {
-            if (OpenedSaveFile != null && ShowPrompt(DialogMessages.SaveDataAlreadyOpened) == false)
+            if (OpenedSaveFile != null && ShowPrompt(GetString("DLG_SaveDataAlreadyOpened}")) == false)
             {
                 return;
             }
@@ -68,7 +118,7 @@ namespace Scramble
             {
                 if (!File.Exists(Dialog.FileName))
                 {
-                    ShowWarning(DialogMessages.FileNotFound);
+                    ShowWarning(GetString("DLG_FileNotFound"));
                     return;
                 }
 
@@ -79,12 +129,11 @@ namespace Scramble
 
                 if (Result == 0) // invalid file size
                 {
-                    ShowWarning(DialogMessages.InvalidSaveFile);
+                    ShowWarning(GetString("DLG_InvalidSaveFile"));
                     OpenedSaveFile = null;
 
                     this.Height = 148;
                     this.Width = 309;
-                    this.Text = "Scramble";
                     return;
                 }
 
@@ -99,7 +148,7 @@ namespace Scramble
                 }
 
                 this.Height = 409;
-                this.Width = 691;
+                this.Width = 740;
                 this.Text = "Scramble — NEO TWEWY Save Editor";
             }
         }
@@ -214,7 +263,7 @@ namespace Scramble
 
         private void SaveSlotsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (OpenedSaveFile != null)
+            if (SaveSlotsListBox.SelectedIndex != -1 && OpenedSaveFile != null)// && SelectedSlot.Id != SaveSlotsListBox.SelectedIndex)
             {
                 SelectSlot(SaveSlotsListBox.SelectedIndex);
             }
@@ -260,7 +309,7 @@ namespace Scramble
         {
             if (BackupCheckbox.Checked == false)
             {
-                if (ShowPrompt(DialogMessages.BackupCheckboxNotChecked) == false)
+                if (ShowPrompt(GetString("DLG_BackupCheckboxNotChecked")) == false)
                 {
                     return;
                 }
@@ -273,14 +322,14 @@ namespace Scramble
                 }
                 else
                 {
-                    ShowWarning(DialogMessages.BackupNotPossibleFileNotFound);
+                    ShowWarning(GetString("DLG_BackupNotPossibleFileNotFound"));
                 }
             }
 
             if (File.Exists(OpenedSaveFile.FilePath))
             {
                 File.WriteAllBytes(OpenedSaveFile.FilePath, OpenedSaveFile.ToBytes());
-                ShowNotice(DialogMessages.SaveDataSaved);
+                ShowNotice(GetString("DLG_SaveDataSaved"));
             }
             else
             {
@@ -292,7 +341,7 @@ namespace Scramble
                 {
                     OpenedSaveFile.FilePath = NewDialog.FileName;
                     File.WriteAllBytes(OpenedSaveFile.FilePath, OpenedSaveFile.ToBytes());
-                    ShowNotice(DialogMessages.SaveDataSaved);
+                    ShowNotice(GetString("DLG_SaveDataSaved"));
                 }
             }
         }
@@ -302,7 +351,7 @@ namespace Scramble
             SelectedSlot.UpdateOffset_Int32(Offsets.Experience, (int)ExpNumericUpDown.Value);
 
             int TheoreticalLevel = LevelTable.GetLevel((int)ExpNumericUpDown.Value);
-            LvLabel.Text = "Lv." + TheoreticalLevel;
+            LvLabel.Text = TheoreticalLevel.ToString();
 
             if (CurrentLevelNUpDown.Value > TheoreticalLevel)
             {
@@ -358,7 +407,7 @@ namespace Scramble
             if (DumpDialog.ShowDialog() == DialogResult.OK)
             {
                 SelectedSlot.DumpData(DumpDialog.FileName);
-                ShowNotice(DialogMessages.SaveSlotDumped);
+                ShowNotice(GetString("DLG_SaveSlotDumped"));
             }
         }
 
@@ -375,11 +424,11 @@ namespace Scramble
 
                 if (ImportedData.Length != 319952)
                 {
-                    ShowWarning(DialogMessages.InvalidSlotFile);
+                    ShowWarning(GetString("DLG_InvalidSlotFile"));
                     return;
                 }
 
-                if (ShowPrompt(DialogMessages.OverwriteSlotPrompt))
+                if (ShowPrompt(GetString("DLG_OverwriteSlotPrompt")))
                 {
                     SelectedSlot.ImportData(ImportedData);
                     SelectSlot(SelectedSlot.Id);
@@ -395,7 +444,7 @@ namespace Scramble
 
         private void OpenClothEditButton_Click(object sender, EventArgs e)
         {
-            ClothInvEditor = new FashionInventoryEditor();
+            ClothInvEditor = new ClothingInventoryEditor();
             ClothInvEditor.ShowDialog();
         }
 
@@ -437,8 +486,12 @@ namespace Scramble
         {
             return FoodImageList_64x64;
         }
-
-
         #endregion
+
+        private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)
+        {
+            CurrentLanguage = (byte)LanguageSelectComboBox.SelectedIndex;
+            DisplayLanguageStrings();
+        }
     }
 }

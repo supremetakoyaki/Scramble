@@ -1,6 +1,7 @@
 ﻿using Scramble.Classes;
 using Scramble.GameData;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Scramble.Forms
@@ -26,6 +27,7 @@ namespace Scramble.Forms
         public CollectionEditor()
         {
             InitializeComponent();
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             this.RecordInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
 
             Serialize();
@@ -49,14 +51,9 @@ namespace Scramble.Forms
 
                 ListViewItem ItemToAdd = new ListViewItem(new string[] { Name, SaveId.ToString(), ItemId.ToString(), TypeStr, Unlocked ? "yes" : "no", Flag ? "yes" : "no" });
                 ItemToAdd.ImageKey = ItemTable.GetSpriteForGlobalItem(ItemId) + ".png";
-                if (ItemToAdd.ImageKey == ".png")
-                {
-                    MessageBox.Show(ItemId + " - " + Name + " - " + ItemToAdd.ImageKey);
-                }
-                RecordInvListView.Items.Add(ItemToAdd);
-            }
 
-            
+                RecordInvListView.Items.Add(ItemToAdd);
+            }            
         }
 
         private void UnlockAllButton_Click(object sender, EventArgs e)
