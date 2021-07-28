@@ -49,13 +49,13 @@ namespace Scramble
             this.Height = 148;
             this.Width = 309;
 
-            LangStrings = new LanguageStrings();
-            LanguageSelectComboBox.Text = "English";
-
             // NEO TWEWY Database instances
             ItmManager = new ItemManager();
             CharaManager = new CharacterManager();
             GameLocManager = new GameLocaleManager();
+
+            LangStrings = new LanguageStrings();
+            LanguageSelectComboBox.Text = "English";
         }
 
         public void DisplayLanguageStrings()
@@ -95,6 +95,17 @@ namespace Scramble
             this.OpenSocialEditButton.Text = GetString("{SocialEditor}");
             this.OpenRecordEditButton.Text = GetString("{CollectionEditor}");
             this.OpenNoisepediaEditButton.Text = GetString("{NoisepediaEditor}");
+
+            this.DifficultyCombo.Items.Clear();
+            for (byte i = 1; i < 5; i++)
+            {
+                this.DifficultyCombo.Items.Add(GetGameString(string.Format("Setting_Difficulty{0}", i.ToString("D2"))));
+            }
+
+            if (SelectedSlot != null)
+            {
+                this.DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
+            }
         }
 
         public string GetString(string Key)
@@ -119,7 +130,7 @@ namespace Scramble
 
         private void OpenSaveFileButton_Click(object sender, EventArgs e)
         {
-            if (OpenedSaveFile != null && ShowPrompt(GetString("DLG_SaveDataAlreadyOpened}")) == false)
+            if (OpenedSaveFile != null && ShowPrompt(GetString("DLG_SaveDataAlreadyOpened")) == false)
             {
                 return;
             }
@@ -288,7 +299,10 @@ namespace Scramble
 
         private void DifficultyCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectedSlot.UpdateOffset_Byte(Offsets.Difficulty, (byte)DifficultyCombo.SelectedIndex);
+            if (DifficultyCombo.SelectedIndex != 1)
+            {
+                SelectedSlot.UpdateOffset_Byte(Offsets.Difficulty, (byte)DifficultyCombo.SelectedIndex);
+            }
         }
 
         private void CurrentLevelNUpDown_ValueChanged(object sender, EventArgs e)
@@ -525,6 +539,11 @@ namespace Scramble
         public string GetGameString(string Key)
         {
             return GetGameLocaleManager().GetLocale(CurrentLanguage, Key);
+        }
+
+        public string GetReverseString(string Value)
+        {
+            return GetGameLocaleManager().ReverseLookup(CurrentLanguage, Value);
         }
         #endregion
     }

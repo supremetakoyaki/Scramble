@@ -1,4 +1,4 @@
-﻿using Scramble.GameData;
+﻿using NTwewyDb;
 using System.Collections.Generic;
 
 namespace Scramble.Classes
@@ -22,6 +22,14 @@ namespace Scramble.Classes
             get
             {
                 return Program.Sukuranburu.GetCharacterManager().GetCharacterName(CharacterId);
+            }
+        }
+
+        public Character BaseCharacter
+        {
+            get
+            {
+                return Program.Sukuranburu.GetCharacterManager().GetCharacter(CharacterId);
             }
         }
 

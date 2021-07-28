@@ -40,6 +40,8 @@ namespace Scramble.Classes
             { "{CollectionEditor}", "Collection Editor" },
             { "{NoisepediaEditor}", "Noisepedia Editor" },
 
+            {"{NoOne}", "(no one)" },
+
             // Pin Editor
 
 
@@ -99,7 +101,9 @@ namespace Scramble.Classes
             { "{ClothingEditor}", "ファッションのエディタ" },
             { "{SocialEditor}", "ソーシャルのエディタ" },
             { "{CollectionEditor}", "コレクショのエディタ" },
-            { "{NoisepediaEditor}", "エネミーのエディタ" }
+            { "{NoisepediaEditor}", "エネミーのエディタ" },
+
+            {"{NoOne}", "（誰も）" },
 
             // Pin Editor
 
@@ -148,6 +152,8 @@ namespace Scramble.Classes
             { "{SocialEditor}", "Editar social" },
             { "{CollectionEditor}", "Editar colecciones" },
             { "{NoisepediaEditor}", "Editar ruidopedia" },
+
+            {"{NoOne}", "(nadie)" },
 
             // Pin Editor
 
@@ -210,7 +216,9 @@ namespace Scramble.Classes
             { "{SocialEditor}", "Éditer social" },
             { "{CollectionEditor}", "Éditer collection" },
             { "{NoisepediaEditor}", "Éditer échopédie" },
-            
+
+            {"{NoOne}", "(personne)" },
+
             // Pin Editor
 
 

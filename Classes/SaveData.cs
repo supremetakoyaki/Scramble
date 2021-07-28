@@ -126,11 +126,13 @@ namespace Scramble.Classes
             return this.PartyMembers;
         }
 
-        public PartyMember GetPartyMemberByName(string Name)
+        public PartyMember GetPartyMemberByNameValue(string NameValue)
         {
+            string NameKey = Program.Sukuranburu.GetReverseString(NameValue);
+
             foreach (PartyMember Member in PartyMembers.Values)
             {
-                if (Member.CharacterName == Name)
+                if (Member.CharacterName == NameKey)
                 {
                     return Member;
                 }
@@ -144,11 +146,11 @@ namespace Scramble.Classes
         /// </summary>
         /// <param name="Id">Member ID</param>
         /// <returns></returns>
-        public string GetPartyMemberNameWithMemberId(int Id)
+        public string GetPartyMemberNameWithMemberId(int MemberId)
         {
             foreach (PartyMember Member in PartyMembers.Values)
             {
-                if (Member.Id == Id)
+                if (Member.Id == MemberId)
                 {
                     return Member.CharacterName;
                 }

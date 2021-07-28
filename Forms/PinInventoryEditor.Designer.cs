@@ -137,7 +137,7 @@ namespace Scramble.Forms
             this.EquippedByCharacterComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EquippedByCharacterComboBox.FormattingEnabled = true;
             this.EquippedByCharacterComboBox.Items.AddRange(new object[] {
-            "(no one)"});
+            Program.Sukuranburu.GetString("{NoOne}")});
             this.EquippedByCharacterComboBox.Location = new System.Drawing.Point(261, 567);
             this.EquippedByCharacterComboBox.Name = "EquippedByCharacterComboBox";
             this.EquippedByCharacterComboBox.Size = new System.Drawing.Size(127, 23);

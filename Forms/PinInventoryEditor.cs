@@ -144,7 +144,7 @@ namespace Scramble.Forms
         {
             foreach (PartyMember Member in Sukuranburu.SelectedSlot.GetPartyMembers().Values)
             {
-                this.EquippedByCharacterComboBox.Items.Add(Member.CharacterName);
+                this.EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetGameString(Member.CharacterName));
             }
         }
 
@@ -166,7 +166,7 @@ namespace Scramble.Forms
             this.EquippedDeckComboBox.Enabled = true;
             this.EquippedByCharacterComboBox.Enabled = true;
             this.EquippedDeckComboBox.SelectedIndex = FirstDeck;
-            this.EquippedByCharacterComboBox.Text = Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId);
+            this.EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId));
 
             this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
         }
@@ -184,27 +184,27 @@ namespace Scramble.Forms
             if (DeckId == 0)
             {
                 this.EquippedByCharacterComboBox.Enabled = false;
-                this.EquippedByCharacterComboBox.Text = "(no one)";
+                this.EquippedByCharacterComboBox.Text = Sukuranburu.GetString("{NoOne}");
                 this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
             }
             else
             {
                 byte MemberId = SelectedPin.DecksWithThisPin[DeckId];
                 this.EquippedByCharacterComboBox.Enabled = true;
-                this.EquippedByCharacterComboBox.Text = Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId);
+                this.EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId));
                 this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
             }
 
         }
 
-        private string GetCharacterIconForPartyMember(string CharacterName)
+        private string GetCharacterIconForPartyMember(string CharacterNameValue)
         {
-            if (CharacterName == "(no one)" || string.IsNullOrWhiteSpace(CharacterName))
+            if (CharacterNameValue == Sukuranburu.GetString("{NoOne}") || string.IsNullOrWhiteSpace(CharacterNameValue))
             {
                 return "0.png";
             }
 
-            PartyMember Member = Sukuranburu.SelectedSlot.GetPartyMemberByName(CharacterName);
+            PartyMember Member = Sukuranburu.SelectedSlot.GetPartyMemberByNameValue(CharacterNameValue);
             if (Member != null)
             {
                 return Member.CharacterId + ".png";
@@ -792,7 +792,7 @@ namespace Scramble.Forms
                 ReadyForUserInput = true;
                 return;
             }
-            else if (EquippedByCharacterComboBox.Text == "(no one)")
+            else if (EquippedByCharacterComboBox.Text == Sukuranburu.GetString("{NoOne}"))
             {
                 if (SelectedPin.DecksWithThisPin != null)
                 {
@@ -824,7 +824,7 @@ namespace Scramble.Forms
                 SelectedPin.DecksWithThisPin = new Dictionary<byte, byte>();
             }
 
-            PartyMember NewMember = Sukuranburu.SelectedSlot.GetPartyMemberByName(EquippedByCharacterComboBox.Text);
+            PartyMember NewMember = Sukuranburu.SelectedSlot.GetPartyMemberByNameValue(EquippedByCharacterComboBox.Text);
             InventoryPin NewMember_PreviouslyEquippedPin = InventoryPins.FirstOrDefault(p 
                => p.DecksWithThisPin != null
                && p.DecksWithThisPin.ContainsKey(DeckId)
