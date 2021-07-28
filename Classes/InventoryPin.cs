@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NTwewyDb;
+using System;
 using System.Collections.Generic;
 
 namespace Scramble.Classes
@@ -33,6 +34,14 @@ namespace Scramble.Classes
         {
             get;
             set;
+        }
+
+        public PinItem BasePin
+        {
+            get
+            {
+                return Program.Sukuranburu.GetItemManager().GetPinItem(PinId);
+            }
         }
 
         public InventoryPin(ushort PinId, ushort Level, ushort Experience)

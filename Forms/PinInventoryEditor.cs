@@ -1,4 +1,5 @@
-﻿using Scramble.Classes;
+﻿using NTwewyDb;
+using Scramble.Classes;
 using Scramble.GameData;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using System.Windows.Forms;
 
 namespace Scramble.Forms
 {
+    // JULY 28, 2021: Since the new database, this class requires optimization. I will do it in the future.
+
     public partial class PinInventoryEditor : Form
     {
         public SaveData SelectedSlot
@@ -114,17 +117,17 @@ namespace Scramble.Forms
 
         private void SerializeGlobal()
         {
-            var AllPins = ItemTable.GetPinDictionary();
+            var ItemDictionary = Sukuranburu.GetItemManager().GetItems();
             
-            foreach (int PinId in AllPins.Keys)
+            foreach (PinItem Pin in ItemDictionary.Values)
             {
-                string PinName = ItemTable.GetPinNameWithPinId(PinId);
-                string PinIcon = ItemTable.GetPinSpriteWithPinId(PinId) + ".png";
+                string PinName = Sukuranburu.GetGameString(Pin.Name);
+                string PinIcon = string.Format("{0}.png", Pin.Sprite);
 
                 ListViewItem PinToAdd = new ListViewItem(new string[]
                 {
                     PinName,
-                    PinId.ToString()
+                    Pin.ParticularId.ToString()
                 });
 
                 PinToAdd.ImageKey = PinIcon;
@@ -145,7 +148,7 @@ namespace Scramble.Forms
             if (SelectedPin == null || SelectedPin.DecksWithThisPin == null || SelectedPin.DecksWithThisPin.Count < 1)
             {
                 this.EquippedDeckComboBox.SelectedIndex = 0;
-                this.EquippedDeckComboBox.Enabled = SelectedPin != null && ItemTable.PinIsMasterable(SelectedPin.PinId);
+                this.EquippedDeckComboBox.Enabled = SelectedPin != null && Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.PinId);
                 this.EquippedByCharacterComboBox.Enabled = false;
                 this.EquippedByCharacterComboBox.SelectedIndex = 0;
                 this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];//CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.SelectedValue)];
@@ -276,11 +279,11 @@ namespace Scramble.Forms
 
         private void InsertPinToListView(InventoryPin Pin)
         {
-            string Name = ItemTable.GetPinNameWithPinId(Pin.PinId);
-            string Icon = ItemTable.GetPinSpriteWithPinId(Pin.PinId) + ".png";
+            string Name = Sukuranburu.GetGameString(Pin.BasePin.Name);
+            string Icon = string.Format("{0}.png", Pin.BasePin.Sprite);
 
             string MasteredSymbol = "—";
-            if (ItemTable.PinIsMasterable(Pin.PinId))
+            if (Sukuranburu.GetItemManager().PinIsMasterable(Pin.BasePin))
             {
                 MasteredSymbol = PinIsMastered(Pin.PinId, (byte)Pin.Level) ? "★" : "no";
             }
@@ -334,14 +337,14 @@ namespace Scramble.Forms
             InventoryPin Pin = InventoryPins[MyPinInventoryView.SelectedIndices[0]];
             SelectedPin = Pin;
 
-            byte BrandId = ItemTable.GetPinBrandWithPinId(Pin.PinId);
+            Brand PinBrand = Sukuranburu.GetItemManager().GetBrand(Pin.BasePin.Brand);
 
-            string PinName = ItemTable.GetPinNameWithPinId(Pin.PinId);
-            string PinSprite = ItemTable.GetPinSpriteWithPinId(Pin.PinId) + ".png";
-            string BrandSprite = ItemTable.GetBrandSprite(BrandId) + ".png";
+            string PinName = Sukuranburu.GetGameString(Pin.BasePin.Name);
+            string PinSprite = string.Format("{0}.png", Pin.BasePin.Sprite);
+            string BrandSprite = string.Format("{0}.png", PinBrand.Sprite);
 
             PinNameLabel.Text = PinName;
-            BrandLabel.Text = ItemTable.GetBrandName(BrandId);
+            BrandLabel.Text = Sukuranburu.GetGameString(PinBrand.Name);
             PinImagePictureBox.Image = Sukuranburu.Get64x64PinImageList().Images[PinSprite];
             BrandPictureBox.Image = Sukuranburu.GetBrandImageList().Images[BrandSprite];
 
@@ -352,9 +355,9 @@ namespace Scramble.Forms
             ExperienceNUpDown.Enabled = true;
             PinAmountUpDown.Enabled = true;
 
-            MaxLevelLabel_Value.Text = ItemTable.GetPinMaxLevelWithPinId(Pin.PinId).ToString();
+            MaxLevelLabel_Value.Text = Pin.BasePin.MaxLevel.ToString();
 
-            if (ItemTable.PinIsMasterable(Pin.PinId))
+            if (Sukuranburu.GetItemManager().PinIsMasterable(Pin.BasePin))
             {
                 MasterPinButton.Enabled = true;
 
@@ -387,7 +390,7 @@ namespace Scramble.Forms
 
         private bool PinIsMastered(ushort PinId, byte Level)
         {
-            return ItemTable.GetPinMaxLevelWithPinId(PinId) == Level && ItemTable.PinIsMasterable(PinId);
+            return Sukuranburu.GetItemManager().GetPinItem(PinId).MaxLevel == Level && Sukuranburu.GetItemManager().PinIsMasterable(PinId);
         }
 
         private void RemovePinButton_Click(object sender, EventArgs e)
@@ -460,7 +463,7 @@ namespace Scramble.Forms
 
             // Check for validity
             byte LevelToSet = (byte)PinLevelNUpDown.Value;
-            byte MaxPossibleLevel = ItemTable.GetPinMaxLevelWithPinId(SelectedPin.PinId);
+            byte MaxPossibleLevel = SelectedPin.BasePin.MaxLevel;
 
             if (LevelToSet > MaxPossibleLevel)
             {
@@ -469,8 +472,8 @@ namespace Scramble.Forms
             }
 
             ushort ExperienceToSet = (ushort)ExperienceNUpDown.Value;
-            int ReqExperienceAtThisLevel = ItemTable.GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, LevelToSet);
-            int MaxPossibleExperience = ItemTable.GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, MaxPossibleLevel);
+            int ReqExperienceAtThisLevel = Sukuranburu.GetItemManager().GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, LevelToSet);
+            int MaxPossibleExperience = Sukuranburu.GetItemManager().GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, MaxPossibleLevel);
 
             if (ExperienceToSet > MaxPossibleExperience)
             {
@@ -483,7 +486,7 @@ namespace Scramble.Forms
                 ExperienceNUpDown.Value = ExperienceToSet;
             }
 
-            if (ItemTable.PinIsMasterable(SelectedPin.PinId))
+            if (Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.BasePin))
             {
                 if (PinIsMastered(SelectedPin.PinId, (byte)PinLevelNUpDown.Value))
                 {
@@ -523,8 +526,8 @@ namespace Scramble.Forms
             // Check for validity
             byte LevelToSet = (byte)PinLevelNUpDown.Value;
             ushort ExperienceToSet = (ushort)ExperienceNUpDown.Value;
-            byte MaxPossibleLevel = ItemTable.GetPinMaxLevelWithPinId(SelectedPin.PinId);
-            ushort MaxPossibleExperience = (ushort)ItemTable.GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, MaxPossibleLevel);
+            byte MaxPossibleLevel = SelectedPin.BasePin.MaxLevel;
+            ushort MaxPossibleExperience = Sukuranburu.GetItemManager().GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, MaxPossibleLevel);
 
             if (ExperienceToSet >= MaxPossibleExperience)
             {
@@ -533,13 +536,13 @@ namespace Scramble.Forms
             }
             else
             {
-                LevelToSet = ItemTable.GetPinLevelWithPinIdAndExperience(SelectedPin.PinId, (short)ExperienceToSet);
+                LevelToSet = Sukuranburu.GetItemManager().GetPinLevelWithPinIdAndExperience(SelectedPin.PinId, ExperienceToSet);
             }
 
             ExperienceNUpDown.Value = ExperienceToSet;
             PinLevelNUpDown.Value = LevelToSet;
 
-            if (ItemTable.PinIsMasterable(SelectedPin.PinId))
+            if (Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.BasePin))
             {
                 if (PinIsMastered(SelectedPin.PinId, (byte)PinLevelNUpDown.Value))
                 {
@@ -571,13 +574,13 @@ namespace Scramble.Forms
                 return;
             }
 
-            byte MaxPossibleLevel = ItemTable.GetPinMaxLevelWithPinId(SelectedPin.PinId);
-            ushort MaxPossibleExperience = (ushort)ItemTable.GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, MaxPossibleLevel);
+            byte MaxPossibleLevel = SelectedPin.BasePin.MaxLevel;
+            ushort MaxPossibleExperience = Sukuranburu.GetItemManager().GetPinExperienceWithPinIdAndLevel(SelectedPin.PinId, MaxPossibleLevel);
 
             ExperienceNUpDown.Value = MaxPossibleExperience;
             PinLevelNUpDown.Value = MaxPossibleLevel;
 
-            if (ItemTable.PinIsMasterable(SelectedPin.PinId))
+            if (Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.BasePin))
             {
                 if (PinIsMastered(SelectedPin.PinId, (byte)PinLevelNUpDown.Value))
                 {
@@ -604,7 +607,7 @@ namespace Scramble.Forms
             MyPinInventoryView.Items[Index].SubItems[2].Text = SelectedPin.Level.ToString();
             MyPinInventoryView.Items[Index].SubItems[3].Text = SelectedPin.Experience.ToString();
 
-            if (ItemTable.PinIsMasterable(SelectedPin.PinId))
+            if (Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.PinId))
             {
                 MyPinInventoryView.Items[Index].SubItems[4].Text = PinIsMastered(SelectedPin.PinId, (byte)SelectedPin.Level) ? "★" : "no";
             }
@@ -714,14 +717,15 @@ namespace Scramble.Forms
         private void AddPin(ListViewItem Item, bool Individual) //individual= adding this pin through "Add pin" button.
         {
             ushort PinId = Convert.ToUInt16(Item.SubItems[1].Text);
+            PinItem Pin = Sukuranburu.GetItemManager().GetPinItem(PinId);
 
             ushort Level = 1;
             ushort Experience = 0;
 
-            if (ItemTable.PinIsMasterable(PinId) && AddedPinIsMasteredCheckbox.Checked)
+            if (Sukuranburu.GetItemManager().PinIsMasterable(Pin) && AddedPinIsMasteredCheckbox.Checked)
             {
-                Level = ItemTable.GetPinMaxLevelWithPinId(PinId);
-                Experience = (ushort)ItemTable.GetPinExperienceWithPinIdAndLevel(PinId, (byte)Level);
+                Level = Pin.MaxLevel;
+                Experience = Sukuranburu.GetItemManager().GetPinExperienceWithPinIdAndLevel(PinId, (byte)Level);
             }
 
             InventoryPin PinToAdd = new InventoryPin(PinId, Level, Experience);

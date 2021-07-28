@@ -22,6 +22,8 @@ namespace Scramble.Classes
 
         private const int SAVE_LENGTH = 3200512;
 
+        private const int PS4_ENCRYPTED_LENGTH = 6422528;
+
         public SaveFile(string FilePath, byte[] File, out byte Result)
         {
             if (File.Length != SAVE_LENGTH)

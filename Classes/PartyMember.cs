@@ -21,7 +21,7 @@ namespace Scramble.Classes
         {
             get
             {
-                return CharacterTable.GetCharacterName(CharacterId);
+                return Program.Sukuranburu.GetCharacterManager().GetCharacterName(CharacterId);
             }
         }
 

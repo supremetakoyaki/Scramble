@@ -1,4 +1,5 @@
-﻿using Scramble.Classes;
+﻿using NTwewyDb;
+using Scramble.Classes;
 using Scramble.GameData;
 using System;
 using System.Drawing;
@@ -35,22 +36,23 @@ namespace Scramble.Forms
 
         public void Serialize()
         {
-            var RecordDic = ItemTable.GetRecordDictionary();
+            var RecordDictionary = Sukuranburu.GetItemManager().GetSaveIndexes();
             
-            foreach (int Key in RecordDic.Keys)
+            foreach (int SaveId in RecordDictionary.Keys)
             {
-                int SaveId = Key;
-                int ItemId = RecordDic[Key];
-                string Name = ItemTable.GetItemName(ItemId);
-                string TypeStr = ItemTable.GetItemType(ItemId).ToString();
+                ushort GlobalId = RecordDictionary[SaveId];
+                IGameItem Item = Sukuranburu.GetItemManager().GetItem(GlobalId);
+
+                string Name = Sukuranburu.GetGameString(Item.Name);
+                string TypeStr = Item.Type.ToString();
 
                 int CurrentPointer = Offsets.RecordInv_First + (SaveId * 2);
 
                 bool Unlocked = SelectedSlot.RetrieveOffset_Byte(CurrentPointer) == 1;
                 bool Flag = SelectedSlot.RetrieveOffset_Byte(CurrentPointer + 1) == 1;
 
-                ListViewItem ItemToAdd = new ListViewItem(new string[] { Name, SaveId.ToString(), ItemId.ToString(), TypeStr, Unlocked ? "yes" : "no", Flag ? "yes" : "no" });
-                ItemToAdd.ImageKey = ItemTable.GetSpriteForGlobalItem(ItemId) + ".png";
+                ListViewItem ItemToAdd = new ListViewItem(new string[] { Name, SaveId.ToString(), GlobalId.ToString(), TypeStr, Unlocked ? "yes" : "no", Flag ? "yes" : "no" });
+                ItemToAdd.ImageKey = string.Format("{0}.png", Item.Sprite);
 
                 RecordInvListView.Items.Add(ItemToAdd);
             }            

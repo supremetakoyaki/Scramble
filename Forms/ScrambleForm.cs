@@ -1,4 +1,5 @@
-﻿using Scramble.Classes;
+﻿using NTwewyDb;
+using Scramble.Classes;
 using Scramble.Forms;
 using Scramble.GameData;
 using System;
@@ -30,8 +31,14 @@ namespace Scramble
             }
         }
 
-        public LanguageStrings LangStrings;
+        private LanguageStrings LangStrings;
         public byte CurrentLanguage;
+
+        #region NEO TWEWY Database instances
+        private ItemManager ItmManager;
+        private CharacterManager CharaManager;
+        private GameLocaleManager GameLocManager;
+        #endregion
 
         public ScrambleForm()
         {
@@ -44,6 +51,11 @@ namespace Scramble
 
             LangStrings = new LanguageStrings();
             LanguageSelectComboBox.Text = "English";
+
+            // NEO TWEWY Database instances
+            ItmManager = new ItemManager();
+            CharaManager = new CharacterManager();
+            GameLocManager = new GameLocaleManager();
         }
 
         public void DisplayLanguageStrings()
@@ -196,7 +208,7 @@ namespace Scramble
             }
             else
             {
-                CurrentLevelNUpDown.Value = LevelTable.GetLevel(Player_Current_Level);
+                CurrentLevelNUpDown.Value = GetCharacterManager().GetLevel(Player_Current_Level);
             }
 
             if (Player_Money >= MoneyNUpDown.Minimum && Player_Money <= MoneyNUpDown.Maximum)
@@ -281,8 +293,8 @@ namespace Scramble
 
         private void CurrentLevelNUpDown_ValueChanged(object sender, EventArgs e)
         {
-            ushort MaxTheoreticalLevel = (ushort)LevelTable.GetLevel((int)ExpNumericUpDown.Value);
-            if ((ushort)CurrentLevelNUpDown.Value > MaxTheoreticalLevel)
+            int MaxTheoreticalLevel = GetCharacterManager().GetLevel((int)ExpNumericUpDown.Value);
+            if (CurrentLevelNUpDown.Value > MaxTheoreticalLevel)
             {
                 CurrentLevelNUpDown.Value = MaxTheoreticalLevel;
             }
@@ -350,7 +362,7 @@ namespace Scramble
         {
             SelectedSlot.UpdateOffset_Int32(Offsets.Experience, (int)ExpNumericUpDown.Value);
 
-            int TheoreticalLevel = LevelTable.GetLevel((int)ExpNumericUpDown.Value);
+            int TheoreticalLevel = GetCharacterManager().GetLevel((int)ExpNumericUpDown.Value);
             LvLabel.Text = TheoreticalLevel.ToString();
 
             if (CurrentLevelNUpDown.Value > TheoreticalLevel)
@@ -448,6 +460,12 @@ namespace Scramble
             ClothInvEditor.ShowDialog();
         }
 
+        private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)
+        {
+            CurrentLanguage = (byte)LanguageSelectComboBox.SelectedIndex;
+            DisplayLanguageStrings();
+        }
+
         #region Get Image Lists Methods
         public ImageList GetCharacterIconList()
         {
@@ -488,10 +506,26 @@ namespace Scramble
         }
         #endregion
 
-        private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)
+        #region NEO TWEWY Database instances Methods
+        public ItemManager GetItemManager()
         {
-            CurrentLanguage = (byte)LanguageSelectComboBox.SelectedIndex;
-            DisplayLanguageStrings();
+            return ItmManager;
         }
+
+        public CharacterManager GetCharacterManager()
+        {
+            return CharaManager;
+        }
+
+        public GameLocaleManager GetGameLocaleManager()
+        {
+            return GameLocManager;
+        }
+
+        public string GetGameString(string Key)
+        {
+            return GetGameLocaleManager().GetLocale(CurrentLanguage, Key);
+        }
+        #endregion
     }
 }
