@@ -17,7 +17,7 @@
 
         public const int ClothingInv_Count = 292416; // int 32
         public const int ClothingInv_First = 292420; // just an int16.
-        public const int ClothingInv_Last = 296608;
+        public const int ClothingInv_Last = 296619;
 
         // Party member data. For the next 6 party members we just add +36.
         public const int PartyMember1_CharacterId = 296620; //Rindo. int32

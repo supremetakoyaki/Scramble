@@ -58,6 +58,7 @@ namespace Scramble.Forms
             this.ClthNameHeader = new System.Windows.Forms.ColumnHeader();
             this.ClthIdHeader = new System.Windows.Forms.ColumnHeader();
             this.ClthSlotHeader = new System.Windows.Forms.ColumnHeader();
+            this.ClthAmountHeader = new System.Windows.Forms.ColumnHeader();
             this.AllClothingItemsGroupBox = new System.Windows.Forms.GroupBox();
             this.Add99Checkbox = new System.Windows.Forms.CheckBox();
             this.AddEachOfEveryClothingButton = new System.Windows.Forms.Button();
@@ -129,6 +130,7 @@ namespace Scramble.Forms
             0,
             0,
             0});
+            this.AmountNumericUpDown.ValueChanged += new System.EventHandler(this.AmountNumericUpDown_ValueChanged);
             // 
             // AmountLabel
             // 
@@ -144,7 +146,7 @@ namespace Scramble.Forms
             this.ReqStyleValueLabel.AutoSize = true;
             this.ReqStyleValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ReqStyleValueLabel.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.ReqStyleValueLabel.Location = new System.Drawing.Point(243, 469);
+            this.ReqStyleValueLabel.Location = new System.Drawing.Point(251, 469);
             this.ReqStyleValueLabel.Name = "ReqStyleValueLabel";
             this.ReqStyleValueLabel.Size = new System.Drawing.Size(45, 15);
             this.ReqStyleValueLabel.TabIndex = 38;
@@ -191,6 +193,7 @@ namespace Scramble.Forms
             this.RemoveClothingButton.TabIndex = 33;
             this.RemoveClothingButton.Text = "{RemoveClothingButton}";
             this.RemoveClothingButton.UseVisualStyleBackColor = true;
+            this.RemoveClothingButton.Click += new System.EventHandler(this.RemoveClothingButton_Click);
             // 
             // RemoveAllClothingButton
             // 
@@ -201,6 +204,7 @@ namespace Scramble.Forms
             this.RemoveAllClothingButton.TabIndex = 34;
             this.RemoveAllClothingButton.Text = "{RemoveAllClothingButton}";
             this.RemoveAllClothingButton.UseVisualStyleBackColor = false;
+            this.RemoveAllClothingButton.Click += new System.EventHandler(this.RemoveAllClothingButton_Click);
             // 
             // WearTypeLabel
             // 
@@ -315,6 +319,7 @@ namespace Scramble.Forms
             this.EquippedByCharacterComboBox.Name = "EquippedByCharacterComboBox";
             this.EquippedByCharacterComboBox.Size = new System.Drawing.Size(91, 21);
             this.EquippedByCharacterComboBox.TabIndex = 23;
+            this.EquippedByCharacterComboBox.TextChanged += new System.EventHandler(this.EquippedByCharacterComboBox_TextChanged);
             // 
             // EquippedLabel
             // 
@@ -355,7 +360,8 @@ namespace Scramble.Forms
             this.MyClothingInvListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ClthNameHeader,
             this.ClthIdHeader,
-            this.ClthSlotHeader});
+            this.ClthSlotHeader,
+            this.ClthAmountHeader});
             this.MyClothingInvListView.FullRowSelect = true;
             this.MyClothingInvListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.MyClothingInvListView.HideSelection = false;
@@ -372,7 +378,7 @@ namespace Scramble.Forms
             // 
             this.ClthNameHeader.DisplayIndex = 1;
             this.ClthNameHeader.Text = "Name";
-            this.ClthNameHeader.Width = 400;
+            this.ClthNameHeader.Width = 330;
             // 
             // ClthIdHeader
             // 
@@ -386,6 +392,12 @@ namespace Scramble.Forms
             this.ClthSlotHeader.Text = "Type";
             this.ClthSlotHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ClthSlotHeader.Width = 120;
+            // 
+            // ClthAmountHeader
+            // 
+            this.ClthAmountHeader.Text = "Amount";
+            this.ClthAmountHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ClthAmountHeader.Width = 70;
             // 
             // AllClothingItemsGroupBox
             // 
@@ -419,6 +431,7 @@ namespace Scramble.Forms
             this.AddEachOfEveryClothingButton.TabIndex = 41;
             this.AddEachOfEveryClothingButton.Text = "{AddEachOfEveryClothing}";
             this.AddEachOfEveryClothingButton.UseVisualStyleBackColor = false;
+            this.AddEachOfEveryClothingButton.Click += new System.EventHandler(this.AddEachOfEveryClothingButton_Click);
             // 
             // AddClothingItemButton
             // 
@@ -428,15 +441,18 @@ namespace Scramble.Forms
             this.AddClothingItemButton.TabIndex = 40;
             this.AddClothingItemButton.Text = "{AddClothing}";
             this.AddClothingItemButton.UseVisualStyleBackColor = true;
+            this.AddClothingItemButton.Click += new System.EventHandler(this.AddClothingItemButton_Click);
             // 
             // AllClothingItemsListView
             // 
             this.AllClothingItemsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.GlobalClthNameHeader,
             this.GlobalClthIdHeader});
+            this.AllClothingItemsListView.FullRowSelect = true;
             this.AllClothingItemsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.AllClothingItemsListView.HideSelection = false;
             this.AllClothingItemsListView.Location = new System.Drawing.Point(6, 22);
+            this.AllClothingItemsListView.MultiSelect = false;
             this.AllClothingItemsListView.Name = "AllClothingItemsListView";
             this.AllClothingItemsListView.Size = new System.Drawing.Size(253, 509);
             this.AllClothingItemsListView.TabIndex = 39;
@@ -467,6 +483,7 @@ namespace Scramble.Forms
             this.MaximizeBox = false;
             this.Name = "ClothingInventoryEditor";
             this.Text = "{ClothingEditor}";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClothingInventoryEditor_FormClosing);
             this.ClothingInvGroupBox.ResumeLayout(false);
             this.ClothingInvGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).EndInit();
@@ -518,5 +535,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.ColumnHeader GlobalClthIdHeader;
         private System.Windows.Forms.NumericUpDown AmountNumericUpDown;
         private System.Windows.Forms.Label AmountLabel;
+        private System.Windows.Forms.ColumnHeader ClthAmountHeader;
     }
 }

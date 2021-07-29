@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using NTwewyDb;
+﻿using NTwewyDb;
 using Scramble.Classes;
 using Scramble.GameData;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Scramble.Forms
 {
@@ -32,6 +28,13 @@ namespace Scramble.Forms
         }
 
         public const short EMPTY_CLOTHING_ID = -1;
+        public const byte SLOT_HEADWEAR = 0;
+        public const byte SLOT_TOP = 1;
+        public const byte SLOT_BOTTOM = 2;
+        public const byte SLOT_SHOEWEAR = 3;
+        public const byte SLOT_ACCESSORY = 4;
+        public const byte SLOT_TOP_AND_BOTTOM = 5;
+
         private List<InventoryFashion> InventoryClothes;
         private InventoryFashion SelectedClothing;
 
@@ -62,6 +65,7 @@ namespace Scramble.Forms
             this.ClthIdHeader.Text = Sukuranburu.GetString("{Id}");
             this.ClthNameHeader.Text = Sukuranburu.GetString("{Name}");
             this.ClthSlotHeader.Text = Sukuranburu.GetString("{Type}");
+            this.ClthAmountHeader.Text = Sukuranburu.GetString("{Amount}");
             this.GlobalClthIdHeader.Text = Sukuranburu.GetString("{Id}");
             this.GlobalClthNameHeader.Text = Sukuranburu.GetString("{Name}");
             this.EquippedLabel.Text = Sukuranburu.GetString("{Equipped}");
@@ -253,9 +257,9 @@ namespace Scramble.Forms
                 return;
             }
 
+            this.EquippedByCharacterComboBox.Enabled = true;
             if (SelectedClothing.EquipperId != 0)
             {
-                this.EquippedByCharacterComboBox.Enabled = true;
                 this.EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(SelectedClothing.EquipperId));
                 this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
             }
@@ -277,6 +281,17 @@ namespace Scramble.Forms
             return "0.png";
         }
 
+        public string GetCharacterIconForPartyMember(int MemberId)
+        {
+            PartyMember Member = Sukuranburu.SelectedSlot.GetPartyMemberWithId(MemberId);
+            if (Member != null)
+            {
+                return Member.CharacterId + ".png";
+            }
+
+            return "0.png";
+        }
+
         private void InsertClothingToListView(InventoryFashion Piece)
         {
             string Name = Sukuranburu.GetGameString(Piece.BaseClothing.Name);
@@ -286,16 +301,344 @@ namespace Scramble.Forms
                    {
                         Name,
                         Piece.Id.ToString(),
-                        Sukuranburu.GetString("{WearType" + Piece.BaseClothing.SlotType + "}")
+                        Sukuranburu.GetString("{WearType" + Piece.BaseClothing.SlotType + "}"),
+                        Piece.Amount.ToString()
                    });
 
             ClothingToAdd.ImageKey = Icon;
             MyClothingInvListView.Items.Add(ClothingToAdd);
         }
 
+        private void UpdateAmount()
+        {
+            int Index = InventoryClothes.IndexOf(SelectedClothing);
+
+            SelectedClothing.Amount = (ushort)AmountNumericUpDown.Value;
+            MyClothingInvListView.Items[Index].SubItems[3].Text = SelectedClothing.Amount.ToString();
+        }
+
+        private void AddClothing(ListViewItem Item, bool Individual) //individual= adding this piece through "Add pin" button.
+        {
+            ushort ClothingId = Convert.ToUInt16(Item.SubItems[1].Text);
+            ClothingItem ClothingItem = Sukuranburu.GetItemManager().GetClothingItem(ClothingId);
+
+            InventoryFashion ClothingToAdd = new InventoryFashion(ClothingId);
+
+            if (InventoryClothes.Contains(ClothingToAdd))
+            {
+                int Index = InventoryClothes.IndexOf(ClothingToAdd);
+                if (Individual && InventoryClothes[Index].Amount == 99)
+                {
+                    Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_YouCantAddMoreClothes"));
+
+                    ReadyForUserInput = true;
+                    return;
+                }
+
+                if (Add99Checkbox.Checked)
+                {
+                    InventoryClothes[Index].Amount = 99;
+                }
+                else
+                {
+                    InventoryClothes[Index].Amount += 1;
+                }
+
+                MyClothingInvListView.Items[Index].SubItems[3].Text = InventoryClothes[Index].Amount.ToString();
+            }
+            else
+            {
+                if (Add99Checkbox.Checked)
+                {
+                    ClothingToAdd.Amount = 99;
+                }
+                else
+                {
+                    ClothingToAdd.Amount = 1;
+                }
+
+                InventoryClothes.Add(ClothingToAdd);
+                InsertClothingToListView(ClothingToAdd);
+            }
+        }
+
+        private void SaveAllData()
+        {
+            // First we're gonna clear out the pin equipped data
+            for (int i = 0; i < 6; i++)
+            {
+                int OffsetSum = 36 * i;
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedHeadwearIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedTopIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedBottomIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedShoesIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedAccessoryIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+            }
+
+            foreach (PartyMember Member in SelectedSlot.GetPartyMembers().Values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    Member.EquippedClothingIndexes[i] = -1;
+                }
+            }
+
+            int CurrentPointer = Offsets.ClothingInv_First;
+            int Indexes = 0;
+
+            // Clothing data
+            // int16: ID + 1 (+32768 if we want it to show "New")
+            foreach (InventoryFashion Clothing in InventoryClothes)
+            {
+                for (int i = 0; i < Clothing.Amount; i++)
+                {
+                    SelectedSlot.UpdateOffset_UInt16(CurrentPointer, (ushort)(Clothing.Id + 1));
+
+                    if (Clothing.EquipperId != 0)
+                    {
+                        bool IsTopAndBottom = Clothing.BaseClothing.SlotType == 5;
+                        byte SlotType = IsTopAndBottom ? SLOT_TOP : Clothing.BaseClothing.SlotType;
+
+                        int OffsetSum = 36 * (Clothing.EquipperId - 1);
+                        int SlotSum = 4 * SlotType;
+
+                        int ThisOffset = Offsets.PartyMember1_EquippedHeadwearIndex + OffsetSum + SlotSum;
+
+                        // check if we didn't add the equipped data already, for a duplicate of this pin, for example.
+                        int StoredValue = SelectedSlot.RetrieveOffset_Int32(ThisOffset);
+
+                        if (StoredValue == SaveData.NOT_ASSIGNED_DATA)
+                        {
+                            SelectedSlot.UpdateOffset_Int32(ThisOffset, Indexes);
+                            SelectedSlot.GetPartyMemberWithId(Clothing.EquipperId).EquippedClothingIndexes[SlotType] = Indexes;
+
+                            if (IsTopAndBottom) // would this work?
+                            {
+                                SelectedSlot.UpdateOffset_Int32(ThisOffset + 4, Indexes);
+                                SelectedSlot.GetPartyMemberWithId(Clothing.EquipperId).EquippedClothingIndexes[SlotType+1] = Indexes;
+                            }
+                        }
+                    }
+
+                    CurrentPointer += 2;
+                    Indexes += 1;
+                }
+            }
+
+            SelectedSlot.UpdateOffset_Int32(Offsets.ClothingInv_Count, Indexes);
+        }
+
         private void MyClothingInvListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectClothing();
+        }
+
+        private void AmountNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            ushort AmountToSet = (ushort)AmountNumericUpDown.Value;
+
+            if (AmountToSet < (ushort)AmountNumericUpDown.Minimum)
+            {
+                AmountToSet = (ushort)AmountNumericUpDown.Minimum;
+            }
+            else if (AmountToSet > (ushort)AmountNumericUpDown.Maximum)
+            {
+                AmountToSet = (ushort)AmountNumericUpDown.Maximum;
+            }
+
+            UpdateAmount();
+
+            ReadyForUserInput = true;
+        }
+
+        private void RemoveClothingButton_Click(object sender, EventArgs e)
+        {
+            if (MyClothingInvListView.Items.Count > 0 && MyClothingInvListView.SelectedIndices.Count > 0)
+            {
+                int ThisIndex = MyClothingInvListView.SelectedIndices[0];
+                InventoryFashion Clothing = InventoryClothes[ThisIndex];
+
+                MyClothingInvListView.Items.RemoveAt(ThisIndex);
+                InventoryClothes.Remove(Clothing);
+
+                if (ThisIndex > 0)
+                {
+                    if (MyClothingInvListView.Items.Count > ThisIndex)
+                    {
+                        MyClothingInvListView.Items[ThisIndex].Selected = true;
+                        MyClothingInvListView.Select();
+                    }
+                    else if (MyClothingInvListView.Items.Count == ThisIndex)
+                    {
+                        MyClothingInvListView.Items[ThisIndex - 1].Selected = true;
+                        MyClothingInvListView.Select();
+                    }
+                    else
+                    {
+                        SelectClothing();
+                    }
+
+                }
+                else
+                {
+                    SelectClothing();
+                }
+            }
+        }
+
+        private void RemoveAllClothingButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_DeleteAllClothingAreYouSure")))
+            {
+                MyClothingInvListView.Items.Clear();
+                InventoryClothes.Clear();
+                SelectedClothing = null;
+
+                SelectClothing();
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void AddClothingItemButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (MyClothingInvListView.SelectedIndices.Count < 1)
+            {
+                Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_NoClothingToAddSelected"));
+                ReadyForUserInput = true;
+                return;
+            }
+
+            ListViewItem Item = AllClothingItemsListView.SelectedItems[0];
+
+            AddClothing(Item, true);
+
+            SelectClothing();
+            ReadyForUserInput = true;
+        }
+
+        private void AddEachOfEveryClothingButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            foreach (ListViewItem Item in AllClothingItemsListView.Items)
+            {
+                AddClothing(Item, false);
+            }
+
+            SelectClothing();
+            ReadyForUserInput = true;
+        }
+
+        private void EquippedByCharacterComboBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedClothing == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (EquippedByCharacterComboBox.Text == Sukuranburu.GetString("{NoOne}"))
+            {
+                SelectedClothing.EquipperId = 0;
+
+                ReadyForUserInput = true;
+                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                return;
+            }
+
+            // Validity checking
+            PartyMember OldMember = SelectedSlot.GetPartyMemberWithId(SelectedClothing.EquipperId);
+            PartyMember NewMember = Sukuranburu.SelectedSlot.GetPartyMemberByNameValue(EquippedByCharacterComboBox.Text);
+
+            Dictionary<byte, InventoryFashion> NewMember_PreviouslyEquippedClothing = InventoryClothes.Where(c
+                   => c.EquipperId == NewMember.Id).ToDictionary(x => x.BaseClothing.SlotType, x => x);
+
+            foreach (byte SlotType in NewMember_PreviouslyEquippedClothing.Keys)
+            {
+                InventoryFashion PreviousPiece = NewMember_PreviouslyEquippedClothing[SlotType];
+
+                if (SelectedClothing.BaseClothing.SlotType == SLOT_TOP_AND_BOTTOM)
+                {
+                    if (SlotType == SLOT_TOP || SlotType == SLOT_BOTTOM || SlotType == SLOT_TOP_AND_BOTTOM)
+                    {
+                        PreviousPiece.EquipperId = OldMember != null ? (byte)OldMember.Id : (byte)0;
+                    }
+                }
+                else if (SlotType == SLOT_TOP_AND_BOTTOM && (SelectedClothing.BaseClothing.SlotType == SLOT_TOP || SelectedClothing.BaseClothing.SlotType == SLOT_BOTTOM))
+                {
+                    PreviousPiece.EquipperId = OldMember != null ? (byte)OldMember.Id : (byte)0;
+                }
+                else if (SlotType == SLOT_TOP && SelectedClothing.BaseClothing.SlotType == SLOT_TOP_AND_BOTTOM)
+                {
+                    PreviousPiece.EquipperId = OldMember != null ? (byte)OldMember.Id : (byte)0;
+                }
+                else if (SlotType == SLOT_BOTTOM && SelectedClothing.BaseClothing.SlotType == SLOT_TOP_AND_BOTTOM)
+                {
+                    PreviousPiece.EquipperId = OldMember != null ? (byte)OldMember.Id : (byte)0;
+                }
+                else if (SlotType == SelectedClothing.BaseClothing.SlotType)
+                {
+                    PreviousPiece.EquipperId = OldMember != null ? (byte)OldMember.Id : (byte)0;
+                }
+            }
+
+            Dictionary<byte, InventoryFashion> OldMember_PreviouslyEquippedClothing = OldMember != null ? InventoryClothes.Where(c
+       => c.EquipperId == OldMember.Id).ToDictionary(x => x.BaseClothing.SlotType, x => x) : null;
+
+            if (OldMember_PreviouslyEquippedClothing != null)
+            {
+                if (OldMember_PreviouslyEquippedClothing.ContainsKey(SLOT_TOP_AND_BOTTOM))
+                {
+                    if (OldMember_PreviouslyEquippedClothing.ContainsKey(SLOT_TOP))
+                    {
+                        OldMember_PreviouslyEquippedClothing[SLOT_TOP].EquipperId = 0;
+                    }
+
+                    if (OldMember_PreviouslyEquippedClothing.ContainsKey(SLOT_BOTTOM))
+                    {
+                        OldMember_PreviouslyEquippedClothing[SLOT_BOTTOM].EquipperId = 0;
+
+                    }
+                }
+            }
+
+            SelectedClothing.EquipperId = (byte)NewMember.Id;
+
+            this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(NewMember.Id)];
+            ReadyForUserInput = true;
+        }
+
+        private void ClothingInventoryEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveAllData();
         }
     }
 }

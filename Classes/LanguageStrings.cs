@@ -86,7 +86,7 @@ namespace Scramble.Classes
             { "{WearType2}", "Bottom" },
             { "{WearType3}", "Shoewear" },
             { "{WearType4}", "Accessory" },
-            { "{WearType5}", "Top & Bottom" },
+            { "{WearType5}", "Top and Bottom" },
 
             { "{MyClothingInventory}", "My Clothing Inventory" },
             { "{AllClothingItems}", "All Clothing" },
@@ -113,9 +113,11 @@ namespace Scramble.Classes
             { "DLG_OverwriteSlotPrompt", "Are you sure you want to overwrite this save slot?" },
             { "DLG_DeleteAllPinsAreYouSure", "Are you sure you want to remove all pins from your inventory?" },
             { "DLG_AddAllPinsAreYouSure", "Are you sure you want to add every pin to your inventory?" },
-            { "DLG_NoPinsToAddSelected", "You didn't select any pin to add." },
+            { "DLG_NoPinsToAddSelected", "You didn't select a pin to add." },
             { "DLG_YouCantAddMorePins", "You can't add more pins of this kind. Maximum value is 99." },
-            { "DLG_ZeroPinsWarning", "Note that the game will crash if you have 0 pins.\nMake sure you add enough pins and equip them to your characters." }
+            { "DLG_ZeroPinsWarning", "Note that the game will crash if you have 0 pins.\nMake sure you add enough pins and equip them to your characters." },
+            { "DLG_DeleteAllClothingAreYouSure", "Are you sure you want to remove all clothes from your inventory?" },
+            { "DLG_NoClothingToAddSelected", "You didn't select a clothing piece to add." }
         };
 
         public Dictionary<string, string> Japanese = new Dictionary<string, string>()
@@ -204,22 +206,22 @@ namespace Scramble.Classes
 
             { "{MyClothingInventory}", "衣料品の在庫" },
             { "{AllClothingItems}", "すべての服" },
-            { "{NoClothingSelected}", "（衣類選択されていません）" },
+            { "{NoClothingSelected}", "（服選択されていません）" },
             { "{Atk:}", "ＡＴＫ：" },
             { "{Def:}", "ＤＥＦ：" },
             { "{Hp:}", "ＨＰ：" },
             { "{ReqStyle}", "必要なＳＥＮＳＥ:" },
             { "{Ability:}", "アビリティ：" },
-            { "{RemoveThisClothing}", "この衣類の削除" },
+            { "{RemoveThisClothing}", "この服の削除" },
             { "{RemoveAllClothing}", "すべてを削除" },
-            { "{AddClothing}", "衣類の追加" },
-            { "{AddEveryClothing}", "衣類の各を追加" },
+            { "{AddClothing}", "服の追加" },
+            { "{AddEveryClothing}", "服の各を追加" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
-            { "DLG_SaveDataAlreadyOpened", "There is a save file open already. If you didn't save changes, they will be lost." },
+            { "DLG_SaveDataAlreadyOpened", "すでに開いているファイルがあります。\n保存されていない変更は失われます。" },
             { "DLG_InvalidSaveFile", "セーブファイルは無効です。\nサイズは　３２００５１２バイトである必要があります。" },
-            { "DLG_BackupCheckboxNotChecked", "You didn't check the \"Make a backup\" checkbox. If the save file ends up being corrupted I will laugh at you.\nDo you wish to continue?" },
+            { "DLG_BackupCheckboxNotChecked", "バックアップを選択しませんでした。\nセーブファイルが破損することがあります。\n続行しますか？" },
             { "DLG_SaveDataSaved", "変更は保存されました。" },
             { "DLG_SaveSlotDumped", "セーブスロットはだんぽされました。" },
             { "DLG_BackupNotPossibleFileNotFound", "セーブファイルが削除されたため、\nバックアップが不可能です。" },
@@ -229,7 +231,9 @@ namespace Scramble.Classes
             { "DLG_AddAllPinsAreYouSure", "すべてのバッジを追加しますか？" },
             { "DLG_NoPinsToAddSelected", "バッジが選択されていないか。" },
             { "DLG_YouCantAddMorePins", "これ以上同じ特性を持つバッジを追加できません。\n最大値は９９。" },
-            { "DLG_ZeroPinsWarning", "注：０バッジを持っている場合の結果はゲームのクラッシュ。\n必ずバッジ化も装備してください。" }
+            { "DLG_ZeroPinsWarning", "注：０バッジを持っている場合の結果はゲームのクラッシュ。\n必ずバッジ化も装備してください。" },
+            { "DLG_DeleteAllClothingAreYouSure", "すべての在庫の服を削除しますか？" },
+            { "DLG_NoClothingToAddSelected", "服が選択されていないか。" }
         };
 
         public Dictionary<string, string> Spanish = new Dictionary<string, string>()
@@ -322,7 +326,7 @@ namespace Scramble.Classes
             { "{Atk:}", "ATQ:" },
             { "{Def:}", "DEF:" },
             { "{Hp:}", "PV:" },
-            { "{ReqStyle}", "ESTILO req.:" },
+            { "{ReqStyle}", "ESTILO requerido:" },
             { "{Ability:}", "Habilidad:" },
             { "{RemoveThisClothing}", "Quitar esta prenda" },
             { "{RemoveAllClothing}", "Quitar todas" },
@@ -343,7 +347,9 @@ namespace Scramble.Classes
             { "DLG_AddAllPinsAreYouSure", "¿Estás segur@ de que quieres agregar cada pin a tu inventario?" },
             { "DLG_NoPinsToAddSelected", "No seleccionaste ningún pin para añadir." },
             { "DLG_YouCantAddMorePins", "No puedes añadir más pines con la misma característica. El valor máximo es 99." },
-            { "DLG_ZeroPinsWarning", "Toma nota que el juego crasheará si tienes 0 pines.\nAsegúrate de agregar pines suficientes y equiparlos a los personajes." }
+            { "DLG_ZeroPinsWarning", "Toma nota que el juego crasheará si tienes 0 pines.\nAsegúrate de agregar pines suficientes y equiparlos a los personajes." },
+            { "DLG_DeleteAllClothingAreYouSure", "¿Estás segur@ de que quieres quitar toda la ropa de tu inventario?" },
+            { "DLG_NoClothingToAddSelected", "No seleccionaste ninguna prenda para añadir." }
         };
 
         public Dictionary<string, string> French = new Dictionary<string, string>()
@@ -457,7 +463,9 @@ namespace Scramble.Classes
             { "DLG_AddAllPinsAreYouSure", "Êtes-vous sûr de vouloir supprimer toutes les badges de votre inventaire ?" },
             { "DLG_NoPinsToAddSelected", "Vous n'avez sélectionné aucune badge à ajouter." },
             { "DLG_YouCantAddMorePins", "Vous ne pouvez pas ajouter plus de badges avec la même caractéristique. La valeur maximale est 99." },
-            { "DLG_ZeroPinsWarning", "Prenez note que le jeu plantera si vous avez 0 badges.\nAssurez-vous d'ajouter suffisamment de badges et de les équiper des personnages." }
+            { "DLG_ZeroPinsWarning", "Prenez note que le jeu plantera si vous avez 0 badges.\nAssurez-vous d'ajouter suffisamment de badges et de les équiper des personnages." },
+            { "DLG_DeleteAllClothingAreYouSure", "Êtes-vous sûr de vouloir supprimer tous les vêtements de votre inventaire ?" },
+            { "DLG_NoClothingToAddSelected", "Vous n'avez sélectionné aucun vêtement à ajouter." }
         };
 
         public Dictionary<string, string> Italian = new Dictionary<string, string>();
