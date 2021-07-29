@@ -38,6 +38,9 @@ namespace Scramble.Forms
         private List<InventoryFashion> InventoryClothes;
         private InventoryFashion SelectedClothing;
 
+        public const ushort MAXIMUM = 2000;
+        int TotalCount;
+
         private bool ReadyForUserInput = false; // flag that indicates whether the editor is working on changing values on its own.    
 
 
@@ -53,6 +56,7 @@ namespace Scramble.Forms
             SerializeGlobal();
 
             ReadyForUserInput = true;
+            SelectClothing();
         }
 
         private void DisplayLanguageStrings()
@@ -79,7 +83,6 @@ namespace Scramble.Forms
             this.RemoveAllClothingButton.Text = Sukuranburu.GetString("{RemoveAllClothing}");
             this.AddClothingItemButton.Text = Sukuranburu.GetString("{AddClothing}");
             this.AddEachOfEveryClothingButton.Text = Sukuranburu.GetString("{AddEveryClothing}");
-            this.Add99Checkbox.Text = Sukuranburu.GetString("{x99}");
         }
         private void Serialize()
         {
@@ -101,7 +104,7 @@ namespace Scramble.Forms
                     ClothingId -= 0x8000; // this means the clothing is unseen (says "New" in the inventory).
                 }
 
-                if (ClothingId != EMPTY_CLOTHING_ID)
+                if (ClothingId != EMPTY_CLOTHING_ID && TotalCount < MAXIMUM)
                 {
                     InventoryFashion ClothingToAdd = new InventoryFashion((ushort)ClothingId);
                     int invIndex = InventoryClothes.IndexOf(ClothingToAdd);
@@ -111,13 +114,15 @@ namespace Scramble.Forms
                         ClothingToAdd.Amount = 1;
                         ClothingToAdd.EquipperId = ClothingToAdd.WhosEquippingThis(Index);
 
+                        TotalCount += 1;
                         InventoryClothes.Add(ClothingToAdd);
                     }
                     else
                     {
-                        if (InventoryClothes[invIndex].Amount < 99)
+                        if (InventoryClothes[invIndex].Amount < 9)
                         {
                             InventoryClothes[invIndex].Amount += 1;
+                            TotalCount += 1;
                         }
 
                         if (InventoryClothes[invIndex].EquipperId == 0)
@@ -190,8 +195,10 @@ namespace Scramble.Forms
                 DefValueLabel.Text = "—";
                 HpValueLabel.Text = "—";
                 ReqStyleValueLabel.Text = "—";
+                ReqStyleValueLabel.Location = new Point(243, 469);
                 AbilityNameLabel.Text = "—";
                 AbilityDescLabel.Text = "—";
+
 
                 SlotType_PictureBox.Image = null;
                 WearTypeLabel.Text = string.Empty;
@@ -224,11 +231,13 @@ namespace Scramble.Forms
 
             RemoveClothingButton.Enabled = true;
             AmountNumericUpDown.Enabled = true;
+            AmountNumericUpDown.Value = Clothing.Amount;
 
             AtkValueLabel.Text = string.Format("+{0}", Clothing.BaseClothing.AtkBoost);
             DefValueLabel.Text = string.Format("+{0}", Clothing.BaseClothing.DefBoost);
             HpValueLabel.Text = string.Format("+{0}", Clothing.BaseClothing.HpBoost);
             ReqStyleValueLabel.Text = Clothing.BaseClothing.StyleReq.ToString();
+            ReqStyleValueLabel.Location = new Point(251, 469);
 
             Ability ClothingAbility = Sukuranburu.GetItemManager().GetAbility(Clothing.BaseClothing.AbilityId);
 
@@ -324,10 +333,19 @@ namespace Scramble.Forms
 
             InventoryFashion ClothingToAdd = new InventoryFashion(ClothingId);
 
+            if (TotalCount >= MAXIMUM)
+            {
+                if (Individual)
+                {
+                    Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_YouCantAddMoreClothes"));
+                }
+                return;
+            }
+
             if (InventoryClothes.Contains(ClothingToAdd))
             {
                 int Index = InventoryClothes.IndexOf(ClothingToAdd);
-                if (Individual && InventoryClothes[Index].Amount == 99)
+                if (Individual && (TotalCount >= MAXIMUM || InventoryClothes[Index].Amount == 9))
                 {
                     Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_YouCantAddMoreClothes"));
 
@@ -335,25 +353,19 @@ namespace Scramble.Forms
                     return;
                 }
 
-                if (Add99Checkbox.Checked)
-                {
-                    InventoryClothes[Index].Amount = 99;
-                }
-                else
+                if (TotalCount + 1 <= MAXIMUM)
                 {
                     InventoryClothes[Index].Amount += 1;
+                    TotalCount += 1;
                 }
 
                 MyClothingInvListView.Items[Index].SubItems[3].Text = InventoryClothes[Index].Amount.ToString();
             }
             else
             {
-                if (Add99Checkbox.Checked)
+                if (TotalCount + 1 <= MAXIMUM)
                 {
-                    ClothingToAdd.Amount = 99;
-                }
-                else
-                {
+                    TotalCount += 1;
                     ClothingToAdd.Amount = 1;
                 }
 
@@ -443,7 +455,6 @@ namespace Scramble.Forms
             ReadyForUserInput = false;
 
             ushort AmountToSet = (ushort)AmountNumericUpDown.Value;
-
             if (AmountToSet < (ushort)AmountNumericUpDown.Minimum)
             {
                 AmountToSet = (ushort)AmountNumericUpDown.Minimum;
@@ -452,6 +463,20 @@ namespace Scramble.Forms
             {
                 AmountToSet = (ushort)AmountNumericUpDown.Maximum;
             }
+
+            ushort OldAmount = SelectedClothing.Amount;
+            int Change = AmountToSet - OldAmount;
+
+            if (TotalCount + Change > MAXIMUM)
+            {
+                AmountNumericUpDown.Value = OldAmount;
+                ReadyForUserInput = true;
+
+                Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_YouCantAddMoreClothes"));
+                return;
+            }
+
+            TotalCount += Change;
 
             UpdateAmount();
 
@@ -542,6 +567,12 @@ namespace Scramble.Forms
         {
             if (!ReadyForUserInput)
             {
+                return;
+            }
+
+            if (TotalCount >= MAXIMUM)
+            {
+                Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_YouCantAddMoreClothes"));
                 return;
             }
 

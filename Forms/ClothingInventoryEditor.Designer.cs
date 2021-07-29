@@ -60,7 +60,6 @@ namespace Scramble.Forms
             this.ClthSlotHeader = new System.Windows.Forms.ColumnHeader();
             this.ClthAmountHeader = new System.Windows.Forms.ColumnHeader();
             this.AllClothingItemsGroupBox = new System.Windows.Forms.GroupBox();
-            this.Add99Checkbox = new System.Windows.Forms.CheckBox();
             this.AddEachOfEveryClothingButton = new System.Windows.Forms.Button();
             this.AddClothingItemButton = new System.Windows.Forms.Button();
             this.AllClothingItemsListView = new System.Windows.Forms.ListView();
@@ -113,7 +112,7 @@ namespace Scramble.Forms
             // 
             this.AmountNumericUpDown.Location = new System.Drawing.Point(550, 508);
             this.AmountNumericUpDown.Maximum = new decimal(new int[] {
-            99,
+            9,
             0,
             0,
             0});
@@ -401,7 +400,6 @@ namespace Scramble.Forms
             // 
             // AllClothingItemsGroupBox
             // 
-            this.AllClothingItemsGroupBox.Controls.Add(this.Add99Checkbox);
             this.AllClothingItemsGroupBox.Controls.Add(this.AddEachOfEveryClothingButton);
             this.AllClothingItemsGroupBox.Controls.Add(this.AddClothingItemButton);
             this.AllClothingItemsGroupBox.Controls.Add(this.AllClothingItemsListView);
@@ -412,22 +410,12 @@ namespace Scramble.Forms
             this.AllClothingItemsGroupBox.TabStop = false;
             this.AllClothingItemsGroupBox.Text = "{AllClothingItems}";
             // 
-            // Add99Checkbox
-            // 
-            this.Add99Checkbox.AutoSize = true;
-            this.Add99Checkbox.Location = new System.Drawing.Point(160, 612);
-            this.Add99Checkbox.Name = "Add99Checkbox";
-            this.Add99Checkbox.Size = new System.Drawing.Size(52, 19);
-            this.Add99Checkbox.TabIndex = 42;
-            this.Add99Checkbox.Text = "{x99}";
-            this.Add99Checkbox.UseVisualStyleBackColor = true;
-            // 
             // AddEachOfEveryClothingButton
             // 
             this.AddEachOfEveryClothingButton.BackColor = System.Drawing.Color.LightCyan;
             this.AddEachOfEveryClothingButton.Location = new System.Drawing.Point(6, 593);
             this.AddEachOfEveryClothingButton.Name = "AddEachOfEveryClothingButton";
-            this.AddEachOfEveryClothingButton.Size = new System.Drawing.Size(148, 38);
+            this.AddEachOfEveryClothingButton.Size = new System.Drawing.Size(253, 38);
             this.AddEachOfEveryClothingButton.TabIndex = 41;
             this.AddEachOfEveryClothingButton.Text = "{AddEachOfEveryClothing}";
             this.AddEachOfEveryClothingButton.UseVisualStyleBackColor = false;
@@ -437,7 +425,7 @@ namespace Scramble.Forms
             // 
             this.AddClothingItemButton.Location = new System.Drawing.Point(6, 537);
             this.AddClothingItemButton.Name = "AddClothingItemButton";
-            this.AddClothingItemButton.Size = new System.Drawing.Size(148, 50);
+            this.AddClothingItemButton.Size = new System.Drawing.Size(253, 50);
             this.AddClothingItemButton.TabIndex = 40;
             this.AddClothingItemButton.Text = "{AddClothing}";
             this.AddClothingItemButton.UseVisualStyleBackColor = true;
@@ -492,7 +480,6 @@ namespace Scramble.Forms
             ((System.ComponentModel.ISupportInitialize)(this.SlotType_PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClothingItem_PictureBox)).EndInit();
             this.AllClothingItemsGroupBox.ResumeLayout(false);
-            this.AllClothingItemsGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -527,7 +514,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.Label WearTypeLabel;
         private System.Windows.Forms.Label AbilityDescLabel;
         private System.Windows.Forms.GroupBox AllClothingItemsGroupBox;
-        private System.Windows.Forms.CheckBox Add99Checkbox;
         private System.Windows.Forms.Button AddEachOfEveryClothingButton;
         private System.Windows.Forms.Button AddClothingItemButton;
         private System.Windows.Forms.ListView AllClothingItemsListView;
