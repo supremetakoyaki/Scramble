@@ -9,6 +9,10 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Scramble
 {
@@ -68,6 +72,8 @@ namespace Scramble
 
             LangStrings = new LanguageStrings();
             LanguageSelectComboBox.Text = "English";
+
+            Task.Run(TryCheckForUpdates);
         }
 
         public void DisplayLanguageStrings()
@@ -119,6 +125,38 @@ namespace Scramble
             if (SelectedSlot != null)
             {
                 this.DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
+            }
+        }
+
+        public void TryCheckForUpdates()
+        {
+            try
+            {
+                string LatestReleaseUri_Api = "https://api.github.com/repos/supremetakoyaki/Scramble/releases/latest";
+                string LatestReleaseUri = "https://github.com/supremetakoyaki/Scramble/releases/latest";
+
+                using (WebClient Client = new WebClient())
+                {
+                    Client.Headers.Add("User-Agent", "request");
+                    string ApiResponse = Client.DownloadString(LatestReleaseUri_Api);
+
+                    string LatestVersion_str = ApiResponse.Split("tag_name")[1].Substring(4).Split('"')[0];
+
+                    Version CurrentVersion = new Version(AboutLabel.Text.Substring(1));
+                    Version LatestVersion = new Version(LatestVersion_str);
+
+                    if (CurrentVersion.CompareTo(LatestVersion) < 0)
+                    {
+                        if (ShowPrompt(GetString("DLG_NewUpdateFound")))
+                        {
+                            OpenSite(LatestReleaseUri);
+                        }
+                    }
+                }
+            }
+            catch// (Exception e)
+            {
+                //debug: MessageBox.Show(e.ToString());
             }
         }
 
@@ -452,6 +490,7 @@ namespace Scramble
         {
             OpenSite("https://github.com/supremetakoyaki/Scramble");
         }
+
         private void OpenSite(string url)
         {
             try

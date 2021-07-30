@@ -194,7 +194,7 @@ namespace Scramble
             this.AboutLabel.Name = "AboutLabel";
             this.AboutLabel.Size = new System.Drawing.Size(28, 15);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "v0.5";
+            this.AboutLabel.Text = "v0.6";
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // MoneyLabel
@@ -351,7 +351,6 @@ namespace Scramble
             // 
             // OpenSocialEditButton
             // 
-            this.OpenSocialEditButton.Enabled = false;
             this.OpenSocialEditButton.Location = new System.Drawing.Point(378, 105);
             this.OpenSocialEditButton.Name = "OpenSocialEditButton";
             this.OpenSocialEditButton.Size = new System.Drawing.Size(160, 23);
@@ -510,9 +509,9 @@ namespace Scramble
             this.LvLabel.ForeColor = System.Drawing.Color.MediumBlue;
             this.LvLabel.Location = new System.Drawing.Point(218, 127);
             this.LvLabel.Name = "LvLabel";
-            this.LvLabel.Size = new System.Drawing.Size(19, 15);
+            this.LvLabel.Size = new System.Drawing.Size(13, 15);
             this.LvLabel.TabIndex = 17;
-            this.LvLabel.Text = "45";
+            this.LvLabel.Text = "1";
             // 
             // DumpSlotDataButton
             // 

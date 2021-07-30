@@ -130,7 +130,8 @@ namespace Scramble.Classes
             { "DLG_ZeroPinsWarning", "Note that the game will crash if you have 0 pins.\nMake sure you add enough pins and equip them to your characters." },
             { "DLG_DeleteAllClothingAreYouSure", "Are you sure you want to remove all clothes from your inventory?" },
             { "DLG_NoClothingToAddSelected", "You didn't select a clothing piece to add." },
-            { "DLG_YouCantAddMoreClothes", "You can't add more clothes. Maximum value is 9 for one piece, and 2000 in total." }
+            { "DLG_YouCantAddMoreClothes", "You can't add more clothes. Maximum value is 9 for one piece, and 2000 in total." },
+            { "DLG_NewUpdateFound", "There is a new version of Scramble. Do you want to check it out?" }
         };
 
         public Dictionary<string, string> Japanese = new Dictionary<string, string>()
@@ -259,7 +260,8 @@ namespace Scramble.Classes
             { "DLG_ZeroPinsWarning", "注：０バッジを持っている場合の結果はゲームのクラッシュ。\n必ずバッジ化も装備してください。" },
             { "DLG_DeleteAllClothingAreYouSure", "すべての在庫の服を削除しますか？" },
             { "DLG_NoClothingToAddSelected", "服が選択されていないか。" },
-            { "DLG_YouCantAddMoreClothes", "これ以上同じ特性を持つ服を追加できません。\n最大値は９。合計で、最大値は２０００になります。" }
+            { "DLG_YouCantAddMoreClothes", "これ以上同じ特性を持つ服を追加できません。\n最大値は９。合計で、最大値は２０００になります。" },
+            { "DLG_NewUpdateFound", "新しいバージョンの「スクランブル」があります。 ダウンロードしますか？" }
         };
 
         public Dictionary<string, string> Spanish = new Dictionary<string, string>()
@@ -388,7 +390,8 @@ namespace Scramble.Classes
             { "DLG_ZeroPinsWarning", "Toma nota que el juego crasheará si tienes 0 pines.\nAsegúrate de agregar pines suficientes y equiparlos a los personajes." },
             { "DLG_DeleteAllClothingAreYouSure", "¿Estás segur@ de que quieres quitar toda la ropa de tu inventario?" },
             { "DLG_NoClothingToAddSelected", "No seleccionaste ninguna prenda para añadir." },
-            { "DLG_YouCantAddMoreClothes", "No puedes añadir más. El valor máximo es 9 para una prenda y 2000 en total." }
+            { "DLG_YouCantAddMoreClothes", "No puedes añadir más. El valor máximo es 9 para una prenda y 2000 en total." },
+            { "DLG_NewUpdateFound", "Hay una nueva versión de Scramble. ¿Deseas ir a descargarla?" }
         };
 
         public Dictionary<string, string> French = new Dictionary<string, string>()
@@ -518,7 +521,7 @@ namespace Scramble.Classes
             { "DLG_DeleteAllClothingAreYouSure", "Êtes-vous sûr de vouloir supprimer tous les vêtements de votre inventaire ?" },
             { "DLG_NoClothingToAddSelected", "Vous n'avez sélectionné aucun vêtement à ajouter." },
             { "DLG_YouCantAddMoreClothes", "Vous ne pouvez pas ajouter plus de ce vêtement. La valeur maximale est 9 pour une pièce et 2000 au total." },
-
+            { "DLG_NewUpdateFound", "Il existe une nouvelle version de Scramble. Voulez-vous aller le télécharger ?" }
         };
 
         public Dictionary<string, string> Italian = new Dictionary<string, string>();
