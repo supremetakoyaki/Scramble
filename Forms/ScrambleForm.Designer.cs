@@ -87,6 +87,7 @@ namespace Scramble
             this.LanguageSelectComboBox = new System.Windows.Forms.ComboBox();
             this.PinImageList_100x100 = new System.Windows.Forms.ImageList(this.components);
             this.CharacterImageList_170x300 = new System.Windows.Forms.ImageList(this.components);
+            this.ShowSpoilersCheckbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -2630,7 +2631,7 @@ namespace Scramble
             // SelectLanguageLabel
             // 
             this.SelectLanguageLabel.AutoSize = true;
-            this.SelectLanguageLabel.Location = new System.Drawing.Point(12, 327);
+            this.SelectLanguageLabel.Location = new System.Drawing.Point(12, 310);
             this.SelectLanguageLabel.Name = "SelectLanguageLabel";
             this.SelectLanguageLabel.Size = new System.Drawing.Size(62, 15);
             this.SelectLanguageLabel.TabIndex = 27;
@@ -2646,7 +2647,7 @@ namespace Scramble
             "日本語",
             "Español",
             "Français"});
-            this.LanguageSelectComboBox.Location = new System.Drawing.Point(75, 324);
+            this.LanguageSelectComboBox.Location = new System.Drawing.Point(75, 307);
             this.LanguageSelectComboBox.Name = "LanguageSelectComboBox";
             this.LanguageSelectComboBox.Size = new System.Drawing.Size(76, 23);
             this.LanguageSelectComboBox.TabIndex = 28;
@@ -3005,11 +3006,22 @@ namespace Scramble
             this.CharacterImageList_170x300.Images.SetKeyName(5, "06.png");
             this.CharacterImageList_170x300.Images.SetKeyName(6, "07.png");
             // 
+            // ShowSpoilersCheckbox
+            // 
+            this.ShowSpoilersCheckbox.AutoSize = true;
+            this.ShowSpoilersCheckbox.Location = new System.Drawing.Point(12, 339);
+            this.ShowSpoilersCheckbox.Name = "ShowSpoilersCheckbox";
+            this.ShowSpoilersCheckbox.Size = new System.Drawing.Size(98, 19);
+            this.ShowSpoilersCheckbox.TabIndex = 28;
+            this.ShowSpoilersCheckbox.Text = "Show spoilers";
+            this.ShowSpoilersCheckbox.UseVisualStyleBackColor = true;
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(724, 370);
+            this.Controls.Add(this.ShowSpoilersCheckbox);
             this.Controls.Add(this.LanguageSelectComboBox);
             this.Controls.Add(this.SelectLanguageLabel);
             this.Controls.Add(this.GlobalGroupBox);
@@ -3103,6 +3115,7 @@ namespace Scramble
         private System.Windows.Forms.Label LvLabel;
         private System.Windows.Forms.ImageList PinImageList_100x100;
         private System.Windows.Forms.ImageList CharacterImageList_170x300;
+        private System.Windows.Forms.CheckBox ShowSpoilersCheckbox;
     }
 }
 

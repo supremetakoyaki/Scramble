@@ -43,6 +43,7 @@ namespace Scramble.Forms
 
         private bool ReadyForUserInput = false; // flag that indicates whether the editor is working on changing values on its own.    
 
+        private List<string> SpoilerCharacters;
 
         public ClothingInventoryEditor()
         {
@@ -51,12 +52,30 @@ namespace Scramble.Forms
             this.MyClothingInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
             this.AllClothingItemsListView.SmallImageList = Sukuranburu.Get64x64FashionImageList();
 
+            if (!Sukuranburu.ShowSpoilers)
+            {
+                LoadSpoilerCharacters();
+            }
+
             DisplayLanguageStrings();
             Serialize();
             SerializeGlobal();
 
             ReadyForUserInput = true;
             SelectClothing();
+        }
+
+        private void LoadSpoilerCharacters()
+        {
+            SpoilerCharacters = new List<string>();
+
+            for (byte Id = 1; Id < 8; Id++)
+            {
+                if (Sukuranburu.CharacterIsSpoiler(Id))
+                {
+                    SpoilerCharacters.Add(Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(Id)));
+                }
+            }
         }
 
         private void DisplayLanguageStrings()
@@ -248,8 +267,20 @@ namespace Scramble.Forms
             }
             else
             {
-                AbilityNameLabel.Text = Sukuranburu.GetGameString(ClothingAbility.Name);
-                AbilityDescLabel.Text = Sukuranburu.GetGameString(ClothingAbility.Info);
+                string AbilityName = Sukuranburu.GetGameString(ClothingAbility.Name);
+                string AbilityInfo = Sukuranburu.GetGameString(ClothingAbility.Info);
+
+                if (SpoilerCharacters != null && SpoilerCharacters.Count > 0)
+                {
+                    foreach (string Character in SpoilerCharacters)
+                    {
+                        AbilityName = AbilityName.Replace(Character, Sukuranburu.GetString("{Spoiler}"));
+                        AbilityInfo = AbilityInfo.Replace(Character, Sukuranburu.GetString("{Spoiler}"));
+                    }
+                }
+
+                AbilityNameLabel.Text = AbilityName;
+                AbilityDescLabel.Text = AbilityInfo;
             }
 
             DisplayDefaultEquippedData();

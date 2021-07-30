@@ -169,6 +169,19 @@ namespace Scramble.Classes
             return null;
         }
 
+        public PartyMember GetPartyMemberWithCharacterId(byte CharacterId)
+        {
+            foreach (PartyMember Member in PartyMembers.Values)
+            {
+                if (Member.CharacterId == CharacterId)
+                {
+                    return Member;
+                }
+            }
+
+            return null;
+        }
+
         public Dictionary<byte, byte> WhosEquippingThisPin(int PinIndex)
         {
             Dictionary<byte, byte> CollectedData = null;

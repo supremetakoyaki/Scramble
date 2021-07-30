@@ -33,7 +33,7 @@ namespace Scramble.Classes
             { "{FP}", "FP:" },
             { "{Lv}", "Lv." },
             { "{YourParty}", "Your party" },
-            { "{CharacterEditor}", "Character Editor" },
+            { "{CharacterEditor}", "Stats Editor" },
             { "{PinsEditor}", "Pins Editor" },
             { "{ClothingEditor}", "Clothing Editor" },
             { "{SocialEditor}", "Social Editor" },
@@ -101,6 +101,18 @@ namespace Scramble.Classes
             { "{AddClothing}", "Add selected" },
             { "{AddEveryClothing}", "Add one of each piece" },
 
+            { "{StatName}", "Stat" },
+            { "{BaseValue}", "Base" },
+            { "{PlayerValue}", "Player-earned" },
+            { "{Style:}", "STYLE:" },
+            { "{+}", "+" },
+            { "{MaxStats}", "Max all stats" },
+            { "{AllCharacters}", "All characters" },
+
+            { "{ShowSpoilers}", "Show spoilers" },
+            { "{Spoiler}", "Spoiler" },
+            { "{InYourParty}", "✔ In your party" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
             { "DLG_SaveDataAlreadyOpened", "There is a save file open already. If you didn't save changes, they will be lost." },
@@ -150,7 +162,7 @@ namespace Scramble.Classes
             { "{FP}", "CP：" },
             { "{Lv}", "LVL" },
             { "{YourParty}", "パーティー" },
-            { "{CharacterEditor}", "主人公のエディタ" },
+            { "{CharacterEditor}", "ステータスのエディタ" },
             { "{PinsEditor}", "バッジのエディタ" },
             { "{ClothingEditor}", "ファッションのエディタ" },
             { "{SocialEditor}", "ソーシャルのエディタ" },
@@ -211,12 +223,24 @@ namespace Scramble.Classes
             { "{Atk:}", "ＡＴＫ：" },
             { "{Def:}", "ＤＥＦ：" },
             { "{Hp:}", "ＨＰ：" },
-            { "{ReqStyle}", "必要なＳＥＮＳＥ:" },
+            { "{ReqStyle}", "必要なＳＥＮＳＥ：" },
             { "{Ability:}", "アビリティ：" },
             { "{RemoveThisClothing}", "この服の削除" },
             { "{RemoveAllClothing}", "すべてを削除" },
             { "{AddClothing}", "服の追加" },
             { "{AddEveryClothing}", "服の各を追加" },
+
+            { "{StatName}", "スタッツ" },
+            { "{BaseValue}", "基準値" },
+            { "{PlayerValue}", "プレイヤーが獲得" },
+            { "{Style:}", "ＳＥＮＳＥ：" },
+            { "{+}", "＋" },
+            { "{MaxStats}", "９９９ステータス" },
+            { "{AllCharacters}", "全キャラクター" },
+
+            { "{ShowSpoilers}", "ネタバレ🆗" },
+            { "{Spoiler}", "ネタバレ" },
+            { "{InYourParty}", "パーティメンバー" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -267,7 +291,7 @@ namespace Scramble.Classes
             { "{FP}", "PA:" },
             { "{Lv}", "Nv." },
             { "{YourParty}", "Tu equipo" },
-            { "{CharacterEditor}", "Editar personajes" },
+            { "{CharacterEditor}", "Editar stats" },
             { "{PinsEditor}", "Editar pins" },
             { "{ClothingEditor}", "Editar ropa" },
             { "{SocialEditor}", "Editar social" },
@@ -335,6 +359,18 @@ namespace Scramble.Classes
             { "{AddClothing}", "Añadir prenda" },
             { "{AddEveryClothing}", "Añadir una de cada prenda" },
 
+            { "{StatName}", "Atributo" },
+            { "{BaseValue}", "Base" },
+            { "{PlayerValue}", "Obtenido por el jugador" },
+            { "{Style:}", "ESTILO:" },
+            { "{+}", "+" },
+            { "{MaxStats}", "Valores al máximo" },
+            { "{AllCharacters}", "Todos los personajes" },
+
+            { "{ShowSpoilers}", "Mostrar spoilers" },
+            { "{Spoiler}", "Spoiler" },
+            { "{InYourParty}", "✔ En tu equipo" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
             { "DLG_SaveDataAlreadyOpened", "Ya hay un archivo abierto. Si no guardaste los cambios, se perderán." },
@@ -384,7 +420,7 @@ namespace Scramble.Classes
             { "{FP}", "PA:" },
             { "{Lv}", "LVL " },
             { "{YourParty}", "Ton équipe" },
-            { "{CharacterEditor}", "Éditer personnages" },
+            { "{CharacterEditor}", "Éditer stats" },
             { "{PinsEditor}", "Éditer badges" },
             { "{ClothingEditor}", "Éditer vêtements" },
             { "{SocialEditor}", "Éditer social" },
@@ -451,6 +487,18 @@ namespace Scramble.Classes
             { "{RemoveAllClothing}", "Supprimer tous" },
             { "{AddClothing}", "Ajouter ce vêtement" },
             { "{AddEveryClothing}", "Ajouter un de chaque vêtement" },
+
+            { "{StatName}", "Stat" },
+            { "{BaseValue}", "Base" },
+            { "{PlayerValue}", "Obtenu par le joueur" },
+            { "{Style:}", "STYLE:" },
+            { "{+}", "+" },
+            { "{MaxStats}", "Valeurs maximales" },
+            { "{AllCharacters}", "Tous les personnages" },
+
+            { "{ShowSpoilers}", "Montrer spoilers" },
+            { "{Spoiler}", "Spoiler" },
+            { "{InYourParty}", "✔ Dans votre équipe" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },

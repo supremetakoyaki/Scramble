@@ -3,6 +3,7 @@ using Scramble.Classes;
 using Scramble.Forms;
 using Scramble.GameData;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -41,6 +42,15 @@ namespace Scramble
         #endregion
 
         public bool SwitchVersion = true;
+
+        private List<byte> SafeCharacters;
+        public bool ShowSpoilers
+        {
+            get
+            {
+                return ShowSpoilersCheckbox.Checked;
+            }
+        }
 
         public ScrambleForm()
         {
@@ -97,6 +107,8 @@ namespace Scramble
             this.OpenSocialEditButton.Text = GetString("{SocialEditor}");
             this.OpenRecordEditButton.Text = GetString("{CollectionEditor}");
             this.OpenNoisepediaEditButton.Text = GetString("{NoisepediaEditor}");
+
+            this.ShowSpoilersCheckbox.Text = GetString("{ShowSpoilers}");
 
             this.DifficultyCombo.Items.Clear();
             for (byte i = 1; i < 5; i++)
@@ -255,8 +267,12 @@ namespace Scramble
             PartyMember5_PictureBox.Image = null;
             PartyMember6_PictureBox.Image = null;
 
+            SafeCharacters = new List<byte>();
+
             foreach (PartyMember Member in SelectedSlot.GetPartyMembers().Values)
             {
+                SafeCharacters.Add(Member.CharacterId);
+
                 switch (Member.Id)
                 {
                     case 1:
@@ -282,6 +298,45 @@ namespace Scramble
                     case 6:
                         PartyMember6_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
                         break;
+                }
+            }
+
+            // Show Rindo anyway
+            if (!SafeCharacters.Contains(1))
+            {
+                SafeCharacters.Add(1);
+            }
+
+            // Show Fret anyway
+            if (!SafeCharacters.Contains(3))
+            {
+                SafeCharacters.Add(3);
+            }
+
+            // Show Minamimoto anyway
+            if (!SafeCharacters.Contains(7))
+            {
+                SafeCharacters.Add(7);
+            }
+
+            if (SelectedSlot.GetPartyMembers().Count > 5) // basically we beat the game...
+            {
+                // show all of them because anyone could have been replaced.
+                if (!SafeCharacters.Contains(2))
+                {
+                    SafeCharacters.Add(2);
+                }
+                if (!SafeCharacters.Contains(4))
+                {
+                    SafeCharacters.Add(4);
+                }
+                if (!SafeCharacters.Contains(5))
+                {
+                    SafeCharacters.Add(5);
+                }
+                if (!SafeCharacters.Contains(6))
+                {
+                    SafeCharacters.Add(6);
                 }
             }
         }
@@ -570,6 +625,16 @@ namespace Scramble
         public string GetReverseString(string Value)
         {
             return GetGameLocaleManager().ReverseLookup(CurrentLanguage, Value);
+        }
+
+        public bool CharacterIsSpoiler(byte CharaId)
+        {
+            return SafeCharacters.Contains(CharaId) == false;
+        }
+
+        public bool CharacterIsPartyMember(byte CharaId)
+        {
+            return SelectedSlot.GetPartyMemberWithCharacterId(CharaId) != null;
         }
         #endregion
     }

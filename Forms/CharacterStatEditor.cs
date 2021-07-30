@@ -1,13 +1,8 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
+using Scramble.GameData;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scramble.Forms
@@ -31,6 +26,7 @@ namespace Scramble.Forms
         }
 
         private int SelectedCharacterId;
+        private bool ReadyForUserInput = false;
 
         public CharacterStatEditor()
         {
@@ -39,6 +35,7 @@ namespace Scramble.Forms
 
             DisplayLanguageStrings();
             DisplayCharacter();
+            ReadyForUserInput = true;
         }
 
         private void DisplayLanguageStrings()
@@ -49,26 +46,128 @@ namespace Scramble.Forms
                 if (Page != null)
                 {
                     Character GameCharacter = Sukuranburu.GetCharacterManager().GetCharacter(i);
-                    Page.Text = Sukuranburu.GetGameString(GameCharacter.Name);
+                    if (Sukuranburu.CharacterIsSpoiler((byte)GameCharacter.Id) && Sukuranburu.ShowSpoilers == false)
+                    {
+                        Page.Text = Sukuranburu.GetString("{Spoiler}");
+                    }
+                    else
+                    {
+                        Page.Text = Sukuranburu.GetGameString(GameCharacter.Name);
+                    }
                 }
             }
+
+            this.Text = Sukuranburu.GetString("{CharacterEditor}");
+            StatNameLabel.Text = Sukuranburu.GetString("{StatName}");
+            BaseLabel.Text = Sukuranburu.GetString("{BaseValue}");
+            PlayerEarnedLabel.Text = Sukuranburu.GetString("{PlayerValue}");
+            HpLabel.Text = Sukuranburu.GetString("{Hp:}");
+            AtkLabel.Text = Sukuranburu.GetString("{Atk:}");
+            DefLabel.Text = Sukuranburu.GetString("{Def:}");
+            StyleLabel.Text = Sukuranburu.GetString("{Style:}");
+            PlusLabel.Text = Sukuranburu.GetString("{+}");
+            PlusLabel2.Text = Sukuranburu.GetString("{+}");
+            PlusLabel3.Text = Sukuranburu.GetString("{+}");
+            PlusLabel4.Text = Sukuranburu.GetString("{+}");
+            MaxStatsButton.Text = Sukuranburu.GetString("{MaxStats}");
+            AllCharactersCheckbox.Text = Sukuranburu.GetString("{AllCharacters}");
         }
 
         private void DisplayCharacter()
         {
             SelectedCharacterId = Convert.ToInt32(CharacterTabControl.SelectedTab.Name.Replace("CharacterTab", ""));
-            this.Character_PictureBox.Image = global::Scramble.Properties.Resources.ResourceManager.GetObject(string.Format("Character{0}_170x300", SelectedCharacterId)) as Bitmap;
-
             Character GameCharacter = Sukuranburu.GetCharacterManager().GetCharacter(SelectedCharacterId);
-            this.CharacterLabel.Text = Sukuranburu.GetGameString(GameCharacter.Name);
+
+            if (Sukuranburu.CharacterIsSpoiler((byte)SelectedCharacterId) && Sukuranburu.ShowSpoilers == false)
+            {
+                Character_PictureBox.Image = Properties.Resources.ResourceManager.GetObject("CharacterS_170x300") as Bitmap;
+                CharacterLabel.Text = Sukuranburu.GetString("{Spoiler}");
+            }
+            else
+            {
+                Character_PictureBox.Image = Properties.Resources.ResourceManager.GetObject(string.Format("Character{0}_170x300", SelectedCharacterId)) as Bitmap;
+                CharacterLabel.Text = Sukuranburu.GetGameString(GameCharacter.Name);
+            }
+
+            if (Sukuranburu.CharacterIsPartyMember((byte)SelectedCharacterId))
+            {
+                InYourPartyLabel.Text = Sukuranburu.GetString("{InYourParty}");
+            }
+            else
+            {
+                InYourPartyLabel.Text = string.Empty;
+            }
+
+            BattlePlayer Player = Sukuranburu.GetCharacterManager().GetBattlePlayer(SelectedCharacterId);
+            HpBaseLabelValue.Text = Player.BaseHp.ToString();
+            AtkBaseValueLabel.Text = Player.BaseAtk.ToString();
+            DefBaseValueLabel.Text = Player.BaseDef.ToString();
+            StyleBaseValueLabel.Text = Player.BaseSense.ToString();
+
+            int OffsetSum = (SelectedCharacterId - 1) * 20;
+
+            int PlayerHp = (int)SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Hp + OffsetSum);
+            int PlayerAtk = (int)SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Atk  + OffsetSum);
+            int PlayerDef = (int)SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Def + OffsetSum);
+            int PlayerStyle = (int)SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Style + OffsetSum);
+
+            if (PlayerHp < HpValueUpDown.Minimum)
+            {
+                PlayerHp = (int)HpValueUpDown.Minimum;
+            }
+            else if (PlayerHp < HpValueUpDown.Maximum)
+            {
+                PlayerHp = (int)HpValueUpDown.Maximum;
+            }
+
+            if (PlayerAtk < AtkValueUpDown.Minimum)
+            {
+                PlayerAtk = (int)AtkValueUpDown.Minimum;
+            }
+            else if (PlayerAtk < AtkValueUpDown.Maximum)
+            {
+                PlayerAtk = (int)AtkValueUpDown.Maximum;
+            }
+
+            if (PlayerDef < DefValueUpDown.Minimum)
+            {
+                PlayerDef = (int)DefValueUpDown.Minimum;
+            }
+            else if (PlayerDef < DefValueUpDown.Maximum)
+            {
+                PlayerDef = (int)DefValueUpDown.Maximum;
+            }
+
+            if (PlayerStyle < StyleValueUpDown.Minimum)
+            {
+                PlayerStyle = (int)StyleValueUpDown.Minimum;
+            }
+            else if (PlayerStyle < StyleValueUpDown.Maximum)
+            {
+                PlayerStyle = (int)StyleValueUpDown.Maximum;
+            }
+
+            HpValueUpDown.Value = PlayerHp;
+            AtkValueUpDown.Value = PlayerAtk;
+            DefValueUpDown.Value = PlayerDef;
+            StyleValueUpDown.Value = PlayerStyle;
         }
 
         private void CharacterTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
             if (CharacterTabControl.SelectedIndex != -1)
             {
                 DisplayCharacter();
             }
+
+            ReadyForUserInput = true;
         }
     }
 }
