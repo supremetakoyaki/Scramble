@@ -17,7 +17,7 @@ namespace Scramble
         public CollectionEditor RecordsEditor;
         public PinInventoryEditor PinInvEditor;
         public ClothingInventoryEditor ClothInvEditor;
-
+        public CharacterStatEditor CharaStatEditor;
         public SaveData SelectedSlot
         {
             get
@@ -476,6 +476,12 @@ namespace Scramble
             ClothInvEditor.ShowDialog();
         }
 
+        private void OpenCharacterEditButton_Click(object sender, EventArgs e)
+        {
+            CharaStatEditor = new CharacterStatEditor();
+            CharaStatEditor.ShowDialog();
+        }
+
         private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)
         {
             CurrentLanguage = (byte)LanguageSelectComboBox.SelectedIndex;
@@ -487,6 +493,7 @@ namespace Scramble
         {
             return CharacterImageList_32x32;
         }
+
         public ImageList Get32x32AllCollectionIconsImageList()
         {
             return AllCollectionIconsImageList_32x32;

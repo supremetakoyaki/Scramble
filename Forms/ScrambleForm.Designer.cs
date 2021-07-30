@@ -86,6 +86,7 @@ namespace Scramble
             this.SelectLanguageLabel = new System.Windows.Forms.Label();
             this.LanguageSelectComboBox = new System.Windows.Forms.ComboBox();
             this.PinImageList_100x100 = new System.Windows.Forms.ImageList(this.components);
+            this.CharacterImageList_170x300 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -192,7 +193,7 @@ namespace Scramble
             this.AboutLabel.Name = "AboutLabel";
             this.AboutLabel.Size = new System.Drawing.Size(28, 15);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "v0.4";
+            this.AboutLabel.Text = "v0.5";
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // MoneyLabel
@@ -434,13 +435,13 @@ namespace Scramble
             // 
             // OpenCharacterEditButton
             // 
-            this.OpenCharacterEditButton.Enabled = false;
             this.OpenCharacterEditButton.Location = new System.Drawing.Point(378, 18);
             this.OpenCharacterEditButton.Name = "OpenCharacterEditButton";
             this.OpenCharacterEditButton.Size = new System.Drawing.Size(160, 23);
             this.OpenCharacterEditButton.TabIndex = 25;
             this.OpenCharacterEditButton.Text = "Character Editor";
             this.OpenCharacterEditButton.UseVisualStyleBackColor = true;
+            this.OpenCharacterEditButton.Click += new System.EventHandler(this.OpenCharacterEditButton_Click);
             // 
             // OpenNoisepediaEditButton
             // 
@@ -2991,6 +2992,19 @@ namespace Scramble
             this.PinImageList_100x100.Images.SetKeyName(332, "ID332_sozai.png");
             this.PinImageList_100x100.Images.SetKeyName(333, "ID333_sozai.png");
             // 
+            // CharacterImageList_170x300
+            // 
+            this.CharacterImageList_170x300.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.CharacterImageList_170x300.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("CharacterImageList_170x300.ImageStream")));
+            this.CharacterImageList_170x300.TransparentColor = System.Drawing.Color.Transparent;
+            this.CharacterImageList_170x300.Images.SetKeyName(0, "01.png");
+            this.CharacterImageList_170x300.Images.SetKeyName(1, "02.png");
+            this.CharacterImageList_170x300.Images.SetKeyName(2, "03.png");
+            this.CharacterImageList_170x300.Images.SetKeyName(3, "04.png");
+            this.CharacterImageList_170x300.Images.SetKeyName(4, "05.png");
+            this.CharacterImageList_170x300.Images.SetKeyName(5, "06.png");
+            this.CharacterImageList_170x300.Images.SetKeyName(6, "07.png");
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3088,6 +3102,7 @@ namespace Scramble
         private System.Windows.Forms.Label LvLabel_Pre;
         private System.Windows.Forms.Label LvLabel;
         private System.Windows.Forms.ImageList PinImageList_100x100;
+        private System.Windows.Forms.ImageList CharacterImageList_170x300;
     }
 }
 
