@@ -192,6 +192,7 @@ namespace Scramble.Forms
             this.HpValueUpDown.Name = "HpValueUpDown";
             this.HpValueUpDown.Size = new System.Drawing.Size(80, 23);
             this.HpValueUpDown.TabIndex = 3;
+            this.HpValueUpDown.ValueChanged += new System.EventHandler(this.HpValueUpDown_ValueChanged);
             // 
             // PlusLabel
             // 
@@ -248,6 +249,7 @@ namespace Scramble.Forms
             this.AtkValueUpDown.Name = "AtkValueUpDown";
             this.AtkValueUpDown.Size = new System.Drawing.Size(80, 23);
             this.AtkValueUpDown.TabIndex = 7;
+            this.AtkValueUpDown.ValueChanged += new System.EventHandler(this.AtkValueUpDown_ValueChanged);
             // 
             // AtkLabel
             // 
@@ -293,6 +295,7 @@ namespace Scramble.Forms
             this.DefValueUpDown.Name = "DefValueUpDown";
             this.DefValueUpDown.Size = new System.Drawing.Size(80, 23);
             this.DefValueUpDown.TabIndex = 11;
+            this.DefValueUpDown.ValueChanged += new System.EventHandler(this.DefValueUpDown_ValueChanged);
             // 
             // DefLabel
             // 
@@ -338,6 +341,7 @@ namespace Scramble.Forms
             this.StyleValueUpDown.Name = "StyleValueUpDown";
             this.StyleValueUpDown.Size = new System.Drawing.Size(80, 23);
             this.StyleValueUpDown.TabIndex = 15;
+            this.StyleValueUpDown.ValueChanged += new System.EventHandler(this.StyleValueUpDown_ValueChanged);
             // 
             // StyleLabel
             // 
@@ -359,6 +363,7 @@ namespace Scramble.Forms
             this.MaxStatsButton.TabIndex = 18;
             this.MaxStatsButton.Text = "{MaxStats}";
             this.MaxStatsButton.UseVisualStyleBackColor = false;
+            this.MaxStatsButton.Click += new System.EventHandler(this.MaxStatsButton_Click);
             // 
             // BaseLabel
             // 

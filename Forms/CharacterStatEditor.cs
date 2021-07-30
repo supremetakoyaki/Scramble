@@ -28,6 +28,8 @@ namespace Scramble.Forms
         private int SelectedCharacterId;
         private bool ReadyForUserInput = false;
 
+        public const ushort MAXIMUM_VALUE = 999;
+
         public CharacterStatEditor()
         {
             InitializeComponent();
@@ -153,6 +155,28 @@ namespace Scramble.Forms
             StyleValueUpDown.Value = PlayerStyle;
         }
 
+        private void UpdateHp(int AmountToSet, int CharacterId)
+        {
+            int OffsetSum = (CharacterId - 1) * 20;
+            SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Hp + OffsetSum, AmountToSet);
+        }
+        private void UpdateAtk(int AmountToSet, int CharacterId)
+        {
+            int OffsetSum = (CharacterId - 1) * 20;
+            SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Atk + OffsetSum, AmountToSet);
+        }
+
+        private void UpdateDef(int AmountToSet, int CharacterId)
+        {
+            int OffsetSum = (CharacterId - 1) * 20;
+            SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Def + OffsetSum, AmountToSet);
+        }
+        private void UpdateStyle(int AmountToSet, int CharacterId)
+        {
+            int OffsetSum = (CharacterId - 1) * 20;
+            SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Style + OffsetSum, AmountToSet);
+        }
+
         private void CharacterTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!ReadyForUserInput)
@@ -166,6 +190,133 @@ namespace Scramble.Forms
             {
                 DisplayCharacter();
             }
+
+            ReadyForUserInput = true;
+        }
+
+        private void HpValueUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (HpValueUpDown.Value < HpValueUpDown.Minimum)
+            {
+                HpValueUpDown.Value = (int)HpValueUpDown.Minimum;
+            }
+            else if (HpValueUpDown.Value > HpValueUpDown.Maximum)
+            {
+                HpValueUpDown.Value = (int)HpValueUpDown.Maximum;
+            }
+
+            UpdateHp((int)HpValueUpDown.Value, SelectedCharacterId);
+
+            ReadyForUserInput = true;
+        }
+
+        private void AtkValueUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (AtkValueUpDown.Value < AtkValueUpDown.Minimum)
+            {
+                AtkValueUpDown.Value = (int)AtkValueUpDown.Minimum;
+            }
+            else if (AtkValueUpDown.Value > AtkValueUpDown.Maximum)
+            {
+                AtkValueUpDown.Value = (int)AtkValueUpDown.Maximum;
+            }
+
+            UpdateAtk((int)AtkValueUpDown.Value, SelectedCharacterId);
+
+            ReadyForUserInput = true;
+        }
+
+        private void DefValueUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (DefValueUpDown.Value < DefValueUpDown.Minimum)
+            {
+                DefValueUpDown.Value = (int)DefValueUpDown.Minimum;
+            }
+            else if (DefValueUpDown.Value > DefValueUpDown.Maximum)
+            {
+                DefValueUpDown.Value = (int)DefValueUpDown.Maximum;
+            }
+
+            UpdateDef((int)DefValueUpDown.Value, SelectedCharacterId);
+
+            ReadyForUserInput = true;
+        }
+
+        private void StyleValueUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (StyleValueUpDown.Value < StyleValueUpDown.Minimum)
+            {
+                StyleValueUpDown.Value = (int)StyleValueUpDown.Minimum;
+            }
+            else if (StyleValueUpDown.Value > StyleValueUpDown.Maximum)
+            {
+                StyleValueUpDown.Value = (int)StyleValueUpDown.Maximum;
+            }
+
+            UpdateStyle((int)StyleValueUpDown.Value, SelectedCharacterId);
+
+            ReadyForUserInput = true;
+        }
+
+        private void MaxStatsButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (AllCharactersCheckbox.Checked)
+            {
+                for (int Id = 1; Id < 8; Id++)
+                {
+                    UpdateHp(MAXIMUM_VALUE, Id);
+                    UpdateAtk(MAXIMUM_VALUE, Id);
+                    UpdateDef(MAXIMUM_VALUE, Id);
+                    UpdateStyle(MAXIMUM_VALUE, Id);
+                }
+            }
+            else
+            {
+                UpdateHp(MAXIMUM_VALUE, SelectedCharacterId);
+                UpdateAtk(MAXIMUM_VALUE, SelectedCharacterId);
+                UpdateDef(MAXIMUM_VALUE, SelectedCharacterId);
+                UpdateStyle(MAXIMUM_VALUE, SelectedCharacterId);
+            }
+
+            this.HpValueUpDown.Value = MAXIMUM_VALUE;
+            this.AtkValueUpDown.Value = MAXIMUM_VALUE;
+            this.DefValueUpDown.Value = MAXIMUM_VALUE;
+            this.StyleValueUpDown.Value = MAXIMUM_VALUE;
 
             ReadyForUserInput = true;
         }
