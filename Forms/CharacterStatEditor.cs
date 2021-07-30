@@ -115,7 +115,7 @@ namespace Scramble.Forms
             {
                 PlayerHp = (int)HpValueUpDown.Minimum;
             }
-            else if (PlayerHp < HpValueUpDown.Maximum)
+            else if (PlayerHp > HpValueUpDown.Maximum)
             {
                 PlayerHp = (int)HpValueUpDown.Maximum;
             }
@@ -124,7 +124,7 @@ namespace Scramble.Forms
             {
                 PlayerAtk = (int)AtkValueUpDown.Minimum;
             }
-            else if (PlayerAtk < AtkValueUpDown.Maximum)
+            else if (PlayerAtk > AtkValueUpDown.Maximum)
             {
                 PlayerAtk = (int)AtkValueUpDown.Maximum;
             }
@@ -133,7 +133,7 @@ namespace Scramble.Forms
             {
                 PlayerDef = (int)DefValueUpDown.Minimum;
             }
-            else if (PlayerDef < DefValueUpDown.Maximum)
+            else if (PlayerDef > DefValueUpDown.Maximum)
             {
                 PlayerDef = (int)DefValueUpDown.Maximum;
             }
@@ -142,7 +142,7 @@ namespace Scramble.Forms
             {
                 PlayerStyle = (int)StyleValueUpDown.Minimum;
             }
-            else if (PlayerStyle < StyleValueUpDown.Maximum)
+            else if (PlayerStyle > StyleValueUpDown.Maximum)
             {
                 PlayerStyle = (int)StyleValueUpDown.Maximum;
             }
