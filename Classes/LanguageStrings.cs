@@ -30,13 +30,13 @@ namespace Scramble.Classes
             { "{Experience}", "Experience:" },
             { "{CurrentLevel}", "Current Level:" },
             { "{Money}", "Money:" },
-            { "{FP}", "FP:" },
+            { "{Fp:}", "FP:" },
             { "{Lv}", "Lv." },
             { "{YourParty}", "Your party" },
             { "{CharacterEditor}", "Stats Editor" },
             { "{PinsEditor}", "Pins Editor" },
             { "{ClothingEditor}", "Clothing Editor" },
-            { "{SocialEditor}", "Social Editor" },
+            { "{SocialEditor}", "Social Tree Editor" },
             { "{CollectionEditor}", "Collection Editor" },
             { "{NoisepediaEditor}", "Noisepedia Editor" },
 
@@ -113,6 +113,18 @@ namespace Scramble.Classes
             { "{Spoiler}", "Spoiler" },
             { "{InYourParty}", "✔ In your party" },
 
+            { "{SkillTreeMap}", "Social Network Map" },
+            { "{CharacterInfo}", "Character Information" },
+            { "{RewardSkill}", "————————— REWARD SKILL —————————" },
+            { "{x}", "×" },
+            { "{FP}", "FP" },
+            { "{Timeframe:}", "TIMEFRAME:" },
+            { "{Location:}", "LOCATION:" },
+            { "{UnlockAll_SkillTree}", "Unlock All" },
+            { "{Connection}", "Connection" },
+            { "{Skill}", "Skill" },
+            { "{ConnectionEstablished}", "Connection established" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
             { "DLG_SaveDataAlreadyOpened", "There is a save file open already. If you didn't save changes, they will be lost." },
@@ -131,7 +143,8 @@ namespace Scramble.Classes
             { "DLG_DeleteAllClothingAreYouSure", "Are you sure you want to remove all clothes from your inventory?" },
             { "DLG_NoClothingToAddSelected", "You didn't select a clothing piece to add." },
             { "DLG_YouCantAddMoreClothes", "You can't add more clothes. Maximum value is 9 for one piece, and 2000 in total." },
-            { "DLG_NewUpdateFound", "There is a new version of Scramble. Do you want to check it out?" }
+            { "DLG_NewUpdateFound", "There is a new version of Scramble. Do you want to check it out?" },
+            { "DLG_Social_SpoilersWarn", "Social network characters you unlock will no longer be shown as Spoiler. Do you want to continue?" }
         };
 
         public Dictionary<string, string> Japanese = new Dictionary<string, string>()
@@ -160,13 +173,13 @@ namespace Scramble.Classes
             { "{Experience}", "EXP：" },
             { "{CurrentLevel}", "現在のLVL：" },
             { "{Money}", "お金：" },
-            { "{FP}", "CP：" },
+            { "{Fp:}", "CP：" },
             { "{Lv}", "LVL" },
             { "{YourParty}", "パーティー" },
             { "{CharacterEditor}", "ステータスのエディタ" },
             { "{PinsEditor}", "バッジのエディタ" },
             { "{ClothingEditor}", "ファッションのエディタ" },
-            { "{SocialEditor}", "ソーシャルのエディタ" },
+            { "{SocialEditor}", "キャラボードのエディタ" },
             { "{CollectionEditor}", "コレクショのエディタ" },
             { "{NoisepediaEditor}", "エネミーのエディタ" },
 
@@ -243,6 +256,18 @@ namespace Scramble.Classes
             { "{Spoiler}", "ネタバレ" },
             { "{InYourParty}", "パーティメンバー" },
 
+            { "{SkillTreeMap}", "キャラクターボードのツリー表示" },
+            { "{CharacterInfo}", "キャラクターの情報" },
+            { "{RewardSkill}", "—————————— リワードスキル ——————————" },
+            { "{x}", "×" },
+            { "{FP}", "CP" },
+            { "{Timeframe:}", "イベント発生タイミング：" },
+            { "{Location:}", "イベント発生場所：" },
+            { "{UnlockAll_SkillTree}", "すべてのロックを解除" },
+            { "{Connection}", "繋" },
+            { "{Skill}", "スキル" },
+            { "{ConnectionEstablished}", "ネットワークが繋されています" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
             { "DLG_SaveDataAlreadyOpened", "すでに開いているファイルがあります。\n保存されていない変更は失われます。" },
@@ -261,7 +286,8 @@ namespace Scramble.Classes
             { "DLG_DeleteAllClothingAreYouSure", "すべての在庫の服を削除しますか？" },
             { "DLG_NoClothingToAddSelected", "服が選択されていないか。" },
             { "DLG_YouCantAddMoreClothes", "これ以上同じ特性を持つ服を追加できません。\n最大値は９。合計で、最大値は２０００になります。" },
-            { "DLG_NewUpdateFound", "新しいバージョンの「スクランブル」があります。 ダウンロードしますか？" }
+            { "DLG_NewUpdateFound", "新しいバージョンの「スクランブル」があります。 ダウンロードしますか？" },
+            { "DLG_Social_SpoilersWarn", "アンロックすることにしたキャラクターボードのキャラクターはネタバレではなくなります。\n 続行しますか？" }
         };
 
         public Dictionary<string, string> Spanish = new Dictionary<string, string>()
@@ -290,13 +316,13 @@ namespace Scramble.Classes
             { "{Experience}", "Experiencia:" },
             { "{CurrentLevel}", "Nivel actual:" },
             { "{Money}", "Dinero:" },
-            { "{FP}", "PA:" },
+            { "{Fp:}", "PA:" },
             { "{Lv}", "Nv." },
             { "{YourParty}", "Tu equipo" },
             { "{CharacterEditor}", "Editar stats" },
             { "{PinsEditor}", "Editar pins" },
             { "{ClothingEditor}", "Editar ropa" },
-            { "{SocialEditor}", "Editar social" },
+            { "{SocialEditor}", "Editar red social" },
             { "{CollectionEditor}", "Editar colecciones" },
             { "{NoisepediaEditor}", "Editar ruidopedia" },
 
@@ -373,6 +399,18 @@ namespace Scramble.Classes
             { "{Spoiler}", "Spoiler" },
             { "{InYourParty}", "✔ En tu equipo" },
 
+            { "{SkillTreeMap}", "Mapa de red social" },
+            { "{CharacterInfo}", "Información del personaje" },
+            { "{RewardSkill}", "————————— RECOMPENSA —————————" },
+            { "{x}", "×" },
+            { "{FP}", "PA" },
+            { "{Timeframe:}", "MARCO TEMPORAL:" },
+            { "{Location:}", "LUGAR:" },
+            { "{UnlockAll_SkillTree}", "Desbloquear todo" },
+            { "{Connection}", "Conexiones" },
+            { "{Skill}", "Recompensas" },
+            { "{ConnectionEstablished}", "Conexión establecida" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
             { "DLG_SaveDataAlreadyOpened", "Ya hay un archivo abierto. Si no guardaste los cambios, se perderán." },
@@ -391,7 +429,8 @@ namespace Scramble.Classes
             { "DLG_DeleteAllClothingAreYouSure", "¿Estás segur@ de que quieres quitar toda la ropa de tu inventario?" },
             { "DLG_NoClothingToAddSelected", "No seleccionaste ninguna prenda para añadir." },
             { "DLG_YouCantAddMoreClothes", "No puedes añadir más. El valor máximo es 9 para una prenda y 2000 en total." },
-            { "DLG_NewUpdateFound", "Hay una nueva versión de Scramble. ¿Deseas ir a descargarla?" }
+            { "DLG_NewUpdateFound", "Hay una nueva versión de Scramble. ¿Deseas ir a descargarla?" },
+            { "DLG_Social_SpoilersWarn", "Los personajes que desbloquees ya no serán marcados como spoiler.\n¿Continuar de todas formas?" }
         };
 
         public Dictionary<string, string> French = new Dictionary<string, string>()
@@ -420,13 +459,13 @@ namespace Scramble.Classes
             { "{Experience}", "Experience:" },
             { "{CurrentLevel}", "Niveau actuel:" },
             { "{Money}", "Argent:" },
-            { "{FP}", "PA:" },
+            { "{Fp:}", "PA:" },
             { "{Lv}", "LVL " },
             { "{YourParty}", "Ton équipe" },
             { "{CharacterEditor}", "Éditer stats" },
             { "{PinsEditor}", "Éditer badges" },
             { "{ClothingEditor}", "Éditer vêtements" },
-            { "{SocialEditor}", "Éditer social" },
+            { "{SocialEditor}", "Éditer réseau social" },
             { "{CollectionEditor}", "Éditer collection" },
             { "{NoisepediaEditor}", "Éditer échopédie" },
 
@@ -503,6 +542,18 @@ namespace Scramble.Classes
             { "{Spoiler}", "Spoiler" },
             { "{InYourParty}", "✔ Dans votre équipe" },
 
+            { "{SkillTreeMap}", "Arbre des connexions sociales" },
+            { "{CharacterInfo}", "Informations de personnage" },
+            { "{RewardSkill}", "————————— RÉCOMPENSE —————————" },
+            { "{x}", "×" },
+            { "{FP}", "PA" },
+            { "{Timeframe:}", "PÉRIODE:" },
+            { "{Location:}", "LIEU:" },
+            { "{UnlockAll_SkillTree}", "Débloqué tous" },
+            { "{Connection}", "Connexions" },
+            { "{Skill}", "Récompenses" },
+            { "{ConnectionEstablished}", "Connexion établie" },
+
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },
             { "DLG_SaveDataAlreadyOpened", "Il y a déjà un fichier ouvert. Si vous n'avez pas enregistré vos modifications, elles seront perdues." },
@@ -521,7 +572,8 @@ namespace Scramble.Classes
             { "DLG_DeleteAllClothingAreYouSure", "Êtes-vous sûr de vouloir supprimer tous les vêtements de votre inventaire ?" },
             { "DLG_NoClothingToAddSelected", "Vous n'avez sélectionné aucun vêtement à ajouter." },
             { "DLG_YouCantAddMoreClothes", "Vous ne pouvez pas ajouter plus de ce vêtement. La valeur maximale est 9 pour une pièce et 2000 au total." },
-            { "DLG_NewUpdateFound", "Il existe une nouvelle version de Scramble. Voulez-vous aller le télécharger ?" }
+            { "DLG_NewUpdateFound", "Il existe une nouvelle version de Scramble. Voulez-vous aller le télécharger ?" },
+            { "DLG_Social_SpoilersWarn", "Les personnages que vous débloquerez ne seront plus spoiler.\nVoulez-vous continuer ?" }
         };
 
         public Dictionary<string, string> Italian = new Dictionary<string, string>();

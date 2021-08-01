@@ -7,12 +7,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Scramble
 {
@@ -23,6 +21,8 @@ namespace Scramble
         public PinInventoryEditor PinInvEditor;
         public ClothingInventoryEditor ClothInvEditor;
         public CharacterStatEditor CharaStatEditor;
+        public SkillTreeEditor SocialEditor;
+
         public SaveData SelectedSlot
         {
             get
@@ -43,6 +43,7 @@ namespace Scramble
         private ItemManager ItmManager;
         private CharacterManager CharaManager;
         private GameLocaleManager GameLocManager;
+        private SocialNetworkManager SocialManager;
         #endregion
 
         public bool SwitchVersion = true;
@@ -56,24 +57,47 @@ namespace Scramble
             }
         }
 
+        // Scaling for people who do NOT have 100% DPI setting. a.k.a. insane people D;
+        private Graphics Graphics;
+
+        public double ScaleFactor
+        {
+            get;
+            private set;
+        }
+
         public ScrambleForm()
         {
             InitializeComponent();
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
+            SetUpGraphics();
+
             this.DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.Height = 148;
-            this.Width = 309;
+            ChangeFormSize(148, 309);
 
             // NEO TWEWY Database instances
             ItmManager = new ItemManager();
             CharaManager = new CharacterManager();
             GameLocManager = new GameLocaleManager();
+            SocialManager = new SocialNetworkManager();
 
             LangStrings = new LanguageStrings();
             LanguageSelectComboBox.Text = "English";
 
             Task.Run(TryCheckForUpdates);
+        }
+
+        public void SetUpGraphics()
+        {
+            this.Graphics = this.CreateGraphics();
+            this.ScaleFactor = this.Graphics.DpiX / 96;
+            this.DpiChanged += new DpiChangedEventHandler(this.ScrambleForm_DpiChanged);
+
+            if (ScaleFactor != 1.0)
+            {
+                ShowNotice(GetString("DLG_WindowsDpiNote"));
+            }
         }
 
         public void DisplayLanguageStrings()
@@ -103,7 +127,7 @@ namespace Scramble
             this.ExperienceLabel.Text = GetString("{Experience}");
             this.CurrentLevelLabel.Text = GetString("{CurrentLevel}");
             this.MoneyLabel.Text = GetString("{Money}");
-            this.FpLabel.Text = GetString("{FP}");
+            this.FpLabel.Text = GetString("{Fp:}");
             this.LvLabel_Pre.Text = GetString("{Lv}");
             this.PartyMembersLabel.Text = GetString("{YourParty}");
 
@@ -207,8 +231,7 @@ namespace Scramble
                     ShowWarning(GetString("DLG_InvalidSaveFile"));
                     OpenedSaveFile = null;
 
-                    this.Height = 148;
-                    this.Width = 309;
+                    this.ChangeFormSize(148, 309);
                     return;
                 }
 
@@ -222,8 +245,7 @@ namespace Scramble
                     SelectSlot(this.SaveSlotsListBox.SelectedIndex);
                 }
 
-                this.Height = 409;
-                this.Width = 740;
+                this.ChangeFormSize(409, 740);
                 this.Text = "Scramble — NEO TWEWY Save Editor";
             }
         }
@@ -576,6 +598,12 @@ namespace Scramble
             CharaStatEditor.ShowDialog();
         }
 
+        private void OpenSocialEditButton_Click(object sender, EventArgs e)
+        {
+            SocialEditor = new SkillTreeEditor();
+            SocialEditor.ShowDialog();
+        }
+
         private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)
         {
             CurrentLanguage = (byte)LanguageSelectComboBox.SelectedIndex;
@@ -650,6 +678,11 @@ namespace Scramble
             return GameLocManager;
         }
 
+        public SocialNetworkManager GetSocialNetworkManager()
+        {
+            return SocialManager;
+        }
+
         public string GetGameString(string Key)
         {
             string Locale = GetGameLocaleManager().GetLocale(CurrentLanguage, Key);
@@ -665,6 +698,7 @@ namespace Scramble
         {
             return GetGameLocaleManager().ReverseLookup(CurrentLanguage, Value);
         }
+        #endregion
 
         public bool CharacterIsSpoiler(byte CharaId)
         {
@@ -675,6 +709,27 @@ namespace Scramble
         {
             return SelectedSlot.GetPartyMemberWithCharacterId(CharaId) != null;
         }
-        #endregion
+
+        private void ScrambleForm_DpiChanged(object sender, DpiChangedEventArgs e)
+        {
+            this.Graphics = this.CreateGraphics();
+            this.ScaleFactor = this.Graphics.DpiX / 96;
+
+            ChangeFormSize(this.Height, this.Width);
+        }
+
+        private void ChangeFormSize(int Height, int Width)
+        {
+            if (ScaleFactor == 1.0)
+            {
+                this.Height = Height;
+                this.Width = Width;
+            }
+            else
+            {
+                this.Height = (int)Math.Floor(Height * ScaleFactor);
+                this.Width = (int)Math.Floor(Width * ScaleFactor);
+            }
+        }
     }
 }
