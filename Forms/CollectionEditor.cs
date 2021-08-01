@@ -31,6 +31,11 @@ namespace Scramble.Forms
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             this.RecordInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
 
+            if (Sukuranburu.RequiresRescaling)
+            {
+                RecordInvListView.AutoSize = true;
+            }
+
             Serialize();
         }
 

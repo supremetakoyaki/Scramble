@@ -83,7 +83,7 @@ namespace Scramble.Forms
             this.CharacterTabControl.Location = new System.Drawing.Point(12, 12);
             this.CharacterTabControl.Name = "CharacterTabControl";
             this.CharacterTabControl.SelectedIndex = 0;
-            this.CharacterTabControl.Size = new System.Drawing.Size(490, 33);
+            this.CharacterTabControl.Size = new System.Drawing.Size(492, 30);
             this.CharacterTabControl.TabIndex = 0;
             this.CharacterTabControl.SelectedIndexChanged += new System.EventHandler(this.CharacterTabControl_SelectedIndexChanged);
             // 
@@ -93,7 +93,7 @@ namespace Scramble.Forms
             this.CharacterTab1.Location = new System.Drawing.Point(4, 34);
             this.CharacterTab1.Name = "CharacterTab1";
             this.CharacterTab1.Padding = new System.Windows.Forms.Padding(3);
-            this.CharacterTab1.Size = new System.Drawing.Size(482, 0);
+            this.CharacterTab1.Size = new System.Drawing.Size(484, 0);
             this.CharacterTab1.TabIndex = 0;
             this.CharacterTab1.Text = "{Chara1}";
             // 
@@ -101,7 +101,7 @@ namespace Scramble.Forms
             // 
             this.CharacterTab3.Location = new System.Drawing.Point(4, 34);
             this.CharacterTab3.Name = "CharacterTab3";
-            this.CharacterTab3.Size = new System.Drawing.Size(482, 0);
+            this.CharacterTab3.Size = new System.Drawing.Size(484, 0);
             this.CharacterTab3.TabIndex = 2;
             this.CharacterTab3.Text = "{Chara3}";
             this.CharacterTab3.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@ namespace Scramble.Forms
             // 
             this.CharacterTab7.Location = new System.Drawing.Point(4, 34);
             this.CharacterTab7.Name = "CharacterTab7";
-            this.CharacterTab7.Size = new System.Drawing.Size(482, 0);
+            this.CharacterTab7.Size = new System.Drawing.Size(484, 0);
             this.CharacterTab7.TabIndex = 6;
             this.CharacterTab7.Text = "{Chara7}";
             this.CharacterTab7.UseVisualStyleBackColor = true;
@@ -119,7 +119,7 @@ namespace Scramble.Forms
             // 
             this.CharacterTab4.Location = new System.Drawing.Point(4, 34);
             this.CharacterTab4.Name = "CharacterTab4";
-            this.CharacterTab4.Size = new System.Drawing.Size(482, 0);
+            this.CharacterTab4.Size = new System.Drawing.Size(484, 0);
             this.CharacterTab4.TabIndex = 3;
             this.CharacterTab4.Text = "{Chara4}";
             this.CharacterTab4.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@ namespace Scramble.Forms
             // 
             this.CharacterTab5.Location = new System.Drawing.Point(4, 34);
             this.CharacterTab5.Name = "CharacterTab5";
-            this.CharacterTab5.Size = new System.Drawing.Size(482, 0);
+            this.CharacterTab5.Size = new System.Drawing.Size(484, 0);
             this.CharacterTab5.TabIndex = 4;
             this.CharacterTab5.Text = "{Chara5}";
             this.CharacterTab5.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@ namespace Scramble.Forms
             this.CharacterTab2.Location = new System.Drawing.Point(4, 34);
             this.CharacterTab2.Name = "CharacterTab2";
             this.CharacterTab2.Padding = new System.Windows.Forms.Padding(3);
-            this.CharacterTab2.Size = new System.Drawing.Size(482, 0);
+            this.CharacterTab2.Size = new System.Drawing.Size(484, 0);
             this.CharacterTab2.TabIndex = 1;
             this.CharacterTab2.Text = "{Chara2}";
             this.CharacterTab2.UseVisualStyleBackColor = true;
@@ -147,7 +147,7 @@ namespace Scramble.Forms
             // 
             this.CharacterTab6.Location = new System.Drawing.Point(4, 34);
             this.CharacterTab6.Name = "CharacterTab6";
-            this.CharacterTab6.Size = new System.Drawing.Size(482, 0);
+            this.CharacterTab6.Size = new System.Drawing.Size(484, 0);
             this.CharacterTab6.TabIndex = 5;
             this.CharacterTab6.Text = "{Chara6}";
             this.CharacterTab6.UseVisualStyleBackColor = true;
@@ -157,6 +157,7 @@ namespace Scramble.Forms
             this.Character_PictureBox.Location = new System.Drawing.Point(12, 53);
             this.Character_PictureBox.Name = "Character_PictureBox";
             this.Character_PictureBox.Size = new System.Drawing.Size(170, 300);
+            this.Character_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Character_PictureBox.TabIndex = 0;
             this.Character_PictureBox.TabStop = false;
             // 
@@ -417,10 +418,10 @@ namespace Scramble.Forms
             // 
             // CharacterStatEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(514, 365);
+            this.ClientSize = new System.Drawing.Size(519, 365);
             this.Controls.Add(this.InYourPartyLabel);
             this.Controls.Add(this.AllCharactersCheckbox);
             this.Controls.Add(this.PlayerEarnedLabel);

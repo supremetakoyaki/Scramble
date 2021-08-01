@@ -43,6 +43,12 @@ namespace Scramble.Forms
             this.MyPinInventoryView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
             this.AllPinsListView.SmallImageList = Sukuranburu.Get64x64PinImageList();
 
+            if (Sukuranburu.RequiresRescaling)
+            {
+                this.MyPinInventoryView.AutoSize = true;
+                this.AllPinsListView.AutoSize = true;
+            }
+
             DisplayLanguageStrings();
 
             Serialize();

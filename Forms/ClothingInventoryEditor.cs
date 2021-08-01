@@ -52,6 +52,12 @@ namespace Scramble.Forms
             this.MyClothingInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
             this.AllClothingItemsListView.SmallImageList = Sukuranburu.Get64x64FashionImageList();
 
+            if (Sukuranburu.RequiresRescaling)
+            {
+                MyClothingInvListView.AutoSize = true;
+                AllClothingItemsListView.AutoSize = true;
+            }
+
             if (!Sukuranburu.ShowSpoilers)
             {
                 LoadSpoilerCharacters();

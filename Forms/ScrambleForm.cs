@@ -66,6 +66,14 @@ namespace Scramble
             private set;
         }
 
+        public bool RequiresRescaling
+        {
+            get
+            {
+                return ScaleFactor != 1.0;
+            }
+        }
+
         public ScrambleForm()
         {
             InitializeComponent();
@@ -715,15 +723,15 @@ namespace Scramble
 
         private void ChangeFormSize(int Height, int Width)
         {
-            if (ScaleFactor == 1.0)
-            {
-                this.Height = Height;
-                this.Width = Width;
-            }
-            else
+            if (RequiresRescaling)
             {
                 this.Height = (int)Math.Floor(Height * ScaleFactor);
                 this.Width = (int)Math.Floor(Width * ScaleFactor);
+            }
+            else
+            {
+                this.Height = Height;
+                this.Width = Width;
             }
         }
     }

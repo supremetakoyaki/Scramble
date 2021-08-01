@@ -123,6 +123,7 @@ namespace Scramble.Forms
             this.CharacterIconPictureBox.Location = new System.Drawing.Point(409, 561);
             this.CharacterIconPictureBox.Name = "CharacterIconPictureBox";
             this.CharacterIconPictureBox.Size = new System.Drawing.Size(32, 32);
+            this.CharacterIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.CharacterIconPictureBox.TabIndex = 21;
             this.CharacterIconPictureBox.TabStop = false;
             // 
@@ -180,6 +181,7 @@ namespace Scramble.Forms
             this.BrandPictureBox.Location = new System.Drawing.Point(394, 443);
             this.BrandPictureBox.Name = "BrandPictureBox";
             this.BrandPictureBox.Size = new System.Drawing.Size(170, 60);
+            this.BrandPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.BrandPictureBox.TabIndex = 15;
             this.BrandPictureBox.TabStop = false;
             // 
@@ -321,6 +323,7 @@ namespace Scramble.Forms
             this.PinImagePictureBox.Location = new System.Drawing.Point(9, 424);
             this.PinImagePictureBox.Name = "PinImagePictureBox";
             this.PinImagePictureBox.Size = new System.Drawing.Size(100, 100);
+            this.PinImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PinImagePictureBox.TabIndex = 3;
             this.PinImagePictureBox.TabStop = false;
             // 
@@ -467,8 +470,8 @@ namespace Scramble.Forms
             // 
             // PinInventoryEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(906, 624);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

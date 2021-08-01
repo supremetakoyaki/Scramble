@@ -187,14 +187,15 @@
             // 
             // AboutLabel
             // 
-            this.AboutLabel.AutoSize = true;
+            this.AboutLabel.BackColor = System.Drawing.Color.Transparent;
             this.AboutLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AboutLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.AboutLabel.Location = new System.Drawing.Point(123, 71);
+            this.AboutLabel.Location = new System.Drawing.Point(75, 71);
             this.AboutLabel.Name = "AboutLabel";
-            this.AboutLabel.Size = new System.Drawing.Size(28, 15);
+            this.AboutLabel.Size = new System.Drawing.Size(76, 15);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "v0.6";
+            this.AboutLabel.Text = "v0.5.1";
+            this.AboutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // MoneyLabel
@@ -351,6 +352,7 @@
             // 
             // OpenSocialEditButton
             // 
+            this.OpenSocialEditButton.Enabled = false;
             this.OpenSocialEditButton.Location = new System.Drawing.Point(378, 105);
             this.OpenSocialEditButton.Name = "OpenSocialEditButton";
             this.OpenSocialEditButton.Size = new System.Drawing.Size(160, 23);
@@ -430,6 +432,7 @@
             this.PartyMember6_PictureBox.Location = new System.Drawing.Point(332, 150);
             this.PartyMember6_PictureBox.Name = "PartyMember6_PictureBox";
             this.PartyMember6_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember6_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PartyMember6_PictureBox.TabIndex = 24;
             this.PartyMember6_PictureBox.TabStop = false;
             // 
@@ -458,6 +461,7 @@
             this.PartyMember5_PictureBox.Location = new System.Drawing.Point(294, 150);
             this.PartyMember5_PictureBox.Name = "PartyMember5_PictureBox";
             this.PartyMember5_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember5_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PartyMember5_PictureBox.TabIndex = 23;
             this.PartyMember5_PictureBox.TabStop = false;
             // 
@@ -466,6 +470,7 @@
             this.PartyMember4_PictureBox.Location = new System.Drawing.Point(256, 150);
             this.PartyMember4_PictureBox.Name = "PartyMember4_PictureBox";
             this.PartyMember4_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember4_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PartyMember4_PictureBox.TabIndex = 22;
             this.PartyMember4_PictureBox.TabStop = false;
             // 
@@ -474,6 +479,7 @@
             this.PartyMember3_PictureBox.Location = new System.Drawing.Point(332, 112);
             this.PartyMember3_PictureBox.Name = "PartyMember3_PictureBox";
             this.PartyMember3_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember3_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PartyMember3_PictureBox.TabIndex = 21;
             this.PartyMember3_PictureBox.TabStop = false;
             // 
@@ -482,6 +488,7 @@
             this.PartyMember2_PictureBox.Location = new System.Drawing.Point(294, 112);
             this.PartyMember2_PictureBox.Name = "PartyMember2_PictureBox";
             this.PartyMember2_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember2_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PartyMember2_PictureBox.TabIndex = 20;
             this.PartyMember2_PictureBox.TabStop = false;
             // 
@@ -490,6 +497,7 @@
             this.PartyMember1_PictureBox.Location = new System.Drawing.Point(256, 112);
             this.PartyMember1_PictureBox.Name = "PartyMember1_PictureBox";
             this.PartyMember1_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.PartyMember1_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PartyMember1_PictureBox.TabIndex = 19;
             this.PartyMember1_PictureBox.TabStop = false;
             // 

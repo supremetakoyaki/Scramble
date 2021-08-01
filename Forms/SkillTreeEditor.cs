@@ -1,13 +1,6 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scramble.Forms
@@ -35,8 +28,13 @@ namespace Scramble.Forms
             InitializeComponent();
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
+            if (Sukuranburu.RequiresRescaling)
+            {
+                SkillTreeView.AutoSize = true;
+            }
+
             DisplayLanguageStrings();
-            BuildSkillTree();
+            //BuildSkillTree();
         }
 
         private void DisplayLanguageStrings()
@@ -58,6 +56,7 @@ namespace Scramble.Forms
         private void BuildSkillTree()
         {
             var SkillTreeItems = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItems(-1);
+
 
             foreach (SkillTree Item in SkillTreeItems.Values)
             {

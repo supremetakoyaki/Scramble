@@ -241,6 +241,7 @@ namespace Scramble.Forms
             this.BrandPictureBox.Location = new System.Drawing.Point(433, 394);
             this.BrandPictureBox.Name = "BrandPictureBox";
             this.BrandPictureBox.Size = new System.Drawing.Size(170, 60);
+            this.BrandPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.BrandPictureBox.TabIndex = 17;
             this.BrandPictureBox.TabStop = false;
             // 
@@ -305,6 +306,7 @@ namespace Scramble.Forms
             this.CharacterIconPictureBox.Location = new System.Drawing.Point(102, 593);
             this.CharacterIconPictureBox.Name = "CharacterIconPictureBox";
             this.CharacterIconPictureBox.Size = new System.Drawing.Size(32, 32);
+            this.CharacterIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.CharacterIconPictureBox.TabIndex = 24;
             this.CharacterIconPictureBox.TabStop = false;
             // 
@@ -343,6 +345,7 @@ namespace Scramble.Forms
             this.SlotType_PictureBox.Location = new System.Drawing.Point(6, 516);
             this.SlotType_PictureBox.Name = "SlotType_PictureBox";
             this.SlotType_PictureBox.Size = new System.Drawing.Size(32, 32);
+            this.SlotType_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.SlotType_PictureBox.TabIndex = 2;
             this.SlotType_PictureBox.TabStop = false;
             // 
@@ -351,6 +354,7 @@ namespace Scramble.Forms
             this.ClothingItem_PictureBox.Location = new System.Drawing.Point(6, 382);
             this.ClothingItem_PictureBox.Name = "ClothingItem_PictureBox";
             this.ClothingItem_PictureBox.Size = new System.Drawing.Size(128, 128);
+            this.ClothingItem_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ClothingItem_PictureBox.TabIndex = 1;
             this.ClothingItem_PictureBox.TabStop = false;
             // 
@@ -462,8 +466,8 @@ namespace Scramble.Forms
             // 
             // ClothingInventoryEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(904, 661);
             this.Controls.Add(this.AllClothingItemsGroupBox);
             this.Controls.Add(this.ClothingInvGroupBox);
