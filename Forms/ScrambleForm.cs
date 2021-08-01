@@ -93,11 +93,6 @@ namespace Scramble
             this.Graphics = this.CreateGraphics();
             this.ScaleFactor = this.Graphics.DpiX / 96;
             this.DpiChanged += new DpiChangedEventHandler(this.ScrambleForm_DpiChanged);
-
-            if (ScaleFactor != 1.0)
-            {
-                ShowNotice(GetString("DLG_WindowsDpiNote"));
-            }
         }
 
         public void DisplayLanguageStrings()
