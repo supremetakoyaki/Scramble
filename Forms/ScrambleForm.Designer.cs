@@ -194,7 +194,7 @@
             this.AboutLabel.Name = "AboutLabel";
             this.AboutLabel.Size = new System.Drawing.Size(76, 15);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "v0.5.1";
+            this.AboutLabel.Text = "v0.6";
             this.AboutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
@@ -352,13 +352,13 @@
             // 
             // OpenSocialEditButton
             // 
-            this.OpenSocialEditButton.Enabled = false;
             this.OpenSocialEditButton.Location = new System.Drawing.Point(378, 105);
             this.OpenSocialEditButton.Name = "OpenSocialEditButton";
             this.OpenSocialEditButton.Size = new System.Drawing.Size(160, 23);
             this.OpenSocialEditButton.TabIndex = 19;
-            this.OpenSocialEditButton.Text = "Social Editor";
+            this.OpenSocialEditButton.Text = "Social Tree Editor";
             this.OpenSocialEditButton.UseVisualStyleBackColor = true;
+            this.OpenSocialEditButton.Click += new System.EventHandler(this.OpenSocialEditButton_Click);
             // 
             // OpenInvEditorButton
             // 

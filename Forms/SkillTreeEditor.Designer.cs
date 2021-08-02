@@ -105,6 +105,7 @@ namespace Scramble.Forms
             this.SkillTreeView.Name = "SkillTreeView";
             this.SkillTreeView.Size = new System.Drawing.Size(349, 423);
             this.SkillTreeView.TabIndex = 0;
+            this.SkillTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.SkillTreeView_AfterSelect);
             // 
             // Character_PictureBox
             // 
