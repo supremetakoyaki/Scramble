@@ -1,6 +1,7 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
 using Scramble.Properties;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -68,7 +69,7 @@ namespace Scramble.Forms
                 TreeNode Node = new TreeNode();
                 Node.Text = ReplaceStringTags(Sukuranburu.GetGameString(Item.CharacterName));
                 Node.Name = string.Format("SkillTree{0}Node", Item.Id);
-                Node.Tag = Item.Id;
+                Node.Tag = (ushort)Item.Id;
 
                 if (ParentNode == null)
                 {
