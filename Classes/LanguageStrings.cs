@@ -124,6 +124,7 @@ namespace Scramble.Classes
             { "{Connection}", "Connection" },
             { "{Skill}", "Skill" },
             { "{ConnectionEstablished}", "Connection established" },
+            { "{NoSelectedCharacter}", "(No selected character)" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
@@ -267,6 +268,7 @@ namespace Scramble.Classes
             { "{Connection}", "繋" },
             { "{Skill}", "スキル" },
             { "{ConnectionEstablished}", "ネットワークが繋されています" },
+            { "{NoSelectedCharacter}", "(キャラクター選択されていません)" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -410,6 +412,7 @@ namespace Scramble.Classes
             { "{Connection}", "Conexiones" },
             { "{Skill}", "Recompensas" },
             { "{ConnectionEstablished}", "Conexión establecida" },
+            { "{NoSelectedCharacter}", "(Ningún personaje seleccionado)" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
@@ -553,6 +556,7 @@ namespace Scramble.Classes
             { "{Connection}", "Connexions" },
             { "{Skill}", "Récompenses" },
             { "{ConnectionEstablished}", "Connexion établie" },
+             { "{NoSelectedCharacter}", "(Aucun personnage sélectionné)" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },

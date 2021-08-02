@@ -36,6 +36,7 @@ namespace Scramble.Forms
             this.SkillTreeView = new System.Windows.Forms.TreeView();
             this.Character_PictureBox = new System.Windows.Forms.PictureBox();
             this.CharacterInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.ShowMoreInfoButton = new System.Windows.Forms.Button();
             this.ConnectionMadeCheckbox = new System.Windows.Forms.CheckBox();
             this.LocationValueLabel = new System.Windows.Forms.Label();
             this.LocationLabel = new System.Windows.Forms.Label();
@@ -105,11 +106,12 @@ namespace Scramble.Forms
             this.SkillTreeView.Name = "SkillTreeView";
             this.SkillTreeView.Size = new System.Drawing.Size(349, 423);
             this.SkillTreeView.TabIndex = 0;
+            this.SkillTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.SkillTreeView_AfterCheck);
             this.SkillTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.SkillTreeView_AfterSelect);
             // 
             // Character_PictureBox
             // 
-            this.Character_PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Character_PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.Character_PictureBox.Location = new System.Drawing.Point(412, 20);
             this.Character_PictureBox.Name = "Character_PictureBox";
             this.Character_PictureBox.Size = new System.Drawing.Size(375, 450);
@@ -119,6 +121,7 @@ namespace Scramble.Forms
             // 
             // CharacterInfoGroupBox
             // 
+            this.CharacterInfoGroupBox.Controls.Add(this.ShowMoreInfoButton);
             this.CharacterInfoGroupBox.Controls.Add(this.ConnectionMadeCheckbox);
             this.CharacterInfoGroupBox.Controls.Add(this.LocationValueLabel);
             this.CharacterInfoGroupBox.Controls.Add(this.LocationLabel);
@@ -142,9 +145,20 @@ namespace Scramble.Forms
             this.CharacterInfoGroupBox.TabStop = false;
             this.CharacterInfoGroupBox.Text = "{CharacterInfo}";
             // 
+            // ShowMoreInfoButton
+            // 
+            this.ShowMoreInfoButton.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ShowMoreInfoButton.Location = new System.Drawing.Point(311, 209);
+            this.ShowMoreInfoButton.Name = "ShowMoreInfoButton";
+            this.ShowMoreInfoButton.Size = new System.Drawing.Size(81, 29);
+            this.ShowMoreInfoButton.TabIndex = 18;
+            this.ShowMoreInfoButton.Text = "➜";
+            this.ShowMoreInfoButton.UseVisualStyleBackColor = true;
+            this.ShowMoreInfoButton.Click += new System.EventHandler(this.ShowMoreInfoButton_Click);
+            // 
             // ConnectionMadeCheckbox
             // 
-            this.ConnectionMadeCheckbox.Location = new System.Drawing.Point(6, 278);
+            this.ConnectionMadeCheckbox.Location = new System.Drawing.Point(6, 265);
             this.ConnectionMadeCheckbox.Name = "ConnectionMadeCheckbox";
             this.ConnectionMadeCheckbox.Size = new System.Drawing.Size(93, 35);
             this.ConnectionMadeCheckbox.TabIndex = 17;
@@ -221,12 +235,13 @@ namespace Scramble.Forms
             // 
             // SkillUnlocked_Checkbox
             // 
-            this.SkillUnlocked_Checkbox.Location = new System.Drawing.Point(307, 451);
+            this.SkillUnlocked_Checkbox.BackColor = System.Drawing.Color.Transparent;
+            this.SkillUnlocked_Checkbox.Location = new System.Drawing.Point(311, 451);
             this.SkillUnlocked_Checkbox.Name = "SkillUnlocked_Checkbox";
             this.SkillUnlocked_Checkbox.Size = new System.Drawing.Size(104, 24);
             this.SkillUnlocked_Checkbox.TabIndex = 9;
             this.SkillUnlocked_Checkbox.Text = "{Unlocked}";
-            this.SkillUnlocked_Checkbox.UseVisualStyleBackColor = true;
+            this.SkillUnlocked_Checkbox.UseVisualStyleBackColor = false;
             // 
             // FpValue_Label
             // 
@@ -274,7 +289,7 @@ namespace Scramble.Forms
             this.CharacterInfoLabel.Font = new System.Drawing.Font("Segoe UI", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CharacterInfoLabel.Location = new System.Drawing.Point(6, 59);
             this.CharacterInfoLabel.Name = "CharacterInfoLabel";
-            this.CharacterInfoLabel.Size = new System.Drawing.Size(385, 134);
+            this.CharacterInfoLabel.Size = new System.Drawing.Size(400, 134);
             this.CharacterInfoLabel.TabIndex = 3;
             this.CharacterInfoLabel.Text = "{CharacterInfo}";
             // 
@@ -331,5 +346,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.Button UnlockAllButton;
         private System.Windows.Forms.CheckBox ConnectionMadeCheckbox;
         private System.Windows.Forms.Label LocationValueLabel;
+        private System.Windows.Forms.Button ShowMoreInfoButton;
     }
 }
