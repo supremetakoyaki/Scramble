@@ -462,8 +462,16 @@ namespace Scramble.Forms
             }
 
             ReadyForUserInput = false;
+
+            if (!UnlockAll_ConnectionCheckbox.Checked && !UnlockAll_EncounterCheckbox.Checked && !UnlockAll_SkillCheckbox.Checked)
+            {
+                ReadyForUserInput = true;
+                Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_NoCheckboxSelected_SkillTree"));
+                return;
+            }
+
             UnlockAll_Flag = !UnlockAll_Flag;
-            
+
             if (UnlockAll_SkillCheckbox.Checked)
             {
                 foreach (Skill SkillItem in Sukuranburu.GetSocialNetworkManager().GetSkills())

@@ -569,18 +569,26 @@ namespace Scramble
 
             if (ImportDialog.ShowDialog() == DialogResult.OK)
             {
-                byte[] ImportedData = File.ReadAllBytes(ImportDialog.FileName);
-
-                if (ImportedData.Length != 319952)
+                try
                 {
-                    ShowWarning(GetString("DLG_InvalidSlotFile"));
-                    return;
+                    byte[] ImportedData = File.ReadAllBytes(ImportDialog.FileName);
+
+                    if (ImportedData.Length != 319952)
+                    {
+                        ShowWarning(GetString("DLG_InvalidSlotFile"));
+                        return;
+                    }
+
+                    if (ShowPrompt(GetString("DLG_OverwriteSlotPrompt")))
+                    {
+                        SelectedSlot.ImportData(ImportedData);
+                        SelectSlot(SelectedSlot.Id);
+                    }
                 }
-
-                if (ShowPrompt(GetString("DLG_OverwriteSlotPrompt")))
+                catch (Exception Exc)
                 {
-                    SelectedSlot.ImportData(ImportedData);
-                    SelectSlot(SelectedSlot.Id);
+                    ShowWarning(Exc.Message);
+                    return;
                 }
             }
         }

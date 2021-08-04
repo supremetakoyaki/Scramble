@@ -150,7 +150,8 @@ namespace Scramble.Classes
             { "DLG_NoClothingToAddSelected", "You didn't select a clothing piece to add." },
             { "DLG_YouCantAddMoreClothes", "You can't add more clothes. Maximum value is 9 for one piece, and 2000 in total." },
             { "DLG_NewUpdateFound", "There is a new version of Scramble. Do you want to check it out?" },
-            { "DLG_Social_SpoilersWarn", "Social network characters you unlock will no longer be shown as Spoiler. Do you want to continue?" }
+            { "DLG_Social_SpoilersWarn", "Social network characters you unlock will no longer be shown as Spoiler. Do you want to continue?" },
+            { "DLG_NoCheckboxSelected_SkillTree", "You didn't tick any of the checkboxes. What am I supposed to (un)lock?" }
         };
 
         public Dictionary<string, string> Japanese = new Dictionary<string, string>()
@@ -298,7 +299,8 @@ namespace Scramble.Classes
             { "DLG_NoClothingToAddSelected", "服が選択されていないか。" },
             { "DLG_YouCantAddMoreClothes", "これ以上同じ特性を持つ服を追加できません。\n最大値は９。合計で、最大値は２０００になります。" },
             { "DLG_NewUpdateFound", "新しいバージョンの「スクランブル」があります。 ダウンロードしますか？" },
-            { "DLG_Social_SpoilersWarn", "アンロックすることにしたキャラクターボードのキャラクターはネタバレではなくなります。\n 続行しますか？" }
+            { "DLG_Social_SpoilersWarn", "アンロックすることにしたキャラクターボードのキャラクターはネタバレではなくなります。\n 続行しますか？" },
+            { "DLG_NoCheckboxSelected_SkillTree", "チェックボックスがオンになっていません。\n私は何の行動もしなかった。" }
         };
 
         public Dictionary<string, string> Spanish = new Dictionary<string, string>()
@@ -446,7 +448,8 @@ namespace Scramble.Classes
             { "DLG_NoClothingToAddSelected", "No seleccionaste ninguna prenda para añadir." },
             { "DLG_YouCantAddMoreClothes", "No puedes añadir más. El valor máximo es 9 para una prenda y 2000 en total." },
             { "DLG_NewUpdateFound", "Hay una nueva versión de Scramble. ¿Deseas ir a descargarla?" },
-            { "DLG_Social_SpoilersWarn", "Los personajes que desbloquees ya no serán marcados como spoiler.\n¿Continuar de todas formas?" }
+            { "DLG_Social_SpoilersWarn", "Los personajes que desbloquees ya no serán marcados como spoiler.\n¿Continuar de todas formas?" },
+            { "DLG_NoCheckboxSelected_SkillTree", "No marcaste ninguna casilla. ¿Qué se supone que es lo que debo (des)bloquear?" }
         };
 
         public Dictionary<string, string> French = new Dictionary<string, string>()
@@ -594,7 +597,8 @@ namespace Scramble.Classes
             { "DLG_NoClothingToAddSelected", "Vous n'avez sélectionné aucun vêtement à ajouter." },
             { "DLG_YouCantAddMoreClothes", "Vous ne pouvez pas ajouter plus de ce vêtement. La valeur maximale est 9 pour une pièce et 2000 au total." },
             { "DLG_NewUpdateFound", "Il existe une nouvelle version de Scramble. Voulez-vous aller le télécharger ?" },
-            { "DLG_Social_SpoilersWarn", "Les personnages que vous débloquerez ne seront plus spoiler.\nVoulez-vous continuer ?" }
+            { "DLG_Social_SpoilersWarn", "Les personnages que vous débloquerez ne seront plus spoiler.\nVoulez-vous continuer ?" },
+            { "DLG_NoCheckboxSelected_SkillTree", "Vous n'avez coché aucune des cases. Que dois-je (dé)bloquer ?" }
         };
 
         public Dictionary<string, string> Italian = new Dictionary<string, string>();
