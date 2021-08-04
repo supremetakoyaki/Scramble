@@ -1,6 +1,8 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
+using Scramble.GameData;
 using Scramble.Properties;
+using Scramble.Util;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -26,10 +28,13 @@ namespace Scramble.Forms
             }
         }
 
+        private SkillTree SelectedSkillTree;
+
         private int InfoIndex = 0;
         private bool WarnedAboutSpoilerCheck = false;
 
         private bool ReadyForUserInput = false;
+        private bool UnlockAll_Flag = false;
 
         public SkillTreeEditor()
         {
@@ -60,8 +65,9 @@ namespace Scramble.Forms
             this.FpLabel.Text = Sukuranburu.GetString("{FP}");
             this.TimeframeLabel.Text = Sukuranburu.GetString("{Timeframe:}");
             this.LocationLabel.Text = Sukuranburu.GetString("{Location:}");
-            this.UnlockAllButton.Text = Sukuranburu.GetString("{UnlockAll_SkillTree}");
+            this.UnlockAllButton.Text = Sukuranburu.GetString("{UnlockAll}");
             this.UnlockAll_ConnectionCheckbox.Text = Sukuranburu.GetString("{Connection}");
+            this.UnlockAll_EncounterCheckbox.Text = Sukuranburu.GetString("{Encounter}");
             this.UnlockAll_SkillCheckbox.Text = Sukuranburu.GetString("{Skill}");
             this.ConnectionMadeCheckbox.Text = Sukuranburu.GetString("{ConnectionEstablished}");
             this.SkillUnlocked_Checkbox.Text = Sukuranburu.GetString("{Unlocked}");
@@ -125,6 +131,8 @@ namespace Scramble.Forms
                 DisplayEmptyNode();
                 return;
             }
+
+            SelectedSkillTree = TreeItem;
 
             if (Sukuranburu.ShowSpoilers == false && Node.Checked == false)
             {
@@ -259,11 +267,16 @@ namespace Scramble.Forms
                 this.SkillInfo_Label.Text = Sukuranburu.GetGameString(SkillItem.Info);
             }
 
+            this.SkillUnlocked_Checkbox.Checked = RetrieveSkillValue(SkillItem);
+            this.SkillUnlocked_Checkbox.Enabled = true;
+
             this.FpValue_Label.Text = SkillItem.PointsRequired.ToString();
         }
 
         private void DisplayEmptyNode()
         {
+            SelectedSkillTree = null;
+
             Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{NoSelectedCharacter}"), this.CharacterName_RichTextBox);
             Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("—"), this.CharacterInfo_RichTextBox);
             this.TimeframeValueLabel.Text = "—";
@@ -282,11 +295,56 @@ namespace Scramble.Forms
             this.RewardName_Label.Text = "—";
             this.SkillInfo_Label.Text = "—";
             this.FpValue_Label.Text = "0";
+            this.SkillUnlocked_Checkbox.Checked = false;
+            this.SkillUnlocked_Checkbox.Enabled = false;
+        }
+
+        private void UpdateSkillValue(Skill SkillItem, bool Value)
+        {
+            if (SkillItem == null)
+            {
+                return;
+            }
+            
+            if (SkillItem.SaveIndex > 103)
+            {
+                throw new ArgumentOutOfRangeException(); // Yeah, not happening unless a new update.
+            }
+
+            int OffsetSum = SkillItem.SaveIndex / 8;
+            byte ByteToSet = SelectedSlot.RetrieveOffset_Byte(Offsets.Skills_First + OffsetSum);
+            byte BitIndex = (byte)(SkillItem.SaveIndex % 8);
+
+            ByteToSet = ByteUtil.SetBit(ByteToSet, BitIndex, Value);
+            SelectedSlot.UpdateOffset_Byte(Offsets.Skills_First + OffsetSum, ByteToSet);
+        }
+
+        private bool RetrieveSkillValue(Skill SkillItem)
+        {
+            if (SkillItem == null)
+            {
+                return false;
+            }
+
+            if (SkillItem.SaveIndex > 103)
+            {
+                throw new ArgumentOutOfRangeException(); // Yeah, not happening unless a new update.
+            }
+
+            int OffsetSum = SkillItem.SaveIndex / 8;
+            byte ByteToSet = SelectedSlot.RetrieveOffset_Byte(Offsets.Skills_First + OffsetSum);
+            byte BitIndex = (byte)(SkillItem.SaveIndex % 8);
+
+            return ByteUtil.GetBit(ByteToSet, BitIndex);
         }
 
         private void SkillTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            ReadyForUserInput = false;
+
             DisplayNode(e.Node);
+
+            ReadyForUserInput = true;
         }
 
         private void ShowMoreInfoButton_Click(object sender, EventArgs e)
@@ -375,6 +433,49 @@ namespace Scramble.Forms
             }
 
             // update in save file.
+
+            ReadyForUserInput = true;
+        }
+
+        private void SkillUnlocked_Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            Skill SkillItem = Sukuranburu.GetSocialNetworkManager().GetSkill((ushort)SelectedSkillTree.SkillId);
+            if (SkillItem == null)
+            {
+                SkillUnlocked_Checkbox.Checked = !SkillUnlocked_Checkbox.Checked;
+                return;
+            }
+
+            UpdateSkillValue(SkillItem, SkillUnlocked_Checkbox.Checked);
+        }
+
+        private void UnlockAllButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            UnlockAll_Flag = !UnlockAll_Flag;
+            
+            if (UnlockAll_SkillCheckbox.Checked)
+            {
+                foreach (Skill SkillItem in Sukuranburu.GetSocialNetworkManager().GetSkills())
+                {
+                    UpdateSkillValue(SkillItem, UnlockAll_Flag);
+                }
+
+                if (SelectedSkillTree != null && SkillUnlocked_Checkbox.Enabled)
+                {
+                    SkillUnlocked_Checkbox.Checked = UnlockAll_Flag;
+                }
+            }
 
             ReadyForUserInput = true;
         }

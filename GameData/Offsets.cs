@@ -17,6 +17,9 @@
         public const int Character1_Def = 14722; // int 32, base value is in BattleCharacter.txt
         public const int Character1_Style = 14726; // int 32, base value is in BattlePlayer.txt
 
+        // Skills data. 8 slots per byte
+        public const int Skills_First = 15192;
+
         public const int PinInv_Count = 15208; // int32
         public const int PinInv_CountOfIndexes = 15212; // int32, basically count minus one.
         public const int PinInv_First = 15216; // int16, int16, int16, int16.

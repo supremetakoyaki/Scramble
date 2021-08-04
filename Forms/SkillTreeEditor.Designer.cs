@@ -30,6 +30,7 @@ namespace Scramble.Forms
         private void InitializeComponent()
         {
             this.SkillTreeGroupBox = new System.Windows.Forms.GroupBox();
+            this.UnlockAll_EncounterCheckbox = new System.Windows.Forms.CheckBox();
             this.UnlockAll_SkillCheckbox = new System.Windows.Forms.CheckBox();
             this.UnlockAll_ConnectionCheckbox = new System.Windows.Forms.CheckBox();
             this.UnlockAllButton = new System.Windows.Forms.Button();
@@ -68,6 +69,7 @@ namespace Scramble.Forms
             // 
             // SkillTreeGroupBox
             // 
+            this.SkillTreeGroupBox.Controls.Add(this.UnlockAll_EncounterCheckbox);
             this.SkillTreeGroupBox.Controls.Add(this.UnlockAll_SkillCheckbox);
             this.SkillTreeGroupBox.Controls.Add(this.UnlockAll_ConnectionCheckbox);
             this.SkillTreeGroupBox.Controls.Add(this.UnlockAllButton);
@@ -79,8 +81,21 @@ namespace Scramble.Forms
             this.SkillTreeGroupBox.TabStop = false;
             this.SkillTreeGroupBox.Text = "{SkillTreeMap}";
             // 
+            // UnlockAll_EncounterCheckbox
+            // 
+            this.UnlockAll_EncounterCheckbox.Checked = true;
+            this.UnlockAll_EncounterCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.UnlockAll_EncounterCheckbox.Location = new System.Drawing.Point(145, 458);
+            this.UnlockAll_EncounterCheckbox.Name = "UnlockAll_EncounterCheckbox";
+            this.UnlockAll_EncounterCheckbox.Size = new System.Drawing.Size(210, 24);
+            this.UnlockAll_EncounterCheckbox.TabIndex = 20;
+            this.UnlockAll_EncounterCheckbox.Text = "{Encounter}";
+            this.UnlockAll_EncounterCheckbox.UseVisualStyleBackColor = true;
+            // 
             // UnlockAll_SkillCheckbox
             // 
+            this.UnlockAll_SkillCheckbox.Checked = true;
+            this.UnlockAll_SkillCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.UnlockAll_SkillCheckbox.Location = new System.Drawing.Point(254, 488);
             this.UnlockAll_SkillCheckbox.Name = "UnlockAll_SkillCheckbox";
             this.UnlockAll_SkillCheckbox.Size = new System.Drawing.Size(101, 24);
@@ -90,6 +105,8 @@ namespace Scramble.Forms
             // 
             // UnlockAll_ConnectionCheckbox
             // 
+            this.UnlockAll_ConnectionCheckbox.Checked = true;
+            this.UnlockAll_ConnectionCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.UnlockAll_ConnectionCheckbox.Location = new System.Drawing.Point(145, 488);
             this.UnlockAll_ConnectionCheckbox.Name = "UnlockAll_ConnectionCheckbox";
             this.UnlockAll_ConnectionCheckbox.Size = new System.Drawing.Size(103, 24);
@@ -100,19 +117,20 @@ namespace Scramble.Forms
             // UnlockAllButton
             // 
             this.UnlockAllButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.UnlockAllButton.Location = new System.Drawing.Point(6, 488);
+            this.UnlockAllButton.Location = new System.Drawing.Point(6, 458);
             this.UnlockAllButton.Name = "UnlockAllButton";
-            this.UnlockAllButton.Size = new System.Drawing.Size(133, 23);
+            this.UnlockAllButton.Size = new System.Drawing.Size(133, 53);
             this.UnlockAllButton.TabIndex = 18;
             this.UnlockAllButton.Text = "{UnlockAll}";
             this.UnlockAllButton.UseVisualStyleBackColor = false;
+            this.UnlockAllButton.Click += new System.EventHandler(this.UnlockAllButton_Click);
             // 
             // SkillTreeView
             // 
             this.SkillTreeView.CheckBoxes = true;
             this.SkillTreeView.Location = new System.Drawing.Point(6, 22);
             this.SkillTreeView.Name = "SkillTreeView";
-            this.SkillTreeView.Size = new System.Drawing.Size(349, 460);
+            this.SkillTreeView.Size = new System.Drawing.Size(349, 430);
             this.SkillTreeView.TabIndex = 0;
             this.SkillTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.SkillTreeView_AfterCheck);
             this.SkillTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.SkillTreeView_AfterSelect);
@@ -181,14 +199,14 @@ namespace Scramble.Forms
             this.CharacterInfo_RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CharacterInfo_RichTextBox.Enabled = false;
             this.CharacterInfo_RichTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CharacterInfo_RichTextBox.Location = new System.Drawing.Point(6, 59);
+            this.CharacterInfo_RichTextBox.Location = new System.Drawing.Point(8, 59);
             this.CharacterInfo_RichTextBox.Name = "CharacterInfo_RichTextBox";
             this.CharacterInfo_RichTextBox.ReadOnly = true;
             this.CharacterInfo_RichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.CharacterInfo_RichTextBox.Size = new System.Drawing.Size(384, 136);
+            this.CharacterInfo_RichTextBox.Size = new System.Drawing.Size(382, 136);
             this.CharacterInfo_RichTextBox.TabIndex = 26;
             this.CharacterInfo_RichTextBox.TabStop = false;
-            this.CharacterInfo_RichTextBox.Text = "{CharacterInfo}";
+            this.CharacterInfo_RichTextBox.Text = "{CharacterInfo}\n";
             // 
             // CharacterName_RichTextBox
             // 
@@ -196,11 +214,11 @@ namespace Scramble.Forms
             this.CharacterName_RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CharacterName_RichTextBox.Enabled = false;
             this.CharacterName_RichTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CharacterName_RichTextBox.Location = new System.Drawing.Point(6, 22);
+            this.CharacterName_RichTextBox.Location = new System.Drawing.Point(8, 22);
             this.CharacterName_RichTextBox.Name = "CharacterName_RichTextBox";
             this.CharacterName_RichTextBox.ReadOnly = true;
             this.CharacterName_RichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.CharacterName_RichTextBox.Size = new System.Drawing.Size(384, 31);
+            this.CharacterName_RichTextBox.Size = new System.Drawing.Size(386, 31);
             this.CharacterName_RichTextBox.TabIndex = 25;
             this.CharacterName_RichTextBox.TabStop = false;
             this.CharacterName_RichTextBox.Text = "{CharacterName}";
@@ -361,6 +379,7 @@ namespace Scramble.Forms
             this.SkillUnlocked_Checkbox.TabIndex = 9;
             this.SkillUnlocked_Checkbox.Text = "{Unlocked}";
             this.SkillUnlocked_Checkbox.UseVisualStyleBackColor = false;
+            this.SkillUnlocked_Checkbox.CheckedChanged += new System.EventHandler(this.SkillUnlocked_Checkbox_CheckedChanged);
             // 
             // FpValue_Label
             // 
@@ -456,5 +475,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.RichTextBox ShopName_RichTextBox;
         private System.Windows.Forms.RichTextBox CharacterInfo_RichTextBox;
         private System.Windows.Forms.RichTextBox CharacterName_RichTextBox;
+        private System.Windows.Forms.CheckBox UnlockAll_EncounterCheckbox;
     }
 }
