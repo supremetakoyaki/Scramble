@@ -80,6 +80,7 @@ namespace Scramble.Classes
             { "{AddPin}", "Add pin" },
             { "{x99}", "x99" },
             { "{AddEachOfEveryPin}", "Add one of each pin" },
+            { "{Affinity}", "Affinity" },
 
             { "{WearType0}", "Headwear" },
             { "{WearType1}", "Top" },
@@ -123,8 +124,12 @@ namespace Scramble.Classes
             { "{UnlockAll_SkillTree}", "Unlock All" },
             { "{Connection}", "Connection" },
             { "{Skill}", "Skill" },
-            { "{ConnectionEstablished}", "Connection established" },
+            { "{ConnectionEstablished}", "Established connection" },
             { "{NoSelectedCharacter}", "(No selected character)" },
+            { "{FirstEntry:}", "FIRST ENTRY:" },
+            { "{Connection:}", "CONNECTION:" },
+            { "{Shop:}", "SHOP:" },
+
 
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
@@ -224,6 +229,7 @@ namespace Scramble.Classes
             { "{AddPin}", "バッジの追加" },
             { "{x99}", "x99" },
             { "{AddEachOfEveryPin}", "バッジの各を追加" },
+            { "{Affinity}", "属性" },
 
             { "{WearType0}", "帽子" },
             { "{WearType1}", "トップス" },
@@ -265,10 +271,13 @@ namespace Scramble.Classes
             { "{Timeframe:}", "イベント発生タイミング：" },
             { "{Location:}", "イベント発生場所：" },
             { "{UnlockAll_SkillTree}", "すべてのロックを解除" },
-            { "{Connection}", "繋" },
+            { "{Connection}", "繋がり" },
             { "{Skill}", "スキル" },
-            { "{ConnectionEstablished}", "ネットワークが繋されています" },
+            { "{ConnectionEstablished}", "ネットワークが繋がりされています" },
             { "{NoSelectedCharacter}", "(キャラクター選択されていません)" },
+            { "{FirstEntry:}", "最初の入力日:" },
+            { "{Connection:}", "繋がりの日:" },
+            { "{Shop:}", "店名:" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -322,7 +331,7 @@ namespace Scramble.Classes
             { "{Lv}", "Nv." },
             { "{YourParty}", "Tu equipo" },
             { "{CharacterEditor}", "Editar stats" },
-            { "{PinsEditor}", "Editar pins" },
+            { "{PinsEditor}", "Editar pines" },
             { "{ClothingEditor}", "Editar ropa" },
             { "{SocialEditor}", "Editar red social" },
             { "{CollectionEditor}", "Editar colecciones" },
@@ -368,6 +377,7 @@ namespace Scramble.Classes
             { "{AddPin}", "Añadir pin" },
             { "{x99}", "x99" },
             { "{AddEachOfEveryPin}", "Añadir uno de cada pin" },
+            { "{Affinity}", "Afinidad" },
 
             { "{WearType0}", "Cabeza" },
             { "{WearType1}", "Parte superior" },
@@ -413,6 +423,9 @@ namespace Scramble.Classes
             { "{Skill}", "Recompensas" },
             { "{ConnectionEstablished}", "Conexión establecida" },
             { "{NoSelectedCharacter}", "(Ningún personaje seleccionado)" },
+            { "{FirstEntry:}", "PRIMER ENCUENTRO:" },
+            { "{Connection:}", "CONEXIÓN:" },
+            { "{Shop:}", "TIENDA:" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
@@ -512,6 +525,7 @@ namespace Scramble.Classes
             { "{AddPin}", "Ajouter ce badge" },
             { "{x99}", "x99" },
             { "{AddEachOfEveryPin}", "Ajouter un de chaque badge" },
+            { "{Affinity}", "Affinité" },
 
             { "{WearType0}", "Couvre-chef" },
             { "{WearType1}", "Hauts" },
@@ -556,7 +570,10 @@ namespace Scramble.Classes
             { "{Connection}", "Connexions" },
             { "{Skill}", "Récompenses" },
             { "{ConnectionEstablished}", "Connexion établie" },
-             { "{NoSelectedCharacter}", "(Aucun personnage sélectionné)" },
+            { "{NoSelectedCharacter}", "(Aucun personnage sélectionné)" },
+            { "{FirstEntry:}", "1ÈRE RENCONTRE:" },
+            { "{Connection:}", "CONNEXION:" },
+            { "{Shop:}", "MAGASIN:" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },

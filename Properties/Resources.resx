@@ -112,17 +112,17 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="CHR_Shop_011" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_011.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Main_018" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_018.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Main_002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Shop_021" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_021.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,9 +136,6 @@
   <data name="CHR_Mob_019" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Mob_019.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Shop_009" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="CHR_Sab_010" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_010.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -150,9 +147,6 @@
   </data>
   <data name="Character2_170x300" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\170x300\02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CHR_Shop_036" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_036.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Sab_008" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_008.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,8 +175,8 @@
   <data name="CHR_Main_019" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_019.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Shop_002" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Main_024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_024.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Main_016" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_016.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,14 +196,14 @@
   <data name="CHR_Sab_018" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_018.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Main_002" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="CHR_Shop_037" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_037.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Sab_012" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CHR_Shop_002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Sab_011" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_011.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,8 +211,14 @@
   <data name="CHR_Shop_039" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_039.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CHR_Sab_004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_004.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Character4_170x300" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\170x300\04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CHR_Sab_015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Shop_022" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_022.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,8 +229,14 @@
   <data name="CHR_Sab_002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CHR_Main_010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_010.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CHR_Sab_001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CHR_Shop_003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Mob_007" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Mob_007.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -244,11 +250,8 @@
   <data name="CHR_Shop_025" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_025.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Main_024" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_024.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Character1_170x300" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\170x300\01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Shop_018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_018.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Mob_003" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Mob_003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -259,11 +262,14 @@
   <data name="CHR_Main_017" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_017.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CHR_Spoiler" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Spoiler.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CHR_Main_014" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Main_020" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_020.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Main_021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_021.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Shop_047" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_047.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -271,8 +277,8 @@
   <data name="CHR_Main_011" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_011.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Main_021" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_021.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CharacterS_170x300" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\170x300\0S.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Mob_020" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Mob_020.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -280,11 +286,11 @@
   <data name="CHR_Main_003" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Shop_012" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Shop_007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_007.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CharacterS_170x300" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\170x300\0S.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Shop_009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Shop_044" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_044.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -298,29 +304,32 @@
   <data name="CHR_Shop_023" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_023.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Shop_007" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_007.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Shop_012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Shop_029" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_029.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Shop_014" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CHR_Shop_020" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_020.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="CHR_Shop_042" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_042.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CHR_Shop_001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Skill_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\MiscIcons_80x80\Skill_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Character3_170x300" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\170x300\03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CHR_Shop_008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_008.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CHR_Mob_004" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Mob_004.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Shop_001" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Shop_014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Shop_026" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_026.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,8 +346,8 @@
   <data name="CHR_Sab_003" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Main_010" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_010.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Main_018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_018.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Main_025" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_025.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -346,8 +355,8 @@
   <data name="CHR_Main_015" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Character5_170x300" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\170x300\05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Shop_036" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_036.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Main_012" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -361,14 +370,14 @@
   <data name="CHR_Shop_010" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_010.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Shop_018" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_018.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Shop_020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_020.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Sab_015" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Main_020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_020.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Shop_008" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_008.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Character5_170x300" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\170x300\05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Main_001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Main_001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -397,9 +406,6 @@
   <data name="CHR_Shop_030" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_030.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Shop_016" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_016.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="CHR_Sab_009" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -409,14 +415,14 @@
   <data name="CHR_Sab_016" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_016.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Sab_004" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_004.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Character1_170x300" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\170x300\01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Mob_006" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Mob_006.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Shop_003" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CHR_Shop_016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_016.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CHR_Sab_017" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Sab_017.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -445,10 +451,49 @@
   <data name="CHR_Shop_015" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Characters\SkillTree_375x450\CHR_Shop_015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Skill_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\MiscIcons_80x80\Skill_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Attribute_icon_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CHR_Spoiler" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Characters\SkillTree_375x450\CHR_Spoiler.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Attribute_icon_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Attribute_icon_14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\AttackElement_20x20\Attribute_icon_14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

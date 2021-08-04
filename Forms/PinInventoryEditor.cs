@@ -1,6 +1,7 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
 using Scramble.GameData;
+using Scramble.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -42,6 +43,15 @@ namespace Scramble.Forms
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             this.MyPinInventoryView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
             this.AllPinsListView.SmallImageList = Sukuranburu.Get64x64PinImageList();
+
+
+            this.UberPin_PictureBox.BackColor = Color.Transparent;
+            this.UberPin_PictureBox.Parent = this.PinImagePictureBox;
+            this.UberPin_PictureBox.Location = new Point(68, 0);
+
+            this.PinInputKey_PictureBox.BackColor = Color.Transparent;
+            this.PinInputKey_PictureBox.Parent = this.PinImagePictureBox;
+            this.PinInputKey_PictureBox.Location = new Point(0, 0);
 
             if (Sukuranburu.RequiresRescaling)
             {
@@ -167,6 +177,7 @@ namespace Scramble.Forms
             this.PinIsMasteredHeader.Text = Sukuranburu.GetString("{Mastered}");
             this.PinExperienceHeader.Text = Sukuranburu.GetString("{EXP}");
             this.AmountHeader.Text = Sukuranburu.GetString("{Amount}");
+            this.AttackElementHeader.Text = Sukuranburu.GetString("{Affinity}");
             this.GlobalPinIdHeader.Text = Sukuranburu.GetString("{PinId}");
             this.GlobalPinNameHeader.Text = Sukuranburu.GetString("{Name}");
 
@@ -338,6 +349,14 @@ namespace Scramble.Forms
                 MasteredSymbol = PinIsMastered(Pin.PinId, (byte)Pin.Level) ? "★" : Sukuranburu.GetString("{NoLowercase}");
             }
 
+            string ElementName = "—";
+
+            PinAttackElement AttackElement = Sukuranburu.GetItemManager().GetAttackElement(Pin.BasePin.MashupElement);
+            if (AttackElement != null && !string.IsNullOrWhiteSpace(AttackElement.ElementIcon))
+            {
+                ElementName = Sukuranburu.GetGameString(AttackElement.ElementName);
+            }
+
             ListViewItem PinToAdd = new ListViewItem(new string[]
                    {
                         Name,
@@ -345,7 +364,8 @@ namespace Scramble.Forms
                         Pin.Level.ToString(),
                         Pin.Experience.ToString(),
                         MasteredSymbol,
-                        Pin.Amount.ToString()
+                        Pin.Amount.ToString(),
+                        ElementName
                    });
 
             PinToAdd.ImageKey = Icon;
@@ -359,6 +379,14 @@ namespace Scramble.Forms
             if (MyPinInventoryView.SelectedIndices.Count == 0 || MyPinInventoryView.SelectedItems.Count != 1 || MyPinInventoryView.Items.Count < 1)
             {
                 PinNameLabel.Text = Sukuranburu.GetString("{NoSelectedPin}");
+                PinInfo_RichTextBox.Clear();
+
+                AttackElementIcon_PictureBox.Image = null;
+                AttackElement_Label.Text = string.Empty;
+                UberPin_PictureBox.Image = null;
+                UberPin_PictureBox.Visible = false;
+                PinInputKey_PictureBox.Image = null;
+                PinInputKey_PictureBox.Visible = false;
 
                 RemovePinButton.Enabled = false;
                 MasterPinButton.Enabled = false;
@@ -390,13 +418,26 @@ namespace Scramble.Forms
             Brand PinBrand = Sukuranburu.GetItemManager().GetBrand(Pin.BasePin.Brand);
 
             string PinName = Sukuranburu.GetGameString(Pin.BasePin.Name);
+            string PinInfo = Sukuranburu.GetGameString(Pin.BasePin.Info);
             string PinSprite = string.Format("{0}.png", Pin.BasePin.Sprite);
             string BrandSprite = string.Format("{0}.png", PinBrand.Sprite);
 
             PinNameLabel.Text = PinName;
-            BrandLabel.Text = Sukuranburu.GetGameString(PinBrand.Name);
+            Sukuranburu.GetGameTextProcessor().SetTaggedText(PinInfo, PinInfo_RichTextBox);
+
+
             PinImagePictureBox.Image = Sukuranburu.Get100x100PinImageList().Images[PinSprite];
-            BrandPictureBox.Image = Sukuranburu.GetBrandImageList().Images[BrandSprite];
+
+            if (PinBrand == null || PinBrand.Id == 0)
+            {
+                BrandPictureBox.Image = null;
+                BrandLabel.Text = string.Empty;
+            }
+            else
+            {
+                BrandPictureBox.Image = Sukuranburu.Get170x60BrandImageList().Images[BrandSprite];
+                BrandLabel.Text = Sukuranburu.GetGameString(PinBrand.Name);
+            }
 
             RemovePinButton.Enabled = true;
             PinAmountUpDown.Enabled = true;
@@ -407,8 +448,31 @@ namespace Scramble.Forms
 
             MaxLevelLabel_Value.Text = Pin.BasePin.MaxLevel.ToString();
 
-            if (Sukuranburu.GetItemManager().PinIsMasterable(Pin.BasePin))
+            if (Sukuranburu.GetItemManager().PinIsMasterable(Pin.BasePin)) // a.k.a. battle pin
             {
+                PinAttackElement AttackElement = Sukuranburu.GetItemManager().GetAttackElement(Pin.BasePin.MashupElement);
+                if (AttackElement == null || AttackElement.ElementIcon == string.Empty)
+                {
+                    AttackElementIcon_PictureBox.Visible = false;
+                    AttackElementIcon_PictureBox.Image = null;
+                    AttackElement_Label.Text = string.Empty;
+                }
+                else
+                {
+                    AttackElementIcon_PictureBox.Visible = true;
+                    AttackElementIcon_PictureBox.Image = Resources.ResourceManager.GetObject(AttackElement.ElementIcon) as Bitmap;
+                    AttackElement_Label.Text = Sukuranburu.GetGameString(AttackElement.ElementName);
+                }
+
+                if (Sukuranburu.GetItemManager().PinIsUber(Pin.BasePin))
+                {
+                    UberPin_PictureBox.Image = Sukuranburu.Get32x32MiscIconsImageList().Images["GodBadge_star.png"];
+                    UberPin_PictureBox.Visible = true;
+                }
+
+                PinInputKey_PictureBox.Image = Sukuranburu.Get32x32MiscIconsImageList().Images[string.Format("{0}.png", Sukuranburu.GetItemManager().GetPsychKeyImage(Pin.BasePin))];
+                PinInputKey_PictureBox.Visible = true;
+
                 MasterPinButton.Enabled = true;
 
                 if (PinIsMastered(Pin.PinId, (byte)Pin.Level))
@@ -423,6 +487,13 @@ namespace Scramble.Forms
             else
             {
                 MasterPinButton.Enabled = false;
+
+                AttackElementIcon_PictureBox.Image = null;
+                AttackElement_Label.Text = string.Empty;
+                UberPin_PictureBox.Image = null;
+                UberPin_PictureBox.Visible = false;
+                PinInputKey_PictureBox.Image = null;
+                PinInputKey_PictureBox.Visible = false;
             }
 
             PinLevelNUpDown.Value = Pin.Level;
@@ -430,6 +501,7 @@ namespace Scramble.Forms
             PinAmountUpDown.Value = Pin.Amount;
 
             DisplayDefaultEquippedData();
+
             ReadyForUserInput = true;
         }
 
@@ -734,14 +806,15 @@ namespace Scramble.Forms
 
             if (AllPinsListView.SelectedIndices.Count < 1)
             {
-                Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_NoPinToAddSelected"));
+                Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_NoPinsToAddSelected"));
                 ReadyForUserInput = true;
                 return;
             }
 
-            ListViewItem Item = AllPinsListView.SelectedItems[0];
-
-            AddPin(Item, true);
+            foreach (ListViewItem Item in AllPinsListView.SelectedItems)
+            {
+                AddPin(Item, true);
+            }
 
             SelectPin();
             ReadyForUserInput = true;
@@ -783,6 +856,7 @@ namespace Scramble.Forms
             if (InventoryPins.Contains(PinToAdd))
             {
                 int Index = InventoryPins.IndexOf(PinToAdd);
+
                 if (Individual && InventoryPins[Index].Amount == 99)
                 {
                     Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_YouCantAddMorePins"));
@@ -794,7 +868,7 @@ namespace Scramble.Forms
                 {
                     InventoryPins[Index].Amount = 99;
                 }
-                else
+                else if (InventoryPins[Index].Amount < 99)
                 {
                     InventoryPins[Index].Amount += 1;
                 }

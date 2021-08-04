@@ -35,6 +35,9 @@ namespace Scramble.Forms
         {
             InitializeComponent();
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            this.ShopLogo_PictureBox.BackColor = Color.Transparent;
+            this.ShopLogo_PictureBox.Parent = Character_PictureBox;
+            this.ShopLogo_PictureBox.Location = new Point(0, 0);
 
             if (Sukuranburu.RequiresRescaling)
             {
@@ -62,6 +65,9 @@ namespace Scramble.Forms
             this.UnlockAll_SkillCheckbox.Text = Sukuranburu.GetString("{Skill}");
             this.ConnectionMadeCheckbox.Text = Sukuranburu.GetString("{ConnectionEstablished}");
             this.SkillUnlocked_Checkbox.Text = Sukuranburu.GetString("{Unlocked}");
+            this.FirstEntry_Label.Text = Sukuranburu.GetString("{FirstEntry:}");
+            this.ConnectionDay_Label.Text = Sukuranburu.GetString("{Connection:}");
+            this.Shop_Label.Text = Sukuranburu.GetString("{Shop:}");
         }
 
         private void BuildSkillTree(int ParentId, TreeNode ParentNode)
@@ -91,7 +97,7 @@ namespace Scramble.Forms
                 }
                 else
                 {
-                    Node.Text = ReplaceStringTags(Sukuranburu.GetGameString(Item.CharacterName));
+                    Node.Text = Sukuranburu.GetGameString(Item.CharacterName);
                 }
 
                 BuildSkillTree(Item.Id, Node);
@@ -122,20 +128,56 @@ namespace Scramble.Forms
 
             if (Sukuranburu.ShowSpoilers == false && Node.Checked == false)
             {
-                this.CharacterNameLabel.Text = Sukuranburu.GetString("{Spoiler}");
-                this.CharacterInfoLabel.Text = Sukuranburu.GetString("{Spoiler}");
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{Spoiler}"), this.CharacterName_RichTextBox);
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{Spoiler}"), this.CharacterInfo_RichTextBox);
                 this.TimeframeValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
                 this.LocationValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
                 this.Character_PictureBox.Image = Resources.ResourceManager.GetObject("CHR_Spoiler") as Bitmap;
                 this.ShowMoreInfoButton.Enabled = false;
+
+                this.FirstEntryValue_Label.Text = Sukuranburu.GetString("{Spoiler}");
+                this.ConnectionDayValue_Label.Text = Sukuranburu.GetString("{Spoiler}");
+
+                this.Shop_Label.Visible = false;
+                this.ShopName_RichTextBox.Clear();
+                this.ShopLogo_PictureBox.Image = null;
             }
             else
             {
-                this.CharacterNameLabel.Text = ReplaceStringTags(Sukuranburu.GetGameString(TreeItem.CharacterName));
-                this.CharacterInfoLabel.Text = ReplaceStringTags(Sukuranburu.GetGameString(TreeItem.CharacterInfo.FirstOrDefault()));
-                this.TimeframeValueLabel.Text = ReplaceStringTags(Sukuranburu.GetGameString(TreeItem.DayText));
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(TreeItem.CharacterName), this.CharacterName_RichTextBox);
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(TreeItem.CharacterInfo.FirstOrDefault()), this.CharacterInfo_RichTextBox);
+
+                this.TimeframeValueLabel.Text = Sukuranburu.GetGameString(TreeItem.DayText);
                 this.LocationValueLabel.Text = Sukuranburu.GetGameString(TreeItem.PlaceText);
                 this.Character_PictureBox.Image = Resources.ResourceManager.GetObject(TreeItem.CharacterIcon) as Bitmap;
+
+                bool FirstEntryDayValid = false;
+                bool ConnectionDayValid = false;
+
+                this.FirstEntryValue_Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetDayName(TreeItem.EntryDay, ref FirstEntryDayValid));
+                this.ConnectionDayValue_Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetDayName(TreeItem.ConnectDay, ref ConnectionDayValid));
+
+                if (FirstEntryDayValid)
+                {
+                    this.FirstEntry_Label.ForeColor = Color.FromArgb(120, 0, 200);
+                    this.FirstEntryValue_Label.ForeColor = SystemColors.ControlText;
+                }
+                else
+                {
+                    this.FirstEntry_Label.ForeColor = SystemColors.ControlDark;
+                    this.FirstEntryValue_Label.ForeColor = SystemColors.ControlDark;
+                }
+
+                if (ConnectionDayValid)
+                {
+                    this.ConnectionDay_Label.ForeColor = Color.FromArgb(75, 50, 190);
+                    this.ConnectionDayValue_Label.ForeColor = SystemColors.ControlText;
+                }
+                else
+                {
+                    this.ConnectionDay_Label.ForeColor = SystemColors.ControlDark;
+                    this.ConnectionDayValue_Label.ForeColor = SystemColors.ControlDark;
+                }
 
                 if (TreeItem.CharacterInfo.Length > 1)
                 {
@@ -144,6 +186,45 @@ namespace Scramble.Forms
                 else
                 {
                     this.ShowMoreInfoButton.Enabled = false;
+                }
+
+                if (TreeItem.ShopId != -1)
+                {
+                    this.Shop_Label.Visible = true;
+
+                    Shop CharacterShop = Sukuranburu.GetItemManager().GetShop(TreeItem.ShopId);
+                    if (CharacterShop != null)
+                    {
+                        Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(CharacterShop.Name), this.ShopName_RichTextBox);
+
+                        if (CharacterShop.Brand > 0)
+                        {
+                            Brand ShopBrand = Sukuranburu.GetItemManager().GetBrand(CharacterShop.Brand);
+                            if (ShopBrand != null)
+                            {
+                                this.ShopLogo_PictureBox.Image = Sukuranburu.Get102x36BrandImageList().Images[string.Format("{0}.png", ShopBrand.Sprite)];
+                            }
+                            else
+                            {
+                                this.ShopLogo_PictureBox.Image = null;
+                            }
+                        }
+                        else
+                        {
+                            this.ShopLogo_PictureBox.Image = null;
+                        }
+                    }
+                    else
+                    {
+                        Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString("Com_Unknown"), this.ShopName_RichTextBox);
+                        this.ShopLogo_PictureBox.Image = null;
+                    }
+                }
+                else
+                {
+                    this.Shop_Label.Visible = false;
+                    this.ShopName_RichTextBox.Clear();
+                    this.ShopLogo_PictureBox.Image = null;
                 }
             }
 
@@ -166,7 +247,7 @@ namespace Scramble.Forms
                 IGameItem GameItem = Sukuranburu.GetItemManager().GetItem((ushort)SkillItem.ShopReward);
                 if (GameItem != null)
                 {
-                    this.SkillInfo_Label.Text = ReplaceStringTags(Sukuranburu.GetGameString(GameItem.Name));
+                    this.SkillInfo_Label.Text = Sukuranburu.GetGameString(GameItem.Name);
                 }
                 else
                 {
@@ -175,7 +256,7 @@ namespace Scramble.Forms
             }
             else
             {
-                this.SkillInfo_Label.Text = ReplaceStringTags(Sukuranburu.GetGameString(SkillItem.Info));
+                this.SkillInfo_Label.Text = Sukuranburu.GetGameString(SkillItem.Info);
             }
 
             this.FpValue_Label.Text = SkillItem.PointsRequired.ToString();
@@ -183,12 +264,15 @@ namespace Scramble.Forms
 
         private void DisplayEmptyNode()
         {
-            this.CharacterNameLabel.Text = Sukuranburu.GetString("{NoSelectedCharacter}");
-            this.CharacterInfoLabel.Text = "—";
+            Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{NoSelectedCharacter}"), this.CharacterName_RichTextBox);
+            Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("—"), this.CharacterInfo_RichTextBox);
             this.TimeframeValueLabel.Text = "—";
             this.LocationValueLabel.Text = "—";
             this.Character_PictureBox.Image = null;
             this.ShowMoreInfoButton.Enabled = false;
+            this.Shop_Label.Visible = false;
+            this.ShopName_RichTextBox.Clear();
+            this.ShopLogo_PictureBox.Image = null;
 
             DisplayEmptySkill();
         }
@@ -198,11 +282,6 @@ namespace Scramble.Forms
             this.RewardName_Label.Text = "—";
             this.SkillInfo_Label.Text = "—";
             this.FpValue_Label.Text = "0";
-        }
-
-        private string ReplaceStringTags(string Text)
-        {
-            return Text.Replace("<BR>", "\n").Replace("<MK_11>", "\"").Replace("<MK_1>", "*");
         }
 
         private void SkillTreeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -234,12 +313,12 @@ namespace Scramble.Forms
 
             if (TreeItem.CharacterInfo.Length > (InfoIndex + 1))
             {
-                this.CharacterInfoLabel.Text = ReplaceStringTags(Sukuranburu.GetGameString(TreeItem.CharacterInfo[++InfoIndex]));
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString(Sukuranburu.GetGameString(TreeItem.CharacterInfo[++InfoIndex])), this.CharacterInfo_RichTextBox);
             }
             else
             {
                 InfoIndex = 0;
-                this.CharacterInfoLabel.Text = ReplaceStringTags(Sukuranburu.GetGameString(TreeItem.CharacterInfo.FirstOrDefault()));
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString(Sukuranburu.GetGameString(TreeItem.CharacterInfo.FirstOrDefault())), this.CharacterInfo_RichTextBox);
             }
         }
 
@@ -259,22 +338,34 @@ namespace Scramble.Forms
                 return;
             }
 
-            if (Sukuranburu.ShowSpoilers == false && Node.Checked == true)
+            if (Sukuranburu.ShowSpoilers == false)
             {
-                if (WarnedAboutSpoilerCheck == false && !Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_Social_SpoilersWarn")))
+                if (Node.Checked == true)
                 {
-                    Node.Checked = false;
-                    ReadyForUserInput = true;
-                    return;
+                    if (WarnedAboutSpoilerCheck == false && !Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_Social_SpoilersWarn")))
+                    {
+                        Node.Checked = false;
+                        ReadyForUserInput = true;
+                        return;
+                    }
+
+                    WarnedAboutSpoilerCheck = true;
+
+                    SkillTree TreeItem = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItem((ushort)Node.Tag);
+
+                    if (TreeItem != null)
+                    {
+                        Node.Text = Sukuranburu.GetGameString(TreeItem.CharacterName);
+                    }
                 }
-
-                WarnedAboutSpoilerCheck = true;
-
-                SkillTree TreeItem = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItem((ushort)Node.Tag);
-
-                if (TreeItem != null)
+                else
                 {
-                    Node.Text = ReplaceStringTags(Sukuranburu.GetGameString(TreeItem.CharacterName));
+                    SkillTree TreeItem = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItem((ushort)Node.Tag);
+
+                    if (TreeItem != null)
+                    {
+                        Node.Text = Sukuranburu.GetString("{Spoiler}");
+                    }
                 }
 
                 if (Node.IsSelected)

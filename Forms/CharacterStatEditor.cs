@@ -160,6 +160,7 @@ namespace Scramble.Forms
             int OffsetSum = (CharacterId - 1) * 20;
             SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Hp + OffsetSum, AmountToSet);
         }
+
         private void UpdateAtk(int AmountToSet, int CharacterId)
         {
             int OffsetSum = (CharacterId - 1) * 20;
@@ -171,6 +172,7 @@ namespace Scramble.Forms
             int OffsetSum = (CharacterId - 1) * 20;
             SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Def + OffsetSum, AmountToSet);
         }
+
         private void UpdateStyle(int AmountToSet, int CharacterId)
         {
             int OffsetSum = (CharacterId - 1) * 20;

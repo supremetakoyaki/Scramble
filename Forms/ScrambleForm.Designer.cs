@@ -87,6 +87,7 @@
             this.PinImageList_100x100 = new System.Windows.Forms.ImageList(this.components);
             this.CharacterImageList_170x300 = new System.Windows.Forms.ImageList(this.components);
             this.ShowSpoilersCheckbox = new System.Windows.Forms.CheckBox();
+            this.BrandImageList_102x36 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -1569,21 +1570,22 @@
             this.BrandImageList_170x60.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.BrandImageList_170x60.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BrandImageList_170x60.ImageStream")));
             this.BrandImageList_170x60.TransparentColor = System.Drawing.Color.Transparent;
-            this.BrandImageList_170x60.Images.SetKeyName(0, "brand_01.png");
-            this.BrandImageList_170x60.Images.SetKeyName(1, "brand_02.png");
-            this.BrandImageList_170x60.Images.SetKeyName(2, "brand_03.png");
-            this.BrandImageList_170x60.Images.SetKeyName(3, "brand_04.png");
-            this.BrandImageList_170x60.Images.SetKeyName(4, "brand_05.png");
-            this.BrandImageList_170x60.Images.SetKeyName(5, "brand_06.png");
-            this.BrandImageList_170x60.Images.SetKeyName(6, "brand_07.png");
-            this.BrandImageList_170x60.Images.SetKeyName(7, "brand_08.png");
-            this.BrandImageList_170x60.Images.SetKeyName(8, "brand_09.png");
-            this.BrandImageList_170x60.Images.SetKeyName(9, "brand_10.png");
-            this.BrandImageList_170x60.Images.SetKeyName(10, "brand_11.png");
-            this.BrandImageList_170x60.Images.SetKeyName(11, "brand_12.png");
-            this.BrandImageList_170x60.Images.SetKeyName(12, "brand_13.png");
-            this.BrandImageList_170x60.Images.SetKeyName(13, "brand_14.png");
-            this.BrandImageList_170x60.Images.SetKeyName(14, "brand_15.png");
+            this.BrandImageList_170x60.Images.SetKeyName(0, "brand_00.png");
+            this.BrandImageList_170x60.Images.SetKeyName(1, "brand_01.png");
+            this.BrandImageList_170x60.Images.SetKeyName(2, "brand_02.png");
+            this.BrandImageList_170x60.Images.SetKeyName(3, "brand_03.png");
+            this.BrandImageList_170x60.Images.SetKeyName(4, "brand_04.png");
+            this.BrandImageList_170x60.Images.SetKeyName(5, "brand_05.png");
+            this.BrandImageList_170x60.Images.SetKeyName(6, "brand_06.png");
+            this.BrandImageList_170x60.Images.SetKeyName(7, "brand_07.png");
+            this.BrandImageList_170x60.Images.SetKeyName(8, "brand_08.png");
+            this.BrandImageList_170x60.Images.SetKeyName(9, "brand_09.png");
+            this.BrandImageList_170x60.Images.SetKeyName(10, "brand_10.png");
+            this.BrandImageList_170x60.Images.SetKeyName(11, "brand_11.png");
+            this.BrandImageList_170x60.Images.SetKeyName(12, "brand_12.png");
+            this.BrandImageList_170x60.Images.SetKeyName(13, "brand_13.png");
+            this.BrandImageList_170x60.Images.SetKeyName(14, "brand_14.png");
+            this.BrandImageList_170x60.Images.SetKeyName(15, "brand_15.png");
             // 
             // FoodImageList_128x128
             // 
@@ -2628,12 +2630,71 @@
             this.MiscIconsImageList_32x32.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.MiscIconsImageList_32x32.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("MiscIconsImageList_32x32.ImageStream")));
             this.MiscIconsImageList_32x32.TransparentColor = System.Drawing.Color.Transparent;
-            this.MiscIconsImageList_32x32.Images.SetKeyName(0, "Item_icon_category_Next00.png");
-            this.MiscIconsImageList_32x32.Images.SetKeyName(1, "Item_icon_category_Next01.png");
-            this.MiscIconsImageList_32x32.Images.SetKeyName(2, "Item_icon_category_Next02.png");
-            this.MiscIconsImageList_32x32.Images.SetKeyName(3, "Item_icon_category_Next03.png");
-            this.MiscIconsImageList_32x32.Images.SetKeyName(4, "Item_icon_category_Next04.png");
-            this.MiscIconsImageList_32x32.Images.SetKeyName(5, "Item_icon_category_Next05.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(0, "Attribute_icon_0.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(1, "Attribute_icon_1.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(2, "Attribute_icon_2.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(3, "Attribute_icon_3.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(4, "Attribute_icon_4.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(5, "Attribute_icon_5.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(6, "Attribute_icon_6.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(7, "Attribute_icon_7.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(8, "Attribute_icon_8.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(9, "Attribute_icon_9.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(10, "Attribute_icon_10.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(11, "Attribute_icon_11.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(12, "Attribute_icon_12.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(13, "Attribute_icon_13.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(14, "Attribute_icon_14.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(15, "Item_icon_category_Next00.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(16, "Item_icon_category_Next01.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(17, "Item_icon_category_Next02.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(18, "Item_icon_category_Next03.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(19, "Item_icon_category_Next04.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(20, "Item_icon_category_Next05.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(21, "MashupBadge_01.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(22, "MashupBadge_02.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(23, "MashupBadge_03.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(24, "MashupBadge_04.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(25, "MashupBadge_05.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(26, "MashupBadge_06.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(27, "MashupBadge_07.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(28, "MashupBadge_08.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(29, "MashupBadge_09.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(30, "MashupBadge_10.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(31, "MashupBadge_11.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(32, "MashupBadge_12.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(33, "MashupBadge_13.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(34, "MashupBadge_14.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(35, "MashupBadge_15.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(36, "MashupBadge_SP2.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(37, "MashupBadge_SP3.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(38, "MashupBadge_SP4.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(39, "MashupBadge_SP5.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(40, "MashupBadge_SP6.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(41, "MashupBadge_SP7.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(42, "Option_ico_switch_A.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(43, "Option_ico_switch_B.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(44, "Option_ico_switch_L.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(45, "Option_ico_switch_LS.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(46, "Option_ico_switch_R.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(47, "Option_ico_switch_RS.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(48, "Option_ico_switch_X.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(49, "Option_ico_switch_Y.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(50, "Option_ico_switch_ZL.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(51, "Option_ico_switch_ZR.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(52, "PsychicButton_L.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(53, "PsychicButton_L_God.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(54, "PsychicButton_R.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(55, "PsychicButton_R_God.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(56, "PsychicButton_X.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(57, "PsychicButton_X_God.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(58, "PsychicButton_Y.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(59, "PsychicButton_Y_God.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(60, "PsychicButton_ZL.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(61, "PsychicButton_ZL_God.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(62, "PsychicButton_ZR.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(63, "PsychicButton_ZR_God.png");
+            this.MiscIconsImageList_32x32.Images.SetKeyName(64, "GodBadge_star.png");
             // 
             // SelectLanguageLabel
             // 
@@ -3023,6 +3084,28 @@
             this.ShowSpoilersCheckbox.Text = "Show spoilers";
             this.ShowSpoilersCheckbox.UseVisualStyleBackColor = true;
             // 
+            // BrandImageList_102x36
+            // 
+            this.BrandImageList_102x36.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.BrandImageList_102x36.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BrandImageList_102x36.ImageStream")));
+            this.BrandImageList_102x36.TransparentColor = System.Drawing.Color.Transparent;
+            this.BrandImageList_102x36.Images.SetKeyName(0, "brand_00.png");
+            this.BrandImageList_102x36.Images.SetKeyName(1, "brand_01.png");
+            this.BrandImageList_102x36.Images.SetKeyName(2, "brand_02.png");
+            this.BrandImageList_102x36.Images.SetKeyName(3, "brand_03.png");
+            this.BrandImageList_102x36.Images.SetKeyName(4, "brand_04.png");
+            this.BrandImageList_102x36.Images.SetKeyName(5, "brand_05.png");
+            this.BrandImageList_102x36.Images.SetKeyName(6, "brand_06.png");
+            this.BrandImageList_102x36.Images.SetKeyName(7, "brand_07.png");
+            this.BrandImageList_102x36.Images.SetKeyName(8, "brand_08.png");
+            this.BrandImageList_102x36.Images.SetKeyName(9, "brand_09.png");
+            this.BrandImageList_102x36.Images.SetKeyName(10, "brand_10.png");
+            this.BrandImageList_102x36.Images.SetKeyName(11, "brand_11.png");
+            this.BrandImageList_102x36.Images.SetKeyName(12, "brand_12.png");
+            this.BrandImageList_102x36.Images.SetKeyName(13, "brand_13.png");
+            this.BrandImageList_102x36.Images.SetKeyName(14, "brand_14.png");
+            this.BrandImageList_102x36.Images.SetKeyName(15, "brand_15.png");
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -3123,5 +3206,6 @@
         private System.Windows.Forms.ImageList PinImageList_100x100;
         private System.Windows.Forms.ImageList CharacterImageList_170x300;
         private System.Windows.Forms.CheckBox ShowSpoilersCheckbox;
+        private System.Windows.Forms.ImageList BrandImageList_102x36;
     }
 }

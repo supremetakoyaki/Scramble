@@ -249,7 +249,7 @@ namespace Scramble.Forms
             ClothingItem_NameLabel.Text = ClothingName;
             BrandLabel.Text = Sukuranburu.GetGameString(ClothingBrand.Name);
             ClothingItem_PictureBox.Image = Sukuranburu.Get128x128FashionImageList().Images[ClothingSprite];
-            BrandPictureBox.Image = Sukuranburu.GetBrandImageList().Images[BrandSprite];
+            BrandPictureBox.Image = Sukuranburu.Get170x60BrandImageList().Images[BrandSprite];
 
             SlotType_PictureBox.Image = Sukuranburu.Get32x32MiscIconsImageList().Images[string.Format("Item_icon_category_Next{0}.png", Clothing.BaseClothing.SlotType.ToString("D2"))];
             WearTypeLabel.Text = Sukuranburu.GetString("{WearType" + Clothing.BaseClothing.SlotType + "}");

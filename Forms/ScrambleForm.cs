@@ -39,6 +39,8 @@ namespace Scramble
         private LanguageStrings LangStrings;
         public byte CurrentLanguage;
 
+        private GameTextProcessor GameTextProcessor;
+
         #region NEO TWEWY Database instances
         private ItemManager ItmManager;
         private CharacterManager CharaManager;
@@ -91,7 +93,10 @@ namespace Scramble
             SocialManager = new SocialNetworkManager();
 
             LangStrings = new LanguageStrings();
+            GameTextProcessor = new GameTextProcessor();
+
             LanguageSelectComboBox.Text = "English";
+
 
             Task.Run(TryCheckForUpdates);
         }
@@ -643,9 +648,15 @@ namespace Scramble
         {
             return FashionImageList_64x64;
         }
-        public ImageList GetBrandImageList()
+
+        public ImageList Get170x60BrandImageList()
         {
             return BrandImageList_170x60;
+        }
+
+        public ImageList Get102x36BrandImageList()
+        {
+            return BrandImageList_102x36;
         }
 
         public ImageList Get128x128FoodImageList()
@@ -688,20 +699,66 @@ namespace Scramble
 
         public string GetGameString(string Key)
         {
+            string Value;
+
             string Locale = GetGameLocaleManager().GetLocale(CurrentLanguage, Key);
             if (Locale.StartsWith("<PF_"))
             {
-                return GetGameLocaleManager().GetLocale(CurrentLanguage, string.Format("PF_{0}_{1}", SwitchVersion ? "SW" : "PS4", Key));
+                Value = GetGameLocaleManager().GetLocale(CurrentLanguage, string.Format("PF_{0}_{1}", SwitchVersion ? "SW" : "PS4", Key));
+            }
+            else
+            {
+                Value = GetGameLocaleManager().GetLocale(CurrentLanguage, Key);
             }
 
-            return GetGameLocaleManager().GetLocale(CurrentLanguage, Key);
+            GetGameTextProcessor().ReplaceCharacterTags(ref Value);
+            return Value;
         }
 
         public string GetReverseString(string Value)
         {
             return GetGameLocaleManager().ReverseLookup(CurrentLanguage, Value);
         }
+
+        public string GetDayName(int Day, ref bool Valid)
+        {
+            if (Day == -1)
+            {
+                Valid = false;
+                return GetString("{None}");
+            }
+            else if (Day == 24)
+            {
+                Valid = true;
+                return GetGameString("Day_Name_another");
+            }
+            else if (Day == 22 || Day == 23)
+            {
+                Valid = true;
+                return GetGameString(string.Format("Day_Name_w3d{0}", Day - 14));
+            }
+
+            int WeekNumber = (int)Math.Ceiling(Day / (double)7);
+            int DayNumber = Day % 7;
+
+            if (WeekNumber == 0)
+            {
+                WeekNumber = 1;
+            }
+            else if (DayNumber == 0)
+            {
+                DayNumber = 7;
+            }
+
+            Valid = true;
+            return string.Format("Day_Name_w{0}d{1}", WeekNumber, DayNumber);
+        }
         #endregion
+
+        public GameTextProcessor GetGameTextProcessor()
+        {
+            return GameTextProcessor;
+        }
 
         public bool CharacterIsSpoiler(byte CharaId)
         {
