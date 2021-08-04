@@ -49,6 +49,7 @@ namespace Scramble.Classes
 
             Box.Clear();
             Box.SelectionStart = Box.TextLength;
+            Box.SelectionLength = 0;
             Box.SelectionFont = Box.Font;
             Box.SelectionColor = Box.ForeColor;
 
