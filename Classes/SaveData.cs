@@ -288,7 +288,8 @@ namespace Scramble.Classes
         }
         public void ImportData(byte[] Import)
         {
-            this.Data = Import; // the fact that it's so straight-forward seems a bit suspicious.
+            this.Data = Import;
+            LoadPartyMembers();
         }
     }
 }
