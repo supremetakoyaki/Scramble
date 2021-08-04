@@ -424,10 +424,7 @@ namespace Scramble
 
         private void DifficultyCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DifficultyCombo.SelectedIndex != 1)
-            {
-                SelectedSlot.UpdateOffset_Byte(Offsets.Difficulty, (byte)DifficultyCombo.SelectedIndex);
-            }
+            SelectedSlot.UpdateOffset_Byte(Offsets.Difficulty, (byte)DifficultyCombo.SelectedIndex);
         }
 
         private void CurrentLevelNUpDown_ValueChanged(object sender, EventArgs e)

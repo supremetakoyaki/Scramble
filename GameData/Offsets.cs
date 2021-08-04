@@ -8,6 +8,16 @@
         public const int Difficulty = 296836; // 8-bit
         public const int Fp = 15056; // 16-bit
 
+        // Noisepedia
+        public const int Noisepedia_Id0_RecordLevel = 16; //int32. 0xFFFF if not unlocked
+        public const int Noisepedia_Id0_Erased = 20; //int32. 0xFFFF if not unlocked
+        public const int Noisepedia_Id0_EasyPinUnlocked = 24; //boolean.
+        public const int Noisepedia_Id0_NormalPinUnlocked = 25; //boolean.
+        public const int Noisepedia_Id0_HardPinUnlocked = 26; //boolean.
+        public const int Noisepedia_Id0_UltimatePinUnlocked = 27; //boolean.
+        public const int Noisepedia_Id0_NotEncounteredYet = 28; //boolean. im not sure if it means this.
+
+        // Collection record.
         public const int RecordInv_First = 3344; // byte & byte
 
         // Character stat data. For the next 6 characters we add +
