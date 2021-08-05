@@ -569,6 +569,7 @@ namespace Scramble.Forms
                 MyClothingInvListView.Items.Clear();
                 InventoryClothes.Clear();
                 SelectedClothing = null;
+                TotalCount = 0;
 
                 SelectClothing();
             }
