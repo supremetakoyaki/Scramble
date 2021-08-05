@@ -275,7 +275,7 @@ namespace Scramble
             int Player_Experience = SelectedSlot.RetrieveOffset_Int32(Offsets.Experience);
             ushort Player_Current_Level = SelectedSlot.RetrieveOffset_UInt16(Offsets.CurrentLevel);
             int Player_Money = SelectedSlot.RetrieveOffset_Int32(Offsets.Money);
-            ushort Player_Fp = SelectedSlot.RetrieveOffset_UInt16(Offsets.Fp);
+            int Player_Fp = SelectedSlot.RetrieveOffset_Int32(Offsets.Fp);
 
             if (Player_Difficulty < 4)
             {
@@ -445,7 +445,7 @@ namespace Scramble
 
         private void FpNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            SelectedSlot.UpdateOffset_UInt16(Offsets.Fp, (ushort)FpNumericUpDown.Value);
+            SelectedSlot.UpdateOffset_Int32(Offsets.Fp, (int)FpNumericUpDown.Value);
         }
 
         private void InitializedSlotCheckbox_CheckedChanged(object sender, EventArgs e)

@@ -29,6 +29,7 @@ namespace Scramble.Forms
         }
 
         private SkillTree SelectedSkillTree;
+        private TreeNode SelectedNode;
 
         private int InfoIndex = 0;
         private bool WarnedAboutSpoilerCheck = false;
@@ -95,7 +96,7 @@ namespace Scramble.Forms
                     ParentNode.Nodes.Add(Node);
                 }
 
-                // do something with the save
+                // { Get whether you have encountered them... }
 
                 if (Sukuranburu.ShowSpoilers == false && Node.Checked == false)
                 {
@@ -133,6 +134,7 @@ namespace Scramble.Forms
             }
 
             SelectedSkillTree = TreeItem;
+            SelectedNode = Node;
 
             if (Sukuranburu.ShowSpoilers == false && Node.Checked == false)
             {
@@ -236,6 +238,17 @@ namespace Scramble.Forms
                 }
             }
 
+            if (Node.Checked)
+            {
+                this.ConnectionMadeCheckbox.Enabled = true;
+                this.ConnectionMadeCheckbox.Checked = RetrieveConnectionStatus(Node, TreeItem);
+            }
+            else
+            {
+                this.ConnectionMadeCheckbox.Enabled = false;
+                this.ConnectionMadeCheckbox.Checked = false;
+            }
+
             if (TreeItem.SkillId == -1)
             {
                 DisplayEmptySkill();
@@ -276,6 +289,7 @@ namespace Scramble.Forms
         private void DisplayEmptyNode()
         {
             SelectedSkillTree = null;
+            SelectedNode = null;
 
             Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{NoSelectedCharacter}"), this.CharacterName_RichTextBox);
             Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("—"), this.CharacterInfo_RichTextBox);
@@ -286,6 +300,7 @@ namespace Scramble.Forms
             this.Shop_Label.Visible = false;
             this.ShopName_RichTextBox.Clear();
             this.ShopLogo_PictureBox.Image = null;
+            this.ConnectionMadeCheckbox.Enabled = false;
 
             DisplayEmptySkill();
         }
@@ -326,9 +341,9 @@ namespace Scramble.Forms
                 return false;
             }
 
-            if (SkillItem.SaveIndex > 103)
+            if (SkillItem.SaveIndex > 128)
             {
-                throw new ArgumentOutOfRangeException(); // Yeah, not happening unless a new update.
+                throw new ArgumentOutOfRangeException();
             }
 
             int OffsetSum = SkillItem.SaveIndex / 8;
@@ -336,6 +351,44 @@ namespace Scramble.Forms
             byte BitIndex = (byte)(SkillItem.SaveIndex % 8);
 
             return ByteUtil.GetBit(ByteToSet, BitIndex);
+        }
+
+        private void UpdateConnectionStatus(TreeNode Node, SkillTree TreeItem, bool Value)
+        {
+            if (Node == null || TreeItem == null)
+            {
+                return;
+            }
+
+            if (TreeItem.SaveIndex > 128)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            byte ValueToSet = 0;
+            if (Node.Checked)
+            {
+                ValueToSet = Value ? (byte)0xC0 : (byte)0x80;
+            }
+
+            int Offset = Offsets.Social_ConnectionStatus_First + TreeItem.SaveIndex;
+            SelectedSlot.UpdateOffset_Byte(Offset, ValueToSet);
+        }
+
+        private bool RetrieveConnectionStatus(TreeNode Node, SkillTree TreeItem)
+        {
+            if (Node == null || TreeItem == null || !Node.Checked)
+            {
+                return false;
+            }
+
+            if (TreeItem.SaveIndex > 128)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            int Offset = Offsets.Social_ConnectionStatus_First + TreeItem.SaveIndex;
+            return SelectedSlot.RetrieveOffset_Byte(Offset) != 0;
         }
 
         private void SkillTreeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -485,6 +538,39 @@ namespace Scramble.Forms
                 }
             }
 
+            // do the encounter foreach here.
+
+            if (UnlockAll_ConnectionCheckbox.Checked)
+            {
+                foreach (TreeNode Node in SkillTreeView.Nodes)
+                {
+                    ushort TreeId = (ushort)Node.Tag;
+                    SkillTree TreeItem = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItem(TreeId);
+
+                    if (TreeItem != null)
+                    {
+                        UpdateConnectionStatus(Node, TreeItem, UnlockAll_Flag);
+                    }
+
+                    if (SelectedSkillTree != null)
+                    {
+                        ConnectionMadeCheckbox.Checked = UnlockAll_Flag;
+                    }
+                }
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void ConnectionMadeCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedSkillTree == null || SelectedNode == null)
+            {
+                return;
+            }
+            
+            ReadyForUserInput = false;
+            UpdateConnectionStatus(SelectedNode, SelectedSkillTree, ConnectionMadeCheckbox.Checked);
             ReadyForUserInput = true;
         }
     }

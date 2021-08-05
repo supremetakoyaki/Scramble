@@ -301,6 +301,7 @@ namespace Scramble.Forms
             this.ConnectionMadeCheckbox.TabIndex = 17;
             this.ConnectionMadeCheckbox.Text = "{ConnectionEstablished}";
             this.ConnectionMadeCheckbox.UseVisualStyleBackColor = true;
+            this.ConnectionMadeCheckbox.CheckedChanged += new System.EventHandler(this.ConnectionMadeCheckbox_CheckedChanged);
             // 
             // LocationValueLabel
             // 
