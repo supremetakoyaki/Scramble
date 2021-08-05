@@ -17,9 +17,12 @@
         // Collection record.
         public const int RecordInv_First = 3344; // byte & byte
 
+        // Basic stats.
         public const int Experience = 14661; // 32-bit
         public const int CurrentLevel = 14665; // 16-bit ?
         public const int Money = 14673; // 32-bit
+        public const int Calories = 14677; // 32-bit
+        public const int Overate = 14681; // boolean
 
         // Character stat data.
         public const int Character1_Id = 14710; // int32

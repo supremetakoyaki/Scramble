@@ -76,6 +76,8 @@ namespace Scramble
             }
         }
 
+        private bool ReadyForUserInput = false;
+
         public ScrambleForm()
         {
             InitializeComponent();
@@ -96,7 +98,7 @@ namespace Scramble
             GameTextProcessor = new GameTextProcessor();
 
             LanguageSelectComboBox.Text = "English";
-
+            ReadyForUserInput = true;
 
             Task.Run(TryCheckForUpdates);
         }
@@ -158,6 +160,9 @@ namespace Scramble
             {
                 this.DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
             }
+
+            this.CaloriesEaten_Label.Text = GetString("{CaloriesEaten}");
+            this.OverateCheckbox.Text = GetString("{Overate}");
         }
 
         public void TryCheckForUpdates()
@@ -212,53 +217,10 @@ namespace Scramble
             return MessageBox.Show(Message, GetString("{Hey}"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
-        private void OpenSaveFileButton_Click(object sender, EventArgs e)
-        {
-            if (OpenedSaveFile != null && ShowPrompt(GetString("DLG_SaveDataAlreadyOpened")) == false)
-            {
-                return;
-            }
-
-            OpenFileDialog Dialog = new OpenFileDialog();
-
-            if (Dialog.ShowDialog() == DialogResult.OK)
-            {
-                if (!File.Exists(Dialog.FileName))
-                {
-                    ShowWarning(GetString("DLG_FileNotFound"));
-                    return;
-                }
-
-                byte[] AllData = File.ReadAllBytes(Dialog.FileName);
-                byte Result;
-
-                OpenedSaveFile = new SaveFile(Dialog.FileName, AllData, out Result);
-
-                if (Result == 0) // invalid file size
-                {
-                    ShowWarning(GetString("DLG_InvalidSaveFile"));
-                    OpenedSaveFile = null;
-
-                    this.ChangeFormSize(148, 309);
-                    return;
-                }
-
-                if (this.SaveSlotsListBox.SelectedIndex == -1)
-                {
-                    this.SaveSlotsListBox.SelectedIndex = 0;
-                    this.SaveSlotsListBox.Select();
-                }
-                else
-                {
-                    SelectSlot(this.SaveSlotsListBox.SelectedIndex);
-                }
-
-                this.ChangeFormSize(409, 740);
-                this.Text = "Scramble — NEO TWEWY Save Editor";
-            }
-        }
         private void SelectSlot(int Id)
         {
+            ReadyForUserInput = false;
+
             if (SelectedSlot.UnixTimestamp_Integer == 0)
             {
                 DateOfSavePicker.Value = DateOfSavePicker.MinDate;
@@ -276,6 +238,8 @@ namespace Scramble
             ushort Player_Current_Level = SelectedSlot.RetrieveOffset_UInt16(Offsets.CurrentLevel);
             int Player_Money = SelectedSlot.RetrieveOffset_Int32(Offsets.Money);
             int Player_Fp = SelectedSlot.RetrieveOffset_Int32(Offsets.Fp);
+            int Player_Calories = SelectedSlot.RetrieveOffset_Int32(Offsets.Calories);
+            bool Player_Overate = SelectedSlot.RetrieveOffset_Byte(Offsets.Overate) != 0;
 
             if (Player_Difficulty < 4)
             {
@@ -322,7 +286,21 @@ namespace Scramble
                 FpNumericUpDown.Value = FpNumericUpDown.Maximum;
             }
 
+            if (Player_Calories >= Calories_NumUpDown.Minimum && Player_Calories <= Calories_NumUpDown.Maximum)
+            {
+                Calories_NumUpDown.Value = Player_Calories;
+            }
+            else
+            {
+                Calories_NumUpDown.Value = Calories_NumUpDown.Maximum;
+            }
+
+            OverateCheckbox.Checked = Player_Overate;
+
             SerializePartyMembers();
+            UpdateCaloriesPercentage();
+
+            ReadyForUserInput = true;
         }
 
         private void SerializePartyMembers()
@@ -409,6 +387,85 @@ namespace Scramble
             }
         }
 
+        private void OpenSaveFileButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+            else if (OpenedSaveFile != null && ShowPrompt(GetString("DLG_SaveDataAlreadyOpened")) == false)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            OpenFileDialog Dialog = new OpenFileDialog();
+
+            if (Dialog.ShowDialog() == DialogResult.OK)
+            {
+                if (!File.Exists(Dialog.FileName))
+                {
+                    ShowWarning(GetString("DLG_FileNotFound"));
+                    return;
+                }
+
+                byte[] AllData = File.ReadAllBytes(Dialog.FileName);
+                byte Result;
+
+                OpenedSaveFile = new SaveFile(Dialog.FileName, AllData, out Result);
+
+                if (Result == 0) // invalid file size
+                {
+                    ShowWarning(GetString("DLG_InvalidSaveFile"));
+                    OpenedSaveFile = null;
+
+                    this.ChangeFormSize(148, 309);
+                    return;
+                }
+
+                if (this.SaveSlotsListBox.SelectedIndex == -1)
+                {
+                    this.SaveSlotsListBox.SelectedIndex = 0;
+                    this.SaveSlotsListBox.Select();
+                }
+                else
+                {
+                    SelectSlot(this.SaveSlotsListBox.SelectedIndex);
+                }
+
+                this.ChangeFormSize(435, 760);
+                this.Text = "Scramble — NEO TWEWY Save Editor";
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void UpdateCalories()
+        {
+            SelectedSlot.UpdateOffset_Byte(Offsets.Overate, Convert.ToByte(OverateCheckbox.Checked));
+            SelectedSlot.UpdateOffset_Int32(Offsets.Calories, (int)Calories_NumUpDown.Value);
+        }
+
+        private void UpdateCaloriesPercentage()
+        {
+            decimal Percentage = Math.Floor(Calories_NumUpDown.Value / (1000 * SelectedSlot.GetPartyMembers().Count) * 100);
+
+            CaloriesPercentage_Label.Text = string.Format("{0}%", Percentage);
+
+            if (Percentage >= 100)
+            {
+                CaloriesPercentage_Label.ForeColor = Color.FromArgb(215, 0, 0);
+            }
+            else if (Percentage >= 85)
+            {
+                CaloriesPercentage_Label.ForeColor = Color.FromArgb(200, 100, 0);
+            }
+            else
+            {
+                CaloriesPercentage_Label.ForeColor = Color.Green;
+            }
+        }
+
         private void SaveSlotsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SaveSlotsListBox.SelectedIndex != -1 && OpenedSaveFile != null)// && SelectedSlot.Id != SaveSlotsListBox.SelectedIndex)
@@ -419,16 +476,31 @@ namespace Scramble
 
         private void DateOfSavePicker_ValueChanged(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
             SelectedSlot.UpdateUnix(DateOfSavePicker.Value.Date + DateOfSavePicker.Value.TimeOfDay);
         }
 
         private void DifficultyCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
             SelectedSlot.UpdateOffset_Byte(Offsets.Difficulty, (byte)DifficultyCombo.SelectedIndex);
         }
 
         private void CurrentLevelNUpDown_ValueChanged(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
             int MaxTheoreticalLevel = GetCharacterManager().GetLevel((int)ExpNumericUpDown.Value);
             if (CurrentLevelNUpDown.Value > MaxTheoreticalLevel)
             {
@@ -440,22 +512,99 @@ namespace Scramble
 
         private void MoneyNUpDown_ValueChanged(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
             SelectedSlot.UpdateOffset_Int32(Offsets.Money, (int)MoneyNUpDown.Value);
         }
 
         private void FpNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
             SelectedSlot.UpdateOffset_Int32(Offsets.Fp, (int)FpNumericUpDown.Value);
+        }
+
+        private void Calories_NumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            int MaxCalories = 1000 * SelectedSlot.GetPartyMembers().Count;
+
+            if (OverateCheckbox.Checked && Calories_NumUpDown.Value < MaxCalories)
+            {
+                OverateCheckbox.Checked = false;
+            }
+            else if (!OverateCheckbox.Checked && Calories_NumUpDown.Value >= MaxCalories)
+            {
+                OverateCheckbox.Checked = true;
+            }
+
+            UpdateCalories();
+            UpdateCaloriesPercentage();
+
+            ReadyForUserInput = true;
+        }
+
+        private void OverateCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            int MaxCalories = 1000 * SelectedSlot.GetPartyMembers().Count;
+
+            if (OverateCheckbox.Checked)
+            {
+                if (Calories_NumUpDown.Value < MaxCalories)
+                {
+                    Calories_NumUpDown.Value = MaxCalories;
+                }
+            }
+            else
+            {
+                if (Calories_NumUpDown.Value >= MaxCalories)
+                {
+                    Calories_NumUpDown.Value = 0;//MaxCalories - 1;
+                }
+            }
+
+            UpdateCalories();
+            UpdateCaloriesPercentage();
+
+            ReadyForUserInput = true;
         }
 
         private void InitializedSlotCheckbox_CheckedChanged(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
             SelectedSlot.IsValid = InitializedSlotCheckbox.Checked ? (byte)1 : (byte)0;
         }
 
         private void SaveChangesButton_Click(object sender, EventArgs e)
         {
-            if (BackupCheckbox.Checked == false)
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+            else if (BackupCheckbox.Checked == false)
             {
                 if (ShowPrompt(GetString("DLG_BackupCheckboxNotChecked")) == false)
                 {
@@ -473,6 +622,8 @@ namespace Scramble
                     ShowWarning(GetString("DLG_BackupNotPossibleFileNotFound"));
                 }
             }
+
+            ReadyForUserInput = false;
 
             if (File.Exists(OpenedSaveFile.FilePath))
             {
@@ -492,10 +643,17 @@ namespace Scramble
                     ShowNotice(GetString("DLG_SaveDataSaved"));
                 }
             }
+
+            ReadyForUserInput = true;
         }
 
         private void ExpNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
             SelectedSlot.UpdateOffset_Int32(Offsets.Experience, (int)ExpNumericUpDown.Value);
 
             int TheoreticalLevel = GetCharacterManager().GetLevel((int)ExpNumericUpDown.Value);
@@ -546,8 +704,27 @@ namespace Scramble
             }
         }
 
+        private void ChangeFormSize(int Height, int Width)
+        {
+            if (RequiresRescaling)
+            {
+                this.Height = (int)Math.Floor(Height * ScaleFactor);
+                this.Width = (int)Math.Floor(Width * ScaleFactor);
+            }
+            else
+            {
+                this.Height = Height;
+                this.Width = Width;
+            }
+        }
+
         private void DumpSlotDebugButton_Click(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
             SaveFileDialog DumpDialog = new SaveFileDialog();
             DumpDialog.Filter = "Scramble Save Slot (*.slot)|*.slot";
             DumpDialog.DefaultExt = "slot";
@@ -562,6 +739,11 @@ namespace Scramble
 
         private void ImportSlotDataButton_Click(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
             OpenFileDialog ImportDialog = new OpenFileDialog();
             ImportDialog.Filter = "Scramble Save Slot (*.slot)|*.slot";
             ImportDialog.DefaultExt = "slot";
@@ -781,20 +963,6 @@ namespace Scramble
             this.ScaleFactor = this.Graphics.DpiX / 96;
 
             ChangeFormSize(this.Height, this.Width);
-        }
-
-        private void ChangeFormSize(int Height, int Width)
-        {
-            if (RequiresRescaling)
-            {
-                this.Height = (int)Math.Floor(Height * ScaleFactor);
-                this.Width = (int)Math.Floor(Width * ScaleFactor);
-            }
-            else
-            {
-                this.Height = Height;
-                this.Width = Width;
-            }
         }
     }
 }

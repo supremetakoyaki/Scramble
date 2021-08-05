@@ -28,7 +28,7 @@ namespace Scramble.Classes
             { "{DateAndTimeOfSave}", "Date and time of save:" },
             { "{Difficulty}", "Difficulty:" },
             { "{Experience}", "Experience:" },
-            { "{CurrentLevel}", "Current Level:" },
+            { "{CurrentLevel}", "Current level:" },
             { "{Money}", "Money:" },
             { "{Fp:}", "FP:" },
             { "{Lv}", "Lv." },
@@ -129,6 +129,9 @@ namespace Scramble.Classes
             { "{FirstEntry:}", "FIRST ENTRY:" },
             { "{Connection:}", "CONNECTION:" },
             { "{Shop:}", "SHOP:" },
+
+            { "{CaloriesEaten}", "Calories eaten:" },
+            { "{Overate}", "Overate" },
 
 
             // Dialog Messages
@@ -276,9 +279,12 @@ namespace Scramble.Classes
             { "{Skill}", "スキル" },
             { "{ConnectionEstablished}", "ネットワークが繋がりされています" },
             { "{NoSelectedCharacter}", "(キャラクター選択されていません)" },
-            { "{FirstEntry:}", "最初の入力日:" },
-            { "{Connection:}", "繋がりの日:" },
-            { "{Shop:}", "店名:" },
+            { "{FirstEntry:}", "最初の入力日：" },
+            { "{Connection:}", "繋がりの日：" },
+            { "{Shop:}", "店名：" },
+
+            { "{CaloriesEaten}", "カロリーの食べる数：" },
+            { "{Overate}", "食べすぎた" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -429,6 +435,9 @@ namespace Scramble.Classes
             { "{Connection:}", "CONEXIÓN:" },
             { "{Shop:}", "TIENDA:" },
 
+            { "{CaloriesEaten}", "Calorías: " },
+            { "{Overate}", "Atracados" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
             { "DLG_SaveDataAlreadyOpened", "Ya hay un archivo abierto. Si no guardaste los cambios, se perderán." },
@@ -577,6 +586,9 @@ namespace Scramble.Classes
             { "{FirstEntry:}", "1ÈRE RENCONTRE:" },
             { "{Connection:}", "CONNEXION:" },
             { "{Shop:}", "MAGASIN:" },
+
+            { "{CaloriesEaten}", "Calories:" },
+            { "{Overate}", "Suralimentée" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },
