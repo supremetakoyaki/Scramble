@@ -140,6 +140,9 @@ namespace Scramble.Classes
             { "{LockStatus_P}", "PARTIALLY UNLOCKED" },
             { "{Hint_SkillTree_LockStatus}", "Whether this character is shown in your network tree or not\ndepends on what is the furthest you've reached in the game." },
 
+            { "{DlcTitle}", "Unlocked DLC:" },
+            { "{Dlc1_Name}", "Legendary Threads Set" },
+            { "{Dlc2_Name}", "Reapers' Game Survival Set" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
@@ -300,6 +303,9 @@ namespace Scramble.Classes
             { "{LockStatus_P}", "部分的にロック解除さた" },
             { "{Hint_SkillTree_LockStatus}", "このキャラクターをネットワークに表示するには、ゲームの初対面の日に到達している必要があります。" },
 
+            { "{DlcTitle}", "ボーナスＤＬＣ：" },
+            { "{Dlc1_Name}", "「伝説のファッションアイテムセット」" },
+            { "{Dlc2_Name}", "「『死神のゲーム』生存率アップセット」" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -460,6 +466,10 @@ namespace Scramble.Classes
             { "{LockStatus_P}", "DESBLOQUEADO PARCIALMENTE" },
             { "{Hint_SkillTree_LockStatus}", "Para que este personaje aparezca en tu red social, necesitas haber llegado al día de primer encuentro." },
 
+            { "{DlcTitle}", "DLC obtenido:" },
+            { "{Dlc1_Name}", "Conjunto de textiles legendarios" },
+            { "{Dlc2_Name}", "Set de supervivencia del Juego de los Segadores" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
             { "DLG_SaveDataAlreadyOpened", "Ya hay un archivo abierto. Si no guardaste los cambios, se perderán." },
@@ -618,6 +628,10 @@ namespace Scramble.Classes
             { "{LockStatus_L}", "PAS ENCORE DÉBLOQUÉ" },
             { "{LockStatus_P}", "DÉBLOQUÉ EN PARTIE" },
             { "{Hint_SkillTree_LockStatus}", "Pour que ce personnage apparaisse dans votre réseau social, vous devez avoir atteint le jour de la 1ère rencontre." },
+
+            { "{DlcTitle}", "DLC obtenu :" },
+            { "{Dlc1_Name}", "Ensemble de fringues légendaires" },
+            { "{Dlc2_Name}", "Ensemble de survie pour le Jeu des Reapers" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },

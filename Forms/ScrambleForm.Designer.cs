@@ -1923,6 +1923,7 @@
             this.MiscFlagsEditorButton.TabIndex = 27;
             this.MiscFlagsEditorButton.Text = "Misc. Editor";
             this.MiscFlagsEditorButton.UseVisualStyleBackColor = true;
+            this.MiscFlagsEditorButton.Click += new System.EventHandler(this.MiscFlagsEditorButton_Click);
             // 
             // GameSettingsEditorButton
             // 

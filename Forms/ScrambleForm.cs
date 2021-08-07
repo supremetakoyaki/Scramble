@@ -23,6 +23,8 @@ namespace Scramble
         public CharacterStatEditor CharaStatEditor;
         public SkillTreeEditor SocialEditor;
 
+        public MiscEditor MiscEditor;
+
         public SaveData SelectedSlot
         {
             get
@@ -673,6 +675,12 @@ namespace Scramble
         {
             RecordsEditor = new CollectionEditor();
             RecordsEditor.ShowDialog();
+        }
+
+        private void MiscFlagsEditorButton_Click(object sender, EventArgs e)
+        {
+            MiscEditor = new MiscEditor();
+            MiscEditor.ShowDialog();
         }
 
         private void AboutLabel_Click(object sender, EventArgs e)
