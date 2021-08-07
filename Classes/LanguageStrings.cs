@@ -324,7 +324,7 @@ namespace Scramble.Classes
             { "{MusicVol:}", "BGM音量：" },
             { "{SfxVol:}", "SE音量：" },
             { "{VaVol:}", "ボイス音量：" },
-            { "{General}", "General" },
+            { "{General}", "一般" },
             { "{VoiceLanguage:}", "音声言語:" },
             { "{Japanese}", "日本語" },
             { "{English}", "英語" },
