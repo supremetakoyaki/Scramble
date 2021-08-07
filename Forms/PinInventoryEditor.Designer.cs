@@ -182,7 +182,7 @@ namespace Scramble.Forms
             this.EquippedDeckComboBox.Location = new System.Drawing.Point(350, 621);
             this.EquippedDeckComboBox.Name = "EquippedDeckComboBox";
             this.EquippedDeckComboBox.Size = new System.Drawing.Size(82, 23);
-            this.EquippedDeckComboBox.TabIndex = 22;
+            this.EquippedDeckComboBox.TabIndex = 5;
             this.EquippedDeckComboBox.TextChanged += new System.EventHandler(this.EquippedDeckComboBox_TextChanged);
             // 
             // CharacterIconPictureBox
@@ -202,7 +202,7 @@ namespace Scramble.Forms
             this.EquippedByCharacterComboBox.Location = new System.Drawing.Point(438, 621);
             this.EquippedByCharacterComboBox.Name = "EquippedByCharacterComboBox";
             this.EquippedByCharacterComboBox.Size = new System.Drawing.Size(127, 23);
-            this.EquippedByCharacterComboBox.TabIndex = 20;
+            this.EquippedByCharacterComboBox.TabIndex = 6;
             this.EquippedByCharacterComboBox.TextChanged += new System.EventHandler(this.EquippedByCharacterComboBox_TextChanged);
             // 
             // EquippedLabel
@@ -267,7 +267,7 @@ namespace Scramble.Forms
             this.RemoveAllPinsButton.Location = new System.Drawing.Point(647, 621);
             this.RemoveAllPinsButton.Name = "RemoveAllPinsButton";
             this.RemoveAllPinsButton.Size = new System.Drawing.Size(107, 30);
-            this.RemoveAllPinsButton.TabIndex = 7;
+            this.RemoveAllPinsButton.TabIndex = 8;
             this.RemoveAllPinsButton.Text = "Remove all";
             this.RemoveAllPinsButton.UseVisualStyleBackColor = false;
             this.RemoveAllPinsButton.Click += new System.EventHandler(this.RemoveAllPinsButton_Click);
@@ -283,7 +283,7 @@ namespace Scramble.Forms
             0});
             this.PinAmountUpDown.Name = "PinAmountUpDown";
             this.PinAmountUpDown.Size = new System.Drawing.Size(52, 23);
-            this.PinAmountUpDown.TabIndex = 5;
+            this.PinAmountUpDown.TabIndex = 4;
             this.PinAmountUpDown.Value = new decimal(new int[] {
             1,
             0,
@@ -311,7 +311,7 @@ namespace Scramble.Forms
             0});
             this.ExperienceNUpDown.Name = "ExperienceNUpDown";
             this.ExperienceNUpDown.Size = new System.Drawing.Size(52, 23);
-            this.ExperienceNUpDown.TabIndex = 3;
+            this.ExperienceNUpDown.TabIndex = 2;
             this.ExperienceNUpDown.ValueChanged += new System.EventHandler(this.ExperienceNUpDown_ValueChanged);
             // 
             // ExpLabel
@@ -334,7 +334,7 @@ namespace Scramble.Forms
             0});
             this.PinLevelNUpDown.Name = "PinLevelNUpDown";
             this.PinLevelNUpDown.Size = new System.Drawing.Size(52, 23);
-            this.PinLevelNUpDown.TabIndex = 2;
+            this.PinLevelNUpDown.TabIndex = 1;
             this.PinLevelNUpDown.Value = new decimal(new int[] {
             1,
             0,
@@ -367,7 +367,7 @@ namespace Scramble.Forms
             this.RemovePinButton.Location = new System.Drawing.Point(647, 574);
             this.RemovePinButton.Name = "RemovePinButton";
             this.RemovePinButton.Size = new System.Drawing.Size(107, 41);
-            this.RemovePinButton.TabIndex = 6;
+            this.RemovePinButton.TabIndex = 7;
             this.RemovePinButton.Text = "Remove this pin";
             this.RemovePinButton.UseVisualStyleBackColor = false;
             this.RemovePinButton.Click += new System.EventHandler(this.RemovePinButton_Click);
@@ -379,7 +379,7 @@ namespace Scramble.Forms
             this.MasterPinButton.Location = new System.Drawing.Point(137, 591);
             this.MasterPinButton.Name = "MasterPinButton";
             this.MasterPinButton.Size = new System.Drawing.Size(116, 23);
-            this.MasterPinButton.TabIndex = 4;
+            this.MasterPinButton.TabIndex = 3;
             this.MasterPinButton.Text = "Master this pin";
             this.MasterPinButton.UseVisualStyleBackColor = true;
             this.MasterPinButton.Click += new System.EventHandler(this.MasterPinButton_Click);
@@ -411,7 +411,7 @@ namespace Scramble.Forms
             this.MyPinInventoryView.MultiSelect = false;
             this.MyPinInventoryView.Name = "MyPinInventoryView";
             this.MyPinInventoryView.Size = new System.Drawing.Size(741, 342);
-            this.MyPinInventoryView.TabIndex = 1;
+            this.MyPinInventoryView.TabIndex = 0;
             this.MyPinInventoryView.UseCompatibleStateImageBehavior = false;
             this.MyPinInventoryView.View = System.Windows.Forms.View.Details;
             this.MyPinInventoryView.SelectedIndexChanged += new System.EventHandler(this.MyPinInventoryView_SelectedIndexChanged);
@@ -480,7 +480,7 @@ namespace Scramble.Forms
             this.Add99Checkbox.Location = new System.Drawing.Point(245, 596);
             this.Add99Checkbox.Name = "Add99Checkbox";
             this.Add99Checkbox.Size = new System.Drawing.Size(44, 19);
-            this.Add99Checkbox.TabIndex = 11;
+            this.Add99Checkbox.TabIndex = 10;
             this.Add99Checkbox.Text = "x99";
             this.Add99Checkbox.UseVisualStyleBackColor = true;
             // 
@@ -490,7 +490,7 @@ namespace Scramble.Forms
             this.AddedPinIsMasteredCheckbox.Location = new System.Drawing.Point(295, 596);
             this.AddedPinIsMasteredCheckbox.Name = "AddedPinIsMasteredCheckbox";
             this.AddedPinIsMasteredCheckbox.Size = new System.Drawing.Size(75, 19);
-            this.AddedPinIsMasteredCheckbox.TabIndex = 12;
+            this.AddedPinIsMasteredCheckbox.TabIndex = 11;
             this.AddedPinIsMasteredCheckbox.Text = "Mastered";
             this.AddedPinIsMasteredCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -510,7 +510,7 @@ namespace Scramble.Forms
             this.AddPinButton.Location = new System.Drawing.Point(14, 596);
             this.AddPinButton.Name = "AddPinButton";
             this.AddPinButton.Size = new System.Drawing.Size(148, 55);
-            this.AddPinButton.TabIndex = 10;
+            this.AddPinButton.TabIndex = 12;
             this.AddPinButton.Text = "Add pin";
             this.AddPinButton.UseVisualStyleBackColor = true;
             this.AddPinButton.Click += new System.EventHandler(this.AddPinButton_Click);
@@ -524,7 +524,7 @@ namespace Scramble.Forms
             this.AllPinsListView.Location = new System.Drawing.Point(14, 22);
             this.AllPinsListView.Name = "AllPinsListView";
             this.AllPinsListView.Size = new System.Drawing.Size(356, 568);
-            this.AllPinsListView.TabIndex = 0;
+            this.AllPinsListView.TabIndex = 9;
             this.AllPinsListView.UseCompatibleStateImageBehavior = false;
             this.AllPinsListView.View = System.Windows.Forms.View.Details;
             // 

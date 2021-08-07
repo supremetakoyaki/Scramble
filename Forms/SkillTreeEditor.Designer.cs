@@ -93,7 +93,7 @@ namespace Scramble.Forms
             this.UnlockAll_EncounterCheckbox.Location = new System.Drawing.Point(145, 458);
             this.UnlockAll_EncounterCheckbox.Name = "UnlockAll_EncounterCheckbox";
             this.UnlockAll_EncounterCheckbox.Size = new System.Drawing.Size(210, 24);
-            this.UnlockAll_EncounterCheckbox.TabIndex = 20;
+            this.UnlockAll_EncounterCheckbox.TabIndex = 1;
             this.UnlockAll_EncounterCheckbox.Text = "{Encounter}";
             this.UnlockAll_EncounterCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -104,7 +104,7 @@ namespace Scramble.Forms
             this.UnlockAll_SkillCheckbox.Location = new System.Drawing.Point(254, 488);
             this.UnlockAll_SkillCheckbox.Name = "UnlockAll_SkillCheckbox";
             this.UnlockAll_SkillCheckbox.Size = new System.Drawing.Size(101, 24);
-            this.UnlockAll_SkillCheckbox.TabIndex = 19;
+            this.UnlockAll_SkillCheckbox.TabIndex = 3;
             this.UnlockAll_SkillCheckbox.Text = "{Skill}";
             this.UnlockAll_SkillCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -115,7 +115,7 @@ namespace Scramble.Forms
             this.UnlockAll_ConnectionCheckbox.Location = new System.Drawing.Point(145, 488);
             this.UnlockAll_ConnectionCheckbox.Name = "UnlockAll_ConnectionCheckbox";
             this.UnlockAll_ConnectionCheckbox.Size = new System.Drawing.Size(103, 24);
-            this.UnlockAll_ConnectionCheckbox.TabIndex = 18;
+            this.UnlockAll_ConnectionCheckbox.TabIndex = 2;
             this.UnlockAll_ConnectionCheckbox.Text = "{Connection}";
             this.UnlockAll_ConnectionCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -125,7 +125,7 @@ namespace Scramble.Forms
             this.UnlockAllButton.Location = new System.Drawing.Point(6, 458);
             this.UnlockAllButton.Name = "UnlockAllButton";
             this.UnlockAllButton.Size = new System.Drawing.Size(133, 53);
-            this.UnlockAllButton.TabIndex = 18;
+            this.UnlockAllButton.TabIndex = 4;
             this.UnlockAllButton.Text = "{UnlockAll}";
             this.UnlockAllButton.UseVisualStyleBackColor = false;
             this.UnlockAllButton.Click += new System.EventHandler(this.UnlockAllButton_Click);
@@ -199,7 +199,7 @@ namespace Scramble.Forms
             this.Encountered_Checkbox.Location = new System.Drawing.Point(8, 328);
             this.Encountered_Checkbox.Name = "Encountered_Checkbox";
             this.Encountered_Checkbox.Size = new System.Drawing.Size(156, 35);
-            this.Encountered_Checkbox.TabIndex = 28;
+            this.Encountered_Checkbox.TabIndex = 6;
             this.Encountered_Checkbox.Text = "{Encountered}";
             this.Encountered_Checkbox.UseVisualStyleBackColor = true;
             this.Encountered_Checkbox.CheckedChanged += new System.EventHandler(this.Encountered_Checkbox_CheckedChanged);
@@ -314,7 +314,7 @@ namespace Scramble.Forms
             this.ShowMoreInfoButton.Location = new System.Drawing.Point(368, 209);
             this.ShowMoreInfoButton.Name = "ShowMoreInfoButton";
             this.ShowMoreInfoButton.Size = new System.Drawing.Size(37, 29);
-            this.ShowMoreInfoButton.TabIndex = 18;
+            this.ShowMoreInfoButton.TabIndex = 5;
             this.ShowMoreInfoButton.Text = "➜";
             this.ShowMoreInfoButton.UseVisualStyleBackColor = true;
             this.ShowMoreInfoButton.Click += new System.EventHandler(this.ShowMoreInfoButton_Click);
@@ -324,7 +324,7 @@ namespace Scramble.Forms
             this.ConnectionMadeCheckbox.Location = new System.Drawing.Point(170, 328);
             this.ConnectionMadeCheckbox.Name = "ConnectionMadeCheckbox";
             this.ConnectionMadeCheckbox.Size = new System.Drawing.Size(156, 35);
-            this.ConnectionMadeCheckbox.TabIndex = 17;
+            this.ConnectionMadeCheckbox.TabIndex = 7;
             this.ConnectionMadeCheckbox.Text = "{ConnectionEstablished}";
             this.ConnectionMadeCheckbox.UseVisualStyleBackColor = true;
             this.ConnectionMadeCheckbox.CheckedChanged += new System.EventHandler(this.ConnectionMadeCheckbox_CheckedChanged);

@@ -189,7 +189,7 @@ namespace Scramble.Forms
             this.RemoveClothingButton.Location = new System.Drawing.Point(473, 537);
             this.RemoveClothingButton.Name = "RemoveClothingButton";
             this.RemoveClothingButton.Size = new System.Drawing.Size(130, 50);
-            this.RemoveClothingButton.TabIndex = 33;
+            this.RemoveClothingButton.TabIndex = 3;
             this.RemoveClothingButton.Text = "{RemoveClothingButton}";
             this.RemoveClothingButton.UseVisualStyleBackColor = true;
             this.RemoveClothingButton.Click += new System.EventHandler(this.RemoveClothingButton_Click);
@@ -200,7 +200,7 @@ namespace Scramble.Forms
             this.RemoveAllClothingButton.Location = new System.Drawing.Point(473, 593);
             this.RemoveAllClothingButton.Name = "RemoveAllClothingButton";
             this.RemoveAllClothingButton.Size = new System.Drawing.Size(130, 38);
-            this.RemoveAllClothingButton.TabIndex = 34;
+            this.RemoveAllClothingButton.TabIndex = 4;
             this.RemoveAllClothingButton.Text = "{RemoveAllClothingButton}";
             this.RemoveAllClothingButton.UseVisualStyleBackColor = false;
             this.RemoveAllClothingButton.Click += new System.EventHandler(this.RemoveAllClothingButton_Click);
@@ -319,7 +319,7 @@ namespace Scramble.Forms
             this.EquippedByCharacterComboBox.Location = new System.Drawing.Point(6, 599);
             this.EquippedByCharacterComboBox.Name = "EquippedByCharacterComboBox";
             this.EquippedByCharacterComboBox.Size = new System.Drawing.Size(91, 21);
-            this.EquippedByCharacterComboBox.TabIndex = 23;
+            this.EquippedByCharacterComboBox.TabIndex = 2;
             this.EquippedByCharacterComboBox.TextChanged += new System.EventHandler(this.EquippedByCharacterComboBox_TextChanged);
             // 
             // EquippedLabel
@@ -420,7 +420,7 @@ namespace Scramble.Forms
             this.AddEachOfEveryClothingButton.Location = new System.Drawing.Point(6, 593);
             this.AddEachOfEveryClothingButton.Name = "AddEachOfEveryClothingButton";
             this.AddEachOfEveryClothingButton.Size = new System.Drawing.Size(253, 38);
-            this.AddEachOfEveryClothingButton.TabIndex = 41;
+            this.AddEachOfEveryClothingButton.TabIndex = 7;
             this.AddEachOfEveryClothingButton.Text = "{AddEachOfEveryClothing}";
             this.AddEachOfEveryClothingButton.UseVisualStyleBackColor = false;
             this.AddEachOfEveryClothingButton.Click += new System.EventHandler(this.AddEachOfEveryClothingButton_Click);
@@ -430,7 +430,7 @@ namespace Scramble.Forms
             this.AddClothingItemButton.Location = new System.Drawing.Point(6, 537);
             this.AddClothingItemButton.Name = "AddClothingItemButton";
             this.AddClothingItemButton.Size = new System.Drawing.Size(253, 50);
-            this.AddClothingItemButton.TabIndex = 40;
+            this.AddClothingItemButton.TabIndex = 6;
             this.AddClothingItemButton.Text = "{AddClothing}";
             this.AddClothingItemButton.UseVisualStyleBackColor = true;
             this.AddClothingItemButton.Click += new System.EventHandler(this.AddClothingItemButton_Click);
@@ -447,7 +447,7 @@ namespace Scramble.Forms
             this.AllClothingItemsListView.MultiSelect = false;
             this.AllClothingItemsListView.Name = "AllClothingItemsListView";
             this.AllClothingItemsListView.Size = new System.Drawing.Size(253, 509);
-            this.AllClothingItemsListView.TabIndex = 39;
+            this.AllClothingItemsListView.TabIndex = 5;
             this.AllClothingItemsListView.UseCompatibleStateImageBehavior = false;
             this.AllClothingItemsListView.View = System.Windows.Forms.View.Details;
             // 
