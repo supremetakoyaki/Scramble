@@ -403,7 +403,7 @@ namespace Scramble.Forms
             this.SkillUnlocked_Checkbox.Location = new System.Drawing.Point(330, 488);
             this.SkillUnlocked_Checkbox.Name = "SkillUnlocked_Checkbox";
             this.SkillUnlocked_Checkbox.Size = new System.Drawing.Size(104, 24);
-            this.SkillUnlocked_Checkbox.TabIndex = 9;
+            this.SkillUnlocked_Checkbox.TabIndex = 8;
             this.SkillUnlocked_Checkbox.Text = "{Unlocked}";
             this.SkillUnlocked_Checkbox.UseVisualStyleBackColor = false;
             this.SkillUnlocked_Checkbox.CheckedChanged += new System.EventHandler(this.SkillUnlocked_Checkbox_CheckedChanged);
