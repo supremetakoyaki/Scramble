@@ -54,6 +54,8 @@
             this.OpenSocialEditButton = new System.Windows.Forms.Button();
             this.OpenInvEditorButton = new System.Windows.Forms.Button();
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
+            this.CurrentDay_Label = new System.Windows.Forms.Label();
+            this.OpenDayEditor_Button = new System.Windows.Forms.Button();
             this.OverateCheckbox = new System.Windows.Forms.CheckBox();
             this.OpenShopEdit_Button = new System.Windows.Forms.Button();
             this.CaloriesPercentage_Label = new System.Windows.Forms.Label();
@@ -346,7 +348,7 @@
             // 
             // OpenRecordEditButton
             // 
-            this.OpenRecordEditButton.Location = new System.Drawing.Point(400, 134);
+            this.OpenRecordEditButton.Location = new System.Drawing.Point(400, 167);
             this.OpenRecordEditButton.Name = "OpenRecordEditButton";
             this.OpenRecordEditButton.Size = new System.Drawing.Size(158, 23);
             this.OpenRecordEditButton.TabIndex = 18;
@@ -356,7 +358,7 @@
             // 
             // OpenSocialEditButton
             // 
-            this.OpenSocialEditButton.Location = new System.Drawing.Point(400, 105);
+            this.OpenSocialEditButton.Location = new System.Drawing.Point(400, 138);
             this.OpenSocialEditButton.Name = "OpenSocialEditButton";
             this.OpenSocialEditButton.Size = new System.Drawing.Size(158, 23);
             this.OpenSocialEditButton.TabIndex = 19;
@@ -366,7 +368,7 @@
             // 
             // OpenInvEditorButton
             // 
-            this.OpenInvEditorButton.Location = new System.Drawing.Point(400, 47);
+            this.OpenInvEditorButton.Location = new System.Drawing.Point(400, 80);
             this.OpenInvEditorButton.Name = "OpenInvEditorButton";
             this.OpenInvEditorButton.Size = new System.Drawing.Size(158, 23);
             this.OpenInvEditorButton.TabIndex = 20;
@@ -376,6 +378,8 @@
             // 
             // GeneralGroupBox
             // 
+            this.GeneralGroupBox.Controls.Add(this.CurrentDay_Label);
+            this.GeneralGroupBox.Controls.Add(this.OpenDayEditor_Button);
             this.GeneralGroupBox.Controls.Add(this.OverateCheckbox);
             this.GeneralGroupBox.Controls.Add(this.OpenShopEdit_Button);
             this.GeneralGroupBox.Controls.Add(this.CaloriesPercentage_Label);
@@ -416,6 +420,27 @@
             this.GeneralGroupBox.TabStop = false;
             this.GeneralGroupBox.Text = "This selected slot";
             // 
+            // CurrentDay_Label
+            // 
+            this.CurrentDay_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CurrentDay_Label.ForeColor = System.Drawing.Color.SlateBlue;
+            this.CurrentDay_Label.Location = new System.Drawing.Point(200, 26);
+            this.CurrentDay_Label.Name = "CurrentDay_Label";
+            this.CurrentDay_Label.Size = new System.Drawing.Size(179, 23);
+            this.CurrentDay_Label.TabIndex = 34;
+            this.CurrentDay_Label.Text = "{Day}";
+            this.CurrentDay_Label.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // OpenDayEditor_Button
+            // 
+            this.OpenDayEditor_Button.Enabled = false;
+            this.OpenDayEditor_Button.Location = new System.Drawing.Point(400, 22);
+            this.OpenDayEditor_Button.Name = "OpenDayEditor_Button";
+            this.OpenDayEditor_Button.Size = new System.Drawing.Size(158, 23);
+            this.OpenDayEditor_Button.TabIndex = 33;
+            this.OpenDayEditor_Button.Text = "Day Editor";
+            this.OpenDayEditor_Button.UseVisualStyleBackColor = true;
+            // 
             // OverateCheckbox
             // 
             this.OverateCheckbox.Location = new System.Drawing.Point(249, 239);
@@ -429,7 +454,7 @@
             // OpenShopEdit_Button
             // 
             this.OpenShopEdit_Button.Enabled = false;
-            this.OpenShopEdit_Button.Location = new System.Drawing.Point(400, 192);
+            this.OpenShopEdit_Button.Location = new System.Drawing.Point(400, 225);
             this.OpenShopEdit_Button.Name = "OpenShopEdit_Button";
             this.OpenShopEdit_Button.Size = new System.Drawing.Size(158, 23);
             this.OpenShopEdit_Button.TabIndex = 31;
@@ -479,7 +504,7 @@
             // 
             // OpenClothEditButton
             // 
-            this.OpenClothEditButton.Location = new System.Drawing.Point(400, 76);
+            this.OpenClothEditButton.Location = new System.Drawing.Point(400, 109);
             this.OpenClothEditButton.Name = "OpenClothEditButton";
             this.OpenClothEditButton.Size = new System.Drawing.Size(158, 23);
             this.OpenClothEditButton.TabIndex = 26;
@@ -498,7 +523,7 @@
             // 
             // OpenCharacterEditButton
             // 
-            this.OpenCharacterEditButton.Location = new System.Drawing.Point(400, 18);
+            this.OpenCharacterEditButton.Location = new System.Drawing.Point(400, 51);
             this.OpenCharacterEditButton.Name = "OpenCharacterEditButton";
             this.OpenCharacterEditButton.Size = new System.Drawing.Size(158, 23);
             this.OpenCharacterEditButton.TabIndex = 25;
@@ -509,7 +534,7 @@
             // OpenNoisepediaEditButton
             // 
             this.OpenNoisepediaEditButton.Enabled = false;
-            this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(400, 163);
+            this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(400, 196);
             this.OpenNoisepediaEditButton.Name = "OpenNoisepediaEditButton";
             this.OpenNoisepediaEditButton.Size = new System.Drawing.Size(158, 23);
             this.OpenNoisepediaEditButton.TabIndex = 24;
@@ -3273,5 +3298,7 @@
         private System.Windows.Forms.Label CaloriesEaten_Label;
         private System.Windows.Forms.Button OpenShopEdit_Button;
         private System.Windows.Forms.CheckBox OverateCheckbox;
+        private System.Windows.Forms.Button OpenDayEditor_Button;
+        private System.Windows.Forms.Label CurrentDay_Label;
     }
 }

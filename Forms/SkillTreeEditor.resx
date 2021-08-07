@@ -57,4 +57,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CharacterInfo_RichTextBox.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis velit et nisl hendrerit luctus. Mauris vitae augue sed leo sollicitudin elementum. Fusce rutrum est vitae lectus tincidunt, rutrum pharetra lectus dapibus. Aenean maximus fermentum erat eu ornare. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer elementum luctus nisi, eu dapibus turpis viverra eget. Mauris malesuada dui sit amet diam pharetra.</value>
+  </data>
+  <metadata name="LockStatusToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

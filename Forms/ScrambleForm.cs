@@ -148,6 +148,9 @@ namespace Scramble
             this.OpenRecordEditButton.Text = GetString("{CollectionEditor}");
             this.OpenNoisepediaEditButton.Text = GetString("{NoisepediaEditor}");
 
+            this.OpenShopEdit_Button.Text = GetString("{ShopEditor}");
+            this.OpenDayEditor_Button.Text = GetString("{DayEditor}");
+
             this.ShowSpoilersCheckbox.Text = GetString("{ShowSpoilers}");
 
             this.DifficultyCombo.Items.Clear();
@@ -159,6 +162,7 @@ namespace Scramble
             if (SelectedSlot != null)
             {
                 this.DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
+                this.CurrentDay_Label.Text = GetDayName(SelectedSlot.CurrentDay);
             }
 
             this.CaloriesEaten_Label.Text = GetString("{CaloriesEaten}");
@@ -300,6 +304,8 @@ namespace Scramble
             SerializePartyMembers();
             UpdateCaloriesPercentage();
 
+            CurrentDay_Label.Text = GetDayName(SelectedSlot.CurrentDay);
+
             ReadyForUserInput = true;
         }
 
@@ -406,6 +412,7 @@ namespace Scramble
                 if (!File.Exists(Dialog.FileName))
                 {
                     ShowWarning(GetString("DLG_FileNotFound"));
+                    ReadyForUserInput = true;
                     return;
                 }
 
@@ -420,6 +427,7 @@ namespace Scramble
                     OpenedSaveFile = null;
 
                     this.ChangeFormSize(148, 309);
+                    ReadyForUserInput = true;
                     return;
                 }
 
@@ -448,6 +456,13 @@ namespace Scramble
 
         private void UpdateCaloriesPercentage()
         {
+            if (SelectedSlot.GetPartyMembers().Count == 0)
+            {
+                CaloriesPercentage_Label.Text = "0%";
+                CaloriesPercentage_Label.ForeColor = Color.Green;
+                return;
+            }
+
             decimal Percentage = Math.Floor(Calories_NumUpDown.Value / (1000 * SelectedSlot.GetPartyMembers().Count) * 100);
 
             CaloriesPercentage_Label.Text = string.Format("{0}%", Percentage);
@@ -907,6 +922,12 @@ namespace Scramble
             return GetGameLocaleManager().ReverseLookup(CurrentLanguage, Value);
         }
 
+        public string GetDayName(int Day)
+        {
+            bool Valid = false;
+            return GetDayName(Day, ref Valid);
+        }
+
         public string GetDayName(int Day, ref bool Valid)
         {
             if (Day == -1)
@@ -938,7 +959,7 @@ namespace Scramble
             }
 
             Valid = true;
-            return string.Format("Day_Name_w{0}d{1}", WeekNumber, DayNumber);
+            return GetGameString(string.Format("Day_Name_w{0}d{1}", WeekNumber, DayNumber));
         }
         #endregion
 

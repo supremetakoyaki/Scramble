@@ -17,6 +17,11 @@
         // Collection record.
         public const int RecordInv_First = 3344; // byte & byte
 
+        // Hmm?
+        public const int UnkDayFlag = 11432; // could be byte or int16. it's "1" if you beat the game... but I have my doubts.
+        public const int CurrentDay = 11434; // int32
+        public const int MaxDay = 11438; //int32
+
         // Basic stats.
         public const int Experience = 14661; // 32-bit
         public const int CurrentLevel = 14665; // 16-bit ?

@@ -133,6 +133,13 @@ namespace Scramble.Classes
             { "{CaloriesEaten}", "Calories eaten:" },
             { "{Overate}", "Overate" },
 
+            { "{DayEditor}", "Day Editor" },
+            { "{ShopEditor}", "Shop Editor" },
+            { "{LockStatus_U}", "UNLOCKED" },
+            { "{LockStatus_L}", "LOCKED" },
+            { "{LockStatus_P}", "PARTIALLY UNLOCKED" },
+            { "{Hint_SkillTree_LockStatus}", "Whether this character is shown in your network tree or not\ndepends on what is the furthest you've reached in the game." },
+
 
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
@@ -286,6 +293,14 @@ namespace Scramble.Classes
             { "{CaloriesEaten}", "カロリーの食べる数：" },
             { "{Overate}", "食べすぎた" },
 
+            { "{DayEditor}", "日のエディタ" },
+            { "{ShopEditor}", "ショップのエディタ" },
+            { "{LockStatus_U}", "ロック解除された" },
+            { "{LockStatus_L}", "ロックされた" },
+            { "{LockStatus_P}", "部分的にロック解除さた" },
+            { "{Hint_SkillTree_LockStatus}", "このキャラクターをネットワークに表示するには、ゲームの初対面の日に到達している必要があります。" },
+
+
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
             { "DLG_SaveDataAlreadyOpened", "すでに開いているファイルがあります。\n保存されていない変更は失われます。" },
@@ -438,6 +453,13 @@ namespace Scramble.Classes
             { "{CaloriesEaten}", "Calorías: " },
             { "{Overate}", "Atracados" },
 
+            { "{DayEditor}", "Editar días" },
+            { "{ShopEditor}", "Editar tiendas" },
+            { "{LockStatus_U}", "DESBLOQUEADO" },
+            { "{LockStatus_L}", "NO DESBLOQUEADO AÚN" },
+            { "{LockStatus_P}", "DESBLOQUEADO PARCIALMENTE" },
+            { "{Hint_SkillTree_LockStatus}", "Para que este personaje aparezca en tu red social, necesitas haber llegado al día de primer encuentro." },
+
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
             { "DLG_SaveDataAlreadyOpened", "Ya hay un archivo abierto. Si no guardaste los cambios, se perderán." },
@@ -589,6 +611,13 @@ namespace Scramble.Classes
 
             { "{CaloriesEaten}", "Calories:" },
             { "{Overate}", "Suralimentée" },
+
+            { "{DayEditor}", "Éditer jours" },
+            { "{ShopEditor}", "Éditer magasins" },
+            { "{LockStatus_U}", "DÉBLOQUÉ" },
+            { "{LockStatus_L}", "PAS ENCORE DÉBLOQUÉ" },
+            { "{LockStatus_P}", "DÉBLOQUÉ EN PARTIE" },
+            { "{Hint_SkillTree_LockStatus}", "Pour que ce personnage apparaisse dans votre réseau social, vous devez avoir atteint le jour de la 1ère rencontre." },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },

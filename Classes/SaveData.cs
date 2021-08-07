@@ -27,6 +27,16 @@ namespace Scramble.Classes
         public const int NOT_ASSIGNED_DATA = -1;
 
         private Dictionary<int, PartyMember> PartyMembers;
+        public byte CurrentDay
+        {
+            get;
+            private set;
+        }
+        public byte FurthestDay
+        {
+            get;
+            private set;
+        }
 
         public byte IsValid;
 
@@ -34,7 +44,7 @@ namespace Scramble.Classes
         {
             get
             {
-                return IsValid >= (byte)1;
+                return IsValid != 0;
             }
         }
 
@@ -88,6 +98,7 @@ namespace Scramble.Classes
             Array.Copy(FullData, DATA_OFFSET, Data, 0, DATA_LENGTH);
 
             LoadPartyMembers();
+            RetrieveDayData();
         }
 
         #region Party Member methods
@@ -282,14 +293,24 @@ namespace Scramble.Classes
                 return FlippedHash;
             }
         }
+
+        public void RetrieveDayData()
+        {
+            this.CurrentDay = (byte)RetrieveOffset_Int32(Offsets.CurrentDay);
+            this.FurthestDay = (byte)RetrieveOffset_Int32(Offsets.MaxDay);
+        }
+
         public void DumpData(string FilePath)
         {
             File.WriteAllBytes(FilePath, Data);
         }
+
         public void ImportData(byte[] Import)
         {
             this.Data = Import;
+
             LoadPartyMembers();
+            RetrieveDayData();
         }
     }
 }
