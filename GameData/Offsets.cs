@@ -39,9 +39,9 @@
         // Social tree
         public const int Fp = 15056; // actually an int32.
         public const int Social_ConnectionStatus_First = 15060; // byte.
-                                                     // 0x00    Icon doesn't show (unknown/never met)
-                                                     // 0x80	No glowing (can't interact)
-                                                     // 0xC0	Glowing (can buy the skill if you "connected" the character)
+                                                                // 0x00    Icon doesn't show (unknown/never met)
+                                                                // 0x80	No glowing (can't interact)
+                                                                // 0xC0	Glowing (can buy the skill if you "connected" the character)
 
         // Skills data. 8 slots per byte (every bit is changed)
         public const int Skills_First = 15192;

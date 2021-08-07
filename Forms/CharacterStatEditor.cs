@@ -9,21 +9,9 @@ namespace Scramble.Forms
 {
     public partial class CharacterStatEditor : Form
     {
-        public SaveData SelectedSlot
-        {
-            get
-            {
-                return Program.Sukuranburu.SelectedSlot;
-            }
-        }
+        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
 
-        public ScrambleForm Sukuranburu
-        {
-            get
-            {
-                return Program.Sukuranburu;
-            }
-        }
+        public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
         private int SelectedCharacterId;
         private bool ReadyForUserInput = false;
@@ -33,7 +21,7 @@ namespace Scramble.Forms
         public CharacterStatEditor()
         {
             InitializeComponent();
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
             DisplayLanguageStrings();
             DisplayCharacter();
@@ -59,7 +47,7 @@ namespace Scramble.Forms
                 }
             }
 
-            this.Text = Sukuranburu.GetString("{CharacterEditor}");
+            Text = Sukuranburu.GetString("{CharacterEditor}");
             StatNameLabel.Text = Sukuranburu.GetString("{StatName}");
             BaseLabel.Text = Sukuranburu.GetString("{BaseValue}");
             PlayerEarnedLabel.Text = Sukuranburu.GetString("{PlayerValue}");
@@ -108,10 +96,10 @@ namespace Scramble.Forms
 
             int OffsetSum = (SelectedCharacterId - 1) * 20;
 
-            int PlayerHp = (int)SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Hp + OffsetSum);
-            int PlayerAtk = (int)SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Atk  + OffsetSum);
-            int PlayerDef = (int)SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Def + OffsetSum);
-            int PlayerStyle = (int)SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Style + OffsetSum);
+            int PlayerHp = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Hp + OffsetSum);
+            int PlayerAtk = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Atk + OffsetSum);
+            int PlayerDef = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Def + OffsetSum);
+            int PlayerStyle = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Style + OffsetSum);
 
             if (PlayerHp < HpValueUpDown.Minimum)
             {
@@ -315,10 +303,10 @@ namespace Scramble.Forms
                 UpdateStyle(MAXIMUM_VALUE, SelectedCharacterId);
             }
 
-            this.HpValueUpDown.Value = MAXIMUM_VALUE;
-            this.AtkValueUpDown.Value = MAXIMUM_VALUE;
-            this.DefValueUpDown.Value = MAXIMUM_VALUE;
-            this.StyleValueUpDown.Value = MAXIMUM_VALUE;
+            HpValueUpDown.Value = MAXIMUM_VALUE;
+            AtkValueUpDown.Value = MAXIMUM_VALUE;
+            DefValueUpDown.Value = MAXIMUM_VALUE;
+            StyleValueUpDown.Value = MAXIMUM_VALUE;
 
             ReadyForUserInput = true;
         }

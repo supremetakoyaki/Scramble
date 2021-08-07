@@ -2,9 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography;
-using System.Windows.Forms;
 
 namespace Scramble.Classes
 {
@@ -40,13 +38,7 @@ namespace Scramble.Classes
 
         public byte IsValid;
 
-        public bool IsValid_Boolean
-        {
-            get
-            {
-                return IsValid != 0;
-            }
-        }
+        public bool IsValid_Boolean => IsValid != 0;
 
         public byte[] UnixTimestamp
         {
@@ -54,7 +46,7 @@ namespace Scramble.Classes
             private set;
         }
 
-        private byte[] Hash;
+        private readonly byte[] Hash;
 
         public byte[] Data
         {
@@ -62,21 +54,9 @@ namespace Scramble.Classes
             private set;
         }
 
-        public int UnixTimestamp_Integer
-        {
-            get
-            {
-                return BitConverter.ToInt32(UnixTimestamp);
-            }
-        }
+        public int UnixTimestamp_Integer => BitConverter.ToInt32(UnixTimestamp);
 
-        public byte[] Hash_Valid
-        {
-            get
-            {
-                return CalculateNewChecksum();
-            }
-        }
+        public byte[] Hash_Valid => CalculateNewChecksum();
 
         public bool UnknownFlag
         {
@@ -104,7 +84,7 @@ namespace Scramble.Classes
         #region Party Member methods
         public void LoadPartyMembers()
         {
-            this.PartyMembers = new Dictionary<int, PartyMember>();
+            PartyMembers = new Dictionary<int, PartyMember>();
 
             for (int i = 0; i < 6; i++)
             {
@@ -115,17 +95,21 @@ namespace Scramble.Classes
 
                 if (CharacterId != NOT_ASSIGNED_DATA)
                 {
-                    Dictionary<byte, int> EquippedPinIndexes = new Dictionary<byte, int>();
-                    EquippedPinIndexes.Add(1, RetrieveOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck1 + OffsetSum));
-                    EquippedPinIndexes.Add(2, RetrieveOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck2 + OffsetSum));
-                    EquippedPinIndexes.Add(3, RetrieveOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck3 + OffsetSum));
+                    Dictionary<byte, int> EquippedPinIndexes = new Dictionary<byte, int>
+                    {
+                        { 1, RetrieveOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck1 + OffsetSum) },
+                        { 2, RetrieveOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck2 + OffsetSum) },
+                        { 3, RetrieveOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck3 + OffsetSum) }
+                    };
 
-                    List<int> EquippedClothing = new List<int>();
-                    EquippedClothing.Add(RetrieveOffset_Int32(Offsets.PartyMember1_EquippedHeadwearIndex + OffsetSum));
-                    EquippedClothing.Add(RetrieveOffset_Int32(Offsets.PartyMember1_EquippedTopIndex + OffsetSum));
-                    EquippedClothing.Add(RetrieveOffset_Int32(Offsets.PartyMember1_EquippedBottomIndex + OffsetSum));
-                    EquippedClothing.Add(RetrieveOffset_Int32(Offsets.PartyMember1_EquippedShoesIndex + OffsetSum));
-                    EquippedClothing.Add(RetrieveOffset_Int32(Offsets.PartyMember1_EquippedAccessoryIndex + OffsetSum));
+                    List<int> EquippedClothing = new List<int>
+                    {
+                        RetrieveOffset_Int32(Offsets.PartyMember1_EquippedHeadwearIndex + OffsetSum),
+                        RetrieveOffset_Int32(Offsets.PartyMember1_EquippedTopIndex + OffsetSum),
+                        RetrieveOffset_Int32(Offsets.PartyMember1_EquippedBottomIndex + OffsetSum),
+                        RetrieveOffset_Int32(Offsets.PartyMember1_EquippedShoesIndex + OffsetSum),
+                        RetrieveOffset_Int32(Offsets.PartyMember1_EquippedAccessoryIndex + OffsetSum)
+                    };
 
                     PartyMembers.Add(MemberId, new PartyMember(MemberId, (byte)CharacterId, EquippedPinIndexes, EquippedClothing));
                 }
@@ -134,7 +118,7 @@ namespace Scramble.Classes
 
         public Dictionary<int, PartyMember> GetPartyMembers()
         {
-            return this.PartyMembers;
+            return PartyMembers;
         }
 
         public PartyMember GetPartyMemberByNameValue(string NameValue)
@@ -287,7 +271,7 @@ namespace Scramble.Classes
 
                 for (int i = 0; i < HASH_LENGTH; i++)
                 {
-                    FlippedHash[i] = (byte)(NewHash[31 - i] ^ (byte)255);
+                    FlippedHash[i] = (byte)(NewHash[31 - i] ^ 255);
                 }
 
                 return FlippedHash;
@@ -296,8 +280,8 @@ namespace Scramble.Classes
 
         public void RetrieveDayData()
         {
-            this.CurrentDay = (byte)RetrieveOffset_Int32(Offsets.CurrentDay);
-            this.FurthestDay = (byte)RetrieveOffset_Int32(Offsets.MaxDay);
+            CurrentDay = (byte)RetrieveOffset_Int32(Offsets.CurrentDay);
+            FurthestDay = (byte)RetrieveOffset_Int32(Offsets.MaxDay);
         }
 
         public void DumpData(string FilePath)
@@ -307,7 +291,7 @@ namespace Scramble.Classes
 
         public void ImportData(byte[] Import)
         {
-            this.Data = Import;
+            Data = Import;
 
             LoadPartyMembers();
             RetrieveDayData();

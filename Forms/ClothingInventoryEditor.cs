@@ -11,21 +11,9 @@ namespace Scramble.Forms
 {
     public partial class ClothingInventoryEditor : Form
     {
-        public SaveData SelectedSlot
-        {
-            get
-            {
-                return Program.Sukuranburu.SelectedSlot;
-            }
-        }
+        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
 
-        public ScrambleForm Sukuranburu
-        {
-            get
-            {
-                return Program.Sukuranburu;
-            }
-        }
+        public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
         public const short EMPTY_CLOTHING_ID = -1;
         public const byte SLOT_HEADWEAR = 0;
@@ -39,7 +27,7 @@ namespace Scramble.Forms
         private InventoryFashion SelectedClothing;
 
         public const ushort MAXIMUM = 2000;
-        int TotalCount;
+        private int TotalCount;
 
         private bool ReadyForUserInput = false; // flag that indicates whether the editor is working on changing values on its own.    
 
@@ -48,9 +36,9 @@ namespace Scramble.Forms
         public ClothingInventoryEditor()
         {
             InitializeComponent();
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            this.MyClothingInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
-            this.AllClothingItemsListView.SmallImageList = Sukuranburu.Get64x64FashionImageList();
+            Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            MyClothingInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
+            AllClothingItemsListView.SmallImageList = Sukuranburu.Get64x64FashionImageList();
 
             if (Sukuranburu.RequiresRescaling)
             {
@@ -86,28 +74,28 @@ namespace Scramble.Forms
 
         private void DisplayLanguageStrings()
         {
-            this.EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetString("{NoOne}"));
+            EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetString("{NoOne}"));
 
-            this.Text = Sukuranburu.GetString("{ClothingEditor}");
-            this.ClothingInvGroupBox.Text = Sukuranburu.GetString("{MyClothingInventory}");
-            this.AllClothingItemsGroupBox.Text = Sukuranburu.GetString("{AllClothingItems}");
-            this.ClthIdHeader.Text = Sukuranburu.GetString("{Id}");
-            this.ClthNameHeader.Text = Sukuranburu.GetString("{Name}");
-            this.ClthSlotHeader.Text = Sukuranburu.GetString("{Type}");
-            this.ClthAmountHeader.Text = Sukuranburu.GetString("{Amount}");
-            this.GlobalClthIdHeader.Text = Sukuranburu.GetString("{Id}");
-            this.GlobalClthNameHeader.Text = Sukuranburu.GetString("{Name}");
-            this.EquippedLabel.Text = Sukuranburu.GetString("{Equipped}");
-            this.ATKLabel.Text = Sukuranburu.GetString("{Atk:}");
-            this.DefenseLabel.Text = Sukuranburu.GetString("{Def:}");
-            this.HpLabel.Text = Sukuranburu.GetString("{Hp:}");
-            this.ReqStyleLabel.Text = Sukuranburu.GetString("{ReqStyle}");
-            this.AbilityLabel.Text = Sukuranburu.GetString("{Ability:}");
-            this.AmountLabel.Text = Sukuranburu.GetString("{Amount:}");
-            this.RemoveClothingButton.Text = Sukuranburu.GetString("{RemoveThisClothing}");
-            this.RemoveAllClothingButton.Text = Sukuranburu.GetString("{RemoveAllClothing}");
-            this.AddClothingItemButton.Text = Sukuranburu.GetString("{AddClothing}");
-            this.AddEachOfEveryClothingButton.Text = Sukuranburu.GetString("{AddEveryClothing}");
+            Text = Sukuranburu.GetString("{ClothingEditor}");
+            ClothingInvGroupBox.Text = Sukuranburu.GetString("{MyClothingInventory}");
+            AllClothingItemsGroupBox.Text = Sukuranburu.GetString("{AllClothingItems}");
+            ClthIdHeader.Text = Sukuranburu.GetString("{Id}");
+            ClthNameHeader.Text = Sukuranburu.GetString("{Name}");
+            ClthSlotHeader.Text = Sukuranburu.GetString("{Type}");
+            ClthAmountHeader.Text = Sukuranburu.GetString("{Amount}");
+            GlobalClthIdHeader.Text = Sukuranburu.GetString("{Id}");
+            GlobalClthNameHeader.Text = Sukuranburu.GetString("{Name}");
+            EquippedLabel.Text = Sukuranburu.GetString("{Equipped}");
+            ATKLabel.Text = Sukuranburu.GetString("{Atk:}");
+            DefenseLabel.Text = Sukuranburu.GetString("{Def:}");
+            HpLabel.Text = Sukuranburu.GetString("{Hp:}");
+            ReqStyleLabel.Text = Sukuranburu.GetString("{ReqStyle}");
+            AbilityLabel.Text = Sukuranburu.GetString("{Ability:}");
+            AmountLabel.Text = Sukuranburu.GetString("{Amount:}");
+            RemoveClothingButton.Text = Sukuranburu.GetString("{RemoveThisClothing}");
+            RemoveAllClothingButton.Text = Sukuranburu.GetString("{RemoveAllClothing}");
+            AddClothingItemButton.Text = Sukuranburu.GetString("{AddClothing}");
+            AddEachOfEveryClothingButton.Text = Sukuranburu.GetString("{AddEveryClothing}");
         }
         private void Serialize()
         {
@@ -121,7 +109,7 @@ namespace Scramble.Forms
 
             for (int Index = 0; Index < ClothesCount; Index++)
             {
-                int ClothingId = (int)(SelectedSlot.RetrieveOffset_UInt16(Offsets.ClothingInv_First + (Index * 2)));
+                int ClothingId = SelectedSlot.RetrieveOffset_UInt16(Offsets.ClothingInv_First + (Index * 2));
                 ClothingId -= 1; // you subtract 1 to the ID
 
                 if (ClothingId > 0x8000)
@@ -172,7 +160,7 @@ namespace Scramble.Forms
 
         private void SerializeGlobal()
         {
-            var ItemDictionary = Sukuranburu.GetItemManager().GetItems();
+            Dictionary<ushort, IGameItem> ItemDictionary = Sukuranburu.GetItemManager().GetItems();
 
             foreach (IGameItem Item in ItemDictionary.Values)
             {
@@ -187,9 +175,10 @@ namespace Scramble.Forms
                     {
                     ClothingName,
                     Clothing.ParticularId.ToString()
-                    });
-
-                    PinToAdd.ImageKey = ClothingIcon;
+                    })
+                    {
+                        ImageKey = ClothingIcon
+                    };
                     AllClothingItemsListView.Items.Add(PinToAdd);
                 }
             }
@@ -199,7 +188,7 @@ namespace Scramble.Forms
         {
             foreach (PartyMember Member in Sukuranburu.SelectedSlot.GetPartyMembers().Values)
             {
-                this.EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetGameString(Member.CharacterName));
+                EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetGameString(Member.CharacterName));
             }
         }
 
@@ -297,17 +286,17 @@ namespace Scramble.Forms
         {
             if (SelectedClothing == null)
             {
-                this.EquippedByCharacterComboBox.Enabled = false;
-                this.EquippedByCharacterComboBox.SelectedIndex = 0;
-                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                EquippedByCharacterComboBox.Enabled = false;
+                EquippedByCharacterComboBox.SelectedIndex = 0;
+                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
                 return;
             }
 
-            this.EquippedByCharacterComboBox.Enabled = true;
+            EquippedByCharacterComboBox.Enabled = true;
             if (SelectedClothing.EquipperId != 0)
             {
-                this.EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(SelectedClothing.EquipperId));
-                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
+                EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(SelectedClothing.EquipperId));
+                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text)];
             }
         }
 
@@ -349,9 +338,10 @@ namespace Scramble.Forms
                         Piece.Id.ToString(),
                         Sukuranburu.GetString("{WearType" + Piece.BaseClothing.SlotType + "}"),
                         Piece.Amount.ToString()
-                   });
-
-            ClothingToAdd.ImageKey = Icon;
+                   })
+            {
+                ImageKey = Icon
+            };
             MyClothingInvListView.Items.Add(ClothingToAdd);
         }
 
@@ -464,7 +454,7 @@ namespace Scramble.Forms
                             if (IsTopAndBottom) // would this work?
                             {
                                 SelectedSlot.UpdateOffset_Int32(ThisOffset + 4, Indexes);
-                                SelectedSlot.GetPartyMemberWithId(Clothing.EquipperId).EquippedClothingIndexes[SlotType+1] = Indexes;
+                                SelectedSlot.GetPartyMemberWithId(Clothing.EquipperId).EquippedClothingIndexes[SlotType + 1] = Indexes;
                             }
                         }
                     }
@@ -639,7 +629,7 @@ namespace Scramble.Forms
                 SelectedClothing.EquipperId = 0;
 
                 ReadyForUserInput = true;
-                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
                 return;
             }
 
@@ -701,7 +691,7 @@ namespace Scramble.Forms
 
             SelectedClothing.EquipperId = (byte)NewMember.Id;
 
-            this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(NewMember.Id)];
+            CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(NewMember.Id)];
             ReadyForUserInput = true;
         }
 

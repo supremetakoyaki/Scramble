@@ -12,21 +12,9 @@ namespace Scramble.Forms
 {
     public partial class SkillTreeEditor : Form
     {
-        public SaveData SelectedSlot
-        {
-            get
-            {
-                return Program.Sukuranburu.SelectedSlot;
-            }
-        }
+        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
 
-        public ScrambleForm Sukuranburu
-        {
-            get
-            {
-                return Program.Sukuranburu;
-            }
-        }
+        public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
         private SkillTree SelectedSkillTree;
         private TreeNode SelectedNode;
@@ -39,12 +27,12 @@ namespace Scramble.Forms
         public SkillTreeEditor()
         {
             InitializeComponent();
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            this.ShopLogo_PictureBox.BackColor = Color.Transparent;
-            this.ShopLogo_PictureBox.Parent = Character_PictureBox;
-            this.ShopLogo_PictureBox.Location = new Point(0, 0);
+            Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            ShopLogo_PictureBox.BackColor = Color.Transparent;
+            ShopLogo_PictureBox.Parent = Character_PictureBox;
+            ShopLogo_PictureBox.Location = new Point(0, 0);
 
-            this.LockStatusToolTip.SetToolTip(CharacterLockStatus_Label, Sukuranburu.GetString("{Hint_SkillTree_LockStatus}"));
+            LockStatusToolTip.SetToolTip(CharacterLockStatus_Label, Sukuranburu.GetString("{Hint_SkillTree_LockStatus}"));
 
             if (Sukuranburu.RequiresRescaling)
             {
@@ -59,35 +47,37 @@ namespace Scramble.Forms
 
         private void DisplayLanguageStrings()
         {
-            this.Text = Sukuranburu.GetString("{SocialEditor}");
-            this.SkillTreeGroupBox.Text = Sukuranburu.GetString("{SkillTreeMap}");
-            this.CharacterInfoGroupBox.Text = Sukuranburu.GetString("{CharacterInfo}");
-            this.SkillLabel.Text = Sukuranburu.GetString("{RewardSkill}");
-            this.X_Label.Text = Sukuranburu.GetString("{x}");
-            this.FpLabel.Text = Sukuranburu.GetString("{FP}");
-            this.TimeframeLabel.Text = Sukuranburu.GetString("{Timeframe:}");
-            this.LocationLabel.Text = Sukuranburu.GetString("{Location:}");
-            this.UnlockAllButton.Text = Sukuranburu.GetString("{UnlockAll}");
-            this.UnlockAll_ConnectionCheckbox.Text = Sukuranburu.GetString("{Connection}");
-            this.UnlockAll_EncounterCheckbox.Text = Sukuranburu.GetString("{Encounter}");
-            this.UnlockAll_SkillCheckbox.Text = Sukuranburu.GetString("{Skill}");
-            this.ConnectionMadeCheckbox.Text = Sukuranburu.GetString("{ConnectionEstablished}");
-            this.Encountered_Checkbox.Text = Sukuranburu.GetString("{Encounter}");
-            this.SkillUnlocked_Checkbox.Text = Sukuranburu.GetString("{Unlocked}");
-            this.FirstEntry_Label.Text = Sukuranburu.GetString("{FirstEntry:}");
-            this.ConnectionDay_Label.Text = Sukuranburu.GetString("{Connection:}");
-            this.Shop_Label.Text = Sukuranburu.GetString("{Shop:}");
+            Text = Sukuranburu.GetString("{SocialEditor}");
+            SkillTreeGroupBox.Text = Sukuranburu.GetString("{SkillTreeMap}");
+            CharacterInfoGroupBox.Text = Sukuranburu.GetString("{CharacterInfo}");
+            SkillLabel.Text = Sukuranburu.GetString("{RewardSkill}");
+            X_Label.Text = Sukuranburu.GetString("{x}");
+            FpLabel.Text = Sukuranburu.GetString("{FP}");
+            TimeframeLabel.Text = Sukuranburu.GetString("{Timeframe:}");
+            LocationLabel.Text = Sukuranburu.GetString("{Location:}");
+            UnlockAllButton.Text = Sukuranburu.GetString("{UnlockAll}");
+            UnlockAll_ConnectionCheckbox.Text = Sukuranburu.GetString("{Connection}");
+            UnlockAll_EncounterCheckbox.Text = Sukuranburu.GetString("{Encounter}");
+            UnlockAll_SkillCheckbox.Text = Sukuranburu.GetString("{Skill}");
+            ConnectionMadeCheckbox.Text = Sukuranburu.GetString("{ConnectionEstablished}");
+            Encountered_Checkbox.Text = Sukuranburu.GetString("{Encounter}");
+            SkillUnlocked_Checkbox.Text = Sukuranburu.GetString("{Unlocked}");
+            FirstEntry_Label.Text = Sukuranburu.GetString("{FirstEntry:}");
+            ConnectionDay_Label.Text = Sukuranburu.GetString("{Connection:}");
+            Shop_Label.Text = Sukuranburu.GetString("{Shop:}");
         }
 
         private void BuildSkillTree(int ParentId, TreeNode ParentNode)
         {
-            var SkillTreeItems = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItems(ParentId);
+            System.Collections.Generic.Dictionary<ushort, SkillTree> SkillTreeItems = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItems(ParentId);
 
             foreach (SkillTree Item in SkillTreeItems.Values)
             {
-                TreeNode Node = new TreeNode();
-                Node.Name = string.Format("SkillTree{0}Node", Item.Id);
-                Node.Tag = (ushort)Item.Id;
+                TreeNode Node = new TreeNode
+                {
+                    Name = string.Format("SkillTree{0}Node", Item.Id),
+                    Tag = (ushort)Item.Id
+                };
 
                 if (ParentNode == null)
                 {
@@ -138,51 +128,51 @@ namespace Scramble.Forms
 
             if (Sukuranburu.ShowSpoilers == false && CharacterIsUnlocked(TreeItem) == 0)
             {
-                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{Spoiler}"), this.CharacterName_RichTextBox);
-                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{Spoiler}"), this.CharacterInfo_RichTextBox);
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{Spoiler}"), CharacterName_RichTextBox);
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{Spoiler}"), CharacterInfo_RichTextBox);
                 InfoIndex = 0;
 
-                this.TimeframeLabel.ForeColor = SystemColors.ControlDark;
-                this.LocationLabel.ForeColor = SystemColors.ControlDark;
-                this.TimeframeValueLabel.ForeColor = SystemColors.ControlDark;
-                this.LocationValueLabel.ForeColor = SystemColors.ControlDark;
-                this.TimeframeValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
-                this.LocationValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
-                this.Character_PictureBox.Image = Resources.ResourceManager.GetObject("CHR_Spoiler") as Bitmap;
-                this.ShowMoreInfoButton.Enabled = false;
-                this.ShowMoreInfoButton.Visible = false;
+                TimeframeLabel.ForeColor = SystemColors.ControlDark;
+                LocationLabel.ForeColor = SystemColors.ControlDark;
+                TimeframeValueLabel.ForeColor = SystemColors.ControlDark;
+                LocationValueLabel.ForeColor = SystemColors.ControlDark;
+                TimeframeValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
+                LocationValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
+                Character_PictureBox.Image = Resources.ResourceManager.GetObject("CHR_Spoiler") as Bitmap;
+                ShowMoreInfoButton.Enabled = false;
+                ShowMoreInfoButton.Visible = false;
 
-                this.FirstEntryValue_Label.Text = Sukuranburu.GetString("{Spoiler}");
-                this.ConnectionDayValue_Label.Text = Sukuranburu.GetString("{Spoiler}");
-                this.ConnectionDay_Label.ForeColor = SystemColors.ControlDark;
-                this.ConnectionDayValue_Label.ForeColor = SystemColors.ControlDark;
-                this.FirstEntry_Label.ForeColor = SystemColors.ControlDark;
-                this.FirstEntryValue_Label.ForeColor = SystemColors.ControlDark;
+                FirstEntryValue_Label.Text = Sukuranburu.GetString("{Spoiler}");
+                ConnectionDayValue_Label.Text = Sukuranburu.GetString("{Spoiler}");
+                ConnectionDay_Label.ForeColor = SystemColors.ControlDark;
+                ConnectionDayValue_Label.ForeColor = SystemColors.ControlDark;
+                FirstEntry_Label.ForeColor = SystemColors.ControlDark;
+                FirstEntryValue_Label.ForeColor = SystemColors.ControlDark;
 
-                this.Shop_Label.Visible = false;
-                this.ShopName_RichTextBox.Clear();
-                this.ShopLogo_PictureBox.Image = null;
+                Shop_Label.Visible = false;
+                ShopName_RichTextBox.Clear();
+                ShopLogo_PictureBox.Image = null;
 
-                this.Encountered_Checkbox.Enabled = true;
-                this.Encountered_Checkbox.Checked = RetrieveEncounterStatus(Node, TreeItem);
-                this.ConnectionMadeCheckbox.Enabled = true;
-                this.ConnectionMadeCheckbox.Checked = RetrieveConnectionStatus(Node, TreeItem);
+                Encountered_Checkbox.Enabled = true;
+                Encountered_Checkbox.Checked = RetrieveEncounterStatus(Node, TreeItem);
+                ConnectionMadeCheckbox.Enabled = true;
+                ConnectionMadeCheckbox.Checked = RetrieveConnectionStatus(Node, TreeItem);
 
                 switch (CharacterIsUnlocked(TreeItem))
                 {
                     case 0:
-                        this.CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_L}");
-                        this.CharacterLockStatus_Label.ForeColor = Color.IndianRed;
+                        CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_L}");
+                        CharacterLockStatus_Label.ForeColor = Color.IndianRed;
                         break;
 
                     case 1:
-                        this.CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_P}");
-                        this.CharacterLockStatus_Label.ForeColor = Color.DarkGoldenrod;
+                        CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_P}");
+                        CharacterLockStatus_Label.ForeColor = Color.DarkGoldenrod;
                         break;
 
                     case 2:
-                        this.CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_U}");
-                        this.CharacterLockStatus_Label.ForeColor = Color.Green;
+                        CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_U}");
+                        CharacterLockStatus_Label.ForeColor = Color.Green;
                         break;
                 }
             }
@@ -191,166 +181,166 @@ namespace Scramble.Forms
                 bool FirstEntryDayValid = false;
                 bool ConnectionDayValid = false;
 
-                this.FirstEntryValue_Label.Text = Sukuranburu.GetDayName(TreeItem.EntryDay, ref FirstEntryDayValid);
+                FirstEntryValue_Label.Text = Sukuranburu.GetDayName(TreeItem.EntryDay, ref FirstEntryDayValid);
 
                 if (Sukuranburu.ShowSpoilers == false && CharacterIsUnlocked(TreeItem) == 1)
                 {
-                    this.TimeframeLabel.ForeColor = SystemColors.ControlDark;
-                    this.LocationLabel.ForeColor = SystemColors.ControlDark;
-                    this.TimeframeValueLabel.ForeColor = SystemColors.ControlDark;
-                    this.LocationValueLabel.ForeColor = SystemColors.ControlDark;
+                    TimeframeLabel.ForeColor = SystemColors.ControlDark;
+                    LocationLabel.ForeColor = SystemColors.ControlDark;
+                    TimeframeValueLabel.ForeColor = SystemColors.ControlDark;
+                    LocationValueLabel.ForeColor = SystemColors.ControlDark;
 
-                    this.TimeframeValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
-                    this.LocationValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
-                    this.ConnectionDayValue_Label.Text = Sukuranburu.GetString("{Spoiler}");
+                    TimeframeValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
+                    LocationValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
+                    ConnectionDayValue_Label.Text = Sukuranburu.GetString("{Spoiler}");
                 }
                 else
                 {
-                    this.TimeframeLabel.ForeColor = Color.FromArgb(192, 64, 0);
-                    this.LocationLabel.ForeColor = Color.FromArgb(160, 40, 85);
-                    this.TimeframeValueLabel.ForeColor = SystemColors.ControlText;
-                    this.LocationValueLabel.ForeColor = SystemColors.ControlText;
+                    TimeframeLabel.ForeColor = Color.FromArgb(192, 64, 0);
+                    LocationLabel.ForeColor = Color.FromArgb(160, 40, 85);
+                    TimeframeValueLabel.ForeColor = SystemColors.ControlText;
+                    LocationValueLabel.ForeColor = SystemColors.ControlText;
 
-                    this.TimeframeValueLabel.Text = Sukuranburu.GetGameString(TreeItem.DayText);
-                    this.LocationValueLabel.Text = Sukuranburu.GetGameString(TreeItem.PlaceText);
-                    this.ConnectionDayValue_Label.Text = Sukuranburu.GetDayName(TreeItem.ConnectDay, ref ConnectionDayValid);
+                    TimeframeValueLabel.Text = Sukuranburu.GetGameString(TreeItem.DayText);
+                    LocationValueLabel.Text = Sukuranburu.GetGameString(TreeItem.PlaceText);
+                    ConnectionDayValue_Label.Text = Sukuranburu.GetDayName(TreeItem.ConnectDay, ref ConnectionDayValid);
                 }
 
-                this.Character_PictureBox.Image = Resources.ResourceManager.GetObject(TreeItem.CharacterIcon) as Bitmap;
+                Character_PictureBox.Image = Resources.ResourceManager.GetObject(TreeItem.CharacterIcon) as Bitmap;
 
                 if (Sukuranburu.ShowSpoilers == false)
                 {
                     if (CharacterIsUnlocked(TreeItem) < 2)
                     {
-                        this.ConnectionDay_Label.ForeColor = SystemColors.ControlDark;
-                        this.ConnectionDayValue_Label.ForeColor = SystemColors.ControlDark;
+                        ConnectionDay_Label.ForeColor = SystemColors.ControlDark;
+                        ConnectionDayValue_Label.ForeColor = SystemColors.ControlDark;
 
                         if (CharacterIsUnlocked(TreeItem) == 0)
                         {
-                            this.FirstEntry_Label.ForeColor = SystemColors.ControlDark;
-                            this.FirstEntryValue_Label.ForeColor = SystemColors.ControlDark;
+                            FirstEntry_Label.ForeColor = SystemColors.ControlDark;
+                            FirstEntryValue_Label.ForeColor = SystemColors.ControlDark;
                         }
                     }
                     else
                     {
-                        this.ConnectionDay_Label.ForeColor = Color.FromArgb(75, 50, 190);
-                        this.ConnectionDayValue_Label.ForeColor = SystemColors.ControlText;
-                        this.FirstEntry_Label.ForeColor = Color.FromArgb(120, 0, 200);
-                        this.FirstEntryValue_Label.ForeColor = SystemColors.ControlText;
+                        ConnectionDay_Label.ForeColor = Color.FromArgb(75, 50, 190);
+                        ConnectionDayValue_Label.ForeColor = SystemColors.ControlText;
+                        FirstEntry_Label.ForeColor = Color.FromArgb(120, 0, 200);
+                        FirstEntryValue_Label.ForeColor = SystemColors.ControlText;
                     }
                 }
                 else
                 {
                     if (FirstEntryDayValid)
                     {
-                        this.FirstEntry_Label.ForeColor = Color.FromArgb(120, 0, 200);
-                        this.FirstEntryValue_Label.ForeColor = SystemColors.ControlText;
+                        FirstEntry_Label.ForeColor = Color.FromArgb(120, 0, 200);
+                        FirstEntryValue_Label.ForeColor = SystemColors.ControlText;
                     }
                     else
                     {
-                        this.FirstEntry_Label.ForeColor = SystemColors.ControlDark;
-                        this.FirstEntryValue_Label.ForeColor = SystemColors.ControlDark;
+                        FirstEntry_Label.ForeColor = SystemColors.ControlDark;
+                        FirstEntryValue_Label.ForeColor = SystemColors.ControlDark;
                     }
 
                     if (ConnectionDayValid)
                     {
-                        this.ConnectionDay_Label.ForeColor = Color.FromArgb(75, 50, 190);
-                        this.ConnectionDayValue_Label.ForeColor = SystemColors.ControlText;
+                        ConnectionDay_Label.ForeColor = Color.FromArgb(75, 50, 190);
+                        ConnectionDayValue_Label.ForeColor = SystemColors.ControlText;
                     }
                     else
                     {
-                        this.ConnectionDay_Label.ForeColor = SystemColors.ControlDark;
-                        this.ConnectionDayValue_Label.ForeColor = SystemColors.ControlDark;
+                        ConnectionDay_Label.ForeColor = SystemColors.ControlDark;
+                        ConnectionDayValue_Label.ForeColor = SystemColors.ControlDark;
                     }
                 }
 
                 if (TreeItem.ShopId != -1)
                 {
-                    this.Shop_Label.Visible = true;
+                    Shop_Label.Visible = true;
 
                     Shop CharacterShop = Sukuranburu.GetItemManager().GetShop(TreeItem.ShopId);
                     if (CharacterShop != null)
                     {
-                        Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(CharacterShop.Name), this.ShopName_RichTextBox);
+                        Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(CharacterShop.Name), ShopName_RichTextBox);
 
                         if (CharacterShop.Brand > 0)
                         {
                             Brand ShopBrand = Sukuranburu.GetItemManager().GetBrand(CharacterShop.Brand);
                             if (ShopBrand != null)
                             {
-                                this.ShopLogo_PictureBox.Image = Sukuranburu.Get102x36BrandImageList().Images[string.Format("{0}.png", ShopBrand.Sprite)];
+                                ShopLogo_PictureBox.Image = Sukuranburu.Get102x36BrandImageList().Images[string.Format("{0}.png", ShopBrand.Sprite)];
                             }
                             else
                             {
-                                this.ShopLogo_PictureBox.Image = null;
+                                ShopLogo_PictureBox.Image = null;
                             }
                         }
                         else
                         {
-                            this.ShopLogo_PictureBox.Image = null;
+                            ShopLogo_PictureBox.Image = null;
                         }
                     }
                     else
                     {
-                        Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString("Com_Unknown"), this.ShopName_RichTextBox);
-                        this.ShopLogo_PictureBox.Image = null;
+                        Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString("Com_Unknown"), ShopName_RichTextBox);
+                        ShopLogo_PictureBox.Image = null;
                     }
                 }
                 else
                 {
-                    this.Shop_Label.Visible = false;
-                    this.ShopName_RichTextBox.Clear();
-                    this.ShopLogo_PictureBox.Image = null;
+                    Shop_Label.Visible = false;
+                    ShopName_RichTextBox.Clear();
+                    ShopLogo_PictureBox.Image = null;
                 }
 
-                this.Encountered_Checkbox.Enabled = true;
-                this.Encountered_Checkbox.Checked = RetrieveEncounterStatus(Node, TreeItem);
-                this.ConnectionMadeCheckbox.Enabled = true;
-                this.ConnectionMadeCheckbox.Checked = RetrieveConnectionStatus(Node, TreeItem);
+                Encountered_Checkbox.Enabled = true;
+                Encountered_Checkbox.Checked = RetrieveEncounterStatus(Node, TreeItem);
+                ConnectionMadeCheckbox.Enabled = true;
+                ConnectionMadeCheckbox.Checked = RetrieveConnectionStatus(Node, TreeItem);
 
-                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(TreeItem.CharacterName), this.CharacterName_RichTextBox);
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(TreeItem.CharacterName), CharacterName_RichTextBox);
 
                 if (Sukuranburu.ShowSpoilers)
                 {
-                    this.ShowMoreInfoButton.Enabled = true;
+                    ShowMoreInfoButton.Enabled = true;
                 }
                 else
                 {
-                    this.ShowMoreInfoButton.Enabled = false;
+                    ShowMoreInfoButton.Enabled = false;
                 }
 
                 if (Encountered_Checkbox.Checked || ConnectionMadeCheckbox.Checked)
                 {
                     if (TreeItem.InfoUpdateIfConnect && TreeItem.CharacterInfo.Length > 1 && ConnectionMadeCheckbox.Checked)
                     {
-                        Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(TreeItem.CharacterInfo[1]), this.CharacterInfo_RichTextBox);
-                        this.ShowMoreInfoButton.Enabled = true;
+                        Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(TreeItem.CharacterInfo[1]), CharacterInfo_RichTextBox);
+                        ShowMoreInfoButton.Enabled = true;
                     }
                     else
                     {
-                        Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(TreeItem.CharacterInfo.FirstOrDefault()), this.CharacterInfo_RichTextBox);
+                        Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(TreeItem.CharacterInfo.FirstOrDefault()), CharacterInfo_RichTextBox);
                     }
                 }
                 else
                 {
-                    Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(TreeItem.CharacterInfo.FirstOrDefault()), this.CharacterInfo_RichTextBox);
+                    Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(TreeItem.CharacterInfo.FirstOrDefault()), CharacterInfo_RichTextBox);
                 }
 
                 switch (CharacterIsUnlocked(TreeItem))
                 {
                     case 0:
-                        this.CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_L}");
-                        this.CharacterLockStatus_Label.ForeColor = Color.IndianRed;
+                        CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_L}");
+                        CharacterLockStatus_Label.ForeColor = Color.IndianRed;
                         break;
 
                     case 1:
-                        this.CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_P}");
-                        this.CharacterLockStatus_Label.ForeColor = Color.DarkGoldenrod;
+                        CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_P}");
+                        CharacterLockStatus_Label.ForeColor = Color.DarkGoldenrod;
                         break;
 
                     case 2:
-                        this.CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_U}");
-                        this.CharacterLockStatus_Label.ForeColor = Color.Green;
+                        CharacterLockStatus_Label.Text = Sukuranburu.GetString("{LockStatus_U}");
+                        CharacterLockStatus_Label.ForeColor = Color.Green;
                         break;
                 }
             }
@@ -368,28 +358,28 @@ namespace Scramble.Forms
                 return;
             }
 
-            this.RewardName_Label.Text = Sukuranburu.GetGameString(SkillItem.Name);
+            RewardName_Label.Text = Sukuranburu.GetGameString(SkillItem.Name);
             if (SkillItem.Info == "Com_ItemName" && SkillItem.ShopReward > 0)
             {
                 IGameItem GameItem = Sukuranburu.GetItemManager().GetItem((ushort)SkillItem.ShopReward);
                 if (GameItem != null)
                 {
-                    this.SkillInfo_Label.Text = Sukuranburu.GetGameString(GameItem.Name);
+                    SkillInfo_Label.Text = Sukuranburu.GetGameString(GameItem.Name);
                 }
                 else
                 {
-                    this.SkillInfo_Label.Text = SkillItem.ShopReward.ToString(); // or what could I do here?
+                    SkillInfo_Label.Text = SkillItem.ShopReward.ToString(); // or what could I do here?
                 }
             }
             else
             {
-                this.SkillInfo_Label.Text = Sukuranburu.GetGameString(SkillItem.Info);
+                SkillInfo_Label.Text = Sukuranburu.GetGameString(SkillItem.Info);
             }
 
-            this.SkillUnlocked_Checkbox.Checked = RetrieveSkillValue(SkillItem);
-            this.SkillUnlocked_Checkbox.Enabled = true;
+            SkillUnlocked_Checkbox.Checked = RetrieveSkillValue(SkillItem);
+            SkillUnlocked_Checkbox.Enabled = true;
 
-            this.FpValue_Label.Text = SkillItem.PointsRequired.ToString();
+            FpValue_Label.Text = SkillItem.PointsRequired.ToString();
         }
 
         private void DisplayEmptyNode()
@@ -397,41 +387,41 @@ namespace Scramble.Forms
             SelectedSkillTree = null;
             SelectedNode = null;
 
-            Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{NoSelectedCharacter}"), this.CharacterName_RichTextBox);
-            Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("—"), this.CharacterInfo_RichTextBox);
-            this.TimeframeLabel.ForeColor = SystemColors.ControlDark;
-            this.LocationLabel.ForeColor = SystemColors.ControlDark;
-            this.TimeframeValueLabel.ForeColor = SystemColors.ControlDark;
-            this.LocationValueLabel.ForeColor = SystemColors.ControlDark;
-            this.FirstEntry_Label.ForeColor = SystemColors.ControlDark;
-            this.FirstEntryValue_Label.ForeColor = SystemColors.ControlDark;
-            this.ConnectionDay_Label.ForeColor = SystemColors.ControlDark;
-            this.ConnectionDayValue_Label.ForeColor = SystemColors.ControlDark;
+            Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{NoSelectedCharacter}"), CharacterName_RichTextBox);
+            Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("—"), CharacterInfo_RichTextBox);
+            TimeframeLabel.ForeColor = SystemColors.ControlDark;
+            LocationLabel.ForeColor = SystemColors.ControlDark;
+            TimeframeValueLabel.ForeColor = SystemColors.ControlDark;
+            LocationValueLabel.ForeColor = SystemColors.ControlDark;
+            FirstEntry_Label.ForeColor = SystemColors.ControlDark;
+            FirstEntryValue_Label.ForeColor = SystemColors.ControlDark;
+            ConnectionDay_Label.ForeColor = SystemColors.ControlDark;
+            ConnectionDayValue_Label.ForeColor = SystemColors.ControlDark;
 
-            this.TimeframeValueLabel.Text = "—";
-            this.LocationValueLabel.Text = "—";
-            this.FirstEntryValue_Label.Text = "—";
-            this.ConnectionDayValue_Label.Text = "—";
+            TimeframeValueLabel.Text = "—";
+            LocationValueLabel.Text = "—";
+            FirstEntryValue_Label.Text = "—";
+            ConnectionDayValue_Label.Text = "—";
 
-            this.Character_PictureBox.Image = null;
-            this.ShowMoreInfoButton.Enabled = false;
-            this.Shop_Label.Visible = false;
-            this.ShopName_RichTextBox.Clear();
-            this.ShopLogo_PictureBox.Image = null;
-            this.Encountered_Checkbox.Enabled = false;
-            this.ConnectionMadeCheckbox.Enabled = false;
-            this.CharacterLockStatus_Label.Text = "—";
+            Character_PictureBox.Image = null;
+            ShowMoreInfoButton.Enabled = false;
+            Shop_Label.Visible = false;
+            ShopName_RichTextBox.Clear();
+            ShopLogo_PictureBox.Image = null;
+            Encountered_Checkbox.Enabled = false;
+            ConnectionMadeCheckbox.Enabled = false;
+            CharacterLockStatus_Label.Text = "—";
 
             DisplayEmptySkill();
         }
 
         private void DisplayEmptySkill()
         {
-            this.RewardName_Label.Text = "—";
-            this.SkillInfo_Label.Text = "—";
-            this.FpValue_Label.Text = "0";
-            this.SkillUnlocked_Checkbox.Checked = false;
-            this.SkillUnlocked_Checkbox.Enabled = false;
+            RewardName_Label.Text = "—";
+            SkillInfo_Label.Text = "—";
+            FpValue_Label.Text = "0";
+            SkillUnlocked_Checkbox.Checked = false;
+            SkillUnlocked_Checkbox.Enabled = false;
         }
 
         private void UpdateSkillValue(Skill SkillItem, bool Value)
@@ -440,7 +430,7 @@ namespace Scramble.Forms
             {
                 return;
             }
-            
+
             if (SkillItem.SaveIndex > 103)
             {
                 throw new ArgumentOutOfRangeException(); // Yeah, not happening unless a new update.
@@ -622,12 +612,12 @@ namespace Scramble.Forms
 
             if (TreeItem.CharacterInfo.Length > (InfoIndex + 1))
             {
-                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString(Sukuranburu.GetGameString(TreeItem.CharacterInfo[++InfoIndex])), this.CharacterInfo_RichTextBox);
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString(Sukuranburu.GetGameString(TreeItem.CharacterInfo[++InfoIndex])), CharacterInfo_RichTextBox);
             }
             else
             {
                 InfoIndex = 0;
-                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString(Sukuranburu.GetGameString(TreeItem.CharacterInfo.FirstOrDefault())), this.CharacterInfo_RichTextBox);
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString(Sukuranburu.GetGameString(TreeItem.CharacterInfo.FirstOrDefault())), CharacterInfo_RichTextBox);
             }
         }
 
@@ -726,7 +716,7 @@ namespace Scramble.Forms
             {
                 return;
             }
-            
+
             ReadyForUserInput = false;
             UpdateConnectionStatus(SelectedNode, SelectedSkillTree, ConnectionMadeCheckbox.Checked);
 

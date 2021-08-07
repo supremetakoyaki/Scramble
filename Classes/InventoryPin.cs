@@ -36,20 +36,14 @@ namespace Scramble.Classes
             set;
         }
 
-        public PinItem BasePin
-        {
-            get
-            {
-                return Program.Sukuranburu.GetItemManager().GetPinItem(PinId);
-            }
-        }
+        public PinItem BasePin => Program.Sukuranburu.GetItemManager().GetPinItem(PinId);
 
         public InventoryPin(ushort PinId, ushort Level, ushort Experience)
         {
             this.PinId = PinId;
             this.Level = Level;
             this.Experience = Experience;
-            this.Amount = 1;
+            Amount = 1;
         }
 
         public void IntersectEquippingData(Dictionary<byte, byte> EquippingData)

@@ -36,28 +36,22 @@ namespace Scramble
             }
         }
 
-        private LanguageStrings LangStrings;
+        private readonly LanguageStrings LangStrings;
         public byte CurrentLanguage;
 
-        private GameTextProcessor GameTextProcessor;
+        private readonly GameTextProcessor GameTextProcessor;
 
         #region NEO TWEWY Database instances
-        private ItemManager ItmManager;
-        private CharacterManager CharaManager;
-        private GameLocaleManager GameLocManager;
-        private SocialNetworkManager SocialManager;
+        private readonly ItemManager ItmManager;
+        private readonly CharacterManager CharaManager;
+        private readonly GameLocaleManager GameLocManager;
+        private readonly SocialNetworkManager SocialManager;
         #endregion
 
         public bool SwitchVersion = true;
 
         private List<byte> SafeCharacters;
-        public bool ShowSpoilers
-        {
-            get
-            {
-                return ShowSpoilersCheckbox.Checked;
-            }
-        }
+        public bool ShowSpoilers => ShowSpoilersCheckbox.Checked;
 
         // Scaling for people who do NOT have 100% DPI setting. a.k.a. insane people D;
         private Graphics Graphics;
@@ -68,24 +62,18 @@ namespace Scramble
             private set;
         }
 
-        public bool RequiresRescaling
-        {
-            get
-            {
-                return ScaleFactor != 1.0;
-            }
-        }
+        public bool RequiresRescaling => ScaleFactor != 1.0;
 
         private bool ReadyForUserInput = false;
 
         public ScrambleForm()
         {
             InitializeComponent();
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
             SetUpGraphics();
 
-            this.DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
+            DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
             ChangeFormSize(148, 309);
 
             // NEO TWEWY Database instances
@@ -105,68 +93,68 @@ namespace Scramble
 
         public void SetUpGraphics()
         {
-            this.Graphics = this.CreateGraphics();
-            this.ScaleFactor = this.Graphics.DpiX / 96;
-            this.DpiChanged += new DpiChangedEventHandler(this.ScrambleForm_DpiChanged);
+            Graphics = CreateGraphics();
+            ScaleFactor = Graphics.DpiX / 96;
+            DpiChanged += new DpiChangedEventHandler(ScrambleForm_DpiChanged);
         }
 
         public void DisplayLanguageStrings()
         {
-            this.Text = OpenedSaveFile == null ? GetString("{ScrambleShortTitle}") : GetString("{ScrambleLongTitle}");
-            this.OpenSaveFileButton.Text = GetString("{OpenSaveFile}");
-            this.SaveChangesButton.Text = GetString("{SaveChanges}");
+            Text = OpenedSaveFile == null ? GetString("{ScrambleShortTitle}") : GetString("{ScrambleLongTitle}");
+            OpenSaveFileButton.Text = GetString("{OpenSaveFile}");
+            SaveChangesButton.Text = GetString("{SaveChanges}");
 
-            this.SaveSlotsGroupBox.Text = GetString("{SaveSlots}");
-            this.SaveSlotsListBox.Items.RemoveAt(0);
-            this.SaveSlotsListBox.Items.Insert(0, string.Format("0 ({0})", GetString("{Autosave}")));
-            this.SaveSlotsListBox.SelectedIndex = 0;
+            SaveSlotsGroupBox.Text = GetString("{SaveSlots}");
+            SaveSlotsListBox.Items.RemoveAt(0);
+            SaveSlotsListBox.Items.Insert(0, string.Format("0 ({0})", GetString("{Autosave}")));
+            SaveSlotsListBox.SelectedIndex = 0;
 
-            this.SelectLanguageLabel.Text = GetString("{Language}");
+            SelectLanguageLabel.Text = GetString("{Language}");
 
-            this.BackupCheckbox.Text = GetString("{BackupCheckbox}");
-            this.DumpSlotDataButton.Text = GetString("{DumpSlotData}");
-            this.ImportSlotDataButton.Text = GetString("{ImportSlotData}");
-            this.GlobalGroupBox.Text = GetString("{Global}");
-            this.GameSettingsEditorButton.Text = GetString("{SettingsEditor}");
-            this.MiscFlagsEditorButton.Text = GetString("{MiscEditor}");
+            BackupCheckbox.Text = GetString("{BackupCheckbox}");
+            DumpSlotDataButton.Text = GetString("{DumpSlotData}");
+            ImportSlotDataButton.Text = GetString("{ImportSlotData}");
+            GlobalGroupBox.Text = GetString("{Global}");
+            GameSettingsEditorButton.Text = GetString("{SettingsEditor}");
+            MiscFlagsEditorButton.Text = GetString("{MiscEditor}");
 
-            this.GeneralGroupBox.Text = GetString("{ThisSelectedSlot}");
-            this.InitializedSlotCheckbox.Text = GetString("{InitializedSlotCheckbox}");
-            this.DateSavedLabel.Text = GetString("{DateAndTimeOfSave}");
-            this.DifficultyLabel.Text = GetString("{Difficulty}");
-            this.ExperienceLabel.Text = GetString("{Experience}");
-            this.CurrentLevelLabel.Text = GetString("{CurrentLevel}");
-            this.MoneyLabel.Text = GetString("{Money}");
-            this.FpLabel.Text = GetString("{Fp:}");
-            this.LvLabel_Pre.Text = GetString("{Lv}");
-            this.PartyMembersLabel.Text = GetString("{YourParty}");
+            GeneralGroupBox.Text = GetString("{ThisSelectedSlot}");
+            InitializedSlotCheckbox.Text = GetString("{InitializedSlotCheckbox}");
+            DateSavedLabel.Text = GetString("{DateAndTimeOfSave}");
+            DifficultyLabel.Text = GetString("{Difficulty}");
+            ExperienceLabel.Text = GetString("{Experience}");
+            CurrentLevelLabel.Text = GetString("{CurrentLevel}");
+            MoneyLabel.Text = GetString("{Money}");
+            FpLabel.Text = GetString("{Fp:}");
+            LvLabel_Pre.Text = GetString("{Lv}");
+            PartyMembersLabel.Text = GetString("{YourParty}");
 
-            this.OpenCharacterEditButton.Text = GetString("{CharacterEditor}");
-            this.OpenInvEditorButton.Text = GetString("{PinsEditor}");
-            this.OpenClothEditButton.Text = GetString("{ClothingEditor}");
-            this.OpenSocialEditButton.Text = GetString("{SocialEditor}");
-            this.OpenRecordEditButton.Text = GetString("{CollectionEditor}");
-            this.OpenNoisepediaEditButton.Text = GetString("{NoisepediaEditor}");
+            OpenCharacterEditButton.Text = GetString("{CharacterEditor}");
+            OpenInvEditorButton.Text = GetString("{PinsEditor}");
+            OpenClothEditButton.Text = GetString("{ClothingEditor}");
+            OpenSocialEditButton.Text = GetString("{SocialEditor}");
+            OpenRecordEditButton.Text = GetString("{CollectionEditor}");
+            OpenNoisepediaEditButton.Text = GetString("{NoisepediaEditor}");
 
-            this.OpenShopEdit_Button.Text = GetString("{ShopEditor}");
-            this.OpenDayEditor_Button.Text = GetString("{DayEditor}");
+            OpenShopEdit_Button.Text = GetString("{ShopEditor}");
+            OpenDayEditor_Button.Text = GetString("{DayEditor}");
 
-            this.ShowSpoilersCheckbox.Text = GetString("{ShowSpoilers}");
+            ShowSpoilersCheckbox.Text = GetString("{ShowSpoilers}");
 
-            this.DifficultyCombo.Items.Clear();
+            DifficultyCombo.Items.Clear();
             for (byte i = 1; i < 5; i++)
             {
-                this.DifficultyCombo.Items.Add(GetGameString(string.Format("Setting_Difficulty{0}", i.ToString("D2"))));
+                DifficultyCombo.Items.Add(GetGameString(string.Format("Setting_Difficulty{0}", i.ToString("D2"))));
             }
 
             if (SelectedSlot != null)
             {
-                this.DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
-                this.CurrentDay_Label.Text = GetDayName(SelectedSlot.CurrentDay);
+                DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
+                CurrentDay_Label.Text = GetDayName(SelectedSlot.CurrentDay);
             }
 
-            this.CaloriesEaten_Label.Text = GetString("{CaloriesEaten}");
-            this.OverateCheckbox.Text = GetString("{Overate}");
+            CaloriesEaten_Label.Text = GetString("{CaloriesEaten}");
+            OverateCheckbox.Text = GetString("{Overate}");
         }
 
         public void TryCheckForUpdates()
@@ -417,32 +405,31 @@ namespace Scramble
                 }
 
                 byte[] AllData = File.ReadAllBytes(Dialog.FileName);
-                byte Result;
 
-                OpenedSaveFile = new SaveFile(Dialog.FileName, AllData, out Result);
+                OpenedSaveFile = new SaveFile(Dialog.FileName, AllData, out byte Result);
 
                 if (Result == 0) // invalid file size
                 {
                     ShowWarning(GetString("DLG_InvalidSaveFile"));
                     OpenedSaveFile = null;
 
-                    this.ChangeFormSize(148, 309);
+                    ChangeFormSize(148, 309);
                     ReadyForUserInput = true;
                     return;
                 }
 
-                if (this.SaveSlotsListBox.SelectedIndex == -1)
+                if (SaveSlotsListBox.SelectedIndex == -1)
                 {
-                    this.SaveSlotsListBox.SelectedIndex = 0;
-                    this.SaveSlotsListBox.Select();
+                    SaveSlotsListBox.SelectedIndex = 0;
+                    SaveSlotsListBox.Select();
                 }
                 else
                 {
-                    SelectSlot(this.SaveSlotsListBox.SelectedIndex);
+                    SelectSlot(SaveSlotsListBox.SelectedIndex);
                 }
 
-                this.ChangeFormSize(435, 760);
-                this.Text = "Scramble — NEO TWEWY Save Editor";
+                ChangeFormSize(435, 760);
+                Text = "Scramble — NEO TWEWY Save Editor";
             }
 
             ReadyForUserInput = true;
@@ -647,9 +634,11 @@ namespace Scramble
             }
             else
             {
-                SaveFileDialog NewDialog = new SaveFileDialog();
-                NewDialog.FileName = "gamesave";
-                NewDialog.AddExtension = false;
+                SaveFileDialog NewDialog = new SaveFileDialog
+                {
+                    FileName = "gamesave",
+                    AddExtension = false
+                };
 
                 if (NewDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -740,10 +729,12 @@ namespace Scramble
                 return;
             }
 
-            SaveFileDialog DumpDialog = new SaveFileDialog();
-            DumpDialog.Filter = "Scramble Save Slot (*.slot)|*.slot";
-            DumpDialog.DefaultExt = "slot";
-            DumpDialog.AddExtension = true;
+            SaveFileDialog DumpDialog = new SaveFileDialog
+            {
+                Filter = "Scramble Save Slot (*.slot)|*.slot",
+                DefaultExt = "slot",
+                AddExtension = true
+            };
 
             if (DumpDialog.ShowDialog() == DialogResult.OK)
             {
@@ -759,10 +750,12 @@ namespace Scramble
                 return;
             }
 
-            OpenFileDialog ImportDialog = new OpenFileDialog();
-            ImportDialog.Filter = "Scramble Save Slot (*.slot)|*.slot";
-            ImportDialog.DefaultExt = "slot";
-            ImportDialog.AddExtension = true;
+            OpenFileDialog ImportDialog = new OpenFileDialog
+            {
+                Filter = "Scramble Save Slot (*.slot)|*.slot",
+                DefaultExt = "slot",
+                AddExtension = true
+            };
 
             if (ImportDialog.ShowDialog() == DialogResult.OK)
             {
@@ -980,10 +973,10 @@ namespace Scramble
 
         private void ScrambleForm_DpiChanged(object sender, DpiChangedEventArgs e)
         {
-            this.Graphics = this.CreateGraphics();
-            this.ScaleFactor = this.Graphics.DpiX / 96;
+            Graphics = CreateGraphics();
+            ScaleFactor = Graphics.DpiX / 96;
 
-            ChangeFormSize(this.Height, this.Width);
+            ChangeFormSize(Height, Width);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Scramble.Classes
                 Text = Text.Replace(Tag, $"{CharacterTags[Tag]}");
             }
         }
-        
+
         public void SetTaggedText(string Text, RichTextBox Box)
         {
             if (Box == null)
@@ -58,13 +58,12 @@ namespace Scramble.Classes
             string[] SplittedText = Expressions.Split(Text);
             foreach (string Piece in SplittedText)
             {
-                double Percentage;
 
                 if (Piece.Length == 2 && ColorDic.ContainsKey(Piece))
                 {
                     SetColor(ColorDic[Piece], Box);
                 }
-                else if (Piece.StartsWith("size=") && double.TryParse(Piece.Substring(5), out Percentage))
+                else if (Piece.StartsWith("size=") && double.TryParse(Piece.Substring(5), out double Percentage))
                 {
                     SetSizePercentage(Percentage, Box);
                 }
@@ -94,7 +93,7 @@ namespace Scramble.Classes
             Box.SelectionStart = Box.TextLength;
             Box.SelectionLength = 0;
 
-            float NewFontSize = (float)decimal.Round((decimal)(Box.SelectionFont.Size * (Percentage/100)), 2);
+            float NewFontSize = (float)decimal.Round((decimal)(Box.SelectionFont.Size * (Percentage / 100)), 2);
 
             Box.SelectionFont = new Font(Box.SelectionFont.FontFamily, NewFontSize, Box.SelectionFont.Style);
         }

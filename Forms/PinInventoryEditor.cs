@@ -14,21 +14,9 @@ namespace Scramble.Forms
 
     public partial class PinInventoryEditor : Form
     {
-        public SaveData SelectedSlot
-        {
-            get
-            {
-                return Program.Sukuranburu.SelectedSlot;
-            }
-        }
+        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
 
-        public ScrambleForm Sukuranburu
-        {
-            get
-            {
-                return Program.Sukuranburu;
-            }
-        }
+        public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
         public const int EMPTY_PIN_ID = 0xFFFF;
         private List<InventoryPin> InventoryPins;
@@ -40,23 +28,23 @@ namespace Scramble.Forms
         public PinInventoryEditor()
         {
             InitializeComponent();
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            this.MyPinInventoryView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
-            this.AllPinsListView.SmallImageList = Sukuranburu.Get64x64PinImageList();
+            Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            MyPinInventoryView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
+            AllPinsListView.SmallImageList = Sukuranburu.Get64x64PinImageList();
 
 
-            this.UberPin_PictureBox.BackColor = Color.Transparent;
-            this.UberPin_PictureBox.Parent = this.PinImagePictureBox;
-            this.UberPin_PictureBox.Location = new Point(68, 0);
+            UberPin_PictureBox.BackColor = Color.Transparent;
+            UberPin_PictureBox.Parent = PinImagePictureBox;
+            UberPin_PictureBox.Location = new Point(68, 0);
 
-            this.PinInputKey_PictureBox.BackColor = Color.Transparent;
-            this.PinInputKey_PictureBox.Parent = this.PinImagePictureBox;
-            this.PinInputKey_PictureBox.Location = new Point(0, 0);
+            PinInputKey_PictureBox.BackColor = Color.Transparent;
+            PinInputKey_PictureBox.Parent = PinImagePictureBox;
+            PinInputKey_PictureBox.Location = new Point(0, 0);
 
             if (Sukuranburu.RequiresRescaling)
             {
-                this.MyPinInventoryView.AutoSize = true;
-                this.AllPinsListView.AutoSize = true;
+                MyPinInventoryView.AutoSize = true;
+                AllPinsListView.AutoSize = true;
             }
 
             DisplayLanguageStrings();
@@ -135,8 +123,8 @@ namespace Scramble.Forms
 
         private void SerializeGlobal()
         {
-            var ItemDictionary = Sukuranburu.GetItemManager().GetItems();
-            
+            Dictionary<ushort, IGameItem> ItemDictionary = Sukuranburu.GetItemManager().GetItems();
+
             foreach (IGameItem Item in ItemDictionary.Values)
             {
                 if (Item is PinItem)
@@ -150,18 +138,19 @@ namespace Scramble.Forms
                     {
                     PinName,
                     Pin.ParticularId.ToString()
-                    });
-
-                    PinToAdd.ImageKey = PinIcon;
+                    })
+                    {
+                        ImageKey = PinIcon
+                    };
                     AllPinsListView.Items.Add(PinToAdd);
                 }
             }
         }
         private void DisplayLanguageStrings()
         {
-            this.EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetString("{NoOne}"));
+            EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetString("{NoOne}"));
 
-            this.EquippedDeckComboBox.Items.AddRange(new object[] {
+            EquippedDeckComboBox.Items.AddRange(new object[] {
             Sukuranburu.GetString("{None}"),
             Sukuranburu.GetString("{DeckOne}"),
             Sukuranburu.GetString("{DeckTwo}"),
@@ -169,38 +158,38 @@ namespace Scramble.Forms
 
             });
 
-            this.Text = Sukuranburu.GetString("{PinsEditor}");
-            this.groupBox1.Text = Sukuranburu.GetString("{PinInventory}");
-            this.groupBox2.Text = Sukuranburu.GetString("{AllPins}");
-            this.PinIdHeader.Text = Sukuranburu.GetString("{Id}");
-            this.PinNameHeader.Text = Sukuranburu.GetString("{Name}");
-            this.PinIsMasteredHeader.Text = Sukuranburu.GetString("{Mastered}");
-            this.PinExperienceHeader.Text = Sukuranburu.GetString("{EXP}");
-            this.AmountHeader.Text = Sukuranburu.GetString("{Amount}");
-            this.AttackElementHeader.Text = Sukuranburu.GetString("{Affinity}");
-            this.GlobalPinIdHeader.Text = Sukuranburu.GetString("{PinId}");
-            this.GlobalPinNameHeader.Text = Sukuranburu.GetString("{Name}");
+            Text = Sukuranburu.GetString("{PinsEditor}");
+            groupBox1.Text = Sukuranburu.GetString("{PinInventory}");
+            groupBox2.Text = Sukuranburu.GetString("{AllPins}");
+            PinIdHeader.Text = Sukuranburu.GetString("{Id}");
+            PinNameHeader.Text = Sukuranburu.GetString("{Name}");
+            PinIsMasteredHeader.Text = Sukuranburu.GetString("{Mastered}");
+            PinExperienceHeader.Text = Sukuranburu.GetString("{EXP}");
+            AmountHeader.Text = Sukuranburu.GetString("{Amount}");
+            AttackElementHeader.Text = Sukuranburu.GetString("{Affinity}");
+            GlobalPinIdHeader.Text = Sukuranburu.GetString("{PinId}");
+            GlobalPinNameHeader.Text = Sukuranburu.GetString("{Name}");
 
-            this.RemovePinButton.Text = Sukuranburu.GetString("{RemoveThisPin}");
-            this.RemoveAllPinsButton.Text = Sukuranburu.GetString("{RemoveAll}");
-            this.LevelLabel.Text = Sukuranburu.GetString("{Level:}");
-            this.ExpLabel.Text = Sukuranburu.GetString("{EXP:}");
-            this.AmountLabel.Text = Sukuranburu.GetString("{Amount:}");
-            this.EquippedLabel.Text = Sukuranburu.GetString("{Equipped}");
-            this.MaxLevelLabel_Info.Text = Sukuranburu.GetString("{MaxLevel}");
-            this.MasterPinButton.Text = Sukuranburu.GetString("{MasterThisPin}");
+            RemovePinButton.Text = Sukuranburu.GetString("{RemoveThisPin}");
+            RemoveAllPinsButton.Text = Sukuranburu.GetString("{RemoveAll}");
+            LevelLabel.Text = Sukuranburu.GetString("{Level:}");
+            ExpLabel.Text = Sukuranburu.GetString("{EXP:}");
+            AmountLabel.Text = Sukuranburu.GetString("{Amount:}");
+            EquippedLabel.Text = Sukuranburu.GetString("{Equipped}");
+            MaxLevelLabel_Info.Text = Sukuranburu.GetString("{MaxLevel}");
+            MasterPinButton.Text = Sukuranburu.GetString("{MasterThisPin}");
 
-            this.Add99Checkbox.Text = Sukuranburu.GetString("{x99}");
-            this.AddedPinIsMasteredCheckbox.Text = Sukuranburu.GetString("{Mastered}");
-            this.AddAllPinsButton.Text = Sukuranburu.GetString("{AddEachOfEveryPin}");
-            this.AddPinButton.Text = Sukuranburu.GetString("{AddPin}");
+            Add99Checkbox.Text = Sukuranburu.GetString("{x99}");
+            AddedPinIsMasteredCheckbox.Text = Sukuranburu.GetString("{Mastered}");
+            AddAllPinsButton.Text = Sukuranburu.GetString("{AddEachOfEveryPin}");
+            AddPinButton.Text = Sukuranburu.GetString("{AddPin}");
         }
 
         private void GenerateEquippedData()
         {
             foreach (PartyMember Member in Sukuranburu.SelectedSlot.GetPartyMembers().Values)
             {
-                this.EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetGameString(Member.CharacterName));
+                EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetGameString(Member.CharacterName));
             }
         }
 
@@ -208,47 +197,47 @@ namespace Scramble.Forms
         {
             if (SelectedPin == null || SelectedPin.DecksWithThisPin == null || SelectedPin.DecksWithThisPin.Count < 1)
             {
-                this.EquippedDeckComboBox.SelectedIndex = 0;
-                this.EquippedDeckComboBox.Enabled = SelectedPin != null && Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.PinId);
-                this.EquippedByCharacterComboBox.Enabled = false;
-                this.EquippedByCharacterComboBox.SelectedIndex = 0;
-                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];//CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.SelectedValue)];
+                EquippedDeckComboBox.SelectedIndex = 0;
+                EquippedDeckComboBox.Enabled = SelectedPin != null && Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.PinId);
+                EquippedByCharacterComboBox.Enabled = false;
+                EquippedByCharacterComboBox.SelectedIndex = 0;
+                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];//CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.SelectedValue)];
                 return;
             }
 
             byte FirstDeck = SelectedPin.DecksWithThisPin.Keys.First();
             byte MemberId = SelectedPin.DecksWithThisPin[FirstDeck];
 
-            this.EquippedDeckComboBox.Enabled = true;
-            this.EquippedByCharacterComboBox.Enabled = true;
-            this.EquippedDeckComboBox.SelectedIndex = FirstDeck;
-            this.EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId));
+            EquippedDeckComboBox.Enabled = true;
+            EquippedByCharacterComboBox.Enabled = true;
+            EquippedDeckComboBox.SelectedIndex = FirstDeck;
+            EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId));
 
-            this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
+            CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text)];
         }
 
         private void DisplayEquippedData(byte DeckId)
         {
             if (SelectedPin == null || SelectedPin.DecksWithThisPin == null || SelectedPin.DecksWithThisPin.Count < 1 || !SelectedPin.DecksWithThisPin.ContainsKey(DeckId))
             {
-                this.EquippedByCharacterComboBox.Enabled = DeckId != 0;
-                this.EquippedByCharacterComboBox.SelectedIndex = 0;
-                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                EquippedByCharacterComboBox.Enabled = DeckId != 0;
+                EquippedByCharacterComboBox.SelectedIndex = 0;
+                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
                 return;
             }
 
             if (DeckId == 0)
             {
-                this.EquippedByCharacterComboBox.Enabled = false;
-                this.EquippedByCharacterComboBox.Text = Sukuranburu.GetString("{NoOne}");
-                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                EquippedByCharacterComboBox.Enabled = false;
+                EquippedByCharacterComboBox.Text = Sukuranburu.GetString("{NoOne}");
+                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
             }
             else
             {
                 byte MemberId = SelectedPin.DecksWithThisPin[DeckId];
-                this.EquippedByCharacterComboBox.Enabled = true;
-                this.EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId));
-                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
+                EquippedByCharacterComboBox.Enabled = true;
+                EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId));
+                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text)];
             }
 
         }
@@ -366,9 +355,10 @@ namespace Scramble.Forms
                         MasteredSymbol,
                         Pin.Amount.ToString(),
                         ElementName
-                   });
-
-            PinToAdd.ImageKey = Icon;
+                   })
+            {
+                ImageKey = Icon
+            };
             MyPinInventoryView.Items.Add(PinToAdd);
         }
 
@@ -902,7 +892,7 @@ namespace Scramble.Forms
             {
                 return;
             }
-            
+
             ReadyForUserInput = false;
 
             byte DeckId = (byte)EquippedDeckComboBox.SelectedIndex;
@@ -924,7 +914,7 @@ namespace Scramble.Forms
                 }
 
                 ReadyForUserInput = true;
-                this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
                 return;
             }
 
@@ -944,7 +934,7 @@ namespace Scramble.Forms
             }
 
             PartyMember NewMember = Sukuranburu.SelectedSlot.GetPartyMemberByNameValue(EquippedByCharacterComboBox.Text);
-            InventoryPin NewMember_PreviouslyEquippedPin = InventoryPins.FirstOrDefault(p 
+            InventoryPin NewMember_PreviouslyEquippedPin = InventoryPins.FirstOrDefault(p
                => p.DecksWithThisPin != null
                && p.DecksWithThisPin.ContainsKey(DeckId)
                && p.DecksWithThisPin[DeckId] == NewMember.Id);
@@ -967,7 +957,7 @@ namespace Scramble.Forms
                 SelectedPin.DecksWithThisPin.Add(DeckId, (byte)NewMember.Id);
             }
 
-            this.CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.Text)];
+            CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text)];
             ReadyForUserInput = true;
         }
     }

@@ -7,7 +7,7 @@ namespace Scramble.Classes
     public class SaveFile
     {
         public string FilePath;
-        private Dictionary<int, SaveData> SaveSlots;
+        private readonly Dictionary<int, SaveData> SaveSlots;
 
         public byte[] FirstData
         {

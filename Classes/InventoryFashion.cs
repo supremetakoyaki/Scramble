@@ -23,13 +23,7 @@ namespace Scramble.Classes
             set;
         }
 
-        public ClothingItem BaseClothing
-        {
-            get
-            {
-                return Program.Sukuranburu.GetItemManager().GetClothingItem(Id);
-            }
-        }
+        public ClothingItem BaseClothing => Program.Sukuranburu.GetItemManager().GetClothingItem(Id);
 
         public InventoryFashion(ushort Id)
         {

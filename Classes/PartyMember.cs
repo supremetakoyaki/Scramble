@@ -17,21 +17,9 @@ namespace Scramble.Classes
             private set;
         }
 
-        public string CharacterName
-        {
-            get
-            {
-                return Program.Sukuranburu.GetCharacterManager().GetCharacterName(CharacterId);
-            }
-        }
+        public string CharacterName => Program.Sukuranburu.GetCharacterManager().GetCharacterName(CharacterId);
 
-        public Character BaseCharacter
-        {
-            get
-            {
-                return Program.Sukuranburu.GetCharacterManager().GetCharacter(CharacterId);
-            }
-        }
+        public Character BaseCharacter => Program.Sukuranburu.GetCharacterManager().GetCharacter(CharacterId);
 
         public Dictionary<byte, int> EquippedPinIndexes
         {
@@ -45,7 +33,7 @@ namespace Scramble.Classes
             private set;
         }
 
-        public PartyMember(int Id, byte CharacterId, Dictionary<byte, int> EquippedPinIndexes, List<int>EquippedClothingIndexes)
+        public PartyMember(int Id, byte CharacterId, Dictionary<byte, int> EquippedPinIndexes, List<int> EquippedClothingIndexes)
         {
             this.Id = Id;
             this.CharacterId = CharacterId;

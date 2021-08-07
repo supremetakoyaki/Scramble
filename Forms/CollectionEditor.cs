@@ -9,27 +9,15 @@ namespace Scramble.Forms
 {
     public partial class CollectionEditor : Form
     {
-        public SaveData SelectedSlot
-        {
-            get
-            {
-                return Program.Sukuranburu.SelectedSlot;
-            }
-        }
+        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
 
-        public ScrambleForm Sukuranburu
-        {
-            get
-            {
-                return Program.Sukuranburu;
-            }
-        }
+        public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
         public CollectionEditor()
         {
             InitializeComponent();
-            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            this.RecordInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
+            Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            RecordInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
 
             if (Sukuranburu.RequiresRescaling)
             {
@@ -41,8 +29,8 @@ namespace Scramble.Forms
 
         public void Serialize()
         {
-            var RecordDictionary = Sukuranburu.GetItemManager().GetSaveIndexes();
-            
+            System.Collections.Generic.Dictionary<int, ushort> RecordDictionary = Sukuranburu.GetItemManager().GetSaveIndexes();
+
             foreach (int SaveId in RecordDictionary.Keys)
             {
                 ushort GlobalId = RecordDictionary[SaveId];
@@ -56,8 +44,10 @@ namespace Scramble.Forms
                 bool Unlocked = SelectedSlot.RetrieveOffset_Byte(CurrentPointer) == 1;
                 bool Flag = SelectedSlot.RetrieveOffset_Byte(CurrentPointer + 1) == 1;
 
-                ListViewItem ItemToAdd = new ListViewItem(new string[] { Name, SaveId.ToString(), GlobalId.ToString(), TypeStr, Unlocked ? Sukuranburu.GetString("{YesLowercase}") : Sukuranburu.GetString("{NoLowercase}"), Flag ? Sukuranburu.GetString("{YesLowercase}") : Sukuranburu.GetString("{NoLowercase}") });
-                ItemToAdd.ImageKey = string.Format("{0}.png", Item.Sprite);
+                ListViewItem ItemToAdd = new ListViewItem(new string[] { Name, SaveId.ToString(), GlobalId.ToString(), TypeStr, Unlocked ? Sukuranburu.GetString("{YesLowercase}") : Sukuranburu.GetString("{NoLowercase}"), Flag ? Sukuranburu.GetString("{YesLowercase}") : Sukuranburu.GetString("{NoLowercase}") })
+                {
+                    ImageKey = string.Format("{0}.png", Item.Sprite)
+                };
 
                 RecordInvListView.Items.Add(ItemToAdd);
             }
@@ -68,18 +58,18 @@ namespace Scramble.Forms
 
         private void DisplayLanguageStrings()
         {
-            this.Text = Sukuranburu.GetString("{CollectionEditor}");
-            this.groupBox1.Text = Sukuranburu.GetString("{Items}");
-            this.SaveIDHeader.Text = Sukuranburu.GetString("{SaveId}");
-            this.ItemNameHeader.Text = Sukuranburu.GetString("{Name}");
-            this.ItemIDHeader.Text = Sukuranburu.GetString("{ItemId}");
-            this.TypeHeader.Text = Sukuranburu.GetString("{Type}");
-            this.UnlockedHeader.Text = Sukuranburu.GetString("{Unlocked}");
-            this.FlagHeader.Text = Sukuranburu.GetString("{Unseen}");
-            this.UnlockAllButton.Text = Sukuranburu.GetString("{UnlockAll}");
-            this.UnseeAllButton.Text = Sukuranburu.GetString("{UnseeAll}");
-            this.ChangeLockStatusButton.Text = Sukuranburu.GetString("{UnlockSelected}");
-            this.ChangeSeeStatusButton.Text = Sukuranburu.GetString("{UnseeSelected}");
+            Text = Sukuranburu.GetString("{CollectionEditor}");
+            groupBox1.Text = Sukuranburu.GetString("{Items}");
+            SaveIDHeader.Text = Sukuranburu.GetString("{SaveId}");
+            ItemNameHeader.Text = Sukuranburu.GetString("{Name}");
+            ItemIDHeader.Text = Sukuranburu.GetString("{ItemId}");
+            TypeHeader.Text = Sukuranburu.GetString("{Type}");
+            UnlockedHeader.Text = Sukuranburu.GetString("{Unlocked}");
+            FlagHeader.Text = Sukuranburu.GetString("{Unseen}");
+            UnlockAllButton.Text = Sukuranburu.GetString("{UnlockAll}");
+            UnseeAllButton.Text = Sukuranburu.GetString("{UnseeAll}");
+            ChangeLockStatusButton.Text = Sukuranburu.GetString("{UnlockSelected}");
+            ChangeSeeStatusButton.Text = Sukuranburu.GetString("{UnseeSelected}");
         }
 
         private void UnlockAllButton_Click(object sender, EventArgs e)
