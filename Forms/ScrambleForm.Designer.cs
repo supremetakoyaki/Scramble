@@ -1933,6 +1933,7 @@
             this.GameSettingsEditorButton.TabIndex = 26;
             this.GameSettingsEditorButton.Text = "Settings Editor";
             this.GameSettingsEditorButton.UseVisualStyleBackColor = true;
+            this.GameSettingsEditorButton.Click += new System.EventHandler(this.GameSettingsEditorButton_Click);
             // 
             // AllCollectionIconsImageList_32x32
             // 
