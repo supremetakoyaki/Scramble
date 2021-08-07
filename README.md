@@ -3,6 +3,8 @@ Scramble is a NEO: The World Ends with You save editor.
 
 It works for save files for versions 1.00 and 1.01 of the game.
 
+[Click here for the GBATemp thread.](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/)
+
 # How to use
 You need a decrypted save file of the game. This save file weighs about 3.15MB.
 After that, you can [download the latest release](https://github.com/supremetakoyaki/Scramble/releases/) and you're ready to go.
