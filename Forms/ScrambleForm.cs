@@ -262,6 +262,14 @@ namespace Scramble
                 CurrentLevelNUpDown.Value = GetCharacterManager().GetLevel(Player_Current_Level);
             }
 
+            int TheoreticalLevel = GetCharacterManager().GetLevel((int)ExpNumericUpDown.Value);
+            LvLabel.Text = TheoreticalLevel.ToString();
+
+            if (CurrentLevelNUpDown.Value > TheoreticalLevel)
+            {
+                CurrentLevelNUpDown.Value = TheoreticalLevel;
+            }
+
             if (Player_Money >= MoneyNUpDown.Minimum && Player_Money <= MoneyNUpDown.Maximum)
             {
                 MoneyNUpDown.Value = Player_Money;
