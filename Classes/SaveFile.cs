@@ -54,6 +54,11 @@ namespace Scramble.Classes
             return SaveSlots[Id];
         }
 
+        public GlobalData GetGlobalData()
+        {
+            return this.GlobalData;
+        }
+
         public byte[] ToBytes()
         {
             MemoryStream Stream = new MemoryStream();
