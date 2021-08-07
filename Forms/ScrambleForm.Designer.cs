@@ -203,7 +203,7 @@
             this.AboutLabel.Name = "AboutLabel";
             this.AboutLabel.Size = new System.Drawing.Size(76, 15);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "v0.6";
+            this.AboutLabel.Text = "v0.7";
             this.AboutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
@@ -1917,7 +1917,6 @@
             // 
             // MiscFlagsEditorButton
             // 
-            this.MiscFlagsEditorButton.Enabled = false;
             this.MiscFlagsEditorButton.Location = new System.Drawing.Point(6, 51);
             this.MiscFlagsEditorButton.Name = "MiscFlagsEditorButton";
             this.MiscFlagsEditorButton.Size = new System.Drawing.Size(158, 23);
@@ -1927,7 +1926,6 @@
             // 
             // GameSettingsEditorButton
             // 
-            this.GameSettingsEditorButton.Enabled = false;
             this.GameSettingsEditorButton.Location = new System.Drawing.Point(6, 22);
             this.GameSettingsEditorButton.Name = "GameSettingsEditorButton";
             this.GameSettingsEditorButton.Size = new System.Drawing.Size(158, 23);

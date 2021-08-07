@@ -8,14 +8,9 @@ namespace Scramble.Classes
     {
         public string FilePath;
         private readonly Dictionary<int, SaveData> SaveSlots;
+        private readonly GlobalData GlobalData;
 
-        public byte[] FirstData
-        {
-            get;
-            private set;
-        }
-
-        private const int FIRST_DATA_LENGTH = 619;
+        private const int GLOBAL_DATA_LENGTH = 619;
 
         private const int INIT_OFFSET = 619;
         private const int SLOT_LENGTH = 319989;
@@ -34,8 +29,9 @@ namespace Scramble.Classes
 
             this.FilePath = FilePath;
 
-            FirstData = new byte[FIRST_DATA_LENGTH];
-            Array.Copy(File, 0, FirstData, 0, FIRST_DATA_LENGTH);
+            byte[] FirstData = new byte[GLOBAL_DATA_LENGTH];
+            Array.Copy(File, 0, FirstData, 0, GLOBAL_DATA_LENGTH);
+            GlobalData = new GlobalData(FirstData);
 
             SaveSlots = new Dictionary<int, SaveData>();
 
@@ -57,11 +53,12 @@ namespace Scramble.Classes
         {
             return SaveSlots[Id];
         }
+
         public byte[] ToBytes()
         {
             MemoryStream Stream = new MemoryStream();
 
-            Stream.Write(FirstData, 0, FIRST_DATA_LENGTH);
+            Stream.Write(GlobalData.ToBytes(), 0, GLOBAL_DATA_LENGTH);
 
             int CurrentPointer = INIT_OFFSET;
             for (int i = 0; i < 10; i++)

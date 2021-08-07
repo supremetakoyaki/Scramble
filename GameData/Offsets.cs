@@ -2,8 +2,17 @@
 {
     public class Offsets
     {
+        // GlobalData offsets below.
+        public const int VolumeMusic = 0; // FLOAT
+        public const int VolumeSfx = 4; // FLOAT
+        public const int VolumeVa = 8; // FLOAT
+        public const int VaLanguage = 16; // byte? jp=0 eng=1
+        public const int Vibration = 20; // boolean
+        public const int DialogueAutoplay = 21; // boolean.
+        public const int Subtitles = 23; // boolean
+        public const int Dlc = 299; // byte. bit-based indexes.
 
-        public const int Difficulty = 296836; // 8-bit
+        // SaveData offsets below.
 
         // Noisepedia
         public const int Noisepedia_Id0_RecordLevel = 16; //int32. 0xFFFF if not unlocked
@@ -65,6 +74,8 @@
         public const int PartyMember1_EquippedBottomIndex = 296644; // int32
         public const int PartyMember1_EquippedShoesIndex = 296648; //int32
         public const int PartyMember1_EquippedAccessoryIndex = 296652; //int32
+
+        public const int Difficulty = 296836; // 8-bit
 
         // Shop data. +68 for each shop
         public const int Shop0_unk1 = 301904; // int32

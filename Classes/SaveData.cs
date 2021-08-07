@@ -16,7 +16,7 @@ namespace Scramble.Classes
         public const int UNIX_OFFSET = 1;
         public const int UNIX_LENGTH = 4;
 
-        public const int HASH_OFFSET = 5;
+        //Unused: public const int HASH_OFFSET = 5;
         public const int HASH_LENGTH = 32;
 
         public const int DATA_OFFSET = 37;
@@ -25,11 +25,13 @@ namespace Scramble.Classes
         public const int NOT_ASSIGNED_DATA = -1;
 
         private Dictionary<int, PartyMember> PartyMembers;
+
         public byte CurrentDay
         {
             get;
             private set;
         }
+
         public byte FurthestDay
         {
             get;
@@ -46,7 +48,7 @@ namespace Scramble.Classes
             private set;
         }
 
-        private readonly byte[] Hash;
+        //Unused: private readonly byte[] Hash;
 
         public byte[] Data
         {
@@ -58,23 +60,17 @@ namespace Scramble.Classes
 
         public byte[] Hash_Valid => CalculateNewChecksum();
 
-        public bool UnknownFlag
-        {
-            get;
-            private set;
-        }
-
         public SaveData(int Id, byte[] FullData)
         {
             this.Id = Id;
 
             UnixTimestamp = new byte[UNIX_LENGTH];
-            Hash = new byte[HASH_LENGTH];
+            //Unused: Hash = new byte[HASH_LENGTH];
             Data = new byte[DATA_LENGTH];
 
             IsValid = FullData[VALID_OFFSET];
             Array.Copy(FullData, UNIX_OFFSET, UnixTimestamp, 0, UNIX_LENGTH);
-            Array.Copy(FullData, HASH_OFFSET, Hash, 0, HASH_LENGTH);
+            //Unused: Array.Copy(FullData, HASH_OFFSET, Hash, 0, HASH_LENGTH);
             Array.Copy(FullData, DATA_OFFSET, Data, 0, DATA_LENGTH);
 
             LoadPartyMembers();
