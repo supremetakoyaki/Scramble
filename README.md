@@ -20,11 +20,13 @@ I recommend running it on Windows 10 or 11. But Mac works fine too.
 
 # Features
 Right now, Scramble can do the following:
+- Edit your game settings, and also unlock DLC items.
 - Edit any of the 10 save slots of the game.
 - Edit your game difficulty, experience, current level, money and FP.
 - Edit your character stats.
 - Edit your pin inventory.
 - Edit your clothing inventory.
+- Edit your social network tree and obtained rewards.
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
