@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Forms\CharacterStatEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ClothingInventoryEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MiscEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\NoisepediaEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\PinInventoryEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\CollectionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ScrambleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\SettingsEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Forms\SkillTreeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Forms\CharacterStatEditor.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

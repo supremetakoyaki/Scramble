@@ -22,6 +22,7 @@ namespace Scramble
         public ClothingInventoryEditor ClothInvEditor;
         public CharacterStatEditor CharaStatEditor;
         public SkillTreeEditor SocialEditor;
+        public NoisepediaEditor NoisepediaEditor;
 
         public SettingsEditor SettEditor;
         public MiscEditor MiscEditor;
@@ -49,6 +50,7 @@ namespace Scramble
         private readonly CharacterManager CharaManager;
         private readonly GameLocaleManager GameLocManager;
         private readonly SocialNetworkManager SocialManager;
+        private readonly NoiseManager NoizuManager;
         #endregion
 
         #region Image Lists
@@ -86,6 +88,7 @@ namespace Scramble
             CharaManager = new CharacterManager();
             GameLocManager = new GameLocaleManager();
             SocialManager = new SocialNetworkManager();
+            NoizuManager = new NoiseManager();
 
             LangStrings = new LanguageStrings();
             GameTextProcessor = new GameTextProcessor();
@@ -850,6 +853,12 @@ namespace Scramble
             SocialEditor.ShowDialog();
         }
 
+        private void OpenNoisepediaEditButton_Click(object sender, EventArgs e)
+        {
+            NoisepediaEditor = new NoisepediaEditor();
+            NoisepediaEditor.ShowDialog();
+        }
+
         private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)
         {
             CurrentLanguage = (byte)LanguageSelectComboBox.SelectedIndex;
@@ -875,6 +884,11 @@ namespace Scramble
         public SocialNetworkManager GetSocialNetworkManager()
         {
             return SocialManager;
+        }
+
+        public NoiseManager GetNoiseManager()
+        {
+            return NoizuManager;
         }
 
         public string GetGameString(string Key)
@@ -959,7 +973,7 @@ namespace Scramble
         private void ScrambleForm_DpiChanged(object sender, DpiChangedEventArgs e)
         {
             ScaleFactor = DeviceDpi / 96;
-            PopulateImageLists();
+            Task.Run(PopulateImageLists); // Probably a bad idea but let's test it.
             ChangeFormSize(Height, Width);
         }
     }

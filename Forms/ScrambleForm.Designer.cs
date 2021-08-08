@@ -518,13 +518,13 @@
             // 
             // OpenNoisepediaEditButton
             // 
-            this.OpenNoisepediaEditButton.Enabled = false;
             this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(400, 196);
             this.OpenNoisepediaEditButton.Name = "OpenNoisepediaEditButton";
             this.OpenNoisepediaEditButton.Size = new System.Drawing.Size(158, 23);
             this.OpenNoisepediaEditButton.TabIndex = 22;
             this.OpenNoisepediaEditButton.Text = "Noisepedia Editor";
             this.OpenNoisepediaEditButton.UseVisualStyleBackColor = true;
+            this.OpenNoisepediaEditButton.Click += new System.EventHandler(this.OpenNoisepediaEditButton_Click);
             // 
             // PartyMember5_PictureBox
             // 
