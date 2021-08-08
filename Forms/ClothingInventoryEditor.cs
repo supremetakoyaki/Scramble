@@ -37,8 +37,8 @@ namespace Scramble.Forms
         {
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            MyClothingInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
-            AllClothingItemsListView.SmallImageList = Sukuranburu.Get64x64FashionImageList();
+            MyClothingInvListView.SmallImageList = Sukuranburu.ItemImageList_32x32;
+            AllClothingItemsListView.SmallImageList = Sukuranburu.ItemImageList_64x64;
 
             if (Sukuranburu.RequiresRescaling)
             {
@@ -169,7 +169,6 @@ namespace Scramble.Forms
                     ClothingItem Clothing = Item as ClothingItem;
 
                     string ClothingName = Sukuranburu.GetGameString(Clothing.Name);
-                    string ClothingIcon = string.Format("{0}.png", Clothing.Sprite);
 
                     ListViewItem PinToAdd = new ListViewItem(new string[]
                     {
@@ -177,7 +176,7 @@ namespace Scramble.Forms
                     Clothing.ParticularId.ToString()
                     })
                     {
-                        ImageKey = ClothingIcon
+                        ImageKey = Clothing.Sprite
                     };
                     AllClothingItemsListView.Items.Add(PinToAdd);
                 }
@@ -230,17 +229,14 @@ namespace Scramble.Forms
             SelectedClothing = Clothing;
 
             Brand ClothingBrand = Sukuranburu.GetItemManager().GetBrand(Clothing.BaseClothing.Brand);
-
             string ClothingName = Sukuranburu.GetGameString(Clothing.BaseClothing.Name);
-            string ClothingSprite = string.Format("{0}.png", Clothing.BaseClothing.Sprite);
-            string BrandSprite = string.Format("{0}.png", ClothingBrand.Sprite);
 
             ClothingItem_NameLabel.Text = ClothingName;
             BrandLabel.Text = Sukuranburu.GetGameString(ClothingBrand.Name);
-            ClothingItem_PictureBox.Image = Sukuranburu.Get128x128FashionImageList().Images[ClothingSprite];
-            BrandPictureBox.Image = Sukuranburu.Get170x60BrandImageList().Images[BrandSprite];
+            ClothingItem_PictureBox.Image = ImageMethods.DrawImage(Clothing.BaseClothing.Sprite, 128, 128, DeviceDpi);
+            BrandPictureBox.Image = ImageMethods.DrawImage(ClothingBrand.Sprite, 170, 60, DeviceDpi);
 
-            SlotType_PictureBox.Image = Sukuranburu.Get32x32MiscIconsImageList().Images[string.Format("Item_icon_category_Next{0}.png", Clothing.BaseClothing.SlotType.ToString("D2"))];
+            SlotType_PictureBox.Image = ImageMethods.DrawImage(string.Format("Item_icon_category_Next{0}", Clothing.BaseClothing.SlotType.ToString("D2")), 32, 32, DeviceDpi);
             WearTypeLabel.Text = Sukuranburu.GetString("{WearType" + Clothing.BaseClothing.SlotType + "}");
 
             RemoveClothingButton.Enabled = true;
@@ -288,7 +284,7 @@ namespace Scramble.Forms
             {
                 EquippedByCharacterComboBox.Enabled = false;
                 EquippedByCharacterComboBox.SelectedIndex = 0;
-                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                CharacterIconPictureBox.Image = null;
                 return;
             }
 
@@ -296,7 +292,7 @@ namespace Scramble.Forms
             if (SelectedClothing.EquipperId != 0)
             {
                 EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(SelectedClothing.EquipperId));
-                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text)];
+                CharacterIconPictureBox.Image = ImageMethods.DrawImage(GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text), 32, 32, DeviceDpi);
             }
         }
 
@@ -304,16 +300,16 @@ namespace Scramble.Forms
         {
             if (CharacterNameValue == Sukuranburu.GetString("{NoOne}") || string.IsNullOrWhiteSpace(CharacterNameValue))
             {
-                return "0.png";
+                return null;
             }
 
             PartyMember Member = Sukuranburu.SelectedSlot.GetPartyMemberByNameValue(CharacterNameValue);
             if (Member != null)
             {
-                return Member.CharacterId + ".png";
+                return string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2"));
             }
 
-            return "0.png";
+            return null;
         }
 
         public string GetCharacterIconForPartyMember(int MemberId)
@@ -321,16 +317,15 @@ namespace Scramble.Forms
             PartyMember Member = Sukuranburu.SelectedSlot.GetPartyMemberWithId(MemberId);
             if (Member != null)
             {
-                return Member.CharacterId + ".png";
+                return string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2"));
             }
 
-            return "0.png";
+            return null;
         }
 
         private void InsertClothingToListView(InventoryFashion Piece)
         {
             string Name = Sukuranburu.GetGameString(Piece.BaseClothing.Name);
-            string Icon = string.Format("{0}.png", Piece.BaseClothing.Sprite);
 
             ListViewItem ClothingToAdd = new ListViewItem(new string[]
                    {
@@ -340,7 +335,7 @@ namespace Scramble.Forms
                         Piece.Amount.ToString()
                    })
             {
-                ImageKey = Icon
+                ImageKey = Piece.BaseClothing.Sprite
             };
             MyClothingInvListView.Items.Add(ClothingToAdd);
         }
@@ -629,7 +624,7 @@ namespace Scramble.Forms
                 SelectedClothing.EquipperId = 0;
 
                 ReadyForUserInput = true;
-                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                CharacterIconPictureBox.Image = null;
                 return;
             }
 
@@ -691,7 +686,7 @@ namespace Scramble.Forms
 
             SelectedClothing.EquipperId = (byte)NewMember.Id;
 
-            CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(NewMember.Id)];
+            CharacterIconPictureBox.Image = ImageMethods.DrawImage(GetCharacterIconForPartyMember(NewMember.Id), 32, 32, DeviceDpi);
             ReadyForUserInput = true;
         }
 

@@ -157,7 +157,7 @@ namespace Scramble.Forms
             this.Character_PictureBox.Location = new System.Drawing.Point(12, 53);
             this.Character_PictureBox.Name = "Character_PictureBox";
             this.Character_PictureBox.Size = new System.Drawing.Size(170, 300);
-            this.Character_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Character_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.Character_PictureBox.TabIndex = 0;
             this.Character_PictureBox.TabStop = false;
             // 

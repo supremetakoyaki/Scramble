@@ -56,7 +56,7 @@ namespace Scramble.Classes
 
         public GlobalData GetGlobalData()
         {
-            return this.GlobalData;
+            return GlobalData;
         }
 
         public byte[] ToBytes()

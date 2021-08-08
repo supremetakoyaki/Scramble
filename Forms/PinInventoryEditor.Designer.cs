@@ -126,7 +126,7 @@ namespace Scramble.Forms
             this.UberPin_PictureBox.Location = new System.Drawing.Point(81, 400);
             this.UberPin_PictureBox.Name = "UberPin_PictureBox";
             this.UberPin_PictureBox.Size = new System.Drawing.Size(32, 32);
-            this.UberPin_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.UberPin_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.UberPin_PictureBox.TabIndex = 27;
             this.UberPin_PictureBox.TabStop = false;
             // 
@@ -142,11 +142,10 @@ namespace Scramble.Forms
             // 
             // AttackElementIcon_PictureBox
             // 
-            this.AttackElementIcon_PictureBox.Image = global::Scramble.Properties.Resources.Attribute_icon_0;
             this.AttackElementIcon_PictureBox.Location = new System.Drawing.Point(13, 517);
             this.AttackElementIcon_PictureBox.Name = "AttackElementIcon_PictureBox";
             this.AttackElementIcon_PictureBox.Size = new System.Drawing.Size(20, 20);
-            this.AttackElementIcon_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AttackElementIcon_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.AttackElementIcon_PictureBox.TabIndex = 25;
             this.AttackElementIcon_PictureBox.TabStop = false;
             // 
@@ -170,7 +169,7 @@ namespace Scramble.Forms
             this.PinInputKey_PictureBox.Location = new System.Drawing.Point(13, 400);
             this.PinInputKey_PictureBox.Name = "PinInputKey_PictureBox";
             this.PinInputKey_PictureBox.Size = new System.Drawing.Size(32, 32);
-            this.PinInputKey_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PinInputKey_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PinInputKey_PictureBox.TabIndex = 23;
             this.PinInputKey_PictureBox.TabStop = false;
             // 
@@ -190,7 +189,7 @@ namespace Scramble.Forms
             this.CharacterIconPictureBox.Location = new System.Drawing.Point(571, 615);
             this.CharacterIconPictureBox.Name = "CharacterIconPictureBox";
             this.CharacterIconPictureBox.Size = new System.Drawing.Size(32, 32);
-            this.CharacterIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CharacterIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.CharacterIconPictureBox.TabIndex = 21;
             this.CharacterIconPictureBox.TabStop = false;
             // 
@@ -248,7 +247,7 @@ namespace Scramble.Forms
             this.BrandPictureBox.Location = new System.Drawing.Point(584, 400);
             this.BrandPictureBox.Name = "BrandPictureBox";
             this.BrandPictureBox.Size = new System.Drawing.Size(170, 60);
-            this.BrandPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BrandPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.BrandPictureBox.TabIndex = 15;
             this.BrandPictureBox.TabStop = false;
             // 
@@ -389,7 +388,7 @@ namespace Scramble.Forms
             this.PinImagePictureBox.Location = new System.Drawing.Point(13, 400);
             this.PinImagePictureBox.Name = "PinImagePictureBox";
             this.PinImagePictureBox.Size = new System.Drawing.Size(100, 100);
-            this.PinImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PinImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PinImagePictureBox.TabIndex = 3;
             this.PinImagePictureBox.TabStop = false;
             // 

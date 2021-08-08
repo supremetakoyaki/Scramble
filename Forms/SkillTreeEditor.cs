@@ -32,6 +32,8 @@ namespace Scramble.Forms
             ShopLogo_PictureBox.Parent = Character_PictureBox;
             ShopLogo_PictureBox.Location = new Point(0, 0);
 
+            SkillIcon_PictureBox.Image = ImageMethods.DrawImage("itm_03_0200", 70, 70, DeviceDpi);
+
             LockStatusToolTip.SetToolTip(CharacterLockStatus_Label, Sukuranburu.GetString("{Hint_SkillTree_LockStatus}"));
 
             if (Sukuranburu.RequiresRescaling)
@@ -206,7 +208,7 @@ namespace Scramble.Forms
                     ConnectionDayValue_Label.Text = Sukuranburu.GetDayName(TreeItem.ConnectDay, ref ConnectionDayValid);
                 }
 
-                Character_PictureBox.Image = Resources.ResourceManager.GetObject(TreeItem.CharacterIcon) as Bitmap;
+                Character_PictureBox.Image = ImageMethods.DrawImage(TreeItem.CharacterIcon, 540, 450, DeviceDpi);//Resources.ResourceManager.GetObject(TreeItem.CharacterIcon) as Bitmap;
 
                 if (Sukuranburu.ShowSpoilers == false)
                 {
@@ -268,7 +270,7 @@ namespace Scramble.Forms
                             Brand ShopBrand = Sukuranburu.GetItemManager().GetBrand(CharacterShop.Brand);
                             if (ShopBrand != null)
                             {
-                                ShopLogo_PictureBox.Image = Sukuranburu.Get102x36BrandImageList().Images[string.Format("{0}.png", ShopBrand.Sprite)];
+                                ShopLogo_PictureBox.Image = ImageMethods.DrawImage(ShopBrand.Sprite, 102, 36, DeviceDpi);
                             }
                             else
                             {

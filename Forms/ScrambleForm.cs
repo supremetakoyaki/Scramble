@@ -51,13 +51,15 @@ namespace Scramble
         private readonly SocialNetworkManager SocialManager;
         #endregion
 
+        #region Image Lists
+        public ImageList ItemImageList_32x32 { get; private set; }
+        public ImageList ItemImageList_64x64 { get; private set; }
+        #endregion
+
         public bool SwitchVersion = true;
 
         private List<byte> SafeCharacters;
         public bool ShowSpoilers => ShowSpoilersCheckbox.Checked;
-
-        // Scaling for people who do NOT have 100% DPI setting. a.k.a. insane people D;
-        private Graphics Graphics;
 
         public double ScaleFactor
         {
@@ -91,13 +93,13 @@ namespace Scramble
             LanguageSelectComboBox.Text = "English";
             ReadyForUserInput = true;
 
+            Task.Run(PopulateImageLists); // Probably a bad idea but let's test it.
             Task.Run(TryCheckForUpdates);
         }
 
         public void SetUpGraphics()
         {
-            Graphics = CreateGraphics();
-            ScaleFactor = Graphics.DpiX / 96;
+            ScaleFactor = (double)DeviceDpi / (double)96;
             DpiChanged += new DpiChangedEventHandler(ScrambleForm_DpiChanged);
         }
 
@@ -160,6 +162,24 @@ namespace Scramble
             OverateCheckbox.Text = GetString("{Overate}");
         }
 
+        private void PopulateImageLists()
+        {
+            ItemImageList_32x32 = new ImageList();
+            ItemImageList_64x64 = new ImageList();
+
+            ItemImageList_32x32.ImageSize = new Size(32, 32);
+            ItemImageList_32x32.ColorDepth = ColorDepth.Depth32Bit;
+
+            ItemImageList_64x64.ImageSize = new Size(64, 64);
+            ItemImageList_64x64.ColorDepth = ColorDepth.Depth32Bit;
+
+            foreach (IGameItem GameItem in GetItemManager().GetItems().Values)
+            {
+                ItemImageList_32x32.Images.Add(GameItem.Sprite, ImageMethods.DrawImage(GameItem.Sprite, 32, 32, DeviceDpi));
+                ItemImageList_64x64.Images.Add(GameItem.Sprite, ImageMethods.DrawImage(GameItem.Sprite, 64, 64, DeviceDpi));
+            }
+        }
+
         public void TryCheckForUpdates()
         {
             try
@@ -186,9 +206,9 @@ namespace Scramble
                     }
                 }
             }
-            catch// (Exception e)
+            catch
             {
-                //debug: MessageBox.Show(e.ToString());
+
             }
         }
 
@@ -327,27 +347,27 @@ namespace Scramble
                 switch (Member.Id)
                 {
                     case 1:
-                        PartyMember1_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
+                        PartyMember1_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
                         break;
 
                     case 2:
-                        PartyMember2_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
+                        PartyMember2_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
                         break;
 
                     case 3:
-                        PartyMember3_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
+                        PartyMember3_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
                         break;
 
                     case 4:
-                        PartyMember4_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
+                        PartyMember4_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
                         break;
 
                     case 5:
-                        PartyMember5_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
+                        PartyMember5_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
                         break;
 
                     case 6:
-                        PartyMember6_PictureBox.Image = CharacterImageList_32x32.Images[Member.CharacterId + ".png"];
+                        PartyMember6_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
                         break;
                 }
             }
@@ -836,64 +856,6 @@ namespace Scramble
             DisplayLanguageStrings();
         }
 
-        #region Get Image Lists Methods
-        public ImageList GetCharacterIconList()
-        {
-            return CharacterImageList_32x32;
-        }
-
-        public ImageList Get32x32AllCollectionIconsImageList()
-        {
-            return AllCollectionIconsImageList_32x32;
-        }
-
-        public ImageList Get64x64PinImageList()
-        {
-            return PinImageList_64x64;
-        }
-
-        public ImageList Get100x100PinImageList()
-        {
-            return PinImageList_100x100;
-        }
-
-        public ImageList Get128x128FashionImageList()
-        {
-            return FashionImageList_128x128;
-        }
-
-        public ImageList Get64x64FashionImageList()
-        {
-            return FashionImageList_64x64;
-        }
-
-        public ImageList Get170x60BrandImageList()
-        {
-            return BrandImageList_170x60;
-        }
-
-        public ImageList Get102x36BrandImageList()
-        {
-            return BrandImageList_102x36;
-        }
-
-        public ImageList Get128x128FoodImageList()
-        {
-            return FoodImageList_128x128;
-        }
-
-        public ImageList Get64x64FoodImageList()
-        {
-            return FoodImageList_64x64;
-        }
-
-        public ImageList Get32x32MiscIconsImageList()
-        {
-            return MiscIconsImageList_32x32;
-        }
-
-        #endregion
-
         #region NEO TWEWY Database instances Methods
         public ItemManager GetItemManager()
         {
@@ -996,9 +958,8 @@ namespace Scramble
 
         private void ScrambleForm_DpiChanged(object sender, DpiChangedEventArgs e)
         {
-            Graphics = CreateGraphics();
-            ScaleFactor = Graphics.DpiX / 96;
-
+            ScaleFactor = DeviceDpi / 96;
+            PopulateImageLists();
             ChangeFormSize(Height, Width);
         }
     }

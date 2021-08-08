@@ -70,12 +70,12 @@ namespace Scramble.Forms
 
             if (Sukuranburu.CharacterIsSpoiler((byte)SelectedCharacterId) && Sukuranburu.ShowSpoilers == false)
             {
-                Character_PictureBox.Image = Properties.Resources.ResourceManager.GetObject("CharacterS_170x300") as Bitmap;
+                Character_PictureBox.Image = Properties.Resources.ResourceManager.GetObject("CH0S") as Bitmap;
                 CharacterLabel.Text = Sukuranburu.GetString("{Spoiler}");
             }
             else
             {
-                Character_PictureBox.Image = Properties.Resources.ResourceManager.GetObject(string.Format("Character{0}_170x300", SelectedCharacterId)) as Bitmap;
+                Character_PictureBox.Image = Properties.Resources.ResourceManager.GetObject(string.Format("CH{0}", SelectedCharacterId.ToString("D2"))) as Bitmap;
                 CharacterLabel.Text = Sukuranburu.GetGameString(GameCharacter.Name);
             }
 

@@ -144,7 +144,7 @@ namespace Scramble.Forms
             this.Character_PictureBox.Location = new System.Drawing.Point(468, 61);
             this.Character_PictureBox.Name = "Character_PictureBox";
             this.Character_PictureBox.Size = new System.Drawing.Size(375, 450);
-            this.Character_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Character_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.Character_PictureBox.TabIndex = 1;
             this.Character_PictureBox.TabStop = false;
             // 
@@ -266,7 +266,7 @@ namespace Scramble.Forms
             this.ShopLogo_PictureBox.Location = new System.Drawing.Point(468, 61);
             this.ShopLogo_PictureBox.Name = "ShopLogo_PictureBox";
             this.ShopLogo_PictureBox.Size = new System.Drawing.Size(102, 36);
-            this.ShopLogo_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ShopLogo_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.ShopLogo_PictureBox.TabIndex = 23;
             this.ShopLogo_PictureBox.TabStop = false;
             // 
@@ -430,11 +430,10 @@ namespace Scramble.Forms
             // 
             // SkillIcon_PictureBox
             // 
-            this.SkillIcon_PictureBox.Image = global::Scramble.Properties.Resources.Skill_Icon;
             this.SkillIcon_PictureBox.Location = new System.Drawing.Point(330, 388);
             this.SkillIcon_PictureBox.Name = "SkillIcon_PictureBox";
             this.SkillIcon_PictureBox.Size = new System.Drawing.Size(80, 80);
-            this.SkillIcon_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.SkillIcon_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.SkillIcon_PictureBox.TabIndex = 5;
             this.SkillIcon_PictureBox.TabStop = false;
             // 

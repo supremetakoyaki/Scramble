@@ -17,7 +17,7 @@ namespace Scramble.Forms
         {
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            RecordInvListView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
+            RecordInvListView.SmallImageList = Sukuranburu.ItemImageList_32x32;
 
             if (Sukuranburu.RequiresRescaling)
             {
@@ -46,7 +46,7 @@ namespace Scramble.Forms
 
                 ListViewItem ItemToAdd = new ListViewItem(new string[] { Name, SaveId.ToString(), GlobalId.ToString(), TypeStr, Unlocked ? Sukuranburu.GetString("{YesLowercase}") : Sukuranburu.GetString("{NoLowercase}"), Flag ? Sukuranburu.GetString("{YesLowercase}") : Sukuranburu.GetString("{NoLowercase}") })
                 {
-                    ImageKey = string.Format("{0}.png", Item.Sprite)
+                    ImageKey = Item.Sprite
                 };
 
                 RecordInvListView.Items.Add(ItemToAdd);

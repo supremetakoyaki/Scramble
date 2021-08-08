@@ -29,8 +29,8 @@ namespace Scramble.Forms
         {
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            MyPinInventoryView.SmallImageList = Sukuranburu.Get32x32AllCollectionIconsImageList();
-            AllPinsListView.SmallImageList = Sukuranburu.Get64x64PinImageList();
+            MyPinInventoryView.SmallImageList = Sukuranburu.ItemImageList_32x32;
+            AllPinsListView.SmallImageList = Sukuranburu.ItemImageList_64x64;
 
 
             UberPin_PictureBox.BackColor = Color.Transparent;
@@ -132,7 +132,6 @@ namespace Scramble.Forms
                     PinItem Pin = Item as PinItem;
 
                     string PinName = Sukuranburu.GetGameString(Pin.Name);
-                    string PinIcon = string.Format("{0}.png", Pin.Sprite);
 
                     ListViewItem PinToAdd = new ListViewItem(new string[]
                     {
@@ -140,7 +139,7 @@ namespace Scramble.Forms
                     Pin.ParticularId.ToString()
                     })
                     {
-                        ImageKey = PinIcon
+                        ImageKey = Pin.Sprite
                     };
                     AllPinsListView.Items.Add(PinToAdd);
                 }
@@ -201,7 +200,7 @@ namespace Scramble.Forms
                 EquippedDeckComboBox.Enabled = SelectedPin != null && Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.PinId);
                 EquippedByCharacterComboBox.Enabled = false;
                 EquippedByCharacterComboBox.SelectedIndex = 0;
-                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];//CharacterIconImageList.Images[GetCharacterIconForPartyMember((string)EquippedByCharacterComboBox.SelectedValue)];
+                CharacterIconPictureBox.Image = null;
                 return;
             }
 
@@ -213,7 +212,7 @@ namespace Scramble.Forms
             EquippedDeckComboBox.SelectedIndex = FirstDeck;
             EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId));
 
-            CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text)];
+            CharacterIconPictureBox.Image = ImageMethods.DrawImage(GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text), 32, 32, DeviceDpi);
         }
 
         private void DisplayEquippedData(byte DeckId)
@@ -222,7 +221,7 @@ namespace Scramble.Forms
             {
                 EquippedByCharacterComboBox.Enabled = DeckId != 0;
                 EquippedByCharacterComboBox.SelectedIndex = 0;
-                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                CharacterIconPictureBox.Image = null;
                 return;
             }
 
@@ -230,14 +229,14 @@ namespace Scramble.Forms
             {
                 EquippedByCharacterComboBox.Enabled = false;
                 EquippedByCharacterComboBox.Text = Sukuranburu.GetString("{NoOne}");
-                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                CharacterIconPictureBox.Image = null;
             }
             else
             {
                 byte MemberId = SelectedPin.DecksWithThisPin[DeckId];
                 EquippedByCharacterComboBox.Enabled = true;
                 EquippedByCharacterComboBox.Text = Sukuranburu.GetGameString(Sukuranburu.SelectedSlot.GetPartyMemberNameWithMemberId(MemberId));
-                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text)];
+                CharacterIconPictureBox.Image = ImageMethods.DrawImage(GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text), 32, 32, DeviceDpi);
             }
 
         }
@@ -246,16 +245,16 @@ namespace Scramble.Forms
         {
             if (CharacterNameValue == Sukuranburu.GetString("{NoOne}") || string.IsNullOrWhiteSpace(CharacterNameValue))
             {
-                return "0.png";
+                return null;
             }
 
             PartyMember Member = Sukuranburu.SelectedSlot.GetPartyMemberByNameValue(CharacterNameValue);
             if (Member != null)
             {
-                return Member.CharacterId + ".png";
+                return string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2"));
             }
 
-            return "0.png";
+            return null;
         }
 
         private void SaveAllData()
@@ -330,7 +329,6 @@ namespace Scramble.Forms
         private void InsertPinToListView(InventoryPin Pin)
         {
             string Name = Sukuranburu.GetGameString(Pin.BasePin.Name);
-            string Icon = string.Format("{0}.png", Pin.BasePin.Sprite);
 
             string MasteredSymbol = "—";
             if (Sukuranburu.GetItemManager().PinIsMasterable(Pin.BasePin))
@@ -357,7 +355,7 @@ namespace Scramble.Forms
                         ElementName
                    })
             {
-                ImageKey = Icon
+                ImageKey = Pin.BasePin.Sprite
             };
             MyPinInventoryView.Items.Add(PinToAdd);
         }
@@ -409,14 +407,12 @@ namespace Scramble.Forms
 
             string PinName = Sukuranburu.GetGameString(Pin.BasePin.Name);
             string PinInfo = Sukuranburu.GetGameString(Pin.BasePin.Info);
-            string PinSprite = string.Format("{0}.png", Pin.BasePin.Sprite);
-            string BrandSprite = string.Format("{0}.png", PinBrand.Sprite);
 
             PinNameLabel.Text = PinName;
             Sukuranburu.GetGameTextProcessor().SetTaggedText(PinInfo, PinInfo_RichTextBox);
 
 
-            PinImagePictureBox.Image = Sukuranburu.Get100x100PinImageList().Images[PinSprite];
+            PinImagePictureBox.Image = ImageMethods.DrawImage(Pin.BasePin.Sprite, 100, 100, DeviceDpi);
 
             if (PinBrand == null || PinBrand.Id == 0)
             {
@@ -425,7 +421,7 @@ namespace Scramble.Forms
             }
             else
             {
-                BrandPictureBox.Image = Sukuranburu.Get170x60BrandImageList().Images[BrandSprite];
+                BrandPictureBox.Image = ImageMethods.DrawImage(PinBrand.Sprite, 170, 60, DeviceDpi);
                 BrandLabel.Text = Sukuranburu.GetGameString(PinBrand.Name);
             }
 
@@ -450,17 +446,17 @@ namespace Scramble.Forms
                 else
                 {
                     AttackElementIcon_PictureBox.Visible = true;
-                    AttackElementIcon_PictureBox.Image = Resources.ResourceManager.GetObject(AttackElement.ElementIcon) as Bitmap;
+                    AttackElementIcon_PictureBox.Image = ImageMethods.DrawImage(AttackElement.ElementIcon, 20, 20, DeviceDpi);
                     AttackElement_Label.Text = Sukuranburu.GetGameString(AttackElement.ElementName);
                 }
 
                 if (Sukuranburu.GetItemManager().PinIsUber(Pin.BasePin))
                 {
-                    UberPin_PictureBox.Image = Sukuranburu.Get32x32MiscIconsImageList().Images["GodBadge_star.png"];
+                    UberPin_PictureBox.Image = ImageMethods.GetImageAsIs("GodBadge_star");
                     UberPin_PictureBox.Visible = true;
                 }
 
-                PinInputKey_PictureBox.Image = Sukuranburu.Get32x32MiscIconsImageList().Images[string.Format("{0}.png", Sukuranburu.GetItemManager().GetPsychKeyImage(Pin.BasePin))];
+                PinInputKey_PictureBox.Image = ImageMethods.DrawImage(Sukuranburu.GetItemManager().GetPsychKeyImage(Pin.BasePin), 32, 32, DeviceDpi);
                 PinInputKey_PictureBox.Visible = true;
 
                 MasterPinButton.Enabled = true;
@@ -914,7 +910,7 @@ namespace Scramble.Forms
                 }
 
                 ReadyForUserInput = true;
-                CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images["0.png"];
+                CharacterIconPictureBox.Image = null;
                 return;
             }
 
@@ -957,7 +953,7 @@ namespace Scramble.Forms
                 SelectedPin.DecksWithThisPin.Add(DeckId, (byte)NewMember.Id);
             }
 
-            CharacterIconPictureBox.Image = Sukuranburu.GetCharacterIconList().Images[GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text)];
+            CharacterIconPictureBox.Image = ImageMethods.DrawImage(GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text), 32, 32, DeviceDpi);
             ReadyForUserInput = true;
         }
     }
