@@ -38,9 +38,6 @@ If you found a bug or another issue, you can open an issue here on GitHub. For m
 # Information for cloning/forking
 
 New contributors who clone the repository may find that they need a class library titled "ntwewy-db". Please download the latest release [here](https://github.com/supremetakoyaki/ntwewy-db/releases/).
-They may also find that nearly all the game images are not there. This is mainly to avoid the repository being DMCA'd even though these images are fair uses. There are two options:
-- Ignore the fact that the images are gone.
-- Wait until I merge the images to the ntwewy-db database (I have this planned.)
 
 # More
 
