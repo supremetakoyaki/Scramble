@@ -157,6 +157,16 @@ namespace Scramble.Classes
             { "{DialogueAutoplay}", "Dialogue Autoplay" },
             { "{Subtitles}", "Subtitles" },
 
+            { "{NoiseList}", "Noise List" },
+            { "{#}", "#" },
+            { "{Pins}", "Pins" },
+            { "{NoiseInfo}", "Noise information" },
+            { "{Pp:}", "PP:" },
+            { "{Encountered}", "Encountered" },
+            { "{RecordLevel:}", "Record level:" },
+            { "{ErasedCount:}", "Erased count:" },
+            { "{WeakTo:}", "Weak to:" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
             { "DLG_SaveDataAlreadyOpened", "There is a save file open already. If you didn't save changes, they will be lost." },
@@ -176,8 +186,8 @@ namespace Scramble.Classes
             { "DLG_NoClothingToAddSelected", "You didn't select a clothing piece to add." },
             { "DLG_YouCantAddMoreClothes", "You can't add more clothes. Maximum value is 9 for one piece, and 2000 in total." },
             { "DLG_NewUpdateFound", "There is a new version of Scramble. Do you want to check it out?" },
-            { "DLG_Social_SpoilersWarn", "Social network characters you unlock will no longer be shown as Spoiler. Do you want to continue?" },
-            { "DLG_NoCheckboxSelected_SkillTree", "You didn't tick any of the checkboxes. What am I supposed to (un)lock?" }
+            { "DLG_NoCheckboxSelected_SkillTree", "You didn't tick any of the checkboxes. What am I supposed to (un)lock?" },
+            { "DLG_ActionWillSpoil", "This action will reveal spoilers. Are you sure you want to continue?" }
         };
 
         public Dictionary<string, string> Japanese = new Dictionary<string, string>()
@@ -333,6 +343,16 @@ namespace Scramble.Classes
             { "{DialogueAutoplay}", "ボイスイベントの自動送り" },
             { "{Subtitles}", "字幕表示" },
 
+            { "{NoiseList}", "ノイズリスト" },
+            { "{#}", "#" },
+            { "{Pins}", "バッジ" },
+            { "{NoiseInfo}", "ノイズの情報" },
+            { "{Pp:}", "ＢＰ：" },
+            { "{Encountered}", "登録された" },
+            { "{RecordLevel:}", "討伐記録：" },
+            { "{ErasedCount:}", "討伐数：" },
+            { "{WeakTo:}", "弱点属性：" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
             { "DLG_SaveDataAlreadyOpened", "すでに開いているファイルがあります。\n保存されていない変更は失われます。" },
@@ -352,8 +372,8 @@ namespace Scramble.Classes
             { "DLG_NoClothingToAddSelected", "服が選択されていないか。" },
             { "DLG_YouCantAddMoreClothes", "これ以上同じ特性を持つ服を追加できません。\n最大値は９。合計で、最大値は２０００になります。" },
             { "DLG_NewUpdateFound", "新しいバージョンの「スクランブル」があります。 ダウンロードしますか？" },
-            { "DLG_Social_SpoilersWarn", "アンロックすることにしたキャラクターボードのキャラクターはネタバレではなくなります。\n 続行しますか？" },
-            { "DLG_NoCheckboxSelected_SkillTree", "チェックボックスがオンになっていません。\n私は何の行動もしなかった。" }
+            { "DLG_NoCheckboxSelected_SkillTree", "チェックボックスがオンになっていません。\n私は何の行動もしなかった。" },
+            { "DLG_ActionWillSpoil", "この操作はネタバレを明らかにする。\n続行しますか？" }
         };
 
         public Dictionary<string, string> Spanish = new Dictionary<string, string>()
@@ -509,6 +529,16 @@ namespace Scramble.Classes
             { "{DialogueAutoplay}", "Autoreproducir diálogos" },
             { "{Subtitles}", "Subtítulos" },
 
+            { "{NoiseList}", "Lista de ruido" },
+            { "{#}", "#" },
+            { "{Pins}", "Pines" },
+            { "{NoiseInfo}", "Info. del ruido" },
+            { "{Pp:}", "PP:" },
+            { "{Encountered}", "Registrado" },
+            { "{RecordLevel:}", "Nivel récord:" },
+            { "{ErasedCount:}", "Eliminado:" },
+            { "{WeakTo:}", "Débil contra:" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
             { "DLG_SaveDataAlreadyOpened", "Ya hay un archivo abierto. Si no guardaste los cambios, se perderán." },
@@ -528,8 +558,8 @@ namespace Scramble.Classes
             { "DLG_NoClothingToAddSelected", "No seleccionaste ninguna prenda para añadir." },
             { "DLG_YouCantAddMoreClothes", "No puedes añadir más. El valor máximo es 9 para una prenda y 2000 en total." },
             { "DLG_NewUpdateFound", "Hay una nueva versión de Scramble. ¿Deseas ir a descargarla?" },
-            { "DLG_Social_SpoilersWarn", "Los personajes que desbloquees ya no serán marcados como spoiler.\n¿Continuar de todas formas?" },
-            { "DLG_NoCheckboxSelected_SkillTree", "No marcaste ninguna casilla. ¿Qué se supone que es lo que debo (des)bloquear?" }
+            { "DLG_NoCheckboxSelected_SkillTree", "No marcaste ninguna casilla. ¿Qué se supone que es lo que debo (des)bloquear?" },
+            { "DLG_ActionWillSpoil", "Esta acción revelará spoilers. ¿Segur@ que quieres continuar?" }
         };
 
         public Dictionary<string, string> French = new Dictionary<string, string>()
@@ -685,6 +715,16 @@ namespace Scramble.Classes
             { "{DialogueAutoplay}", "Dialogues auto" },
             { "{Subtitles}", "Sous-titres :" },
 
+            { "{NoiseList}", "Liste d'Échos" },
+            { "{#}", "#" },
+            { "{Pins}", "Badges" },
+            { "{NoiseInfo}", "Information de l'Écho" },
+            { "{Pp:}", "BP :" },
+            { "{Encountered}", "Rencontré" },
+            { "{RecordLevel:}", "Niveau record :" },
+            { "{ErasedCount:}", "Compter de effacés :" },
+            { "{WeakTo:}", "Faible pour :" },
+
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },
             { "DLG_SaveDataAlreadyOpened", "Il y a déjà un fichier ouvert. Si vous n'avez pas enregistré vos modifications, elles seront perdues." },
@@ -704,8 +744,8 @@ namespace Scramble.Classes
             { "DLG_NoClothingToAddSelected", "Vous n'avez sélectionné aucun vêtement à ajouter." },
             { "DLG_YouCantAddMoreClothes", "Vous ne pouvez pas ajouter plus de ce vêtement. La valeur maximale est 9 pour une pièce et 2000 au total." },
             { "DLG_NewUpdateFound", "Il existe une nouvelle version de Scramble. Voulez-vous aller le télécharger ?" },
-            { "DLG_Social_SpoilersWarn", "Les personnages que vous débloquerez ne seront plus spoiler.\nVoulez-vous continuer ?" },
-            { "DLG_NoCheckboxSelected_SkillTree", "Vous n'avez coché aucune des cases. Que dois-je (dé)bloquer ?" }
+            { "DLG_NoCheckboxSelected_SkillTree", "Vous n'avez coché aucune des cases. Que dois-je (dé)bloquer ?" },
+            { "DLG_ActionWillSpoil", "Cette action révélera spoilers. Souhaitez-vous continuer malgré tout ?" }
         };
 
         public Dictionary<string, string> Italian = new Dictionary<string, string>();

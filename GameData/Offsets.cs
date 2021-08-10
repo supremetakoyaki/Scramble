@@ -14,7 +14,7 @@
 
         // SaveData offsets below.
 
-        // Noisepedia
+        // Noisepedia + 13 for each noise.
         public const int Noisepedia_Id0_RecordLevel = 16; //int32. 0xFFFF if not unlocked
         public const int Noisepedia_Id0_Erased = 20; //int32. 0xFFFF if not unlocked
         public const int Noisepedia_Id0_EasyPinUnlocked = 24; //boolean.

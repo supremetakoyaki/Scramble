@@ -60,4 +60,16 @@
   <data name="NoiseDesc_RichTextBox.Text" xml:space="preserve">
     <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus enim sed mollis tempor. Etiam eget consequat eros. Nulla sed pretium nisl. In sed orci eget nisl tristique aliquam sit amet at ipsum. Suspendisse quam ex, posuere eget elit a, hendrerit efficitur ligula. Fusce elementum elit a aliquet varius.</value>
   </data>
+  <metadata name="EasyPinToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>297, 9</value>
+  </metadata>
+  <metadata name="NormalPinToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>424, 9</value>
+  </metadata>
+  <metadata name="HardPinToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>564, 11</value>
+  </metadata>
+  <metadata name="UltimatePinToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>687, 14</value>
+  </metadata>
 </root>
