@@ -27,6 +27,8 @@ Right now, Scramble can do the following:
 - Edit your pin inventory.
 - Edit your clothing inventory.
 - Edit your social network tree and obtained rewards.
+- Edit your noisepedia.
+- Edit your furthest reached day.
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
