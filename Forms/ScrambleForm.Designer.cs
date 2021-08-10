@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrambleForm));
             this.OpenSaveFileButton = new System.Windows.Forms.Button();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.SaveSlotsGroupBox = new System.Windows.Forms.GroupBox();
@@ -109,7 +108,6 @@
             // 
             // LogoPictureBox
             // 
-            this.LogoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("LogoPictureBox.Image")));
             this.LogoPictureBox.Location = new System.Drawing.Point(12, 12);
             this.LogoPictureBox.Name = "LogoPictureBox";
             this.LogoPictureBox.Size = new System.Drawing.Size(139, 74);

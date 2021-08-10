@@ -77,6 +77,7 @@ namespace Scramble
         {
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            LogoPictureBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject("Logo") as Bitmap, 139, 74, DeviceDpi);
 
             SetUpGraphics();
 
@@ -636,7 +637,7 @@ namespace Scramble
 
         private void SaveChangesButton_Click(object sender, EventArgs e)
         {
-            if (!ReadyForUserInput)
+            if (!ReadyForUserInput || OpenedSaveFile == null)
             {
                 return;
             }
@@ -759,7 +760,7 @@ namespace Scramble
             if (RequiresRescaling)
             {
                 this.Height = (int)Math.Floor(Height * ScaleFactor);
-                this.Width = (int)Math.Floor(Width * ScaleFactor);
+                this.Width = (int)Math.Floor(Width * ScaleFactor) - 2;
             }
             else
             {

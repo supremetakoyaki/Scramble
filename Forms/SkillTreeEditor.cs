@@ -140,7 +140,7 @@ namespace Scramble.Forms
                 LocationValueLabel.ForeColor = SystemColors.ControlDark;
                 TimeframeValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
                 LocationValueLabel.Text = Sukuranburu.GetString("{Spoiler}");
-                Character_PictureBox.Image = Resources.ResourceManager.GetObject("CHR_Spoiler") as Bitmap;
+                Character_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("CHR_Spoiler") as Bitmap, 375, 450, DeviceDpi);
                 ShowMoreInfoButton.Enabled = false;
                 ShowMoreInfoButton.Visible = false;
 
