@@ -376,25 +376,25 @@ namespace Scramble
                 }
             }
 
-            // Show Rindo anyway
+            // Always show Rindoo.
             if (!SafeCharacters.Contains(1))
             {
                 SafeCharacters.Add(1);
             }
 
-            // Show Fret anyway
+            // Always show Fret.
             if (!SafeCharacters.Contains(3))
             {
                 SafeCharacters.Add(3);
             }
 
-            // Show Minamimoto anyway
-            if (!SafeCharacters.Contains(7))
+            // Show Minamimoto if party members > 2 or furthest day > 1
+            if (!SafeCharacters.Contains(7) && (SelectedSlot.GetPartyMembers().Count > 2 || SelectedSlot.FurthestDay > 1))
             {
                 SafeCharacters.Add(7);
             }
 
-            if (SelectedSlot.GetPartyMembers().Count > 5) // basically we beat the game...
+            if (SelectedSlot.GetPartyMembers().Count > 5 || SelectedSlot.FurthestDay > 18) // basically we beat the game...
             {
                 // show all of them because anyone could have been replaced.
                 if (!SafeCharacters.Contains(2))
@@ -412,6 +412,10 @@ namespace Scramble
                 if (!SafeCharacters.Contains(6))
                 {
                     SafeCharacters.Add(6);
+                }
+                if (!SafeCharacters.Contains(7))
+                {
+                    SafeCharacters.Add(7);
                 }
             }
         }
