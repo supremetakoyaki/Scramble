@@ -4,9 +4,9 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>0.7.1</Version>
+    <Version>0.8</Version>
     <Authors>T</Authors>
-    <Description>NEO: The World Ends with You save editor.</Description>
+    <Description>The World Ends with You save editor.</Description>
     <Copyright></Copyright>
     <PackageIcon>Icon.png</PackageIcon>
     <PackageIconUrl />
@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="Assets\" />
+    <Folder Include="Legacy\" />
   </ItemGroup>
 
   <ItemGroup>

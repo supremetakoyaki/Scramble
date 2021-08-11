@@ -10,6 +10,9 @@
     <Compile Update="Forms\DayEditor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\LauncherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\MiscEditor.cs">
       <SubType>Form</SubType>
     </Compile>

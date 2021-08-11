@@ -1,3 +1,4 @@
+using Scramble.Forms;
 using System;
 using System.Windows.Forms;
 
@@ -9,7 +10,7 @@ namespace Scramble
         ///  The main entry point for the application.
         /// </summary>
         /// 
-
+        
         public static ScrambleForm Sukuranburu;
 
         [STAThread]
@@ -19,8 +20,7 @@ namespace Scramble
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Sukuranburu = new ScrambleForm();
-            Application.Run(Sukuranburu);
+            Application.Run(new LauncherForm());
         }
     }
 }

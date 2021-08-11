@@ -163,6 +163,26 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logo_NTWEWY {
+            get {
+                object obj = ResourceManager.GetObject("Logo_NTWEWY", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo_TWEWYFR {
+            get {
+                object obj = ResourceManager.GetObject("Logo_TWEWYFR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Spoiler_Pin {
             get {
                 object obj = ResourceManager.GetObject("Spoiler_Pin", resourceCulture);
