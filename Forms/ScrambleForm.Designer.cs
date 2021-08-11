@@ -416,13 +416,13 @@
             // 
             // OpenDayEditor_Button
             // 
-            this.OpenDayEditor_Button.Enabled = false;
             this.OpenDayEditor_Button.Location = new System.Drawing.Point(400, 22);
             this.OpenDayEditor_Button.Name = "OpenDayEditor_Button";
             this.OpenDayEditor_Button.Size = new System.Drawing.Size(158, 23);
             this.OpenDayEditor_Button.TabIndex = 16;
             this.OpenDayEditor_Button.Text = "Day Editor";
             this.OpenDayEditor_Button.UseVisualStyleBackColor = true;
+            this.OpenDayEditor_Button.Click += new System.EventHandler(this.OpenDayEditor_Button_Click);
             // 
             // OverateCheckbox
             // 

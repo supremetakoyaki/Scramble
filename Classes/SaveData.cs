@@ -228,6 +228,14 @@ namespace Scramble.Classes
             Data[Offset + 3] = UpdatedInt32[3];
         }
 
+        public void FillOffset_Int32(int Offset, int Length, byte Value)
+        {
+            for (int i = 0; i < Length; i++)
+            {
+                Data[Offset + i] = Value;
+            }
+        }
+
         public byte RetrieveOffset_Byte(int Offset)
         {
             return Data[Offset];

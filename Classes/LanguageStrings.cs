@@ -167,6 +167,11 @@ namespace Scramble.Classes
             { "{ErasedCount:}", "Erased count:" },
             { "{WeakTo:}", "Weak to:" },
 
+            { "{ReachedDays}", "Reached days" },
+            { "{CurrentDay:}", "Current day:" },
+            { "{FurthestDay:}", "Furthest day:" },
+            { "{ReachedDays_Warning}", "Note: For the time being, you can only change your furthest day reached." },
+
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
             { "DLG_SaveDataAlreadyOpened", "There is a save file open already. If you didn't save changes, they will be lost." },
@@ -187,7 +192,9 @@ namespace Scramble.Classes
             { "DLG_YouCantAddMoreClothes", "You can't add more clothes. Maximum value is 9 for one piece, and 2000 in total." },
             { "DLG_NewUpdateFound", "There is a new version of Scramble. Do you want to check it out?" },
             { "DLG_NoCheckboxSelected_SkillTree", "You didn't tick any of the checkboxes. What am I supposed to (un)lock?" },
-            { "DLG_ActionWillSpoil", "This action will reveal spoilers. Are you sure you want to continue?" }
+            { "DLG_ActionWillSpoil", "This action will reveal spoilers. Are you sure you want to continue?" },
+            { "DLG_StartFromBeginning", "Are you sure that you want to change your current day? You will start from the beginning of that day." },
+            { "DLG_FurthestDayCantBeLowerThanCurrentDay", "Your furthest day cannot be lower than your current day." }
         };
 
         public Dictionary<string, string> Japanese = new Dictionary<string, string>()
@@ -353,6 +360,11 @@ namespace Scramble.Classes
             { "{ErasedCount:}", "討伐数：" },
             { "{WeakTo:}", "弱点属性：" },
 
+            { "{ReachedDays}", "ロック解除された日々" },
+            { "{CurrentDay:}", "当日プレイ：" },
+            { "{FurthestDay:}", "最大プレイの日：" },
+            { "{ReachedDays_Warning}", "注： ゲーム内での最大到達日数は、現在の期間のみ変更できます。" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
             { "DLG_SaveDataAlreadyOpened", "すでに開いているファイルがあります。\n保存されていない変更は失われます。" },
@@ -373,7 +385,9 @@ namespace Scramble.Classes
             { "DLG_YouCantAddMoreClothes", "これ以上同じ特性を持つ服を追加できません。\n最大値は９。合計で、最大値は２０００になります。" },
             { "DLG_NewUpdateFound", "新しいバージョンの「スクランブル」があります。 ダウンロードしますか？" },
             { "DLG_NoCheckboxSelected_SkillTree", "チェックボックスがオンになっていません。\n私は何の行動もしなかった。" },
-            { "DLG_ActionWillSpoil", "この操作はネタバレを明らかにする。\n続行しますか？" }
+            { "DLG_ActionWillSpoil", "この操作はネタバレを明らかにする。\n続行しますか？" },
+            { "DLG_StartFromBeginning", "現在の日を変更してもよろしいですか？\nゲームはその日の初めから再開されます。" },
+            { "DLG_FurthestDayCantBeLowerThanCurrentDay", "最大日数は、現在の日より前にすることはできません。" }
         };
 
         public Dictionary<string, string> Spanish = new Dictionary<string, string>()
@@ -539,6 +553,11 @@ namespace Scramble.Classes
             { "{ErasedCount:}", "Eliminado:" },
             { "{WeakTo:}", "Débil contra:" },
 
+            { "{ReachedDays}", "Días alcanzados" },
+            { "{CurrentDay:}", "Día actual:" },
+            { "{FurthestDay:}", "Máximo día alcanzado:" },
+            { "{ReachedDays_Warning}", "Nota: Por el momento, solo puedes cambiar el máximo día alcanzado." },
+
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
             { "DLG_SaveDataAlreadyOpened", "Ya hay un archivo abierto. Si no guardaste los cambios, se perderán." },
@@ -559,7 +578,9 @@ namespace Scramble.Classes
             { "DLG_YouCantAddMoreClothes", "No puedes añadir más. El valor máximo es 9 para una prenda y 2000 en total." },
             { "DLG_NewUpdateFound", "Hay una nueva versión de Scramble. ¿Deseas ir a descargarla?" },
             { "DLG_NoCheckboxSelected_SkillTree", "No marcaste ninguna casilla. ¿Qué se supone que es lo que debo (des)bloquear?" },
-            { "DLG_ActionWillSpoil", "Esta acción revelará spoilers. ¿Segur@ que quieres continuar?" }
+            { "DLG_ActionWillSpoil", "Esta acción revelará spoilers. ¿Segur@ que quieres continuar?" },
+            { "DLG_StartFromBeginning", "¿Estás segur@ de que quieres cambiar tu día actual? Si lo haces, empezarás desde el comienzo de ese día." },
+            { "DLG_FurthestDayCantBeLowerThanCurrentDay", "Tu día máximo alcanzado no puede ser menor a tu día actual." }
         };
 
         public Dictionary<string, string> French = new Dictionary<string, string>()
@@ -725,6 +746,11 @@ namespace Scramble.Classes
             { "{ErasedCount:}", "Compter de effacés :" },
             { "{WeakTo:}", "Faible pour :" },
 
+            { "{ReachedDays}", "Jours atteint" },
+            { "{CurrentDay:}", "Jour en cours :" },
+            { "{FurthestDay:}", "Jour maximale atteint :" },
+            { "{ReachedDays_Warning}", "Note : Pour le moment, vous ne pouvez modifier que votre jour maximum atteint." },
+
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },
             { "DLG_SaveDataAlreadyOpened", "Il y a déjà un fichier ouvert. Si vous n'avez pas enregistré vos modifications, elles seront perdues." },
@@ -745,7 +771,9 @@ namespace Scramble.Classes
             { "DLG_YouCantAddMoreClothes", "Vous ne pouvez pas ajouter plus de ce vêtement. La valeur maximale est 9 pour une pièce et 2000 au total." },
             { "DLG_NewUpdateFound", "Il existe une nouvelle version de Scramble. Voulez-vous aller le télécharger ?" },
             { "DLG_NoCheckboxSelected_SkillTree", "Vous n'avez coché aucune des cases. Que dois-je (dé)bloquer ?" },
-            { "DLG_ActionWillSpoil", "Cette action révélera spoilers. Souhaitez-vous continuer malgré tout ?" }
+            { "DLG_ActionWillSpoil", "Cette action révélera spoilers. Souhaitez-vous continuer malgré tout ?" },
+            { "DLG_StartFromBeginning", "Êtes-vous sûr de vouloir changer votre journée actuelle ? Vous commencerez dès le début de cette journée." },
+            { "DLG_FurthestDayCantBeLowerThanCurrentDay", "Votre jour maximum atteint ne peut pas être inférieur à votre jour en cours." }
         };
 
         public Dictionary<string, string> Italian = new Dictionary<string, string>();

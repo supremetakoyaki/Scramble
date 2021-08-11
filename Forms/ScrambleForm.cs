@@ -23,6 +23,7 @@ namespace Scramble
         public CharacterStatEditor CharaStatEditor;
         public SkillTreeEditor SocialEditor;
         public NoisepediaEditor NoisepediaEditor;
+        public DayEditor DayEditor;
 
         public SettingsEditor SettEditor;
         public MiscEditor MiscEditor;
@@ -159,7 +160,7 @@ namespace Scramble
             if (SelectedSlot != null)
             {
                 DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
-                CurrentDay_Label.Text = GetDayName(SelectedSlot.CurrentDay);
+                DisplayCurrentDay();
             }
 
             CaloriesEaten_Label.Text = GetString("{CaloriesEaten}");
@@ -327,7 +328,7 @@ namespace Scramble
             SerializePartyMembers();
             UpdateCaloriesPercentage();
 
-            CurrentDay_Label.Text = GetDayName(SelectedSlot.CurrentDay);
+            DisplayCurrentDay();
 
             ReadyForUserInput = true;
         }
@@ -418,6 +419,11 @@ namespace Scramble
                     SafeCharacters.Add(7);
                 }
             }
+        }
+
+        public void DisplayCurrentDay()
+        {
+            CurrentDay_Label.Text = GetDayName(SelectedSlot.CurrentDay);
         }
 
         private void OpenSaveFileButton_Click(object sender, EventArgs e)
@@ -864,6 +870,16 @@ namespace Scramble
             NoisepediaEditor.ShowDialog();
         }
 
+        private void OpenDayEditor_Button_Click(object sender, EventArgs e)
+        {
+            if (ShowSpoilers == false && ShowPrompt(GetString("DLG_ActionWillSpoil")) == false)
+            {
+                return;
+            }
+
+            DayEditor = new DayEditor();
+            DayEditor.ShowDialog();
+        }
         private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)
         {
             CurrentLanguage = (byte)LanguageSelectComboBox.SelectedIndex;
