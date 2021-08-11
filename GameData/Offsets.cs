@@ -30,6 +30,7 @@
         public const int UnkDayFlag = 11432; // could be byte or int16. it's "1" if you beat the game... but I have my doubts.
         public const int CurrentDay = 11434; // int32
         public const int MaxDay = 11438; //int32
+        public const int Chatlogs_Start = 14057; //int32. You can have up to 100 chatlogs. IDs are from IdDic.json
 
         // Basic stats.
         public const int Experience = 14661; // 32-bit
