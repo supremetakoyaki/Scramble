@@ -1,8 +1,8 @@
 ﻿using NTwewyDb;
+using Scramble.Legacy;
 using Scramble.Properties;
 using System;
 using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scramble.Forms
@@ -31,7 +31,10 @@ namespace Scramble.Forms
         private void TWEWYFR_Button_Click(object sender, EventArgs e)
         {
             Hide();
-            //Program.Legacy = new LegacyForm();
+
+            Program.Legacy = new LegacyForm();
+            Program.Legacy.ShowDialog();
+
             Close();
         }
     }

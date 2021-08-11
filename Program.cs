@@ -1,4 +1,5 @@
 using Scramble.Forms;
+using Scramble.Legacy;
 using System;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace Scramble
         /// 
         
         public static ScrambleForm Sukuranburu;
+        public static LegacyForm Legacy;
 
         [STAThread]
         private static void Main()

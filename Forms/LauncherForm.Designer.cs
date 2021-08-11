@@ -58,6 +58,8 @@ namespace Scramble.Forms
             this.ClientSize = new System.Drawing.Size(430, 224);
             this.Controls.Add(this.TWEWYFR_Button);
             this.Controls.Add(this.NTWEWY_Button);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "LauncherForm";
             this.Text = "Scramble";
             this.ResumeLayout(false);
