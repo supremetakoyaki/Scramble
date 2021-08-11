@@ -188,7 +188,7 @@ namespace Scramble.Forms
                 PpValue_Label.Text = Noizu.Bp.ToString();
             }
 
-            if (RecordLevel == -1)
+            if (RecordLevel < 0 || RecordLevel > 100)
             {
                 RecordLevel_NumUpDown.Value = 1;
                 RecordLevel_NumUpDown.Enabled = false;
@@ -199,10 +199,15 @@ namespace Scramble.Forms
                 RecordLevel_NumUpDown.Enabled = true;
             }
 
-            if (ErasedCount == -1)
+            if (ErasedCount < 0)
             {
                 ErasedCount_NumUpDown.Value = 1;
                 ErasedCount_NumUpDown.Enabled = false;
+            }
+            else if (ErasedCount > 9999)
+            {
+                ErasedCount_NumUpDown.Value = 9999;
+                ErasedCount_NumUpDown.Enabled = true;
             }
             else
             {
