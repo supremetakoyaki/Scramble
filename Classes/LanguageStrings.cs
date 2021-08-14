@@ -172,6 +172,10 @@ namespace Scramble.Classes
             { "{FurthestDay:}", "Furthest day:" },
             { "{ReachedDays_Warning}", "Note: For the time being, you can only change your furthest day reached." },
 
+            { "{TrophyEditor}", "Graffiti Editor" },
+            { "{TurfWarEditor}", "Turf War Editor" },
+            { "{BonusDropRatePlus}", "Drop Rate +" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
             { "DLG_SaveDataAlreadyOpened", "There is a save file open already. If you didn't save changes, they will be lost." },
@@ -364,6 +368,10 @@ namespace Scramble.Classes
             { "{CurrentDay:}", "当日プレイ：" },
             { "{FurthestDay:}", "最大プレイの日：" },
             { "{ReachedDays_Warning}", "注： ゲーム内での最大到達日数は、現在の期間のみ変更できます。" },
+
+            { "{TrophyEditor}", "グラフィティのエディタ" },
+            { "{TurfWarEditor}", "スクランブルバトルのエディタ" },
+            { "{BonusDropRatePlus}", "DROP RATE +" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -558,6 +566,10 @@ namespace Scramble.Classes
             { "{FurthestDay:}", "Máximo día alcanzado:" },
             { "{ReachedDays_Warning}", "Nota: Por el momento, solo puedes cambiar el máximo día alcanzado." },
 
+            { "{TrophyEditor}", "Editar grafitis" },
+            { "{TurfWarEditor}", "Editar cruzadas" },
+            { "{BonusDropRatePlus}", "Tasa Botín +" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
             { "DLG_SaveDataAlreadyOpened", "Ya hay un archivo abierto. Si no guardaste los cambios, se perderán." },
@@ -750,6 +762,10 @@ namespace Scramble.Classes
             { "{CurrentDay:}", "Jour en cours :" },
             { "{FurthestDay:}", "Jour maximale atteint :" },
             { "{ReachedDays_Warning}", "Note : Pour le moment, vous ne pouvez modifier que votre jour maximum atteint." },
+
+            { "{TrophyEditor}", "Éditer graffitis" },
+            { "{TurfWarEditor}", "Éditer tabassage" },
+            { "{BonusDropRatePlus}", "TAUX BUTIN +" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },

@@ -93,10 +93,5 @@ namespace Scramble.Forms
             SelectedSlot.RetrieveDayData();
             ReadyForUserInput = true;
         }
-
-        private void DayEditor_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Sukuranburu.DisplayCurrentDay();
-        }
     }
 }

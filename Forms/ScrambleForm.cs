@@ -160,11 +160,14 @@ namespace Scramble
             if (SelectedSlot != null)
             {
                 DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
-                DisplayCurrentDay();
             }
 
             CaloriesEaten_Label.Text = GetString("{CaloriesEaten}");
             OverateCheckbox.Text = GetString("{Overate}");
+
+            OpenTrophyEdit_Button.Text = GetString("{TrophyEditor}");
+            OpenTurfWar_Edit.Text = GetString("{TurfWarEditor}");
+            BonusDropRate_Label.Text = GetString("{BonusDropRatePlus}");
         }
 
         private void PopulateImageLists()
@@ -328,8 +331,6 @@ namespace Scramble
             SerializePartyMembers();
             UpdateCaloriesPercentage();
 
-            DisplayCurrentDay();
-
             ReadyForUserInput = true;
         }
 
@@ -421,11 +422,6 @@ namespace Scramble
             }
         }
 
-        public void DisplayCurrentDay()
-        {
-            CurrentDay_Label.Text = GetDayName(SelectedSlot.CurrentDay);
-        }
-
         private void OpenSaveFileButton_Click(object sender, EventArgs e)
         {
             if (!ReadyForUserInput)
@@ -473,7 +469,7 @@ namespace Scramble
                     SelectSlot(SaveSlotsListBox.SelectedIndex);
                 }
 
-                ChangeFormSize(435, 760);
+                ChangeFormSize(472, 760);
                 Text = "Scramble — NEO TWEWY Save Editor";
             }
 
@@ -996,6 +992,16 @@ namespace Scramble
             ScaleFactor = DeviceDpi / 96;
             Task.Run(PopulateImageLists); // Probably a bad idea but let's test it.
             ChangeFormSize(Height, Width);
+        }
+
+        private void ThankYou_Label_MouseEnter(object sender, EventArgs e)
+        {
+            ThankYou_Label.ForeColor = Color.SeaGreen;
+        }
+
+        private void ThankYou_Label_MouseLeave(object sender, EventArgs e)
+        {
+            ThankYou_Label.ForeColor = SystemColors.Control;
         }
     }
 }

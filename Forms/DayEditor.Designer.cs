@@ -110,7 +110,6 @@ namespace Scramble.Forms
             this.MaximizeBox = false;
             this.Name = "DayEditor";
             this.Text = "{DayEditor}";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DayEditor_FormClosed);
             this.ReachedDays_GroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
