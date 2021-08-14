@@ -48,7 +48,14 @@ namespace Scramble.Forms
             }
 
             CurrentDay_ComboBox.SelectedIndex = SelectedSlot.CurrentDay;
-            FurthestDay_ComboBox.SelectedIndex = SelectedSlot.FurthestDay;
+            if (SelectedSlot.FurthestDay > 24)
+            {
+                FurthestDay_ComboBox.SelectedIndex = 24;
+            }
+            else
+            {
+                FurthestDay_ComboBox.SelectedIndex = SelectedSlot.FurthestDay;
+            }
         }
 
         private void CurrentDay_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,7 +91,14 @@ namespace Scramble.Forms
             if (FurthestDay_ComboBox.SelectedIndex < CurrentDay_ComboBox.SelectedIndex)
             {
                 Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_FurthestDayCantBeLowerThanCurrentDay"));
-                FurthestDay_ComboBox.SelectedIndex = SelectedSlot.FurthestDay; // return to previous value.
+                if (SelectedSlot.FurthestDay > 24)
+                {
+                    FurthestDay_ComboBox.SelectedIndex = 24;
+                }
+                else
+                {
+                    FurthestDay_ComboBox.SelectedIndex = SelectedSlot.FurthestDay; // return to previous value.
+                }
                 ReadyForUserInput = true;
                 return;
             }
