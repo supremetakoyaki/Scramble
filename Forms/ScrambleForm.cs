@@ -167,7 +167,6 @@ namespace Scramble
 
             OpenTrophyEdit_Button.Text = GetString("{TrophyEditor}");
             OpenTurfWar_Edit.Text = GetString("{TurfWarEditor}");
-            BonusDropRate_Label.Text = GetString("{BonusDropRatePlus}");
         }
 
         private void PopulateImageLists()

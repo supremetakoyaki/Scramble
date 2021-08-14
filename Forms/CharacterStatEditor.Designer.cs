@@ -61,12 +61,17 @@ namespace Scramble.Forms
             this.PlayerEarnedLabel = new System.Windows.Forms.Label();
             this.AllCharactersCheckbox = new System.Windows.Forms.CheckBox();
             this.InYourPartyLabel = new System.Windows.Forms.Label();
+            this.BonusDropRate_Label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PlusLabel5 = new System.Windows.Forms.Label();
+            this.BonusDropRate_NUpDown = new System.Windows.Forms.NumericUpDown();
             this.CharacterTabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Character_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HpValueUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AtkValueUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefValueUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StyleValueUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BonusDropRate_NUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // CharacterTabControl
@@ -156,7 +161,7 @@ namespace Scramble.Forms
             // 
             this.Character_PictureBox.Location = new System.Drawing.Point(12, 53);
             this.Character_PictureBox.Name = "Character_PictureBox";
-            this.Character_PictureBox.Size = new System.Drawing.Size(170, 300);
+            this.Character_PictureBox.Size = new System.Drawing.Size(179, 316);
             this.Character_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.Character_PictureBox.TabIndex = 0;
             this.Character_PictureBox.TabStop = false;
@@ -358,7 +363,7 @@ namespace Scramble.Forms
             // MaxStatsButton
             // 
             this.MaxStatsButton.BackColor = System.Drawing.Color.GhostWhite;
-            this.MaxStatsButton.Location = new System.Drawing.Point(203, 312);
+            this.MaxStatsButton.Location = new System.Drawing.Point(203, 328);
             this.MaxStatsButton.Name = "MaxStatsButton";
             this.MaxStatsButton.Size = new System.Drawing.Size(182, 41);
             this.MaxStatsButton.TabIndex = 5;
@@ -398,7 +403,7 @@ namespace Scramble.Forms
             // 
             // AllCharactersCheckbox
             // 
-            this.AllCharactersCheckbox.Location = new System.Drawing.Point(391, 312);
+            this.AllCharactersCheckbox.Location = new System.Drawing.Point(391, 328);
             this.AllCharactersCheckbox.Name = "AllCharactersCheckbox";
             this.AllCharactersCheckbox.Size = new System.Drawing.Size(111, 41);
             this.AllCharactersCheckbox.TabIndex = 6;
@@ -416,12 +421,62 @@ namespace Scramble.Forms
             this.InYourPartyLabel.Text = "{InYourParty}";
             this.InYourPartyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BonusDropRate_Label
+            // 
+            this.BonusDropRate_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.BonusDropRate_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
+            this.BonusDropRate_Label.Location = new System.Drawing.Point(203, 296);
+            this.BonusDropRate_Label.Name = "BonusDropRate_Label";
+            this.BonusDropRate_Label.Size = new System.Drawing.Size(80, 15);
+            this.BonusDropRate_Label.TabIndex = 24;
+            this.BonusDropRate_Label.Text = "{BonusDropRate:}";
+            this.BonusDropRate_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(303, 296);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 15);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "0";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // PlusLabel5
+            // 
+            this.PlusLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PlusLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(10)))), ((int)(((byte)(140)))));
+            this.PlusLabel5.Location = new System.Drawing.Point(368, 296);
+            this.PlusLabel5.Name = "PlusLabel5";
+            this.PlusLabel5.Size = new System.Drawing.Size(23, 15);
+            this.PlusLabel5.TabIndex = 26;
+            this.PlusLabel5.Text = "{+}";
+            this.PlusLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BonusDropRate_NUpDown
+            // 
+            this.BonusDropRate_NUpDown.Location = new System.Drawing.Point(422, 296);
+            this.BonusDropRate_NUpDown.Maximum = new decimal(new int[] {
+            19,
+            0,
+            0,
+            0});
+            this.BonusDropRate_NUpDown.Name = "BonusDropRate_NUpDown";
+            this.BonusDropRate_NUpDown.Size = new System.Drawing.Size(80, 23);
+            this.BonusDropRate_NUpDown.TabIndex = 25;
+            this.BonusDropRate_NUpDown.ValueChanged += new System.EventHandler(this.BonusDropRate_NUpDown_ValueChanged);
+            // 
             // CharacterStatEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(519, 365);
+            this.ClientSize = new System.Drawing.Size(519, 381);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.PlusLabel5);
+            this.Controls.Add(this.BonusDropRate_NUpDown);
+            this.Controls.Add(this.BonusDropRate_Label);
             this.Controls.Add(this.InYourPartyLabel);
             this.Controls.Add(this.AllCharactersCheckbox);
             this.Controls.Add(this.PlayerEarnedLabel);
@@ -457,6 +512,7 @@ namespace Scramble.Forms
             ((System.ComponentModel.ISupportInitialize)(this.AtkValueUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefValueUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StyleValueUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BonusDropRate_NUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -495,5 +551,9 @@ namespace Scramble.Forms
         private System.Windows.Forms.Label PlayerEarnedLabel;
         private System.Windows.Forms.CheckBox AllCharactersCheckbox;
         private System.Windows.Forms.Label InYourPartyLabel;
+        private System.Windows.Forms.Label BonusDropRate_Label;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label PlusLabel5;
+        private System.Windows.Forms.NumericUpDown BonusDropRate_NUpDown;
     }
 }

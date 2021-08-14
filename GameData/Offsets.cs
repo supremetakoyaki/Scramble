@@ -44,7 +44,8 @@
         public const int Character1_Hp = 14714; // int 32, base value is in BattleCharacter.txt
         public const int Character1_Atk = 14718; // int 32, base value is in BattleCharacter.txt
         public const int Character1_Def = 14722; // int 32, base value is in BattleCharacter.txt
-        public const int Character1_Style = 14726; // int 32, base value is in BattlePlayer.txt
+        public const int Character1_Style = 14726; // int 16, base value is in BattlePlayer.txt
+        public const int Character1_DropRateBonus = 14728; // int 16
 
         // Social tree
         public const int Fp = 15056; // actually an int32.

@@ -52,8 +52,6 @@
             this.OpenSocialEditButton = new System.Windows.Forms.Button();
             this.OpenInvEditorButton = new System.Windows.Forms.Button();
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
-            this.BonusDropRate_NumUpDown = new System.Windows.Forms.NumericUpDown();
-            this.BonusDropRate_Label = new System.Windows.Forms.Label();
             this.OpenTurfWar_Edit = new System.Windows.Forms.Button();
             this.OpenTrophyEdit_Button = new System.Windows.Forms.Button();
             this.OpenDayEditor_Button = new System.Windows.Forms.Button();
@@ -90,7 +88,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.FpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpNumericUpDown)).BeginInit();
             this.GeneralGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BonusDropRate_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Calories_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember6_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember5_PictureBox)).BeginInit();
@@ -191,7 +188,7 @@
             this.AboutLabel.Name = "AboutLabel";
             this.AboutLabel.Size = new System.Drawing.Size(76, 15);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = "v0.8";
+            this.AboutLabel.Text = "v0.7.2";
             this.AboutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
@@ -371,8 +368,6 @@
             // 
             // GeneralGroupBox
             // 
-            this.GeneralGroupBox.Controls.Add(this.BonusDropRate_NumUpDown);
-            this.GeneralGroupBox.Controls.Add(this.BonusDropRate_Label);
             this.GeneralGroupBox.Controls.Add(this.OpenTurfWar_Edit);
             this.GeneralGroupBox.Controls.Add(this.OpenTrophyEdit_Button);
             this.GeneralGroupBox.Controls.Add(this.OpenDayEditor_Button);
@@ -416,28 +411,6 @@
             this.GeneralGroupBox.TabStop = false;
             this.GeneralGroupBox.Text = "This selected slot";
             // 
-            // BonusDropRate_NumUpDown
-            // 
-            this.BonusDropRate_NumUpDown.Location = new System.Drawing.Point(96, 270);
-            this.BonusDropRate_NumUpDown.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.BonusDropRate_NumUpDown.Name = "BonusDropRate_NumUpDown";
-            this.BonusDropRate_NumUpDown.Size = new System.Drawing.Size(98, 23);
-            this.BonusDropRate_NumUpDown.TabIndex = 33;
-            // 
-            // BonusDropRate_Label
-            // 
-            this.BonusDropRate_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BonusDropRate_Label.ForeColor = System.Drawing.Color.Indigo;
-            this.BonusDropRate_Label.Location = new System.Drawing.Point(6, 273);
-            this.BonusDropRate_Label.Name = "BonusDropRate_Label";
-            this.BonusDropRate_Label.Size = new System.Drawing.Size(84, 15);
-            this.BonusDropRate_Label.TabIndex = 34;
-            this.BonusDropRate_Label.Text = "Drop Rate +";
-            // 
             // OpenTurfWar_Edit
             // 
             this.OpenTurfWar_Edit.Enabled = false;
@@ -470,7 +443,7 @@
             // 
             // OverateCheckbox
             // 
-            this.OverateCheckbox.Location = new System.Drawing.Point(256, 239);
+            this.OverateCheckbox.Location = new System.Drawing.Point(95, 270);
             this.OverateCheckbox.Name = "OverateCheckbox";
             this.OverateCheckbox.Size = new System.Drawing.Size(126, 24);
             this.OverateCheckbox.TabIndex = 15;
@@ -502,7 +475,7 @@
             // 
             this.Calories_NumUpDown.Location = new System.Drawing.Point(96, 241);
             this.Calories_NumUpDown.Maximum = new decimal(new int[] {
-            6000,
+            12000,
             0,
             0,
             0});
@@ -765,7 +738,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ExpNumericUpDown)).EndInit();
             this.GeneralGroupBox.ResumeLayout(false);
             this.GeneralGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BonusDropRate_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Calories_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember6_PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember5_PictureBox)).EndInit();
@@ -833,7 +805,5 @@
         private System.Windows.Forms.Button OpenTurfWar_Edit;
         private System.Windows.Forms.Button OpenTrophyEdit_Button;
         private System.Windows.Forms.Label ThankYou_Label;
-        private System.Windows.Forms.NumericUpDown BonusDropRate_NumUpDown;
-        private System.Windows.Forms.Label BonusDropRate_Label;
     }
 }

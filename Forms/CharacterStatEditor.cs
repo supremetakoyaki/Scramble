@@ -17,6 +17,7 @@ namespace Scramble.Forms
         private bool ReadyForUserInput = false;
 
         public const ushort MAXIMUM_VALUE = 999;
+        public const ushort MAXIMUM_DROPRATE = 19;
 
         public CharacterStatEditor()
         {
@@ -55,10 +56,12 @@ namespace Scramble.Forms
             AtkLabel.Text = Sukuranburu.GetString("{Atk:}");
             DefLabel.Text = Sukuranburu.GetString("{Def:}");
             StyleLabel.Text = Sukuranburu.GetString("{Style:}");
+            BonusDropRate_Label.Text = Sukuranburu.GetString("{DropRate:}");
             PlusLabel.Text = Sukuranburu.GetString("{+}");
             PlusLabel2.Text = Sukuranburu.GetString("{+}");
             PlusLabel3.Text = Sukuranburu.GetString("{+}");
             PlusLabel4.Text = Sukuranburu.GetString("{+}");
+            PlusLabel5.Text = Sukuranburu.GetString("{+}");
             MaxStatsButton.Text = Sukuranburu.GetString("{MaxStats}");
             AllCharactersCheckbox.Text = Sukuranburu.GetString("{AllCharacters}");
         }
@@ -99,7 +102,8 @@ namespace Scramble.Forms
             int PlayerHp = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Hp + OffsetSum);
             int PlayerAtk = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Atk + OffsetSum);
             int PlayerDef = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Def + OffsetSum);
-            int PlayerStyle = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Style + OffsetSum);
+            ushort PlayerStyle = SelectedSlot.RetrieveOffset_UInt16(Offsets.Character1_Style + OffsetSum);
+            ushort PlayerDropRate = SelectedSlot.RetrieveOffset_UInt16(Offsets.Character1_DropRateBonus + OffsetSum);
 
             if (PlayerHp < HpValueUpDown.Minimum)
             {
@@ -130,17 +134,27 @@ namespace Scramble.Forms
 
             if (PlayerStyle < StyleValueUpDown.Minimum)
             {
-                PlayerStyle = (int)StyleValueUpDown.Minimum;
+                PlayerStyle = (ushort)StyleValueUpDown.Minimum;
             }
             else if (PlayerStyle > StyleValueUpDown.Maximum)
             {
-                PlayerStyle = (int)StyleValueUpDown.Maximum;
+                PlayerStyle = (ushort)StyleValueUpDown.Maximum;
+            }
+
+            if (PlayerDropRate < BonusDropRate_NUpDown.Minimum)
+            {
+                PlayerDropRate = (ushort)BonusDropRate_NUpDown.Minimum;
+            }
+            else if (PlayerDropRate > BonusDropRate_NUpDown.Maximum)
+            {
+                PlayerDropRate = (ushort)BonusDropRate_NUpDown.Maximum;
             }
 
             HpValueUpDown.Value = PlayerHp;
             AtkValueUpDown.Value = PlayerAtk;
             DefValueUpDown.Value = PlayerDef;
             StyleValueUpDown.Value = PlayerStyle;
+            BonusDropRate_NUpDown.Value = PlayerDropRate;
         }
 
         private void UpdateHp(int AmountToSet, int CharacterId)
@@ -161,11 +175,18 @@ namespace Scramble.Forms
             SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Def + OffsetSum, AmountToSet);
         }
 
-        private void UpdateStyle(int AmountToSet, int CharacterId)
+        private void UpdateStyle(ushort AmountToSet, int CharacterId)
         {
             int OffsetSum = (CharacterId - 1) * 20;
-            SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Style + OffsetSum, AmountToSet);
+            SelectedSlot.UpdateOffset_UInt16(Offsets.Character1_Style + OffsetSum, AmountToSet);
         }
+
+        private void UpdateDropRate(ushort AmountToSet, int CharacterId)
+        {
+            int OffsetSum = (CharacterId - 1) * 20;
+            SelectedSlot.UpdateOffset_UInt16(Offsets.Character1_DropRateBonus + OffsetSum, AmountToSet);
+        }
+
 
         private void CharacterTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -195,11 +216,11 @@ namespace Scramble.Forms
 
             if (HpValueUpDown.Value < HpValueUpDown.Minimum)
             {
-                HpValueUpDown.Value = (int)HpValueUpDown.Minimum;
+                HpValueUpDown.Value = HpValueUpDown.Minimum;
             }
             else if (HpValueUpDown.Value > HpValueUpDown.Maximum)
             {
-                HpValueUpDown.Value = (int)HpValueUpDown.Maximum;
+                HpValueUpDown.Value = HpValueUpDown.Maximum;
             }
 
             UpdateHp((int)HpValueUpDown.Value, SelectedCharacterId);
@@ -218,11 +239,11 @@ namespace Scramble.Forms
 
             if (AtkValueUpDown.Value < AtkValueUpDown.Minimum)
             {
-                AtkValueUpDown.Value = (int)AtkValueUpDown.Minimum;
+                AtkValueUpDown.Value = AtkValueUpDown.Minimum;
             }
             else if (AtkValueUpDown.Value > AtkValueUpDown.Maximum)
             {
-                AtkValueUpDown.Value = (int)AtkValueUpDown.Maximum;
+                AtkValueUpDown.Value = AtkValueUpDown.Maximum;
             }
 
             UpdateAtk((int)AtkValueUpDown.Value, SelectedCharacterId);
@@ -241,11 +262,11 @@ namespace Scramble.Forms
 
             if (DefValueUpDown.Value < DefValueUpDown.Minimum)
             {
-                DefValueUpDown.Value = (int)DefValueUpDown.Minimum;
+                DefValueUpDown.Value = DefValueUpDown.Minimum;
             }
             else if (DefValueUpDown.Value > DefValueUpDown.Maximum)
             {
-                DefValueUpDown.Value = (int)DefValueUpDown.Maximum;
+                DefValueUpDown.Value = DefValueUpDown.Maximum;
             }
 
             UpdateDef((int)DefValueUpDown.Value, SelectedCharacterId);
@@ -264,14 +285,37 @@ namespace Scramble.Forms
 
             if (StyleValueUpDown.Value < StyleValueUpDown.Minimum)
             {
-                StyleValueUpDown.Value = (int)StyleValueUpDown.Minimum;
+                StyleValueUpDown.Value = StyleValueUpDown.Minimum;
             }
             else if (StyleValueUpDown.Value > StyleValueUpDown.Maximum)
             {
-                StyleValueUpDown.Value = (int)StyleValueUpDown.Maximum;
+                StyleValueUpDown.Value = StyleValueUpDown.Maximum;
             }
 
-            UpdateStyle((int)StyleValueUpDown.Value, SelectedCharacterId);
+            UpdateStyle((ushort)StyleValueUpDown.Value, SelectedCharacterId);
+
+            ReadyForUserInput = true;
+        }
+
+        private void BonusDropRate_NUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (BonusDropRate_NUpDown.Value < BonusDropRate_NUpDown.Minimum)
+            {
+                BonusDropRate_NUpDown.Value = BonusDropRate_NUpDown.Minimum;
+            }
+            else if (BonusDropRate_NUpDown.Value > BonusDropRate_NUpDown.Maximum)
+            {
+                BonusDropRate_NUpDown.Value = BonusDropRate_NUpDown.Maximum;
+            }
+
+            UpdateDropRate((ushort)BonusDropRate_NUpDown.Value, SelectedCharacterId);
 
             ReadyForUserInput = true;
         }
@@ -293,6 +337,7 @@ namespace Scramble.Forms
                     UpdateAtk(MAXIMUM_VALUE, Id);
                     UpdateDef(MAXIMUM_VALUE, Id);
                     UpdateStyle(MAXIMUM_VALUE, Id);
+                    UpdateDropRate(MAXIMUM_DROPRATE, Id);
                 }
             }
             else
@@ -301,12 +346,14 @@ namespace Scramble.Forms
                 UpdateAtk(MAXIMUM_VALUE, SelectedCharacterId);
                 UpdateDef(MAXIMUM_VALUE, SelectedCharacterId);
                 UpdateStyle(MAXIMUM_VALUE, SelectedCharacterId);
+                UpdateDropRate(MAXIMUM_DROPRATE, SelectedCharacterId);
             }
 
             HpValueUpDown.Value = MAXIMUM_VALUE;
             AtkValueUpDown.Value = MAXIMUM_VALUE;
             DefValueUpDown.Value = MAXIMUM_VALUE;
             StyleValueUpDown.Value = MAXIMUM_VALUE;
+            BonusDropRate_NUpDown.Value = MAXIMUM_DROPRATE;
 
             ReadyForUserInput = true;
         }

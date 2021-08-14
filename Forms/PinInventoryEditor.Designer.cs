@@ -304,7 +304,7 @@ namespace Scramble.Forms
             this.ExperienceNUpDown.Enabled = false;
             this.ExperienceNUpDown.Location = new System.Drawing.Point(79, 593);
             this.ExperienceNUpDown.Maximum = new decimal(new int[] {
-            99999,
+            9999999,
             0,
             0,
             0});

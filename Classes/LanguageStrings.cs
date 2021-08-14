@@ -174,7 +174,7 @@ namespace Scramble.Classes
 
             { "{TrophyEditor}", "Graffiti Editor" },
             { "{TurfWarEditor}", "Turf War Editor" },
-            { "{BonusDropRatePlus}", "Drop Rate +" },
+            { "{DropRate:}", "DROP RATE:" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
@@ -371,7 +371,7 @@ namespace Scramble.Classes
 
             { "{TrophyEditor}", "グラフィティのエディタ" },
             { "{TurfWarEditor}", "スクランブルバトルのエディタ" },
-            { "{BonusDropRatePlus}", "DROP RATE +" },
+            { "{DropRate:}", "DROP RATE：" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -568,7 +568,7 @@ namespace Scramble.Classes
 
             { "{TrophyEditor}", "Editar grafitis" },
             { "{TurfWarEditor}", "Editar cruzadas" },
-            { "{BonusDropRatePlus}", "Tasa Botín +" },
+            { "{DropRate:}", "TASA DE BOTÍN:" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
@@ -765,7 +765,7 @@ namespace Scramble.Classes
 
             { "{TrophyEditor}", "Éditer graffitis" },
             { "{TurfWarEditor}", "Éditer tabassage" },
-            { "{BonusDropRatePlus}", "TAUX BUTIN +" },
+            { "{DropRate:}", "TAUX DE BUTIN :" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },
