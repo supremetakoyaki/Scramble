@@ -568,7 +568,7 @@ namespace Scramble.Classes
 
             { "{TrophyEditor}", "Editar grafitis" },
             { "{TurfWarEditor}", "Editar cruzadas" },
-            { "{DropRate:}", "TASA DE BOTÍN:" },
+            { "{DropRate:}", "TASA BOTÍN:" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
@@ -765,7 +765,7 @@ namespace Scramble.Classes
 
             { "{TrophyEditor}", "Éditer graffitis" },
             { "{TurfWarEditor}", "Éditer tabassage" },
-            { "{DropRate:}", "TAUX DE BUTIN :" },
+            { "{DropRate:}", "TAUX BUTIN :" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },
