@@ -98,7 +98,7 @@ namespace Scramble
             LanguageSelectComboBox.Text = "English";
             ReadyForUserInput = true;
 
-            Task.Run(PopulateImageLists); // Probably a bad idea but let's test it.
+            PopulateImageLists();
             Task.Run(TryCheckForUpdates);
         }
 
@@ -990,8 +990,8 @@ namespace Scramble
         private void ScrambleForm_DpiChanged(object sender, DpiChangedEventArgs e)
         {
             ScaleFactor = DeviceDpi / 96;
-            Task.Run(PopulateImageLists); // Probably a bad idea but let's test it.
             ChangeFormSize(Height, Width);
+            PopulateImageLists(); // Probably a bad idea but let's test it.
         }
 
         private void ThankYou_Label_MouseEnter(object sender, EventArgs e)

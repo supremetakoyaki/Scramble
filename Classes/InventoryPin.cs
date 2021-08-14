@@ -18,7 +18,7 @@ namespace Scramble.Classes
             set;
         }
 
-        public ushort Experience
+        public uint Experience
         {
             get;
             set;
@@ -38,7 +38,7 @@ namespace Scramble.Classes
 
         public PinItem BasePin => Program.Sukuranburu.GetItemManager().GetPinItem(PinId);
 
-        public InventoryPin(ushort PinId, ushort Level, ushort Experience)
+        public InventoryPin(ushort PinId, ushort Level, uint Experience)
         {
             this.PinId = PinId;
             this.Level = Level;

@@ -228,6 +228,15 @@ namespace Scramble.Classes
             Data[Offset + 3] = UpdatedInt32[3];
         }
 
+        public void UpdateOffset_UInt32(int Offset, uint Value)
+        {
+            byte[] UpdatedUInt32 = BitConverter.GetBytes(Value);
+            Data[Offset] = UpdatedUInt32[0];
+            Data[Offset + 1] = UpdatedUInt32[1];
+            Data[Offset + 2] = UpdatedUInt32[2];
+            Data[Offset + 3] = UpdatedUInt32[3];
+        }
+
         public void FillOffset_Int32(int Offset, int Length, byte Value)
         {
             for (int i = 0; i < Length; i++)
@@ -244,6 +253,11 @@ namespace Scramble.Classes
         public ushort RetrieveOffset_UInt16(int Offset)
         {
             return BitConverter.ToUInt16(Data, Offset);
+        }
+
+        public uint RetrieveOffset_UInt32(int Offset)
+        {
+            return BitConverter.ToUInt32(Data, Offset);
         }
 
         public int RetrieveOffset_Int32(int Offset)
