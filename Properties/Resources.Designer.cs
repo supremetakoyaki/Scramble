@@ -153,9 +153,9 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Legacy_Beat {
+        internal static System.Drawing.Bitmap Legacy_PC00 {
             get {
-                object obj = ResourceManager.GetObject("Legacy_Beat", resourceCulture);
+                object obj = ResourceManager.GetObject("Legacy_PC00", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Legacy_Joshua {
+        internal static System.Drawing.Bitmap Legacy_PC01 {
             get {
-                object obj = ResourceManager.GetObject("Legacy_Joshua", resourceCulture);
+                object obj = ResourceManager.GetObject("Legacy_PC01", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Legacy_Neku {
+        internal static System.Drawing.Bitmap Legacy_PC02 {
             get {
-                object obj = ResourceManager.GetObject("Legacy_Neku", resourceCulture);
+                object obj = ResourceManager.GetObject("Legacy_PC02", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Legacy_Shiki {
+        internal static System.Drawing.Bitmap Legacy_PC03 {
             get {
-                object obj = ResourceManager.GetObject("Legacy_Shiki", resourceCulture);
+                object obj = ResourceManager.GetObject("Legacy_PC03", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -97,6 +97,16 @@ namespace Scramble.Legacy
             return BitConverter.ToSingle(Data, Offset);
         }
 
+        public void DumpData(string FilePath)
+        {
+            File.WriteAllBytes(FilePath, Data);
+        }
+
+        public void ImportData(byte[] Import)
+        {
+            Data = Import;
+        }
+
         public byte[] ToBytes()
         {
             using (MemoryStream Stream = new MemoryStream())

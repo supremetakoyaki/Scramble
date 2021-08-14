@@ -1,16 +1,9 @@
 ﻿using NTwewyDb;
-using Scramble.Classes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scramble.Legacy
@@ -22,6 +15,8 @@ namespace Scramble.Legacy
             get;
             private set;
         }
+
+        private LegacyStatsEditor StatsEditor;
 
         public bool RequiresRescaling => ScaleFactor != 1.0;
 
@@ -118,7 +113,7 @@ namespace Scramble.Legacy
                     return;
                 }
 
-                ChangeFormSize(209, 500);
+                ChangeFormSize(270, 500);
                 Text = "Scramble — TWEWY Final Remix Save Editor";
             }
 
@@ -198,6 +193,82 @@ namespace Scramble.Legacy
                 else
                 {
                     throw;
+                }
+            }
+        }
+
+        private void OpenStatsEditor_Button_Click(object sender, EventArgs e)
+        {
+            StatsEditor = new LegacyStatsEditor();
+            StatsEditor.ShowDialog();
+        }
+
+        private void ThankYou_Label_MouseEnter(object sender, EventArgs e)
+        {
+            ThankYou_Label.ForeColor = Color.DarkSlateBlue;
+        }
+
+        private void ThankYou_Label_MouseLeave(object sender, EventArgs e)
+        {
+            ThankYou_Label.ForeColor = SystemColors.Control;
+        }
+
+        private void DumpData_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            SaveFileDialog DumpDialog = new SaveFileDialog
+            {
+                Filter = "Scramble TWEWY Final Remix Data (*.finalremix)|*.finalremix",
+                DefaultExt = "finalremix",
+                AddExtension = true
+            };
+
+            if (DumpDialog.ShowDialog() == DialogResult.OK)
+            {
+                OpenedSaveFile.DumpData(DumpDialog.FileName);
+                ShowNotice("The save data has been dumped successfully.");
+            }
+        }
+
+        private void ImportData_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            OpenFileDialog ImportDialog = new OpenFileDialog
+            {
+                Filter = "Scramble TWEWY Final Remix Data (*.finalremix)|*.finalremix",
+                DefaultExt = "finalremix",
+                AddExtension = true
+            };
+
+            if (ImportDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    byte[] ImportedData = File.ReadAllBytes(ImportDialog.FileName);
+
+                    if (ImportedData.Length != 51188)
+                    {
+                        ShowWarning("This is an invalid data file. Size must be 51,188 bytes.");
+                        return;
+                    }
+
+                    if (ShowPrompt("Do you wanna overwrite the current data for this save file?"))
+                    {
+                        OpenedSaveFile.ImportData(ImportedData);
+                    }
+                }
+                catch (Exception Exc)
+                {
+                    ShowWarning(Exc.Message);
+                    return;
                 }
             }
         }
