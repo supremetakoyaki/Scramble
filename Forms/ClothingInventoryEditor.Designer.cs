@@ -30,6 +30,7 @@ namespace Scramble.Forms
         private void InitializeComponent()
         {
             this.ClothingInvGroupBox = new System.Windows.Forms.GroupBox();
+            this.debug_CountLabel = new System.Windows.Forms.Label();
             this.AmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.AmountLabel = new System.Windows.Forms.Label();
             this.ReqStyleValueLabel = new System.Windows.Forms.Label();
@@ -65,7 +66,6 @@ namespace Scramble.Forms
             this.AllClothingItemsListView = new System.Windows.Forms.ListView();
             this.GlobalClthNameHeader = new System.Windows.Forms.ColumnHeader();
             this.GlobalClthIdHeader = new System.Windows.Forms.ColumnHeader();
-            this.debug_CountLabel = new System.Windows.Forms.Label();
             this.ClothingInvGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrandPictureBox)).BeginInit();
@@ -109,6 +109,16 @@ namespace Scramble.Forms
             this.ClothingInvGroupBox.TabIndex = 0;
             this.ClothingInvGroupBox.TabStop = false;
             this.ClothingInvGroupBox.Text = "{MyClothingInventory}";
+            // 
+            // debug_CountLabel
+            // 
+            this.debug_CountLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.debug_CountLabel.Location = new System.Drawing.Point(550, 374);
+            this.debug_CountLabel.Name = "debug_CountLabel";
+            this.debug_CountLabel.Size = new System.Drawing.Size(53, 17);
+            this.debug_CountLabel.TabIndex = 41;
+            this.debug_CountLabel.Text = "0";
+            this.debug_CountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AmountNumericUpDown
             // 
@@ -446,7 +456,6 @@ namespace Scramble.Forms
             this.AllClothingItemsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.AllClothingItemsListView.HideSelection = false;
             this.AllClothingItemsListView.Location = new System.Drawing.Point(6, 22);
-            this.AllClothingItemsListView.MultiSelect = false;
             this.AllClothingItemsListView.Name = "AllClothingItemsListView";
             this.AllClothingItemsListView.Size = new System.Drawing.Size(253, 509);
             this.AllClothingItemsListView.TabIndex = 5;
@@ -465,16 +474,6 @@ namespace Scramble.Forms
             this.GlobalClthIdHeader.Text = "ID";
             this.GlobalClthIdHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.GlobalClthIdHeader.Width = 40;
-            // 
-            // debug_CountLabel
-            // 
-            this.debug_CountLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.debug_CountLabel.Location = new System.Drawing.Point(550, 374);
-            this.debug_CountLabel.Name = "debug_CountLabel";
-            this.debug_CountLabel.Size = new System.Drawing.Size(53, 17);
-            this.debug_CountLabel.TabIndex = 41;
-            this.debug_CountLabel.Text = "0";
-            this.debug_CountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ClothingInventoryEditor
             // 

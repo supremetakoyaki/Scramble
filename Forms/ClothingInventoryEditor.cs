@@ -3,6 +3,7 @@ using Scramble.Classes;
 using Scramble.GameData;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -49,6 +50,11 @@ namespace Scramble.Forms
             if (!Sukuranburu.ShowSpoilers)
             {
                 LoadSpoilerCharacters();
+            }
+
+            if (!Debugger.IsAttached)
+            {
+                debug_CountLabel.Visible = false;
             }
 
             DisplayLanguageStrings();
@@ -351,7 +357,6 @@ namespace Scramble.Forms
         private void AddClothing(ListViewItem Item, bool Individual) //individual= adding this piece through "Add pin" button.
         {
             ushort ClothingId = Convert.ToUInt16(Item.SubItems[1].Text);
-            ClothingItem ClothingItem = Sukuranburu.GetItemManager().GetClothingItem(ClothingId);
 
             InventoryFashion ClothingToAdd = new InventoryFashion(ClothingId);
 
@@ -367,11 +372,18 @@ namespace Scramble.Forms
             if (InventoryClothes.Contains(ClothingToAdd))
             {
                 int Index = InventoryClothes.IndexOf(ClothingToAdd);
+                if (InventoryClothes[Index].Amount > 8)
+                {
+                    if (Individual)
+                    {
+                        Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_YouCantAddMoreClothes"));
+                    }
+                    return;
+                }
+
                 if (Individual && (TotalCount >= MAXIMUM || InventoryClothes[Index].Amount == 9))
                 {
                     Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_YouCantAddMoreClothes"));
-
-                    ReadyForUserInput = true;
                     return;
                 }
 
@@ -578,16 +590,17 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            if (MyClothingInvListView.SelectedIndices.Count < 1)
+            if (AllClothingItemsListView.SelectedIndices.Count < 1)
             {
                 Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_NoClothingToAddSelected"));
                 ReadyForUserInput = true;
                 return;
             }
 
-            ListViewItem Item = AllClothingItemsListView.SelectedItems[0];
-
-            AddClothing(Item, true);
+            foreach (ListViewItem Item in AllClothingItemsListView.SelectedItems)
+            {
+                AddClothing(Item, true);
+            }
 
             SelectClothing();
 
