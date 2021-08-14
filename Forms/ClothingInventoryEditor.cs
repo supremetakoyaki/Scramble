@@ -465,6 +465,7 @@ namespace Scramble.Forms
         private void MyClothingInvListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectClothing();
+            debug_CountLabel.Text = TotalCount.ToString();
         }
 
         private void AmountNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -502,6 +503,7 @@ namespace Scramble.Forms
 
             UpdateAmount();
 
+            debug_CountLabel.Text = TotalCount.ToString();
             ReadyForUserInput = true;
         }
 
@@ -511,6 +513,8 @@ namespace Scramble.Forms
             {
                 int ThisIndex = MyClothingInvListView.SelectedIndices[0];
                 InventoryFashion Clothing = InventoryClothes[ThisIndex];
+
+                TotalCount -= Clothing.Amount;
 
                 MyClothingInvListView.Items.RemoveAt(ThisIndex);
                 InventoryClothes.Remove(Clothing);
@@ -538,6 +542,8 @@ namespace Scramble.Forms
                     SelectClothing();
                 }
             }
+
+            debug_CountLabel.Text = TotalCount.ToString();
         }
 
         private void RemoveAllClothingButton_Click(object sender, EventArgs e)
@@ -559,6 +565,7 @@ namespace Scramble.Forms
                 SelectClothing();
             }
 
+            debug_CountLabel.Text = TotalCount.ToString();
             ReadyForUserInput = true;
         }
 
@@ -583,6 +590,8 @@ namespace Scramble.Forms
             AddClothing(Item, true);
 
             SelectClothing();
+
+            debug_CountLabel.Text = TotalCount.ToString();
             ReadyForUserInput = true;
         }
 
@@ -607,6 +616,8 @@ namespace Scramble.Forms
             }
 
             SelectClothing();
+
+            debug_CountLabel.Text = TotalCount.ToString();
             ReadyForUserInput = true;
         }
 

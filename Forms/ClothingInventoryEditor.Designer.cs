@@ -65,6 +65,7 @@ namespace Scramble.Forms
             this.AllClothingItemsListView = new System.Windows.Forms.ListView();
             this.GlobalClthNameHeader = new System.Windows.Forms.ColumnHeader();
             this.GlobalClthIdHeader = new System.Windows.Forms.ColumnHeader();
+            this.debug_CountLabel = new System.Windows.Forms.Label();
             this.ClothingInvGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrandPictureBox)).BeginInit();
@@ -76,6 +77,7 @@ namespace Scramble.Forms
             // 
             // ClothingInvGroupBox
             // 
+            this.ClothingInvGroupBox.Controls.Add(this.debug_CountLabel);
             this.ClothingInvGroupBox.Controls.Add(this.AmountNumericUpDown);
             this.ClothingInvGroupBox.Controls.Add(this.AmountLabel);
             this.ClothingInvGroupBox.Controls.Add(this.ReqStyleValueLabel);
@@ -464,6 +466,16 @@ namespace Scramble.Forms
             this.GlobalClthIdHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.GlobalClthIdHeader.Width = 40;
             // 
+            // debug_CountLabel
+            // 
+            this.debug_CountLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.debug_CountLabel.Location = new System.Drawing.Point(550, 374);
+            this.debug_CountLabel.Name = "debug_CountLabel";
+            this.debug_CountLabel.Size = new System.Drawing.Size(53, 17);
+            this.debug_CountLabel.TabIndex = 41;
+            this.debug_CountLabel.Text = "0";
+            this.debug_CountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // ClothingInventoryEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -526,5 +538,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.NumericUpDown AmountNumericUpDown;
         private System.Windows.Forms.Label AmountLabel;
         private System.Windows.Forms.ColumnHeader ClthAmountHeader;
+        private System.Windows.Forms.Label debug_CountLabel;
     }
 }
