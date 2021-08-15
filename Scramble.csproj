@@ -34,6 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="finalremix-db">
+      <HintPath>..\finalremix-db\finalremix-db\bin\Debug\net5.0\finalremix-db.dll</HintPath>
+    </Reference>
     <Reference Include="ntwewy-db">
       <HintPath>..\ntwewy-db\ntwewy-db\bin\Debug\net5.0\ntwewy-db.dll</HintPath>
     </Reference>
