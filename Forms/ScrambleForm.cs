@@ -11,6 +11,7 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Scramble
 {
@@ -98,8 +99,7 @@ namespace Scramble
             LanguageSelectComboBox.Text = "English";
             ReadyForUserInput = true;
 
-            PopulateImageLists();
-            Task.Run(TryCheckForUpdates);
+            Task.Run(() => { PopulateImageLists(); TryCheckForUpdates(); });
         }
 
         public void SetUpGraphics()
@@ -171,6 +171,33 @@ namespace Scramble
 
         private void PopulateImageLists()
         {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                    {
+                        OpenClothEditButton.Enabled = false;
+                        OpenClothEditButton.Text = "Loading...";
+
+                        OpenInvEditorButton.Enabled = false;
+                        OpenInvEditorButton.Text = "Loading...";
+
+                        OpenRecordEditButton.Enabled = false;
+                        OpenRecordEditButton.Text = "Loading...";
+                    }));
+            }
+            else
+            {
+                OpenClothEditButton.Enabled = false;
+                OpenClothEditButton.Text = "Loading...";
+
+                OpenInvEditorButton.Enabled = false;
+                OpenInvEditorButton.Text = "Loading...";
+
+                OpenRecordEditButton.Enabled = false;
+                OpenRecordEditButton.Text = "Loading...";
+            }
+
+
             ItemImageList_32x32 = new ImageList();
             ItemImageList_64x64 = new ImageList();
 
@@ -184,6 +211,32 @@ namespace Scramble
             {
                 ItemImageList_32x32.Images.Add(GameItem.Sprite, ImageMethods.DrawImage(GameItem.Sprite, 32, 32, DeviceDpi));
                 ItemImageList_64x64.Images.Add(GameItem.Sprite, ImageMethods.DrawImage(GameItem.Sprite, 64, 64, DeviceDpi));
+            }
+
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                OpenClothEditButton.Enabled = true;
+                OpenClothEditButton.Text = GetString("{ClothingEditor}");
+
+                OpenInvEditorButton.Enabled = true;
+                OpenInvEditorButton.Text = GetString("{PinsEditor}");
+
+                OpenRecordEditButton.Enabled = true;
+                OpenRecordEditButton.Text = GetString("{CollectionEditor}");
+                }));
+            }
+            else
+            {
+                OpenClothEditButton.Enabled = true;
+                OpenClothEditButton.Text = GetString("{ClothingEditor}");
+
+                OpenInvEditorButton.Enabled = true;
+                OpenInvEditorButton.Text = GetString("{PinsEditor}");
+
+                OpenRecordEditButton.Enabled = true;
+                OpenRecordEditButton.Text = GetString("{CollectionEditor}");
             }
         }
 
@@ -990,7 +1043,7 @@ namespace Scramble
         {
             ScaleFactor = DeviceDpi / 96;
             ChangeFormSize(Height, Width);
-            PopulateImageLists(); // Probably a bad idea but let's test it.
+            Task.Run(PopulateImageLists);
         }
 
         private void ThankYou_Label_MouseEnter(object sender, EventArgs e)
