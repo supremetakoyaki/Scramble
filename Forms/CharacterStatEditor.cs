@@ -73,12 +73,12 @@ namespace Scramble.Forms
 
             if (Sukuranburu.CharacterIsSpoiler((byte)SelectedCharacterId) && Sukuranburu.ShowSpoilers == false)
             {
-                Character_PictureBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject("CH0S") as Bitmap, 170, 300, DeviceDpi);
+                Character_PictureBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject("CH0S") as Bitmap, 179, 316, DeviceDpi);
                 CharacterLabel.Text = Sukuranburu.GetString("{Spoiler}");
             }
             else
             {
-                Character_PictureBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject(string.Format("CH{0}", SelectedCharacterId.ToString("D2"))) as Bitmap, 170, 300, DeviceDpi);
+                Character_PictureBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject(string.Format("CH{0}", SelectedCharacterId.ToString("D2"))) as Bitmap, 179, 316, DeviceDpi);
                 CharacterLabel.Text = Sukuranburu.GetGameString(GameCharacter.Name);
             }
 
