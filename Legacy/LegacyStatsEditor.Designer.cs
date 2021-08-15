@@ -86,6 +86,7 @@ namespace Scramble.Legacy
             this.CurrentLevel_Label = new System.Windows.Forms.Label();
             this.Exp_NumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.Exp_Label = new System.Windows.Forms.Label();
+            this.FoodItem_ComboBox = new System.Windows.Forms.ComboBox();
             this.CharacterStats_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_1)).BeginInit();
@@ -127,6 +128,7 @@ namespace Scramble.Legacy
             // 
             // CharacterStats_GroupBox
             // 
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodItem_ComboBox);
             this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_0);
             this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_1);
             this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_2);
@@ -174,7 +176,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_0
             // 
-            this.FoodByte_PictureBox_0.Location = new System.Drawing.Point(215, 191);
+            this.FoodByte_PictureBox_0.Location = new System.Drawing.Point(213, 175);
             this.FoodByte_PictureBox_0.Name = "FoodByte_PictureBox_0";
             this.FoodByte_PictureBox_0.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -184,7 +186,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_1
             // 
-            this.FoodByte_PictureBox_1.Location = new System.Drawing.Point(234, 191);
+            this.FoodByte_PictureBox_1.Location = new System.Drawing.Point(232, 175);
             this.FoodByte_PictureBox_1.Name = "FoodByte_PictureBox_1";
             this.FoodByte_PictureBox_1.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -194,7 +196,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_2
             // 
-            this.FoodByte_PictureBox_2.Location = new System.Drawing.Point(253, 191);
+            this.FoodByte_PictureBox_2.Location = new System.Drawing.Point(251, 175);
             this.FoodByte_PictureBox_2.Name = "FoodByte_PictureBox_2";
             this.FoodByte_PictureBox_2.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -204,7 +206,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_3
             // 
-            this.FoodByte_PictureBox_3.Location = new System.Drawing.Point(272, 191);
+            this.FoodByte_PictureBox_3.Location = new System.Drawing.Point(270, 175);
             this.FoodByte_PictureBox_3.Name = "FoodByte_PictureBox_3";
             this.FoodByte_PictureBox_3.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -214,7 +216,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_4
             // 
-            this.FoodByte_PictureBox_4.Location = new System.Drawing.Point(291, 191);
+            this.FoodByte_PictureBox_4.Location = new System.Drawing.Point(289, 175);
             this.FoodByte_PictureBox_4.Name = "FoodByte_PictureBox_4";
             this.FoodByte_PictureBox_4.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -224,7 +226,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_5
             // 
-            this.FoodByte_PictureBox_5.Location = new System.Drawing.Point(310, 191);
+            this.FoodByte_PictureBox_5.Location = new System.Drawing.Point(308, 175);
             this.FoodByte_PictureBox_5.Name = "FoodByte_PictureBox_5";
             this.FoodByte_PictureBox_5.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -234,7 +236,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_6
             // 
-            this.FoodByte_PictureBox_6.Location = new System.Drawing.Point(215, 172);
+            this.FoodByte_PictureBox_6.Location = new System.Drawing.Point(213, 156);
             this.FoodByte_PictureBox_6.Name = "FoodByte_PictureBox_6";
             this.FoodByte_PictureBox_6.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -244,7 +246,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_7
             // 
-            this.FoodByte_PictureBox_7.Location = new System.Drawing.Point(234, 172);
+            this.FoodByte_PictureBox_7.Location = new System.Drawing.Point(232, 156);
             this.FoodByte_PictureBox_7.Name = "FoodByte_PictureBox_7";
             this.FoodByte_PictureBox_7.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -254,7 +256,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_8
             // 
-            this.FoodByte_PictureBox_8.Location = new System.Drawing.Point(253, 172);
+            this.FoodByte_PictureBox_8.Location = new System.Drawing.Point(251, 156);
             this.FoodByte_PictureBox_8.Name = "FoodByte_PictureBox_8";
             this.FoodByte_PictureBox_8.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -264,7 +266,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_9
             // 
-            this.FoodByte_PictureBox_9.Location = new System.Drawing.Point(272, 172);
+            this.FoodByte_PictureBox_9.Location = new System.Drawing.Point(270, 156);
             this.FoodByte_PictureBox_9.Name = "FoodByte_PictureBox_9";
             this.FoodByte_PictureBox_9.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -274,7 +276,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_10
             // 
-            this.FoodByte_PictureBox_10.Location = new System.Drawing.Point(291, 172);
+            this.FoodByte_PictureBox_10.Location = new System.Drawing.Point(289, 156);
             this.FoodByte_PictureBox_10.Name = "FoodByte_PictureBox_10";
             this.FoodByte_PictureBox_10.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -284,7 +286,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_11
             // 
-            this.FoodByte_PictureBox_11.Location = new System.Drawing.Point(310, 172);
+            this.FoodByte_PictureBox_11.Location = new System.Drawing.Point(308, 156);
             this.FoodByte_PictureBox_11.Name = "FoodByte_PictureBox_11";
             this.FoodByte_PictureBox_11.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -294,7 +296,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_12
             // 
-            this.FoodByte_PictureBox_12.Location = new System.Drawing.Point(215, 153);
+            this.FoodByte_PictureBox_12.Location = new System.Drawing.Point(213, 137);
             this.FoodByte_PictureBox_12.Name = "FoodByte_PictureBox_12";
             this.FoodByte_PictureBox_12.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -304,7 +306,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_13
             // 
-            this.FoodByte_PictureBox_13.Location = new System.Drawing.Point(234, 153);
+            this.FoodByte_PictureBox_13.Location = new System.Drawing.Point(232, 137);
             this.FoodByte_PictureBox_13.Name = "FoodByte_PictureBox_13";
             this.FoodByte_PictureBox_13.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -314,7 +316,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_14
             // 
-            this.FoodByte_PictureBox_14.Location = new System.Drawing.Point(253, 153);
+            this.FoodByte_PictureBox_14.Location = new System.Drawing.Point(251, 137);
             this.FoodByte_PictureBox_14.Name = "FoodByte_PictureBox_14";
             this.FoodByte_PictureBox_14.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -324,7 +326,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_15
             // 
-            this.FoodByte_PictureBox_15.Location = new System.Drawing.Point(272, 153);
+            this.FoodByte_PictureBox_15.Location = new System.Drawing.Point(270, 137);
             this.FoodByte_PictureBox_15.Name = "FoodByte_PictureBox_15";
             this.FoodByte_PictureBox_15.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -334,7 +336,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_16
             // 
-            this.FoodByte_PictureBox_16.Location = new System.Drawing.Point(291, 153);
+            this.FoodByte_PictureBox_16.Location = new System.Drawing.Point(289, 137);
             this.FoodByte_PictureBox_16.Name = "FoodByte_PictureBox_16";
             this.FoodByte_PictureBox_16.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -344,7 +346,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_17
             // 
-            this.FoodByte_PictureBox_17.Location = new System.Drawing.Point(310, 153);
+            this.FoodByte_PictureBox_17.Location = new System.Drawing.Point(308, 137);
             this.FoodByte_PictureBox_17.Name = "FoodByte_PictureBox_17";
             this.FoodByte_PictureBox_17.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -354,7 +356,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_18
             // 
-            this.FoodByte_PictureBox_18.Location = new System.Drawing.Point(215, 134);
+            this.FoodByte_PictureBox_18.Location = new System.Drawing.Point(213, 118);
             this.FoodByte_PictureBox_18.Name = "FoodByte_PictureBox_18";
             this.FoodByte_PictureBox_18.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -364,7 +366,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_19
             // 
-            this.FoodByte_PictureBox_19.Location = new System.Drawing.Point(234, 134);
+            this.FoodByte_PictureBox_19.Location = new System.Drawing.Point(232, 118);
             this.FoodByte_PictureBox_19.Name = "FoodByte_PictureBox_19";
             this.FoodByte_PictureBox_19.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -374,7 +376,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_20
             // 
-            this.FoodByte_PictureBox_20.Location = new System.Drawing.Point(253, 134);
+            this.FoodByte_PictureBox_20.Location = new System.Drawing.Point(251, 118);
             this.FoodByte_PictureBox_20.Name = "FoodByte_PictureBox_20";
             this.FoodByte_PictureBox_20.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -384,7 +386,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_21
             // 
-            this.FoodByte_PictureBox_21.Location = new System.Drawing.Point(272, 134);
+            this.FoodByte_PictureBox_21.Location = new System.Drawing.Point(270, 118);
             this.FoodByte_PictureBox_21.Name = "FoodByte_PictureBox_21";
             this.FoodByte_PictureBox_21.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -394,7 +396,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_22
             // 
-            this.FoodByte_PictureBox_22.Location = new System.Drawing.Point(291, 134);
+            this.FoodByte_PictureBox_22.Location = new System.Drawing.Point(289, 118);
             this.FoodByte_PictureBox_22.Name = "FoodByte_PictureBox_22";
             this.FoodByte_PictureBox_22.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -404,7 +406,7 @@ namespace Scramble.Legacy
             // 
             // FoodByte_PictureBox_23
             // 
-            this.FoodByte_PictureBox_23.Location = new System.Drawing.Point(310, 134);
+            this.FoodByte_PictureBox_23.Location = new System.Drawing.Point(308, 118);
             this.FoodByte_PictureBox_23.Name = "FoodByte_PictureBox_23";
             this.FoodByte_PictureBox_23.Size = new System.Drawing.Size(13, 13);
             this.FoodByte_PictureBox_23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -415,7 +417,7 @@ namespace Scramble.Legacy
             // FoodBytes_Label
             // 
             this.FoodBytes_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.FoodBytes_Label.Location = new System.Drawing.Point(215, 108);
+            this.FoodBytes_Label.Location = new System.Drawing.Point(213, 92);
             this.FoodBytes_Label.Name = "FoodBytes_Label";
             this.FoodBytes_Label.Size = new System.Drawing.Size(108, 23);
             this.FoodBytes_Label.TabIndex = 12;
@@ -455,7 +457,7 @@ namespace Scramble.Legacy
             // 
             // Bravery_NumUpDown
             // 
-            this.Bravery_NumUpDown.Location = new System.Drawing.Point(107, 195);
+            this.Bravery_NumUpDown.Location = new System.Drawing.Point(107, 189);
             this.Bravery_NumUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -468,7 +470,7 @@ namespace Scramble.Legacy
             // Bravery_Label
             // 
             this.Bravery_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Bravery_Label.Location = new System.Drawing.Point(10, 195);
+            this.Bravery_Label.Location = new System.Drawing.Point(10, 189);
             this.Bravery_Label.Name = "Bravery_Label";
             this.Bravery_Label.Size = new System.Drawing.Size(91, 23);
             this.Bravery_Label.TabIndex = 8;
@@ -476,9 +478,9 @@ namespace Scramble.Legacy
             // 
             // Sync_NumericUpDown
             // 
-            this.Sync_NumericUpDown.Location = new System.Drawing.Point(107, 166);
+            this.Sync_NumericUpDown.Location = new System.Drawing.Point(107, 160);
             this.Sync_NumericUpDown.Maximum = new decimal(new int[] {
-            9999,
+            10000,
             0,
             0,
             0});
@@ -489,7 +491,7 @@ namespace Scramble.Legacy
             // Sync_Label
             // 
             this.Sync_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Sync_Label.Location = new System.Drawing.Point(10, 166);
+            this.Sync_Label.Location = new System.Drawing.Point(10, 160);
             this.Sync_Label.Name = "Sync_Label";
             this.Sync_Label.Size = new System.Drawing.Size(91, 23);
             this.Sync_Label.TabIndex = 6;
@@ -497,7 +499,7 @@ namespace Scramble.Legacy
             // 
             // Def_NumericUpDown
             // 
-            this.Def_NumericUpDown.Location = new System.Drawing.Point(107, 137);
+            this.Def_NumericUpDown.Location = new System.Drawing.Point(107, 131);
             this.Def_NumericUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -510,7 +512,7 @@ namespace Scramble.Legacy
             // Def_Label
             // 
             this.Def_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Def_Label.Location = new System.Drawing.Point(10, 137);
+            this.Def_Label.Location = new System.Drawing.Point(10, 131);
             this.Def_Label.Name = "Def_Label";
             this.Def_Label.Size = new System.Drawing.Size(91, 23);
             this.Def_Label.TabIndex = 4;
@@ -518,7 +520,7 @@ namespace Scramble.Legacy
             // 
             // Atk_NumericUpDown
             // 
-            this.Atk_NumericUpDown.Location = new System.Drawing.Point(107, 108);
+            this.Atk_NumericUpDown.Location = new System.Drawing.Point(107, 102);
             this.Atk_NumericUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -531,7 +533,7 @@ namespace Scramble.Legacy
             // Atk_Label
             // 
             this.Atk_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Atk_Label.Location = new System.Drawing.Point(10, 108);
+            this.Atk_Label.Location = new System.Drawing.Point(10, 102);
             this.Atk_Label.Name = "Atk_Label";
             this.Atk_Label.Size = new System.Drawing.Size(91, 23);
             this.Atk_Label.TabIndex = 2;
@@ -749,6 +751,17 @@ namespace Scramble.Legacy
             this.Exp_Label.TabIndex = 12;
             this.Exp_Label.Text = "EXP:";
             // 
+            // FoodItem_ComboBox
+            // 
+            this.FoodItem_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FoodItem_ComboBox.FormattingEnabled = true;
+            this.FoodItem_ComboBox.Items.AddRange(new object[] {
+            "(none)"});
+            this.FoodItem_ComboBox.Location = new System.Drawing.Point(213, 194);
+            this.FoodItem_ComboBox.Name = "FoodItem_ComboBox";
+            this.FoodItem_ComboBox.Size = new System.Drawing.Size(108, 23);
+            this.FoodItem_ComboBox.TabIndex = 23;
+            // 
             // LegacyStatsEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -861,5 +874,6 @@ namespace Scramble.Legacy
         private System.Windows.Forms.PictureBox FoodByte_PictureBox_20;
         private System.Windows.Forms.PictureBox FoodByte_PictureBox_21;
         private System.Windows.Forms.PictureBox FoodByte_PictureBox_22;
+        private System.Windows.Forms.ComboBox FoodItem_ComboBox;
     }
 }

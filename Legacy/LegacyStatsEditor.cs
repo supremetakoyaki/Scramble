@@ -1,14 +1,7 @@
 ﻿using NTwewyDb;
-using Scramble.Classes;
 using Scramble.Properties;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scramble.Legacy
@@ -37,6 +30,7 @@ namespace Scramble.Legacy
         private void DisplayCharacter()
         {
             int CharacterId = Convert.ToInt32(CharacterTabChoose.SelectedTab.Name.Replace("Tab_PC", ""));
+            ushort FoodId = 0xFFFF;
 
             Character_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("Legacy_PC{0}", CharacterId.ToString("D2"))) as Bitmap, 202, 253, DeviceDpi);
 
@@ -48,6 +42,9 @@ namespace Scramble.Legacy
                     Def_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Defense);
                     Sync_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Sync);
                     Bravery_NumUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Bravery);
+                    FoodId = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Food);
+
+                    Sync_Label.Text = "Luck:";
                     break;
 
                 case 1:
@@ -56,6 +53,9 @@ namespace Scramble.Legacy
                     Def_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Shiki_Defense);
                     Sync_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Shiki_Sync);
                     Bravery_NumUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Shiki_Bravery);
+                    FoodId = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Shiki_Food);
+
+                    Sync_Label.Text = "SYNC:";
                     break;
 
                 case 2:
@@ -64,6 +64,9 @@ namespace Scramble.Legacy
                     Def_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Joshua_Defense);
                     Sync_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Joshua_Sync);
                     Bravery_NumUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Joshua_Bravery);
+                    FoodId = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Joshua_Food);
+
+                    Sync_Label.Text = "SYNC:";
                     break;
 
                 case 3:
@@ -72,11 +75,31 @@ namespace Scramble.Legacy
                     Def_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Beat_Defense);
                     Sync_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Beat_Sync);
                     Bravery_NumUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Beat_Bravery);
+                    FoodId = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Beat_Food);
+
+                    Sync_Label.Text = "SYNC:";
                     break;
             }
 
             SelectedCharacterId = CharacterId;
             DisplayFoodBytes(SelectedCharacterId);
+
+            if (FoodId == 0xFFFF)
+            {
+                FoodItem_ComboBox.SelectedIndex = 0;
+            }
+            else
+            {
+                int FoodIndex = FoodId - 19999;
+                if (FoodItem_ComboBox.Items.Count >= FoodIndex)
+                {
+                    FoodItem_ComboBox.SelectedIndex = FoodIndex;
+                }
+                else
+                {
+                    FoodItem_ComboBox.SelectedIndex = 0;
+                }
+            }
         }
 
         private void DisplayFoodBytes(int CharacterId, bool AttemptToFixMismatched = false)
@@ -89,6 +112,21 @@ namespace Scramble.Legacy
                 case 0:
                     UsedBytes = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Bytes);
                     UnavailableByteIndex = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_IndexOfUnavailableBytes);
+                    break;
+
+                case 1:
+                    UsedBytes = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Shiki_Bytes);
+                    UnavailableByteIndex = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Shiki_IndexOfUnavailableBytes);
+                    break;
+
+                case 2:
+                    UsedBytes = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Joshua_Bytes);
+                    UnavailableByteIndex = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Joshua_IndexOfUnavailableBytes);
+                    break;
+
+                case 3:
+                    UsedBytes = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Beat_Bytes);
+                    UnavailableByteIndex = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Beat_IndexOfUnavailableBytes);
                     break;
             }
 
@@ -129,6 +167,21 @@ namespace Scramble.Legacy
                         SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Bytes, Fixed_Bytes);
                         SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_IndexOfUnavailableBytes, Fixed_UnavailableIndex);
                         break;
+
+                    case 1:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Bytes, Fixed_Bytes);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_IndexOfUnavailableBytes, Fixed_UnavailableIndex);
+                        break;
+
+                    case 2:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Bytes, Fixed_Bytes);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_IndexOfUnavailableBytes, Fixed_UnavailableIndex);
+                        break;
+
+                    case 3:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Bytes, Fixed_Bytes);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_IndexOfUnavailableBytes, Fixed_UnavailableIndex);
+                        break;
                 }
             }
         }
@@ -148,13 +201,28 @@ namespace Scramble.Legacy
 
             int Tag = (int)BytePictureBox.Tag;
             ushort New_UsedBytes = 0;
-            ushort New_UnavailabilityByteIndex = 24;
+            ushort New_UnavailableByteIndex = 24;
 
             switch (SelectedCharacterId)
             {
                 case 0:
                     New_UsedBytes = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Bytes);
-                    New_UnavailabilityByteIndex = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_IndexOfUnavailableBytes);
+                    New_UnavailableByteIndex = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_IndexOfUnavailableBytes);
+                    break;
+
+                case 1:
+                    New_UsedBytes = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Shiki_Bytes);
+                    New_UnavailableByteIndex = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Shiki_IndexOfUnavailableBytes);
+                    break;
+
+                case 2:
+                    New_UsedBytes = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Joshua_Bytes);
+                    New_UnavailableByteIndex = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Joshua_IndexOfUnavailableBytes);
+                    break;
+
+                case 3:
+                    New_UsedBytes = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Beat_Bytes);
+                    New_UnavailableByteIndex = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Beat_IndexOfUnavailableBytes);
                     break;
             }
 
@@ -172,11 +240,11 @@ namespace Scramble.Legacy
 
                     case 2:
                         New_UsedBytes = (ushort)(Index + 1);
-                        New_UnavailabilityByteIndex = (ushort)(Index + 1);
+                        New_UnavailableByteIndex = (ushort)(Index + 1);
 
-                        if (New_UnavailabilityByteIndex > 24)
+                        if (New_UnavailableByteIndex > 24)
                         {
-                            New_UnavailabilityByteIndex = 24;
+                            New_UnavailableByteIndex = 24;
                         }
                         break;
                 }
@@ -186,16 +254,16 @@ namespace Scramble.Legacy
                 switch (Tag)
                 {
                     case 0:
-                        New_UnavailabilityByteIndex = Index;
+                        New_UnavailableByteIndex = Index;
                         break;
 
                     case 1:
-                        New_UnavailabilityByteIndex = Index;
+                        New_UnavailableByteIndex = Index;
                         New_UsedBytes = (ushort)(Index + 1);
                         break;
 
                     case 2:
-                        New_UnavailabilityByteIndex = (ushort)(Index + 1);
+                        New_UnavailableByteIndex = (ushort)(Index + 1);
                         break;
                 }
             }
@@ -204,7 +272,22 @@ namespace Scramble.Legacy
             {
                 case 0:
                     SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Bytes, New_UsedBytes);
-                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_IndexOfUnavailableBytes, New_UnavailabilityByteIndex);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_IndexOfUnavailableBytes, New_UnavailableByteIndex);
+                    break;
+
+                case 1:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Bytes, New_UsedBytes);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_IndexOfUnavailableBytes, New_UnavailableByteIndex);
+                    break;
+
+                case 2:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Bytes, New_UsedBytes);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_IndexOfUnavailableBytes, New_UnavailableByteIndex);
+                    break;
+
+                case 3:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Bytes, New_UsedBytes);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_IndexOfUnavailableBytes, New_UnavailableByteIndex);
                     break;
             }
 
