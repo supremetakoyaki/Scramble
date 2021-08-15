@@ -9,8 +9,14 @@
 
         public const int Neku_Attack = 16; //int16
         public const int Neku_Defense = 18;//int16
-        public const int Neku_Luck = 20;//int16
+        public const int Neku_Sync = 20;//int16
         public const int Neku_Bravery = 22;//int16
+
+        public const int Difficulty = 28;//byte?
+
+        public const int Neku_Food = 41; // int16
+        public const int Neku_Bytes = 43; //int16
+        public const int Neku_IndexOfUnavailableBytes = 45;//int16
 
         public const int Shiki_Attack = 59;//int16
         public const int Shiki_Defense = 61;//int16

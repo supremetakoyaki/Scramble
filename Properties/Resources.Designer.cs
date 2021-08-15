@@ -153,6 +153,36 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Legacy_Byte_Empty {
+            get {
+                object obj = ResourceManager.GetObject("Legacy_Byte_Empty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Legacy_Byte_Fulfilled {
+            get {
+                object obj = ResourceManager.GetObject("Legacy_Byte_Fulfilled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Legacy_Byte_X {
+            get {
+                object obj = ResourceManager.GetObject("Legacy_Byte_X", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Legacy_PC00 {
             get {
                 object obj = ResourceManager.GetObject("Legacy_PC00", resourceCulture);

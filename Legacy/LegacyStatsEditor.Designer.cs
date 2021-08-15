@@ -29,9 +29,32 @@ namespace Scramble.Legacy
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.FoodBytes_NumUpDown = new System.Windows.Forms.NumericUpDown();
-            this.FoodBytes_Lavel = new System.Windows.Forms.Label();
+            this.CharacterStats_GroupBox = new System.Windows.Forms.GroupBox();
+            this.FoodByte_PictureBox_0 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_1 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_2 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_3 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_4 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_5 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_6 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_7 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_8 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_9 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_10 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_11 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_12 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_13 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_14 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_15 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_16 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_17 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_18 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_19 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_20 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_21 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_22 = new System.Windows.Forms.PictureBox();
+            this.FoodByte_PictureBox_23 = new System.Windows.Forms.PictureBox();
+            this.FoodBytes_Label = new System.Windows.Forms.Label();
             this.CharacterName_Label = new System.Windows.Forms.Label();
             this.AllCharacters_Checkbox = new System.Windows.Forms.CheckBox();
             this.MaxStats_Button = new System.Windows.Forms.Button();
@@ -50,6 +73,8 @@ namespace Scramble.Legacy
             this.Tab_PC2 = new System.Windows.Forms.TabPage();
             this.Tab_PC3 = new System.Windows.Forms.TabPage();
             this.Other_GroupBox = new System.Windows.Forms.GroupBox();
+            this.Difficulty_ComboBox = new System.Windows.Forms.ComboBox();
+            this.DifficultyLabel = new System.Windows.Forms.Label();
             this.MaxStats_Other_Button = new System.Windows.Forms.Button();
             this.HP_NumUpDown = new System.Windows.Forms.NumericUpDown();
             this.Hp_Label = new System.Windows.Forms.Label();
@@ -61,8 +86,31 @@ namespace Scramble.Legacy
             this.CurrentLevel_Label = new System.Windows.Forms.Label();
             this.Exp_NumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.Exp_Label = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FoodBytes_NumUpDown)).BeginInit();
+            this.CharacterStats_GroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bravery_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Sync_NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Def_NumericUpDown)).BeginInit();
@@ -77,57 +125,309 @@ namespace Scramble.Legacy
             ((System.ComponentModel.ISupportInitialize)(this.Exp_NumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // CharacterStats_GroupBox
             // 
-            this.groupBox1.Controls.Add(this.FoodBytes_NumUpDown);
-            this.groupBox1.Controls.Add(this.FoodBytes_Lavel);
-            this.groupBox1.Controls.Add(this.CharacterName_Label);
-            this.groupBox1.Controls.Add(this.AllCharacters_Checkbox);
-            this.groupBox1.Controls.Add(this.MaxStats_Button);
-            this.groupBox1.Controls.Add(this.Bravery_NumUpDown);
-            this.groupBox1.Controls.Add(this.Bravery_Label);
-            this.groupBox1.Controls.Add(this.Sync_NumericUpDown);
-            this.groupBox1.Controls.Add(this.Sync_Label);
-            this.groupBox1.Controls.Add(this.Def_NumericUpDown);
-            this.groupBox1.Controls.Add(this.Def_Label);
-            this.groupBox1.Controls.Add(this.Atk_NumericUpDown);
-            this.groupBox1.Controls.Add(this.Atk_Label);
-            this.groupBox1.Controls.Add(this.Character_PictureBox);
-            this.groupBox1.Controls.Add(this.CharacterTabChoose);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 313);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Character Stats";
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_0);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_1);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_2);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_3);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_4);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_5);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_6);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_7);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_8);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_9);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_10);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_11);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_12);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_13);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_14);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_15);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_16);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_17);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_18);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_19);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_20);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_21);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_22);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodByte_PictureBox_23);
+            this.CharacterStats_GroupBox.Controls.Add(this.FoodBytes_Label);
+            this.CharacterStats_GroupBox.Controls.Add(this.CharacterName_Label);
+            this.CharacterStats_GroupBox.Controls.Add(this.AllCharacters_Checkbox);
+            this.CharacterStats_GroupBox.Controls.Add(this.MaxStats_Button);
+            this.CharacterStats_GroupBox.Controls.Add(this.Bravery_NumUpDown);
+            this.CharacterStats_GroupBox.Controls.Add(this.Bravery_Label);
+            this.CharacterStats_GroupBox.Controls.Add(this.Sync_NumericUpDown);
+            this.CharacterStats_GroupBox.Controls.Add(this.Sync_Label);
+            this.CharacterStats_GroupBox.Controls.Add(this.Def_NumericUpDown);
+            this.CharacterStats_GroupBox.Controls.Add(this.Def_Label);
+            this.CharacterStats_GroupBox.Controls.Add(this.Atk_NumericUpDown);
+            this.CharacterStats_GroupBox.Controls.Add(this.Atk_Label);
+            this.CharacterStats_GroupBox.Controls.Add(this.Character_PictureBox);
+            this.CharacterStats_GroupBox.Controls.Add(this.CharacterTabChoose);
+            this.CharacterStats_GroupBox.Location = new System.Drawing.Point(12, 12);
+            this.CharacterStats_GroupBox.Name = "CharacterStats_GroupBox";
+            this.CharacterStats_GroupBox.Size = new System.Drawing.Size(540, 282);
+            this.CharacterStats_GroupBox.TabIndex = 0;
+            this.CharacterStats_GroupBox.TabStop = false;
+            this.CharacterStats_GroupBox.Text = "Character Stats";
             // 
-            // FoodBytes_NumUpDown
+            // FoodByte_PictureBox_0
             // 
-            this.FoodBytes_NumUpDown.Location = new System.Drawing.Point(107, 217);
-            this.FoodBytes_NumUpDown.Maximum = new decimal(new int[] {
-            24,
-            0,
-            0,
-            0});
-            this.FoodBytes_NumUpDown.Name = "FoodBytes_NumUpDown";
-            this.FoodBytes_NumUpDown.Size = new System.Drawing.Size(60, 23);
-            this.FoodBytes_NumUpDown.TabIndex = 13;
+            this.FoodByte_PictureBox_0.Location = new System.Drawing.Point(215, 191);
+            this.FoodByte_PictureBox_0.Name = "FoodByte_PictureBox_0";
+            this.FoodByte_PictureBox_0.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_0.TabIndex = 36;
+            this.FoodByte_PictureBox_0.TabStop = false;
+            this.FoodByte_PictureBox_0.Click += new System.EventHandler(this.FoodByte_PictureBox_0_Click);
             // 
-            // FoodBytes_Lavel
+            // FoodByte_PictureBox_1
             // 
-            this.FoodBytes_Lavel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.FoodBytes_Lavel.Location = new System.Drawing.Point(10, 217);
-            this.FoodBytes_Lavel.Name = "FoodBytes_Lavel";
-            this.FoodBytes_Lavel.Size = new System.Drawing.Size(91, 23);
-            this.FoodBytes_Lavel.TabIndex = 12;
-            this.FoodBytes_Lavel.Text = "Food Bytes:";
+            this.FoodByte_PictureBox_1.Location = new System.Drawing.Point(234, 191);
+            this.FoodByte_PictureBox_1.Name = "FoodByte_PictureBox_1";
+            this.FoodByte_PictureBox_1.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_1.TabIndex = 35;
+            this.FoodByte_PictureBox_1.TabStop = false;
+            this.FoodByte_PictureBox_1.Click += new System.EventHandler(this.FoodByte_PictureBox_1_Click);
+            // 
+            // FoodByte_PictureBox_2
+            // 
+            this.FoodByte_PictureBox_2.Location = new System.Drawing.Point(253, 191);
+            this.FoodByte_PictureBox_2.Name = "FoodByte_PictureBox_2";
+            this.FoodByte_PictureBox_2.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_2.TabIndex = 34;
+            this.FoodByte_PictureBox_2.TabStop = false;
+            this.FoodByte_PictureBox_2.Click += new System.EventHandler(this.FoodByte_PictureBox_2_Click);
+            // 
+            // FoodByte_PictureBox_3
+            // 
+            this.FoodByte_PictureBox_3.Location = new System.Drawing.Point(272, 191);
+            this.FoodByte_PictureBox_3.Name = "FoodByte_PictureBox_3";
+            this.FoodByte_PictureBox_3.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_3.TabIndex = 33;
+            this.FoodByte_PictureBox_3.TabStop = false;
+            this.FoodByte_PictureBox_3.Click += new System.EventHandler(this.FoodByte_PictureBox_3_Click);
+            // 
+            // FoodByte_PictureBox_4
+            // 
+            this.FoodByte_PictureBox_4.Location = new System.Drawing.Point(291, 191);
+            this.FoodByte_PictureBox_4.Name = "FoodByte_PictureBox_4";
+            this.FoodByte_PictureBox_4.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_4.TabIndex = 32;
+            this.FoodByte_PictureBox_4.TabStop = false;
+            this.FoodByte_PictureBox_4.Click += new System.EventHandler(this.FoodByte_PictureBox_4_Click);
+            // 
+            // FoodByte_PictureBox_5
+            // 
+            this.FoodByte_PictureBox_5.Location = new System.Drawing.Point(310, 191);
+            this.FoodByte_PictureBox_5.Name = "FoodByte_PictureBox_5";
+            this.FoodByte_PictureBox_5.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_5.TabIndex = 31;
+            this.FoodByte_PictureBox_5.TabStop = false;
+            this.FoodByte_PictureBox_5.Click += new System.EventHandler(this.FoodByte_PictureBox_5_Click);
+            // 
+            // FoodByte_PictureBox_6
+            // 
+            this.FoodByte_PictureBox_6.Location = new System.Drawing.Point(215, 172);
+            this.FoodByte_PictureBox_6.Name = "FoodByte_PictureBox_6";
+            this.FoodByte_PictureBox_6.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_6.TabIndex = 30;
+            this.FoodByte_PictureBox_6.TabStop = false;
+            this.FoodByte_PictureBox_6.Click += new System.EventHandler(this.FoodByte_PictureBox_6_Click);
+            // 
+            // FoodByte_PictureBox_7
+            // 
+            this.FoodByte_PictureBox_7.Location = new System.Drawing.Point(234, 172);
+            this.FoodByte_PictureBox_7.Name = "FoodByte_PictureBox_7";
+            this.FoodByte_PictureBox_7.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_7.TabIndex = 29;
+            this.FoodByte_PictureBox_7.TabStop = false;
+            this.FoodByte_PictureBox_7.Click += new System.EventHandler(this.FoodByte_PictureBox_7_Click);
+            // 
+            // FoodByte_PictureBox_8
+            // 
+            this.FoodByte_PictureBox_8.Location = new System.Drawing.Point(253, 172);
+            this.FoodByte_PictureBox_8.Name = "FoodByte_PictureBox_8";
+            this.FoodByte_PictureBox_8.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_8.TabIndex = 28;
+            this.FoodByte_PictureBox_8.TabStop = false;
+            this.FoodByte_PictureBox_8.Click += new System.EventHandler(this.FoodByte_PictureBox_8_Click);
+            // 
+            // FoodByte_PictureBox_9
+            // 
+            this.FoodByte_PictureBox_9.Location = new System.Drawing.Point(272, 172);
+            this.FoodByte_PictureBox_9.Name = "FoodByte_PictureBox_9";
+            this.FoodByte_PictureBox_9.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_9.TabIndex = 27;
+            this.FoodByte_PictureBox_9.TabStop = false;
+            this.FoodByte_PictureBox_9.Click += new System.EventHandler(this.FoodByte_PictureBox_9_Click);
+            // 
+            // FoodByte_PictureBox_10
+            // 
+            this.FoodByte_PictureBox_10.Location = new System.Drawing.Point(291, 172);
+            this.FoodByte_PictureBox_10.Name = "FoodByte_PictureBox_10";
+            this.FoodByte_PictureBox_10.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_10.TabIndex = 26;
+            this.FoodByte_PictureBox_10.TabStop = false;
+            this.FoodByte_PictureBox_10.Click += new System.EventHandler(this.FoodByte_PictureBox_10_Click);
+            // 
+            // FoodByte_PictureBox_11
+            // 
+            this.FoodByte_PictureBox_11.Location = new System.Drawing.Point(310, 172);
+            this.FoodByte_PictureBox_11.Name = "FoodByte_PictureBox_11";
+            this.FoodByte_PictureBox_11.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_11.TabIndex = 25;
+            this.FoodByte_PictureBox_11.TabStop = false;
+            this.FoodByte_PictureBox_11.Click += new System.EventHandler(this.FoodByte_PictureBox_11_Click);
+            // 
+            // FoodByte_PictureBox_12
+            // 
+            this.FoodByte_PictureBox_12.Location = new System.Drawing.Point(215, 153);
+            this.FoodByte_PictureBox_12.Name = "FoodByte_PictureBox_12";
+            this.FoodByte_PictureBox_12.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_12.TabIndex = 24;
+            this.FoodByte_PictureBox_12.TabStop = false;
+            this.FoodByte_PictureBox_12.Click += new System.EventHandler(this.FoodByte_PictureBox_12_Click);
+            // 
+            // FoodByte_PictureBox_13
+            // 
+            this.FoodByte_PictureBox_13.Location = new System.Drawing.Point(234, 153);
+            this.FoodByte_PictureBox_13.Name = "FoodByte_PictureBox_13";
+            this.FoodByte_PictureBox_13.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_13.TabIndex = 23;
+            this.FoodByte_PictureBox_13.TabStop = false;
+            this.FoodByte_PictureBox_13.Click += new System.EventHandler(this.FoodByte_PictureBox_13_Click);
+            // 
+            // FoodByte_PictureBox_14
+            // 
+            this.FoodByte_PictureBox_14.Location = new System.Drawing.Point(253, 153);
+            this.FoodByte_PictureBox_14.Name = "FoodByte_PictureBox_14";
+            this.FoodByte_PictureBox_14.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_14.TabIndex = 22;
+            this.FoodByte_PictureBox_14.TabStop = false;
+            this.FoodByte_PictureBox_14.Click += new System.EventHandler(this.FoodByte_PictureBox_14_Click);
+            // 
+            // FoodByte_PictureBox_15
+            // 
+            this.FoodByte_PictureBox_15.Location = new System.Drawing.Point(272, 153);
+            this.FoodByte_PictureBox_15.Name = "FoodByte_PictureBox_15";
+            this.FoodByte_PictureBox_15.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_15.TabIndex = 21;
+            this.FoodByte_PictureBox_15.TabStop = false;
+            this.FoodByte_PictureBox_15.Click += new System.EventHandler(this.FoodByte_PictureBox_15_Click);
+            // 
+            // FoodByte_PictureBox_16
+            // 
+            this.FoodByte_PictureBox_16.Location = new System.Drawing.Point(291, 153);
+            this.FoodByte_PictureBox_16.Name = "FoodByte_PictureBox_16";
+            this.FoodByte_PictureBox_16.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_16.TabIndex = 20;
+            this.FoodByte_PictureBox_16.TabStop = false;
+            this.FoodByte_PictureBox_16.Click += new System.EventHandler(this.FoodByte_PictureBox_16_Click);
+            // 
+            // FoodByte_PictureBox_17
+            // 
+            this.FoodByte_PictureBox_17.Location = new System.Drawing.Point(310, 153);
+            this.FoodByte_PictureBox_17.Name = "FoodByte_PictureBox_17";
+            this.FoodByte_PictureBox_17.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_17.TabIndex = 19;
+            this.FoodByte_PictureBox_17.TabStop = false;
+            this.FoodByte_PictureBox_17.Click += new System.EventHandler(this.FoodByte_PictureBox_17_Click);
+            // 
+            // FoodByte_PictureBox_18
+            // 
+            this.FoodByte_PictureBox_18.Location = new System.Drawing.Point(215, 134);
+            this.FoodByte_PictureBox_18.Name = "FoodByte_PictureBox_18";
+            this.FoodByte_PictureBox_18.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_18.TabIndex = 18;
+            this.FoodByte_PictureBox_18.TabStop = false;
+            this.FoodByte_PictureBox_18.Click += new System.EventHandler(this.FoodByte_PictureBox_18_Click);
+            // 
+            // FoodByte_PictureBox_19
+            // 
+            this.FoodByte_PictureBox_19.Location = new System.Drawing.Point(234, 134);
+            this.FoodByte_PictureBox_19.Name = "FoodByte_PictureBox_19";
+            this.FoodByte_PictureBox_19.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_19.TabIndex = 17;
+            this.FoodByte_PictureBox_19.TabStop = false;
+            this.FoodByte_PictureBox_19.Click += new System.EventHandler(this.FoodByte_PictureBox_19_Click);
+            // 
+            // FoodByte_PictureBox_20
+            // 
+            this.FoodByte_PictureBox_20.Location = new System.Drawing.Point(253, 134);
+            this.FoodByte_PictureBox_20.Name = "FoodByte_PictureBox_20";
+            this.FoodByte_PictureBox_20.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_20.TabIndex = 16;
+            this.FoodByte_PictureBox_20.TabStop = false;
+            this.FoodByte_PictureBox_20.Click += new System.EventHandler(this.FoodByte_PictureBox_20_Click);
+            // 
+            // FoodByte_PictureBox_21
+            // 
+            this.FoodByte_PictureBox_21.Location = new System.Drawing.Point(272, 134);
+            this.FoodByte_PictureBox_21.Name = "FoodByte_PictureBox_21";
+            this.FoodByte_PictureBox_21.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_21.TabIndex = 15;
+            this.FoodByte_PictureBox_21.TabStop = false;
+            this.FoodByte_PictureBox_21.Click += new System.EventHandler(this.FoodByte_PictureBox_21_Click);
+            // 
+            // FoodByte_PictureBox_22
+            // 
+            this.FoodByte_PictureBox_22.Location = new System.Drawing.Point(291, 134);
+            this.FoodByte_PictureBox_22.Name = "FoodByte_PictureBox_22";
+            this.FoodByte_PictureBox_22.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_22.TabIndex = 14;
+            this.FoodByte_PictureBox_22.TabStop = false;
+            this.FoodByte_PictureBox_22.Click += new System.EventHandler(this.FoodByte_PictureBox_22_Click);
+            // 
+            // FoodByte_PictureBox_23
+            // 
+            this.FoodByte_PictureBox_23.Location = new System.Drawing.Point(310, 134);
+            this.FoodByte_PictureBox_23.Name = "FoodByte_PictureBox_23";
+            this.FoodByte_PictureBox_23.Size = new System.Drawing.Size(13, 13);
+            this.FoodByte_PictureBox_23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.FoodByte_PictureBox_23.TabIndex = 13;
+            this.FoodByte_PictureBox_23.TabStop = false;
+            this.FoodByte_PictureBox_23.Click += new System.EventHandler(this.FoodByte_PictureBox_23_Click);
+            // 
+            // FoodBytes_Label
+            // 
+            this.FoodBytes_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.FoodBytes_Label.Location = new System.Drawing.Point(215, 108);
+            this.FoodBytes_Label.Name = "FoodBytes_Label";
+            this.FoodBytes_Label.Size = new System.Drawing.Size(108, 23);
+            this.FoodBytes_Label.TabIndex = 12;
+            this.FoodBytes_Label.Text = "FOOD BYTES";
+            this.FoodBytes_Label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // CharacterName_Label
             // 
             this.CharacterName_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CharacterName_Label.Location = new System.Drawing.Point(6, 54);
             this.CharacterName_Label.Name = "CharacterName_Label";
-            this.CharacterName_Label.Size = new System.Drawing.Size(280, 23);
+            this.CharacterName_Label.Size = new System.Drawing.Size(328, 23);
             this.CharacterName_Label.TabIndex = 11;
             this.CharacterName_Label.Text = "Neku Sakuraba";
             this.CharacterName_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -135,7 +435,7 @@ namespace Scramble.Legacy
             // AllCharacters_Checkbox
             // 
             this.AllCharacters_Checkbox.AutoSize = true;
-            this.AllCharacters_Checkbox.Location = new System.Drawing.Point(153, 283);
+            this.AllCharacters_Checkbox.Location = new System.Drawing.Point(153, 250);
             this.AllCharacters_Checkbox.Name = "AllCharacters_Checkbox";
             this.AllCharacters_Checkbox.Size = new System.Drawing.Size(97, 19);
             this.AllCharacters_Checkbox.TabIndex = 10;
@@ -145,16 +445,17 @@ namespace Scramble.Legacy
             // MaxStats_Button
             // 
             this.MaxStats_Button.BackColor = System.Drawing.Color.MintCream;
-            this.MaxStats_Button.Location = new System.Drawing.Point(10, 276);
+            this.MaxStats_Button.Location = new System.Drawing.Point(10, 243);
             this.MaxStats_Button.Name = "MaxStats_Button";
             this.MaxStats_Button.Size = new System.Drawing.Size(137, 31);
             this.MaxStats_Button.TabIndex = 0;
             this.MaxStats_Button.Text = "Max stats";
             this.MaxStats_Button.UseVisualStyleBackColor = false;
+            this.MaxStats_Button.Click += new System.EventHandler(this.MaxStats_Button_Click);
             // 
             // Bravery_NumUpDown
             // 
-            this.Bravery_NumUpDown.Location = new System.Drawing.Point(107, 188);
+            this.Bravery_NumUpDown.Location = new System.Drawing.Point(107, 195);
             this.Bravery_NumUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -167,7 +468,7 @@ namespace Scramble.Legacy
             // Bravery_Label
             // 
             this.Bravery_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Bravery_Label.Location = new System.Drawing.Point(10, 188);
+            this.Bravery_Label.Location = new System.Drawing.Point(10, 195);
             this.Bravery_Label.Name = "Bravery_Label";
             this.Bravery_Label.Size = new System.Drawing.Size(91, 23);
             this.Bravery_Label.TabIndex = 8;
@@ -175,7 +476,7 @@ namespace Scramble.Legacy
             // 
             // Sync_NumericUpDown
             // 
-            this.Sync_NumericUpDown.Location = new System.Drawing.Point(107, 159);
+            this.Sync_NumericUpDown.Location = new System.Drawing.Point(107, 166);
             this.Sync_NumericUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -188,7 +489,7 @@ namespace Scramble.Legacy
             // Sync_Label
             // 
             this.Sync_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Sync_Label.Location = new System.Drawing.Point(10, 159);
+            this.Sync_Label.Location = new System.Drawing.Point(10, 166);
             this.Sync_Label.Name = "Sync_Label";
             this.Sync_Label.Size = new System.Drawing.Size(91, 23);
             this.Sync_Label.TabIndex = 6;
@@ -196,7 +497,7 @@ namespace Scramble.Legacy
             // 
             // Def_NumericUpDown
             // 
-            this.Def_NumericUpDown.Location = new System.Drawing.Point(107, 130);
+            this.Def_NumericUpDown.Location = new System.Drawing.Point(107, 137);
             this.Def_NumericUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -209,7 +510,7 @@ namespace Scramble.Legacy
             // Def_Label
             // 
             this.Def_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Def_Label.Location = new System.Drawing.Point(10, 130);
+            this.Def_Label.Location = new System.Drawing.Point(10, 137);
             this.Def_Label.Name = "Def_Label";
             this.Def_Label.Size = new System.Drawing.Size(91, 23);
             this.Def_Label.TabIndex = 4;
@@ -217,7 +518,7 @@ namespace Scramble.Legacy
             // 
             // Atk_NumericUpDown
             // 
-            this.Atk_NumericUpDown.Location = new System.Drawing.Point(107, 101);
+            this.Atk_NumericUpDown.Location = new System.Drawing.Point(107, 108);
             this.Atk_NumericUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -230,7 +531,7 @@ namespace Scramble.Legacy
             // Atk_Label
             // 
             this.Atk_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Atk_Label.Location = new System.Drawing.Point(10, 101);
+            this.Atk_Label.Location = new System.Drawing.Point(10, 108);
             this.Atk_Label.Name = "Atk_Label";
             this.Atk_Label.Size = new System.Drawing.Size(91, 23);
             this.Atk_Label.TabIndex = 2;
@@ -239,9 +540,9 @@ namespace Scramble.Legacy
             // Character_PictureBox
             // 
             this.Character_PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Character_PictureBox.Location = new System.Drawing.Point(292, 54);
+            this.Character_PictureBox.Location = new System.Drawing.Point(358, 54);
             this.Character_PictureBox.Name = "Character_PictureBox";
-            this.Character_PictureBox.Size = new System.Drawing.Size(202, 253);
+            this.Character_PictureBox.Size = new System.Drawing.Size(176, 220);
             this.Character_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.Character_PictureBox.TabIndex = 1;
             this.Character_PictureBox.TabStop = false;
@@ -300,6 +601,8 @@ namespace Scramble.Legacy
             // 
             // Other_GroupBox
             // 
+            this.Other_GroupBox.Controls.Add(this.Difficulty_ComboBox);
+            this.Other_GroupBox.Controls.Add(this.DifficultyLabel);
             this.Other_GroupBox.Controls.Add(this.MaxStats_Other_Button);
             this.Other_GroupBox.Controls.Add(this.HP_NumUpDown);
             this.Other_GroupBox.Controls.Add(this.Hp_Label);
@@ -311,19 +614,42 @@ namespace Scramble.Legacy
             this.Other_GroupBox.Controls.Add(this.CurrentLevel_Label);
             this.Other_GroupBox.Controls.Add(this.Exp_NumericUpDown);
             this.Other_GroupBox.Controls.Add(this.Exp_Label);
-            this.Other_GroupBox.Location = new System.Drawing.Point(12, 331);
+            this.Other_GroupBox.Location = new System.Drawing.Point(12, 300);
             this.Other_GroupBox.Name = "Other_GroupBox";
-            this.Other_GroupBox.Size = new System.Drawing.Size(500, 146);
+            this.Other_GroupBox.Size = new System.Drawing.Size(540, 146);
             this.Other_GroupBox.TabIndex = 1;
             this.Other_GroupBox.TabStop = false;
             this.Other_GroupBox.Text = "Other";
             // 
+            // Difficulty_ComboBox
+            // 
+            this.Difficulty_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Difficulty_ComboBox.FormattingEnabled = true;
+            this.Difficulty_ComboBox.Items.AddRange(new object[] {
+            "Easy",
+            "Normal",
+            "Hard",
+            "Ultimate"});
+            this.Difficulty_ComboBox.Location = new System.Drawing.Point(429, 58);
+            this.Difficulty_ComboBox.Name = "Difficulty_ComboBox";
+            this.Difficulty_ComboBox.Size = new System.Drawing.Size(105, 23);
+            this.Difficulty_ComboBox.TabIndex = 22;
+            // 
+            // DifficultyLabel
+            // 
+            this.DifficultyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DifficultyLabel.Location = new System.Drawing.Point(332, 59);
+            this.DifficultyLabel.Name = "DifficultyLabel";
+            this.DifficultyLabel.Size = new System.Drawing.Size(91, 23);
+            this.DifficultyLabel.TabIndex = 21;
+            this.DifficultyLabel.Text = "Difficulty:";
+            // 
             // MaxStats_Other_Button
             // 
             this.MaxStats_Other_Button.BackColor = System.Drawing.Color.Ivory;
-            this.MaxStats_Other_Button.Location = new System.Drawing.Point(292, 117);
+            this.MaxStats_Other_Button.Location = new System.Drawing.Point(332, 117);
             this.MaxStats_Other_Button.Name = "MaxStats_Other_Button";
-            this.MaxStats_Other_Button.Size = new System.Drawing.Size(198, 23);
+            this.MaxStats_Other_Button.Size = new System.Drawing.Size(202, 23);
             this.MaxStats_Other_Button.TabIndex = 14;
             this.MaxStats_Other_Button.Text = "Max stats";
             this.MaxStats_Other_Button.UseVisualStyleBackColor = false;
@@ -351,22 +677,22 @@ namespace Scramble.Legacy
             // 
             // Money_NUpDown
             // 
-            this.Money_NUpDown.Location = new System.Drawing.Point(390, 30);
+            this.Money_NUpDown.Location = new System.Drawing.Point(429, 30);
             this.Money_NUpDown.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
             this.Money_NUpDown.Name = "Money_NUpDown";
-            this.Money_NUpDown.Size = new System.Drawing.Size(95, 23);
+            this.Money_NUpDown.Size = new System.Drawing.Size(105, 23);
             this.Money_NUpDown.TabIndex = 17;
             // 
             // Money_Label
             // 
             this.Money_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Money_Label.Location = new System.Drawing.Point(293, 30);
+            this.Money_Label.Location = new System.Drawing.Point(332, 30);
             this.Money_Label.Name = "Money_Label";
-            this.Money_Label.Size = new System.Drawing.Size(71, 23);
+            this.Money_Label.Size = new System.Drawing.Size(91, 23);
             this.Money_Label.TabIndex = 18;
             this.Money_Label.Text = "Money:";
             // 
@@ -411,7 +737,7 @@ namespace Scramble.Legacy
             0,
             0});
             this.Exp_NumericUpDown.Name = "Exp_NumericUpDown";
-            this.Exp_NumericUpDown.Size = new System.Drawing.Size(95, 23);
+            this.Exp_NumericUpDown.Size = new System.Drawing.Size(105, 23);
             this.Exp_NumericUpDown.TabIndex = 12;
             // 
             // Exp_Label
@@ -427,16 +753,39 @@ namespace Scramble.Legacy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(524, 489);
+            this.ClientSize = new System.Drawing.Size(564, 455);
             this.Controls.Add(this.Other_GroupBox);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.CharacterStats_GroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LegacyStatsEditor";
             this.Text = "Stats Editor";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FoodBytes_NumUpDown)).EndInit();
+            this.CharacterStats_GroupBox.ResumeLayout(false);
+            this.CharacterStats_GroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodByte_PictureBox_23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bravery_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Sync_NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Def_NumericUpDown)).EndInit();
@@ -455,7 +804,7 @@ namespace Scramble.Legacy
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox CharacterStats_GroupBox;
         private System.Windows.Forms.GroupBox Other_GroupBox;
         private System.Windows.Forms.PictureBox Character_PictureBox;
         private System.Windows.Forms.TabControl CharacterTabChoose;
@@ -465,8 +814,6 @@ namespace Scramble.Legacy
         private System.Windows.Forms.TabPage Tab_PC3;
         private System.Windows.Forms.NumericUpDown Atk_NumericUpDown;
         private System.Windows.Forms.Label Atk_Label;
-        private System.Windows.Forms.NumericUpDown FoodBytes_NumUpDown;
-        private System.Windows.Forms.Label FoodBytes_Lavel;
         private System.Windows.Forms.Label CharacterName_Label;
         private System.Windows.Forms.CheckBox AllCharacters_Checkbox;
         private System.Windows.Forms.Button MaxStats_Button;
@@ -487,5 +834,32 @@ namespace Scramble.Legacy
         private System.Windows.Forms.Label CurrentLevel_Label;
         private System.Windows.Forms.NumericUpDown Exp_NumericUpDown;
         private System.Windows.Forms.Label Exp_Label;
+        private System.Windows.Forms.Label DifficultyLabel;
+        private System.Windows.Forms.ComboBox Difficulty_ComboBox;
+        private System.Windows.Forms.Label FoodBytes_Label;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_23;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_0;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_1;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_2;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_3;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_4;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_5;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_6;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_7;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_8;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_9;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_10;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_11;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_12;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_13;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_14;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_15;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_16;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_17;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_18;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_19;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_20;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_21;
+        private System.Windows.Forms.PictureBox FoodByte_PictureBox_22;
     }
 }

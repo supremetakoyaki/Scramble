@@ -44,7 +44,6 @@ namespace Scramble.Forms
             // 
             // TWEWYFR_Button
             // 
-            this.TWEWYFR_Button.Enabled = false;
             this.TWEWYFR_Button.Location = new System.Drawing.Point(218, 12);
             this.TWEWYFR_Button.Name = "TWEWYFR_Button";
             this.TWEWYFR_Button.Size = new System.Drawing.Size(200, 200);
