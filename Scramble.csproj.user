@@ -39,6 +39,9 @@
     <Compile Update="Legacy\LegacyForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Legacy\LegacyItemEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Legacy\LegacyStatsEditor.cs">
       <SubType>Form</SubType>
     </Compile>

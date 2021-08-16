@@ -22,6 +22,7 @@ namespace Scramble.Legacy
         public bool RequiresRescaling => ScaleFactor != 1.0;
 
         public LegacySave OpenedSaveFile;
+        public LegacyTextProcessor TextProcessor;
         public byte LanguageId;
 
         private TwewyManager TwewyManager;
@@ -39,6 +40,8 @@ namespace Scramble.Legacy
 
             Language_ComboBox.SelectedIndex = 0;
             LanguageId = 0; // English. Other languages TBA xD
+
+            TextProcessor = new LegacyTextProcessor();
             TwewyManager = new TwewyManager();
 
             ReadyForUserInput = true;
@@ -204,6 +207,11 @@ namespace Scramble.Legacy
                     throw;
                 }
             }
+        }
+
+        public LegacyTextProcessor GetTwewyTextProcessor()
+        {
+            return TextProcessor;
         }
 
         public TwewyManager GetTwewyManager()

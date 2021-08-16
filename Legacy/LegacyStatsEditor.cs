@@ -55,7 +55,7 @@ namespace Scramble.Legacy
                     CharacterName_Label.Text = "Neku Sakuraba";
                     Atk_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Attack);
                     Def_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Defense);
-                    Sync_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Sync);
+                    Sync_NumericUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_DropRate);
                     Bravery_NumUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Bravery);
                     FoodId = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Food);
 
@@ -358,7 +358,7 @@ namespace Scramble.Legacy
             {
                 SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Attack, MAXIMUM_VALUE);
                 SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Defense, MAXIMUM_VALUE);
-                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Sync, MAXIMUM_SYNC_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_DropRate, MAXIMUM_SYNC_VALUE);
                 SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Bravery, MAXIMUM_VALUE);
 
                 SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Attack, MAXIMUM_VALUE);
@@ -386,7 +386,7 @@ namespace Scramble.Legacy
                     case 0:
                         SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Attack, MAXIMUM_VALUE);
                         SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Defense, MAXIMUM_VALUE);
-                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Sync, MAXIMUM_SYNC_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_DropRate, MAXIMUM_SYNC_VALUE);
                         SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Bravery, MAXIMUM_VALUE);
                         break;
 
@@ -925,7 +925,7 @@ namespace Scramble.Legacy
             switch (SelectedCharacterId)
             {
                 case 0:
-                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Sync, ValueToSet);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_DropRate, ValueToSet);
                     break;
 
                 case 1:
