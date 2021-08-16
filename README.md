@@ -31,8 +31,9 @@ Note that you need the [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
-**BETA: TWEWY Final Remix Save Editing** (a.k.a. "Legacy mode"):
-- Edit your character and stats.
+**TWEWY Final Remix Save Editing** (a.k.a. "Legacy mode"):
+- Edit your character and game stats.
+- Edit your items.
 
 There will be more features coming in the future, so stay tuned!
 
