@@ -10,7 +10,6 @@ You need a decrypted save file of the game. This save file weighs about 3.15MB.
 After that, you can [download the latest release](https://github.com/supremetakoyaki/Scramble/releases/) and you're ready to go.
 
 Note that you need the [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/dotnet/5.0/runtime) to run the editor! 
-I recommend running it on Windows 10 or 11. But Mac works fine too.
 
 # How to get your save file
 - If you have a hackable Switch, you'll need to first be [running CFW](https://switch.homebrew.guide/) and then use a homebrew app to get the save file. For example, I use [JKSV](https://github.com/J-D-K/JKSV/releases/) most of the time. 
@@ -33,7 +32,7 @@ I recommend running it on Windows 10 or 11. But Mac works fine too.
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
 **BETA: TWEWY Final Remix Save Editing** (a.k.a. "Legacy mode"):
-- (under construction)
+- Edit your character and stats.
 
 There will be more features coming in the future, so stay tuned!
 
@@ -42,7 +41,7 @@ If you found a bug or another issue, you can open an issue here on GitHub. For m
 
 # Information for cloning/forking
 
-New contributors who clone the repository may find that they need a class library titled "ntwewy-db". Please download the latest release [here](https://github.com/supremetakoyaki/ntwewy-db/releases/).
+New contributors who clone the repository may find that they need two class libraries, titled "[ntwewy-db](https://github.com/supremetakoyaki/ntwewy-db/releases/)" and "[finalremix-db](https://github.com/supremetakoyaki/finalremix-db/releases/)".
 
 # More
 
