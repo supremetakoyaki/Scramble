@@ -1100,7 +1100,7 @@ namespace Scramble.Legacy
             SaveFile.UpdateOffset_Int32(LegacyOffsets.Experience, 999999999);
             SaveFile.UpdateOffset_UInt16(LegacyOffsets.CurLevel, 100);
             SaveFile.UpdateOffset_UInt16(LegacyOffsets.MaxLevel, 100);
-            SaveFile.UpdateOffset_Int32(LegacyOffsets.Money, 9999);
+            SaveFile.UpdateOffset_Int32(LegacyOffsets.Money, 9999999);
 
             ReadyForUserInput = true;
         }
