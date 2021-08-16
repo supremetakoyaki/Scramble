@@ -35,15 +35,16 @@ namespace Scramble.Legacy
             this.SaveChanges_Button = new System.Windows.Forms.Button();
             this.BackupCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.OpenSettingsEdit_Button = new System.Windows.Forms.Button();
             this.OpenNoiseEdit_Button = new System.Windows.Forms.Button();
             this.OpenPinsEdit_Button = new System.Windows.Forms.Button();
             this.OpenShopEditor_Button = new System.Windows.Forms.Button();
             this.OpenItemEditor_Button = new System.Windows.Forms.Button();
             this.OpenStatsEditor_Button = new System.Windows.Forms.Button();
-            this.OpenSettingsEdit_Button = new System.Windows.Forms.Button();
             this.ImportData_Button = new System.Windows.Forms.Button();
             this.DumpData_Button = new System.Windows.Forms.Button();
-            this.ThankYou_Label = new System.Windows.Forms.Label();
+            this.LanguageLabel = new System.Windows.Forms.Label();
+            this.Language_ComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Logo_PictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -115,6 +116,16 @@ namespace Scramble.Legacy
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Editors";
             // 
+            // OpenSettingsEdit_Button
+            // 
+            this.OpenSettingsEdit_Button.Enabled = false;
+            this.OpenSettingsEdit_Button.Location = new System.Drawing.Point(309, 54);
+            this.OpenSettingsEdit_Button.Name = "OpenSettingsEdit_Button";
+            this.OpenSettingsEdit_Button.Size = new System.Drawing.Size(145, 26);
+            this.OpenSettingsEdit_Button.TabIndex = 5;
+            this.OpenSettingsEdit_Button.Text = "Settings Editor";
+            this.OpenSettingsEdit_Button.UseVisualStyleBackColor = true;
+            // 
             // OpenNoiseEdit_Button
             // 
             this.OpenNoiseEdit_Button.Enabled = false;
@@ -147,13 +158,13 @@ namespace Scramble.Legacy
             // 
             // OpenItemEditor_Button
             // 
-            this.OpenItemEditor_Button.Enabled = false;
             this.OpenItemEditor_Button.Location = new System.Drawing.Point(157, 22);
             this.OpenItemEditor_Button.Name = "OpenItemEditor_Button";
             this.OpenItemEditor_Button.Size = new System.Drawing.Size(145, 26);
             this.OpenItemEditor_Button.TabIndex = 1;
             this.OpenItemEditor_Button.Text = "Item Editor";
             this.OpenItemEditor_Button.UseVisualStyleBackColor = true;
+            this.OpenItemEditor_Button.Click += new System.EventHandler(this.OpenItemEditor_Button_Click);
             // 
             // OpenStatsEditor_Button
             // 
@@ -164,16 +175,6 @@ namespace Scramble.Legacy
             this.OpenStatsEditor_Button.Text = "Stats Editor";
             this.OpenStatsEditor_Button.UseVisualStyleBackColor = true;
             this.OpenStatsEditor_Button.Click += new System.EventHandler(this.OpenStatsEditor_Button_Click);
-            // 
-            // OpenSettingsEdit_Button
-            // 
-            this.OpenSettingsEdit_Button.Enabled = false;
-            this.OpenSettingsEdit_Button.Location = new System.Drawing.Point(309, 54);
-            this.OpenSettingsEdit_Button.Name = "OpenSettingsEdit_Button";
-            this.OpenSettingsEdit_Button.Size = new System.Drawing.Size(145, 26);
-            this.OpenSettingsEdit_Button.TabIndex = 5;
-            this.OpenSettingsEdit_Button.Text = "Settings Editor";
-            this.OpenSettingsEdit_Button.UseVisualStyleBackColor = true;
             // 
             // ImportData_Button
             // 
@@ -197,26 +198,37 @@ namespace Scramble.Legacy
             this.DumpData_Button.UseVisualStyleBackColor = false;
             this.DumpData_Button.Click += new System.EventHandler(this.DumpData_Button_Click);
             // 
-            // ThankYou_Label
+            // LanguageLabel
             // 
-            this.ThankYou_Label.AutoSize = true;
-            this.ThankYou_Label.BackColor = System.Drawing.SystemColors.Control;
-            this.ThankYou_Label.Font = new System.Drawing.Font("Segoe UI Semilight", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.ThankYou_Label.ForeColor = System.Drawing.SystemColors.Control;
-            this.ThankYou_Label.Location = new System.Drawing.Point(329, 207);
-            this.ThankYou_Label.Name = "ThankYou_Label";
-            this.ThankYou_Label.Size = new System.Drawing.Size(143, 12);
-            this.ThankYou_Label.TabIndex = 8;
-            this.ThankYou_Label.Text = "THANK YOU FOR USING SCRAMBLE!";
-            this.ThankYou_Label.MouseEnter += new System.EventHandler(this.ThankYou_Label_MouseEnter);
-            this.ThankYou_Label.MouseLeave += new System.EventHandler(this.ThankYou_Label_MouseLeave);
+            this.LanguageLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LanguageLabel.Location = new System.Drawing.Point(306, 200);
+            this.LanguageLabel.Name = "LanguageLabel";
+            this.LanguageLabel.Size = new System.Drawing.Size(60, 19);
+            this.LanguageLabel.TabIndex = 9;
+            this.LanguageLabel.Text = "Language:";
+            // 
+            // Language_ComboBox
+            // 
+            this.Language_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Language_ComboBox.Enabled = false;
+            this.Language_ComboBox.FormattingEnabled = true;
+            this.Language_ComboBox.Items.AddRange(new object[] {
+            "English",
+            "日本語",
+            "Español",
+            "Français"});
+            this.Language_ComboBox.Location = new System.Drawing.Point(372, 196);
+            this.Language_ComboBox.Name = "Language_ComboBox";
+            this.Language_ComboBox.Size = new System.Drawing.Size(100, 23);
+            this.Language_ComboBox.TabIndex = 10;
             // 
             // LegacyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(484, 231);
-            this.Controls.Add(this.ThankYou_Label);
+            this.Controls.Add(this.Language_ComboBox);
+            this.Controls.Add(this.LanguageLabel);
             this.Controls.Add(this.DumpData_Button);
             this.Controls.Add(this.ImportData_Button);
             this.Controls.Add(this.groupBox1);
@@ -252,6 +264,7 @@ namespace Scramble.Legacy
         private System.Windows.Forms.Button OpenSettingsEdit_Button;
         private System.Windows.Forms.Button ImportData_Button;
         private System.Windows.Forms.Button DumpData_Button;
-        private System.Windows.Forms.Label ThankYou_Label;
+        private System.Windows.Forms.Label LanguageLabel;
+        private System.Windows.Forms.ComboBox Language_ComboBox;
     }
 }

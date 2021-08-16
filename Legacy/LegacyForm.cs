@@ -1,5 +1,4 @@
 ﻿using FinalRemixDb;
-using NTwewyDb;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -18,6 +17,7 @@ namespace Scramble.Legacy
         }
 
         private LegacyStatsEditor StatsEditor;
+        private LegacyItemEditor ItemEditor;
 
         public bool RequiresRescaling => ScaleFactor != 1.0;
 
@@ -32,11 +32,12 @@ namespace Scramble.Legacy
         {
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            Logo_PictureBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject("Logo_Legacy") as Bitmap, 139, 74, DeviceDpi);
+            Logo_PictureBox.Image = ImageMethodsFr.DrawImage(Properties.Resources.ResourceManager.GetObject("Logo_Legacy") as Bitmap, 139, 74, DeviceDpi);
 
             SetUpGraphics();
             ChangeFormSize(135, 333);
 
+            Language_ComboBox.SelectedIndex = 0;
             LanguageId = 0; // English. Other languages TBA xD
             TwewyManager = new TwewyManager();
 
@@ -216,14 +217,10 @@ namespace Scramble.Legacy
             StatsEditor.ShowDialog();
         }
 
-        private void ThankYou_Label_MouseEnter(object sender, EventArgs e)
+        private void OpenItemEditor_Button_Click(object sender, EventArgs e)
         {
-            ThankYou_Label.ForeColor = Color.DarkSlateBlue;
-        }
-
-        private void ThankYou_Label_MouseLeave(object sender, EventArgs e)
-        {
-            ThankYou_Label.ForeColor = SystemColors.Control;
+            ItemEditor = new LegacyItemEditor();
+            ItemEditor.ShowDialog();
         }
 
         private void DumpData_Button_Click(object sender, EventArgs e)
