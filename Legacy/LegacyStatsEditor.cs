@@ -37,7 +37,7 @@ namespace Scramble.Legacy
             {
                 if (Item.Type == 2)
                 {
-                    FoodItem_ComboBox.Items.Add(Item.GetName(Legacy.LanguageId));
+                    FoodItem_ComboBox.Items.Add(Item.GetName(Legacy.LanguageId).Replace(@"\x22", "\""));
                 }
             }
         }
