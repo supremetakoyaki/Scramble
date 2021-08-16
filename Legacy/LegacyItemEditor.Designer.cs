@@ -70,6 +70,7 @@ namespace Scramble.Legacy
             this.SetAllToMin_Button.TabIndex = 2;
             this.SetAllToMin_Button.Text = "Clear all";
             this.SetAllToMin_Button.UseVisualStyleBackColor = false;
+            this.SetAllToMin_Button.Click += new System.EventHandler(this.SetAllToMin_Button_Click);
             // 
             // SetAllMax_Button
             // 
@@ -80,6 +81,7 @@ namespace Scramble.Legacy
             this.SetAllMax_Button.TabIndex = 1;
             this.SetAllMax_Button.Text = "Set all to max amount";
             this.SetAllMax_Button.UseVisualStyleBackColor = false;
+            this.SetAllMax_Button.Click += new System.EventHandler(this.SetAllMax_Button_Click);
             // 
             // ItemList_ListView
             // 
@@ -135,6 +137,7 @@ namespace Scramble.Legacy
             this.Amount_NUpDown.Name = "Amount_NUpDown";
             this.Amount_NUpDown.Size = new System.Drawing.Size(51, 22);
             this.Amount_NUpDown.TabIndex = 6;
+            this.Amount_NUpDown.ValueChanged += new System.EventHandler(this.Amount_NUpDown_ValueChanged);
             // 
             // AmountLabel
             // 

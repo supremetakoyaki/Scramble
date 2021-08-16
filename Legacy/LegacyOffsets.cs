@@ -48,6 +48,6 @@
 
         public const int ItemInventory_Id_First = 15543;//int16
         public const int ItemInventory_Amount_First = 15545;//int16
-        public const int ItemInventory_Unlocked_First = 15547;//byte
+        public const int ItemInventory_UnkFlag_First = 15547;//byte
     }
 }
