@@ -1,4 +1,5 @@
-﻿using NTwewyDb;
+﻿using FinalRemixDb;
+using NTwewyDb;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -21,6 +22,10 @@ namespace Scramble.Legacy
         public bool RequiresRescaling => ScaleFactor != 1.0;
 
         public LegacySave OpenedSaveFile;
+        public byte LanguageId;
+
+        private TwewyManager TwewyManager;
+
         private bool ReadyForUserInput = false;
 
         public LegacyForm()
@@ -31,6 +36,9 @@ namespace Scramble.Legacy
 
             SetUpGraphics();
             ChangeFormSize(135, 333);
+
+            LanguageId = 0; // English. Other languages TBA xD
+            TwewyManager = new TwewyManager();
 
             ReadyForUserInput = true;
         }
@@ -195,6 +203,11 @@ namespace Scramble.Legacy
                     throw;
                 }
             }
+        }
+
+        public TwewyManager GetTwewyManager()
+        {
+            return TwewyManager;
         }
 
         private void OpenStatsEditor_Button_Click(object sender, EventArgs e)

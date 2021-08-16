@@ -1,4 +1,5 @@
 ﻿using FinalRemixDb;
+using NTwewyDb;
 using Scramble.Properties;
 using System;
 using System.Drawing;
@@ -9,10 +10,11 @@ namespace Scramble.Legacy
     public partial class LegacyStatsEditor : Form
     {
         public LegacySave SaveFile => Program.Legacy.OpenedSaveFile;
+        public LegacyForm Legacy => Program.Legacy;
 
         private bool ReadyForUserInput = false;
 
-        public const ushort MAXIMUM_VALUE = 999;
+        public const ushort MAXIMUM_VALUE = 9999;
         public const ushort MAXIMUM_SYNC_VALUE = 10000;
 
         public int SelectedCharacterId;
@@ -22,9 +24,22 @@ namespace Scramble.Legacy
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
+            PopulateFoodCombo();
+
             DisplayCharacter();
             DisplayOtherStats();
             ReadyForUserInput = true;
+        }
+
+        private void PopulateFoodCombo()
+        {
+            foreach (TwewyItem Item in Legacy.GetTwewyManager().GetItems().Values)
+            {
+                if (Item.Type == 2)
+                {
+                    FoodItem_ComboBox.Items.Add(Item.GetName(Legacy.LanguageId));
+                }
+            }
         }
 
         private void DisplayCharacter()
@@ -44,7 +59,7 @@ namespace Scramble.Legacy
                     Bravery_NumUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Bravery);
                     FoodId = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Neku_Food);
 
-                    Sync_Label.Text = "Luck:";
+                    Sync_Label.Text = "Drop Rate:";
                     break;
 
                 case 1:
@@ -87,17 +102,30 @@ namespace Scramble.Legacy
             if (FoodId == 0xFFFF)
             {
                 FoodItem_ComboBox.SelectedIndex = 0;
+                FoodItem_PictureBox.Image = null;
             }
             else
             {
-                int FoodIndex = FoodId - 19999;
-                if (FoodItem_ComboBox.Items.Count >= FoodIndex)
+                TwewyItem FoodItem = Legacy.GetTwewyManager().GetItem(FoodId);
+                if (FoodItem != null)
                 {
-                    FoodItem_ComboBox.SelectedIndex = FoodIndex;
+                    int FoodIndex = FoodItem.Index + 1;
+
+                    if (FoodItem_ComboBox.Items.Count >= FoodIndex)
+                    {
+                        FoodItem_ComboBox.SelectedIndex = FoodIndex;
+                        FoodItem_PictureBox.Image = ImageMethodsFr.DrawImage(FoodItem.Sprite, 23, 23, DeviceDpi);
+                    }
+                    else
+                    {
+                        FoodItem_ComboBox.SelectedIndex = 0;
+                        FoodItem_PictureBox.Image = null;
+                    }
                 }
                 else
                 {
                     FoodItem_ComboBox.SelectedIndex = 0;
+                    FoodItem_PictureBox.Image = null;
                 }
             }
         }
@@ -188,6 +216,7 @@ namespace Scramble.Legacy
 
         private void DisplayOtherStats()
         {
+            Hp_NumUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Hp);
             Exp_NumericUpDown.Value = SaveFile.RetrieveOffset_Int32(LegacyOffsets.Experience);
             CurrentLevel_NumUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.CurLevel);
             MaxLevel_NumUpDown.Value = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.MaxLevel);
@@ -313,7 +342,78 @@ namespace Scramble.Legacy
 
         private void MaxStats_Button_Click(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
 
+            ReadyForUserInput = false;
+
+            Atk_NumericUpDown.Value = MAXIMUM_VALUE;
+            Def_NumericUpDown.Value = MAXIMUM_VALUE;
+            Sync_NumericUpDown.Value = MAXIMUM_SYNC_VALUE;
+            Bravery_NumUpDown.Value = MAXIMUM_VALUE;
+
+            if (AllCharacters_Checkbox.Checked)
+            {
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Attack, MAXIMUM_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Defense, MAXIMUM_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Sync, MAXIMUM_SYNC_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Bravery, MAXIMUM_VALUE);
+
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Attack, MAXIMUM_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Defense, MAXIMUM_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Sync, MAXIMUM_SYNC_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Bravery, MAXIMUM_VALUE);
+
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Attack, MAXIMUM_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Defense, MAXIMUM_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Sync, MAXIMUM_SYNC_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Bravery, MAXIMUM_VALUE);
+
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Attack, MAXIMUM_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Defense, MAXIMUM_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Sync, MAXIMUM_SYNC_VALUE);
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Bravery, MAXIMUM_VALUE);
+
+                ReadyForUserInput = true;
+                return;
+            }
+            else
+            {
+                switch (SelectedCharacterId)
+                {
+                    case 0:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Attack, MAXIMUM_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Defense, MAXIMUM_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Sync, MAXIMUM_SYNC_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Bravery, MAXIMUM_VALUE);
+                        break;
+
+                    case 1:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Attack, MAXIMUM_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Defense, MAXIMUM_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Sync, MAXIMUM_SYNC_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Bravery, MAXIMUM_VALUE);
+                        break;
+
+                    case 2:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Attack, MAXIMUM_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Defense, MAXIMUM_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Sync, MAXIMUM_SYNC_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Bravery, MAXIMUM_VALUE);
+                        break;
+
+                    case 3:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Attack, MAXIMUM_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Defense, MAXIMUM_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Sync, MAXIMUM_SYNC_VALUE);
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Bravery, MAXIMUM_VALUE);
+                        break;
+                }
+            }
+
+            ReadyForUserInput = true;
         }
 
         #region Click Food Byte Picture Box Methods
@@ -680,5 +780,329 @@ namespace Scramble.Legacy
             ModifyFoodBytes(23, Click);
         }
         #endregion
+
+        private void FoodItem_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (FoodItem_ComboBox.SelectedIndex == 0)
+            {
+                switch (SelectedCharacterId)
+                {
+                    case 0:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Food, 0xFFFF);
+                        break;
+
+                    case 1:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Food, 0xFFFF);
+                        break;
+
+                    case 2:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Food, 0xFFFF);
+                        break;
+
+                    case 3:
+                        SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Food, 0xFFFF);
+                        break;
+                }
+
+                FoodItem_PictureBox.Image = null;
+                ReadyForUserInput = true;
+                return;
+            }
+
+            TwewyItem FoodItem = Legacy.GetTwewyManager().GetItemWithIndex(FoodItem_ComboBox.SelectedIndex - 1, 2);
+            if (FoodItem == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            switch (SelectedCharacterId)
+            {
+                case 0:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Food, FoodItem.Id);
+                    break;
+
+                case 1:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Food, FoodItem.Id);
+                    break;
+
+                case 2:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Food, FoodItem.Id);
+                    break;
+
+                case 3:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Food, FoodItem.Id);
+                    break;
+            }
+
+            FoodItem_PictureBox.Image = ImageMethodsFr.DrawImage(FoodItem.Sprite, 23, 23, DeviceDpi);
+            ReadyForUserInput = true;
+        }
+
+        private void Atk_NumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            ushort ValueToSet = (ushort)Atk_NumericUpDown.Value;
+
+            switch (SelectedCharacterId)
+            {
+                case 0:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Attack, ValueToSet);
+                    break;
+
+                case 1:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Attack, ValueToSet);
+                    break;
+
+                case 2:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Attack, ValueToSet);
+                    break;
+
+                case 3:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Attack, ValueToSet);
+                    break;
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void Def_NumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            ushort ValueToSet = (ushort)Def_NumericUpDown.Value;
+
+            switch (SelectedCharacterId)
+            {
+                case 0:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Defense, ValueToSet);
+                    break;
+
+                case 1:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Defense, ValueToSet);
+                    break;
+
+                case 2:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Defense, ValueToSet);
+                    break;
+
+                case 3:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Defense, ValueToSet);
+                    break;
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void Sync_NumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            ushort ValueToSet = (ushort)Sync_NumericUpDown.Value;
+
+            switch (SelectedCharacterId)
+            {
+                case 0:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Sync, ValueToSet);
+                    break;
+
+                case 1:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Sync, ValueToSet);
+                    break;
+
+                case 2:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Sync, ValueToSet);
+                    break;
+
+                case 3:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Sync, ValueToSet);
+                    break;
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void Bravery_NumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            ushort ValueToSet = (ushort)Bravery_NumUpDown.Value;
+
+            switch (SelectedCharacterId)
+            {
+                case 0:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Neku_Bravery, ValueToSet);
+                    break;
+
+                case 1:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Shiki_Bravery, ValueToSet);
+                    break;
+
+                case 2:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Joshua_Bravery, ValueToSet);
+                    break;
+
+                case 3:
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Beat_Bravery, ValueToSet);
+                    break;
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void HP_NumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            ushort ValueToSet = (ushort)Hp_NumUpDown.Value;
+
+            SaveFile.UpdateOffset_UInt16(LegacyOffsets.Hp, ValueToSet);
+
+            ReadyForUserInput = true;
+        }
+
+        private void Exp_NumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            int ValueToSet = (int)Exp_NumericUpDown.Value;
+
+            SaveFile.UpdateOffset_Int32(LegacyOffsets.Experience, ValueToSet);
+
+            ReadyForUserInput = true;
+        }
+
+        private void CurrentLevel_NumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            ushort ValueToSet = (ushort)CurrentLevel_NumUpDown.Value;
+
+            if (MaxLevel_NumUpDown.Value < ValueToSet)
+            {
+                MaxLevel_NumUpDown.Value = ValueToSet;
+                SaveFile.UpdateOffset_UInt16(LegacyOffsets.MaxLevel, ValueToSet);
+            }
+
+            SaveFile.UpdateOffset_UInt16(LegacyOffsets.CurLevel, ValueToSet);
+
+            ReadyForUserInput = true;
+        }
+
+        private void MaxLevel_NumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            ushort ValueToSet = (ushort)MaxLevel_NumUpDown.Value;
+
+            SaveFile.UpdateOffset_UInt16(LegacyOffsets.MaxLevel, ValueToSet);
+            ReadyForUserInput = true;
+        }
+
+        private void Money_NUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            int ValueToSet = (int)Money_NUpDown.Value;
+
+            SaveFile.UpdateOffset_Int32(LegacyOffsets.Money, ValueToSet);
+
+            ReadyForUserInput = true;
+        }
+
+        private void Difficulty_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            byte ValueToSet = 0;
+
+            if (Difficulty_ComboBox.SelectedIndex >= 0 && Difficulty_ComboBox.SelectedIndex < 4)
+            {
+                ValueToSet = (byte)Difficulty_ComboBox.SelectedIndex;
+            }
+            else
+            {
+                Difficulty_ComboBox.SelectedIndex = 0;
+            }
+
+            SaveFile.UpdateOffset_Byte(LegacyOffsets.Difficulty, ValueToSet);
+
+            ReadyForUserInput = true;
+        }
+
+        private void MaxStats_Other_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            Hp_NumUpDown.Value = 9999;
+            Exp_NumericUpDown.Value = 999999999;
+            CurrentLevel_NumUpDown.Value = 100;
+            MaxLevel_NumUpDown.Value = 100;
+            Money_NUpDown.Value = 9999999;
+
+            SaveFile.UpdateOffset_UInt16(LegacyOffsets.Hp, 9999);
+            SaveFile.UpdateOffset_Int32(LegacyOffsets.Experience, 999999999);
+            SaveFile.UpdateOffset_UInt16(LegacyOffsets.CurLevel, 100);
+            SaveFile.UpdateOffset_UInt16(LegacyOffsets.MaxLevel, 100);
+            SaveFile.UpdateOffset_Int32(LegacyOffsets.Money, 9999);
+
+            ReadyForUserInput = true;
+        }
     }
 }

@@ -2,6 +2,7 @@
 {
     public class LegacyOffsets
     {
+        public const int Hp = 2; // int16
         public const int CurLevel = 4; //int16
         public const int MaxLevel = 6; //int16
         public const int Experience = 8;//int32
