@@ -176,6 +176,20 @@ namespace Scramble.Classes
             { "{TurfWarEditor}", "Turf War Editor" },
             { "{DropRate:}", "DROP RATE:" },
 
+            { "{Points}", "Current points" },
+            { "{TurfWars}", "Scramble Slams" },
+            { "{CurrentPoints:}", "Current Points:" },
+            { "{HighScore:}", "High Score:" },
+            { "{Prizes:}", "Prizes:" },
+            { "{NoParticipation}", "(didn't participate)" },
+            { "{NoPlacement}", "0/3" },
+            { "{OneReward}", "1/3" },
+            { "{TwoRewards}", "2/3" },
+            { "{ThreeRewards}", "3/3" },
+            { "{MaxPoints}", "Max points" },
+            { "{MaxPrizes}", "Max prizes" },
+            { "{AllScrambles}", "All battles" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
             { "DLG_SaveDataAlreadyOpened", "There is a save file open already. If you didn't save changes, they will be lost." },
@@ -373,6 +387,20 @@ namespace Scramble.Classes
             { "{TurfWarEditor}", "スクランブルバトルのエディタ" },
             { "{DropRate:}", "DROP RATE：" },
 
+            { "{Points}", "現在のスコア" },
+            { "{TurfWars}", "スクランブルバトル" },
+            { "{CurrentPoints:}", "現在のスコア：" },
+            { "{HighScore:}", "ハイスコア：" },
+            { "{Prizes:}", "報酬：" },
+            { "{NoParticipation}", "（ないの参加）" },
+            { "{NoPlacement}", "0/3" },
+            { "{OneReward}", "1/3" },
+            { "{TwoRewards}", "2/3" },
+            { "{ThreeRewards}", "3/3" },
+            { "{MaxPoints}", "最大ポイント" },
+            { "{MaxPrizes}", "最大の報酬" },
+            { "{AllScrambles}", "全てのバトル" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
             { "DLG_SaveDataAlreadyOpened", "すでに開いているファイルがあります。\n保存されていない変更は失われます。" },
@@ -567,8 +595,22 @@ namespace Scramble.Classes
             { "{ReachedDays_Warning}", "Nota: Por el momento, solo puedes cambiar el máximo día alcanzado." },
 
             { "{TrophyEditor}", "Editar grafitis" },
-            { "{TurfWarEditor}", "Editar cruzadas" },
+            { "{TurfWarEditor}", "Editar Conquistas" },
             { "{DropRate:}", "TASA BOTÍN:" },
+
+            { "{Points}", "Mis puntos" },
+            { "{TurfWars}", "Conquistas cruzadas" },
+            { "{CurrentPoints:}", "Puntos actuales:" },
+            { "{HighScore:}", "Récord:" },
+            { "{Prizes:}", "Premios:" },
+            { "{NoParticipation}", "(sin participación)" },
+            { "{NoPlacement}", "0/3" },
+            { "{OneReward}", "1/3" },
+            { "{TwoRewards}", "2/3" },
+            { "{ThreeRewards}", "3/3" },
+            { "{MaxPoints}", "Máx. puntos" },
+            { "{MaxPrizes}", "Máx. premios" },
+            { "{AllScrambles}", "Todos los Conq." },
 
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
@@ -764,8 +806,22 @@ namespace Scramble.Classes
             { "{ReachedDays_Warning}", "Note : Pour le moment, vous ne pouvez modifier que votre jour maximum atteint." },
 
             { "{TrophyEditor}", "Éditer graffitis" },
-            { "{TurfWarEditor}", "Éditer tabassage" },
+            { "{TurfWarEditor}", "Éditer Tabassages" },
             { "{DropRate:}", "TAUX BUTIN :" },
+
+            { "{Points}", "Mes points" },
+            { "{TurfWars}", "Les Tabassages piétons" },
+            { "{CurrentPoints:}", "Points actuels :" },
+            { "{HighScore:}", "Score élevé :" },
+            { "{Prizes:}", "Récompenses :" },
+            { "{NoParticipation}", "(n'a pas participé)" },
+            { "{NoPlacement}", "0/3" },
+            { "{OneReward}", "1/3" },
+            { "{TwoRewards}", "2/3" },
+            { "{ThreeRewards}", "3/3" },
+            { "{MaxPoints}", "Max points" },
+            { "{MaxPrizes}", "Max récompenses" },
+            { "{AllScrambles}", "Toutes" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },

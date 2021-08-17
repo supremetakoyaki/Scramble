@@ -413,13 +413,13 @@
             // 
             // OpenTurfWar_Edit
             // 
-            this.OpenTurfWar_Edit.Enabled = false;
             this.OpenTurfWar_Edit.Location = new System.Drawing.Point(400, 283);
             this.OpenTurfWar_Edit.Name = "OpenTurfWar_Edit";
             this.OpenTurfWar_Edit.Size = new System.Drawing.Size(158, 23);
             this.OpenTurfWar_Edit.TabIndex = 32;
             this.OpenTurfWar_Edit.Text = "Turf War Editor";
             this.OpenTurfWar_Edit.UseVisualStyleBackColor = true;
+            this.OpenTurfWar_Edit.Click += new System.EventHandler(this.OpenTurfWar_Edit_Click);
             // 
             // OpenTrophyEdit_Button
             // 

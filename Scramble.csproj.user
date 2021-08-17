@@ -36,6 +36,9 @@
     <Compile Update="Forms\SkillTreeEditor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\TurfWarEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Legacy\LegacyForm.cs">
       <SubType>Form</SubType>
     </Compile>

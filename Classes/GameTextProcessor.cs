@@ -27,6 +27,7 @@ namespace Scramble.Classes
             { "GY", Color.Gray }
         };
 
+        public const string ALL_PATTERN = "<[^>]*>";
         public const string COLOR_PATTERN = "<C(.*?)>(.*?)<\\/C>";
         public const string ITALIC_PATTERN = "<(.*?)>(.*?)<\\/i>";
         public const string SIZE_PATTERN = "<(.*?)%>(.*?)<\\/size>";
@@ -38,6 +39,11 @@ namespace Scramble.Classes
             {
                 Text = Text.Replace(Tag, $"{CharacterTags[Tag]}");
             }
+        }
+
+        public string RemoveTags(string Text)
+        {
+            return Regex.Replace(Text, ALL_PATTERN, "");
         }
 
         public void SetTaggedText(string Text, RichTextBox Box)

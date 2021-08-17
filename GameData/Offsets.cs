@@ -26,6 +26,11 @@
         // Collection record.
         public const int RecordInv_First = 3344; // byte & byte
 
+        // Turf war
+        public const int TurfWar_CurrentPoints = 9899; // int32
+        public const int TurfWar_Placement_First = 14017; //byte
+        public const int TurfWar_HighScore_First = 14018; //int32
+
         // Hmm?
         public const int UnkDayFlag = 11432; // could be byte or int16. it's "1" if you beat the game... but I have my doubts.
         public const int CurrentDay = 11434; // int32

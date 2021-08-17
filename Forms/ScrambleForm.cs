@@ -25,6 +25,7 @@ namespace Scramble
         public SkillTreeEditor SocialEditor;
         public NoisepediaEditor NoisepediaEditor;
         public DayEditor DayEditor;
+        public TurfWarEditor TurfWarEditor;
 
         public SettingsEditor SettEditor;
         public MiscEditor MiscEditor;
@@ -928,6 +929,13 @@ namespace Scramble
             DayEditor = new DayEditor();
             DayEditor.ShowDialog();
         }
+
+        private void OpenTurfWar_Edit_Click(object sender, EventArgs e)
+        {
+            TurfWarEditor = new TurfWarEditor();
+            TurfWarEditor.ShowDialog();
+        }
+
         private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)
         {
             CurrentLanguage = (byte)LanguageSelectComboBox.SelectedIndex;
