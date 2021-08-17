@@ -1,12 +1,14 @@
 # Scramble
-Scramble is a NEO: The World Ends with You save editor.
+Scramble is both a "NEO: The World Ends with You" and "The World Ends with You: Final Remix" save editor.
 
-It works for save files for versions 1.00 and 1.01 of the game, of both Switch and PS4.
+It works for:
+- NEO TWEWY save files of any version of the game, of both Switch and PS4.
+- TWEWY Final Remix save files of any version of the game.
 
 [Click here for the GBATemp thread.](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/)
 
 # How to use
-You need a decrypted save file of the game. This save file weighs about 3.15MB.
+You need a decrypted save file of the game. This save file weighs about 3.15MB (NEO), and 50KB (Final Remix).
 After that, you can [download the latest release](https://github.com/supremetakoyaki/Scramble/releases/) and you're ready to go.
 
 Note that you need the [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/dotnet/5.0/runtime) to run the editor! 
@@ -28,6 +30,7 @@ Note that you need the [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/
 - Edit your social network tree and obtained rewards.
 - Edit your noisepedia.
 - Edit your furthest reached day.
+- Edit your scramble slam scores.
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
