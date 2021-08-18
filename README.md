@@ -16,7 +16,7 @@ Note that you need the [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/
 # How to get your save file
 - If you have a hackable Switch, you'll need to first be [running CFW](https://switch.homebrew.guide/) and then use a homebrew app to get the save file. For example, I use [JKSV](https://github.com/J-D-K/JKSV/releases/) most of the time. 
 - If you have a hackable Switch but still don't want to directly hack it or run CFW, there's a [more obscure method you can use](https://gbatemp.net/threads/edit-ofw-clean-switch-save-data-from-nand-backup-restoring-via-fusee-gelee-payloads.541081/).
-- In case you're running the Switch version of the game on an emulator such as Yuzu or Ryujinx, decrypted saves are in your user profile folder, typically named "user". Look for a 3.15MB file called "gamesave" without extension.
+- In case you're running the Switch version of the game on an emulator such as Yuzu or Ryujinx, decrypted saves are in your user profile folder, typically named "user". Look for a file called "gamesave" without extension.
 - If you have a PS4, use [Save Wizard](https://www.savewizard.net/)'s Advanced Mode to get your decrypted save file (this is a paid software, unfortunately.)
 
 # Features
@@ -37,6 +37,9 @@ Note that you need the [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/
 **TWEWY Final Remix Save Editing** (a.k.a. "Legacy mode"):
 - Edit your character and game stats.
 - Edit your items.
+
+**Other utilities**
+- Convert TWEWY Solo Remix save to TWEWY Final Remix.
 
 There will be more features coming in the future, so stay tuned!
 
