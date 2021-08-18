@@ -34,6 +34,7 @@ namespace Scramble.Legacy
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             Logo_PictureBox.Image = ImageMethodsFr.DrawImage(Properties.Resources.ResourceManager.GetObject("Logo_Legacy") as Bitmap, 139, 74, DeviceDpi);
+            VersionLabel.Text = Program.ScrambleVersion;
 
             SetUpGraphics();
             ChangeFormSize(135, 333);

@@ -6,6 +6,8 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Scramble.Util;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Scramble.Forms
 {
@@ -19,6 +21,67 @@ namespace Scramble.Forms
             NTWEWY_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Logo_NTWEWY") as Bitmap, 200, 200, DeviceDpi);
             TWEWYFR_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Logo_TWEWYFR") as Bitmap, 200, 200, DeviceDpi);
             Convert_FromSoloRemix_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Convert_SR_to_FR") as Bitmap, 194, 23, DeviceDpi);
+
+            NeoTwewy_ToolTip.SetToolTip(NTWEWY_Button, "\"NEO: The World Ends with You\" Save Editor");
+            TwewyFr_ToolTip.SetToolTip(TWEWYFR_Button, "\"The World Ends with You -Final Remix-\" Save Editor");
+            ConvertSr2Fr_ToolTip.SetToolTip(Convert_FromSoloRemix_Button, "Convert Solo Remix save file to Final Remix save file");
+
+            Task.Run(() =>
+            {
+                TryCheckForUpdates();
+            });
+        }
+
+        public void TryCheckForUpdates()
+        {
+            string Message = "Checking for updates. . .";
+            Color Colour = SystemColors.ControlText;
+
+            try
+            {
+                string LatestReleaseUri_Api = "https://api.github.com/repos/supremetakoyaki/Scramble/releases/latest";
+
+                using (WebClient Client = new WebClient())
+                {
+                    Client.Headers.Add("User-Agent", "request");
+                    string ApiResponse = Client.DownloadString(LatestReleaseUri_Api);
+
+                    string LatestVersion_str = ApiResponse.Split("tag_name")[1].Substring(4).Split('"')[0];
+
+                    Version CurrentVersion = new Version(Program.ScrambleVersion.Substring(1));
+                    Version LatestVersion = new Version(LatestVersion_str);
+
+                    if (CurrentVersion.CompareTo(LatestVersion) < 0)
+                    {
+                        Message = "There's a new version available!";
+                        Colour = Color.DarkBlue;
+                    }
+                    else
+                    {
+                        Message = "You're running the latest version.";
+                        Colour = Color.Green;
+                    }
+                }
+            }
+            catch
+            {
+                Message = "I couldn't check for updates.";
+                Colour = SystemColors.ControlDark;
+            }
+
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    UpdateChecker_Label.ForeColor = Colour;
+                    UpdateChecker_Label.Text = Message;
+                }));
+            }
+            else
+            {
+                UpdateChecker_Label.ForeColor = Colour;
+                UpdateChecker_Label.Text = Message;
+            }
         }
 
         private void NTWEWY_Button_Click(object sender, EventArgs e)
@@ -87,6 +150,11 @@ namespace Scramble.Forms
                 File.WriteAllBytes(SaveDialog.FileName, ConvertedSave);
                 return;
             }
+        }
+
+        private void UpdateChecker_Label_Click(object sender, EventArgs e)
+        {
+            Program.OpenSite("https://github.com/supremetakoyaki/Scramble");
         }
     }
 }

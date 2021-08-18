@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>0.8</Version>
+    <Version>0.8.1</Version>
     <Authors>T</Authors>
     <Description>The World Ends with You save editor.</Description>
     <Copyright></Copyright>

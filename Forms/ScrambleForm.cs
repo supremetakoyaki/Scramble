@@ -4,14 +4,10 @@ using Scramble.Forms;
 using Scramble.GameData;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Net;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Scramble
 {
@@ -81,6 +77,7 @@ namespace Scramble
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             LogoPictureBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject("Logo") as Bitmap, 139, 74, DeviceDpi);
+            AboutLabel.Text = Program.ScrambleVersion;
 
             SetUpGraphics();
 
@@ -100,7 +97,7 @@ namespace Scramble
             LanguageSelectComboBox.Text = "English";
             ReadyForUserInput = true;
 
-            Task.Run(() => { PopulateImageLists(); TryCheckForUpdates(); });
+            Task.Run(() => { PopulateImageLists(); });
         }
 
         public void SetUpGraphics()
@@ -238,38 +235,6 @@ namespace Scramble
 
                 OpenRecordEditButton.Enabled = true;
                 OpenRecordEditButton.Text = GetString("{CollectionEditor}");
-            }
-        }
-
-        public void TryCheckForUpdates()
-        {
-            try
-            {
-                string LatestReleaseUri_Api = "https://api.github.com/repos/supremetakoyaki/Scramble/releases/latest";
-                string LatestReleaseUri = "https://github.com/supremetakoyaki/Scramble/releases/latest";
-
-                using (WebClient Client = new WebClient())
-                {
-                    Client.Headers.Add("User-Agent", "request");
-                    string ApiResponse = Client.DownloadString(LatestReleaseUri_Api);
-
-                    string LatestVersion_str = ApiResponse.Split("tag_name")[1].Substring(4).Split('"')[0];
-
-                    Version CurrentVersion = new Version(AboutLabel.Text.Substring(1));
-                    Version LatestVersion = new Version(LatestVersion_str);
-
-                    if (CurrentVersion.CompareTo(LatestVersion) < 0)
-                    {
-                        if (ShowPrompt(GetString("DLG_NewUpdateFound")))
-                        {
-                            OpenSite(LatestReleaseUri);
-                        }
-                    }
-                }
-            }
-            catch
-            {
-
             }
         }
 
@@ -783,35 +748,7 @@ namespace Scramble
 
         private void AboutLabel_Click(object sender, EventArgs e)
         {
-            OpenSite("https://github.com/supremetakoyaki/Scramble");
-        }
-
-        private void OpenSite(string url)
-        {
-            try
-            {
-                Process.Start(url);
-            }
-            catch
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    url = url.Replace("&", "^&");
-                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    Process.Start("xdg-open", url);
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    Process.Start("open", url);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            Program.OpenSite("https://github.com/supremetakoyaki/Scramble");
         }
 
         private void ChangeFormSize(int Height, int Width)

@@ -76,7 +76,7 @@ namespace Scramble.Legacy
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(37, 14);
             this.VersionLabel.TabIndex = 2;
-            this.VersionLabel.Text = "v0.8";
+            this.VersionLabel.Text = string.Empty;
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.VersionLabel.Click += new System.EventHandler(this.VersionLabel_Click);
             // 

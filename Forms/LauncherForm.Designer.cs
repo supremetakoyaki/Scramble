@@ -29,10 +29,15 @@ namespace Scramble.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.NTWEWY_Button = new System.Windows.Forms.Button();
             this.TWEWYFR_Button = new System.Windows.Forms.Button();
             this.Utilities_GroupBox = new System.Windows.Forms.GroupBox();
+            this.UpdateChecker_Label = new System.Windows.Forms.Label();
             this.Convert_FromSoloRemix_Button = new System.Windows.Forms.Button();
+            this.ConvertSr2Fr_ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.NeoTwewy_ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.TwewyFr_ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Utilities_GroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,13 +61,25 @@ namespace Scramble.Forms
             // 
             // Utilities_GroupBox
             // 
+            this.Utilities_GroupBox.Controls.Add(this.UpdateChecker_Label);
             this.Utilities_GroupBox.Controls.Add(this.Convert_FromSoloRemix_Button);
             this.Utilities_GroupBox.Location = new System.Drawing.Point(12, 218);
             this.Utilities_GroupBox.Name = "Utilities_GroupBox";
             this.Utilities_GroupBox.Size = new System.Drawing.Size(406, 51);
             this.Utilities_GroupBox.TabIndex = 3;
             this.Utilities_GroupBox.TabStop = false;
-            this.Utilities_GroupBox.Text = "Utilities";
+            // 
+            // UpdateChecker_Label
+            // 
+            this.UpdateChecker_Label.AutoSize = true;
+            this.UpdateChecker_Label.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UpdateChecker_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.UpdateChecker_Label.Location = new System.Drawing.Point(6, 27);
+            this.UpdateChecker_Label.Name = "UpdateChecker_Label";
+            this.UpdateChecker_Label.Size = new System.Drawing.Size(124, 13);
+            this.UpdateChecker_Label.TabIndex = 4;
+            this.UpdateChecker_Label.Text = "Checking for updates...";
+            this.UpdateChecker_Label.Click += new System.EventHandler(this.UpdateChecker_Label_Click);
             // 
             // Convert_FromSoloRemix_Button
             // 
@@ -72,6 +89,18 @@ namespace Scramble.Forms
             this.Convert_FromSoloRemix_Button.TabIndex = 0;
             this.Convert_FromSoloRemix_Button.UseVisualStyleBackColor = true;
             this.Convert_FromSoloRemix_Button.Click += new System.EventHandler(this.Convert_FromSoloRemix_Button_Click);
+            // 
+            // ConvertSr2Fr_ToolTip
+            // 
+            this.ConvertSr2Fr_ToolTip.AutomaticDelay = 250;
+            // 
+            // NeoTwewy_ToolTip
+            // 
+            this.NeoTwewy_ToolTip.AutomaticDelay = 250;
+            // 
+            // TwewyFr_ToolTip
+            // 
+            this.TwewyFr_ToolTip.AutomaticDelay = 250;
             // 
             // LauncherForm
             // 
@@ -84,8 +113,9 @@ namespace Scramble.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LauncherForm";
-            this.Text = "Scramble";
+            this.Text = "Scramble — Launcher";
             this.Utilities_GroupBox.ResumeLayout(false);
+            this.Utilities_GroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -95,5 +125,9 @@ namespace Scramble.Forms
         private System.Windows.Forms.Button TWEWYFR_Button;
         private System.Windows.Forms.GroupBox Utilities_GroupBox;
         private System.Windows.Forms.Button Convert_FromSoloRemix_Button;
+        private System.Windows.Forms.Label UpdateChecker_Label;
+        private System.Windows.Forms.ToolTip ConvertSr2Fr_ToolTip;
+        private System.Windows.Forms.ToolTip NeoTwewy_ToolTip;
+        private System.Windows.Forms.ToolTip TwewyFr_ToolTip;
     }
 }
