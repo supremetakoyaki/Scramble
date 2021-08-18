@@ -151,6 +151,16 @@ namespace Scramble.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Convert_SR_to_FR {
+            get {
+                object obj = ResourceManager.GetObject("Convert_SR_to_FR", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Legacy_Byte_Empty {

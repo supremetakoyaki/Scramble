@@ -31,6 +31,9 @@ namespace Scramble.Forms
         {
             this.NTWEWY_Button = new System.Windows.Forms.Button();
             this.TWEWYFR_Button = new System.Windows.Forms.Button();
+            this.Utilities_GroupBox = new System.Windows.Forms.GroupBox();
+            this.Convert_FromSoloRemix_Button = new System.Windows.Forms.Button();
+            this.Utilities_GroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // NTWEWY_Button
@@ -51,17 +54,38 @@ namespace Scramble.Forms
             this.TWEWYFR_Button.UseVisualStyleBackColor = true;
             this.TWEWYFR_Button.Click += new System.EventHandler(this.TWEWYFR_Button_Click);
             // 
+            // Utilities_GroupBox
+            // 
+            this.Utilities_GroupBox.Controls.Add(this.Convert_FromSoloRemix_Button);
+            this.Utilities_GroupBox.Location = new System.Drawing.Point(12, 218);
+            this.Utilities_GroupBox.Name = "Utilities_GroupBox";
+            this.Utilities_GroupBox.Size = new System.Drawing.Size(406, 51);
+            this.Utilities_GroupBox.TabIndex = 3;
+            this.Utilities_GroupBox.TabStop = false;
+            this.Utilities_GroupBox.Text = "Utilities";
+            // 
+            // Convert_FromSoloRemix_Button
+            // 
+            this.Convert_FromSoloRemix_Button.Location = new System.Drawing.Point(206, 22);
+            this.Convert_FromSoloRemix_Button.Name = "Convert_FromSoloRemix_Button";
+            this.Convert_FromSoloRemix_Button.Size = new System.Drawing.Size(194, 23);
+            this.Convert_FromSoloRemix_Button.TabIndex = 0;
+            this.Convert_FromSoloRemix_Button.UseVisualStyleBackColor = true;
+            this.Convert_FromSoloRemix_Button.Click += new System.EventHandler(this.Convert_FromSoloRemix_Button_Click);
+            // 
             // LauncherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 224);
+            this.ClientSize = new System.Drawing.Size(430, 281);
+            this.Controls.Add(this.Utilities_GroupBox);
             this.Controls.Add(this.TWEWYFR_Button);
             this.Controls.Add(this.NTWEWY_Button);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LauncherForm";
             this.Text = "Scramble";
+            this.Utilities_GroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -69,5 +93,7 @@ namespace Scramble.Forms
         #endregion
         private System.Windows.Forms.Button NTWEWY_Button;
         private System.Windows.Forms.Button TWEWYFR_Button;
+        private System.Windows.Forms.GroupBox Utilities_GroupBox;
+        private System.Windows.Forms.Button Convert_FromSoloRemix_Button;
     }
 }
