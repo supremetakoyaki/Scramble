@@ -16,10 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="Assets\Icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
