@@ -46,6 +46,9 @@ namespace Scramble.Util
 
         public static byte[] FromSoloRemix(byte[] SaveFile)
         {
+            // This is done extremely dirty. When I have more time, I will probably clean it.
+            // For now, it works fine.
+
             // Create the streams
             MemoryStream Save_Stream = new MemoryStream(FINALREMIX_SAVE_SIZE); // global, which will include Data at the end.
             MemoryStream Data_Stream = new MemoryStream(FINALREMIX_DATA_LENGTH);
@@ -152,9 +155,28 @@ namespace Scramble.Util
             Data_Stream.WriteByte(1);
             Data_Stream.WriteByte(1);
 
-
             // finale
             byte[] FinalRemix_Data = Data_Stream.ToArray();
+
+            // fix some discrepancies and other stuff I found.
+            FinalRemix_Data[34485] = 0x69;
+            FinalRemix_Data[34502] = 0x69;
+            FinalRemix_Data[34506] = FinalRemix_Data[34507];
+            FinalRemix_Data[34507] = 0x00;
+            FinalRemix_Data[34531] = 0x15;
+            FinalRemix_Data[34535] = 0x01;
+            FinalRemix_Data[34539] = 0x35;
+            FinalRemix_Data[34544] = 0x00;
+            FinalRemix_Data[34784] = 0x02;
+            FinalRemix_Data[34798] = 0x06;
+            FinalRemix_Data[36960] = 0x01;
+            FinalRemix_Data[36968] = 0x01;
+            FinalRemix_Data[37099] = 0x00;
+            FinalRemix_Data[41890] = 0xB6;
+            FinalRemix_Data[41898] = 0x10;
+            FinalRemix_Data[41902] = 0x0A;
+            FinalRemix_Data[41904] = 0x00;
+
             Save_Stream.Write(CalculateFinalRemixChecksum(FinalRemix_Data), 0, FINALREMIX_HASH_LENGTH);
             Save_Stream.Write(FinalRemix_Data, 0, FINALREMIX_DATA_LENGTH);
 

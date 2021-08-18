@@ -69,7 +69,7 @@ namespace Scramble.Forms
 
             if (!TwewySaveConverter.IsValidSoloRemixSaveFile(SoloRemix_SaveFile))
             {
-                MessageBox.Show("This is not a valid TWEWY Solo Remix save file. File size should be 28.5 KB and include the header at the beginning.");
+                MessageBox.Show("This is not a valid TWEWY Solo Remix save file. File size should be 28.5 KB and include the header at the beginning.", "Notice");
                 return;
             }
 
@@ -83,7 +83,7 @@ namespace Scramble.Forms
 
             if (SaveDialog.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Save file converted successfully.");
+                MessageBox.Show("Solo Remix save file successfully converted to Final Remix save file.", "Notice");
                 File.WriteAllBytes(SaveDialog.FileName, ConvertedSave);
                 return;
             }
