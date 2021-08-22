@@ -31,12 +31,8 @@ namespace Scramble.Forms
                 {
                     return Offsets.TurfWar_CurrentPoints_W2D3;
                 }
-                else if (SelectedSlot.CurrentDay == 13) // w2d6
-                {
-                    return Offsets.TurfWar_CurrentPoints_W2D6;
-                }
 
-                return Offsets.TurfWar_CurrentPoints_W2D6;
+                return Offsets.TurfWar_CurrentPoints;
             }
         }
 
