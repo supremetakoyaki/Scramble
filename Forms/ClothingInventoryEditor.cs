@@ -16,7 +16,7 @@ namespace Scramble.Forms
 
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
-        public const short EMPTY_CLOTHING_ID = -1;
+        public const short EMPTY_CLOTHING_ID = 0;
         public const byte SLOT_HEADWEAR = 0;
         public const byte SLOT_TOP = 1;
         public const byte SLOT_BOTTOM = 2;
@@ -27,7 +27,7 @@ namespace Scramble.Forms
         private List<InventoryFashion> InventoryClothes;
         private InventoryFashion SelectedClothing;
 
-        public const ushort MAXIMUM = 2000;
+        public const ushort MAXIMUM = 2100;
         private int TotalCount;
 
         private bool ReadyForUserInput = false; // flag that indicates whether the editor is working on changing values on its own.    
@@ -247,6 +247,7 @@ namespace Scramble.Forms
 
             RemoveClothingButton.Enabled = true;
             AmountNumericUpDown.Enabled = true;
+
             AmountNumericUpDown.Value = Clothing.Amount;
 
             AtkValueLabel.Text = string.Format("+{0}", Clothing.BaseClothing.AtkBoost);
@@ -421,6 +422,13 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedAccessoryIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
             }
 
+            //We're also gonna clear every single clothing in this save slot.
+            //Necessary to fix a bug.
+            for (int i = Offsets.ClothingInv_First; i < Offsets.ClothingInv_Last; i += 2)
+            {
+                SelectedSlot.UpdateOffset_UInt16(EMPTY_CLOTHING_ID, 0);
+            }
+
             foreach (PartyMember Member in SelectedSlot.GetPartyMembers().Values)
             {
                 for (int i = 0; i < 5; i++)
@@ -436,8 +444,23 @@ namespace Scramble.Forms
             // int16: ID + 1 (+32768 if we want it to show "New")
             foreach (InventoryFashion Clothing in InventoryClothes)
             {
+                if (CurrentPointer == Offsets.PartyMember1_CharacterId)
+                {
+                    break; // We're done!
+                }
+
+                if (Clothing.Amount > 9)
+                {
+                    Clothing.Amount = 9;
+                }
+
                 for (int i = 0; i < Clothing.Amount; i++)
                 {
+                    if (CurrentPointer == Offsets.PartyMember1_CharacterId)
+                    {
+                        break; // We're done!
+                    }
+
                     SelectedSlot.UpdateOffset_UInt16(CurrentPointer, (ushort)(Clothing.Id + 1));
 
                     if (Clothing.EquipperId != 0)
@@ -450,7 +473,7 @@ namespace Scramble.Forms
 
                         int ThisOffset = Offsets.PartyMember1_EquippedHeadwearIndex + OffsetSum + SlotSum;
 
-                        // check if we didn't add the equipped data already, for a duplicate of this pin, for example.
+                        // check if we didn't add the equipped data already.
                         int StoredValue = SelectedSlot.RetrieveOffset_Int32(ThisOffset);
 
                         if (StoredValue == SaveData.NOT_ASSIGNED_DATA)
@@ -458,7 +481,7 @@ namespace Scramble.Forms
                             SelectedSlot.UpdateOffset_Int32(ThisOffset, Indexes);
                             SelectedSlot.GetPartyMemberWithId(Clothing.EquipperId).EquippedClothingIndexes[SlotType] = Indexes;
 
-                            if (IsTopAndBottom) // would this work?
+                            if (IsTopAndBottom)
                             {
                                 SelectedSlot.UpdateOffset_Int32(ThisOffset + 4, Indexes);
                                 SelectedSlot.GetPartyMemberWithId(Clothing.EquipperId).EquippedClothingIndexes[SlotType + 1] = Indexes;
