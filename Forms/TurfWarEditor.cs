@@ -23,6 +23,23 @@ namespace Scramble.Forms
         public const uint IDEAL_POINTS_SCRAMBLE_1 = 400000;
         public const uint IDEAL_POINTS_SCRAMBLE_2 = 50000;
 
+        public int CurrentPointsOffset
+        {
+            get
+            {
+                if (SelectedSlot.CurrentDay == 10) // w2d3
+                {
+                    return Offsets.TurfWar_CurrentPoints_W2D3;
+                }
+                else if (SelectedSlot.CurrentDay == 13) // w2d6
+                {
+                    return Offsets.TurfWar_CurrentPoints_W2D6;
+                }
+
+                return Offsets.TurfWar_CurrentPoints_W2D6;
+            }
+        }
+
         private bool ReadyForUserInput = false;
 
         public TurfWarEditor()
@@ -75,7 +92,7 @@ namespace Scramble.Forms
 
         private void DisplayCurrentPoints()
         {
-            uint CurrentPoints = SelectedSlot.RetrieveOffset_UInt32(Offsets.TurfWar_CurrentPoints);
+            uint CurrentPoints = SelectedSlot.RetrieveOffset_UInt32(CurrentPointsOffset);
 
             if (CurrentPoints > CurrentScore_NumUpDown.Maximum)
             {
@@ -168,7 +185,7 @@ namespace Scramble.Forms
             }
 
             ReadyForUserInput = false;
-            SelectedSlot.UpdateOffset_UInt32(Offsets.TurfWar_CurrentPoints, (uint)CurrentScore_NumUpDown.Value);
+            SelectedSlot.UpdateOffset_UInt32(CurrentPointsOffset, (uint)CurrentScore_NumUpDown.Value);
             ReadyForUserInput = true;
         }
 
@@ -180,7 +197,7 @@ namespace Scramble.Forms
             }
 
             ReadyForUserInput = false;
-            SelectedSlot.UpdateOffset_UInt32(Offsets.TurfWar_CurrentPoints, (uint)CurrentScore_NumUpDown.Maximum);
+            SelectedSlot.UpdateOffset_UInt32(CurrentPointsOffset, (uint)CurrentScore_NumUpDown.Maximum);
             CurrentScore_NumUpDown.Value = CurrentScore_NumUpDown.Maximum;
             ReadyForUserInput = true;
         }

@@ -27,7 +27,8 @@
         public const int RecordInv_First = 3344; // byte & byte
 
         // Turf war
-        public const int TurfWar_CurrentPoints = 9899; // int32
+        public const int TurfWar_CurrentPoints_W2D3 = 8168; // int32
+        public const int TurfWar_CurrentPoints_W2D6 = 9899; // int32
         public const int TurfWar_Placement_First = 14017; //byte
         public const int TurfWar_HighScore_First = 14018; //int32
 
