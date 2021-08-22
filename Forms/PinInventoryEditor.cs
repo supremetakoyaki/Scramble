@@ -271,8 +271,7 @@ namespace Scramble.Forms
             // Pin data:
             // int16: pin ID
             // int16: level
-            // int16: experience
-            // int16: i have no idea.
+            // int32: experience
 
             int CurrentPointer = Offsets.PinInv_First;
             int PinIndexes = 0;
