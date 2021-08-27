@@ -1,6 +1,7 @@
 ﻿using NTwewyDb;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Scramble.Classes
 {
@@ -60,7 +61,14 @@ namespace Scramble.Classes
 
             foreach (byte DeckId in EquippingData.Keys)
             {
-                DecksWithThisPin.Add(DeckId, EquippingData[DeckId]);
+                if (DecksWithThisPin.ContainsKey(DeckId))
+                {
+                    MessageBox.Show(string.Format("Someone else (Character{0}) already has this pin (#{1}) in the same deck (Deck {2}). I'm not sure if it's legal but the editor does not support this at the moment. Equip a different pin to this character.", EquippingData[DeckId], PinId, DeckId), "Developer's note");
+                }
+                else
+                {
+                    DecksWithThisPin.Add(DeckId, EquippingData[DeckId]);
+                }
             }
         }
 
