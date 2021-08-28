@@ -63,7 +63,7 @@ namespace Scramble.Classes
             {
                 if (DecksWithThisPin.ContainsKey(DeckId))
                 {
-                    MessageBox.Show(string.Format("Someone else (Character{0}) already has this pin (#{1}) in the same deck (Deck {2}). I'm not sure if it's legal but the editor does not support this at the moment. Equip a different pin to this character.", EquippingData[DeckId], PinId, DeckId), "Developer's note");
+                    MessageBox.Show(string.Format("There's a duplicate of pin #{0} in Deck {1}. While this is valid in-game, the editor does not support it at the moment. Equip a different pin to this character in the editor: {2}", PinId, DeckId, EquippingData[DeckId]), "Developer's note");
                 }
                 else
                 {
