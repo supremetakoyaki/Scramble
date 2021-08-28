@@ -7,6 +7,9 @@
     <Compile Update="Forms\ClothingInventoryEditor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\CollectionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\DayEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -22,17 +25,12 @@
     <Compile Update="Forms\PinInventoryEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\CollectionEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\ScrambleForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\SettingsEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="Forms\SkillTreeEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -43,6 +41,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Legacy\LegacyItemEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Legacy\LegacyPinEditor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Legacy\LegacyStatsEditor.cs">

@@ -17,7 +17,7 @@ namespace Scramble
         public static ScrambleForm Sukuranburu;
         public static LegacyForm Legacy;
 
-        public const string ScrambleVersion = "v0.8.2";
+        public const string ScrambleVersion = "v0.9";
 
         [STAThread]
         private static void Main()

@@ -46,6 +46,11 @@
         public const int Beat_Bytes = 121;//int16
         public const int Beat_IndexOfUnavailableBytes = 123;//int16
 
+        public const int Stockpile_Start = 247; // 15 bytes. ID: int16, LEVEL: int16, ???(int16), experience?(int32), ???(int32), ???(boolean)
+        public const int Stockpile_End = 4086;
+        public const int Mastered_Start = 4087; // 11 bytes. ID: int16, LEVEL: int16, 
+        public const int Mastered_End = 15086;
+
         public const int ItemInventory_Id_First = 15543;//int16
         public const int ItemInventory_Amount_First = 15545;//int16
         public const int ItemInventory_UnkFlag_First = 15547;//byte

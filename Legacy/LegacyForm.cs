@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scramble.Legacy
@@ -18,6 +19,7 @@ namespace Scramble.Legacy
 
         private LegacyStatsEditor StatsEditor;
         private LegacyItemEditor ItemEditor;
+        private LegacyPinEditor PinEditor;
 
         public bool RequiresRescaling => ScaleFactor != 1.0;
 
@@ -26,6 +28,11 @@ namespace Scramble.Legacy
         public byte LanguageId;
 
         private TwewyManager TwewyManager;
+
+        #region Image Lists
+        private ImageList PinImageList_32x32;
+        private ImageList PinImageList_64x64;
+        #endregion
 
         private bool ReadyForUserInput = false;
 
@@ -46,6 +53,8 @@ namespace Scramble.Legacy
             TwewyManager = new TwewyManager();
 
             ReadyForUserInput = true;
+
+            Task.Run(() => { PopulateImageLists(); });
         }
 
         public void SetUpGraphics()
@@ -81,6 +90,62 @@ namespace Scramble.Legacy
         public bool ShowPrompt(string Message)
         {
             return MessageBox.Show(Message, "Hey!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
+        private void PopulateImageLists()
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    OpenPinsEdit_Button.Enabled = false;
+                    OpenPinsEdit_Button.Text = "Loading...";
+                }));
+            }
+            else
+            {
+                OpenPinsEdit_Button.Enabled = false;
+                OpenPinsEdit_Button.Text = "Loading...";
+            }
+
+
+            PinImageList_32x32 = new ImageList();
+            PinImageList_32x32.ImageSize = new Size(32, 32);
+            PinImageList_32x32.ColorDepth = ColorDepth.Depth32Bit;
+
+            PinImageList_64x64 = new ImageList();
+            PinImageList_64x64.ImageSize = new Size(64, 64);
+            PinImageList_64x64.ColorDepth = ColorDepth.Depth32Bit;
+
+            foreach (TwewyPin Pin in GetTwewyManager().GetPins().Values)
+            {
+                PinImageList_32x32.Images.Add(Pin.Sprite, ImageMethodsFr.DrawImage(Pin.Sprite, 32, 32, DeviceDpi));
+                PinImageList_64x64.Images.Add(Pin.Sprite, ImageMethodsFr.DrawImage(Pin.Sprite, 64, 64, DeviceDpi));
+            }
+
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    OpenPinsEdit_Button.Enabled = true;
+                    OpenPinsEdit_Button.Text = "Pins Editor";
+                }));
+            }
+            else
+            {
+                OpenPinsEdit_Button.Enabled = true;
+                OpenPinsEdit_Button.Text = "Pins Editor";
+            }
+        }
+
+        public ImageList GetPinImageList_32x32()
+        {
+            return PinImageList_32x32;
+        }
+
+        public ImageList GetPinImageList_64x64()
+        {
+            return PinImageList_64x64;
         }
 
         private void LegacyForm_DpiChanged(object sender, DpiChangedEventArgs e)
@@ -230,6 +295,12 @@ namespace Scramble.Legacy
         {
             ItemEditor = new LegacyItemEditor();
             ItemEditor.ShowDialog();
+        }
+
+        private void OpenPinsEdit_Button_Click(object sender, EventArgs e)
+        {
+            PinEditor = new LegacyPinEditor();
+            PinEditor.ShowDialog();
         }
 
         private void DumpData_Button_Click(object sender, EventArgs e)

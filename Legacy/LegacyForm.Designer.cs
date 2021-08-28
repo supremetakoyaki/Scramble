@@ -76,7 +76,6 @@ namespace Scramble.Legacy
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(37, 14);
             this.VersionLabel.TabIndex = 2;
-            this.VersionLabel.Text = string.Empty;
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.VersionLabel.Click += new System.EventHandler(this.VersionLabel_Click);
             // 
@@ -138,13 +137,13 @@ namespace Scramble.Legacy
             // 
             // OpenPinsEdit_Button
             // 
-            this.OpenPinsEdit_Button.Enabled = false;
             this.OpenPinsEdit_Button.Location = new System.Drawing.Point(6, 54);
             this.OpenPinsEdit_Button.Name = "OpenPinsEdit_Button";
             this.OpenPinsEdit_Button.Size = new System.Drawing.Size(145, 26);
             this.OpenPinsEdit_Button.TabIndex = 3;
             this.OpenPinsEdit_Button.Text = "Pins Editor";
             this.OpenPinsEdit_Button.UseVisualStyleBackColor = true;
+            this.OpenPinsEdit_Button.Click += new System.EventHandler(this.OpenPinsEdit_Button_Click);
             // 
             // OpenShopEditor_Button
             // 
