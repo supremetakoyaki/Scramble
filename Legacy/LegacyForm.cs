@@ -204,7 +204,7 @@ namespace Scramble.Legacy
             {
                 return;
             }
-            else
+            else if (BackupCheckbox.Checked)
             {
                 if (File.Exists(OpenedSaveFile.FilePath))
                 {
