@@ -18,9 +18,9 @@ namespace Scramble.Forms
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
-            NTWEWY_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Logo_NTWEWY") as Bitmap, 200, 200, DeviceDpi);
-            TWEWYFR_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Logo_TWEWYFR") as Bitmap, 200, 200, DeviceDpi);
-            Convert_FromSoloRemix_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Convert_SR_to_FR") as Bitmap, 194, 23, DeviceDpi);
+            NTWEWY_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Logo_NTWEWY") as Bitmap, 171, 173, DeviceDpi);
+            TWEWYFR_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Logo_TWEWYFR") as Bitmap, 171, 173, DeviceDpi);
+            Convert_FromSoloRemix_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Convert_SR_to_FR") as Bitmap, 166, 20, DeviceDpi);
 
             NeoTwewy_ToolTip.SetToolTip(NTWEWY_Button, "\"NEO: The World Ends with You\" Save Editor");
             TwewyFr_ToolTip.SetToolTip(TWEWYFR_Button, "\"The World Ends with You -Final Remix-\" Save Editor");
