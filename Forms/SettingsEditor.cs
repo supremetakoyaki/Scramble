@@ -73,7 +73,7 @@ namespace Scramble.Forms
             }
 
             ReadyForUserInput = false;
-            SaveGlobal.UpdateOffset_Float(Offsets.VolumeMusic, (float)MusicVolTrackBar.Value / 10f);
+            SaveGlobal.UpdateOffset_Float(Offsets.VolumeMusic, MusicVolTrackBar.Value / 10f);
             ReadyForUserInput = true;
         }
 
@@ -85,7 +85,7 @@ namespace Scramble.Forms
             }
 
             ReadyForUserInput = false;
-            SaveGlobal.UpdateOffset_Float(Offsets.VolumeSfx, (float)SfxVolTrackBar.Value / 10f);
+            SaveGlobal.UpdateOffset_Float(Offsets.VolumeSfx, SfxVolTrackBar.Value / 10f);
             ReadyForUserInput = true;
         }
 
@@ -97,7 +97,7 @@ namespace Scramble.Forms
             }
 
             ReadyForUserInput = false;
-            SaveGlobal.UpdateOffset_Float(Offsets.VolumeVa, (float)VaVolumeTrackBar.Value / 10f);
+            SaveGlobal.UpdateOffset_Float(Offsets.VolumeVa, VaVolumeTrackBar.Value / 10f);
             ReadyForUserInput = true;
         }
 

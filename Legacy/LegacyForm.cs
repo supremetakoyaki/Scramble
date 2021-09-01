@@ -27,7 +27,7 @@ namespace Scramble.Legacy
         public LegacyTextProcessor TextProcessor;
         public byte LanguageId;
 
-        private TwewyManager TwewyManager;
+        private readonly TwewyManager TwewyManager;
 
         #region Image Lists
         private ImageList PinImageList_32x32;
@@ -59,7 +59,7 @@ namespace Scramble.Legacy
 
         public void SetUpGraphics()
         {
-            ScaleFactor = (double)DeviceDpi / (double)96;
+            ScaleFactor = DeviceDpi / (double)96;
             DpiChanged += new DpiChangedEventHandler(LegacyForm_DpiChanged);
         }
 
@@ -109,13 +109,17 @@ namespace Scramble.Legacy
             }
 
 
-            PinImageList_32x32 = new ImageList();
-            PinImageList_32x32.ImageSize = new Size(32, 32);
-            PinImageList_32x32.ColorDepth = ColorDepth.Depth32Bit;
+            PinImageList_32x32 = new ImageList
+            {
+                ImageSize = new Size(32, 32),
+                ColorDepth = ColorDepth.Depth32Bit
+            };
 
-            PinImageList_64x64 = new ImageList();
-            PinImageList_64x64.ImageSize = new Size(64, 64);
-            PinImageList_64x64.ColorDepth = ColorDepth.Depth32Bit;
+            PinImageList_64x64 = new ImageList
+            {
+                ImageSize = new Size(64, 64),
+                ColorDepth = ColorDepth.Depth32Bit
+            };
 
             foreach (TwewyPin Pin in GetTwewyManager().GetPins().Values)
             {

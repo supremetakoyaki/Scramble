@@ -55,9 +55,11 @@ namespace Scramble.Legacy
         {
             foreach (TwewyPin Pin in Legacy.GetTwewyManager().GetPins().Values)
             {
-                ListViewItem PinToAdd = new ListViewItem(new string[] { Pin.GetName(Legacy.LanguageId), Pin.Id.ToString() });
-                PinToAdd.ImageKey = Pin.Sprite;
-                PinToAdd.Tag = Pin.Id;
+                ListViewItem PinToAdd = new ListViewItem(new string[] { Pin.GetName(Legacy.LanguageId), Pin.Id.ToString() })
+                {
+                    ImageKey = Pin.Sprite,
+                    Tag = Pin.Id
+                };
 
                 AllPins_ListView.Items.Add(PinToAdd);
             }
@@ -83,9 +85,11 @@ namespace Scramble.Legacy
                     LegacyPin PinToAdd = new LegacyPin(PinId, SaveIndex, PinLevel, PinAmount, PinExperience, false);
                     if (PinToAdd.BasePin != null)
                     {
-                        ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Level.ToString() });
-                        ItemToAdd.Tag = PinToAdd.SaveIndex;
-                        ItemToAdd.ImageKey = PinToAdd.BasePin.Sprite;
+                        ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Level.ToString() })
+                        {
+                            Tag = PinToAdd.SaveIndex,
+                            ImageKey = PinToAdd.BasePin.Sprite
+                        };
 
                         Stockpile.Add(PinToAdd.SaveIndex, PinToAdd);
                         Stockpile_ListView.Items.Add(ItemToAdd);
@@ -114,9 +118,11 @@ namespace Scramble.Legacy
                     LegacyPin PinToAdd = new LegacyPin(PinId, SaveIndex, PinLevel, PinAmount, PinExperience, true);
                     if (PinToAdd.BasePin != null)
                     {
-                        ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Amount.ToString() });
-                        ItemToAdd.Tag = PinToAdd.SaveIndex;
-                        ItemToAdd.ImageKey = PinToAdd.BasePin.Sprite;
+                        ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Amount.ToString() })
+                        {
+                            Tag = PinToAdd.SaveIndex,
+                            ImageKey = PinToAdd.BasePin.Sprite
+                        };
 
                         Mastered.Add(PinToAdd.SaveIndex, PinToAdd);
                         Mastered_ListView.Items.Add(ItemToAdd);
@@ -198,7 +204,7 @@ namespace Scramble.Legacy
             {
                 DisplayEmptyPin();
                 return;
-            }            
+            }
 
             SendToOtherInv_Button.Enabled = true;
             Level_NumUpDown.Enabled = true;
@@ -255,9 +261,11 @@ namespace Scramble.Legacy
             LegacyPin PinToAdd = new LegacyPin(Pin.Id, SaveIndex, 1, 1, 0, false);
             Stockpile[SaveIndex] = PinToAdd;
 
-            ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Level.ToString() });
-            ItemToAdd.Tag = PinToAdd.SaveIndex;
-            ItemToAdd.ImageKey = PinToAdd.BasePin.Sprite;
+            ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Level.ToString() })
+            {
+                Tag = PinToAdd.SaveIndex,
+                ImageKey = PinToAdd.BasePin.Sprite
+            };
             Stockpile_ListView.Items.Add(ItemToAdd);
 
             DisplayPin();
@@ -297,9 +305,11 @@ namespace Scramble.Legacy
             ListViewItem ItemToAdd = SeekListViewItem_Mastered(SaveIndex);
             if (ItemToAdd == null)
             {
-                ItemToAdd = new ListViewItem(new string[] { Mastered[SaveIndex].BasePin.GetName(Legacy.LanguageId), Mastered[SaveIndex].Id.ToString(), Mastered[SaveIndex].Amount.ToString() });
-                ItemToAdd.Tag = Mastered[SaveIndex].SaveIndex;
-                ItemToAdd.ImageKey = Mastered[SaveIndex].BasePin.Sprite;
+                ItemToAdd = new ListViewItem(new string[] { Mastered[SaveIndex].BasePin.GetName(Legacy.LanguageId), Mastered[SaveIndex].Id.ToString(), Mastered[SaveIndex].Amount.ToString() })
+                {
+                    Tag = Mastered[SaveIndex].SaveIndex,
+                    ImageKey = Mastered[SaveIndex].BasePin.Sprite
+                };
                 Mastered_ListView.Items.Add(ItemToAdd);
             }
             else

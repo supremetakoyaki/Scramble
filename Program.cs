@@ -13,7 +13,7 @@ namespace Scramble
         ///  The main entry point for the application.
         /// </summary>
         /// 
-        
+
         public static ScrambleForm Sukuranburu;
         public static LegacyForm Legacy;
 

@@ -102,7 +102,7 @@ namespace Scramble
 
         public void SetUpGraphics()
         {
-            ScaleFactor = (double)DeviceDpi / (double)96;
+            ScaleFactor = DeviceDpi / (double)96;
             DpiChanged += new DpiChangedEventHandler(ScrambleForm_DpiChanged);
         }
 
@@ -215,14 +215,14 @@ namespace Scramble
             {
                 Invoke(new Action(() =>
                 {
-                OpenClothEditButton.Enabled = true;
-                OpenClothEditButton.Text = GetString("{ClothingEditor}");
+                    OpenClothEditButton.Enabled = true;
+                    OpenClothEditButton.Text = GetString("{ClothingEditor}");
 
-                OpenInvEditorButton.Enabled = true;
-                OpenInvEditorButton.Text = GetString("{PinsEditor}");
+                    OpenInvEditorButton.Enabled = true;
+                    OpenInvEditorButton.Text = GetString("{PinsEditor}");
 
-                OpenRecordEditButton.Enabled = true;
-                OpenRecordEditButton.Text = GetString("{CollectionEditor}");
+                    OpenRecordEditButton.Enabled = true;
+                    OpenRecordEditButton.Text = GetString("{CollectionEditor}");
                 }));
             }
             else

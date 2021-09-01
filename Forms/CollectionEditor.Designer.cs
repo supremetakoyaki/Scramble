@@ -35,12 +35,12 @@ namespace Scramble.Forms
             this.UnseeAllButton = new System.Windows.Forms.Button();
             this.ChangeLockStatusButton = new System.Windows.Forms.Button();
             this.RecordInvListView = new System.Windows.Forms.ListView();
-            this.ItemNameHeader = new System.Windows.Forms.ColumnHeader();
-            this.SaveIDHeader = new System.Windows.Forms.ColumnHeader();
-            this.ItemIDHeader = new System.Windows.Forms.ColumnHeader();
-            this.TypeHeader = new System.Windows.Forms.ColumnHeader();
-            this.UnlockedHeader = new System.Windows.Forms.ColumnHeader();
-            this.FlagHeader = new System.Windows.Forms.ColumnHeader();
+            this.ItemNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SaveIDHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ItemIDHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TypeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.UnlockedHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FlagHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UnlockAllButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();

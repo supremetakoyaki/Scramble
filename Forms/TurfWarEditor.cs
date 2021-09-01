@@ -104,8 +104,10 @@ namespace Scramble.Forms
             {
                 if (TurfWar.SaveIndex < 3) // We don't want the unused scrambles.
                 {
-                    ListViewItem ItemToAdd = new ListViewItem(new string[] { Sukuranburu.GetGameTextProcessor().RemoveTags(Sukuranburu.GetGameString(TurfWar.Title)) });
-                    ItemToAdd.Tag = TurfWar.SaveIndex;
+                    ListViewItem ItemToAdd = new ListViewItem(new string[] { Sukuranburu.GetGameTextProcessor().RemoveTags(Sukuranburu.GetGameString(TurfWar.Title)) })
+                    {
+                        Tag = TurfWar.SaveIndex
+                    };
 
                     TurfWar_ListView.Items.Add(ItemToAdd);
                 }

@@ -37,8 +37,10 @@ namespace Scramble.Legacy
         {
             foreach (TwewyItem Item in Legacy.GetTwewyManager().GetItems().Values)
             {
-                ListViewItem ItemToAdd = new ListViewItem(new string[] { Item.Id.ToString(), Item.GetName(Legacy.LanguageId) });
-                ItemToAdd.Tag = Item.Id;
+                ListViewItem ItemToAdd = new ListViewItem(new string[] { Item.Id.ToString(), Item.GetName(Legacy.LanguageId) })
+                {
+                    Tag = Item.Id
+                };
 
                 ItemList_ListView.Items.Add(ItemToAdd);
             }
