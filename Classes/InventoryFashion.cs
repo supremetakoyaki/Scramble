@@ -3,7 +3,7 @@ using System;
 
 namespace Scramble.Classes
 {
-    public class InventoryFashion
+    public class InventoryFashion : IEquatable<InventoryFashion>
     {
         public ushort Id
         {
@@ -45,13 +45,18 @@ namespace Scramble.Classes
 
         public override bool Equals(object obj)
         {
-            return obj is InventoryFashion fashion &&
-                   Id == fashion.Id;
+            return Equals(obj as InventoryFashion);
+        }
+
+        public bool Equals(InventoryFashion other)
+        {
+            return other != null &&
+                   Id == other.Id;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id);
+            return 2108858624 + Id.GetHashCode();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Scramble.Classes
 {
-    public class InventoryPin
+    public class InventoryPin : IEquatable<InventoryPin>
     {
         public ushort PinId
         {
@@ -74,15 +74,24 @@ namespace Scramble.Classes
 
         public override bool Equals(object obj)
         {
-            return obj is InventoryPin pin &&
-                   PinId == pin.PinId &&
-                   Level == pin.Level &&
-                   Experience == pin.Experience;
+            return Equals(obj as InventoryPin);
+        }
+
+        public bool Equals(InventoryPin other)
+        {
+            return other != null &&
+                   PinId == other.PinId &&
+                   Level == other.Level &&
+                   Experience == other.Experience;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(PinId, Level, Experience);
+            int hashCode = 244914679;
+            hashCode = hashCode * -1521134295 + PinId.GetHashCode();
+            hashCode = hashCode * -1521134295 + Level.GetHashCode();
+            hashCode = hashCode * -1521134295 + Experience.GetHashCode();
+            return hashCode;
         }
     }
 }

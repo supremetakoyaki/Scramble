@@ -1,13 +1,8 @@
-﻿using System;
+﻿using FinalRemixDb;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FinalRemixDb;
 
 namespace Scramble.Legacy
 {
@@ -24,7 +19,7 @@ namespace Scramble.Legacy
 
         private const ushort STOCKPILE_SAVE_AMOUNT = 256;
         private const ushort MASTERED_SAVE_AMOUNT = 1000;
-        private const ushort NOT_ASSIGNED_PIN = 0xFFFF;
+        private const ushort EMPTY = 0xFFFF;
 
         public LegacyPinEditor()
         {
@@ -62,6 +57,7 @@ namespace Scramble.Legacy
             {
                 ListViewItem PinToAdd = new ListViewItem(new string[] { Pin.GetName(Legacy.LanguageId), Pin.Id.ToString() });
                 PinToAdd.ImageKey = Pin.Sprite;
+                PinToAdd.Tag = Pin.Id;
 
                 AllPins_ListView.Items.Add(PinToAdd);
             }
@@ -77,10 +73,8 @@ namespace Scramble.Legacy
 
                 ushort PinId = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum);
 
-                if (PinId != NOT_ASSIGNED_PIN)
+                if (PinId != EMPTY)
                 {
-                    PinId += 1; // add one.
-
                     ushort SaveIndex = (ushort)i;
                     ushort PinLevel = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum + 2);
                     ushort PinAmount = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum + 4); // shouldn't it always be 1?
@@ -110,10 +104,8 @@ namespace Scramble.Legacy
 
                 ushort PinId = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum);
 
-                if (PinId != NOT_ASSIGNED_PIN)
+                if (PinId != EMPTY)
                 {
-                    PinId += 1; // add one
-
                     ushort SaveIndex = (ushort)i;
                     ushort PinLevel = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum + 2);
                     int PinExperience = SaveFile.RetrieveOffset_Int32(LegacyOffsets.Mastered_Start + OffsetSum + 4);
@@ -130,6 +122,55 @@ namespace Scramble.Legacy
                         Mastered_ListView.Items.Add(ItemToAdd);
                     }
                 }
+            }
+        }
+
+        private void SaveAllData()
+        {
+            for (ushort i = 0; i < STOCKPILE_SAVE_AMOUNT; i++)
+            {
+                int OffsetSum = 15 * i;
+                if (Stockpile.ContainsKey(i))
+                {
+                    LegacyPin Pin = Stockpile[i];
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum, Pin.Id); // Pin ID
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum + 2, Pin.Level); // Level
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum + 4, Pin.Amount); // Amount
+                    SaveFile.UpdateOffset_Int32(LegacyOffsets.Stockpile_Start + OffsetSum + 6, Pin.Experience); // Experience
+                }
+                else
+                {
+
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum, EMPTY);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum + 2, 1);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum + 4, 0);
+                    SaveFile.UpdateOffset_Int32(LegacyOffsets.Stockpile_Start + OffsetSum + 6, 0);
+                }
+
+                SaveFile.UpdateOffset_Int32(LegacyOffsets.Stockpile_Start + OffsetSum + 10, 0); //?
+                SaveFile.UpdateOffset_Byte(LegacyOffsets.Stockpile_Start + OffsetSum + 14, 0); //?
+            }
+
+            for (ushort i = 0; i < MASTERED_SAVE_AMOUNT; i++)
+            {
+                int OffsetSum = 11 * i;
+                if (Mastered.ContainsKey(i))
+                {
+                    LegacyPin Pin = Mastered[i];
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum, Pin.Id);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum + 2, Pin.Level);
+                    SaveFile.UpdateOffset_Int32(LegacyOffsets.Mastered_Start + OffsetSum + 4, Pin.Experience);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum + 9, Pin.Amount);
+                }
+                else
+                {
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum, EMPTY);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum + 2, 100);
+                    SaveFile.UpdateOffset_Int32(LegacyOffsets.Mastered_Start + OffsetSum + 4, 0);
+                    SaveFile.UpdateOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum + 9, 0);
+                }
+
+                SaveFile.UpdateOffset_Byte(LegacyOffsets.Mastered_Start + OffsetSum + 8, 0);
             }
         }
 
@@ -189,6 +230,129 @@ namespace Scramble.Legacy
             Level_NumUpDown.Value = SelectedPin.Level;
             Experience_NumUpDown.Value = SelectedPin.Experience;
             Amount_NupUpDown.Value = SelectedPin.Amount;
+        }
+
+        private ListViewItem SeekListViewItem_Mastered(ushort SaveIndex)
+        {
+            foreach (ListViewItem Item in Mastered_ListView.Items)
+            {
+                if ((ushort)Item.Tag == SaveIndex)
+                {
+                    return Item;
+                }
+            }
+
+            return null;
+        }
+
+        private void InsertPinToStockpile(ushort SaveIndex, TwewyPin Pin)
+        {
+            if (Pin == null || Stockpile.ContainsKey(SaveIndex))
+            {
+                return; // and maybe throw an error idk
+            }
+
+            LegacyPin PinToAdd = new LegacyPin(Pin.Id, SaveIndex, 1, 1, 0, false);
+            Stockpile[SaveIndex] = PinToAdd;
+
+            ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Level.ToString() });
+            ItemToAdd.Tag = PinToAdd.SaveIndex;
+            ItemToAdd.ImageKey = PinToAdd.BasePin.Sprite;
+            Stockpile_ListView.Items.Add(ItemToAdd);
+
+            DisplayPin();
+        }
+
+        private void InsertPinToMastered(ushort SaveIndex, TwewyPin Pin, bool Individual)
+        {
+            if (Pin == null)
+            {
+                return; // and maybe throw an error idk
+            }
+
+            if (Mastered.ContainsKey(SaveIndex) == false)
+            {
+                LegacyPin PinToAdd = new LegacyPin(Pin.Id, SaveIndex, 15, 0, 99999, true);
+                Mastered[SaveIndex] = PinToAdd;
+            }
+
+            if (Add99ToMastered_Checkbox.Checked)
+            {
+                Mastered[SaveIndex].Amount = 99;
+            }
+            else if (Mastered[SaveIndex].Amount + 1 < 100)
+            {
+                Mastered[SaveIndex].Amount += 1;
+            }
+            else
+            {
+                if (Individual)
+                {
+                    Legacy.ShowNotice("You can't add more of this pin, you already have 99.");
+                }
+
+                return;
+            }
+
+            ListViewItem ItemToAdd = SeekListViewItem_Mastered(SaveIndex);
+            if (ItemToAdd == null)
+            {
+                ItemToAdd = new ListViewItem(new string[] { Mastered[SaveIndex].BasePin.GetName(Legacy.LanguageId), Mastered[SaveIndex].Id.ToString(), Mastered[SaveIndex].Amount.ToString() });
+                ItemToAdd.Tag = Mastered[SaveIndex].SaveIndex;
+                ItemToAdd.ImageKey = Mastered[SaveIndex].BasePin.Sprite;
+                Mastered_ListView.Items.Add(ItemToAdd);
+            }
+            else
+            {
+                ItemToAdd.SubItems[2].Text = Mastered[SaveIndex].Amount.ToString();
+            }
+
+            if (SelectedPin == Mastered[SaveIndex])
+            {
+                Amount_NupUpDown.Value = Mastered[SaveIndex].Amount;
+
+            }
+        }
+
+        public ushort GetNextSaveIndex_Stockpile()
+        {
+            if (Stockpile == null)
+            {
+                return EMPTY;
+            }
+
+            for (ushort i = 0; i < STOCKPILE_SAVE_AMOUNT; i++)
+            {
+                if (Stockpile.ContainsKey(i) == false)
+                {
+                    return i;
+                }
+            }
+
+            return EMPTY;
+        }
+
+        public ushort GetNextSaveIndex_Mastered(ushort PinId)
+        {
+            if (Mastered == null)
+            {
+                return EMPTY;
+            }
+
+            ushort ReturnKey = EMPTY;
+            for (ushort i = 0; i < MASTERED_SAVE_AMOUNT; i++)
+            {
+                if (Mastered.ContainsKey(i) && Mastered[i].Id == PinId)
+                {
+                    return i;
+                }
+                else if (Mastered.ContainsKey(i) == false)
+                {
+                    ReturnKey = i;
+                }
+            }
+
+            return ReturnKey;
         }
 
         private void Stockpile_ListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -257,6 +421,151 @@ namespace Scramble.Legacy
 
             ReadyForUserInput = true;
 
+            ReadyForUserInput = true;
+        }
+
+        private void ClearStockpile_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            Stockpile.Clear();
+            Stockpile_ListView.Items.Clear();
+
+            ReadyForUserInput = true;
+        }
+
+        private void ClearMastered_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            Mastered.Clear();
+            Mastered_ListView.Items.Clear();
+
+            ReadyForUserInput = true;
+        }
+
+        private void LegacyPinEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveAllData();
+        }
+
+        private void AddPinToStockpile_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (AllPins_ListView.SelectedItems.Count == 0)
+            {
+                Legacy.ShowNotice("You didn't select any pin to add.");
+                ReadyForUserInput = true;
+                return;
+            }
+
+            if (Stockpile.Count >= STOCKPILE_SAVE_AMOUNT)
+            {
+                Legacy.ShowWarning("You can't store more pins in your stockpile. The limit is 256.");
+                ReadyForUserInput = true;
+                return;
+            }
+
+            ushort NextSaveIndex = GetNextSaveIndex_Stockpile();
+            if (NextSaveIndex == EMPTY)
+            {
+                Legacy.ShowWarning("You -seemingly- can't store more pins in your stockpile. The limit is 256.");
+                ReadyForUserInput = true;
+                return;
+            }
+
+            // Enough checking...
+
+            ListViewItem SelectedGlobalPin = AllPins_ListView.SelectedItems[0];
+            TwewyPin GamePin = Legacy.GetTwewyManager().GetPin((ushort)SelectedGlobalPin.Tag);
+            if (GamePin == null)
+            {
+                // Probably throw an exception... this shouldn't happen.
+                ReadyForUserInput = true;
+                return;
+            }
+
+            InsertPinToStockpile(NextSaveIndex, GamePin);
+            ReadyForUserInput = true;
+        }
+
+        private void AddPinToMastered_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (Mastered.Count >= MASTERED_SAVE_AMOUNT)
+            {
+                Legacy.ShowWarning("You can't store more pins in your mastered inventory... Wait, what? This is impossible. Please report this.");
+                ReadyForUserInput = true;
+                return;
+            }
+
+            if (EachPin_Checkbox.Checked)
+            {
+                AddPinToMastered_Button.Text = "Working...";
+                AddPinToMastered_Button.Enabled = false;
+
+                foreach (TwewyPin GlobalPin in Legacy.GetTwewyManager().GetPins().Values)
+                {
+                    ushort SaveIndex = GetNextSaveIndex_Mastered(GlobalPin.Id);
+                    InsertPinToMastered(SaveIndex, GlobalPin, false);
+                }
+
+                ReadyForUserInput = true;
+                AddPinToMastered_Button.Text = "Add pin to mastered";
+                AddPinToMastered_Button.Enabled = true;
+                return;
+            }
+
+            if (AllPins_ListView.SelectedItems.Count == 0)
+            {
+                Legacy.ShowNotice("You didn't select any pin to add.");
+                ReadyForUserInput = true;
+                return;
+            }
+
+            ListViewItem SelectedGlobalPin = AllPins_ListView.SelectedItems[0];
+
+            ushort PinId = (ushort)SelectedGlobalPin.Tag;
+            ushort NextSaveIndex = GetNextSaveIndex_Mastered(PinId);
+            if (NextSaveIndex == EMPTY)
+            {
+                Legacy.ShowWarning("You -seemingly- can't store more pins in your mastered inventory... Wait, what? This is impossible. Please report this.");
+                ReadyForUserInput = true;
+                return;
+            }
+
+
+            TwewyPin GamePin = Legacy.GetTwewyManager().GetPin(PinId);
+            if (GamePin == null)
+            {
+                // Probably throw an exception... this shouldn't happen.
+                ReadyForUserInput = true;
+                return;
+            }
+
+            InsertPinToMastered(NextSaveIndex, GamePin, true);
             ReadyForUserInput = true;
         }
     }

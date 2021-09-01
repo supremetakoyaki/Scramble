@@ -46,7 +46,7 @@ namespace Scramble.Forms
                     Client.Headers.Add("User-Agent", "request");
                     string ApiResponse = Client.DownloadString(LatestReleaseUri_Api);
 
-                    string LatestVersion_str = ApiResponse.Split("tag_name")[1].Substring(4).Split('"')[0];
+                    string LatestVersion_str = ApiResponse.Split(new[] { "tag_name" }, StringSplitOptions.None)[1].Substring(4).Split('"')[0];
 
                     Version CurrentVersion = new Version(Program.ScrambleVersion.Substring(1));
                     Version LatestVersion = new Version(LatestVersion_str);

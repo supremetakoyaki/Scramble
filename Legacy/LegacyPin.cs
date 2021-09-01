@@ -1,8 +1,9 @@
 ﻿using FinalRemixDb;
+using System;
 
 namespace Scramble.Legacy
 {
-    public class LegacyPin
+    public class LegacyPin : IEquatable<LegacyPin>
     {
         public ushort Id
         {
@@ -50,6 +51,26 @@ namespace Scramble.Legacy
             Amount = amount;
             Experience = experience;
             Mastered = mastered;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as LegacyPin);
+        }
+
+        public bool Equals(LegacyPin other)
+        {
+            return other != null &&
+                   Id == other.Id &&
+                   SaveIndex == other.SaveIndex;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 504641284;
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + SaveIndex.GetHashCode();
+            return hashCode;
         }
     }
 }

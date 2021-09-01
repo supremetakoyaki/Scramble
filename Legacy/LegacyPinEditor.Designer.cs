@@ -61,6 +61,9 @@ namespace Scramble.Legacy
             this.AllPins_ListView = new System.Windows.Forms.ListView();
             this.AllPins_NameHeader = new System.Windows.Forms.ColumnHeader();
             this.AllPins_IdHeader = new System.Windows.Forms.ColumnHeader();
+            this.EachPin_Checkbox = new System.Windows.Forms.CheckBox();
+            this.Add99ToMastered_Checkbox = new System.Windows.Forms.CheckBox();
+            this.InfoMastered_Label = new System.Windows.Forms.Label();
             this.PinList_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Amount_NupUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Experience_NumUpDown)).BeginInit();
@@ -117,6 +120,7 @@ namespace Scramble.Legacy
             this.ClearMastered_Button.TabIndex = 17;
             this.ClearMastered_Button.Text = "Clear entire mastered";
             this.ClearMastered_Button.UseVisualStyleBackColor = false;
+            this.ClearMastered_Button.Click += new System.EventHandler(this.ClearMastered_Button_Click);
             // 
             // ClearStockpile_Button
             // 
@@ -128,6 +132,7 @@ namespace Scramble.Legacy
             this.ClearStockpile_Button.TabIndex = 16;
             this.ClearStockpile_Button.Text = "Clear entire stockpile";
             this.ClearStockpile_Button.UseVisualStyleBackColor = false;
+            this.ClearStockpile_Button.Click += new System.EventHandler(this.ClearStockpile_Button_Click);
             // 
             // Amount_NupUpDown
             // 
@@ -364,6 +369,9 @@ namespace Scramble.Legacy
             // 
             // AllPins_GroupBox
             // 
+            this.AllPins_GroupBox.Controls.Add(this.InfoMastered_Label);
+            this.AllPins_GroupBox.Controls.Add(this.Add99ToMastered_Checkbox);
+            this.AllPins_GroupBox.Controls.Add(this.EachPin_Checkbox);
             this.AllPins_GroupBox.Controls.Add(this.AddPinToMastered_Button);
             this.AllPins_GroupBox.Controls.Add(this.AddPinToStockpile_Button);
             this.AllPins_GroupBox.Controls.Add(this.AllPins_ListView);
@@ -383,6 +391,7 @@ namespace Scramble.Legacy
             this.AddPinToMastered_Button.TabIndex = 2;
             this.AddPinToMastered_Button.Text = "Add pin to mastered";
             this.AddPinToMastered_Button.UseVisualStyleBackColor = true;
+            this.AddPinToMastered_Button.Click += new System.EventHandler(this.AddPinToMastered_Button_Click);
             // 
             // AddPinToStockpile_Button
             // 
@@ -393,6 +402,7 @@ namespace Scramble.Legacy
             this.AddPinToStockpile_Button.TabIndex = 1;
             this.AddPinToStockpile_Button.Text = "Add pin to stockpile";
             this.AddPinToStockpile_Button.UseVisualStyleBackColor = true;
+            this.AddPinToStockpile_Button.Click += new System.EventHandler(this.AddPinToStockpile_Button_Click);
             // 
             // AllPins_ListView
             // 
@@ -402,8 +412,9 @@ namespace Scramble.Legacy
             this.AllPins_ListView.FullRowSelect = true;
             this.AllPins_ListView.HideSelection = false;
             this.AllPins_ListView.Location = new System.Drawing.Point(6, 22);
+            this.AllPins_ListView.MultiSelect = false;
             this.AllPins_ListView.Name = "AllPins_ListView";
-            this.AllPins_ListView.Size = new System.Drawing.Size(293, 500);
+            this.AllPins_ListView.Size = new System.Drawing.Size(293, 455);
             this.AllPins_ListView.TabIndex = 0;
             this.AllPins_ListView.UseCompatibleStateImageBehavior = false;
             this.AllPins_ListView.View = System.Windows.Forms.View.Details;
@@ -420,6 +431,35 @@ namespace Scramble.Legacy
             this.AllPins_IdHeader.Text = "ID";
             this.AllPins_IdHeader.Width = 45;
             // 
+            // EachPin_Checkbox
+            // 
+            this.EachPin_Checkbox.AutoSize = true;
+            this.EachPin_Checkbox.Location = new System.Drawing.Point(158, 483);
+            this.EachPin_Checkbox.Name = "EachPin_Checkbox";
+            this.EachPin_Checkbox.Size = new System.Drawing.Size(133, 19);
+            this.EachPin_Checkbox.TabIndex = 3;
+            this.EachPin_Checkbox.Text = "Add one of each pin";
+            this.EachPin_Checkbox.UseVisualStyleBackColor = true;
+            // 
+            // Add99ToMastered_Checkbox
+            // 
+            this.Add99ToMastered_Checkbox.AutoSize = true;
+            this.Add99ToMastered_Checkbox.Location = new System.Drawing.Point(158, 504);
+            this.Add99ToMastered_Checkbox.Name = "Add99ToMastered_Checkbox";
+            this.Add99ToMastered_Checkbox.Size = new System.Drawing.Size(44, 19);
+            this.Add99ToMastered_Checkbox.TabIndex = 4;
+            this.Add99ToMastered_Checkbox.Text = "x99";
+            this.Add99ToMastered_Checkbox.UseVisualStyleBackColor = true;
+            // 
+            // InfoMastered_Label
+            // 
+            this.InfoMastered_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.InfoMastered_Label.Location = new System.Drawing.Point(9, 486);
+            this.InfoMastered_Label.Name = "InfoMastered_Label";
+            this.InfoMastered_Label.Size = new System.Drawing.Size(143, 39);
+            this.InfoMastered_Label.TabIndex = 5;
+            this.InfoMastered_Label.Text = "The following only apply to mastered inventory:";
+            // 
             // LegacyPinEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -431,12 +471,14 @@ namespace Scramble.Legacy
             this.MaximizeBox = false;
             this.Name = "LegacyPinEditor";
             this.Text = "Pin Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LegacyPinEditor_FormClosing);
             this.PinList_GroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Amount_NupUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Experience_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Level_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedPin_PictureBox)).EndInit();
             this.AllPins_GroupBox.ResumeLayout(false);
+            this.AllPins_GroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -475,5 +517,8 @@ namespace Scramble.Legacy
         private System.Windows.Forms.Button ClearStockpile_Button;
         private System.Windows.Forms.NumericUpDown Amount_NupUpDown;
         private System.Windows.Forms.Label Pin_Inventory_Label;
+        private System.Windows.Forms.CheckBox Add99ToMastered_Checkbox;
+        private System.Windows.Forms.CheckBox EachPin_Checkbox;
+        private System.Windows.Forms.Label InfoMastered_Label;
     }
 }

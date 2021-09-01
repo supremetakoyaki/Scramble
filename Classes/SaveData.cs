@@ -56,7 +56,7 @@ namespace Scramble.Classes
             private set;
         }
 
-        public int UnixTimestamp_Integer => BitConverter.ToInt32(UnixTimestamp);
+        public int UnixTimestamp_Integer => BitConverter.ToInt32(UnixTimestamp, 0);
 
         public byte[] Hash_Valid => CalculateNewChecksum();
 
