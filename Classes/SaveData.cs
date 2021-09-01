@@ -192,7 +192,10 @@ namespace Scramble.Classes
                             DicMade = true;
                         }
 
-                        CollectedData.Add(DeckId, (byte)Member.Id);
+                        if (!CollectedData.ContainsKey(DeckId))
+                        {
+                            CollectedData.Add(DeckId, (byte)Member.Id);
+                        }
                     }
                 }
             }

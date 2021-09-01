@@ -81,35 +81,51 @@
     <Compile Include="Forms\CharacterStatEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CharacterStatEditor.Designer.cs" />
+    <Compile Include="Forms\CharacterStatEditor.Designer.cs">
+	  <DependentUpon>CharacterStatEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\ClothingInventoryEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ClothingInventoryEditor.Designer.cs" />
+    <Compile Include="Forms\ClothingInventoryEditor.Designer.cs">
+	  <DependentUpon>ClothingInventoryEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\CollectionEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CollectionEditor.Designer.cs" />
+    <Compile Include="Forms\CollectionEditor.Designer.cs">
+	  <DependentUpon>CollectionEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\DayEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DayEditor.Designer.cs" />
+    <Compile Include="Forms\DayEditor.Designer.cs">
+	  <DependentUpon>DayEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\LauncherForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LauncherForm.Designer.cs" />
+    <Compile Include="Forms\LauncherForm.Designer.cs">
+	  <DependentUpon>LauncherForm.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\MiscEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MiscEditor.Designer.cs" />
+    <Compile Include="Forms\MiscEditor.Designer.cs">
+	  <DependentUpon>MiscEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\NoisepediaEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NoisepediaEditor.Designer.cs" />
+    <Compile Include="Forms\NoisepediaEditor.Designer.cs">
+	  <DependentUpon>NoisepediaEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\PinInventoryEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PinInventoryEditor.Designer.cs" />
+    <Compile Include="Forms\PinInventoryEditor.Designer.cs">
+	  <DependentUpon>PinInventoryEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\ScrambleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,56 +135,102 @@
     <Compile Include="Forms\SettingsEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SettingsEditor.Designer.cs" />
+    <Compile Include="Forms\SettingsEditor.Designer.cs">
+	  <DependentUpon>SettingsEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\SkillTreeEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SkillTreeEditor.Designer.cs" />
+    <Compile Include="Forms\SkillTreeEditor.Designer.cs">
+	  <DependentUpon>SkillTreeEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Forms\TurfWarEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TurfWarEditor.Designer.cs" />
+    <Compile Include="Forms\TurfWarEditor.Designer.cs">
+	  <DependentUpon>TurfWarEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="GameData\Offsets.cs" />
     <Compile Include="Legacy\LegacyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Legacy\LegacyForm.Designer.cs" />
+    <Compile Include="Legacy\LegacyForm.Designer.cs">
+	  <DependentUpon>LegacyForm.cs</DependentUpon>
+	</Compile>
     <Compile Include="Legacy\LegacyItemEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Legacy\LegacyItemEditor.Designer.cs" />
+    <Compile Include="Legacy\LegacyItemEditor.Designer.cs">
+	  <DependentUpon>LegacyItemEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Legacy\LegacyOffsets.cs" />
     <Compile Include="Legacy\LegacyPin.cs" />
     <Compile Include="Legacy\LegacyPinEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Legacy\LegacyPinEditor.Designer.cs" />
+    <Compile Include="Legacy\LegacyPinEditor.Designer.cs">
+	  <DependentUpon>LegacyPinEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Legacy\LegacySave.cs" />
     <Compile Include="Legacy\LegacyStatsEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Legacy\LegacyStatsEditor.Designer.cs" />
+    <Compile Include="Legacy\LegacyStatsEditor.Designer.cs">
+	  <DependentUpon>LegacyStatsEditor.cs</DependentUpon>
+	</Compile>
     <Compile Include="Legacy\LegacyTextProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\ByteUtil.cs" />
     <Compile Include="Util\TwewySaveConverter.cs" />
-    <EmbeddedResource Include="Forms\CharacterStatEditor.resx" />
-    <EmbeddedResource Include="Forms\ClothingInventoryEditor.resx" />
-    <EmbeddedResource Include="Forms\CollectionEditor.resx" />
-    <EmbeddedResource Include="Forms\DayEditor.resx" />
-    <EmbeddedResource Include="Forms\LauncherForm.resx" />
-    <EmbeddedResource Include="Forms\MiscEditor.resx" />
-    <EmbeddedResource Include="Forms\NoisepediaEditor.resx" />
-    <EmbeddedResource Include="Forms\PinInventoryEditor.resx" />
-    <EmbeddedResource Include="Forms\ScrambleForm.resx" />
-    <EmbeddedResource Include="Forms\SettingsEditor.resx" />
-    <EmbeddedResource Include="Forms\SkillTreeEditor.resx" />
-    <EmbeddedResource Include="Forms\TurfWarEditor.resx" />
-    <EmbeddedResource Include="Legacy\LegacyForm.resx" />
-    <EmbeddedResource Include="Legacy\LegacyItemEditor.resx" />
-    <EmbeddedResource Include="Legacy\LegacyPinEditor.resx" />
-    <EmbeddedResource Include="Legacy\LegacyStatsEditor.resx" />
+    <EmbeddedResource Include="Forms\CharacterStatEditor.resx">
+	 <DependentUpon>CharacterStatEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClothingInventoryEditor.resx">
+	 <DependentUpon>ClothingInventoryEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\CollectionEditor.resx">
+	 <DependentUpon>CollectionEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\DayEditor.resx">
+	 <DependentUpon>DayEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\LauncherForm.resx">
+	 <DependentUpon>LauncherForm.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\MiscEditor.resx">
+	 <DependentUpon>MiscEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\NoisepediaEditor.resx">
+	 <DependentUpon>NoisepediaEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\PinInventoryEditor.resx">
+	 <DependentUpon>PinInventoryEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\ScrambleForm.resx">
+	 <DependentUpon>ScrambleForm.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsEditor.resx">
+	 <DependentUpon>SettingsEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\SkillTreeEditor.resx">
+	 <DependentUpon>SkillTreeEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\TurfWarEditor.resx">
+	 <DependentUpon>TurfWarEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Legacy\LegacyForm.resx">
+	 <DependentUpon>LegacyForm.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Legacy\LegacyItemEditor.resx">
+	 <DependentUpon>LegacyItemEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Legacy\LegacyPinEditor.resx">
+	 <DependentUpon>LegacyPinEditor.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Legacy\LegacyStatsEditor.resx">
+	 <DependentUpon>LegacyStatsEditor.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
