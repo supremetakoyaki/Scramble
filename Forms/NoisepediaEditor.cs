@@ -88,8 +88,10 @@ namespace Scramble.Forms
                     (Entry.SortIndex + 1).ToString(),
                     Entry.NoiseId.ToString(),
                     NoiseName
-                });
-                ItemToAdd.Tag = Entry.Id;
+                })
+                {
+                    Tag = Entry.Id
+                };
 
                 NoisepediaListView.Items.Add(ItemToAdd);
             }
@@ -428,7 +430,7 @@ namespace Scramble.Forms
             {
                 ListViewItem EntryItem = NoisepediaListView.Items.Cast<ListViewItem>().FirstOrDefault(i => (byte)i.Tag == EntryId);
                 if (EntryItem != null)
-                { 
+                {
                     if (Encountered_Checkbox.Checked)
                     {
                         EntryItem.SubItems[2].Text = Sukuranburu.GetGameString(Entry.Name);
