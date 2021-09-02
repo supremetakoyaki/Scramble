@@ -31,6 +31,12 @@ namespace Scramble.Classes
             set;
         }
 
+        public int ListIndex
+        {
+            get;
+            set;
+        }
+
         public Dictionary<byte, byte> DecksWithThisPin //deckId, partyMemberId
         {
             get;
@@ -45,6 +51,8 @@ namespace Scramble.Classes
             this.Level = Level;
             this.Experience = Experience;
             Amount = 1;
+
+            this.ListIndex = ListIndex;
         }
 
         public void IntersectEquippingData(Dictionary<byte, byte> EquippingData)

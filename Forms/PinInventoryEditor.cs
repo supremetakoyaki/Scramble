@@ -1,7 +1,7 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
 using Scramble.GameData;
-using Scramble.Properties;
+using Scramble.Util;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -31,7 +31,6 @@ namespace Scramble.Forms
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             MyPinInventoryView.SmallImageList = Sukuranburu.ItemImageList_32x32;
             AllPinsListView.SmallImageList = Sukuranburu.ItemImageList_64x64;
-
 
             UberPin_PictureBox.BackColor = Color.Transparent;
             UberPin_PictureBox.Parent = PinImagePictureBox;
@@ -85,21 +84,22 @@ namespace Scramble.Forms
                     uint Experience = SelectedSlot.RetrieveOffset_UInt32(CurrentPointer + 4);
 
                     InventoryPin PinToAdd = new InventoryPin(PinId, Level, Experience);
-                    int Index = InventoryPins.IndexOf(PinToAdd);
+                    PinToAdd.ListIndex = InventoryPins.IndexOf(PinToAdd);
 
-                    if (Index == -1)
+                    if (PinToAdd.ListIndex == -1)
                     {
+                        PinToAdd.ListIndex = InventoryPins.Count;
                         InventoryPins.Add(PinToAdd);
                         PinToAdd.IntersectEquippingData(Sukuranburu.SelectedSlot.WhosEquippingThisPin(CurrentIndex));
                     }
                     else
                     {
-                        if (InventoryPins[Index].Amount < 99)
+                        if (InventoryPins[PinToAdd.ListIndex].Amount < 99)
                         {
-                            InventoryPins[Index].Amount += 1;
+                            InventoryPins[PinToAdd.ListIndex].Amount += 1;
                         }
 
-                        InventoryPins[Index].IntersectEquippingData(Sukuranburu.SelectedSlot.WhosEquippingThisPin(CurrentIndex));
+                        InventoryPins[PinToAdd.ListIndex].IntersectEquippingData(Sukuranburu.SelectedSlot.WhosEquippingThisPin(CurrentIndex));
                     }
                 }
 
@@ -350,9 +350,11 @@ namespace Scramble.Forms
                         MasteredSymbol,
                         Pin.Amount.ToString(),
                         ElementName
-                   });
-
-            PinToAdd.ImageKey = Pin.BasePin.Sprite;
+                   })
+            {
+                ImageKey = Pin.BasePin.Sprite,
+                Tag = Pin.ListIndex
+            };
             MyPinInventoryView.Items.Add(PinToAdd);
         }
 
@@ -360,7 +362,7 @@ namespace Scramble.Forms
         {
             ReadyForUserInput = false;
 
-            if (MyPinInventoryView.SelectedIndices.Count == 0 || MyPinInventoryView.SelectedItems.Count != 1 || MyPinInventoryView.Items.Count < 1)
+            if (MyPinInventoryView.SelectedItems.Count < 1 || MyPinInventoryView.Items.Count < 1)
             {
                 PinNameLabel.Text = Sukuranburu.GetString("{NoSelectedPin}");
                 PinInfo_RichTextBox.Clear();
@@ -396,7 +398,7 @@ namespace Scramble.Forms
                 return;
             }
 
-            InventoryPin Pin = InventoryPins[MyPinInventoryView.SelectedIndices[0]];
+            InventoryPin Pin = InventoryPins[(int)MyPinInventoryView.SelectedItems[0].Tag];
             SelectedPin = Pin;
 
             Brand PinBrand = Sukuranburu.GetItemManager().GetBrand(Pin.BasePin.Brand);
@@ -499,9 +501,9 @@ namespace Scramble.Forms
 
         private void RemovePinButton_Click(object sender, EventArgs e)
         {
-            if (MyPinInventoryView.Items.Count > 0 && MyPinInventoryView.SelectedIndices.Count > 0)
-            {
-                int ThisIndex = MyPinInventoryView.SelectedIndices[0];
+            if (MyPinInventoryView.Items.Count > 0 && MyPinInventoryView.SelectedItems.Count > 0)
+            {;
+                int ThisIndex = (int)MyPinInventoryView.SelectedItems[0].Tag;
                 InventoryPin Pin = InventoryPins[ThisIndex];
 
                 MyPinInventoryView.Items.RemoveAt(ThisIndex);
@@ -703,15 +705,12 @@ namespace Scramble.Forms
 
         private void UpdateLevelAndExperience()
         {
-            int Index = InventoryPins.IndexOf(SelectedPin);
+            int Index = UpdateColumn(new int[] { 2, 3 }, new object[] { PinLevelNUpDown.Value, ExperienceNUpDown.Value });
 
             SelectedPin.Level = (ushort)PinLevelNUpDown.Value;
             SelectedPin.Experience = (ushort)ExperienceNUpDown.Value;
 
-            MyPinInventoryView.Items[Index].SubItems[2].Text = SelectedPin.Level.ToString();
-            MyPinInventoryView.Items[Index].SubItems[3].Text = SelectedPin.Experience.ToString();
-
-            if (Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.PinId))
+            if (Index != -1 && Sukuranburu.GetItemManager().PinIsMasterable(SelectedPin.PinId))
             {
                 MyPinInventoryView.Items[Index].SubItems[4].Text = PinIsMastered(SelectedPin.PinId, (byte)SelectedPin.Level) ? "★" : Sukuranburu.GetString("{NoLowercase}");
             }
@@ -742,12 +741,46 @@ namespace Scramble.Forms
             ReadyForUserInput = true;
         }
 
+        private int UpdateColumn(int ItemIndex, object Value)
+        {
+            for (int i = 0; i < MyPinInventoryView.Items.Count; i++)//foreach (ListViewItem Item in MyPinInventoryView.Items)
+            {
+                ListViewItem Item = MyPinInventoryView.Items[i];
+
+                if (Item.SubItems[1].Text == SelectedPin.PinId.ToString() && Item.SubItems[2].Text == SelectedPin.Level.ToString() && Item.SubItems[3].Text == SelectedPin.Experience.ToString())
+                {
+                    Item.SubItems[ItemIndex].Text = Value.ToString();
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        private int UpdateColumn(int[] ItemIndex, object[] Value)
+        {
+            for (int i = 0; i < MyPinInventoryView.Items.Count; i++)//foreach (ListViewItem Item in MyPinInventoryView.Items)
+            {
+                ListViewItem Item = MyPinInventoryView.Items[i];
+
+                if (Item.SubItems[1].Text == SelectedPin.PinId.ToString() && Item.SubItems[2].Text == SelectedPin.Level.ToString() && Item.SubItems[3].Text == SelectedPin.Experience.ToString())
+                {
+                    for (int j = 0; j < ItemIndex.Length; j++)
+                    {
+                        Item.SubItems[ItemIndex[j]].Text = Value[j].ToString();
+                    }
+
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
         private void UpdateAmount()
         {
-            int Index = InventoryPins.IndexOf(SelectedPin);
-
+            UpdateColumn(5, PinAmountUpDown.Value);
             SelectedPin.Amount = (ushort)PinAmountUpDown.Value;
-            MyPinInventoryView.Items[Index].SubItems[5].Text = SelectedPin.Amount.ToString();
         }
 
         private void RemoveAllPinsButton_Click(object sender, EventArgs e)
@@ -786,7 +819,7 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            if (AllPinsListView.SelectedIndices.Count < 1)
+            if (AllPinsListView.SelectedItems.Count < 1)
             {
                 Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_NoPinsToAddSelected"));
                 ReadyForUserInput = true;
@@ -837,20 +870,20 @@ namespace Scramble.Forms
 
             if (InventoryPins.Contains(PinToAdd))
             {
-                int Index = InventoryPins.IndexOf(PinToAdd);
-
-                if (Individual && InventoryPins[Index].Amount == 99)
+                if (Individual && InventoryPins[PinToAdd.ListIndex].Amount == 99)
                 {
                     Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_YouCantAddMorePins"));
                     ReadyForUserInput = true;
                     return;
                 }
 
+                int Index = InventoryPins.IndexOf(PinToAdd);
+
                 if (Add99Checkbox.Checked)
                 {
                     InventoryPins[Index].Amount = 99;
                 }
-                else if (InventoryPins[Index].Amount < 99)
+                else if (InventoryPins[PinToAdd.ListIndex].Amount < 99)
                 {
                     InventoryPins[Index].Amount += 1;
                 }
@@ -868,6 +901,7 @@ namespace Scramble.Forms
                     PinToAdd.Amount = 1;
                 }
 
+                PinToAdd.ListIndex = InventoryPins.Count;
                 InventoryPins.Add(PinToAdd);
                 InsertPinToListView(PinToAdd);
             }
@@ -951,6 +985,16 @@ namespace Scramble.Forms
 
             CharacterIconPictureBox.Image = ImageMethods.DrawImage(GetCharacterIconForPartyMember(EquippedByCharacterComboBox.Text), 32, 32, DeviceDpi);
             ReadyForUserInput = true;
+        }
+
+        private void AllPinsListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSorter.Sort(AllPinsListView, e);
+        }
+
+        private void MyPinInventoryView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSorter.Sort(MyPinInventoryView, e);
         }
     }
 }

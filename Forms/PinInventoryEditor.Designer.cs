@@ -58,21 +58,21 @@ namespace Scramble.Forms
             this.MasterPinButton = new System.Windows.Forms.Button();
             this.PinImagePictureBox = new System.Windows.Forms.PictureBox();
             this.MyPinInventoryView = new System.Windows.Forms.ListView();
-            this.PinNameHeader = new System.Windows.Forms.ColumnHeader();
-            this.PinIdHeader = new System.Windows.Forms.ColumnHeader();
-            this.PinLevelHeader = new System.Windows.Forms.ColumnHeader();
-            this.PinExperienceHeader = new System.Windows.Forms.ColumnHeader();
-            this.PinIsMasteredHeader = new System.Windows.Forms.ColumnHeader();
-            this.AmountHeader = new System.Windows.Forms.ColumnHeader();
-            this.AttackElementHeader = new System.Windows.Forms.ColumnHeader();
+            this.PinNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PinIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PinLevelHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PinExperienceHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PinIsMasteredHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AmountHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AttackElementHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Add99Checkbox = new System.Windows.Forms.CheckBox();
             this.AddedPinIsMasteredCheckbox = new System.Windows.Forms.CheckBox();
             this.AddAllPinsButton = new System.Windows.Forms.Button();
             this.AddPinButton = new System.Windows.Forms.Button();
             this.AllPinsListView = new System.Windows.Forms.ListView();
-            this.GlobalPinNameHeader = new System.Windows.Forms.ColumnHeader();
-            this.GlobalPinIdHeader = new System.Windows.Forms.ColumnHeader();
+            this.GlobalPinNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.GlobalPinIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UberPin_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttackElementIcon_PictureBox)).BeginInit();
@@ -132,7 +132,7 @@ namespace Scramble.Forms
             // 
             // AttackElement_Label
             // 
-            this.AttackElement_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AttackElement_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.AttackElement_Label.Location = new System.Drawing.Point(36, 517);
             this.AttackElement_Label.Name = "AttackElement_Label";
             this.AttackElement_Label.Size = new System.Drawing.Size(77, 18);
@@ -154,7 +154,7 @@ namespace Scramble.Forms
             this.PinInfo_RichTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.PinInfo_RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PinInfo_RichTextBox.Enabled = false;
-            this.PinInfo_RichTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PinInfo_RichTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.PinInfo_RichTextBox.Location = new System.Drawing.Point(130, 428);
             this.PinInfo_RichTextBox.Name = "PinInfo_RichTextBox";
             this.PinInfo_RichTextBox.ReadOnly = true;
@@ -180,7 +180,7 @@ namespace Scramble.Forms
             this.EquippedDeckComboBox.FormattingEnabled = true;
             this.EquippedDeckComboBox.Location = new System.Drawing.Point(350, 621);
             this.EquippedDeckComboBox.Name = "EquippedDeckComboBox";
-            this.EquippedDeckComboBox.Size = new System.Drawing.Size(82, 23);
+            this.EquippedDeckComboBox.Size = new System.Drawing.Size(82, 21);
             this.EquippedDeckComboBox.TabIndex = 5;
             this.EquippedDeckComboBox.TextChanged += new System.EventHandler(this.EquippedDeckComboBox_TextChanged);
             // 
@@ -200,7 +200,7 @@ namespace Scramble.Forms
             this.EquippedByCharacterComboBox.FormattingEnabled = true;
             this.EquippedByCharacterComboBox.Location = new System.Drawing.Point(438, 621);
             this.EquippedByCharacterComboBox.Name = "EquippedByCharacterComboBox";
-            this.EquippedByCharacterComboBox.Size = new System.Drawing.Size(127, 23);
+            this.EquippedByCharacterComboBox.Size = new System.Drawing.Size(127, 21);
             this.EquippedByCharacterComboBox.TabIndex = 6;
             this.EquippedByCharacterComboBox.TextChanged += new System.EventHandler(this.EquippedByCharacterComboBox_TextChanged);
             // 
@@ -209,14 +209,14 @@ namespace Scramble.Forms
             this.EquippedLabel.AutoSize = true;
             this.EquippedLabel.Location = new System.Drawing.Point(284, 624);
             this.EquippedLabel.Name = "EquippedLabel";
-            this.EquippedLabel.Size = new System.Drawing.Size(65, 15);
+            this.EquippedLabel.Size = new System.Drawing.Size(60, 13);
             this.EquippedLabel.TabIndex = 19;
             this.EquippedLabel.Text = "{Equipped}";
             // 
             // MaxLevelLabel_Value
             // 
             this.MaxLevelLabel_Value.AutoSize = true;
-            this.MaxLevelLabel_Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.MaxLevelLabel_Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.MaxLevelLabel_Value.ForeColor = System.Drawing.Color.MediumBlue;
             this.MaxLevelLabel_Value.Location = new System.Drawing.Point(212, 566);
             this.MaxLevelLabel_Value.Name = "MaxLevelLabel_Value";
@@ -229,7 +229,7 @@ namespace Scramble.Forms
             this.MaxLevelLabel_Info.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MaxLevelLabel_Info.Location = new System.Drawing.Point(137, 566);
             this.MaxLevelLabel_Info.Name = "MaxLevelLabel_Info";
-            this.MaxLevelLabel_Info.Size = new System.Drawing.Size(66, 15);
+            this.MaxLevelLabel_Info.Size = new System.Drawing.Size(61, 13);
             this.MaxLevelLabel_Info.TabIndex = 17;
             this.MaxLevelLabel_Info.Text = "Max level:  ";
             // 
@@ -254,7 +254,7 @@ namespace Scramble.Forms
             // MasteredLabel
             // 
             this.MasteredLabel.AutoSize = true;
-            this.MasteredLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MasteredLabel.Font = new System.Drawing.Font("Arial", 18F);
             this.MasteredLabel.Location = new System.Drawing.Point(227, 559);
             this.MasteredLabel.Name = "MasteredLabel";
             this.MasteredLabel.Size = new System.Drawing.Size(0, 27);
@@ -281,7 +281,7 @@ namespace Scramble.Forms
             0,
             0});
             this.PinAmountUpDown.Name = "PinAmountUpDown";
-            this.PinAmountUpDown.Size = new System.Drawing.Size(52, 23);
+            this.PinAmountUpDown.Size = new System.Drawing.Size(52, 20);
             this.PinAmountUpDown.TabIndex = 4;
             this.PinAmountUpDown.Value = new decimal(new int[] {
             1,
@@ -295,7 +295,7 @@ namespace Scramble.Forms
             this.AmountLabel.AutoSize = true;
             this.AmountLabel.Location = new System.Drawing.Point(13, 624);
             this.AmountLabel.Name = "AmountLabel";
-            this.AmountLabel.Size = new System.Drawing.Size(54, 15);
+            this.AmountLabel.Size = new System.Drawing.Size(46, 13);
             this.AmountLabel.TabIndex = 12;
             this.AmountLabel.Text = "Amount:";
             // 
@@ -309,7 +309,7 @@ namespace Scramble.Forms
             0,
             0});
             this.ExperienceNUpDown.Name = "ExperienceNUpDown";
-            this.ExperienceNUpDown.Size = new System.Drawing.Size(52, 23);
+            this.ExperienceNUpDown.Size = new System.Drawing.Size(52, 20);
             this.ExperienceNUpDown.TabIndex = 2;
             this.ExperienceNUpDown.ValueChanged += new System.EventHandler(this.ExperienceNUpDown_ValueChanged);
             // 
@@ -318,7 +318,7 @@ namespace Scramble.Forms
             this.ExpLabel.AutoSize = true;
             this.ExpLabel.Location = new System.Drawing.Point(13, 595);
             this.ExpLabel.Name = "ExpLabel";
-            this.ExpLabel.Size = new System.Drawing.Size(30, 15);
+            this.ExpLabel.Size = new System.Drawing.Size(31, 13);
             this.ExpLabel.TabIndex = 10;
             this.ExpLabel.Text = "EXP:";
             // 
@@ -332,7 +332,7 @@ namespace Scramble.Forms
             0,
             0});
             this.PinLevelNUpDown.Name = "PinLevelNUpDown";
-            this.PinLevelNUpDown.Size = new System.Drawing.Size(52, 23);
+            this.PinLevelNUpDown.Size = new System.Drawing.Size(52, 20);
             this.PinLevelNUpDown.TabIndex = 1;
             this.PinLevelNUpDown.Value = new decimal(new int[] {
             1,
@@ -346,13 +346,13 @@ namespace Scramble.Forms
             this.LevelLabel.AutoSize = true;
             this.LevelLabel.Location = new System.Drawing.Point(13, 566);
             this.LevelLabel.Name = "LevelLabel";
-            this.LevelLabel.Size = new System.Drawing.Size(37, 15);
+            this.LevelLabel.Size = new System.Drawing.Size(36, 13);
             this.LevelLabel.TabIndex = 7;
             this.LevelLabel.Text = "Level:";
             // 
             // PinNameLabel
             // 
-            this.PinNameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PinNameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.PinNameLabel.Location = new System.Drawing.Point(127, 400);
             this.PinNameLabel.Name = "PinNameLabel";
             this.PinNameLabel.Size = new System.Drawing.Size(384, 37);
@@ -404,15 +404,15 @@ namespace Scramble.Forms
             this.AmountHeader,
             this.AttackElementHeader});
             this.MyPinInventoryView.FullRowSelect = true;
-            this.MyPinInventoryView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.MyPinInventoryView.HideSelection = false;
             this.MyPinInventoryView.Location = new System.Drawing.Point(13, 22);
             this.MyPinInventoryView.MultiSelect = false;
             this.MyPinInventoryView.Name = "MyPinInventoryView";
-            this.MyPinInventoryView.Size = new System.Drawing.Size(741, 342);
+            this.MyPinInventoryView.Size = new System.Drawing.Size(741, 362);
             this.MyPinInventoryView.TabIndex = 0;
             this.MyPinInventoryView.UseCompatibleStateImageBehavior = false;
             this.MyPinInventoryView.View = System.Windows.Forms.View.Details;
+            this.MyPinInventoryView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.MyPinInventoryView_ColumnClick);
             this.MyPinInventoryView.SelectedIndexChanged += new System.EventHandler(this.MyPinInventoryView_SelectedIndexChanged);
             this.MyPinInventoryView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MyPinInventoryView_KeyDown);
             // 
@@ -478,7 +478,7 @@ namespace Scramble.Forms
             this.Add99Checkbox.AutoSize = true;
             this.Add99Checkbox.Location = new System.Drawing.Point(245, 596);
             this.Add99Checkbox.Name = "Add99Checkbox";
-            this.Add99Checkbox.Size = new System.Drawing.Size(44, 19);
+            this.Add99Checkbox.Size = new System.Drawing.Size(43, 17);
             this.Add99Checkbox.TabIndex = 10;
             this.Add99Checkbox.Text = "x99";
             this.Add99Checkbox.UseVisualStyleBackColor = true;
@@ -488,7 +488,7 @@ namespace Scramble.Forms
             this.AddedPinIsMasteredCheckbox.AutoSize = true;
             this.AddedPinIsMasteredCheckbox.Location = new System.Drawing.Point(295, 596);
             this.AddedPinIsMasteredCheckbox.Name = "AddedPinIsMasteredCheckbox";
-            this.AddedPinIsMasteredCheckbox.Size = new System.Drawing.Size(75, 19);
+            this.AddedPinIsMasteredCheckbox.Size = new System.Drawing.Size(70, 17);
             this.AddedPinIsMasteredCheckbox.TabIndex = 11;
             this.AddedPinIsMasteredCheckbox.Text = "Mastered";
             this.AddedPinIsMasteredCheckbox.UseVisualStyleBackColor = true;
@@ -526,6 +526,7 @@ namespace Scramble.Forms
             this.AllPinsListView.TabIndex = 9;
             this.AllPinsListView.UseCompatibleStateImageBehavior = false;
             this.AllPinsListView.View = System.Windows.Forms.View.Details;
+            this.AllPinsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.AllPinsListView_ColumnClick);
             // 
             // GlobalPinNameHeader
             // 
