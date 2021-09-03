@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -164,7 +165,7 @@
       <DependentUpon>LegacyItemEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Legacy\LegacyOffsets.cs" />
-    <Compile Include="Legacy\LegacyPin.cs" />
+    <Compile Include="Legacy\LegacyInventoryPin.cs" />
     <Compile Include="Legacy\LegacyPinEditor.cs">
       <SubType>Form</SubType>
     </Compile>

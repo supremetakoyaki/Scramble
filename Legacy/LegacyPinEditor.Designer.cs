@@ -46,24 +46,24 @@ namespace Scramble.Legacy
             this.SelectedPin_Name_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.SelectedPin_PictureBox = new System.Windows.Forms.PictureBox();
             this.Mastered_ListView = new System.Windows.Forms.ListView();
-            this.Mastered_PinNameHeader = new System.Windows.Forms.ColumnHeader();
-            this.Mastered_PinIdHeader = new System.Windows.Forms.ColumnHeader();
-            this.Mastered_PinAmountHeader = new System.Windows.Forms.ColumnHeader();
+            this.Mastered_PinNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Mastered_PinIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Mastered_PinAmountHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Stockpile_ListView = new System.Windows.Forms.ListView();
-            this.PinNameHeader = new System.Windows.Forms.ColumnHeader();
-            this.PinIdHeader = new System.Windows.Forms.ColumnHeader();
-            this.PinLevelHeader = new System.Windows.Forms.ColumnHeader();
+            this.PinNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PinIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PinLevelHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mastered_Label = new System.Windows.Forms.Label();
             this.Stockpile_Label = new System.Windows.Forms.Label();
             this.AllPins_GroupBox = new System.Windows.Forms.GroupBox();
+            this.InfoMastered_Label = new System.Windows.Forms.Label();
+            this.Add99ToMastered_Checkbox = new System.Windows.Forms.CheckBox();
+            this.EachPin_Checkbox = new System.Windows.Forms.CheckBox();
             this.AddPinToMastered_Button = new System.Windows.Forms.Button();
             this.AddPinToStockpile_Button = new System.Windows.Forms.Button();
             this.AllPins_ListView = new System.Windows.Forms.ListView();
-            this.AllPins_NameHeader = new System.Windows.Forms.ColumnHeader();
-            this.AllPins_IdHeader = new System.Windows.Forms.ColumnHeader();
-            this.EachPin_Checkbox = new System.Windows.Forms.CheckBox();
-            this.Add99ToMastered_Checkbox = new System.Windows.Forms.CheckBox();
-            this.InfoMastered_Label = new System.Windows.Forms.Label();
+            this.AllPins_NameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AllPins_IdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PinList_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Amount_NupUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Experience_NumUpDown)).BeginInit();
@@ -102,7 +102,7 @@ namespace Scramble.Legacy
             // 
             // Pin_Inventory_Label
             // 
-            this.Pin_Inventory_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Pin_Inventory_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.Pin_Inventory_Label.Location = new System.Drawing.Point(6, 483);
             this.Pin_Inventory_Label.Name = "Pin_Inventory_Label";
             this.Pin_Inventory_Label.Size = new System.Drawing.Size(80, 19);
@@ -149,7 +149,7 @@ namespace Scramble.Legacy
             0,
             0});
             this.Amount_NupUpDown.Name = "Amount_NupUpDown";
-            this.Amount_NupUpDown.Size = new System.Drawing.Size(82, 23);
+            this.Amount_NupUpDown.Size = new System.Drawing.Size(82, 20);
             this.Amount_NupUpDown.TabIndex = 15;
             this.Amount_NupUpDown.Value = new decimal(new int[] {
             1,
@@ -159,7 +159,7 @@ namespace Scramble.Legacy
             // 
             // Amount_Label
             // 
-            this.Amount_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Amount_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.Amount_Label.Location = new System.Drawing.Point(398, 469);
             this.Amount_Label.Name = "Amount_Label";
             this.Amount_Label.Size = new System.Drawing.Size(75, 15);
@@ -176,6 +176,7 @@ namespace Scramble.Legacy
             this.RemovePin_Button.TabIndex = 13;
             this.RemovePin_Button.Text = "Remove";
             this.RemovePin_Button.UseVisualStyleBackColor = false;
+            this.RemovePin_Button.Click += new System.EventHandler(this.RemovePin_Button_Click);
             // 
             // Experience_NumUpDown
             // 
@@ -186,7 +187,7 @@ namespace Scramble.Legacy
             0,
             0});
             this.Experience_NumUpDown.Name = "Experience_NumUpDown";
-            this.Experience_NumUpDown.Size = new System.Drawing.Size(82, 23);
+            this.Experience_NumUpDown.Size = new System.Drawing.Size(82, 20);
             this.Experience_NumUpDown.TabIndex = 12;
             this.Experience_NumUpDown.Value = new decimal(new int[] {
             1,
@@ -196,7 +197,7 @@ namespace Scramble.Legacy
             // 
             // Experience_Label
             // 
-            this.Experience_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Experience_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.Experience_Label.Location = new System.Drawing.Point(398, 440);
             this.Experience_Label.Name = "Experience_Label";
             this.Experience_Label.Size = new System.Drawing.Size(75, 15);
@@ -212,6 +213,7 @@ namespace Scramble.Legacy
             this.SendToOtherInv_Button.TabIndex = 10;
             this.SendToOtherInv_Button.Text = "Send to stockpile";
             this.SendToOtherInv_Button.UseVisualStyleBackColor = true;
+            this.SendToOtherInv_Button.Click += new System.EventHandler(this.SendToOtherInv_Button_Click);
             // 
             // Level_NumUpDown
             // 
@@ -222,7 +224,7 @@ namespace Scramble.Legacy
             0,
             0});
             this.Level_NumUpDown.Name = "Level_NumUpDown";
-            this.Level_NumUpDown.Size = new System.Drawing.Size(82, 23);
+            this.Level_NumUpDown.Size = new System.Drawing.Size(82, 20);
             this.Level_NumUpDown.TabIndex = 9;
             this.Level_NumUpDown.Value = new decimal(new int[] {
             1,
@@ -232,7 +234,7 @@ namespace Scramble.Legacy
             // 
             // Level_Label
             // 
-            this.Level_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Level_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.Level_Label.Location = new System.Drawing.Point(398, 411);
             this.Level_Label.Name = "Level_Label";
             this.Level_Label.Size = new System.Drawing.Size(75, 15);
@@ -252,7 +254,7 @@ namespace Scramble.Legacy
             this.SelectedPin_Desc_RichTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.SelectedPin_Desc_RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SelectedPin_Desc_RichTextBox.Enabled = false;
-            this.SelectedPin_Desc_RichTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SelectedPin_Desc_RichTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SelectedPin_Desc_RichTextBox.Location = new System.Drawing.Point(92, 426);
             this.SelectedPin_Desc_RichTextBox.Name = "SelectedPin_Desc_RichTextBox";
             this.SelectedPin_Desc_RichTextBox.Size = new System.Drawing.Size(282, 96);
@@ -264,7 +266,7 @@ namespace Scramble.Legacy
             this.SelectedPin_Name_RichTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.SelectedPin_Name_RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SelectedPin_Name_RichTextBox.Enabled = false;
-            this.SelectedPin_Name_RichTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SelectedPin_Name_RichTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.75F, System.Drawing.FontStyle.Bold);
             this.SelectedPin_Name_RichTextBox.Location = new System.Drawing.Point(92, 400);
             this.SelectedPin_Name_RichTextBox.Name = "SelectedPin_Name_RichTextBox";
             this.SelectedPin_Name_RichTextBox.Size = new System.Drawing.Size(282, 20);
@@ -347,7 +349,7 @@ namespace Scramble.Legacy
             // 
             // Mastered_Label
             // 
-            this.Mastered_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Mastered_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.Mastered_Label.ForeColor = System.Drawing.Color.BlueViolet;
             this.Mastered_Label.Location = new System.Drawing.Point(295, 19);
             this.Mastered_Label.Name = "Mastered_Label";
@@ -358,7 +360,7 @@ namespace Scramble.Legacy
             // 
             // Stockpile_Label
             // 
-            this.Stockpile_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Stockpile_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.Stockpile_Label.ForeColor = System.Drawing.Color.Teal;
             this.Stockpile_Label.Location = new System.Drawing.Point(6, 19);
             this.Stockpile_Label.Name = "Stockpile_Label";
@@ -381,6 +383,35 @@ namespace Scramble.Legacy
             this.AllPins_GroupBox.TabIndex = 1;
             this.AllPins_GroupBox.TabStop = false;
             this.AllPins_GroupBox.Text = "All Pins";
+            // 
+            // InfoMastered_Label
+            // 
+            this.InfoMastered_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.InfoMastered_Label.Location = new System.Drawing.Point(9, 486);
+            this.InfoMastered_Label.Name = "InfoMastered_Label";
+            this.InfoMastered_Label.Size = new System.Drawing.Size(143, 39);
+            this.InfoMastered_Label.TabIndex = 5;
+            this.InfoMastered_Label.Text = "The following only apply to mastered inventory:";
+            // 
+            // Add99ToMastered_Checkbox
+            // 
+            this.Add99ToMastered_Checkbox.AutoSize = true;
+            this.Add99ToMastered_Checkbox.Location = new System.Drawing.Point(158, 504);
+            this.Add99ToMastered_Checkbox.Name = "Add99ToMastered_Checkbox";
+            this.Add99ToMastered_Checkbox.Size = new System.Drawing.Size(43, 17);
+            this.Add99ToMastered_Checkbox.TabIndex = 4;
+            this.Add99ToMastered_Checkbox.Text = "x99";
+            this.Add99ToMastered_Checkbox.UseVisualStyleBackColor = true;
+            // 
+            // EachPin_Checkbox
+            // 
+            this.EachPin_Checkbox.AutoSize = true;
+            this.EachPin_Checkbox.Location = new System.Drawing.Point(158, 483);
+            this.EachPin_Checkbox.Name = "EachPin_Checkbox";
+            this.EachPin_Checkbox.Size = new System.Drawing.Size(122, 17);
+            this.EachPin_Checkbox.TabIndex = 3;
+            this.EachPin_Checkbox.Text = "Add one of each pin";
+            this.EachPin_Checkbox.UseVisualStyleBackColor = true;
             // 
             // AddPinToMastered_Button
             // 
@@ -430,35 +461,6 @@ namespace Scramble.Legacy
             this.AllPins_IdHeader.DisplayIndex = 0;
             this.AllPins_IdHeader.Text = "ID";
             this.AllPins_IdHeader.Width = 45;
-            // 
-            // EachPin_Checkbox
-            // 
-            this.EachPin_Checkbox.AutoSize = true;
-            this.EachPin_Checkbox.Location = new System.Drawing.Point(158, 483);
-            this.EachPin_Checkbox.Name = "EachPin_Checkbox";
-            this.EachPin_Checkbox.Size = new System.Drawing.Size(133, 19);
-            this.EachPin_Checkbox.TabIndex = 3;
-            this.EachPin_Checkbox.Text = "Add one of each pin";
-            this.EachPin_Checkbox.UseVisualStyleBackColor = true;
-            // 
-            // Add99ToMastered_Checkbox
-            // 
-            this.Add99ToMastered_Checkbox.AutoSize = true;
-            this.Add99ToMastered_Checkbox.Location = new System.Drawing.Point(158, 504);
-            this.Add99ToMastered_Checkbox.Name = "Add99ToMastered_Checkbox";
-            this.Add99ToMastered_Checkbox.Size = new System.Drawing.Size(44, 19);
-            this.Add99ToMastered_Checkbox.TabIndex = 4;
-            this.Add99ToMastered_Checkbox.Text = "x99";
-            this.Add99ToMastered_Checkbox.UseVisualStyleBackColor = true;
-            // 
-            // InfoMastered_Label
-            // 
-            this.InfoMastered_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.InfoMastered_Label.Location = new System.Drawing.Point(9, 486);
-            this.InfoMastered_Label.Name = "InfoMastered_Label";
-            this.InfoMastered_Label.Size = new System.Drawing.Size(143, 39);
-            this.InfoMastered_Label.TabIndex = 5;
-            this.InfoMastered_Label.Text = "The following only apply to mastered inventory:";
             // 
             // LegacyPinEditor
             // 

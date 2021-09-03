@@ -3,7 +3,7 @@ using System;
 
 namespace Scramble.Legacy
 {
-    public class LegacyPin : IEquatable<LegacyPin>
+    public class LegacyInventoryPin : IEquatable<LegacyInventoryPin>
     {
         public ushort Id
         {
@@ -43,7 +43,7 @@ namespace Scramble.Legacy
 
         public TwewyPin BasePin => Program.Legacy.GetTwewyManager().GetPin(Id);
 
-        public LegacyPin(ushort id, ushort saveIndex, ushort level, ushort amount, int experience, bool mastered)
+        public LegacyInventoryPin(ushort id, ushort saveIndex, ushort level, ushort amount, int experience, bool mastered)
         {
             Id = id;
             SaveIndex = saveIndex;
@@ -55,10 +55,10 @@ namespace Scramble.Legacy
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as LegacyPin);
+            return Equals(obj as LegacyInventoryPin);
         }
 
-        public bool Equals(LegacyPin other)
+        public bool Equals(LegacyInventoryPin other)
         {
             return other != null &&
                    Id == other.Id &&

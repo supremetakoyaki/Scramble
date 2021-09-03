@@ -13,9 +13,9 @@ namespace Scramble.Legacy
 
         private bool ReadyForUserInput = false;
 
-        private Dictionary<ushort, LegacyPin> Stockpile; // key= save index (0 to 255)
-        private Dictionary<ushort, LegacyPin> Mastered; // key= save index (0 to 999)
-        public LegacyPin SelectedPin;
+        private Dictionary<ushort, LegacyInventoryPin> Stockpile; // key= save index (0 to 255)
+        private Dictionary<ushort, LegacyInventoryPin> Mastered; // key= save index (0 to 999)
+        public LegacyInventoryPin SelectedPin;
 
         private const ushort STOCKPILE_SAVE_AMOUNT = 256;
         private const ushort MASTERED_SAVE_AMOUNT = 1000;
@@ -67,7 +67,7 @@ namespace Scramble.Legacy
 
         private void PopulateStockpile()
         {
-            Stockpile = new Dictionary<ushort, LegacyPin>();
+            Stockpile = new Dictionary<ushort, LegacyInventoryPin>();
 
             for (int i = 0; i < STOCKPILE_SAVE_AMOUNT; i++)
             {
@@ -82,7 +82,7 @@ namespace Scramble.Legacy
                     ushort PinAmount = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum + 4); // shouldn't it always be 1?
                     int PinExperience = SaveFile.RetrieveOffset_Int32(LegacyOffsets.Stockpile_Start + OffsetSum + 6);
 
-                    LegacyPin PinToAdd = new LegacyPin(PinId, SaveIndex, PinLevel, PinAmount, PinExperience, false);
+                    LegacyInventoryPin PinToAdd = new LegacyInventoryPin(PinId, SaveIndex, PinLevel, PinAmount, PinExperience, false);
                     if (PinToAdd.BasePin != null)
                     {
                         ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Level.ToString() })
@@ -100,7 +100,7 @@ namespace Scramble.Legacy
 
         private void PopulateMastered()
         {
-            Mastered = new Dictionary<ushort, LegacyPin>();
+            Mastered = new Dictionary<ushort, LegacyInventoryPin>();
 
             for (int i = 0; i < MASTERED_SAVE_AMOUNT; i++)
             {
@@ -115,7 +115,7 @@ namespace Scramble.Legacy
                     int PinExperience = SaveFile.RetrieveOffset_Int32(LegacyOffsets.Mastered_Start + OffsetSum + 4);
                     ushort PinAmount = SaveFile.RetrieveOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum + 9);
 
-                    LegacyPin PinToAdd = new LegacyPin(PinId, SaveIndex, PinLevel, PinAmount, PinExperience, true);
+                    LegacyInventoryPin PinToAdd = new LegacyInventoryPin(PinId, SaveIndex, PinLevel, PinAmount, PinExperience, true);
                     if (PinToAdd.BasePin != null)
                     {
                         ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Amount.ToString() })
@@ -138,7 +138,7 @@ namespace Scramble.Legacy
                 int OffsetSum = 15 * i;
                 if (Stockpile.ContainsKey(i))
                 {
-                    LegacyPin Pin = Stockpile[i];
+                    LegacyInventoryPin Pin = Stockpile[i];
                     SaveFile.UpdateOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum, Pin.Id); // Pin ID
                     SaveFile.UpdateOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum + 2, Pin.Level); // Level
                     SaveFile.UpdateOffset_UInt16(LegacyOffsets.Stockpile_Start + OffsetSum + 4, Pin.Amount); // Amount
@@ -162,7 +162,7 @@ namespace Scramble.Legacy
                 int OffsetSum = 11 * i;
                 if (Mastered.ContainsKey(i))
                 {
-                    LegacyPin Pin = Mastered[i];
+                    LegacyInventoryPin Pin = Mastered[i];
                     SaveFile.UpdateOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum, Pin.Id);
                     SaveFile.UpdateOffset_UInt16(LegacyOffsets.Mastered_Start + OffsetSum + 2, Pin.Level);
                     SaveFile.UpdateOffset_Int32(LegacyOffsets.Mastered_Start + OffsetSum + 4, Pin.Experience);
@@ -258,7 +258,7 @@ namespace Scramble.Legacy
                 return; // and maybe throw an error idk
             }
 
-            LegacyPin PinToAdd = new LegacyPin(Pin.Id, SaveIndex, 1, 1, 0, false);
+            LegacyInventoryPin PinToAdd = new LegacyInventoryPin(Pin.Id, SaveIndex, 1, 1, 0, false);
             Stockpile[SaveIndex] = PinToAdd;
 
             ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Level.ToString() })
@@ -280,7 +280,7 @@ namespace Scramble.Legacy
 
             if (Mastered.ContainsKey(SaveIndex) == false)
             {
-                LegacyPin PinToAdd = new LegacyPin(Pin.Id, SaveIndex, 15, 0, 99999, true);
+                LegacyInventoryPin PinToAdd = new LegacyInventoryPin(Pin.Id, SaveIndex, 15, 0, 99999, true);
                 Mastered[SaveIndex] = PinToAdd;
             }
 
@@ -363,6 +363,22 @@ namespace Scramble.Legacy
             }
 
             return ReturnKey;
+        }
+
+        private void RemovePin(LegacyInventoryPin Pin, bool DeleteSaveIndex = true)
+        {
+            if (Pin == null)
+            {
+                return;
+            }
+
+            if (Pin.Mastered)
+            {
+            }
+            else
+            {
+
+            }
         }
 
         private void Stockpile_ListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -576,6 +592,47 @@ namespace Scramble.Legacy
             }
 
             InsertPinToMastered(NextSaveIndex, GamePin, true);
+            ReadyForUserInput = true;
+        }
+
+        private void RemovePin_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            if (SelectedPin == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            RemovePin(SelectedPin);
+            ReadyForUserInput = true;
+        }
+
+        private void SendToOtherInv_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            if (SelectedPin == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            if (SelectedPin.Mastered)
+            { 
+            }
+            else
+            {
+
+            }
             ReadyForUserInput = true;
         }
     }
