@@ -11,7 +11,8 @@ It works for:
 You need a decrypted save file of the game. This save file weighs about 3.15MB (NEO), and 50KB (Final Remix).
 After that, you can [download the latest release](https://github.com/supremetakoyaki/Scramble/releases/) and you're ready to go.
 
-Note that you need the [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/dotnet/5.0/runtime) to run the editor! 
+From version 0.9 onwards, Scramble targets .NET Framework 4.8. If you use an updated Windows 10 or 11, you don't need to install anything. In case you haven't updated your Windows in years, you need to install [.NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/net48).
+Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/5.0/runtime) in order to run the program. 
 
 # How to get your save file
 - If you have a hackable Switch, you'll need to first be [running CFW](https://switch.homebrew.guide/) and then use a homebrew app to get the save file. For example, I use [JKSV](https://github.com/J-D-K/JKSV/releases/) most of the time. 
@@ -31,12 +32,14 @@ Note that you need the [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/
 - Edit your noisepedia.
 - Edit your furthest reached day.
 - Edit your scramble slam scores.
+- Edit your shop VIP level and last restaurant order.
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
 **TWEWY Final Remix Save Editing** (a.k.a. "Legacy mode"):
 - Edit your character and game stats.
 - Edit your items.
+- Edit your pins.
 
 **Other utilities**
 - Convert TWEWY Solo Remix save to TWEWY Final Remix.
