@@ -67,12 +67,13 @@ namespace Scramble.Forms
             this.AttackElementHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Add99Checkbox = new System.Windows.Forms.CheckBox();
-            this.AddedPinIsMasteredCheckbox = new System.Windows.Forms.CheckBox();
             this.AddAllPinsButton = new System.Windows.Forms.Button();
             this.AddPinButton = new System.Windows.Forms.Button();
             this.AllPinsListView = new System.Windows.Forms.ListView();
             this.GlobalPinNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GlobalPinIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AddedPinIsMasteredCheckbox = new System.Windows.Forms.CheckBox();
+            this.AddPinAboutToMaster_Checkbox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UberPin_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttackElementIcon_PictureBox)).BeginInit();
@@ -461,6 +462,7 @@ namespace Scramble.Forms
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.AddPinAboutToMaster_Checkbox);
             this.groupBox2.Controls.Add(this.Add99Checkbox);
             this.groupBox2.Controls.Add(this.AddedPinIsMasteredCheckbox);
             this.groupBox2.Controls.Add(this.AddAllPinsButton);
@@ -476,29 +478,19 @@ namespace Scramble.Forms
             // Add99Checkbox
             // 
             this.Add99Checkbox.AutoSize = true;
-            this.Add99Checkbox.Location = new System.Drawing.Point(245, 596);
+            this.Add99Checkbox.Location = new System.Drawing.Point(141, 598);
             this.Add99Checkbox.Name = "Add99Checkbox";
             this.Add99Checkbox.Size = new System.Drawing.Size(43, 17);
             this.Add99Checkbox.TabIndex = 10;
             this.Add99Checkbox.Text = "x99";
             this.Add99Checkbox.UseVisualStyleBackColor = true;
             // 
-            // AddedPinIsMasteredCheckbox
-            // 
-            this.AddedPinIsMasteredCheckbox.AutoSize = true;
-            this.AddedPinIsMasteredCheckbox.Location = new System.Drawing.Point(295, 596);
-            this.AddedPinIsMasteredCheckbox.Name = "AddedPinIsMasteredCheckbox";
-            this.AddedPinIsMasteredCheckbox.Size = new System.Drawing.Size(70, 17);
-            this.AddedPinIsMasteredCheckbox.TabIndex = 11;
-            this.AddedPinIsMasteredCheckbox.Text = "Mastered";
-            this.AddedPinIsMasteredCheckbox.UseVisualStyleBackColor = true;
-            // 
             // AddAllPinsButton
             // 
             this.AddAllPinsButton.BackColor = System.Drawing.Color.Azure;
-            this.AddAllPinsButton.Location = new System.Drawing.Point(168, 621);
+            this.AddAllPinsButton.Location = new System.Drawing.Point(139, 621);
             this.AddAllPinsButton.Name = "AddAllPinsButton";
-            this.AddAllPinsButton.Size = new System.Drawing.Size(202, 30);
+            this.AddAllPinsButton.Size = new System.Drawing.Size(231, 30);
             this.AddAllPinsButton.TabIndex = 13;
             this.AddAllPinsButton.Text = "Add one of every pin";
             this.AddAllPinsButton.UseVisualStyleBackColor = false;
@@ -508,7 +500,7 @@ namespace Scramble.Forms
             // 
             this.AddPinButton.Location = new System.Drawing.Point(14, 596);
             this.AddPinButton.Name = "AddPinButton";
-            this.AddPinButton.Size = new System.Drawing.Size(148, 55);
+            this.AddPinButton.Size = new System.Drawing.Size(119, 55);
             this.AddPinButton.TabIndex = 12;
             this.AddPinButton.Text = "Add pin";
             this.AddPinButton.UseVisualStyleBackColor = true;
@@ -540,6 +532,28 @@ namespace Scramble.Forms
             this.GlobalPinIdHeader.Text = "Pin ID";
             this.GlobalPinIdHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.GlobalPinIdHeader.Width = 80;
+            // 
+            // AddedPinIsMasteredCheckbox
+            // 
+            this.AddedPinIsMasteredCheckbox.AutoSize = true;
+            this.AddedPinIsMasteredCheckbox.Location = new System.Drawing.Point(190, 598);
+            this.AddedPinIsMasteredCheckbox.Name = "AddedPinIsMasteredCheckbox";
+            this.AddedPinIsMasteredCheckbox.Size = new System.Drawing.Size(70, 17);
+            this.AddedPinIsMasteredCheckbox.TabIndex = 11;
+            this.AddedPinIsMasteredCheckbox.Text = "Mastered";
+            this.AddedPinIsMasteredCheckbox.UseVisualStyleBackColor = true;
+            this.AddedPinIsMasteredCheckbox.CheckedChanged += new System.EventHandler(this.AddedPinIsMasteredCheckbox_CheckedChanged);
+            // 
+            // AddPinAboutToMaster_Checkbox
+            // 
+            this.AddPinAboutToMaster_Checkbox.AutoSize = true;
+            this.AddPinAboutToMaster_Checkbox.Location = new System.Drawing.Point(270, 598);
+            this.AddPinAboutToMaster_Checkbox.Name = "AddPinAboutToMaster_Checkbox";
+            this.AddPinAboutToMaster_Checkbox.Size = new System.Drawing.Size(100, 17);
+            this.AddPinAboutToMaster_Checkbox.TabIndex = 14;
+            this.AddPinAboutToMaster_Checkbox.Text = "About to master";
+            this.AddPinAboutToMaster_Checkbox.UseVisualStyleBackColor = true;
+            this.AddPinAboutToMaster_Checkbox.CheckedChanged += new System.EventHandler(this.AddPinAboutToMaster_Checkbox_CheckedChanged);
             // 
             // PinInventoryEditor
             // 
@@ -599,7 +613,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.Label MasteredLabel;
         private System.Windows.Forms.Button RemoveAllPinsButton;
         private System.Windows.Forms.Button AddAllPinsButton;
-        private System.Windows.Forms.CheckBox AddedPinIsMasteredCheckbox;
         private System.Windows.Forms.PictureBox BrandPictureBox;
         private System.Windows.Forms.Label BrandLabel;
         private System.Windows.Forms.Label MaxLevelLabel_Value;
@@ -615,5 +628,7 @@ namespace Scramble.Forms
         private System.Windows.Forms.PictureBox PinInputKey_PictureBox;
         private System.Windows.Forms.ColumnHeader AttackElementHeader;
         private System.Windows.Forms.PictureBox UberPin_PictureBox;
+        private System.Windows.Forms.CheckBox AddPinAboutToMaster_Checkbox;
+        private System.Windows.Forms.CheckBox AddedPinIsMasteredCheckbox;
     }
 }

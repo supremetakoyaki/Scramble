@@ -62,11 +62,7 @@ namespace Scramble.Forms
             // Pin data:
             // int16: pin ID
             // int16: level
-            // int16: experience
-            // int16: i have no idea.
-
-            // IDEA: I could, for the sake of convenience, use the value in offset "PinInv_Count".
-            // I will think about it.
+            // int32: experience
 
             int CurrentIndex = 0;
             for (int CurrentPointer = Offsets.PinInv_First; CurrentPointer < Offsets.PinInv_VeryLast; CurrentPointer += 8)
@@ -179,6 +175,7 @@ namespace Scramble.Forms
 
             Add99Checkbox.Text = Sukuranburu.GetString("{x99}");
             AddedPinIsMasteredCheckbox.Text = Sukuranburu.GetString("{Mastered}");
+            AddPinAboutToMaster_Checkbox.Text = Sukuranburu.GetString("{AboutToMaster}");
             AddAllPinsButton.Text = Sukuranburu.GetString("{AddEachOfEveryPin}");
             AddPinButton.Text = Sukuranburu.GetString("{AddPin}");
         }
@@ -860,10 +857,18 @@ namespace Scramble.Forms
             byte Level = 1;
             uint Experience = 0;
 
-            if (Sukuranburu.GetItemManager().PinIsMasterable(Pin) && AddedPinIsMasteredCheckbox.Checked)
+            if (Sukuranburu.GetItemManager().PinIsMasterable(Pin))
             {
-                Level = Pin.MaxLevel;
-                Experience = Sukuranburu.GetItemManager().GetPinExperienceWithPinIdAndLevel(PinId, Level);
+                if (AddedPinIsMasteredCheckbox.Checked)
+                {
+                    Level = Pin.MaxLevel;
+                    Experience = Sukuranburu.GetItemManager().GetPinExperienceWithPinIdAndLevel(PinId, Level);
+                }
+                else if (AddPinAboutToMaster_Checkbox.Checked)
+                {
+                    Level = (byte)(Pin.MaxLevel - 1);
+                    Experience = Sukuranburu.GetItemManager().GetPinExperienceWithPinIdAndLevel(PinId, Pin.MaxLevel) - 1;
+                }
             }
 
             InventoryPin PinToAdd = new InventoryPin(PinId, Level, Experience);
@@ -995,6 +1000,22 @@ namespace Scramble.Forms
         private void MyPinInventoryView_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             ColumnSorter.Sort(MyPinInventoryView, e);
+        }
+
+        private void AddedPinIsMasteredCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AddedPinIsMasteredCheckbox.Checked)
+            {
+                AddPinAboutToMaster_Checkbox.Checked = false;
+            }
+        }
+
+        private void AddPinAboutToMaster_Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AddPinAboutToMaster_Checkbox.Checked)
+            {
+                AddedPinIsMasteredCheckbox.Checked = false;
+            }
         }
     }
 }

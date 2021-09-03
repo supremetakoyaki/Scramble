@@ -190,6 +190,8 @@ namespace Scramble.Classes
             { "{MaxPrizes}", "Max prizes" },
             { "{AllScrambles}", "All battles" },
 
+            { "{AboutToMaster}", "About to master" },
+
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
             { "DLG_SaveDataAlreadyOpened", "There is a save file open already. If you didn't save changes, they will be lost." },
@@ -400,6 +402,8 @@ namespace Scramble.Classes
             { "{MaxPoints}", "最大ポイント" },
             { "{MaxPrizes}", "最大の報酬" },
             { "{AllScrambles}", "全てのバトル" },
+
+            { "{AboutToMaster}", "マスタのすぐ下" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -612,6 +616,8 @@ namespace Scramble.Classes
             { "{MaxPrizes}", "Máx. premios" },
             { "{AllScrambles}", "Todos los Conq." },
 
+            { "{AboutToMaster}", "A punto de dom." },
+
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
             { "DLG_SaveDataAlreadyOpened", "Ya hay un archivo abierto. Si no guardaste los cambios, se perderán." },
@@ -822,6 +828,8 @@ namespace Scramble.Classes
             { "{MaxPoints}", "Max points" },
             { "{MaxPrizes}", "Max récompenses" },
             { "{AllScrambles}", "Toutes" },
+
+            { "{AboutToMaster}", "Sur le point" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },
