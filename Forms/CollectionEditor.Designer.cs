@@ -42,11 +42,16 @@ namespace Scramble.Forms
             this.UnlockedHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FlagHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UnlockAllButton = new System.Windows.Forms.Button();
+            this.PinMasteredHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.UnmasterAllPins_Button = new System.Windows.Forms.Button();
+            this.UnmasterSelectedPins_Button = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.UnmasterSelectedPins_Button);
+            this.groupBox1.Controls.Add(this.UnmasterAllPins_Button);
             this.groupBox1.Controls.Add(this.ChangeSeeStatusButton);
             this.groupBox1.Controls.Add(this.UnseeAllButton);
             this.groupBox1.Controls.Add(this.ChangeLockStatusButton);
@@ -54,14 +59,14 @@ namespace Scramble.Forms
             this.groupBox1.Controls.Add(this.UnlockAllButton);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(656, 402);
+            this.groupBox1.Size = new System.Drawing.Size(760, 402);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Items";
             // 
             // ChangeSeeStatusButton
             // 
-            this.ChangeSeeStatusButton.Location = new System.Drawing.Point(461, 363);
+            this.ChangeSeeStatusButton.Location = new System.Drawing.Point(201, 363);
             this.ChangeSeeStatusButton.Name = "ChangeSeeStatusButton";
             this.ChangeSeeStatusButton.Size = new System.Drawing.Size(189, 30);
             this.ChangeSeeStatusButton.TabIndex = 4;
@@ -72,7 +77,7 @@ namespace Scramble.Forms
             // UnseeAllButton
             // 
             this.UnseeAllButton.BackColor = System.Drawing.Color.AliceBlue;
-            this.UnseeAllButton.Location = new System.Drawing.Point(6, 363);
+            this.UnseeAllButton.Location = new System.Drawing.Point(201, 330);
             this.UnseeAllButton.Name = "UnseeAllButton";
             this.UnseeAllButton.Size = new System.Drawing.Size(189, 30);
             this.UnseeAllButton.TabIndex = 2;
@@ -82,7 +87,7 @@ namespace Scramble.Forms
             // 
             // ChangeLockStatusButton
             // 
-            this.ChangeLockStatusButton.Location = new System.Drawing.Point(461, 330);
+            this.ChangeLockStatusButton.Location = new System.Drawing.Point(6, 363);
             this.ChangeLockStatusButton.Name = "ChangeLockStatusButton";
             this.ChangeLockStatusButton.Size = new System.Drawing.Size(189, 30);
             this.ChangeLockStatusButton.TabIndex = 3;
@@ -98,12 +103,13 @@ namespace Scramble.Forms
             this.ItemIDHeader,
             this.TypeHeader,
             this.UnlockedHeader,
-            this.FlagHeader});
+            this.FlagHeader,
+            this.PinMasteredHeader});
             this.RecordInvListView.FullRowSelect = true;
             this.RecordInvListView.HideSelection = false;
             this.RecordInvListView.Location = new System.Drawing.Point(6, 22);
             this.RecordInvListView.Name = "RecordInvListView";
-            this.RecordInvListView.Size = new System.Drawing.Size(644, 302);
+            this.RecordInvListView.Size = new System.Drawing.Size(748, 302);
             this.RecordInvListView.TabIndex = 0;
             this.RecordInvListView.UseCompatibleStateImageBehavior = false;
             this.RecordInvListView.View = System.Windows.Forms.View.Details;
@@ -112,7 +118,7 @@ namespace Scramble.Forms
             // 
             this.ItemNameHeader.DisplayIndex = 2;
             this.ItemNameHeader.Text = "Name";
-            this.ItemNameHeader.Width = 270;
+            this.ItemNameHeader.Width = 280;
             // 
             // SaveIDHeader
             // 
@@ -155,16 +161,44 @@ namespace Scramble.Forms
             this.UnlockAllButton.UseVisualStyleBackColor = false;
             this.UnlockAllButton.Click += new System.EventHandler(this.UnlockAllButton_Click);
             // 
+            // PinMasteredHeader
+            // 
+            this.PinMasteredHeader.Text = "Mastered";
+            this.PinMasteredHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PinMasteredHeader.Width = 90;
+            // 
+            // UnmasterAllPins_Button
+            // 
+            this.UnmasterAllPins_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(230)))), ((int)(((byte)(254)))));
+            this.UnmasterAllPins_Button.Location = new System.Drawing.Point(528, 330);
+            this.UnmasterAllPins_Button.Name = "UnmasterAllPins_Button";
+            this.UnmasterAllPins_Button.Size = new System.Drawing.Size(226, 30);
+            this.UnmasterAllPins_Button.TabIndex = 5;
+            this.UnmasterAllPins_Button.Text = "(Un)master all pins";
+            this.UnmasterAllPins_Button.UseVisualStyleBackColor = false;
+            this.UnmasterAllPins_Button.Click += new System.EventHandler(this.UnmasterAllPins_Button_Click);
+            // 
+            // UnmasterSelectedPins_Button
+            // 
+            this.UnmasterSelectedPins_Button.Location = new System.Drawing.Point(528, 363);
+            this.UnmasterSelectedPins_Button.Name = "UnmasterSelectedPins_Button";
+            this.UnmasterSelectedPins_Button.Size = new System.Drawing.Size(226, 30);
+            this.UnmasterSelectedPins_Button.TabIndex = 6;
+            this.UnmasterSelectedPins_Button.Text = "(Un)master selected pin(s)";
+            this.UnmasterSelectedPins_Button.UseVisualStyleBackColor = true;
+            this.UnmasterSelectedPins_Button.Click += new System.EventHandler(this.UnmasterSelectedPins_Button_Click);
+            // 
             // CollectionEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(680, 424);
+            this.ClientSize = new System.Drawing.Size(784, 424);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "CollectionEditor";
             this.Text = "Collection Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CollectionEditor_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -184,5 +218,8 @@ namespace Scramble.Forms
         private Button ChangeSeeStatusButton;
         private ColumnHeader TypeHeader;
         private Button UnseeAllButton;
+        private Button UnmasterSelectedPins_Button;
+        private Button UnmasterAllPins_Button;
+        private ColumnHeader PinMasteredHeader;
     }
 }

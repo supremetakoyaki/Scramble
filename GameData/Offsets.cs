@@ -25,6 +25,8 @@
 
         // Collection record.
         public const int RecordInv_First = 3344; // byte & byte
+        public const int MasteredPins_First = 6352; //int32
+        public const int MasteredPins_Last = 7951;
 
         // Turf war
         public const int TurfWar_CurrentPoints_W2D3 = 8168; // int32

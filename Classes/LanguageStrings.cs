@@ -191,6 +191,8 @@ namespace Scramble.Classes
             { "{AllScrambles}", "All battles" },
 
             { "{AboutToMaster}", "About to master" },
+            { "{UnmasterAllPins}", "(Un)master all pins" },
+            { "{UnmasterSelected}", "(Un)master selected pins" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
@@ -404,6 +406,8 @@ namespace Scramble.Classes
             { "{AllScrambles}", "全てのバトル" },
 
             { "{AboutToMaster}", "マスタのすぐ下" },
+            { "{UnmasterAllPins}", "すべてのバッジを（アン）マスタ" },
+            { "{UnmasterSelected}", "選択したバッジを（アン）マスタ" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -617,6 +621,8 @@ namespace Scramble.Classes
             { "{AllScrambles}", "Todos los Conq." },
 
             { "{AboutToMaster}", "A punto de dom." },
+            { "{UnmasterAllPins}", "(No) dominar todos los pines" },
+            { "{UnmasterSelected}", "(No) dominar los pines seleccionados" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
@@ -830,6 +836,8 @@ namespace Scramble.Classes
             { "{AllScrambles}", "Toutes" },
 
             { "{AboutToMaster}", "Sur le point" },
+            { "{UnmasterAllPins}", "(Pas) maîtriser tous les badges" },
+            { "{UnmasterSelected}", "(Pas) maîtriser les badges sélectionnés" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },
