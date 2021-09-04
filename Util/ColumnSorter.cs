@@ -49,5 +49,10 @@ namespace Scramble.Util
             listView.ListViewItemSorter = new ListViewComparer(e.Column, Order);
             listView.Sort();
         }
+
+        public static void DisposeColumn()
+        {
+            SortingColumn = null;
+        }
     }
 }

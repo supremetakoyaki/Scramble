@@ -534,6 +534,7 @@ namespace Scramble.Forms
         private void PinInventoryEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveAllData();
+            ColumnSorter.DisposeColumn();
         }
 
         private void MyPinInventoryView_KeyDown(object sender, KeyEventArgs e)
