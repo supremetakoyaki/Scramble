@@ -31,6 +31,8 @@ namespace Scramble.Forms
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.UnmasterSelectedPins_Button = new System.Windows.Forms.Button();
+            this.UnmasterAllPins_Button = new System.Windows.Forms.Button();
             this.ChangeSeeStatusButton = new System.Windows.Forms.Button();
             this.UnseeAllButton = new System.Windows.Forms.Button();
             this.ChangeLockStatusButton = new System.Windows.Forms.Button();
@@ -41,10 +43,8 @@ namespace Scramble.Forms
             this.TypeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.UnlockedHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FlagHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.UnlockAllButton = new System.Windows.Forms.Button();
             this.PinMasteredHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.UnmasterAllPins_Button = new System.Windows.Forms.Button();
-            this.UnmasterSelectedPins_Button = new System.Windows.Forms.Button();
+            this.UnlockAllButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,27 @@ namespace Scramble.Forms
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Items";
+            // 
+            // UnmasterSelectedPins_Button
+            // 
+            this.UnmasterSelectedPins_Button.Location = new System.Drawing.Point(528, 363);
+            this.UnmasterSelectedPins_Button.Name = "UnmasterSelectedPins_Button";
+            this.UnmasterSelectedPins_Button.Size = new System.Drawing.Size(226, 30);
+            this.UnmasterSelectedPins_Button.TabIndex = 6;
+            this.UnmasterSelectedPins_Button.Text = "(Un)master selected pin(s)";
+            this.UnmasterSelectedPins_Button.UseVisualStyleBackColor = true;
+            this.UnmasterSelectedPins_Button.Click += new System.EventHandler(this.UnmasterSelectedPins_Button_Click);
+            // 
+            // UnmasterAllPins_Button
+            // 
+            this.UnmasterAllPins_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(230)))), ((int)(((byte)(254)))));
+            this.UnmasterAllPins_Button.Location = new System.Drawing.Point(528, 330);
+            this.UnmasterAllPins_Button.Name = "UnmasterAllPins_Button";
+            this.UnmasterAllPins_Button.Size = new System.Drawing.Size(226, 30);
+            this.UnmasterAllPins_Button.TabIndex = 5;
+            this.UnmasterAllPins_Button.Text = "(Un)master all pins";
+            this.UnmasterAllPins_Button.UseVisualStyleBackColor = false;
+            this.UnmasterAllPins_Button.Click += new System.EventHandler(this.UnmasterAllPins_Button_Click);
             // 
             // ChangeSeeStatusButton
             // 
@@ -113,6 +134,7 @@ namespace Scramble.Forms
             this.RecordInvListView.TabIndex = 0;
             this.RecordInvListView.UseCompatibleStateImageBehavior = false;
             this.RecordInvListView.View = System.Windows.Forms.View.Details;
+            this.RecordInvListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.RecordInvListView_ColumnClick);
             // 
             // ItemNameHeader
             // 
@@ -150,6 +172,12 @@ namespace Scramble.Forms
             this.FlagHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.FlagHeader.Width = 90;
             // 
+            // PinMasteredHeader
+            // 
+            this.PinMasteredHeader.Text = "Mastered";
+            this.PinMasteredHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PinMasteredHeader.Width = 90;
+            // 
             // UnlockAllButton
             // 
             this.UnlockAllButton.BackColor = System.Drawing.Color.PaleGreen;
@@ -160,33 +188,6 @@ namespace Scramble.Forms
             this.UnlockAllButton.Text = "(Un)lock all";
             this.UnlockAllButton.UseVisualStyleBackColor = false;
             this.UnlockAllButton.Click += new System.EventHandler(this.UnlockAllButton_Click);
-            // 
-            // PinMasteredHeader
-            // 
-            this.PinMasteredHeader.Text = "Mastered";
-            this.PinMasteredHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PinMasteredHeader.Width = 90;
-            // 
-            // UnmasterAllPins_Button
-            // 
-            this.UnmasterAllPins_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(230)))), ((int)(((byte)(254)))));
-            this.UnmasterAllPins_Button.Location = new System.Drawing.Point(528, 330);
-            this.UnmasterAllPins_Button.Name = "UnmasterAllPins_Button";
-            this.UnmasterAllPins_Button.Size = new System.Drawing.Size(226, 30);
-            this.UnmasterAllPins_Button.TabIndex = 5;
-            this.UnmasterAllPins_Button.Text = "(Un)master all pins";
-            this.UnmasterAllPins_Button.UseVisualStyleBackColor = false;
-            this.UnmasterAllPins_Button.Click += new System.EventHandler(this.UnmasterAllPins_Button_Click);
-            // 
-            // UnmasterSelectedPins_Button
-            // 
-            this.UnmasterSelectedPins_Button.Location = new System.Drawing.Point(528, 363);
-            this.UnmasterSelectedPins_Button.Name = "UnmasterSelectedPins_Button";
-            this.UnmasterSelectedPins_Button.Size = new System.Drawing.Size(226, 30);
-            this.UnmasterSelectedPins_Button.TabIndex = 6;
-            this.UnmasterSelectedPins_Button.Text = "(Un)master selected pin(s)";
-            this.UnmasterSelectedPins_Button.UseVisualStyleBackColor = true;
-            this.UnmasterSelectedPins_Button.Click += new System.EventHandler(this.UnmasterSelectedPins_Button_Click);
             // 
             // CollectionEditor
             // 

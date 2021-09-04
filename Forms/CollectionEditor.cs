@@ -1,6 +1,7 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
 using Scramble.GameData;
+using Scramble.Util;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -136,7 +137,7 @@ namespace Scramble.Forms
 
         private void UnlockAllButton_Click(object sender, EventArgs e)
         {
-            byte Change = RecordInvListView.Items[0].SubItems[4].Text == Sukuranburu.GetString("{NoLowercase}") ? (byte)0 : (byte)1;
+            byte Change = RecordInvListView.Items[0].SubItems[4].Text == Sukuranburu.GetString("{YesLowercase}") ? (byte)0 : (byte)1;
 
             foreach (ListViewItem Item in RecordInvListView.Items)
             {
@@ -151,7 +152,7 @@ namespace Scramble.Forms
 
         private void UnseeAllButton_Click(object sender, EventArgs e)
         {
-            byte Change = RecordInvListView.Items[0].SubItems[5].Text == Sukuranburu.GetString("{NoLowercase}") ? (byte)0 : (byte)1;
+            byte Change = RecordInvListView.Items[0].SubItems[5].Text == Sukuranburu.GetString("{YesLowercase}") ? (byte)0 : (byte)1;
 
             foreach (ListViewItem Item in RecordInvListView.Items)
             {
@@ -169,7 +170,7 @@ namespace Scramble.Forms
             bool Flag = false;
             if (RecordInvListView.SelectedItems.Count > 0)
             {
-                Flag = RecordInvListView.SelectedItems[0].SubItems[4].Text == Sukuranburu.GetString("{NoLowercase}");
+                Flag = RecordInvListView.SelectedItems[0].SubItems[4].Text == Sukuranburu.GetString("{YesLowercase}");
             }
 
             foreach (ListViewItem SelectedValue in RecordInvListView.SelectedItems)
@@ -195,7 +196,7 @@ namespace Scramble.Forms
             bool Flag = false;
             if (RecordInvListView.SelectedItems.Count > 0)
             {
-                Flag = RecordInvListView.SelectedItems[0].SubItems[5].Text == Sukuranburu.GetString("{NoLowercase}");
+                Flag = RecordInvListView.SelectedItems[0].SubItems[5].Text == Sukuranburu.GetString("{YesLowercase}");
             }
 
             foreach (ListViewItem SelectedValue in RecordInvListView.SelectedItems)
@@ -281,6 +282,12 @@ namespace Scramble.Forms
         private void CollectionEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveMasteredPins();
+            ColumnSorter.DisposeColumn();
+        }
+
+        private void RecordInvListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSorter.Sort(RecordInvListView, e);
         }
     }
 }
