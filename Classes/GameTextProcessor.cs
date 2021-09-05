@@ -60,6 +60,7 @@ namespace Scramble.Classes
             Box.SelectionColor = Box.ForeColor;
 
             Regex Expressions = new Regex(COLOR_PATTERN + '|' + ITALIC_PATTERN + '|' + SIZE_PATTERN);
+            Text = Text.Replace("<g>", "").Replace("</g>", ""); // we don't need this.
 
             string[] SplittedText = Expressions.Split(Text);
             foreach (string Piece in SplittedText)

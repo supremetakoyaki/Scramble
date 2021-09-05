@@ -22,6 +22,7 @@ namespace Scramble
         public NoisepediaEditor NoisepediaEditor;
         public DayEditor DayEditor;
         public TurfWarEditor TurfWarEditor;
+        public TrophyEditor TrophyEditor;
 
         public SettingsEditor SettEditor;
         public MiscEditor MiscEditor;
@@ -871,6 +872,12 @@ namespace Scramble
         {
             TurfWarEditor = new TurfWarEditor();
             TurfWarEditor.ShowDialog();
+        }
+
+        private void OpenTrophyEdit_Button_Click(object sender, EventArgs e)
+        {
+            TrophyEditor = new TrophyEditor();
+            TrophyEditor.ShowDialog();
         }
 
         private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)

@@ -145,6 +145,12 @@
     <Compile Include="Forms\SkillTreeEditor.Designer.cs">
       <DependentUpon>SkillTreeEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TrophyEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TrophyEditor.Designer.cs">
+      <DependentUpon>TrophyEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TurfWarEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SkillTreeEditor.resx">
       <DependentUpon>SkillTreeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TrophyEditor.resx">
+      <DependentUpon>TrophyEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TurfWarEditor.resx">
       <DependentUpon>TurfWarEditor.cs</DependentUpon>

@@ -130,7 +130,6 @@
             // SaveSlotsListBox
             // 
             this.SaveSlotsListBox.FormattingEnabled = true;
-            this.SaveSlotsListBox.ItemHeight = 15;
             this.SaveSlotsListBox.Items.AddRange(new object[] {
             "0 (Autosave)",
             "1",
@@ -144,7 +143,7 @@
             "9"});
             this.SaveSlotsListBox.Location = new System.Drawing.Point(6, 22);
             this.SaveSlotsListBox.Name = "SaveSlotsListBox";
-            this.SaveSlotsListBox.Size = new System.Drawing.Size(127, 154);
+            this.SaveSlotsListBox.Size = new System.Drawing.Size(127, 147);
             this.SaveSlotsListBox.TabIndex = 6;
             this.SaveSlotsListBox.SelectedIndexChanged += new System.EventHandler(this.SaveSlotsListBox_SelectedIndexChanged);
             // 
@@ -155,7 +154,7 @@
             this.DateOfSavePicker.MaxDate = new System.DateTime(2037, 12, 31, 0, 0, 0, 0);
             this.DateOfSavePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.DateOfSavePicker.Name = "DateOfSavePicker";
-            this.DateOfSavePicker.Size = new System.Drawing.Size(188, 23);
+            this.DateOfSavePicker.Size = new System.Drawing.Size(188, 20);
             this.DateOfSavePicker.TabIndex = 8;
             this.DateOfSavePicker.ValueChanged += new System.EventHandler(this.DateOfSavePicker_ValueChanged);
             // 
@@ -164,7 +163,7 @@
             this.DateSavedLabel.AutoSize = true;
             this.DateSavedLabel.Location = new System.Drawing.Point(6, 39);
             this.DateSavedLabel.Name = "DateSavedLabel";
-            this.DateSavedLabel.Size = new System.Drawing.Size(124, 15);
+            this.DateSavedLabel.Size = new System.Drawing.Size(114, 13);
             this.DateSavedLabel.TabIndex = 5;
             this.DateSavedLabel.Text = "Date and time of save:";
             // 
@@ -188,14 +187,13 @@
             this.AboutLabel.Name = "AboutLabel";
             this.AboutLabel.Size = new System.Drawing.Size(76, 15);
             this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.Text = string.Empty;
             this.AboutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // MoneyLabel
             // 
             this.MoneyLabel.AutoSize = true;
-            this.MoneyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.MoneyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.MoneyLabel.Location = new System.Drawing.Point(6, 186);
             this.MoneyLabel.Name = "MoneyLabel";
             this.MoneyLabel.Size = new System.Drawing.Size(45, 13);
@@ -211,14 +209,14 @@
             0,
             0});
             this.MoneyNUpDown.Name = "MoneyNUpDown";
-            this.MoneyNUpDown.Size = new System.Drawing.Size(98, 23);
+            this.MoneyNUpDown.Size = new System.Drawing.Size(98, 20);
             this.MoneyNUpDown.TabIndex = 12;
             this.MoneyNUpDown.ValueChanged += new System.EventHandler(this.MoneyNUpDown_ValueChanged);
             // 
             // DifficultyLabel
             // 
             this.DifficultyLabel.AutoSize = true;
-            this.DifficultyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DifficultyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.DifficultyLabel.Location = new System.Drawing.Point(6, 95);
             this.DifficultyLabel.Name = "DifficultyLabel";
             this.DifficultyLabel.Size = new System.Drawing.Size(56, 13);
@@ -238,13 +236,13 @@
             this.DifficultyCombo.Location = new System.Drawing.Point(96, 91);
             this.DifficultyCombo.MaxDropDownItems = 4;
             this.DifficultyCombo.Name = "DifficultyCombo";
-            this.DifficultyCombo.Size = new System.Drawing.Size(98, 23);
+            this.DifficultyCombo.Size = new System.Drawing.Size(98, 21);
             this.DifficultyCombo.TabIndex = 9;
             this.DifficultyCombo.SelectedIndexChanged += new System.EventHandler(this.DifficultyCombo_SelectedIndexChanged);
             // 
             // CurrentLevelLabel
             // 
-            this.CurrentLevelLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CurrentLevelLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.CurrentLevelLabel.Location = new System.Drawing.Point(6, 157);
             this.CurrentLevelLabel.Name = "CurrentLevelLabel";
             this.CurrentLevelLabel.Size = new System.Drawing.Size(80, 15);
@@ -260,7 +258,7 @@
             0,
             0});
             this.CurrentLevelNUpDown.Name = "CurrentLevelNUpDown";
-            this.CurrentLevelNUpDown.Size = new System.Drawing.Size(98, 23);
+            this.CurrentLevelNUpDown.Size = new System.Drawing.Size(98, 20);
             this.CurrentLevelNUpDown.TabIndex = 11;
             this.CurrentLevelNUpDown.Value = new decimal(new int[] {
             1,
@@ -271,7 +269,7 @@
             // 
             // FpLabel
             // 
-            this.FpLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.FpLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.FpLabel.Location = new System.Drawing.Point(6, 215);
             this.FpLabel.Name = "FpLabel";
             this.FpLabel.Size = new System.Drawing.Size(23, 15);
@@ -287,7 +285,7 @@
             0,
             0});
             this.FpNumericUpDown.Name = "FpNumericUpDown";
-            this.FpNumericUpDown.Size = new System.Drawing.Size(98, 23);
+            this.FpNumericUpDown.Size = new System.Drawing.Size(98, 20);
             this.FpNumericUpDown.TabIndex = 13;
             this.FpNumericUpDown.ValueChanged += new System.EventHandler(this.FpNumericUpDown_ValueChanged);
             // 
@@ -307,7 +305,7 @@
             this.InitializedSlotCheckbox.AutoSize = true;
             this.InitializedSlotCheckbox.Location = new System.Drawing.Point(6, 22);
             this.InitializedSlotCheckbox.Name = "InitializedSlotCheckbox";
-            this.InitializedSlotCheckbox.Size = new System.Drawing.Size(98, 19);
+            this.InitializedSlotCheckbox.Size = new System.Drawing.Size(88, 17);
             this.InitializedSlotCheckbox.TabIndex = 7;
             this.InitializedSlotCheckbox.Text = "Initialized slot";
             this.InitializedSlotCheckbox.UseVisualStyleBackColor = true;
@@ -316,7 +314,7 @@
             // ExperienceLabel
             // 
             this.ExperienceLabel.AutoSize = true;
-            this.ExperienceLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ExperienceLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.ExperienceLabel.Location = new System.Drawing.Point(6, 128);
             this.ExperienceLabel.Name = "ExperienceLabel";
             this.ExperienceLabel.Size = new System.Drawing.Size(65, 13);
@@ -332,7 +330,7 @@
             0,
             0});
             this.ExpNumericUpDown.Name = "ExpNumericUpDown";
-            this.ExpNumericUpDown.Size = new System.Drawing.Size(98, 23);
+            this.ExpNumericUpDown.Size = new System.Drawing.Size(98, 20);
             this.ExpNumericUpDown.TabIndex = 10;
             this.ExpNumericUpDown.ValueChanged += new System.EventHandler(this.ExpNumericUpDown_ValueChanged);
             // 
@@ -423,13 +421,13 @@
             // 
             // OpenTrophyEdit_Button
             // 
-            this.OpenTrophyEdit_Button.Enabled = false;
             this.OpenTrophyEdit_Button.Location = new System.Drawing.Point(400, 254);
             this.OpenTrophyEdit_Button.Name = "OpenTrophyEdit_Button";
             this.OpenTrophyEdit_Button.Size = new System.Drawing.Size(158, 23);
             this.OpenTrophyEdit_Button.TabIndex = 31;
             this.OpenTrophyEdit_Button.Text = "Graffiti Editor";
             this.OpenTrophyEdit_Button.UseVisualStyleBackColor = true;
+            this.OpenTrophyEdit_Button.Click += new System.EventHandler(this.OpenTrophyEdit_Button_Click);
             // 
             // OpenDayEditor_Button
             // 
@@ -463,7 +461,7 @@
             // 
             // CaloriesPercentage_Label
             // 
-            this.CaloriesPercentage_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CaloriesPercentage_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.CaloriesPercentage_Label.ForeColor = System.Drawing.Color.Green;
             this.CaloriesPercentage_Label.Location = new System.Drawing.Point(200, 243);
             this.CaloriesPercentage_Label.Name = "CaloriesPercentage_Label";
@@ -480,13 +478,13 @@
             0,
             0});
             this.Calories_NumUpDown.Name = "Calories_NumUpDown";
-            this.Calories_NumUpDown.Size = new System.Drawing.Size(98, 23);
+            this.Calories_NumUpDown.Size = new System.Drawing.Size(98, 20);
             this.Calories_NumUpDown.TabIndex = 14;
             this.Calories_NumUpDown.ValueChanged += new System.EventHandler(this.Calories_NumUpDown_ValueChanged);
             // 
             // CaloriesEaten_Label
             // 
-            this.CaloriesEaten_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CaloriesEaten_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.CaloriesEaten_Label.Location = new System.Drawing.Point(6, 244);
             this.CaloriesEaten_Label.Name = "CaloriesEaten_Label";
             this.CaloriesEaten_Label.Size = new System.Drawing.Size(84, 15);
@@ -499,7 +497,7 @@
             this.LvLabel_Pre.ForeColor = System.Drawing.Color.MediumBlue;
             this.LvLabel_Pre.Location = new System.Drawing.Point(200, 127);
             this.LvLabel_Pre.Name = "LvLabel_Pre";
-            this.LvLabel_Pre.Size = new System.Drawing.Size(21, 15);
+            this.LvLabel_Pre.Size = new System.Drawing.Size(22, 13);
             this.LvLabel_Pre.TabIndex = 27;
             this.LvLabel_Pre.Text = "Lv.";
             // 
@@ -602,7 +600,7 @@
             this.LvLabel.ForeColor = System.Drawing.Color.MediumBlue;
             this.LvLabel.Location = new System.Drawing.Point(230, 127);
             this.LvLabel.Name = "LvLabel";
-            this.LvLabel.Size = new System.Drawing.Size(13, 15);
+            this.LvLabel.Size = new System.Drawing.Size(13, 13);
             this.LvLabel.TabIndex = 17;
             this.LvLabel.Text = "1";
             // 
@@ -662,7 +660,7 @@
             this.SelectLanguageLabel.AutoSize = true;
             this.SelectLanguageLabel.Location = new System.Drawing.Point(12, 367);
             this.SelectLanguageLabel.Name = "SelectLanguageLabel";
-            this.SelectLanguageLabel.Size = new System.Drawing.Size(62, 15);
+            this.SelectLanguageLabel.Size = new System.Drawing.Size(58, 13);
             this.SelectLanguageLabel.TabIndex = 27;
             this.SelectLanguageLabel.Text = "Language:";
             // 
@@ -678,7 +676,7 @@
             "Français"});
             this.LanguageSelectComboBox.Location = new System.Drawing.Point(75, 364);
             this.LanguageSelectComboBox.Name = "LanguageSelectComboBox";
-            this.LanguageSelectComboBox.Size = new System.Drawing.Size(76, 23);
+            this.LanguageSelectComboBox.Size = new System.Drawing.Size(76, 21);
             this.LanguageSelectComboBox.TabIndex = 0;
             this.LanguageSelectComboBox.TextChanged += new System.EventHandler(this.LanguageSelectComboBox_TextChanged);
             // 
@@ -689,14 +687,14 @@
             this.ShowSpoilersCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ShowSpoilersCheckbox.Location = new System.Drawing.Point(12, 393);
             this.ShowSpoilersCheckbox.Name = "ShowSpoilersCheckbox";
-            this.ShowSpoilersCheckbox.Size = new System.Drawing.Size(98, 19);
+            this.ShowSpoilersCheckbox.Size = new System.Drawing.Size(91, 17);
             this.ShowSpoilersCheckbox.TabIndex = 0;
             this.ShowSpoilersCheckbox.Text = "Show spoilers";
             this.ShowSpoilersCheckbox.UseVisualStyleBackColor = true;
             // 
             // ThankYou_Label
             // 
-            this.ThankYou_Label.Font = new System.Drawing.Font("Segoe UI Semilight", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ThankYou_Label.Font = new System.Drawing.Font("Segoe UI Semilight", 7F);
             this.ThankYou_Label.ForeColor = System.Drawing.SystemColors.Control;
             this.ThankYou_Label.Location = new System.Drawing.Point(18, 306);
             this.ThankYou_Label.Name = "ThankYou_Label";
