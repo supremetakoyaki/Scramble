@@ -215,11 +215,18 @@ namespace Scramble.Classes
             Data[Offset] = Value;
         }
 
-        public void UpdateOffset_UInt16(int Offset, ushort Value)
+        public void UpdateOffset_Int16(int Offset, short Value)
         {
             byte[] UpdatedInt16 = BitConverter.GetBytes(Value);
             Data[Offset] = UpdatedInt16[0];
             Data[Offset + 1] = UpdatedInt16[1];
+        }
+
+        public void UpdateOffset_UInt16(int Offset, ushort Value)
+        {
+            byte[] UpdatedUInt16 = BitConverter.GetBytes(Value);
+            Data[Offset] = UpdatedUInt16[0];
+            Data[Offset + 1] = UpdatedUInt16[1];
         }
 
         public void UpdateOffset_Int32(int Offset, int Value)
@@ -238,6 +245,15 @@ namespace Scramble.Classes
             Data[Offset + 1] = UpdatedUInt32[1];
             Data[Offset + 2] = UpdatedUInt32[2];
             Data[Offset + 3] = UpdatedUInt32[3];
+        }
+
+        public void UpdateOffset_Float(int Offset, float Value)
+        {
+            byte[] UpdatedFloat = BitConverter.GetBytes(Value);
+            Data[Offset] = UpdatedFloat[0];
+            Data[Offset + 1] = UpdatedFloat[1];
+            Data[Offset + 2] = UpdatedFloat[2];
+            Data[Offset + 3] = UpdatedFloat[3];
         }
 
         public void FillOffset_Int32(int Offset, int Length, byte Value)
@@ -271,6 +287,11 @@ namespace Scramble.Classes
         public int RetrieveOffset_Int32(int Offset)
         {
             return BitConverter.ToInt32(Data, Offset);
+        }
+
+        public float RetrieveOffset_Float(int Offset)
+        {
+            return BitConverter.ToSingle(Data, Offset);
         }
 
         public void WriteToStream(MemoryStream Stream, ref int CurrentPointer)
