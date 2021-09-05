@@ -258,6 +258,11 @@ namespace Scramble.Classes
             return BitConverter.ToUInt16(Data, Offset);
         }
 
+        public short RetrieveOffset_Int16(int Offset)
+        {
+            return BitConverter.ToInt16(Data, Offset);
+        }
+
         public uint RetrieveOffset_UInt32(int Offset)
         {
             return BitConverter.ToUInt32(Data, Offset);
