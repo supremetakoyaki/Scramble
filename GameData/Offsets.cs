@@ -28,6 +28,16 @@
         public const int MasteredPins_First = 6352; //int32
         public const int MasteredPins_Last = 7951;
 
+        // Trophies
+        public const int Trophies_Unlocked_First = 5392; // boolean.
+        public const int Trophies_Deployed_First = 5393; // boolean
+        public const int Trophies_Unseen_First = 5394; // boolean
+        public const int Trophies_XPos_First = 5395; // signed int16.
+        public const int Trophies_YPos_First = 5397; // signed int16.
+        public const int Trophies_ZPos_First = 5399; // signed int16. This is always 0 when deployed and 0xFFFF when undeployed.
+        public const int Trophies_Scale_First = 5401; // float
+        public const int Trophies_RotationAngle_First = 5405; // int16. 0 to 360?
+
         // Turf war
         public const int TurfWar_CurrentPoints_W2D3 = 8168; // int32
         public const int TurfWar_CurrentPoints = 9899; // int32
