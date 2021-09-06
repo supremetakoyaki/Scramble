@@ -36,9 +36,9 @@ namespace Scramble.Forms
             this.UnlockAll_PinsCheckbox = new System.Windows.Forms.CheckBox();
             this.UnlockAllButton = new System.Windows.Forms.Button();
             this.NoisepediaListView = new System.Windows.Forms.ListView();
-            this.SortedIdHeader = new System.Windows.Forms.ColumnHeader();
-            this.NoiseIdHeader = new System.Windows.Forms.ColumnHeader();
-            this.NameHeader = new System.Windows.Forms.ColumnHeader();
+            this.SortedIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.NoiseIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.NameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NoiseInfo_GroupBox = new System.Windows.Forms.GroupBox();
             this.NoiseSymbol_PictureBox = new System.Windows.Forms.PictureBox();
             this.BossIcon_PictureBox = new System.Windows.Forms.PictureBox();
@@ -117,7 +117,7 @@ namespace Scramble.Forms
             this.UnlockAll_PinsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.UnlockAll_PinsCheckbox.Location = new System.Drawing.Point(159, 487);
             this.UnlockAll_PinsCheckbox.Name = "UnlockAll_PinsCheckbox";
-            this.UnlockAll_PinsCheckbox.Size = new System.Drawing.Size(56, 19);
+            this.UnlockAll_PinsCheckbox.Size = new System.Drawing.Size(54, 17);
             this.UnlockAll_PinsCheckbox.TabIndex = 2;
             this.UnlockAll_PinsCheckbox.Text = "{Pins}";
             this.UnlockAll_PinsCheckbox.UseVisualStyleBackColor = true;
@@ -140,7 +140,6 @@ namespace Scramble.Forms
             this.NoiseIdHeader,
             this.NameHeader});
             this.NoisepediaListView.FullRowSelect = true;
-            this.NoisepediaListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.NoisepediaListView.HideSelection = false;
             this.NoisepediaListView.Location = new System.Drawing.Point(6, 22);
             this.NoisepediaListView.MultiSelect = false;
@@ -149,6 +148,7 @@ namespace Scramble.Forms
             this.NoisepediaListView.TabIndex = 0;
             this.NoisepediaListView.UseCompatibleStateImageBehavior = false;
             this.NoisepediaListView.View = System.Windows.Forms.View.Details;
+            this.NoisepediaListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.NoisepediaListView_ColumnClick);
             this.NoisepediaListView.SelectedIndexChanged += new System.EventHandler(this.NoisepediaListView_SelectedIndexChanged);
             // 
             // SortedIdHeader
@@ -270,7 +270,7 @@ namespace Scramble.Forms
             // Ultimate_DropRateValue_Label
             // 
             this.Ultimate_DropRateValue_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Ultimate_DropRateValue_Label.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Ultimate_DropRateValue_Label.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.Ultimate_DropRateValue_Label.Location = new System.Drawing.Point(313, 470);
             this.Ultimate_DropRateValue_Label.Name = "Ultimate_DropRateValue_Label";
             this.Ultimate_DropRateValue_Label.Size = new System.Drawing.Size(45, 14);
@@ -281,7 +281,7 @@ namespace Scramble.Forms
             // Hard_DropRateValue_Label
             // 
             this.Hard_DropRateValue_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Hard_DropRateValue_Label.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Hard_DropRateValue_Label.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.Hard_DropRateValue_Label.Location = new System.Drawing.Point(224, 470);
             this.Hard_DropRateValue_Label.Name = "Hard_DropRateValue_Label";
             this.Hard_DropRateValue_Label.Size = new System.Drawing.Size(45, 14);
@@ -292,7 +292,7 @@ namespace Scramble.Forms
             // Normal_DropRateValue_Label
             // 
             this.Normal_DropRateValue_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Normal_DropRateValue_Label.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Normal_DropRateValue_Label.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.Normal_DropRateValue_Label.Location = new System.Drawing.Point(132, 470);
             this.Normal_DropRateValue_Label.Name = "Normal_DropRateValue_Label";
             this.Normal_DropRateValue_Label.Size = new System.Drawing.Size(45, 14);
@@ -303,7 +303,7 @@ namespace Scramble.Forms
             // Easy_DropRateValue_Label
             // 
             this.Easy_DropRateValue_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Easy_DropRateValue_Label.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Easy_DropRateValue_Label.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.Easy_DropRateValue_Label.Location = new System.Drawing.Point(43, 470);
             this.Easy_DropRateValue_Label.Name = "Easy_DropRateValue_Label";
             this.Easy_DropRateValue_Label.Size = new System.Drawing.Size(45, 14);
@@ -314,7 +314,7 @@ namespace Scramble.Forms
             // Ultimate_Label
             // 
             this.Ultimate_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Ultimate_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Ultimate_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.Ultimate_Label.Location = new System.Drawing.Point(294, 451);
             this.Ultimate_Label.Name = "Ultimate_Label";
             this.Ultimate_Label.Size = new System.Drawing.Size(64, 19);
@@ -325,7 +325,7 @@ namespace Scramble.Forms
             // Hard_Label
             // 
             this.Hard_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Hard_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Hard_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.Hard_Label.Location = new System.Drawing.Point(203, 452);
             this.Hard_Label.Name = "Hard_Label";
             this.Hard_Label.Size = new System.Drawing.Size(64, 19);
@@ -336,7 +336,7 @@ namespace Scramble.Forms
             // Normal_Label
             // 
             this.Normal_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Normal_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Normal_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.Normal_Label.Location = new System.Drawing.Point(113, 452);
             this.Normal_Label.Name = "Normal_Label";
             this.Normal_Label.Size = new System.Drawing.Size(64, 19);
@@ -347,7 +347,7 @@ namespace Scramble.Forms
             // Easy_Label
             // 
             this.Easy_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Easy_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Easy_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold);
             this.Easy_Label.Location = new System.Drawing.Point(22, 452);
             this.Easy_Label.Name = "Easy_Label";
             this.Easy_Label.Size = new System.Drawing.Size(64, 19);
@@ -358,7 +358,7 @@ namespace Scramble.Forms
             // PpValue_Label
             // 
             this.PpValue_Label.BackColor = System.Drawing.Color.Transparent;
-            this.PpValue_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PpValue_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.PpValue_Label.Location = new System.Drawing.Point(75, 271);
             this.PpValue_Label.Name = "PpValue_Label";
             this.PpValue_Label.Size = new System.Drawing.Size(77, 23);
@@ -368,7 +368,7 @@ namespace Scramble.Forms
             // Pp_Label
             // 
             this.Pp_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Pp_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Pp_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Pp_Label.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.Pp_Label.Location = new System.Drawing.Point(17, 271);
             this.Pp_Label.Name = "Pp_Label";
@@ -379,7 +379,7 @@ namespace Scramble.Forms
             // ExpValue_Label
             // 
             this.ExpValue_Label.BackColor = System.Drawing.Color.Transparent;
-            this.ExpValue_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ExpValue_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.ExpValue_Label.Location = new System.Drawing.Point(75, 242);
             this.ExpValue_Label.Name = "ExpValue_Label";
             this.ExpValue_Label.Size = new System.Drawing.Size(77, 23);
@@ -389,7 +389,7 @@ namespace Scramble.Forms
             // Exp_Label
             // 
             this.Exp_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Exp_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Exp_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Exp_Label.ForeColor = System.Drawing.Color.DarkCyan;
             this.Exp_Label.Location = new System.Drawing.Point(17, 242);
             this.Exp_Label.Name = "Exp_Label";
@@ -400,7 +400,7 @@ namespace Scramble.Forms
             // HpValue_Label
             // 
             this.HpValue_Label.BackColor = System.Drawing.Color.Transparent;
-            this.HpValue_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.HpValue_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.HpValue_Label.Location = new System.Drawing.Point(75, 213);
             this.HpValue_Label.Name = "HpValue_Label";
             this.HpValue_Label.Size = new System.Drawing.Size(77, 23);
@@ -410,7 +410,7 @@ namespace Scramble.Forms
             // Hp_Label
             // 
             this.Hp_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Hp_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Hp_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Hp_Label.ForeColor = System.Drawing.Color.ForestGreen;
             this.Hp_Label.Location = new System.Drawing.Point(17, 213);
             this.Hp_Label.Name = "Hp_Label";
@@ -462,7 +462,7 @@ namespace Scramble.Forms
             // 
             this.Encountered_Checkbox.AutoSize = true;
             this.Encountered_Checkbox.BackColor = System.Drawing.Color.Transparent;
-            this.Encountered_Checkbox.Font = new System.Drawing.Font("Segoe UI", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Encountered_Checkbox.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.Encountered_Checkbox.Location = new System.Drawing.Point(245, 215);
             this.Encountered_Checkbox.Name = "Encountered_Checkbox";
             this.Encountered_Checkbox.Size = new System.Drawing.Size(108, 21);
@@ -480,7 +480,7 @@ namespace Scramble.Forms
             0,
             0});
             this.ErasedCount_NumUpDown.Name = "ErasedCount_NumUpDown";
-            this.ErasedCount_NumUpDown.Size = new System.Drawing.Size(68, 23);
+            this.ErasedCount_NumUpDown.Size = new System.Drawing.Size(68, 20);
             this.ErasedCount_NumUpDown.TabIndex = 16;
             this.ErasedCount_NumUpDown.Value = new decimal(new int[] {
             1,
@@ -492,7 +492,7 @@ namespace Scramble.Forms
             // ErasedCount_Label
             // 
             this.ErasedCount_Label.BackColor = System.Drawing.Color.Transparent;
-            this.ErasedCount_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ErasedCount_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.ErasedCount_Label.Location = new System.Drawing.Point(17, 338);
             this.ErasedCount_Label.Name = "ErasedCount_Label";
             this.ErasedCount_Label.Size = new System.Drawing.Size(113, 23);
@@ -508,7 +508,7 @@ namespace Scramble.Forms
             0,
             0});
             this.RecordLevel_NumUpDown.Name = "RecordLevel_NumUpDown";
-            this.RecordLevel_NumUpDown.Size = new System.Drawing.Size(68, 23);
+            this.RecordLevel_NumUpDown.Size = new System.Drawing.Size(68, 20);
             this.RecordLevel_NumUpDown.TabIndex = 14;
             this.RecordLevel_NumUpDown.Value = new decimal(new int[] {
             1,
@@ -520,7 +520,7 @@ namespace Scramble.Forms
             // RecordLevel_Label
             // 
             this.RecordLevel_Label.BackColor = System.Drawing.Color.Transparent;
-            this.RecordLevel_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.RecordLevel_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.RecordLevel_Label.Location = new System.Drawing.Point(17, 309);
             this.RecordLevel_Label.Name = "RecordLevel_Label";
             this.RecordLevel_Label.Size = new System.Drawing.Size(113, 23);
@@ -532,7 +532,7 @@ namespace Scramble.Forms
             this.NoiseDesc_RichTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.NoiseDesc_RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NoiseDesc_RichTextBox.Enabled = false;
-            this.NoiseDesc_RichTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NoiseDesc_RichTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.NoiseDesc_RichTextBox.Location = new System.Drawing.Point(17, 76);
             this.NoiseDesc_RichTextBox.Name = "NoiseDesc_RichTextBox";
             this.NoiseDesc_RichTextBox.ReadOnly = true;
@@ -547,7 +547,7 @@ namespace Scramble.Forms
             this.NoiseName_RichTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.NoiseName_RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NoiseName_RichTextBox.Enabled = false;
-            this.NoiseName_RichTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NoiseName_RichTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.NoiseName_RichTextBox.Location = new System.Drawing.Point(17, 43);
             this.NoiseName_RichTextBox.Multiline = false;
             this.NoiseName_RichTextBox.Name = "NoiseName_RichTextBox";
@@ -597,6 +597,7 @@ namespace Scramble.Forms
             this.MaximizeBox = false;
             this.Name = "NoisepediaEditor";
             this.Text = "{NoisepediaEditor}";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NoisepediaEditor_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.NoiseImgPictureBox)).EndInit();
             this.NoiseListGroupBox.ResumeLayout(false);
             this.NoiseListGroupBox.PerformLayout();

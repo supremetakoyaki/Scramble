@@ -2,6 +2,7 @@
 using Scramble.Classes;
 using Scramble.GameData;
 using Scramble.Properties;
+using Scramble.Util;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -693,6 +694,16 @@ namespace Scramble.Forms
 
             SelectNoise();
             ReadyForUserInput = true;
+        }
+
+        private void NoisepediaListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSorter.Sort(NoisepediaListView, e);
+        }
+
+        private void NoisepediaEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ColumnSorter.DisposeColumn();
         }
     }
 }
