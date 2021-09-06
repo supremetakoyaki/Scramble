@@ -40,6 +40,8 @@ namespace Scramble.Forms
             this.NameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SelectedTrophy_Name_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.SelectedTrophy_GroupBox = new System.Windows.Forms.GroupBox();
+            this.ZPos_NumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.Z_Label = new System.Windows.Forms.Label();
             this.ExportPng_Button = new System.Windows.Forms.Button();
             this.ShowAsNew_Checkbox = new System.Windows.Forms.CheckBox();
             this.RedrawWall_Button = new System.Windows.Forms.Button();
@@ -59,18 +61,16 @@ namespace Scramble.Forms
             this.Hint_Label = new System.Windows.Forms.Label();
             this.SelectedTrophy_Desc_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.SelectedTrophy_PictureBox = new System.Windows.Forms.PictureBox();
-            this.ZPos_NumUpDown = new System.Windows.Forms.NumericUpDown();
-            this.Z_Label = new System.Windows.Forms.Label();
             this.TrophyWall_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrophyWall_PictureBox)).BeginInit();
             this.TrophyOverview_GroupBox.SuspendLayout();
             this.SelectedTrophy_GroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ZPos_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Scale_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rotation_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YPos_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XPos_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedTrophy_PictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ZPos_NumUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // TrophyWall_GroupBox
@@ -203,6 +203,35 @@ namespace Scramble.Forms
             this.SelectedTrophy_GroupBox.TabIndex = 2;
             this.SelectedTrophy_GroupBox.TabStop = false;
             this.SelectedTrophy_GroupBox.Text = "{SelectedTrophy}";
+            // 
+            // ZPos_NumUpDown
+            // 
+            this.ZPos_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ZPos_NumUpDown.Location = new System.Drawing.Point(131, 345);
+            this.ZPos_NumUpDown.Maximum = new decimal(new int[] {
+            63,
+            0,
+            0,
+            0});
+            this.ZPos_NumUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.ZPos_NumUpDown.Name = "ZPos_NumUpDown";
+            this.ZPos_NumUpDown.Size = new System.Drawing.Size(84, 25);
+            this.ZPos_NumUpDown.TabIndex = 25;
+            this.ZPos_NumUpDown.ValueChanged += new System.EventHandler(this.ZPos_NumUpDown_ValueChanged);
+            // 
+            // Z_Label
+            // 
+            this.Z_Label.AutoSize = true;
+            this.Z_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Z_Label.Location = new System.Drawing.Point(3, 346);
+            this.Z_Label.Name = "Z_Label";
+            this.Z_Label.Size = new System.Drawing.Size(27, 17);
+            this.Z_Label.TabIndex = 24;
+            this.Z_Label.Text = "{Z:}";
             // 
             // ExportPng_Button
             // 
@@ -451,35 +480,6 @@ namespace Scramble.Forms
             this.SelectedTrophy_PictureBox.TabIndex = 4;
             this.SelectedTrophy_PictureBox.TabStop = false;
             // 
-            // ZPos_NumUpDown
-            // 
-            this.ZPos_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ZPos_NumUpDown.Location = new System.Drawing.Point(131, 345);
-            this.ZPos_NumUpDown.Maximum = new decimal(new int[] {
-            32767,
-            0,
-            0,
-            0});
-            this.ZPos_NumUpDown.Minimum = new decimal(new int[] {
-            32768,
-            0,
-            0,
-            -2147483648});
-            this.ZPos_NumUpDown.Name = "ZPos_NumUpDown";
-            this.ZPos_NumUpDown.Size = new System.Drawing.Size(84, 25);
-            this.ZPos_NumUpDown.TabIndex = 25;
-            this.ZPos_NumUpDown.ValueChanged += new System.EventHandler(this.ZPos_NumUpDown_ValueChanged);
-            // 
-            // Z_Label
-            // 
-            this.Z_Label.AutoSize = true;
-            this.Z_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Z_Label.Location = new System.Drawing.Point(3, 346);
-            this.Z_Label.Name = "Z_Label";
-            this.Z_Label.Size = new System.Drawing.Size(27, 17);
-            this.Z_Label.TabIndex = 24;
-            this.Z_Label.Text = "{Z:}";
-            // 
             // TrophyEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -499,12 +499,12 @@ namespace Scramble.Forms
             this.TrophyOverview_GroupBox.ResumeLayout(false);
             this.SelectedTrophy_GroupBox.ResumeLayout(false);
             this.SelectedTrophy_GroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ZPos_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Scale_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rotation_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YPos_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XPos_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedTrophy_PictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ZPos_NumUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
