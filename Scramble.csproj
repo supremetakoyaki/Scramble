@@ -188,6 +188,7 @@
     <Compile Include="Legacy\LegacyTextProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\BitmapUtil.cs" />
     <Compile Include="Util\ByteUtil.cs" />
     <Compile Include="Util\ColumnSorter.cs" />
     <Compile Include="Util\ListViewComparer.cs" />

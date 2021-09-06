@@ -40,6 +40,11 @@ namespace Scramble.Forms
             this.NameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SelectedTrophy_Name_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.SelectedTrophy_GroupBox = new System.Windows.Forms.GroupBox();
+            this.ExportPng_Button = new System.Windows.Forms.Button();
+            this.ShowAsNew_Checkbox = new System.Windows.Forms.CheckBox();
+            this.RedrawWall_Button = new System.Windows.Forms.Button();
+            this.AutoDrawWall_Checkbox = new System.Windows.Forms.CheckBox();
+            this.DeployTrophy_Button = new System.Windows.Forms.Button();
             this.Scale_NumUpDown = new System.Windows.Forms.NumericUpDown();
             this.Scale_Label = new System.Windows.Forms.Label();
             this.Rotation_NumUpDown = new System.Windows.Forms.NumericUpDown();
@@ -54,7 +59,6 @@ namespace Scramble.Forms
             this.Hint_Label = new System.Windows.Forms.Label();
             this.SelectedTrophy_Desc_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.SelectedTrophy_PictureBox = new System.Windows.Forms.PictureBox();
-            this.DeployTrophy_Button = new System.Windows.Forms.Button();
             this.TrophyWall_GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrophyWall_PictureBox)).BeginInit();
             this.TrophyOverview_GroupBox.SuspendLayout();
@@ -78,10 +82,10 @@ namespace Scramble.Forms
             // 
             // TrophyWall_PictureBox
             // 
-            this.TrophyWall_PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.TrophyWall_PictureBox.Location = new System.Drawing.Point(6, 22);
             this.TrophyWall_PictureBox.Name = "TrophyWall_PictureBox";
             this.TrophyWall_PictureBox.Size = new System.Drawing.Size(1248, 212);
+            this.TrophyWall_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.TrophyWall_PictureBox.TabIndex = 0;
             this.TrophyWall_PictureBox.TabStop = false;
             // 
@@ -105,6 +109,7 @@ namespace Scramble.Forms
             this.ResetPositionAll_Button.TabIndex = 2;
             this.ResetPositionAll_Button.Text = "{ResetPositionAll}";
             this.ResetPositionAll_Button.UseVisualStyleBackColor = true;
+            this.ResetPositionAll_Button.Click += new System.EventHandler(this.ResetPositionAll_Button_Click);
             // 
             // UnlockAllTrophies_Button
             // 
@@ -167,6 +172,10 @@ namespace Scramble.Forms
             // 
             // SelectedTrophy_GroupBox
             // 
+            this.SelectedTrophy_GroupBox.Controls.Add(this.ExportPng_Button);
+            this.SelectedTrophy_GroupBox.Controls.Add(this.ShowAsNew_Checkbox);
+            this.SelectedTrophy_GroupBox.Controls.Add(this.RedrawWall_Button);
+            this.SelectedTrophy_GroupBox.Controls.Add(this.AutoDrawWall_Checkbox);
             this.SelectedTrophy_GroupBox.Controls.Add(this.DeployTrophy_Button);
             this.SelectedTrophy_GroupBox.Controls.Add(this.Scale_NumUpDown);
             this.SelectedTrophy_GroupBox.Controls.Add(this.Scale_Label);
@@ -190,11 +199,66 @@ namespace Scramble.Forms
             this.SelectedTrophy_GroupBox.TabStop = false;
             this.SelectedTrophy_GroupBox.Text = "{SelectedTrophy}";
             // 
+            // ExportPng_Button
+            // 
+            this.ExportPng_Button.ForeColor = System.Drawing.Color.MediumBlue;
+            this.ExportPng_Button.Location = new System.Drawing.Point(260, 462);
+            this.ExportPng_Button.Name = "ExportPng_Button";
+            this.ExportPng_Button.Size = new System.Drawing.Size(94, 23);
+            this.ExportPng_Button.TabIndex = 23;
+            this.ExportPng_Button.Text = "{ExportPng}";
+            this.ExportPng_Button.UseVisualStyleBackColor = true;
+            this.ExportPng_Button.Click += new System.EventHandler(this.ExportPng_Button_Click);
+            // 
+            // ShowAsNew_Checkbox
+            // 
+            this.ShowAsNew_Checkbox.AutoSize = true;
+            this.ShowAsNew_Checkbox.Location = new System.Drawing.Point(6, 250);
+            this.ShowAsNew_Checkbox.Name = "ShowAsNew_Checkbox";
+            this.ShowAsNew_Checkbox.Size = new System.Drawing.Size(108, 19);
+            this.ShowAsNew_Checkbox.TabIndex = 22;
+            this.ShowAsNew_Checkbox.Text = "Show as \"NEW\"";
+            this.ShowAsNew_Checkbox.UseVisualStyleBackColor = true;
+            this.ShowAsNew_Checkbox.CheckedChanged += new System.EventHandler(this.ShowAsNew_Checkbox_CheckedChanged);
+            // 
+            // RedrawWall_Button
+            // 
+            this.RedrawWall_Button.Location = new System.Drawing.Point(121, 462);
+            this.RedrawWall_Button.Name = "RedrawWall_Button";
+            this.RedrawWall_Button.Size = new System.Drawing.Size(133, 23);
+            this.RedrawWall_Button.TabIndex = 21;
+            this.RedrawWall_Button.Text = "{RedrawWall}";
+            this.RedrawWall_Button.UseVisualStyleBackColor = true;
+            this.RedrawWall_Button.Click += new System.EventHandler(this.RedrawWall_Button_Click);
+            // 
+            // AutoDrawWall_Checkbox
+            // 
+            this.AutoDrawWall_Checkbox.AutoSize = true;
+            this.AutoDrawWall_Checkbox.Checked = true;
+            this.AutoDrawWall_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AutoDrawWall_Checkbox.Location = new System.Drawing.Point(10, 465);
+            this.AutoDrawWall_Checkbox.Name = "AutoDrawWall_Checkbox";
+            this.AutoDrawWall_Checkbox.Size = new System.Drawing.Size(87, 19);
+            this.AutoDrawWall_Checkbox.TabIndex = 20;
+            this.AutoDrawWall_Checkbox.Text = "{AutoDraw}";
+            this.AutoDrawWall_Checkbox.UseVisualStyleBackColor = true;
+            // 
+            // DeployTrophy_Button
+            // 
+            this.DeployTrophy_Button.ForeColor = System.Drawing.Color.BlueViolet;
+            this.DeployTrophy_Button.Location = new System.Drawing.Point(221, 298);
+            this.DeployTrophy_Button.Name = "DeployTrophy_Button";
+            this.DeployTrophy_Button.Size = new System.Drawing.Size(133, 23);
+            this.DeployTrophy_Button.TabIndex = 19;
+            this.DeployTrophy_Button.Text = "{Deploy}";
+            this.DeployTrophy_Button.UseVisualStyleBackColor = true;
+            this.DeployTrophy_Button.Click += new System.EventHandler(this.DeployTrophy_Button_Click);
+            // 
             // Scale_NumUpDown
             // 
             this.Scale_NumUpDown.DecimalPlaces = 7;
             this.Scale_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Scale_NumUpDown.Location = new System.Drawing.Point(119, 371);
+            this.Scale_NumUpDown.Location = new System.Drawing.Point(131, 345);
             this.Scale_NumUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -220,7 +284,7 @@ namespace Scramble.Forms
             this.Scale_Label.AutoSize = true;
             this.Scale_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Scale_Label.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Scale_Label.Location = new System.Drawing.Point(7, 373);
+            this.Scale_Label.Location = new System.Drawing.Point(3, 346);
             this.Scale_Label.Name = "Scale_Label";
             this.Scale_Label.Size = new System.Drawing.Size(49, 17);
             this.Scale_Label.TabIndex = 17;
@@ -229,7 +293,7 @@ namespace Scramble.Forms
             // Rotation_NumUpDown
             // 
             this.Rotation_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Rotation_NumUpDown.Location = new System.Drawing.Point(119, 402);
+            this.Rotation_NumUpDown.Location = new System.Drawing.Point(131, 376);
             this.Rotation_NumUpDown.Maximum = new decimal(new int[] {
             360,
             0,
@@ -245,7 +309,7 @@ namespace Scramble.Forms
             this.Rotation_Label.AutoSize = true;
             this.Rotation_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rotation_Label.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.Rotation_Label.Location = new System.Drawing.Point(7, 404);
+            this.Rotation_Label.Location = new System.Drawing.Point(3, 377);
             this.Rotation_Label.Name = "Rotation_Label";
             this.Rotation_Label.Size = new System.Drawing.Size(106, 17);
             this.Rotation_Label.TabIndex = 15;
@@ -254,7 +318,7 @@ namespace Scramble.Forms
             // YPos_NumUpDown
             // 
             this.YPos_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.YPos_NumUpDown.Location = new System.Drawing.Point(119, 340);
+            this.YPos_NumUpDown.Location = new System.Drawing.Point(131, 314);
             this.YPos_NumUpDown.Maximum = new decimal(new int[] {
             344,
             0,
@@ -274,7 +338,7 @@ namespace Scramble.Forms
             // 
             this.Y_Label.AutoSize = true;
             this.Y_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Y_Label.Location = new System.Drawing.Point(7, 342);
+            this.Y_Label.Location = new System.Drawing.Point(3, 315);
             this.Y_Label.Name = "Y_Label";
             this.Y_Label.Size = new System.Drawing.Size(27, 17);
             this.Y_Label.TabIndex = 12;
@@ -283,7 +347,7 @@ namespace Scramble.Forms
             // XPos_NumUpDown
             // 
             this.XPos_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.XPos_NumUpDown.Location = new System.Drawing.Point(119, 309);
+            this.XPos_NumUpDown.Location = new System.Drawing.Point(131, 283);
             this.XPos_NumUpDown.Maximum = new decimal(new int[] {
             2001,
             0,
@@ -303,7 +367,7 @@ namespace Scramble.Forms
             // 
             this.X_Label.AutoSize = true;
             this.X_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.X_Label.Location = new System.Drawing.Point(7, 311);
+            this.X_Label.Location = new System.Drawing.Point(3, 284);
             this.X_Label.Name = "X_Label";
             this.X_Label.Size = new System.Drawing.Size(27, 17);
             this.X_Label.TabIndex = 10;
@@ -312,7 +376,7 @@ namespace Scramble.Forms
             // Unseen_Checkbox
             // 
             this.Unseen_Checkbox.AutoSize = true;
-            this.Unseen_Checkbox.Location = new System.Drawing.Point(10, 268);
+            this.Unseen_Checkbox.Location = new System.Drawing.Point(6, 225);
             this.Unseen_Checkbox.Name = "Unseen_Checkbox";
             this.Unseen_Checkbox.Size = new System.Drawing.Size(65, 19);
             this.Unseen_Checkbox.TabIndex = 9;
@@ -323,7 +387,7 @@ namespace Scramble.Forms
             // Unlocked_Checkbox
             // 
             this.Unlocked_Checkbox.AutoSize = true;
-            this.Unlocked_Checkbox.Location = new System.Drawing.Point(10, 243);
+            this.Unlocked_Checkbox.Location = new System.Drawing.Point(6, 200);
             this.Unlocked_Checkbox.Name = "Unlocked_Checkbox";
             this.Unlocked_Checkbox.Size = new System.Drawing.Size(76, 19);
             this.Unlocked_Checkbox.TabIndex = 8;
@@ -382,17 +446,6 @@ namespace Scramble.Forms
             this.SelectedTrophy_PictureBox.TabIndex = 4;
             this.SelectedTrophy_PictureBox.TabStop = false;
             // 
-            // DeployTrophy_Button
-            // 
-            this.DeployTrophy_Button.ForeColor = System.Drawing.Color.BlueViolet;
-            this.DeployTrophy_Button.Location = new System.Drawing.Point(209, 324);
-            this.DeployTrophy_Button.Name = "DeployTrophy_Button";
-            this.DeployTrophy_Button.Size = new System.Drawing.Size(99, 23);
-            this.DeployTrophy_Button.TabIndex = 19;
-            this.DeployTrophy_Button.Text = "{Deploy}";
-            this.DeployTrophy_Button.UseVisualStyleBackColor = true;
-            this.DeployTrophy_Button.Click += new System.EventHandler(this.DeployTrophy_Button_Click);
-            // 
             // TrophyEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -424,7 +477,6 @@ namespace Scramble.Forms
         #endregion
 
         private System.Windows.Forms.GroupBox TrophyWall_GroupBox;
-        private System.Windows.Forms.PictureBox TrophyWall_PictureBox;
         private System.Windows.Forms.GroupBox TrophyOverview_GroupBox;
         private System.Windows.Forms.Button ResetPositionAll_Button;
         private System.Windows.Forms.Button UnlockAllTrophies_Button;
@@ -449,5 +501,10 @@ namespace Scramble.Forms
         private System.Windows.Forms.NumericUpDown Scale_NumUpDown;
         private System.Windows.Forms.Label Scale_Label;
         private System.Windows.Forms.Button DeployTrophy_Button;
+        private System.Windows.Forms.PictureBox TrophyWall_PictureBox;
+        private System.Windows.Forms.Button RedrawWall_Button;
+        private System.Windows.Forms.CheckBox AutoDrawWall_Checkbox;
+        private System.Windows.Forms.CheckBox ShowAsNew_Checkbox;
+        private System.Windows.Forms.Button ExportPng_Button;
     }
 }

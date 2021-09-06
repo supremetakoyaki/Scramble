@@ -3,9 +3,10 @@ using Scramble.Classes;
 using Scramble.GameData;
 using Scramble.Util;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,9 +17,6 @@ namespace Scramble.Forms
         public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
-        private Dictionary<byte, PictureBox> WallUI_Trophies;
-        private const double WALL_UI_SCALE = 0.311844078;
-
         private byte SelectedTrophy;
 
         private bool ReadyForUserInput = false;
@@ -27,6 +25,9 @@ namespace Scramble.Forms
         {
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             DisplayLanguageStrings();
 
             if (Sukuranburu.RequiresRescaling)
@@ -37,13 +38,17 @@ namespace Scramble.Forms
             SerializeTrophies();
             SerializeWall();
 
-            ReadyForUserInput = true;
-
             if (TrophyListView.Items.Count > 0)
             {
                 TrophyListView.Items[0].Selected = true;
                 TrophyListView.Select();
             }
+            else
+            {
+                DisplayEmptyTrophy();
+            }
+
+            ReadyForUserInput = true;
         }
 
         private void DisplayLanguageStrings()
@@ -64,11 +69,15 @@ namespace Scramble.Forms
             IdHeader.Text = Sukuranburu.GetString("{Id}");
             NameHeader.Text = Sukuranburu.GetString("{Name}");
             DeployTrophy_Button.Text = Sukuranburu.GetString("{Deploy}");
+            ShowAsNew_Checkbox.Text = Sukuranburu.GetString("{ShowAsNew}");
+            AutoDrawWall_Checkbox.Text = Sukuranburu.GetString("{AutoDraw}");
+            RedrawWall_Button.Text = Sukuranburu.GetString("{RedrawWall}");
+            ExportPng_Button.Text = Sukuranburu.GetString("{ExportPng}");
         }
 
         private void SerializeTrophies()
         {
-            foreach (Trophy TrophyItem in Sukuranburu.GetItemManager().GetTrophies().Values.OrderBy(t=>t.SortIndex))
+            foreach (Trophy TrophyItem in Sukuranburu.GetItemManager().GetTrophies().Values.OrderBy(t => t.SortIndex))
             {
                 ListViewItem ItemToAdd = new ListViewItem(new string[] { TrophyItem.SortIndex.ToString(), TrophyItem.Id.ToString(), Sukuranburu.GetGameString(TrophyItem.TrophyTitle) });
                 ItemToAdd.Tag = TrophyItem.Id;
@@ -79,76 +88,44 @@ namespace Scramble.Forms
 
         private void SerializeWall()
         {
-            TrophyWall_PictureBox.Image = ImageMethods.DrawImage("Record_bg_list", 1248, 212, DeviceDpi);
-
-            WallUI_Trophies = new Dictionary<byte, PictureBox>();
-
-            foreach (Trophy TrophyItem in Sukuranburu.GetItemManager().GetTrophies().Values)
-            {
-                PictureBox Trophy_PictureBox = new PictureBox();
-                Trophy_PictureBox.BackColor = Color.Transparent;
-                Trophy_PictureBox.Image = null;
-                Trophy_PictureBox.Parent = TrophyWall_PictureBox;
-                Trophy_PictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
-
-                WallUI_Trophies.Add(TrophyItem.Id, Trophy_PictureBox);
-                DrawTrophyOnWall(TrophyItem.Id);
-            }
+            TrophyWall_PictureBox.Image = GenerateImage(0.311844078, DeviceDpi, 1248, 212);
         }
 
-        private void DrawTrophyOnWall(byte TrophyId)
+        private Bitmap GenerateImage(double WallScale, float Dpi, int Width, int Height)
         {
-            Trophy TrophyItem = Sukuranburu.GetItemManager().GetTrophy(TrophyId);
-            if (TrophyItem == null || WallUI_Trophies == null || !WallUI_Trophies.ContainsKey(TrophyId))
+            Bitmap BaseImage = ImageMethods.DrawImage("Record_bg_list", Width, Height, Dpi);
+
+            int X_Center = BaseImage.Width / 2;
+            int Y_Center = BaseImage.Height / 2;
+
+            using (Graphics G = Graphics.FromImage(BaseImage))
             {
-                throw new NullReferenceException("Trophy doesn't exist. Method: DrawTrophyOnWall");//return;
+                G.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                foreach (Trophy TrophyItem in Sukuranburu.GetItemManager().GetTrophies().Values)
+                {
+                    int OffsetSum = 15 * TrophyItem.Id;
+                    bool Unlocked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum) != 0;
+                    bool Deployed = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum) != -1;
+
+                    if (Unlocked && Deployed) // Time to draw!
+                    {
+                        short XPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum);
+                        short YPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum);
+                        float Scale = SelectedSlot.RetrieveOffset_Float(Offsets.Trophies_Scale_First + OffsetSum);
+                        short Angle = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum);
+
+                        Bitmap TrophyImage = ImageMethods.DrawImage_Percentage(string.Format("{0}_off", TrophyItem.TrophyIcon), WallScale * Scale, Dpi);
+                        TrophyImage = BitmapUtil.RotateImage(TrophyImage, Angle);
+
+                        int ImageX = X_Center + (int)(XPos * WallScale) - (TrophyImage.Width / 2);
+                        int ImageY = Y_Center - (int)(YPos * WallScale) - (TrophyImage.Height / 2);
+                        G.DrawImage(TrophyImage, ImageX, ImageY, TrophyImage.Width, TrophyImage.Height);
+                    }
+                }
             }
 
-            PictureBox Trophy_PictureBox = WallUI_Trophies[TrophyId];
-
-            int OffsetSum = 15 * TrophyItem.Id;
-            bool Unlocked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum) != 0;
-            bool Deployed = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum) != -1;
-
-            if (!Unlocked || !Deployed)
-            {
-                Trophy_PictureBox.Visible = false;
-                return;
-            }
-
-            short XPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum);
-            short YPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum);
-            float Scale = SelectedSlot.RetrieveOffset_Float(Offsets.Trophies_Scale_First + OffsetSum);
-            short Angle = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum);
-
-            Bitmap Image = ImageMethods.DrawImage_Percentage(string.Format("{0}_off", TrophyItem.TrophyIcon), WALL_UI_SCALE * Scale, DeviceDpi, Angle);
-            Trophy_PictureBox.Visible = true;
-            Trophy_PictureBox.Width = Image.Width;
-            Trophy_PictureBox.Height = Image.Height;
-            Trophy_PictureBox.Location = GetWallUiPosition(XPos, YPos, Image.Width / 2, Image.Height / 2);
-            Trophy_PictureBox.Image = Image;
-        }
-
-        private Point GetWallUiPosition(short X, short Y, int ImageCenterX, int ImageCenterY)
-        {
-            double ScaleFactor = (double)DeviceDpi / 96;
-
-            // assign center position.
-            int UiX = TrophyWall_PictureBox.Width / 2;
-            int UiY = TrophyWall_PictureBox.Height / 2;
-
-            UiX += (int)Math.Round(X * WALL_UI_SCALE * ScaleFactor) - ImageCenterX;
-
-            if (Y > 0)
-            {
-                UiY -= (int)Math.Round(Y * WALL_UI_SCALE * ScaleFactor) + ImageCenterY;
-            }
-            else
-            {
-                UiY += (int)Math.Round(Y * WALL_UI_SCALE * ScaleFactor) - ImageCenterY;
-            }
-
-            return new Point(UiX, UiY);
+            return BaseImage;
         }
 
         private void DisplayEmptyTrophy()
@@ -198,10 +175,11 @@ namespace Scramble.Forms
             YPos_NumUpDown.Enabled = true;
             Rotation_NumUpDown.Enabled = true;
             Scale_NumUpDown.Enabled = true;
-            DeployTrophy_Button.Enabled = true;
 
             Unlocked_Checkbox.Checked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum) != 0;
             Unseen_Checkbox.Checked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum) != 0;
+            ShowAsNew_Checkbox.Checked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum) != 0;
+            DeployTrophy_Button.Enabled = Unlocked_Checkbox.Checked;
 
             short XPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum);
             if (XPos < XPos_NumUpDown.Minimum || XPos > XPos_NumUpDown.Maximum)
@@ -248,10 +226,12 @@ namespace Scramble.Forms
             if (TrophyListView == null || TrophyListView.SelectedItems.Count != 1)
             {
                 SelectedTrophy = 0xFF;
-                DisplayEmptyTrophy();
+                //DisplayEmptyTrophy();
                 ReadyForUserInput = true;
                 return;
             }
+
+            ReadyForUserInput = false;
 
             byte TrophyId = (byte)TrophyListView.SelectedItems[0].Tag;
             Trophy TrophyItem = Sukuranburu.GetItemManager().GetTrophy(TrophyId);
@@ -259,7 +239,7 @@ namespace Scramble.Forms
             if (TrophyItem == null)
             {
                 SelectedTrophy = 0xFF;
-                DisplayEmptyTrophy();
+                //DisplayEmptyTrophy();
                 ReadyForUserInput = true;
                 return;
             }
@@ -291,7 +271,11 @@ namespace Scramble.Forms
             short X_ValueToSet = (short)XPos_NumUpDown.Value;
             int OffsetSum = 15 * SelectedTrophy;
             SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum, X_ValueToSet);
-            DrawTrophyOnWall(SelectedTrophy);
+
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
+            }
 
             ReadyForUserInput = true;
         }
@@ -308,7 +292,11 @@ namespace Scramble.Forms
             short Y_ValueToSet = (short)YPos_NumUpDown.Value;
             int OffsetSum = 15 * SelectedTrophy;
             SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum, Y_ValueToSet);
-            DrawTrophyOnWall(SelectedTrophy);
+
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
+            }
 
             ReadyForUserInput = true;
         }
@@ -325,7 +313,11 @@ namespace Scramble.Forms
             float Scale_ValueToSet = (float)Scale_NumUpDown.Value;
             int OffsetSum = 15 * SelectedTrophy;
             SelectedSlot.UpdateOffset_Float(Offsets.Trophies_Scale_First + OffsetSum, Scale_ValueToSet);
-            DrawTrophyOnWall(SelectedTrophy);
+
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
+            }
 
             ReadyForUserInput = true;
         }
@@ -342,7 +334,11 @@ namespace Scramble.Forms
             short Rotation_ValueToSet = (short)Rotation_NumUpDown.Value;
             int OffsetSum = 15 * SelectedTrophy;
             SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum, Rotation_ValueToSet);
-            DrawTrophyOnWall(SelectedTrophy);
+
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
+            }
 
             ReadyForUserInput = true;
         }
@@ -359,7 +355,12 @@ namespace Scramble.Forms
             byte FlagToSet = Unlocked_Checkbox.Checked ? (byte)1 : (byte)0;
             int OffsetSum = 15 * SelectedTrophy;
             SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum, FlagToSet);
-            DrawTrophyOnWall(SelectedTrophy);
+            DeployTrophy_Button.Enabled = Unlocked_Checkbox.Checked;
+
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
+            }
 
             ReadyForUserInput = true;
         }
@@ -376,7 +377,11 @@ namespace Scramble.Forms
             byte FlagToSet = Unseen_Checkbox.Checked ? (byte)1 : (byte)0;
             int OffsetSum = 15 * SelectedTrophy;
             SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum, FlagToSet);
-            DrawTrophyOnWall(SelectedTrophy);
+
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
+            }
 
             ReadyForUserInput = true;
         }
@@ -395,12 +400,56 @@ namespace Scramble.Forms
                 byte TrophyId = (byte)Trophy.Tag;
                 int OffsetSum = 15 * TrophyId;
                 SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum, 1);
-                DrawTrophyOnWall(TrophyId); // should I?
             }
 
             if (SelectedTrophy != 0xFF)
             {
                 Unlocked_Checkbox.Checked = true;
+                DeployTrophy_Button.Enabled = true;
+            }
+
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void ResetPositionAll_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            foreach (ListViewItem Trophy in TrophyListView.Items)
+            {
+                byte TrophyId = (byte)Trophy.Tag;
+                int OffsetSum = 15 * TrophyId;
+
+                //SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum, 1);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, -1);
+                SelectedSlot.UpdateOffset_Float(Offsets.Trophies_Scale_First + OffsetSum, 0.6666667f);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum, 0);
+            }
+
+            if (SelectedTrophy != 0xFF)
+            {
+                //Unseen_Checkbox.Checked = true;
+                XPos_NumUpDown.Value = 0;
+                YPos_NumUpDown.Value = 0;
+                Scale_NumUpDown.Value = 0.6666667M;
+                Rotation_NumUpDown.Value = 0;
+            }
+
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
             }
 
             ReadyForUserInput = true;
@@ -420,16 +469,62 @@ namespace Scramble.Forms
             if (CurrentZPos != -1)
             {
                 SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, -1);
-                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_UnkFlag_First, 1); //?
+                //SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_UnkFlag_First, 1); //?
             }
             else
             {
                 SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, 0);
-                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_UnkFlag_First, 0); //?
+                //SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_UnkFlag_First, 0); //?
             }
 
-            DrawTrophyOnWall(SelectedTrophy);
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
+            }
+
             ReadyForUserInput = true;
+        }
+
+        private void ShowAsNew_Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedTrophy == 0xFF)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            byte FlagToSet = ShowAsNew_Checkbox.Checked ? (byte)1 : (byte)0;
+            int OffsetSum = 15 * SelectedTrophy;
+            SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_ShowAsNew_First + OffsetSum, FlagToSet);
+
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void RedrawWall_Button_Click(object sender, EventArgs e)
+        {
+            SerializeWall();
+        }
+
+        private void ExportPng_Button_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog ExportDialog = new SaveFileDialog
+            {
+                Filter = "PNG file (*.png)|*.png",
+                DefaultExt = "png",
+                AddExtension = true
+            };
+
+            if (ExportDialog.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap Image = GenerateImage(1, 96, 4002, 680);
+                Image.Save(ExportDialog.FileName, ImageFormat.Png);
+            }
         }
     }
 }

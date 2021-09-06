@@ -208,6 +208,10 @@ namespace Scramble.Classes
             { "{UnlockAllTrophies}", "Unlock all graffiti" },
             { "{ResetPositionAll}", "Reset all positions" },
             { "{Deploy}", "(Un)deploy" },
+            { "{ShowAsNew}", "Show as \"NEW\"" },
+            { "{AutoDraw}", "Auto re-draw" },
+            { "{RedrawWall}", "Re-draw wall" },
+            { "{ExportPng}", "Export PNG" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
@@ -438,6 +442,10 @@ namespace Scramble.Classes
             { "{UnlockAllTrophies}", "すべてのグラフィティのロック解除" },
             { "{ResetPositionAll}", "すべての位置をリセットします" },
             { "{Deploy}", "壁に展開します" },
+            { "{ShowAsNew}", "ＮＥＷを表示" },
+            { "{AutoDraw}", "オート描く" },
+            { "{RedrawWall}", "壁に再描画" },
+            { "{ExportPng}", "ＰＮＧ書き出し" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -665,9 +673,13 @@ namespace Scramble.Classes
             { "{Y:}", "Y:" },
             { "{Scale:}", "Escala:" },
             { "{RotationAngle:}", "Ángulo de rotación:" },
-            { "{UnlockAllTrophies}", "Desbloquear todos los grafitis" },
+            { "{UnlockAllTrophies}", "Desbloquear todos" },
             { "{ResetPositionAll}", "Restablecer posiciones" },
             { "{Deploy}", "Desplegar" },
+            { "{ShowAsNew}", "Mostrar \"NUEVO\"" },
+            { "{AutoDraw}", "Autodibujar" },
+            { "{RedrawWall}", "Re-dibujar el muro" },
+            { "{ExportPng}", "Exportar PNG" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
@@ -898,6 +910,10 @@ namespace Scramble.Classes
             { "{UnlockAllTrophies}", "Débloquer toutes les graffitis" },
             { "{ResetPositionAll}", "Réinitialiser positions" },
             { "{Deploy}", "Déployer" },
+            { "{ShowAsNew}", "Afficher \"NOUVEAU\"" },
+            { "{AutoDraw}", "Dessin automatique" },
+            { "{RedrawWall}", "Redessiner le mur" },
+            { "{ExportPng}", "Exporter PNG" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },

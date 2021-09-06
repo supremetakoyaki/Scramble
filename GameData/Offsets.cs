@@ -30,8 +30,8 @@
 
         // Trophies
         public const int Trophies_Unlocked_First = 5392; // boolean.
-        public const int Trophies_UnkFlag_First = 5393; // boolean
-        public const int Trophies_Unseen_First = 5394; // boolean
+        public const int Trophies_Unseen_First = 5393; // boolean
+        public const int Trophies_ShowAsNew_First = 5394; // boolean
         public const int Trophies_XPos_First = 5395; // signed int16.
         public const int Trophies_YPos_First = 5397; // signed int16.
         public const int Trophies_ZPos_First = 5399; // signed int16. This is always 0 when deployed and 0xFFFF when undeployed.
