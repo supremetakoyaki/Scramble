@@ -106,7 +106,7 @@ namespace Scramble.Forms
             {
                 if (LayeredTrophies[i].Item2 != -1)
                 {
-                    LayeredTrophies[i] = new Tuple<byte, short>(LayeredTrophies[i].Item1, Index);
+                    // We don't really need to do this, as we execute it while closing: LayeredTrophies[i] = new Tuple<byte, short>(LayeredTrophies[i].Item1, Index);
                     SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + (15 * LayeredTrophies[i].Item1), Index);
                     Index += 1;
                 }
@@ -525,6 +525,11 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum, 0);
             }
 
+            for (int i = 0; i < LayeredTrophies.Count; i++)
+            {
+                LayeredTrophies[i] = new Tuple<byte, short>(LayeredTrophies[i].Item1, -1);
+            }
+
             if (SelectedTrophy != 0xFF)
             {
                 //Unseen_Checkbox.Checked = true;
@@ -556,11 +561,13 @@ namespace Scramble.Forms
             if (CurrentZPos != -1)
             {
                 SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, -1);
+                UpdateLayer(SelectedTrophy, -1);
                 ZPos_NumUpDown.Value = -1;
             }
             else
             {
                 SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, 0);
+                UpdateLayer(SelectedTrophy, 0);
                 ZPos_NumUpDown.Value = 0;
             }
 
