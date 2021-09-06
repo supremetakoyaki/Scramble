@@ -32,7 +32,7 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 - Edit your noisepedia.
 - Edit your furthest reached day.
 - Edit your scramble slam scores.
-- Edit your shop VIP level and last restaurant order.
+- Edit your graffiti wall / trophies, and export it as an image.
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
@@ -40,6 +40,10 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 - Edit your character and game stats.
 - Edit your items.
 - Edit your pins.
+
+# Upcoming features
+** For NEO: **
+- Edit shop VIP level and last restaurant order.
 
 **Other utilities**
 - Convert TWEWY Solo Remix save to TWEWY Final Remix.
