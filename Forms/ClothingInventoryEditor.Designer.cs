@@ -56,16 +56,16 @@ namespace Scramble.Forms
             this.SlotType_PictureBox = new System.Windows.Forms.PictureBox();
             this.ClothingItem_PictureBox = new System.Windows.Forms.PictureBox();
             this.MyClothingInvListView = new System.Windows.Forms.ListView();
-            this.ClthNameHeader = new System.Windows.Forms.ColumnHeader();
-            this.ClthIdHeader = new System.Windows.Forms.ColumnHeader();
-            this.ClthSlotHeader = new System.Windows.Forms.ColumnHeader();
-            this.ClthAmountHeader = new System.Windows.Forms.ColumnHeader();
+            this.ClthNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ClthIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ClthSlotHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ClthAmountHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AllClothingItemsGroupBox = new System.Windows.Forms.GroupBox();
             this.AddEachOfEveryClothingButton = new System.Windows.Forms.Button();
             this.AddClothingItemButton = new System.Windows.Forms.Button();
             this.AllClothingItemsListView = new System.Windows.Forms.ListView();
-            this.GlobalClthNameHeader = new System.Windows.Forms.ColumnHeader();
-            this.GlobalClthIdHeader = new System.Windows.Forms.ColumnHeader();
+            this.GlobalClthNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.GlobalClthIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ClothingInvGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrandPictureBox)).BeginInit();
@@ -103,6 +103,7 @@ namespace Scramble.Forms
             this.ClothingInvGroupBox.Controls.Add(this.SlotType_PictureBox);
             this.ClothingInvGroupBox.Controls.Add(this.ClothingItem_PictureBox);
             this.ClothingInvGroupBox.Controls.Add(this.MyClothingInvListView);
+            this.ClothingInvGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ClothingInvGroupBox.Location = new System.Drawing.Point(12, 12);
             this.ClothingInvGroupBox.Name = "ClothingInvGroupBox";
             this.ClothingInvGroupBox.Size = new System.Drawing.Size(609, 637);
@@ -112,7 +113,7 @@ namespace Scramble.Forms
             // 
             // debug_CountLabel
             // 
-            this.debug_CountLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.debug_CountLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.debug_CountLabel.Location = new System.Drawing.Point(550, 374);
             this.debug_CountLabel.Name = "debug_CountLabel";
             this.debug_CountLabel.Size = new System.Drawing.Size(53, 17);
@@ -146,6 +147,7 @@ namespace Scramble.Forms
             // AmountLabel
             // 
             this.AmountLabel.AutoSize = true;
+            this.AmountLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AmountLabel.Location = new System.Drawing.Point(473, 510);
             this.AmountLabel.Name = "AmountLabel";
             this.AmountLabel.Size = new System.Drawing.Size(62, 15);
@@ -155,7 +157,7 @@ namespace Scramble.Forms
             // ReqStyleValueLabel
             // 
             this.ReqStyleValueLabel.AutoSize = true;
-            this.ReqStyleValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ReqStyleValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.ReqStyleValueLabel.ForeColor = System.Drawing.Color.RoyalBlue;
             this.ReqStyleValueLabel.Location = new System.Drawing.Point(251, 469);
             this.ReqStyleValueLabel.Name = "ReqStyleValueLabel";
@@ -166,7 +168,7 @@ namespace Scramble.Forms
             // HpValueLabel
             // 
             this.HpValueLabel.AutoSize = true;
-            this.HpValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.HpValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.HpValueLabel.ForeColor = System.Drawing.Color.DarkCyan;
             this.HpValueLabel.Location = new System.Drawing.Point(243, 454);
             this.HpValueLabel.Name = "HpValueLabel";
@@ -177,7 +179,7 @@ namespace Scramble.Forms
             // DefValueLabel
             // 
             this.DefValueLabel.AutoSize = true;
-            this.DefValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DefValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.DefValueLabel.ForeColor = System.Drawing.Color.DarkCyan;
             this.DefValueLabel.Location = new System.Drawing.Point(243, 439);
             this.DefValueLabel.Name = "DefValueLabel";
@@ -188,7 +190,7 @@ namespace Scramble.Forms
             // AtkValueLabel
             // 
             this.AtkValueLabel.AutoSize = true;
-            this.AtkValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AtkValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.AtkValueLabel.ForeColor = System.Drawing.Color.DarkCyan;
             this.AtkValueLabel.Location = new System.Drawing.Point(243, 424);
             this.AtkValueLabel.Name = "AtkValueLabel";
@@ -198,6 +200,7 @@ namespace Scramble.Forms
             // 
             // RemoveClothingButton
             // 
+            this.RemoveClothingButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.RemoveClothingButton.Location = new System.Drawing.Point(473, 537);
             this.RemoveClothingButton.Name = "RemoveClothingButton";
             this.RemoveClothingButton.Size = new System.Drawing.Size(130, 50);
@@ -209,6 +212,7 @@ namespace Scramble.Forms
             // RemoveAllClothingButton
             // 
             this.RemoveAllClothingButton.BackColor = System.Drawing.Color.Gainsboro;
+            this.RemoveAllClothingButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.RemoveAllClothingButton.Location = new System.Drawing.Point(473, 593);
             this.RemoveAllClothingButton.Name = "RemoveAllClothingButton";
             this.RemoveAllClothingButton.Size = new System.Drawing.Size(130, 38);
@@ -219,7 +223,7 @@ namespace Scramble.Forms
             // 
             // WearTypeLabel
             // 
-            this.WearTypeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.WearTypeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.WearTypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.WearTypeLabel.Location = new System.Drawing.Point(44, 516);
             this.WearTypeLabel.Name = "WearTypeLabel";
@@ -230,7 +234,7 @@ namespace Scramble.Forms
             // 
             // AbilityDescLabel
             // 
-            this.AbilityDescLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.AbilityDescLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
             this.AbilityDescLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.AbilityDescLabel.Location = new System.Drawing.Point(149, 554);
             this.AbilityDescLabel.Name = "AbilityDescLabel";
@@ -240,7 +244,7 @@ namespace Scramble.Forms
             // 
             // AbilityNameLabel
             // 
-            this.AbilityNameLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AbilityNameLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.AbilityNameLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.AbilityNameLabel.Location = new System.Drawing.Point(243, 519);
             this.AbilityNameLabel.Name = "AbilityNameLabel";
@@ -269,7 +273,7 @@ namespace Scramble.Forms
             // AbilityLabel
             // 
             this.AbilityLabel.AutoSize = true;
-            this.AbilityLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.AbilityLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.AbilityLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.AbilityLabel.Location = new System.Drawing.Point(149, 519);
             this.AbilityLabel.Name = "AbilityLabel";
@@ -280,6 +284,7 @@ namespace Scramble.Forms
             // ReqStyleLabel
             // 
             this.ReqStyleLabel.AutoSize = true;
+            this.ReqStyleLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ReqStyleLabel.Location = new System.Drawing.Point(149, 469);
             this.ReqStyleLabel.Name = "ReqStyleLabel";
             this.ReqStyleLabel.Size = new System.Drawing.Size(67, 15);
@@ -289,6 +294,7 @@ namespace Scramble.Forms
             // HpLabel
             // 
             this.HpLabel.AutoSize = true;
+            this.HpLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.HpLabel.Location = new System.Drawing.Point(149, 454);
             this.HpLabel.Name = "HpLabel";
             this.HpLabel.Size = new System.Drawing.Size(26, 15);
@@ -298,6 +304,7 @@ namespace Scramble.Forms
             // DefenseLabel
             // 
             this.DefenseLabel.AutoSize = true;
+            this.DefenseLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.DefenseLabel.Location = new System.Drawing.Point(149, 439);
             this.DefenseLabel.Name = "DefenseLabel";
             this.DefenseLabel.Size = new System.Drawing.Size(30, 15);
@@ -307,6 +314,7 @@ namespace Scramble.Forms
             // ATKLabel
             // 
             this.ATKLabel.AutoSize = true;
+            this.ATKLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ATKLabel.Location = new System.Drawing.Point(149, 424);
             this.ATKLabel.Name = "ATKLabel";
             this.ATKLabel.Size = new System.Drawing.Size(30, 15);
@@ -326,7 +334,7 @@ namespace Scramble.Forms
             // 
             this.EquippedByCharacterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EquippedByCharacterComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EquippedByCharacterComboBox.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.EquippedByCharacterComboBox.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.EquippedByCharacterComboBox.FormattingEnabled = true;
             this.EquippedByCharacterComboBox.Location = new System.Drawing.Point(6, 599);
             this.EquippedByCharacterComboBox.Name = "EquippedByCharacterComboBox";
@@ -337,6 +345,7 @@ namespace Scramble.Forms
             // EquippedLabel
             // 
             this.EquippedLabel.AutoSize = true;
+            this.EquippedLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.EquippedLabel.Location = new System.Drawing.Point(6, 581);
             this.EquippedLabel.Name = "EquippedLabel";
             this.EquippedLabel.Size = new System.Drawing.Size(65, 15);
@@ -345,7 +354,7 @@ namespace Scramble.Forms
             // 
             // ClothingItem_NameLabel
             // 
-            this.ClothingItem_NameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ClothingItem_NameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.ClothingItem_NameLabel.Location = new System.Drawing.Point(149, 391);
             this.ClothingItem_NameLabel.Name = "ClothingItem_NameLabel";
             this.ClothingItem_NameLabel.Size = new System.Drawing.Size(256, 19);
@@ -387,6 +396,7 @@ namespace Scramble.Forms
             this.MyClothingInvListView.TabIndex = 0;
             this.MyClothingInvListView.UseCompatibleStateImageBehavior = false;
             this.MyClothingInvListView.View = System.Windows.Forms.View.Details;
+            this.MyClothingInvListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.MyClothingInvListView_ColumnClick);
             this.MyClothingInvListView.SelectedIndexChanged += new System.EventHandler(this.MyClothingInvListView_SelectedIndexChanged);
             // 
             // ClthNameHeader
@@ -419,6 +429,7 @@ namespace Scramble.Forms
             this.AllClothingItemsGroupBox.Controls.Add(this.AddEachOfEveryClothingButton);
             this.AllClothingItemsGroupBox.Controls.Add(this.AddClothingItemButton);
             this.AllClothingItemsGroupBox.Controls.Add(this.AllClothingItemsListView);
+            this.AllClothingItemsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AllClothingItemsGroupBox.Location = new System.Drawing.Point(627, 12);
             this.AllClothingItemsGroupBox.Name = "AllClothingItemsGroupBox";
             this.AllClothingItemsGroupBox.Size = new System.Drawing.Size(265, 637);
@@ -429,6 +440,7 @@ namespace Scramble.Forms
             // AddEachOfEveryClothingButton
             // 
             this.AddEachOfEveryClothingButton.BackColor = System.Drawing.Color.LightCyan;
+            this.AddEachOfEveryClothingButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AddEachOfEveryClothingButton.Location = new System.Drawing.Point(6, 593);
             this.AddEachOfEveryClothingButton.Name = "AddEachOfEveryClothingButton";
             this.AddEachOfEveryClothingButton.Size = new System.Drawing.Size(253, 38);
@@ -439,6 +451,7 @@ namespace Scramble.Forms
             // 
             // AddClothingItemButton
             // 
+            this.AddClothingItemButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AddClothingItemButton.Location = new System.Drawing.Point(6, 537);
             this.AddClothingItemButton.Name = "AddClothingItemButton";
             this.AddClothingItemButton.Size = new System.Drawing.Size(253, 50);
@@ -461,6 +474,7 @@ namespace Scramble.Forms
             this.AllClothingItemsListView.TabIndex = 5;
             this.AllClothingItemsListView.UseCompatibleStateImageBehavior = false;
             this.AllClothingItemsListView.View = System.Windows.Forms.View.Details;
+            this.AllClothingItemsListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.AllClothingItemsListView_ColumnClick);
             // 
             // GlobalClthNameHeader
             // 
