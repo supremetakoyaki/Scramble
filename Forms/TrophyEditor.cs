@@ -3,6 +3,7 @@ using Scramble.Classes;
 using Scramble.GameData;
 using Scramble.Util;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -17,6 +18,7 @@ namespace Scramble.Forms
         public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
+        private List<Tuple<byte, short>> LayeredTrophies;
         private byte SelectedTrophy;
 
         private bool ReadyForUserInput = false;
@@ -73,17 +75,27 @@ namespace Scramble.Forms
             AutoDrawWall_Checkbox.Text = Sukuranburu.GetString("{AutoDraw}");
             RedrawWall_Button.Text = Sukuranburu.GetString("{RedrawWall}");
             ExportPng_Button.Text = Sukuranburu.GetString("{ExportPng}");
+            Z_Label.Text = Sukuranburu.GetString("{Z:}");
         }
 
         private void SerializeTrophies()
         {
+            LayeredTrophies = new List<Tuple<byte, short>>();
+
             foreach (Trophy TrophyItem in Sukuranburu.GetItemManager().GetTrophies().Values.OrderBy(t => t.SortIndex))
             {
                 ListViewItem ItemToAdd = new ListViewItem(new string[] { TrophyItem.SortIndex.ToString(), TrophyItem.Id.ToString(), Sukuranburu.GetGameString(TrophyItem.TrophyTitle) });
                 ItemToAdd.Tag = TrophyItem.Id;
-
                 TrophyListView.Items.Add(ItemToAdd);
+
+                short LayerIndex = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + (15 * TrophyItem.Id));
+                LayeredTrophies.Add(new Tuple<byte, short>(TrophyItem.Id, LayerIndex));
             }
+        }
+
+        private void SortLayers()
+        {
+            LayeredTrophies = LayeredTrophies.OrderByDescending(x => x.Item2).ToList();
         }
 
         private void SerializeWall()
@@ -93,6 +105,7 @@ namespace Scramble.Forms
 
         private Bitmap GenerateImage(double WallScale, float Dpi, int Width, int Height)
         {
+            SortLayers();
             Bitmap BaseImage = ImageMethods.DrawImage("Record_bg_list", Width, Height, Dpi);
 
             int X_Center = BaseImage.Width / 2;
@@ -102,25 +115,33 @@ namespace Scramble.Forms
             {
                 G.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-                foreach (Trophy TrophyItem in Sukuranburu.GetItemManager().GetTrophies().Values)
+                foreach (Tuple<byte, short> LayeredTrophy in LayeredTrophies)//(Trophy TrophyItem in Sukuranburu.GetItemManager().GetTrophies().Values)
                 {
-                    int OffsetSum = 15 * TrophyItem.Id;
-                    bool Unlocked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum) != 0;
-                    bool Deployed = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum) != -1;
+                    byte TrophyId = LayeredTrophy.Item1;
+                    Trophy TrophyItem = Sukuranburu.GetItemManager().GetTrophy(TrophyId);
 
-                    if (Unlocked && Deployed) // Time to draw!
+                    if (TrophyItem != null)
                     {
-                        short XPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum);
-                        short YPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum);
-                        float Scale = SelectedSlot.RetrieveOffset_Float(Offsets.Trophies_Scale_First + OffsetSum);
-                        short Angle = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum);
+                        int OffsetSum = 15 * TrophyId;
+                        bool Unlocked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum) != 0;
+                        bool Deployed = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum) != -1;
 
-                        Bitmap TrophyImage = ImageMethods.DrawImage_Percentage(string.Format("{0}_off", TrophyItem.TrophyIcon), WallScale * Scale, Dpi);
-                        TrophyImage = BitmapUtil.RotateImage(TrophyImage, Angle);
+                        if (Unlocked && Deployed) // Time to draw!
+                        {
+                            short XPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum);
+                            short YPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum);
+                            float Scale = SelectedSlot.RetrieveOffset_Float(Offsets.Trophies_Scale_First + OffsetSum);
+                            short Angle = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum);
 
-                        int ImageX = X_Center + (int)(XPos * WallScale) - (TrophyImage.Width / 2);
-                        int ImageY = Y_Center - (int)(YPos * WallScale) - (TrophyImage.Height / 2);
-                        G.DrawImage(TrophyImage, ImageX, ImageY, TrophyImage.Width, TrophyImage.Height);
+                            Angle = (short)(0 - Angle);
+
+                            Bitmap TrophyImage = ImageMethods.DrawImage_Percentage(string.Format("{0}_off", TrophyItem.TrophyIcon), WallScale * Scale, Dpi);
+                            TrophyImage = BitmapUtil.RotateImage(TrophyImage, Angle);
+
+                            int ImageX = X_Center + (int)(XPos * WallScale) - (TrophyImage.Width / 2);
+                            int ImageY = Y_Center - (int)(YPos * WallScale) - (TrophyImage.Height / 2);
+                            G.DrawImage(TrophyImage, ImageX, ImageY, TrophyImage.Width, TrophyImage.Height);
+                        }
                     }
                 }
             }
@@ -143,6 +164,8 @@ namespace Scramble.Forms
             XPos_NumUpDown.Enabled = false;
             YPos_NumUpDown.Value = 0;
             YPos_NumUpDown.Enabled = false;
+            ZPos_NumUpDown.Value = -1;
+            ZPos_NumUpDown.Enabled = false;
             Scale_NumUpDown.Value = 0.6666667M;
             Scale_NumUpDown.Enabled = false;
             DeployTrophy_Button.Enabled = false;
@@ -173,6 +196,7 @@ namespace Scramble.Forms
             Unseen_Checkbox.Enabled = true;
             XPos_NumUpDown.Enabled = true;
             YPos_NumUpDown.Enabled = true;
+            ZPos_NumUpDown.Enabled = true;
             Rotation_NumUpDown.Enabled = true;
             Scale_NumUpDown.Enabled = true;
 
@@ -193,6 +217,12 @@ namespace Scramble.Forms
                 YPos = 0;
             }
 
+            short ZPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum);
+            if (ZPos < ZPos_NumUpDown.Minimum || ZPos > ZPos_NumUpDown.Maximum)
+            {
+                ZPos = 0;
+            }
+
             decimal Scale = (decimal)SelectedSlot.RetrieveOffset_Float(Offsets.Trophies_Scale_First + OffsetSum);
             if (Scale < Scale_NumUpDown.Minimum)
             {
@@ -211,8 +241,21 @@ namespace Scramble.Forms
 
             XPos_NumUpDown.Value = XPos;
             YPos_NumUpDown.Value = YPos;
+            ZPos_NumUpDown.Value = ZPos;
             Scale_NumUpDown.Value = Scale;
             Rotation_NumUpDown.Value = RotationAngle;
+        }
+
+        private void UpdateLayer(byte Id, short Value)
+        {
+            for (int i = 0; i < LayeredTrophies.Count; i++)
+            {
+                if (LayeredTrophies[i].Item1 == Id)
+                {
+                    LayeredTrophies[i] = new Tuple<byte, short>(Id, Value);
+                    return;
+                }
+            }
         }
 
         private void TrophyListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -292,6 +335,28 @@ namespace Scramble.Forms
             short Y_ValueToSet = (short)YPos_NumUpDown.Value;
             int OffsetSum = 15 * SelectedTrophy;
             SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum, Y_ValueToSet);
+
+            if (AutoDrawWall_Checkbox.Checked)
+            {
+                SerializeWall();
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void ZPos_NumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedTrophy == 0xFF)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            short Z_ValueToSet = (short)ZPos_NumUpDown.Value;
+            int OffsetSum = 15 * SelectedTrophy;
+            SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, Z_ValueToSet);
+            UpdateLayer(SelectedTrophy, Z_ValueToSet);
 
             if (AutoDrawWall_Checkbox.Checked)
             {
@@ -469,12 +534,12 @@ namespace Scramble.Forms
             if (CurrentZPos != -1)
             {
                 SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, -1);
-                //SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_UnkFlag_First, 1); //?
+                ZPos_NumUpDown.Value = -1;
             }
             else
             {
                 SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, 0);
-                //SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_UnkFlag_First, 0); //?
+                ZPos_NumUpDown.Value = 0;
             }
 
             if (AutoDrawWall_Checkbox.Checked)

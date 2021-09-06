@@ -212,6 +212,7 @@ namespace Scramble.Classes
             { "{AutoDraw}", "Auto re-draw" },
             { "{RedrawWall}", "Re-draw wall" },
             { "{ExportPng}", "Export PNG" },
+            { "{Z:}", "Layer:" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "The file doesn't exist." },
@@ -446,6 +447,7 @@ namespace Scramble.Classes
             { "{AutoDraw}", "オート描く" },
             { "{RedrawWall}", "壁に再描画" },
             { "{ExportPng}", "ＰＮＧ書き出し" },
+            { "{Z:}", "レイヤ：" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "ファイルが見つかりません。" },
@@ -680,6 +682,7 @@ namespace Scramble.Classes
             { "{AutoDraw}", "Autodibujar" },
             { "{RedrawWall}", "Re-dibujar el muro" },
             { "{ExportPng}", "Exportar PNG" },
+            { "{Z:}", "Capa:" },
 
             // Dialog Messages
             { "DLG_FileNotFound", "El archivo no existe." },
@@ -914,6 +917,7 @@ namespace Scramble.Classes
             { "{AutoDraw}", "Dessin automatique" },
             { "{RedrawWall}", "Redessiner le mur" },
             { "{ExportPng}", "Exporter PNG" },
+            { "{Z:}", "Calque :" },
 
             // Dialog messages
             { "DLG_FileNotFound", "Le fichier de sauvegarde n'existe pas." },
