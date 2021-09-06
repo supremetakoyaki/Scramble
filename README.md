@@ -41,23 +41,15 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 - Edit your items.
 - Edit your pins.
 
-# Upcoming features
-** For NEO: **
-- Edit shop VIP level and last restaurant order.
-
 **Other utilities**
 - Convert TWEWY Solo Remix save to TWEWY Final Remix.
 
-There will be more features coming in the future, so stay tuned!
+# Upcoming features
+**For NEO:**
+- Edit shop VIP level and last restaurant order.
 
 # Issues, reporting bugs and requests
 If you found a bug or another issue, you can open an issue here on GitHub. For more questions or requests about anything else, you can leave a reply on the [GBATemp thread](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/). I'm actively working on this so I'll try to resolve it ASAP.
 
 # Information for cloning/forking
-
 New contributors who clone the repository may find that they need two class libraries, titled "[ntwewy-db](https://github.com/supremetakoyaki/ntwewy-db/releases/)" and "[finalremix-db](https://github.com/supremetakoyaki/finalremix-db/releases/)".
-
-# More
-
-I love TWEWY so much and I'm really happy with the sequel. I datamined absolutely everything from the game and I'm determined to make this save editor user-friendly and pleasing to the eye.
-Thank you for reading up to here!
