@@ -387,7 +387,6 @@ namespace Scramble.Forms
             this.ClthSlotHeader,
             this.ClthAmountHeader});
             this.MyClothingInvListView.FullRowSelect = true;
-            this.MyClothingInvListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.MyClothingInvListView.HideSelection = false;
             this.MyClothingInvListView.Location = new System.Drawing.Point(6, 22);
             this.MyClothingInvListView.MultiSelect = false;
@@ -466,7 +465,6 @@ namespace Scramble.Forms
             this.GlobalClthNameHeader,
             this.GlobalClthIdHeader});
             this.AllClothingItemsListView.FullRowSelect = true;
-            this.AllClothingItemsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.AllClothingItemsListView.HideSelection = false;
             this.AllClothingItemsListView.Location = new System.Drawing.Point(6, 22);
             this.AllClothingItemsListView.Name = "AllClothingItemsListView";

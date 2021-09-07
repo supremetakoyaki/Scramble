@@ -1,6 +1,7 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
 using Scramble.GameData;
+using Scramble.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -52,10 +53,10 @@ namespace Scramble.Forms
                 LoadSpoilerCharacters();
             }
 
-            if (!Debugger.IsAttached)
+            /*if (!Debugger.IsAttached)
             {
                 debug_CountLabel.Visible = false;
-            }
+            }*/
 
             DisplayLanguageStrings();
             Serialize();
@@ -103,6 +104,7 @@ namespace Scramble.Forms
             AddClothingItemButton.Text = Sukuranburu.GetString("{AddClothing}");
             AddEachOfEveryClothingButton.Text = Sukuranburu.GetString("{AddEveryClothing}");
         }
+
         private void Serialize()
         {
             InventoryClothes = new List<InventoryFashion>();
@@ -130,6 +132,7 @@ namespace Scramble.Forms
 
                     if (invIndex == -1)
                     {
+                        ClothingToAdd.ListIndex = Index;
                         ClothingToAdd.Amount = 1;
                         ClothingToAdd.EquipperId = ClothingToAdd.WhosEquippingThis(Index);
 
@@ -176,15 +179,16 @@ namespace Scramble.Forms
 
                     string ClothingName = Sukuranburu.GetGameString(Clothing.Name);
 
-                    ListViewItem PinToAdd = new ListViewItem(new string[]
+                    ListViewItem ClothingToAdd = new ListViewItem(new string[]
                     {
                     ClothingName,
                     Clothing.ParticularId.ToString()
                     })
                     {
-                        ImageKey = Clothing.Sprite
+                        ImageKey = Clothing.Sprite,
+                        Tag = Clothing.ParticularId
                     };
-                    AllClothingItemsListView.Items.Add(PinToAdd);
+                    AllClothingItemsListView.Items.Add(ClothingToAdd);
                 }
             }
         }
@@ -195,6 +199,42 @@ namespace Scramble.Forms
             {
                 EquippedByCharacterComboBox.Items.Add(Sukuranburu.GetGameString(Member.CharacterName));
             }
+        }
+
+        private InventoryFashion GetClothingForListViewItem(ListViewItem Item)
+        {
+            if (Item == null)
+            {
+                return null;
+            }
+
+            for (int i = 0; i < InventoryClothes.Count; i++)
+            {
+                if (InventoryClothes[i].Id == Convert.ToInt32(Item.SubItems[1].Text))
+                {
+                    return InventoryClothes[i];
+                }
+            }
+
+            return null;
+        }
+
+        private int GetListViewIndexForClothing(InventoryFashion Clothing)
+        {
+            if (Clothing == null)
+            {
+                return -1;
+            }
+
+            for (int i = 0; i < MyClothingInvListView.Items.Count; i++)
+            {
+                if (MyClothingInvListView.Items[i].SubItems[1].Text == Clothing.Id.ToString())
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
 
         private void SelectClothing()
@@ -231,7 +271,7 @@ namespace Scramble.Forms
                 return;
             }
 
-            InventoryFashion Clothing = InventoryClothes[MyClothingInvListView.SelectedIndices[0]];
+            InventoryFashion Clothing = GetClothingForListViewItem(MyClothingInvListView.SelectedItems[0]);//InventoryClothes[MyClothingInvListView.SelectedIndices[0]];
             SelectedClothing = Clothing;
 
             Brand ClothingBrand = Sukuranburu.GetItemManager().GetBrand(Clothing.BaseClothing.Brand);
@@ -349,7 +389,7 @@ namespace Scramble.Forms
 
         private void UpdateAmount()
         {
-            int Index = InventoryClothes.IndexOf(SelectedClothing);
+            int Index = GetListViewIndexForClothing(SelectedClothing); //InventoryClothes.IndexOf(SelectedClothing);
 
             SelectedClothing.Amount = (ushort)AmountNumericUpDown.Value;
             MyClothingInvListView.Items[Index].SubItems[3].Text = SelectedClothing.Amount.ToString();
@@ -357,7 +397,7 @@ namespace Scramble.Forms
 
         private void AddClothing(ListViewItem Item, bool Individual) //individual= adding this piece through "Add pin" button.
         {
-            ushort ClothingId = Convert.ToUInt16(Item.SubItems[1].Text);
+            ushort ClothingId = (ushort)Item.Tag;//Convert.ToUInt16(Item.SubItems[1].Text);
 
             InventoryFashion ClothingToAdd = new InventoryFashion(ClothingId);
 
@@ -404,6 +444,7 @@ namespace Scramble.Forms
                     ClothingToAdd.Amount = 1;
                 }
 
+                ClothingToAdd.AssignListIndex(InventoryClothes.Count);
                 InventoryClothes.Add(ClothingToAdd);
                 InsertClothingToListView(ClothingToAdd);
             }
@@ -500,7 +541,7 @@ namespace Scramble.Forms
         private void MyClothingInvListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectClothing();
-            debug_CountLabel.Text = TotalCount.ToString();
+            //debug_CountLabel.Text = TotalCount.ToString();
         }
 
         private void AmountNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -538,7 +579,7 @@ namespace Scramble.Forms
 
             UpdateAmount();
 
-            debug_CountLabel.Text = TotalCount.ToString();
+            //debug_CountLabel.Text = TotalCount.ToString();
             ReadyForUserInput = true;
         }
 
@@ -547,7 +588,7 @@ namespace Scramble.Forms
             if (MyClothingInvListView.Items.Count > 0 && MyClothingInvListView.SelectedIndices.Count > 0)
             {
                 int ThisIndex = MyClothingInvListView.SelectedIndices[0];
-                InventoryFashion Clothing = InventoryClothes[ThisIndex];
+                InventoryFashion Clothing = GetClothingForListViewItem(MyClothingInvListView.SelectedItems[0]);
 
                 TotalCount -= Clothing.Amount;
 
@@ -578,7 +619,7 @@ namespace Scramble.Forms
                 }
             }
 
-            debug_CountLabel.Text = TotalCount.ToString();
+            //debug_CountLabel.Text = TotalCount.ToString();
         }
 
         private void RemoveAllClothingButton_Click(object sender, EventArgs e)
@@ -600,7 +641,7 @@ namespace Scramble.Forms
                 SelectClothing();
             }
 
-            debug_CountLabel.Text = TotalCount.ToString();
+            //debug_CountLabel.Text = TotalCount.ToString();
             ReadyForUserInput = true;
         }
 
@@ -627,7 +668,7 @@ namespace Scramble.Forms
 
             SelectClothing();
 
-            debug_CountLabel.Text = TotalCount.ToString();
+            //debug_CountLabel.Text = TotalCount.ToString();
             ReadyForUserInput = true;
         }
 
@@ -653,7 +694,7 @@ namespace Scramble.Forms
 
             SelectClothing();
 
-            debug_CountLabel.Text = TotalCount.ToString();
+            //debug_CountLabel.Text = TotalCount.ToString();
             ReadyForUserInput = true;
         }
 
@@ -740,6 +781,17 @@ namespace Scramble.Forms
         private void ClothingInventoryEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveAllData();
+            ColumnSorter.DisposeColumn();
+        }
+
+        private void AllClothingItemsListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSorter.Sort(AllClothingItemsListView, e);
+        }
+
+        private void MyClothingInvListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSorter.Sort(MyClothingInvListView, e);
         }
     }
 }

@@ -23,11 +23,23 @@ namespace Scramble.Classes
             set;
         }
 
+        public int ListIndex
+        {
+            get;
+            set;
+        }
+
         public ClothingItem BaseClothing => Program.Sukuranburu.GetItemManager().GetClothingItem(Id);
 
         public InventoryFashion(ushort Id)
         {
             this.Id = Id;
+            this.ListIndex = -1;
+        }
+
+        public void AssignListIndex(int Index)
+        {
+            ListIndex = Index;
         }
 
         public byte WhosEquippingThis(int Index)
