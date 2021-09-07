@@ -207,7 +207,7 @@ namespace Scramble.Forms
             // ZPos_NumUpDown
             // 
             this.ZPos_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ZPos_NumUpDown.Location = new System.Drawing.Point(131, 345);
+            this.ZPos_NumUpDown.Location = new System.Drawing.Point(131, 344);
             this.ZPos_NumUpDown.Maximum = new decimal(new int[] {
             63,
             0,
@@ -236,9 +236,9 @@ namespace Scramble.Forms
             // ExportPng_Button
             // 
             this.ExportPng_Button.ForeColor = System.Drawing.Color.MediumBlue;
-            this.ExportPng_Button.Location = new System.Drawing.Point(260, 462);
+            this.ExportPng_Button.Location = new System.Drawing.Point(253, 462);
             this.ExportPng_Button.Name = "ExportPng_Button";
-            this.ExportPng_Button.Size = new System.Drawing.Size(94, 23);
+            this.ExportPng_Button.Size = new System.Drawing.Size(105, 23);
             this.ExportPng_Button.TabIndex = 23;
             this.ExportPng_Button.Text = "{ExportPng}";
             this.ExportPng_Button.UseVisualStyleBackColor = true;
@@ -257,9 +257,9 @@ namespace Scramble.Forms
             // 
             // RedrawWall_Button
             // 
-            this.RedrawWall_Button.Location = new System.Drawing.Point(121, 462);
+            this.RedrawWall_Button.Location = new System.Drawing.Point(120, 462);
             this.RedrawWall_Button.Name = "RedrawWall_Button";
-            this.RedrawWall_Button.Size = new System.Drawing.Size(133, 23);
+            this.RedrawWall_Button.Size = new System.Drawing.Size(127, 23);
             this.RedrawWall_Button.TabIndex = 21;
             this.RedrawWall_Button.Text = "{RedrawWall}";
             this.RedrawWall_Button.UseVisualStyleBackColor = true;
@@ -280,9 +280,9 @@ namespace Scramble.Forms
             // DeployTrophy_Button
             // 
             this.DeployTrophy_Button.ForeColor = System.Drawing.Color.BlueViolet;
-            this.DeployTrophy_Button.Location = new System.Drawing.Point(221, 345);
+            this.DeployTrophy_Button.Location = new System.Drawing.Point(221, 343);
             this.DeployTrophy_Button.Name = "DeployTrophy_Button";
-            this.DeployTrophy_Button.Size = new System.Drawing.Size(133, 23);
+            this.DeployTrophy_Button.Size = new System.Drawing.Size(137, 25);
             this.DeployTrophy_Button.TabIndex = 19;
             this.DeployTrophy_Button.Text = "{Deploy}";
             this.DeployTrophy_Button.UseVisualStyleBackColor = true;
@@ -292,7 +292,7 @@ namespace Scramble.Forms
             // 
             this.Scale_NumUpDown.DecimalPlaces = 7;
             this.Scale_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Scale_NumUpDown.Location = new System.Drawing.Point(131, 376);
+            this.Scale_NumUpDown.Location = new System.Drawing.Point(131, 375);
             this.Scale_NumUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -327,7 +327,7 @@ namespace Scramble.Forms
             // Rotation_NumUpDown
             // 
             this.Rotation_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Rotation_NumUpDown.Location = new System.Drawing.Point(131, 407);
+            this.Rotation_NumUpDown.Location = new System.Drawing.Point(131, 406);
             this.Rotation_NumUpDown.Maximum = new decimal(new int[] {
             360,
             0,
@@ -352,7 +352,7 @@ namespace Scramble.Forms
             // YPos_NumUpDown
             // 
             this.YPos_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.YPos_NumUpDown.Location = new System.Drawing.Point(131, 314);
+            this.YPos_NumUpDown.Location = new System.Drawing.Point(131, 313);
             this.YPos_NumUpDown.Maximum = new decimal(new int[] {
             344,
             0,
@@ -381,7 +381,7 @@ namespace Scramble.Forms
             // XPos_NumUpDown
             // 
             this.XPos_NumUpDown.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.XPos_NumUpDown.Location = new System.Drawing.Point(131, 283);
+            this.XPos_NumUpDown.Location = new System.Drawing.Point(131, 282);
             this.XPos_NumUpDown.Maximum = new decimal(new int[] {
             2001,
             0,
