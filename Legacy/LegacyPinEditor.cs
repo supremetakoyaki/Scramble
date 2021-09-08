@@ -131,6 +131,24 @@ namespace Scramble.Legacy
             }
         }
 
+        private int GetListViewItemIndex(ListView List, ushort SaveIndex)
+        {
+            if (List == null)
+            {
+                return EMPTY;
+            }
+
+            for (int i = 0; i < List.Items.Count; i++)
+            {
+                if ((ushort)List.Items[i].Tag == SaveIndex)
+                {
+                    return i;
+                }
+            }
+
+            return EMPTY;
+        }
+
         private void SaveAllData()
         {
             for (ushort i = 0; i < STOCKPILE_SAVE_AMOUNT; i++)
@@ -193,7 +211,7 @@ namespace Scramble.Legacy
             Pin_Inventory_Label.ForeColor = SystemColors.ControlText;
             Level_NumUpDown.Enabled = false;
             Experience_NumUpDown.Enabled = false;
-            Amount_NupUpDown.Enabled = false;
+            Amount_NumUpDown.Enabled = false;
 
             RemovePin_Button.Enabled = false;
         }
@@ -216,7 +234,7 @@ namespace Scramble.Legacy
                 Pin_Inventory_Label.ForeColor = Color.BlueViolet;
                 SendToOtherInv_Button.Text = "Send to stockpile";
                 SendToOtherInv_Button.ForeColor = Color.Teal;
-                Amount_NupUpDown.Enabled = true;
+                Amount_NumUpDown.Enabled = true;
 
             }
             else
@@ -225,7 +243,7 @@ namespace Scramble.Legacy
                 Pin_Inventory_Label.ForeColor = Color.Teal;
                 SendToOtherInv_Button.Text = "Send to mastered";
                 SendToOtherInv_Button.ForeColor = Color.BlueViolet;
-                Amount_NupUpDown.Enabled = false;
+                Amount_NumUpDown.Enabled = false;
             }
 
             RemovePin_Button.Enabled = true;
@@ -235,7 +253,7 @@ namespace Scramble.Legacy
             SelectedPin_PictureBox.Image = ImageMethodsFr.DrawImage(SelectedPin.BasePin.Sprite, 80, 80, DeviceDpi);
             Level_NumUpDown.Value = SelectedPin.Level;
             Experience_NumUpDown.Value = SelectedPin.Experience;
-            Amount_NupUpDown.Value = SelectedPin.Amount;
+            Amount_NumUpDown.Value = SelectedPin.Amount;
         }
 
         private ListViewItem SeekListViewItem_Mastered(ushort SaveIndex)
@@ -251,14 +269,14 @@ namespace Scramble.Legacy
             return null;
         }
 
-        private void InsertPinToStockpile(ushort SaveIndex, TwewyPin Pin)
+        private void InsertPinToStockpile(ushort SaveIndex, TwewyPin Pin, ushort Level = 1)
         {
             if (Pin == null || Stockpile.ContainsKey(SaveIndex))
             {
                 return; // and maybe throw an error idk
             }
 
-            LegacyInventoryPin PinToAdd = new LegacyInventoryPin(Pin.Id, SaveIndex, 1, 1, 0, false);
+            LegacyInventoryPin PinToAdd = new LegacyInventoryPin(Pin.Id, SaveIndex, Level, 1, 0, false);
             Stockpile[SaveIndex] = PinToAdd;
 
             ListViewItem ItemToAdd = new ListViewItem(new string[] { PinToAdd.BasePin.GetName(Legacy.LanguageId), PinToAdd.Id.ToString(), PinToAdd.Level.ToString() })
@@ -271,11 +289,11 @@ namespace Scramble.Legacy
             DisplayPin();
         }
 
-        private void InsertPinToMastered(ushort SaveIndex, TwewyPin Pin, bool Individual)
+        private bool InsertPinToMastered(ushort SaveIndex, TwewyPin Pin, bool Individual)
         {
             if (Pin == null)
             {
-                return; // and maybe throw an error idk
+                return false; // and maybe throw an error idk
             }
 
             if (Mastered.ContainsKey(SaveIndex) == false)
@@ -299,7 +317,7 @@ namespace Scramble.Legacy
                     Legacy.ShowNotice("You can't add more of this pin, you already have 99.");
                 }
 
-                return;
+                return false;
             }
 
             ListViewItem ItemToAdd = SeekListViewItem_Mastered(SaveIndex);
@@ -319,9 +337,10 @@ namespace Scramble.Legacy
 
             if (SelectedPin == Mastered[SaveIndex])
             {
-                Amount_NupUpDown.Value = Mastered[SaveIndex].Amount;
-
+                Amount_NumUpDown.Value = Mastered[SaveIndex].Amount;
             }
+
+            return true;
         }
 
         public ushort GetNextSaveIndex_Stockpile()
@@ -365,20 +384,24 @@ namespace Scramble.Legacy
             return ReturnKey;
         }
 
-        private void RemovePin(LegacyInventoryPin Pin, bool DeleteSaveIndex = true)
+        private void RemovePin(LegacyInventoryPin Pin, int Index)
         {
-            if (Pin == null)
+            if (Pin == null || Index == EMPTY)
             {
                 return;
             }
 
             if (Pin.Mastered)
             {
+                Mastered_ListView.Items.RemoveAt(Index);
+                Mastered.Remove(Pin.SaveIndex);
             }
             else
             {
-
+                Stockpile_ListView.Items.RemoveAt(Index);
+                Stockpile.Remove(Pin.SaveIndex);
             }
+
         }
 
         private void Stockpile_ListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -604,12 +627,64 @@ namespace Scramble.Legacy
 
             if (SelectedPin == null)
             {
+                ReadyForUserInput = true;
                 return;
             }
 
             ReadyForUserInput = false;
-            RemovePin(SelectedPin);
+            int Index;
+            if (SelectedPin.Mastered)
+            {
+                Index = GetListViewItemIndex(Mastered_ListView, SelectedPin.SaveIndex);
+            }
+            else
+            {
+                Index = GetListViewItemIndex(Stockpile_ListView, SelectedPin.SaveIndex);
+            }
+
+            if (Index == EMPTY)
+            {
+                ReadyForUserInput = true;
+                return;
+            }
+
+            RemovePin(SelectedPin, Index);
             ReadyForUserInput = true;
+
+            if (SelectedPin.Mastered)
+            {
+                if (Mastered_ListView.Items.Count > Index)
+                {
+                    Mastered_ListView.Items[Index].Selected = true;
+                    Mastered_ListView.Select();
+                }
+                else if (Index != 0 && Mastered_ListView.Items.Count > Index - 1)
+                {
+                    Mastered_ListView.Items[Index - 1].Selected = true;
+                    Mastered_ListView.Select();
+                }
+                else
+                {
+                    DisplayEmptyPin();
+                }
+            }
+            else
+            {
+                if (Stockpile_ListView.Items.Count > Index)
+                {
+                    Stockpile_ListView.Items[Index].Selected = true;
+                    Stockpile_ListView.Select();
+                }
+                else if (Index != 0 && Stockpile_ListView.Items.Count > Index - 1)
+                {
+                    Stockpile_ListView.Items[Index - 1].Selected = true;
+                    Stockpile_ListView.Select();
+                }
+                else
+                {
+                    DisplayEmptyPin();
+                }
+            }
         }
 
         private void SendToOtherInv_Button_Click(object sender, EventArgs e)
@@ -627,12 +702,134 @@ namespace Scramble.Legacy
             ReadyForUserInput = false;
 
             if (SelectedPin.Mastered)
-            { 
+            {
+                // Send to stockpile
+
+                if (Stockpile.Count >= STOCKPILE_SAVE_AMOUNT)
+                {
+                    Legacy.ShowWarning("You can't store more pins in your stockpile. The limit is 256.");
+                    ReadyForUserInput = true;
+                    return;
+                }
+                
+                ushort SaveIndex = GetNextSaveIndex_Stockpile();
+                if (SaveIndex == EMPTY)
+                {
+                    Legacy.ShowWarning("You -seemingly- can't store more pins in your stockpile. The limit is 256.");
+                    ReadyForUserInput = true;
+                    return;
+                }
+
+                int Index = GetListViewItemIndex(Mastered_ListView, SelectedPin.SaveIndex);
+                if (SelectedPin.Amount > 1)
+                {
+                    SelectedPin.Amount -= 1;
+                    if (Index != EMPTY)
+                    {
+                        Mastered_ListView.Items[Index].SubItems[2].Text = SelectedPin.Amount.ToString();
+                    }
+                }
+                else
+                {
+                    RemovePin(SelectedPin, Index);
+                }
+
+                ushort NewLevel = SelectedPin.Level;
+                if (SelectedPin.Level > 1)
+                {
+                    NewLevel = (ushort)(SelectedPin.Level - 1);
+                }
+
+                InsertPinToStockpile(SaveIndex, SelectedPin.BasePin, NewLevel);
             }
             else
             {
+                // Send to mastered
+                if (Mastered.Count >= MASTERED_SAVE_AMOUNT)
+                {
+                    Legacy.ShowWarning("You can't store more pins in your mastered inventory... Wait, what? This is impossible. Please report this.");
+                    ReadyForUserInput = true;
+                    return;
+                }
 
+                ushort SaveIndex = GetNextSaveIndex_Mastered(SelectedPin.Id);
+                if (SaveIndex == EMPTY)
+                {
+                    Legacy.ShowWarning("You -seemingly- can't store more pins in your mastered inventory... Wait, what? This is impossible. Please report this.");
+                    ReadyForUserInput = true;
+                    return;
+                }
+
+                if (InsertPinToMastered(SaveIndex, SelectedPin.BasePin, true))
+                {
+                    RemovePin(SelectedPin, SelectedPin.SaveIndex);
+                }
             }
+
+            ReadyForUserInput = true;
+        }
+
+        private void Level_NumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedPin == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            byte LevelToSet = (byte)Level_NumUpDown.Value;
+            SelectedPin.Level = LevelToSet;
+
+            int Index;
+            if (!SelectedPin.Mastered)
+            {
+                Index = GetListViewItemIndex(Stockpile_ListView, SelectedPin.SaveIndex);
+
+                if (Index != EMPTY)
+                {
+                    Stockpile_ListView.Items[Index].SubItems[2].Text = LevelToSet.ToString();
+                }
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void Experience_NumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedPin == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedPin.Experience = (ushort)Experience_NumUpDown.Value;
+            ReadyForUserInput = true;
+        }
+
+        private void Amount_NupUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedPin == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+
+            ushort AmountToSet = (ushort)Amount_NumUpDown.Value;
+            SelectedPin.Amount = AmountToSet;
+
+            int Index;
+            if (SelectedPin.Mastered)
+            {
+                Index = GetListViewItemIndex(Mastered_ListView, SelectedPin.SaveIndex);
+
+                if (Index != EMPTY)
+                {
+                    Mastered_ListView.Items[Index].SubItems[2].Text = AmountToSet.ToString();
+                }
+            }
+
             ReadyForUserInput = true;
         }
     }

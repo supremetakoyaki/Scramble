@@ -33,7 +33,7 @@ namespace Scramble.Legacy
             this.Pin_Inventory_Label = new System.Windows.Forms.Label();
             this.ClearMastered_Button = new System.Windows.Forms.Button();
             this.ClearStockpile_Button = new System.Windows.Forms.Button();
-            this.Amount_NupUpDown = new System.Windows.Forms.NumericUpDown();
+            this.Amount_NumUpDown = new System.Windows.Forms.NumericUpDown();
             this.Amount_Label = new System.Windows.Forms.Label();
             this.RemovePin_Button = new System.Windows.Forms.Button();
             this.Experience_NumUpDown = new System.Windows.Forms.NumericUpDown();
@@ -65,7 +65,7 @@ namespace Scramble.Legacy
             this.AllPins_NameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AllPins_IdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PinList_GroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Amount_NupUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Amount_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Experience_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Level_NumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedPin_PictureBox)).BeginInit();
@@ -77,7 +77,7 @@ namespace Scramble.Legacy
             this.PinList_GroupBox.Controls.Add(this.Pin_Inventory_Label);
             this.PinList_GroupBox.Controls.Add(this.ClearMastered_Button);
             this.PinList_GroupBox.Controls.Add(this.ClearStockpile_Button);
-            this.PinList_GroupBox.Controls.Add(this.Amount_NupUpDown);
+            this.PinList_GroupBox.Controls.Add(this.Amount_NumUpDown);
             this.PinList_GroupBox.Controls.Add(this.Amount_Label);
             this.PinList_GroupBox.Controls.Add(this.RemovePin_Button);
             this.PinList_GroupBox.Controls.Add(this.Experience_NumUpDown);
@@ -93,6 +93,7 @@ namespace Scramble.Legacy
             this.PinList_GroupBox.Controls.Add(this.Stockpile_ListView);
             this.PinList_GroupBox.Controls.Add(this.Mastered_Label);
             this.PinList_GroupBox.Controls.Add(this.Stockpile_Label);
+            this.PinList_GroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.PinList_GroupBox.Location = new System.Drawing.Point(12, 12);
             this.PinList_GroupBox.Name = "PinList_GroupBox";
             this.PinList_GroupBox.Size = new System.Drawing.Size(589, 577);
@@ -113,6 +114,7 @@ namespace Scramble.Legacy
             // ClearMastered_Button
             // 
             this.ClearMastered_Button.BackColor = System.Drawing.Color.Gainsboro;
+            this.ClearMastered_Button.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ClearMastered_Button.ForeColor = System.Drawing.Color.Indigo;
             this.ClearMastered_Button.Location = new System.Drawing.Point(172, 533);
             this.ClearMastered_Button.Name = "ClearMastered_Button";
@@ -125,6 +127,7 @@ namespace Scramble.Legacy
             // ClearStockpile_Button
             // 
             this.ClearStockpile_Button.BackColor = System.Drawing.Color.Gainsboro;
+            this.ClearStockpile_Button.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ClearStockpile_Button.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.ClearStockpile_Button.Location = new System.Drawing.Point(6, 533);
             this.ClearStockpile_Button.Name = "ClearStockpile_Button";
@@ -134,28 +137,29 @@ namespace Scramble.Legacy
             this.ClearStockpile_Button.UseVisualStyleBackColor = false;
             this.ClearStockpile_Button.Click += new System.EventHandler(this.ClearStockpile_Button_Click);
             // 
-            // Amount_NupUpDown
+            // Amount_NumUpDown
             // 
-            this.Amount_NupUpDown.Enabled = false;
-            this.Amount_NupUpDown.Location = new System.Drawing.Point(479, 467);
-            this.Amount_NupUpDown.Maximum = new decimal(new int[] {
+            this.Amount_NumUpDown.Enabled = false;
+            this.Amount_NumUpDown.Location = new System.Drawing.Point(479, 467);
+            this.Amount_NumUpDown.Maximum = new decimal(new int[] {
             99,
             0,
             0,
             0});
-            this.Amount_NupUpDown.Minimum = new decimal(new int[] {
+            this.Amount_NumUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.Amount_NupUpDown.Name = "Amount_NupUpDown";
-            this.Amount_NupUpDown.Size = new System.Drawing.Size(82, 20);
-            this.Amount_NupUpDown.TabIndex = 15;
-            this.Amount_NupUpDown.Value = new decimal(new int[] {
+            this.Amount_NumUpDown.Name = "Amount_NumUpDown";
+            this.Amount_NumUpDown.Size = new System.Drawing.Size(82, 23);
+            this.Amount_NumUpDown.TabIndex = 15;
+            this.Amount_NumUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.Amount_NumUpDown.ValueChanged += new System.EventHandler(this.Amount_NupUpDown_ValueChanged);
             // 
             // Amount_Label
             // 
@@ -169,6 +173,7 @@ namespace Scramble.Legacy
             // RemovePin_Button
             // 
             this.RemovePin_Button.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.RemovePin_Button.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.RemovePin_Button.ForeColor = System.Drawing.SystemColors.ControlText;
             this.RemovePin_Button.Location = new System.Drawing.Point(506, 499);
             this.RemovePin_Button.Name = "RemovePin_Button";
@@ -187,13 +192,14 @@ namespace Scramble.Legacy
             0,
             0});
             this.Experience_NumUpDown.Name = "Experience_NumUpDown";
-            this.Experience_NumUpDown.Size = new System.Drawing.Size(82, 20);
+            this.Experience_NumUpDown.Size = new System.Drawing.Size(82, 23);
             this.Experience_NumUpDown.TabIndex = 12;
             this.Experience_NumUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.Experience_NumUpDown.ValueChanged += new System.EventHandler(this.Experience_NumUpDown_ValueChanged);
             // 
             // Experience_Label
             // 
@@ -206,6 +212,7 @@ namespace Scramble.Legacy
             // 
             // SendToOtherInv_Button
             // 
+            this.SendToOtherInv_Button.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SendToOtherInv_Button.ForeColor = System.Drawing.Color.BlueViolet;
             this.SendToOtherInv_Button.Location = new System.Drawing.Point(379, 499);
             this.SendToOtherInv_Button.Name = "SendToOtherInv_Button";
@@ -224,13 +231,14 @@ namespace Scramble.Legacy
             0,
             0});
             this.Level_NumUpDown.Name = "Level_NumUpDown";
-            this.Level_NumUpDown.Size = new System.Drawing.Size(82, 20);
+            this.Level_NumUpDown.Size = new System.Drawing.Size(82, 23);
             this.Level_NumUpDown.TabIndex = 9;
             this.Level_NumUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.Level_NumUpDown.ValueChanged += new System.EventHandler(this.Level_NumUpDown_ValueChanged);
             // 
             // Level_Label
             // 
@@ -377,6 +385,7 @@ namespace Scramble.Legacy
             this.AllPins_GroupBox.Controls.Add(this.AddPinToMastered_Button);
             this.AllPins_GroupBox.Controls.Add(this.AddPinToStockpile_Button);
             this.AllPins_GroupBox.Controls.Add(this.AllPins_ListView);
+            this.AllPins_GroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AllPins_GroupBox.Location = new System.Drawing.Point(607, 12);
             this.AllPins_GroupBox.Name = "AllPins_GroupBox";
             this.AllPins_GroupBox.Size = new System.Drawing.Size(305, 577);
@@ -396,9 +405,10 @@ namespace Scramble.Legacy
             // Add99ToMastered_Checkbox
             // 
             this.Add99ToMastered_Checkbox.AutoSize = true;
+            this.Add99ToMastered_Checkbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Add99ToMastered_Checkbox.Location = new System.Drawing.Point(158, 504);
             this.Add99ToMastered_Checkbox.Name = "Add99ToMastered_Checkbox";
-            this.Add99ToMastered_Checkbox.Size = new System.Drawing.Size(43, 17);
+            this.Add99ToMastered_Checkbox.Size = new System.Drawing.Size(44, 19);
             this.Add99ToMastered_Checkbox.TabIndex = 4;
             this.Add99ToMastered_Checkbox.Text = "x99";
             this.Add99ToMastered_Checkbox.UseVisualStyleBackColor = true;
@@ -406,15 +416,17 @@ namespace Scramble.Legacy
             // EachPin_Checkbox
             // 
             this.EachPin_Checkbox.AutoSize = true;
+            this.EachPin_Checkbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.EachPin_Checkbox.Location = new System.Drawing.Point(158, 483);
             this.EachPin_Checkbox.Name = "EachPin_Checkbox";
-            this.EachPin_Checkbox.Size = new System.Drawing.Size(122, 17);
+            this.EachPin_Checkbox.Size = new System.Drawing.Size(133, 19);
             this.EachPin_Checkbox.TabIndex = 3;
             this.EachPin_Checkbox.Text = "Add one of each pin";
             this.EachPin_Checkbox.UseVisualStyleBackColor = true;
             // 
             // AddPinToMastered_Button
             // 
+            this.AddPinToMastered_Button.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AddPinToMastered_Button.ForeColor = System.Drawing.Color.BlueViolet;
             this.AddPinToMastered_Button.Location = new System.Drawing.Point(155, 528);
             this.AddPinToMastered_Button.Name = "AddPinToMastered_Button";
@@ -426,6 +438,7 @@ namespace Scramble.Legacy
             // 
             // AddPinToStockpile_Button
             // 
+            this.AddPinToStockpile_Button.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AddPinToStockpile_Button.ForeColor = System.Drawing.Color.Teal;
             this.AddPinToStockpile_Button.Location = new System.Drawing.Point(6, 528);
             this.AddPinToStockpile_Button.Name = "AddPinToStockpile_Button";
@@ -475,7 +488,7 @@ namespace Scramble.Legacy
             this.Text = "Pin Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LegacyPinEditor_FormClosing);
             this.PinList_GroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Amount_NupUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Amount_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Experience_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Level_NumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedPin_PictureBox)).EndInit();
@@ -517,7 +530,7 @@ namespace Scramble.Legacy
         private System.Windows.Forms.Button AddPinToMastered_Button;
         private System.Windows.Forms.Button ClearMastered_Button;
         private System.Windows.Forms.Button ClearStockpile_Button;
-        private System.Windows.Forms.NumericUpDown Amount_NupUpDown;
+        private System.Windows.Forms.NumericUpDown Amount_NumUpDown;
         private System.Windows.Forms.Label Pin_Inventory_Label;
         private System.Windows.Forms.CheckBox Add99ToMastered_Checkbox;
         private System.Windows.Forms.CheckBox EachPin_Checkbox;
