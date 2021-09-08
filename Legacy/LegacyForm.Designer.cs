@@ -199,7 +199,7 @@ namespace Scramble.Legacy
             // 
             // LanguageLabel
             // 
-            this.LanguageLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LanguageLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.LanguageLabel.Location = new System.Drawing.Point(306, 200);
             this.LanguageLabel.Name = "LanguageLabel";
             this.LanguageLabel.Size = new System.Drawing.Size(60, 19);
@@ -236,6 +236,7 @@ namespace Scramble.Legacy
             this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.OpenSaveFileButton);
             this.Controls.Add(this.Logo_PictureBox);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LegacyForm";

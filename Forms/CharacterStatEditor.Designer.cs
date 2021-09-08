@@ -84,6 +84,7 @@ namespace Scramble.Forms
             this.CharacterTabControl.Controls.Add(this.CharacterTab5);
             this.CharacterTabControl.Controls.Add(this.CharacterTab2);
             this.CharacterTabControl.Controls.Add(this.CharacterTab6);
+            this.CharacterTabControl.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.CharacterTabControl.ItemSize = new System.Drawing.Size(60, 30);
             this.CharacterTabControl.Location = new System.Drawing.Point(12, 12);
             this.CharacterTabControl.Name = "CharacterTabControl";
@@ -168,7 +169,7 @@ namespace Scramble.Forms
             // 
             // CharacterLabel
             // 
-            this.CharacterLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CharacterLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.CharacterLabel.Location = new System.Drawing.Point(203, 53);
             this.CharacterLabel.Name = "CharacterLabel";
             this.CharacterLabel.Size = new System.Drawing.Size(299, 27);
@@ -178,7 +179,7 @@ namespace Scramble.Forms
             // 
             // HpLabel
             // 
-            this.HpLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.HpLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.HpLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(0)))), ((int)(((byte)(35)))));
             this.HpLabel.Location = new System.Drawing.Point(203, 148);
             this.HpLabel.Name = "HpLabel";
@@ -189,6 +190,7 @@ namespace Scramble.Forms
             // 
             // HpValueUpDown
             // 
+            this.HpValueUpDown.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.HpValueUpDown.Location = new System.Drawing.Point(422, 146);
             this.HpValueUpDown.Maximum = new decimal(new int[] {
             999,
@@ -202,7 +204,7 @@ namespace Scramble.Forms
             // 
             // PlusLabel
             // 
-            this.PlusLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PlusLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.PlusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(10)))), ((int)(((byte)(140)))));
             this.PlusLabel.Location = new System.Drawing.Point(368, 148);
             this.PlusLabel.Name = "PlusLabel";
@@ -213,7 +215,7 @@ namespace Scramble.Forms
             // 
             // HpBaseLabelValue
             // 
-            this.HpBaseLabelValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HpBaseLabelValue.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.HpBaseLabelValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(0)))), ((int)(((byte)(35)))));
             this.HpBaseLabelValue.Location = new System.Drawing.Point(303, 148);
             this.HpBaseLabelValue.Name = "HpBaseLabelValue";
@@ -224,7 +226,7 @@ namespace Scramble.Forms
             // 
             // AtkBaseValueLabel
             // 
-            this.AtkBaseValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AtkBaseValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AtkBaseValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
             this.AtkBaseValueLabel.Location = new System.Drawing.Point(303, 185);
             this.AtkBaseValueLabel.Name = "AtkBaseValueLabel";
@@ -235,7 +237,7 @@ namespace Scramble.Forms
             // 
             // PlusLabel2
             // 
-            this.PlusLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PlusLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.PlusLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(10)))), ((int)(((byte)(140)))));
             this.PlusLabel2.Location = new System.Drawing.Point(368, 185);
             this.PlusLabel2.Name = "PlusLabel2";
@@ -246,6 +248,7 @@ namespace Scramble.Forms
             // 
             // AtkValueUpDown
             // 
+            this.AtkValueUpDown.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AtkValueUpDown.Location = new System.Drawing.Point(422, 183);
             this.AtkValueUpDown.Maximum = new decimal(new int[] {
             999,
@@ -259,7 +262,7 @@ namespace Scramble.Forms
             // 
             // AtkLabel
             // 
-            this.AtkLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.AtkLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.AtkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
             this.AtkLabel.Location = new System.Drawing.Point(203, 185);
             this.AtkLabel.Name = "AtkLabel";
@@ -270,7 +273,7 @@ namespace Scramble.Forms
             // 
             // DefBaseValueLabel
             // 
-            this.DefBaseValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DefBaseValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.DefBaseValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(160)))));
             this.DefBaseValueLabel.Location = new System.Drawing.Point(303, 222);
             this.DefBaseValueLabel.Name = "DefBaseValueLabel";
@@ -281,7 +284,7 @@ namespace Scramble.Forms
             // 
             // PlusLabel3
             // 
-            this.PlusLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PlusLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.PlusLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(10)))), ((int)(((byte)(140)))));
             this.PlusLabel3.Location = new System.Drawing.Point(368, 222);
             this.PlusLabel3.Name = "PlusLabel3";
@@ -292,6 +295,7 @@ namespace Scramble.Forms
             // 
             // DefValueUpDown
             // 
+            this.DefValueUpDown.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.DefValueUpDown.Location = new System.Drawing.Point(422, 220);
             this.DefValueUpDown.Maximum = new decimal(new int[] {
             999,
@@ -305,7 +309,7 @@ namespace Scramble.Forms
             // 
             // DefLabel
             // 
-            this.DefLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.DefLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.DefLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(160)))));
             this.DefLabel.Location = new System.Drawing.Point(203, 222);
             this.DefLabel.Name = "DefLabel";
@@ -316,7 +320,7 @@ namespace Scramble.Forms
             // 
             // StyleBaseValueLabel
             // 
-            this.StyleBaseValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StyleBaseValueLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.StyleBaseValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.StyleBaseValueLabel.Location = new System.Drawing.Point(303, 259);
             this.StyleBaseValueLabel.Name = "StyleBaseValueLabel";
@@ -327,7 +331,7 @@ namespace Scramble.Forms
             // 
             // PlusLabel4
             // 
-            this.PlusLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PlusLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.PlusLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(10)))), ((int)(((byte)(140)))));
             this.PlusLabel4.Location = new System.Drawing.Point(368, 259);
             this.PlusLabel4.Name = "PlusLabel4";
@@ -338,6 +342,7 @@ namespace Scramble.Forms
             // 
             // StyleValueUpDown
             // 
+            this.StyleValueUpDown.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.StyleValueUpDown.Location = new System.Drawing.Point(422, 257);
             this.StyleValueUpDown.Maximum = new decimal(new int[] {
             999,
@@ -351,7 +356,7 @@ namespace Scramble.Forms
             // 
             // StyleLabel
             // 
-            this.StyleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.StyleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.StyleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.StyleLabel.Location = new System.Drawing.Point(203, 259);
             this.StyleLabel.Name = "StyleLabel";
@@ -363,6 +368,7 @@ namespace Scramble.Forms
             // MaxStatsButton
             // 
             this.MaxStatsButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.MaxStatsButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MaxStatsButton.Location = new System.Drawing.Point(203, 328);
             this.MaxStatsButton.Name = "MaxStatsButton";
             this.MaxStatsButton.Size = new System.Drawing.Size(182, 41);
@@ -373,7 +379,7 @@ namespace Scramble.Forms
             // 
             // BaseLabel
             // 
-            this.BaseLabel.Font = new System.Drawing.Font("Segoe UI", 7.85F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BaseLabel.Font = new System.Drawing.Font("Segoe UI", 7.85F);
             this.BaseLabel.Location = new System.Drawing.Point(303, 100);
             this.BaseLabel.Name = "BaseLabel";
             this.BaseLabel.Size = new System.Drawing.Size(55, 32);
@@ -383,7 +389,7 @@ namespace Scramble.Forms
             // 
             // StatNameLabel
             // 
-            this.StatNameLabel.Font = new System.Drawing.Font("Segoe UI", 7.85F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StatNameLabel.Font = new System.Drawing.Font("Segoe UI", 7.85F);
             this.StatNameLabel.Location = new System.Drawing.Point(203, 100);
             this.StatNameLabel.Name = "StatNameLabel";
             this.StatNameLabel.Size = new System.Drawing.Size(80, 32);
@@ -393,7 +399,7 @@ namespace Scramble.Forms
             // 
             // PlayerEarnedLabel
             // 
-            this.PlayerEarnedLabel.Font = new System.Drawing.Font("Segoe UI", 7.85F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PlayerEarnedLabel.Font = new System.Drawing.Font("Segoe UI", 7.85F);
             this.PlayerEarnedLabel.Location = new System.Drawing.Point(422, 100);
             this.PlayerEarnedLabel.Name = "PlayerEarnedLabel";
             this.PlayerEarnedLabel.Size = new System.Drawing.Size(80, 32);
@@ -403,6 +409,7 @@ namespace Scramble.Forms
             // 
             // AllCharactersCheckbox
             // 
+            this.AllCharactersCheckbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.AllCharactersCheckbox.Location = new System.Drawing.Point(391, 328);
             this.AllCharactersCheckbox.Name = "AllCharactersCheckbox";
             this.AllCharactersCheckbox.Size = new System.Drawing.Size(111, 41);
@@ -412,7 +419,7 @@ namespace Scramble.Forms
             // 
             // InYourPartyLabel
             // 
-            this.InYourPartyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.InYourPartyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 7.5F, System.Drawing.FontStyle.Bold);
             this.InYourPartyLabel.ForeColor = System.Drawing.Color.Blue;
             this.InYourPartyLabel.Location = new System.Drawing.Point(413, 80);
             this.InYourPartyLabel.Name = "InYourPartyLabel";
@@ -423,7 +430,7 @@ namespace Scramble.Forms
             // 
             // BonusDropRate_Label
             // 
-            this.BonusDropRate_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.BonusDropRate_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.BonusDropRate_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
             this.BonusDropRate_Label.Location = new System.Drawing.Point(203, 296);
             this.BonusDropRate_Label.Name = "BonusDropRate_Label";
@@ -434,7 +441,7 @@ namespace Scramble.Forms
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
             this.label1.Location = new System.Drawing.Point(303, 296);
             this.label1.Name = "label1";
@@ -445,7 +452,7 @@ namespace Scramble.Forms
             // 
             // PlusLabel5
             // 
-            this.PlusLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PlusLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.PlusLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(10)))), ((int)(((byte)(140)))));
             this.PlusLabel5.Location = new System.Drawing.Point(368, 296);
             this.PlusLabel5.Name = "PlusLabel5";
@@ -456,6 +463,7 @@ namespace Scramble.Forms
             // 
             // BonusDropRate_NUpDown
             // 
+            this.BonusDropRate_NUpDown.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.BonusDropRate_NUpDown.Location = new System.Drawing.Point(422, 296);
             this.BonusDropRate_NUpDown.Maximum = new decimal(new int[] {
             19,
@@ -502,6 +510,7 @@ namespace Scramble.Forms
             this.Controls.Add(this.CharacterLabel);
             this.Controls.Add(this.Character_PictureBox);
             this.Controls.Add(this.CharacterTabControl);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "CharacterStatEditor";

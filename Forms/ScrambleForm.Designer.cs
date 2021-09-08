@@ -130,6 +130,7 @@
             // SaveSlotsListBox
             // 
             this.SaveSlotsListBox.FormattingEnabled = true;
+            this.SaveSlotsListBox.ItemHeight = 15;
             this.SaveSlotsListBox.Items.AddRange(new object[] {
             "0 (Autosave)",
             "1",
@@ -143,7 +144,7 @@
             "9"});
             this.SaveSlotsListBox.Location = new System.Drawing.Point(6, 22);
             this.SaveSlotsListBox.Name = "SaveSlotsListBox";
-            this.SaveSlotsListBox.Size = new System.Drawing.Size(127, 147);
+            this.SaveSlotsListBox.Size = new System.Drawing.Size(127, 139);
             this.SaveSlotsListBox.TabIndex = 6;
             this.SaveSlotsListBox.SelectedIndexChanged += new System.EventHandler(this.SaveSlotsListBox_SelectedIndexChanged);
             // 
@@ -154,7 +155,7 @@
             this.DateOfSavePicker.MaxDate = new System.DateTime(2037, 12, 31, 0, 0, 0, 0);
             this.DateOfSavePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.DateOfSavePicker.Name = "DateOfSavePicker";
-            this.DateOfSavePicker.Size = new System.Drawing.Size(188, 20);
+            this.DateOfSavePicker.Size = new System.Drawing.Size(188, 23);
             this.DateOfSavePicker.TabIndex = 8;
             this.DateOfSavePicker.ValueChanged += new System.EventHandler(this.DateOfSavePicker_ValueChanged);
             // 
@@ -163,7 +164,7 @@
             this.DateSavedLabel.AutoSize = true;
             this.DateSavedLabel.Location = new System.Drawing.Point(6, 39);
             this.DateSavedLabel.Name = "DateSavedLabel";
-            this.DateSavedLabel.Size = new System.Drawing.Size(114, 13);
+            this.DateSavedLabel.Size = new System.Drawing.Size(124, 15);
             this.DateSavedLabel.TabIndex = 5;
             this.DateSavedLabel.Text = "Date and time of save:";
             // 
@@ -209,7 +210,7 @@
             0,
             0});
             this.MoneyNUpDown.Name = "MoneyNUpDown";
-            this.MoneyNUpDown.Size = new System.Drawing.Size(98, 20);
+            this.MoneyNUpDown.Size = new System.Drawing.Size(98, 23);
             this.MoneyNUpDown.TabIndex = 12;
             this.MoneyNUpDown.ValueChanged += new System.EventHandler(this.MoneyNUpDown_ValueChanged);
             // 
@@ -236,7 +237,7 @@
             this.DifficultyCombo.Location = new System.Drawing.Point(96, 91);
             this.DifficultyCombo.MaxDropDownItems = 4;
             this.DifficultyCombo.Name = "DifficultyCombo";
-            this.DifficultyCombo.Size = new System.Drawing.Size(98, 21);
+            this.DifficultyCombo.Size = new System.Drawing.Size(98, 23);
             this.DifficultyCombo.TabIndex = 9;
             this.DifficultyCombo.SelectedIndexChanged += new System.EventHandler(this.DifficultyCombo_SelectedIndexChanged);
             // 
@@ -258,7 +259,7 @@
             0,
             0});
             this.CurrentLevelNUpDown.Name = "CurrentLevelNUpDown";
-            this.CurrentLevelNUpDown.Size = new System.Drawing.Size(98, 20);
+            this.CurrentLevelNUpDown.Size = new System.Drawing.Size(98, 23);
             this.CurrentLevelNUpDown.TabIndex = 11;
             this.CurrentLevelNUpDown.Value = new decimal(new int[] {
             1,
@@ -285,7 +286,7 @@
             0,
             0});
             this.FpNumericUpDown.Name = "FpNumericUpDown";
-            this.FpNumericUpDown.Size = new System.Drawing.Size(98, 20);
+            this.FpNumericUpDown.Size = new System.Drawing.Size(98, 23);
             this.FpNumericUpDown.TabIndex = 13;
             this.FpNumericUpDown.ValueChanged += new System.EventHandler(this.FpNumericUpDown_ValueChanged);
             // 
@@ -305,7 +306,7 @@
             this.InitializedSlotCheckbox.AutoSize = true;
             this.InitializedSlotCheckbox.Location = new System.Drawing.Point(6, 22);
             this.InitializedSlotCheckbox.Name = "InitializedSlotCheckbox";
-            this.InitializedSlotCheckbox.Size = new System.Drawing.Size(88, 17);
+            this.InitializedSlotCheckbox.Size = new System.Drawing.Size(98, 19);
             this.InitializedSlotCheckbox.TabIndex = 7;
             this.InitializedSlotCheckbox.Text = "Initialized slot";
             this.InitializedSlotCheckbox.UseVisualStyleBackColor = true;
@@ -330,7 +331,7 @@
             0,
             0});
             this.ExpNumericUpDown.Name = "ExpNumericUpDown";
-            this.ExpNumericUpDown.Size = new System.Drawing.Size(98, 20);
+            this.ExpNumericUpDown.Size = new System.Drawing.Size(98, 23);
             this.ExpNumericUpDown.TabIndex = 10;
             this.ExpNumericUpDown.ValueChanged += new System.EventHandler(this.ExpNumericUpDown_ValueChanged);
             // 
@@ -478,7 +479,7 @@
             0,
             0});
             this.Calories_NumUpDown.Name = "Calories_NumUpDown";
-            this.Calories_NumUpDown.Size = new System.Drawing.Size(98, 20);
+            this.Calories_NumUpDown.Size = new System.Drawing.Size(98, 23);
             this.Calories_NumUpDown.TabIndex = 14;
             this.Calories_NumUpDown.ValueChanged += new System.EventHandler(this.Calories_NumUpDown_ValueChanged);
             // 
@@ -497,7 +498,7 @@
             this.LvLabel_Pre.ForeColor = System.Drawing.Color.MediumBlue;
             this.LvLabel_Pre.Location = new System.Drawing.Point(200, 127);
             this.LvLabel_Pre.Name = "LvLabel_Pre";
-            this.LvLabel_Pre.Size = new System.Drawing.Size(22, 13);
+            this.LvLabel_Pre.Size = new System.Drawing.Size(21, 15);
             this.LvLabel_Pre.TabIndex = 27;
             this.LvLabel_Pre.Text = "Lv.";
             // 
@@ -600,7 +601,7 @@
             this.LvLabel.ForeColor = System.Drawing.Color.MediumBlue;
             this.LvLabel.Location = new System.Drawing.Point(230, 127);
             this.LvLabel.Name = "LvLabel";
-            this.LvLabel.Size = new System.Drawing.Size(13, 13);
+            this.LvLabel.Size = new System.Drawing.Size(13, 15);
             this.LvLabel.TabIndex = 17;
             this.LvLabel.Text = "1";
             // 
@@ -660,7 +661,7 @@
             this.SelectLanguageLabel.AutoSize = true;
             this.SelectLanguageLabel.Location = new System.Drawing.Point(12, 367);
             this.SelectLanguageLabel.Name = "SelectLanguageLabel";
-            this.SelectLanguageLabel.Size = new System.Drawing.Size(58, 13);
+            this.SelectLanguageLabel.Size = new System.Drawing.Size(62, 15);
             this.SelectLanguageLabel.TabIndex = 27;
             this.SelectLanguageLabel.Text = "Language:";
             // 
@@ -676,7 +677,7 @@
             "Français"});
             this.LanguageSelectComboBox.Location = new System.Drawing.Point(75, 364);
             this.LanguageSelectComboBox.Name = "LanguageSelectComboBox";
-            this.LanguageSelectComboBox.Size = new System.Drawing.Size(76, 21);
+            this.LanguageSelectComboBox.Size = new System.Drawing.Size(76, 23);
             this.LanguageSelectComboBox.TabIndex = 0;
             this.LanguageSelectComboBox.TextChanged += new System.EventHandler(this.LanguageSelectComboBox_TextChanged);
             // 
@@ -687,7 +688,7 @@
             this.ShowSpoilersCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ShowSpoilersCheckbox.Location = new System.Drawing.Point(12, 393);
             this.ShowSpoilersCheckbox.Name = "ShowSpoilersCheckbox";
-            this.ShowSpoilersCheckbox.Size = new System.Drawing.Size(91, 17);
+            this.ShowSpoilersCheckbox.Size = new System.Drawing.Size(98, 19);
             this.ShowSpoilersCheckbox.TabIndex = 0;
             this.ShowSpoilersCheckbox.Text = "Show spoilers";
             this.ShowSpoilersCheckbox.UseVisualStyleBackColor = true;
@@ -724,6 +725,7 @@
             this.Controls.Add(this.SaveSlotsGroupBox);
             this.Controls.Add(this.LogoPictureBox);
             this.Controls.Add(this.OpenSaveFileButton);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ScrambleForm";

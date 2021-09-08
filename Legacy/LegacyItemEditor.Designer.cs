@@ -33,8 +33,8 @@ namespace Scramble.Legacy
             this.SetAllToMin_Button = new System.Windows.Forms.Button();
             this.SetAllMax_Button = new System.Windows.Forms.Button();
             this.ItemList_ListView = new System.Windows.Forms.ListView();
-            this.ItemIdHeader = new System.Windows.Forms.ColumnHeader();
-            this.ItemNameHeader = new System.Windows.Forms.ColumnHeader();
+            this.ItemIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ItemNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ItemInformation_GroupBox = new System.Windows.Forms.GroupBox();
             this.Amount_NUpDown = new System.Windows.Forms.NumericUpDown();
             this.AmountLabel = new System.Windows.Forms.Label();
@@ -127,7 +127,7 @@ namespace Scramble.Legacy
             // 
             // Amount_NUpDown
             // 
-            this.Amount_NUpDown.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Amount_NUpDown.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Amount_NUpDown.Location = new System.Drawing.Point(76, 308);
             this.Amount_NUpDown.Maximum = new decimal(new int[] {
             9,
@@ -141,7 +141,7 @@ namespace Scramble.Legacy
             // 
             // AmountLabel
             // 
-            this.AmountLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AmountLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.AmountLabel.Location = new System.Drawing.Point(6, 312);
             this.AmountLabel.Name = "AmountLabel";
             this.AmountLabel.Size = new System.Drawing.Size(64, 19);
@@ -153,7 +153,7 @@ namespace Scramble.Legacy
             this.ItemDescription_RichTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.ItemDescription_RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ItemDescription_RichTextBox.Enabled = false;
-            this.ItemDescription_RichTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ItemDescription_RichTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.ItemDescription_RichTextBox.Location = new System.Drawing.Point(6, 111);
             this.ItemDescription_RichTextBox.Name = "ItemDescription_RichTextBox";
             this.ItemDescription_RichTextBox.Size = new System.Drawing.Size(325, 191);
@@ -162,7 +162,7 @@ namespace Scramble.Legacy
             // 
             // ItemType_Value_Label
             // 
-            this.ItemType_Value_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ItemType_Value_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.ItemType_Value_Label.Location = new System.Drawing.Point(133, 71);
             this.ItemType_Value_Label.Name = "ItemType_Value_Label";
             this.ItemType_Value_Label.Size = new System.Drawing.Size(198, 15);
@@ -171,7 +171,7 @@ namespace Scramble.Legacy
             // 
             // ItemType_Label
             // 
-            this.ItemType_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ItemType_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.ItemType_Label.Location = new System.Drawing.Point(76, 71);
             this.ItemType_Label.Name = "ItemType_Label";
             this.ItemType_Label.Size = new System.Drawing.Size(51, 15);
@@ -183,7 +183,7 @@ namespace Scramble.Legacy
             this.ItemName_RichTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.ItemName_RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ItemName_RichTextBox.Enabled = false;
-            this.ItemName_RichTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ItemName_RichTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.ItemName_RichTextBox.Location = new System.Drawing.Point(76, 22);
             this.ItemName_RichTextBox.Name = "ItemName_RichTextBox";
             this.ItemName_RichTextBox.Size = new System.Drawing.Size(255, 46);
@@ -206,6 +206,7 @@ namespace Scramble.Legacy
             this.ClientSize = new System.Drawing.Size(664, 361);
             this.Controls.Add(this.ItemInformation_GroupBox);
             this.Controls.Add(this.ItemsGroupBox);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LegacyItemEditor";

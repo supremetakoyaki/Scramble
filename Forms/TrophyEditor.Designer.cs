@@ -282,7 +282,7 @@ namespace Scramble.Forms
             this.DeployTrophy_Button.ForeColor = System.Drawing.Color.BlueViolet;
             this.DeployTrophy_Button.Location = new System.Drawing.Point(221, 343);
             this.DeployTrophy_Button.Name = "DeployTrophy_Button";
-            this.DeployTrophy_Button.Size = new System.Drawing.Size(137, 25);
+            this.DeployTrophy_Button.Size = new System.Drawing.Size(133, 25);
             this.DeployTrophy_Button.TabIndex = 19;
             this.DeployTrophy_Button.Text = "{Deploy}";
             this.DeployTrophy_Button.UseVisualStyleBackColor = true;

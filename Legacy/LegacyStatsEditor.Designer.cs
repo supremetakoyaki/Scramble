@@ -189,7 +189,7 @@ namespace Scramble.Legacy
             // FoodItem_ComboBox
             // 
             this.FoodItem_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.FoodItem_ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FoodItem_ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.FoodItem_ComboBox.FormattingEnabled = true;
             this.FoodItem_ComboBox.Items.AddRange(new object[] {
             "(none)"});
@@ -441,7 +441,7 @@ namespace Scramble.Legacy
             // 
             // FoodBytes_Label
             // 
-            this.FoodBytes_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.FoodBytes_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.FoodBytes_Label.Location = new System.Drawing.Point(197, 93);
             this.FoodBytes_Label.Name = "FoodBytes_Label";
             this.FoodBytes_Label.Size = new System.Drawing.Size(176, 23);
@@ -451,7 +451,7 @@ namespace Scramble.Legacy
             // 
             // CharacterName_Label
             // 
-            this.CharacterName_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CharacterName_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.CharacterName_Label.Location = new System.Drawing.Point(6, 54);
             this.CharacterName_Label.Name = "CharacterName_Label";
             this.CharacterName_Label.Size = new System.Drawing.Size(367, 30);
@@ -495,7 +495,7 @@ namespace Scramble.Legacy
             // 
             // Bravery_Label
             // 
-            this.Bravery_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Bravery_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Bravery_Label.Location = new System.Drawing.Point(10, 199);
             this.Bravery_Label.Name = "Bravery_Label";
             this.Bravery_Label.Size = new System.Drawing.Size(91, 23);
@@ -517,7 +517,7 @@ namespace Scramble.Legacy
             // 
             // Sync_Label
             // 
-            this.Sync_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Sync_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Sync_Label.Location = new System.Drawing.Point(10, 170);
             this.Sync_Label.Name = "Sync_Label";
             this.Sync_Label.Size = new System.Drawing.Size(91, 23);
@@ -539,7 +539,7 @@ namespace Scramble.Legacy
             // 
             // Def_Label
             // 
-            this.Def_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Def_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Def_Label.Location = new System.Drawing.Point(10, 141);
             this.Def_Label.Name = "Def_Label";
             this.Def_Label.Size = new System.Drawing.Size(91, 23);
@@ -561,7 +561,7 @@ namespace Scramble.Legacy
             // 
             // Atk_Label
             // 
-            this.Atk_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Atk_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Atk_Label.Location = new System.Drawing.Point(10, 112);
             this.Atk_Label.Name = "Atk_Label";
             this.Atk_Label.Size = new System.Drawing.Size(91, 23);
@@ -584,7 +584,7 @@ namespace Scramble.Legacy
             this.CharacterTabChoose.Controls.Add(this.Tab_PC1);
             this.CharacterTabChoose.Controls.Add(this.Tab_PC2);
             this.CharacterTabChoose.Controls.Add(this.Tab_PC3);
-            this.CharacterTabChoose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CharacterTabChoose.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.CharacterTabChoose.Location = new System.Drawing.Point(6, 22);
             this.CharacterTabChoose.Name = "CharacterTabChoose";
             this.CharacterTabChoose.SelectedIndex = 0;
@@ -669,7 +669,7 @@ namespace Scramble.Legacy
             // 
             // DifficultyLabel
             // 
-            this.DifficultyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DifficultyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.DifficultyLabel.Location = new System.Drawing.Point(372, 59);
             this.DifficultyLabel.Name = "DifficultyLabel";
             this.DifficultyLabel.Size = new System.Drawing.Size(91, 23);
@@ -702,7 +702,7 @@ namespace Scramble.Legacy
             // 
             // Hp_Label
             // 
-            this.Hp_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Hp_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Hp_Label.Location = new System.Drawing.Point(10, 30);
             this.Hp_Label.Name = "Hp_Label";
             this.Hp_Label.Size = new System.Drawing.Size(71, 23);
@@ -724,7 +724,7 @@ namespace Scramble.Legacy
             // 
             // Money_Label
             // 
-            this.Money_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Money_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Money_Label.Location = new System.Drawing.Point(372, 30);
             this.Money_Label.Name = "Money_Label";
             this.Money_Label.Size = new System.Drawing.Size(91, 23);
@@ -741,7 +741,7 @@ namespace Scramble.Legacy
             // 
             // MaxLevel_Label
             // 
-            this.MaxLevel_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.MaxLevel_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.MaxLevel_Label.Location = new System.Drawing.Point(10, 117);
             this.MaxLevel_Label.Name = "MaxLevel_Label";
             this.MaxLevel_Label.Size = new System.Drawing.Size(91, 23);
@@ -758,7 +758,7 @@ namespace Scramble.Legacy
             // 
             // CurrentLevel_Label
             // 
-            this.CurrentLevel_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CurrentLevel_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.CurrentLevel_Label.Location = new System.Drawing.Point(10, 88);
             this.CurrentLevel_Label.Name = "CurrentLevel_Label";
             this.CurrentLevel_Label.Size = new System.Drawing.Size(91, 23);
@@ -780,7 +780,7 @@ namespace Scramble.Legacy
             // 
             // Exp_Label
             // 
-            this.Exp_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Exp_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.Exp_Label.Location = new System.Drawing.Point(10, 59);
             this.Exp_Label.Name = "Exp_Label";
             this.Exp_Label.Size = new System.Drawing.Size(71, 23);
@@ -794,6 +794,7 @@ namespace Scramble.Legacy
             this.ClientSize = new System.Drawing.Size(604, 455);
             this.Controls.Add(this.Other_GroupBox);
             this.Controls.Add(this.CharacterStats_GroupBox);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LegacyStatsEditor";

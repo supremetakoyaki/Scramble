@@ -40,7 +40,7 @@ namespace Scramble.Forms
             this.TurfWarPlacement_ComboBox = new System.Windows.Forms.ComboBox();
             this.Prizes_Label = new System.Windows.Forms.Label();
             this.TurfWar_ListView = new System.Windows.Forms.ListView();
-            this.TurfWarNameHeader = new System.Windows.Forms.ColumnHeader();
+            this.TurfWarNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Points_GroupBox = new System.Windows.Forms.GroupBox();
             this.MaxCurrentPoints_Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.HighScore_NumUpDown)).BeginInit();
@@ -52,53 +52,53 @@ namespace Scramble.Forms
             // 
             // HighScore_NumUpDown
             // 
-            this.HighScore_NumUpDown.Location = new System.Drawing.Point(300, 32);
+            this.HighScore_NumUpDown.Location = new System.Drawing.Point(257, 28);
             this.HighScore_NumUpDown.Maximum = new decimal(new int[] {
             999999,
             0,
             0,
             0});
             this.HighScore_NumUpDown.Name = "HighScore_NumUpDown";
-            this.HighScore_NumUpDown.Size = new System.Drawing.Size(124, 23);
+            this.HighScore_NumUpDown.Size = new System.Drawing.Size(117, 23);
             this.HighScore_NumUpDown.TabIndex = 4;
             this.HighScore_NumUpDown.ValueChanged += new System.EventHandler(this.HighScore_NumUpDown_ValueChanged);
             // 
             // CurrentScore_NumUpDown
             // 
-            this.CurrentScore_NumUpDown.Location = new System.Drawing.Point(193, 35);
+            this.CurrentScore_NumUpDown.Location = new System.Drawing.Point(165, 30);
             this.CurrentScore_NumUpDown.Maximum = new decimal(new int[] {
             999999,
             0,
             0,
             0});
             this.CurrentScore_NumUpDown.Name = "CurrentScore_NumUpDown";
-            this.CurrentScore_NumUpDown.Size = new System.Drawing.Size(85, 23);
+            this.CurrentScore_NumUpDown.Size = new System.Drawing.Size(73, 23);
             this.CurrentScore_NumUpDown.TabIndex = 3;
             this.CurrentScore_NumUpDown.ValueChanged += new System.EventHandler(this.CurrentScore_NumUpDown_ValueChanged);
             // 
             // CurrentScore_Label
             // 
-            this.CurrentScore_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CurrentScore_Label.Location = new System.Drawing.Point(72, 35);
+            this.CurrentScore_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.CurrentScore_Label.Location = new System.Drawing.Point(62, 30);
             this.CurrentScore_Label.Name = "CurrentScore_Label";
-            this.CurrentScore_Label.Size = new System.Drawing.Size(115, 23);
+            this.CurrentScore_Label.Size = new System.Drawing.Size(99, 20);
             this.CurrentScore_Label.TabIndex = 2;
             this.CurrentScore_Label.Text = "{CurrentScore:}";
             // 
             // HighScore_Label
             // 
-            this.HighScore_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.HighScore_Label.Location = new System.Drawing.Point(194, 32);
+            this.HighScore_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.HighScore_Label.Location = new System.Drawing.Point(166, 28);
             this.HighScore_Label.Name = "HighScore_Label";
-            this.HighScore_Label.Size = new System.Drawing.Size(100, 19);
+            this.HighScore_Label.Size = new System.Drawing.Size(86, 16);
             this.HighScore_Label.TabIndex = 1;
             this.HighScore_Label.Text = "{HighScore:}";
             // 
             // PointsIcon_PictureBox
             // 
-            this.PointsIcon_PictureBox.Location = new System.Drawing.Point(6, 22);
+            this.PointsIcon_PictureBox.Location = new System.Drawing.Point(5, 19);
             this.PointsIcon_PictureBox.Name = "PointsIcon_PictureBox";
-            this.PointsIcon_PictureBox.Size = new System.Drawing.Size(50, 50);
+            this.PointsIcon_PictureBox.Size = new System.Drawing.Size(43, 43);
             this.PointsIcon_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PointsIcon_PictureBox.TabIndex = 1;
             this.PointsIcon_PictureBox.TabStop = false;
@@ -112,9 +112,9 @@ namespace Scramble.Forms
             this.TurfWars_GroupBox.Controls.Add(this.Prizes_Label);
             this.TurfWars_GroupBox.Controls.Add(this.HighScore_NumUpDown);
             this.TurfWars_GroupBox.Controls.Add(this.TurfWar_ListView);
-            this.TurfWars_GroupBox.Location = new System.Drawing.Point(12, 101);
+            this.TurfWars_GroupBox.Location = new System.Drawing.Point(10, 88);
             this.TurfWars_GroupBox.Name = "TurfWars_GroupBox";
-            this.TurfWars_GroupBox.Size = new System.Drawing.Size(430, 148);
+            this.TurfWars_GroupBox.Size = new System.Drawing.Size(382, 141);
             this.TurfWars_GroupBox.TabIndex = 1;
             this.TurfWars_GroupBox.TabStop = false;
             this.TurfWars_GroupBox.Text = "{TurfWars}";
@@ -122,8 +122,8 @@ namespace Scramble.Forms
             // MaxPrizes_AllScrambles_Checkbox
             // 
             this.MaxPrizes_AllScrambles_Checkbox.AutoSize = true;
-            this.MaxPrizes_AllScrambles_Checkbox.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MaxPrizes_AllScrambles_Checkbox.Location = new System.Drawing.Point(324, 123);
+            this.MaxPrizes_AllScrambles_Checkbox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.MaxPrizes_AllScrambles_Checkbox.Location = new System.Drawing.Point(278, 112);
             this.MaxPrizes_AllScrambles_Checkbox.Name = "MaxPrizes_AllScrambles_Checkbox";
             this.MaxPrizes_AllScrambles_Checkbox.Size = new System.Drawing.Size(96, 17);
             this.MaxPrizes_AllScrambles_Checkbox.TabIndex = 7;
@@ -133,9 +133,9 @@ namespace Scramble.Forms
             // MaxPrizes_Button
             // 
             this.MaxPrizes_Button.BackColor = System.Drawing.Color.Ivory;
-            this.MaxPrizes_Button.Location = new System.Drawing.Point(194, 119);
+            this.MaxPrizes_Button.Location = new System.Drawing.Point(166, 103);
             this.MaxPrizes_Button.Name = "MaxPrizes_Button";
-            this.MaxPrizes_Button.Size = new System.Drawing.Size(124, 23);
+            this.MaxPrizes_Button.Size = new System.Drawing.Size(106, 32);
             this.MaxPrizes_Button.TabIndex = 5;
             this.MaxPrizes_Button.Text = "{MaxPrizes}";
             this.MaxPrizes_Button.UseVisualStyleBackColor = false;
@@ -144,20 +144,20 @@ namespace Scramble.Forms
             // TurfWarPlacement_ComboBox
             // 
             this.TurfWarPlacement_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TurfWarPlacement_ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TurfWarPlacement_ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.TurfWarPlacement_ComboBox.FormattingEnabled = true;
-            this.TurfWarPlacement_ComboBox.Location = new System.Drawing.Point(300, 77);
+            this.TurfWarPlacement_ComboBox.Location = new System.Drawing.Point(257, 67);
             this.TurfWarPlacement_ComboBox.Name = "TurfWarPlacement_ComboBox";
-            this.TurfWarPlacement_ComboBox.Size = new System.Drawing.Size(124, 21);
+            this.TurfWarPlacement_ComboBox.Size = new System.Drawing.Size(117, 21);
             this.TurfWarPlacement_ComboBox.TabIndex = 6;
             this.TurfWarPlacement_ComboBox.SelectedIndexChanged += new System.EventHandler(this.TurfWarPlacement_ComboBox_SelectedIndexChanged);
             // 
             // Prizes_Label
             // 
-            this.Prizes_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Prizes_Label.Location = new System.Drawing.Point(194, 77);
+            this.Prizes_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Prizes_Label.Location = new System.Drawing.Point(166, 67);
             this.Prizes_Label.Name = "Prizes_Label";
-            this.Prizes_Label.Size = new System.Drawing.Size(100, 19);
+            this.Prizes_Label.Size = new System.Drawing.Size(86, 16);
             this.Prizes_Label.TabIndex = 5;
             this.Prizes_Label.Text = "{Prizes:}";
             // 
@@ -165,14 +165,14 @@ namespace Scramble.Forms
             // 
             this.TurfWar_ListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.TurfWarNameHeader});
-            this.TurfWar_ListView.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TurfWar_ListView.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.TurfWar_ListView.FullRowSelect = true;
             this.TurfWar_ListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.TurfWar_ListView.HideSelection = false;
-            this.TurfWar_ListView.Location = new System.Drawing.Point(6, 22);
+            this.TurfWar_ListView.Location = new System.Drawing.Point(5, 19);
             this.TurfWar_ListView.MultiSelect = false;
             this.TurfWar_ListView.Name = "TurfWar_ListView";
-            this.TurfWar_ListView.Size = new System.Drawing.Size(180, 120);
+            this.TurfWar_ListView.Size = new System.Drawing.Size(155, 116);
             this.TurfWar_ListView.TabIndex = 0;
             this.TurfWar_ListView.UseCompatibleStateImageBehavior = false;
             this.TurfWar_ListView.View = System.Windows.Forms.View.Details;
@@ -189,9 +189,9 @@ namespace Scramble.Forms
             this.Points_GroupBox.Controls.Add(this.CurrentScore_NumUpDown);
             this.Points_GroupBox.Controls.Add(this.PointsIcon_PictureBox);
             this.Points_GroupBox.Controls.Add(this.CurrentScore_Label);
-            this.Points_GroupBox.Location = new System.Drawing.Point(12, 12);
+            this.Points_GroupBox.Location = new System.Drawing.Point(10, 10);
             this.Points_GroupBox.Name = "Points_GroupBox";
-            this.Points_GroupBox.Size = new System.Drawing.Size(430, 83);
+            this.Points_GroupBox.Size = new System.Drawing.Size(382, 72);
             this.Points_GroupBox.TabIndex = 0;
             this.Points_GroupBox.TabStop = false;
             this.Points_GroupBox.Text = "{Points}";
@@ -199,9 +199,9 @@ namespace Scramble.Forms
             // MaxCurrentPoints_Button
             // 
             this.MaxCurrentPoints_Button.BackColor = System.Drawing.Color.Ivory;
-            this.MaxCurrentPoints_Button.Location = new System.Drawing.Point(300, 33);
+            this.MaxCurrentPoints_Button.Location = new System.Drawing.Point(257, 29);
             this.MaxCurrentPoints_Button.Name = "MaxCurrentPoints_Button";
-            this.MaxCurrentPoints_Button.Size = new System.Drawing.Size(124, 23);
+            this.MaxCurrentPoints_Button.Size = new System.Drawing.Size(117, 24);
             this.MaxCurrentPoints_Button.TabIndex = 4;
             this.MaxCurrentPoints_Button.Text = "{MaxPoints}";
             this.MaxCurrentPoints_Button.UseVisualStyleBackColor = false;
@@ -209,11 +209,12 @@ namespace Scramble.Forms
             // 
             // TurfWarEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 261);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(404, 241);
             this.Controls.Add(this.TurfWars_GroupBox);
             this.Controls.Add(this.Points_GroupBox);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "TurfWarEditor";

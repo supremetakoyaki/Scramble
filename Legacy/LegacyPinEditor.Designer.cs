@@ -482,6 +482,7 @@ namespace Scramble.Legacy
             this.ClientSize = new System.Drawing.Size(924, 601);
             this.Controls.Add(this.AllPins_GroupBox);
             this.Controls.Add(this.PinList_GroupBox);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LegacyPinEditor";

@@ -77,7 +77,7 @@ namespace Scramble.Forms
             // 
             // VaVol_Label
             // 
-            this.VaVol_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.VaVol_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.VaVol_Label.Location = new System.Drawing.Point(6, 137);
             this.VaVol_Label.Name = "VaVol_Label";
             this.VaVol_Label.Size = new System.Drawing.Size(122, 24);
@@ -96,7 +96,7 @@ namespace Scramble.Forms
             // 
             // SfxVol_Label
             // 
-            this.SfxVol_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SfxVol_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.SfxVol_Label.Location = new System.Drawing.Point(6, 86);
             this.SfxVol_Label.Name = "SfxVol_Label";
             this.SfxVol_Label.Size = new System.Drawing.Size(122, 24);
@@ -115,7 +115,7 @@ namespace Scramble.Forms
             // 
             // MusicVol_Label
             // 
-            this.MusicVol_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.MusicVol_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.MusicVol_Label.Location = new System.Drawing.Point(6, 35);
             this.MusicVol_Label.Name = "MusicVol_Label";
             this.MusicVol_Label.Size = new System.Drawing.Size(122, 24);
@@ -174,7 +174,7 @@ namespace Scramble.Forms
             // 
             // Other_Label
             // 
-            this.Other_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Other_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.Other_Label.Location = new System.Drawing.Point(6, 88);
             this.Other_Label.Name = "Other_Label";
             this.Other_Label.Size = new System.Drawing.Size(242, 23);
@@ -203,7 +203,7 @@ namespace Scramble.Forms
             // 
             // VaLanguage_Label
             // 
-            this.VaLanguage_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.VaLanguage_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.VaLanguage_Label.Location = new System.Drawing.Point(6, 28);
             this.VaLanguage_Label.Name = "VaLanguage_Label";
             this.VaLanguage_Label.Size = new System.Drawing.Size(242, 23);
@@ -217,6 +217,7 @@ namespace Scramble.Forms
             this.ClientSize = new System.Drawing.Size(284, 421);
             this.Controls.Add(this.GeneralGroupBox);
             this.Controls.Add(this.VolumeGroupBox);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "SettingsEditor";

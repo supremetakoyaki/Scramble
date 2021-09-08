@@ -110,6 +110,7 @@ namespace Scramble.Forms
             this.Controls.Add(this.Utilities_GroupBox);
             this.Controls.Add(this.TWEWYFR_Button);
             this.Controls.Add(this.NTWEWY_Button);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LauncherForm";

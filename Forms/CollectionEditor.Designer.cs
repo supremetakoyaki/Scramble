@@ -57,6 +57,7 @@ namespace Scramble.Forms
             this.groupBox1.Controls.Add(this.ChangeLockStatusButton);
             this.groupBox1.Controls.Add(this.RecordInvListView);
             this.groupBox1.Controls.Add(this.UnlockAllButton);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(760, 402);
@@ -66,9 +67,10 @@ namespace Scramble.Forms
             // 
             // UnmasterSelectedPins_Button
             // 
-            this.UnmasterSelectedPins_Button.Location = new System.Drawing.Point(528, 363);
+            this.UnmasterSelectedPins_Button.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.UnmasterSelectedPins_Button.Location = new System.Drawing.Point(511, 363);
             this.UnmasterSelectedPins_Button.Name = "UnmasterSelectedPins_Button";
-            this.UnmasterSelectedPins_Button.Size = new System.Drawing.Size(226, 30);
+            this.UnmasterSelectedPins_Button.Size = new System.Drawing.Size(243, 30);
             this.UnmasterSelectedPins_Button.TabIndex = 6;
             this.UnmasterSelectedPins_Button.Text = "(Un)master selected pin(s)";
             this.UnmasterSelectedPins_Button.UseVisualStyleBackColor = true;
@@ -77,9 +79,10 @@ namespace Scramble.Forms
             // UnmasterAllPins_Button
             // 
             this.UnmasterAllPins_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(230)))), ((int)(((byte)(254)))));
-            this.UnmasterAllPins_Button.Location = new System.Drawing.Point(528, 330);
+            this.UnmasterAllPins_Button.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.UnmasterAllPins_Button.Location = new System.Drawing.Point(511, 330);
             this.UnmasterAllPins_Button.Name = "UnmasterAllPins_Button";
-            this.UnmasterAllPins_Button.Size = new System.Drawing.Size(226, 30);
+            this.UnmasterAllPins_Button.Size = new System.Drawing.Size(243, 30);
             this.UnmasterAllPins_Button.TabIndex = 5;
             this.UnmasterAllPins_Button.Text = "(Un)master all pins";
             this.UnmasterAllPins_Button.UseVisualStyleBackColor = false;
@@ -87,9 +90,10 @@ namespace Scramble.Forms
             // 
             // ChangeSeeStatusButton
             // 
-            this.ChangeSeeStatusButton.Location = new System.Drawing.Point(201, 363);
+            this.ChangeSeeStatusButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ChangeSeeStatusButton.Location = new System.Drawing.Point(218, 363);
             this.ChangeSeeStatusButton.Name = "ChangeSeeStatusButton";
-            this.ChangeSeeStatusButton.Size = new System.Drawing.Size(189, 30);
+            this.ChangeSeeStatusButton.Size = new System.Drawing.Size(206, 30);
             this.ChangeSeeStatusButton.TabIndex = 4;
             this.ChangeSeeStatusButton.Text = "(Un)see selected";
             this.ChangeSeeStatusButton.UseVisualStyleBackColor = true;
@@ -98,9 +102,10 @@ namespace Scramble.Forms
             // UnseeAllButton
             // 
             this.UnseeAllButton.BackColor = System.Drawing.Color.AliceBlue;
-            this.UnseeAllButton.Location = new System.Drawing.Point(201, 330);
+            this.UnseeAllButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.UnseeAllButton.Location = new System.Drawing.Point(218, 330);
             this.UnseeAllButton.Name = "UnseeAllButton";
-            this.UnseeAllButton.Size = new System.Drawing.Size(189, 30);
+            this.UnseeAllButton.Size = new System.Drawing.Size(206, 30);
             this.UnseeAllButton.TabIndex = 2;
             this.UnseeAllButton.Text = "(Un)see all";
             this.UnseeAllButton.UseVisualStyleBackColor = false;
@@ -108,9 +113,10 @@ namespace Scramble.Forms
             // 
             // ChangeLockStatusButton
             // 
+            this.ChangeLockStatusButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ChangeLockStatusButton.Location = new System.Drawing.Point(6, 363);
             this.ChangeLockStatusButton.Name = "ChangeLockStatusButton";
-            this.ChangeLockStatusButton.Size = new System.Drawing.Size(189, 30);
+            this.ChangeLockStatusButton.Size = new System.Drawing.Size(206, 30);
             this.ChangeLockStatusButton.TabIndex = 3;
             this.ChangeLockStatusButton.Text = "(Un)lock selected";
             this.ChangeLockStatusButton.UseVisualStyleBackColor = true;
@@ -126,6 +132,7 @@ namespace Scramble.Forms
             this.UnlockedHeader,
             this.FlagHeader,
             this.PinMasteredHeader});
+            this.RecordInvListView.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.RecordInvListView.FullRowSelect = true;
             this.RecordInvListView.HideSelection = false;
             this.RecordInvListView.Location = new System.Drawing.Point(6, 22);
@@ -140,7 +147,7 @@ namespace Scramble.Forms
             // 
             this.ItemNameHeader.DisplayIndex = 2;
             this.ItemNameHeader.Text = "Name";
-            this.ItemNameHeader.Width = 280;
+            this.ItemNameHeader.Width = 274;
             // 
             // SaveIDHeader
             // 
@@ -181,9 +188,10 @@ namespace Scramble.Forms
             // UnlockAllButton
             // 
             this.UnlockAllButton.BackColor = System.Drawing.Color.PaleGreen;
+            this.UnlockAllButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.UnlockAllButton.Location = new System.Drawing.Point(6, 330);
             this.UnlockAllButton.Name = "UnlockAllButton";
-            this.UnlockAllButton.Size = new System.Drawing.Size(189, 30);
+            this.UnlockAllButton.Size = new System.Drawing.Size(206, 30);
             this.UnlockAllButton.TabIndex = 1;
             this.UnlockAllButton.Text = "(Un)lock all";
             this.UnlockAllButton.UseVisualStyleBackColor = false;
@@ -195,6 +203,7 @@ namespace Scramble.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(784, 424);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "CollectionEditor";

@@ -117,7 +117,7 @@ namespace Scramble.Forms
             this.UnlockAll_PinsCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.UnlockAll_PinsCheckbox.Location = new System.Drawing.Point(159, 487);
             this.UnlockAll_PinsCheckbox.Name = "UnlockAll_PinsCheckbox";
-            this.UnlockAll_PinsCheckbox.Size = new System.Drawing.Size(54, 17);
+            this.UnlockAll_PinsCheckbox.Size = new System.Drawing.Size(56, 19);
             this.UnlockAll_PinsCheckbox.TabIndex = 2;
             this.UnlockAll_PinsCheckbox.Text = "{Pins}";
             this.UnlockAll_PinsCheckbox.UseVisualStyleBackColor = true;
@@ -480,7 +480,7 @@ namespace Scramble.Forms
             0,
             0});
             this.ErasedCount_NumUpDown.Name = "ErasedCount_NumUpDown";
-            this.ErasedCount_NumUpDown.Size = new System.Drawing.Size(68, 20);
+            this.ErasedCount_NumUpDown.Size = new System.Drawing.Size(68, 23);
             this.ErasedCount_NumUpDown.TabIndex = 16;
             this.ErasedCount_NumUpDown.Value = new decimal(new int[] {
             1,
@@ -508,7 +508,7 @@ namespace Scramble.Forms
             0,
             0});
             this.RecordLevel_NumUpDown.Name = "RecordLevel_NumUpDown";
-            this.RecordLevel_NumUpDown.Size = new System.Drawing.Size(68, 20);
+            this.RecordLevel_NumUpDown.Size = new System.Drawing.Size(68, 23);
             this.RecordLevel_NumUpDown.TabIndex = 14;
             this.RecordLevel_NumUpDown.Value = new decimal(new int[] {
             1,
@@ -593,6 +593,7 @@ namespace Scramble.Forms
             this.ClientSize = new System.Drawing.Size(1172, 537);
             this.Controls.Add(this.NoiseInfo_GroupBox);
             this.Controls.Add(this.NoiseListGroupBox);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "NoisepediaEditor";

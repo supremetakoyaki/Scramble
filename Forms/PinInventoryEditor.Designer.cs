@@ -585,6 +585,7 @@ namespace Scramble.Forms
             this.ClientSize = new System.Drawing.Size(1184, 681);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "PinInventoryEditor";
