@@ -803,7 +803,7 @@ namespace Scramble.Legacy
             }
 
             ReadyForUserInput = false;
-            SelectedPin.Experience = (ushort)Experience_NumUpDown.Value;
+            SelectedPin.Experience = (int)Experience_NumUpDown.Value;
             ReadyForUserInput = true;
         }
 
