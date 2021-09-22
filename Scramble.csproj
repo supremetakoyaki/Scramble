@@ -454,7 +454,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Assets\lang_0.json" />
     <None Include="Assets\lang_en.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
