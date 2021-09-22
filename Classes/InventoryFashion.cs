@@ -34,7 +34,7 @@ namespace Scramble.Classes
         public InventoryFashion(ushort Id)
         {
             this.Id = Id;
-            this.ListIndex = -1;
+            ListIndex = -1;
         }
 
         public void AssignListIndex(int Index)

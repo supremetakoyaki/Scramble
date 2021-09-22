@@ -499,7 +499,8 @@ namespace Scramble.Forms
         private void RemovePinButton_Click(object sender, EventArgs e)
         {
             if (MyPinInventoryView.Items.Count > 0 && MyPinInventoryView.SelectedItems.Count > 0)
-            {;
+            {
+                ;
                 int ThisIndex = (int)MyPinInventoryView.SelectedItems[0].Tag;
                 InventoryPin Pin = InventoryPins[ThisIndex];
 

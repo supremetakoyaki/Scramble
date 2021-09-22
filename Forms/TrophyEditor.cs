@@ -85,8 +85,10 @@ namespace Scramble.Forms
 
             foreach (Trophy TrophyItem in Sukuranburu.GetItemManager().GetTrophies().Values.OrderBy(t => t.SortIndex))
             {
-                ListViewItem ItemToAdd = new ListViewItem(new string[] { TrophyItem.SortIndex.ToString(), TrophyItem.Id.ToString(), Sukuranburu.GetGameString(TrophyItem.TrophyTitle) });
-                ItemToAdd.Tag = TrophyItem.Id;
+                ListViewItem ItemToAdd = new ListViewItem(new string[] { TrophyItem.SortIndex.ToString(), TrophyItem.Id.ToString(), Sukuranburu.GetGameString(TrophyItem.TrophyTitle) })
+                {
+                    Tag = TrophyItem.Id
+                };
                 TrophyListView.Items.Add(ItemToAdd);
 
                 short LayerIndex = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + (15 * TrophyItem.Id));

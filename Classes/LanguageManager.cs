@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
-using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -73,7 +72,7 @@ namespace Scramble.Classes
             {
                 if (!Languages.ContainsKey(i) || Languages[i].LanguageId != i)
                 {
-                    MessageBox.Show(String.Format("Language ID {0} could not be found.", i), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(string.Format("Language ID {0} could not be found.", i), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     LanguageComboBox.Items.Insert(i, "Invalid language");
                 }
                 else

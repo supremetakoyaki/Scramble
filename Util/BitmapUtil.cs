@@ -8,11 +8,11 @@ namespace Scramble.Util
     {
         public static Bitmap RotateImage(Bitmap b, float angle)
         {
-            var corners = new[]
+            PointF[] corners = new[]
                 {new PointF(0, 0), new Point(b.Width, 0), new PointF(0, b.Height), new PointF(b.Width, b.Height)};
 
-            var xc = corners.Select(p => Rotate(p, angle).X);
-            var yc = corners.Select(p => Rotate(p, angle).Y);
+            System.Collections.Generic.IEnumerable<float> xc = corners.Select(p => Rotate(p, angle).X);
+            System.Collections.Generic.IEnumerable<float> yc = corners.Select(p => Rotate(p, angle).Y);
 
             //create a new empty bitmap to hold rotated image
             Bitmap returnBitmap = new Bitmap((int)Math.Abs(xc.Max() - xc.Min()), (int)Math.Abs(yc.Max() - yc.Min()));
@@ -39,7 +39,7 @@ namespace Scramble.Util
         public static PointF Rotate(PointF p, float angle)
         {
             // convert from angle to radians
-            var theta = Math.PI * angle / 180;
+            double theta = Math.PI * angle / 180;
             return new PointF(
                 (float)(Math.Cos(theta) * (p.X) - Math.Sin(theta) * (p.Y)),
                 (float)(Math.Sin(theta) * (p.X) + Math.Cos(theta) * (p.Y)));

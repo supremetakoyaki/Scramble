@@ -711,7 +711,7 @@ namespace Scramble.Legacy
                     ReadyForUserInput = true;
                     return;
                 }
-                
+
                 ushort SaveIndex = GetNextSaveIndex_Stockpile();
                 if (SaveIndex == EMPTY)
                 {

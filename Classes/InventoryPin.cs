@@ -52,7 +52,7 @@ namespace Scramble.Classes
             this.Experience = Experience;
             Amount = 1;
 
-            this.ListIndex = ListIndex;
+            ListIndex = ListIndex;
         }
 
         public void IntersectEquippingData(Dictionary<byte, byte> EquippingData)
