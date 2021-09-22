@@ -670,11 +670,6 @@
             this.LanguageSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageSelectComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LanguageSelectComboBox.FormattingEnabled = true;
-            this.LanguageSelectComboBox.Items.AddRange(new object[] {
-            "English",
-            "日本語",
-            "Español",
-            "Français"});
             this.LanguageSelectComboBox.Location = new System.Drawing.Point(75, 364);
             this.LanguageSelectComboBox.Name = "LanguageSelectComboBox";
             this.LanguageSelectComboBox.Size = new System.Drawing.Size(76, 23);

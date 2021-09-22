@@ -40,8 +40,8 @@ namespace Scramble
             }
         }
 
-        private readonly LanguageStrings LangStrings;
-        public byte CurrentLanguage;
+        private readonly LanguageManager LangStrings;
+        public int CurrentLanguage;
 
         private readonly GameTextProcessor GameTextProcessor;
 
@@ -92,7 +92,7 @@ namespace Scramble
             SocialManager = new SocialNetworkManager();
             NoizuManager = new NoiseManager();
 
-            LangStrings = new LanguageStrings();
+            LangStrings = new LanguageManager(LanguageSelectComboBox);
             GameTextProcessor = new GameTextProcessor();
 
             LanguageSelectComboBox.Text = "English";
@@ -882,7 +882,7 @@ namespace Scramble
 
         private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)
         {
-            CurrentLanguage = (byte)LanguageSelectComboBox.SelectedIndex;
+            CurrentLanguage = LanguageSelectComboBox.SelectedIndex;
             DisplayLanguageStrings();
         }
 
