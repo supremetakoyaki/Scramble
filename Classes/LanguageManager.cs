@@ -32,7 +32,7 @@ namespace Scramble.Classes
             Languages = new SortedDictionary<int, Language>();
 
             // Load the embedded English.
-            string EnglishJson = Encoding.Default.GetString(Resources.ResourceManager.GetObject("lang_en") as byte[]);
+            string EnglishJson = Resources.ResourceManager.GetObject("lang_en") as string;
             dynamic DeserializedEnglish = JsonSerializer.Deserialize<ExpandoObject>(EnglishJson);
             dynamic DeserializeEnglishStrings = JsonSerializer.Deserialize<ExpandoObject>(DeserializedEnglish.languageStrings.ToString());
 

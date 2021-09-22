@@ -171,12 +171,26 @@ namespace Scramble.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to {
+        ///   &quot;languageId&quot;: 0,
+        ///   &quot;languageName&quot;: &quot;English&quot;,
+        ///   &quot;languageStrings&quot;:
+        ///   {
+        ///        &quot;{ScrambleShortTitle}&quot;: &quot;Scramble&quot;,
+        ///        &quot;{ScrambleLongTitle}&quot;: &quot;Scramble — NEO TWEWY Save Editor&quot;,
+        ///        &quot;{Language}&quot;: &quot;Language&quot;,
+        ///        &quot;{Notice}&quot;: &quot;Notice&quot;,
+        ///        &quot;{Warning}&quot;: &quot;Warning&quot;,
+        ///        &quot;{Hey}&quot;: &quot;Hey!&quot;,
+        ///        &quot;{OpenSaveFile}&quot;: &quot;Open Save File...&quot;,
+        ///        &quot;{SaveChanges}&quot;: &quot;Save Changes&quot;,
+        ///        &quot;{SaveSlots}&quot;: &quot;Save Slots&quot;,
+        ///        &quot;{Autosave}&quot;: &quot;Autosave&quot;,
+        ///        &quot;{BackupCheckbox}&quot;: [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static byte[] lang_en {
+        internal static string lang_en {
             get {
-                object obj = ResourceManager.GetObject("lang_en", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("lang_en", resourceCulture);
             }
         }
         
