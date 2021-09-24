@@ -24,11 +24,13 @@ namespace Scramble.Classes
             { "RE", Color.Red },
             { "AQ", Color.Aqua },
             { "YE", Color.Yellow },
-            { "GY", Color.Gray }
+            { "GY", Color.Gray },
+            { "IN", Color.Indigo }
         };
 
         public const string ALL_PATTERN = "<[^>]*>";
         public const string COLOR_PATTERN = "<C(.*?)>(.*?)<\\/C>";
+        public const string BOLD_PATTERN = "<(.*?)>(.*?)<\\/b>";
         public const string ITALIC_PATTERN = "<(.*?)>(.*?)<\\/i>";
         public const string SIZE_PATTERN = "<(.*?)%>(.*?)<\\/size>";
         //Not really necessary: public const string CENTER_PATTERN = "<center>(.*?)<\\/center>";
@@ -59,7 +61,7 @@ namespace Scramble.Classes
             Box.SelectionFont = Box.Font;
             Box.SelectionColor = Box.ForeColor;
 
-            Regex Expressions = new Regex(COLOR_PATTERN + '|' + ITALIC_PATTERN + '|' + SIZE_PATTERN);
+            Regex Expressions = new Regex(COLOR_PATTERN + '|' + ITALIC_PATTERN + '|' + BOLD_PATTERN + '|' + SIZE_PATTERN);
             Text = Text.Replace("<g>", "").Replace("</g>", ""); // we don't need this.
 
             string[] SplittedText = Expressions.Split(Text);
@@ -77,6 +79,10 @@ namespace Scramble.Classes
                 else if (Piece == "i")
                 {
                     SetItalics(Box);
+                }
+                else if (Piece == "b")
+                {
+                    SetBold(Box);
                 }
                 else
                 {
@@ -111,6 +117,14 @@ namespace Scramble.Classes
             Box.SelectionLength = 0;
 
             Box.SelectionFont = new Font(Box.SelectionFont.FontFamily, Box.SelectionFont.Size, FontStyle.Italic);
+        }
+
+        private void SetBold(RichTextBox Box)
+        {
+            Box.SelectionStart = Box.TextLength;
+            Box.SelectionLength = 0;
+
+            Box.SelectionFont = new Font(Box.SelectionFont.FontFamily, Box.SelectionFont.Size, FontStyle.Bold);
         }
     }
 }
