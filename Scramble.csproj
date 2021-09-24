@@ -315,6 +315,12 @@
     <Compile Include="Forms\MiscEditor.Designer.cs">
       <DependentUpon>MiscEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NeoTwewyRandomizerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NeoTwewyRandomizerForm.Designer.cs">
+      <DependentUpon>NeoTwewyRandomizerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NoisepediaEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,6 +363,7 @@
     <Compile Include="Forms\TurfWarEditor.Designer.cs">
       <DependentUpon>TurfWarEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameData\GameRandomizer.cs" />
     <Compile Include="GameData\Offsets.cs" />
     <Compile Include="Legacy\LegacyForm.cs">
       <SubType>Form</SubType>
@@ -410,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MiscEditor.resx">
       <DependentUpon>MiscEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NeoTwewyRandomizerForm.resx">
+      <DependentUpon>NeoTwewyRandomizerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NoisepediaEditor.resx">
       <DependentUpon>NoisepediaEditor.cs</DependentUpon>
@@ -493,6 +503,8 @@
     <Content Include="Assets\Logo_Legacy.png" />
     <Content Include="Assets\Logo_NTWEWY.png" />
     <Content Include="Assets\Logo_TWEWYFR.png" />
+    <None Include="Resources\RandomizerOverview_Logo.png" />
+    <None Include="Assets\RandomizerOverview_Logo.png" />
     <Content Include="FodyWeavers.xml" />
     <None Include="Assets\SoloRemix_To_FinalRemix.png" />
     <Content Include="Assets\Spoiler_Pin.png" />

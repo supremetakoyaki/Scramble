@@ -52,6 +52,7 @@
             this.OpenSocialEditButton = new System.Windows.Forms.Button();
             this.OpenInvEditorButton = new System.Windows.Forms.Button();
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
+            this.OpenRandomizerButton = new System.Windows.Forms.Button();
             this.OpenTurfWar_Edit = new System.Windows.Forms.Button();
             this.OpenTrophyEdit_Button = new System.Windows.Forms.Button();
             this.OpenDayEditor_Button = new System.Windows.Forms.Button();
@@ -367,6 +368,7 @@
             // 
             // GeneralGroupBox
             // 
+            this.GeneralGroupBox.Controls.Add(this.OpenRandomizerButton);
             this.GeneralGroupBox.Controls.Add(this.OpenTurfWar_Edit);
             this.GeneralGroupBox.Controls.Add(this.OpenTrophyEdit_Button);
             this.GeneralGroupBox.Controls.Add(this.OpenDayEditor_Button);
@@ -410,6 +412,17 @@
             this.GeneralGroupBox.TabStop = false;
             this.GeneralGroupBox.Text = "This selected slot";
             // 
+            // OpenRandomizerButton
+            // 
+            this.OpenRandomizerButton.BackColor = System.Drawing.Color.OldLace;
+            this.OpenRandomizerButton.Location = new System.Drawing.Point(268, 283);
+            this.OpenRandomizerButton.Name = "OpenRandomizerButton";
+            this.OpenRandomizerButton.Size = new System.Drawing.Size(108, 23);
+            this.OpenRandomizerButton.TabIndex = 33;
+            this.OpenRandomizerButton.Text = "Randomizer";
+            this.OpenRandomizerButton.UseVisualStyleBackColor = false;
+            this.OpenRandomizerButton.Click += new System.EventHandler(this.OpenRandomizerButton_Click);
+            // 
             // OpenTurfWar_Edit
             // 
             this.OpenTurfWar_Edit.Location = new System.Drawing.Point(400, 283);
@@ -444,7 +457,7 @@
             // 
             this.OverateCheckbox.Location = new System.Drawing.Point(95, 270);
             this.OverateCheckbox.Name = "OverateCheckbox";
-            this.OverateCheckbox.Size = new System.Drawing.Size(126, 24);
+            this.OverateCheckbox.Size = new System.Drawing.Size(76, 24);
             this.OverateCheckbox.TabIndex = 15;
             this.OverateCheckbox.Text = "{Overate}";
             this.OverateCheckbox.UseVisualStyleBackColor = true;
@@ -674,7 +687,7 @@
             this.LanguageSelectComboBox.Name = "LanguageSelectComboBox";
             this.LanguageSelectComboBox.Size = new System.Drawing.Size(76, 23);
             this.LanguageSelectComboBox.TabIndex = 0;
-            this.LanguageSelectComboBox.TextChanged += new System.EventHandler(this.LanguageSelectComboBox_TextChanged);
+            this.LanguageSelectComboBox.SelectedIndexChanged += new System.EventHandler(this.LanguageSelectComboBox_SelectedIndexChanged);
             // 
             // ShowSpoilersCheckbox
             // 
@@ -800,5 +813,6 @@
         private System.Windows.Forms.Button OpenTurfWar_Edit;
         private System.Windows.Forms.Button OpenTrophyEdit_Button;
         private System.Windows.Forms.Label ThankYou_Label;
+        private System.Windows.Forms.Button OpenRandomizerButton;
     }
 }

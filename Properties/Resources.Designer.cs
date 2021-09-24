@@ -172,21 +172,21 @@ namespace Scramble.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///   &quot;languageId&quot;: 0,
-        ///   &quot;languageName&quot;: &quot;English&quot;,
-        ///   &quot;languageStrings&quot;:
-        ///   {
-        ///        &quot;{ScrambleShortTitle}&quot;: &quot;Scramble&quot;,
-        ///        &quot;{ScrambleLongTitle}&quot;: &quot;Scramble — NEO TWEWY Save Editor&quot;,
-        ///        &quot;{Language}&quot;: &quot;Language&quot;,
-        ///        &quot;{Notice}&quot;: &quot;Notice&quot;,
-        ///        &quot;{Warning}&quot;: &quot;Warning&quot;,
-        ///        &quot;{Hey}&quot;: &quot;Hey!&quot;,
-        ///        &quot;{OpenSaveFile}&quot;: &quot;Open Save File...&quot;,
-        ///        &quot;{SaveChanges}&quot;: &quot;Save Changes&quot;,
-        ///        &quot;{SaveSlots}&quot;: &quot;Save Slots&quot;,
-        ///        &quot;{Autosave}&quot;: &quot;Autosave&quot;,
-        ///        &quot;{BackupCheckbox}&quot;: [rest of string was truncated]&quot;;.
+        ///  &quot;languageId&quot;: 0,
+        ///  &quot;languageName&quot;: &quot;English&quot;,
+        ///  &quot;languageStrings&quot;: {
+        ///    &quot;{ScrambleShortTitle}&quot;: &quot;Scramble&quot;,
+        ///    &quot;{ScrambleLongTitle}&quot;: &quot;Scramble — NEO TWEWY Save Editor&quot;,
+        ///    &quot;{Language}&quot;: &quot;Language&quot;,
+        ///    &quot;{Notice}&quot;: &quot;Notice&quot;,
+        ///    &quot;{Warning}&quot;: &quot;Warning&quot;,
+        ///    &quot;{Hey}&quot;: &quot;Hey!&quot;,
+        ///    &quot;{OpenSaveFile}&quot;: &quot;Open Save File...&quot;,
+        ///    &quot;{SaveChanges}&quot;: &quot;Save Changes&quot;,
+        ///    &quot;{SaveSlots}&quot;: &quot;Save Slots&quot;,
+        ///    &quot;{Autosave}&quot;: &quot;Autosave&quot;,
+        ///    &quot;{BackupCheckbox}&quot;: &quot;Make a backup&quot;,
+        ///    &quot;{DumpSlotData}&quot;: &quot;Dump Slot [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string lang_en {
             get {
@@ -300,6 +300,16 @@ namespace Scramble.Properties {
         internal static System.Drawing.Bitmap Logo_TWEWYFR {
             get {
                 object obj = ResourceManager.GetObject("Logo_TWEWYFR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RandomizerOverview_Logo {
+            get {
+                object obj = ResourceManager.GetObject("RandomizerOverview_Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

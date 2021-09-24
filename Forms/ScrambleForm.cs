@@ -27,6 +27,8 @@ namespace Scramble
         public SettingsEditor SettEditor;
         public MiscEditor MiscEditor;
 
+        public NeoTwewyRandomizerForm RandomizerEditor;
+
         public SaveData SelectedSlot
         {
             get
@@ -163,9 +165,9 @@ namespace Scramble
 
             CaloriesEaten_Label.Text = GetString("{CaloriesEaten}");
             OverateCheckbox.Text = GetString("{Overate}");
-
             OpenTrophyEdit_Button.Text = GetString("{TrophyEditor}");
             OpenTurfWar_Edit.Text = GetString("{TurfWarEditor}");
+            OpenRandomizerButton.Text = GetString("{Randomizer}");
         }
 
         private void PopulateImageLists()
@@ -880,7 +882,7 @@ namespace Scramble
             TrophyEditor.ShowDialog();
         }
 
-        private void LanguageSelectComboBox_TextChanged(object sender, EventArgs e)
+        private void LanguageSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             CurrentLanguage = LanguageSelectComboBox.SelectedIndex;
             DisplayLanguageStrings();
@@ -1006,6 +1008,17 @@ namespace Scramble
         private void ThankYou_Label_MouseLeave(object sender, EventArgs e)
         {
             ThankYou_Label.ForeColor = SystemColors.Control;
+        }
+
+        private void OpenRandomizerButton_Click(object sender, EventArgs e)
+        {
+            if (ShowSpoilers == false && ShowPrompt(GetString("DLG_ActionWillSpoil")) == false)
+            {
+                return;
+            }
+
+            RandomizerEditor = new NeoTwewyRandomizerForm();
+            RandomizerEditor.ShowDialog();
         }
     }
 }
