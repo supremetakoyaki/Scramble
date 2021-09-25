@@ -215,7 +215,7 @@
     "{Randomizer}": "Randomizer",
     "{NeoTwewyRandomizer}": "NEO: The World Ends with You — Randomizer",
     "{RandomizerOverviewTitle}": "Overview",
-    "{RandomizerOverviewDesc}": "The <b>NEO:TWEWY randomizer</b> is a tool that allows you to create a <CRE>completely random playthrough experience</C>.\nWhile you can use this on your already advanced save data, it is recommended that you use it on new or recently created files (near the beginning of the game), in order to minimize bugs.\n<CIN>Because NEO's save data is very fragile (in the sense that any tiny change could break the game),</C> <b>be sure to always make a backup of your save</b>, <CIN>otheriwse it can result in a softlock that may even occur when you least expect it.</C>",
+    "{RandomizerOverviewDesc}": "The <b>NEO:TWEWY randomizer</b> is a tool that allows you to create a <CRE>completely random playthrough experience</C>.\nWhile you can use this on your already advanced save data, it is recommended that you use it on new or recently created files (near the beginning of the game), in order to minimize bugs.\n<CIN>Because NEO's save data is very fragile (in the sense that any tiny change could break the game),</C> <b>be sure to always make a backup of your save</b>, <CIN>otherwise it can result in a softlock that may even occur when you least expect it.</C>",
     "{RandomizerChoice_Ok}": "This choice should work fine for the most part.",
     "{RandomizerChoice_Buggy}": "This choice can have unintended effects in the future.",
     "{RandomizerChoice_HighlyExperimental}": "This choice is highly experimental and will break your save file.",

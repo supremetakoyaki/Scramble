@@ -321,7 +321,7 @@ namespace Scramble.GameData
 
                 Pins.Add(i, NextPinItem);
 
-                int OffsetSum = 36 * (SelectedSlot.GetPartyMembers().Values.ToList()[i].Id - 1);
+                int OffsetSum = 36 * (SelectedSlot.GetPartyMembers().Values.ToList()[i].SaveIndex);
                 SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck1 + OffsetSum, i);
                 SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck2 + OffsetSum, i);
                 SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck3 + OffsetSum, i);
@@ -383,6 +383,9 @@ namespace Scramble.GameData
                 SelectedSlot.UpdateOffset_UInt16(i + 4, 0);
                 SelectedSlot.UpdateOffset_UInt16(i + 6, 0);
             }
+
+            SelectedSlot.LoadPartyMembers();
+            Sukuranburu.SerializePartyMembers();
         }
 
         public uint GenerateRandomPinExperience(PinItem Pin)
