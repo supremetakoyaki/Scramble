@@ -357,7 +357,7 @@ namespace Scramble
             ReadyForUserInput = true;
         }
 
-        private void SerializePartyMembers()
+        public void SerializePartyMembers()
         {
             // Clear the images first
             PartyMember1_PictureBox.Image = null;
