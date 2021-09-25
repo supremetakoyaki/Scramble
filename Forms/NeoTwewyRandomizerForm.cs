@@ -4,6 +4,7 @@ using Scramble.GameData;
 using Scramble.Properties;
 using System;
 using System.Drawing;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -77,6 +78,7 @@ namespace Scramble.Forms
             {
             }
 
+            Thread.Sleep(1500);
             Invoke(new Action(() => { DicePictureBox.Visible = false; WaitMessage.Text = string.Empty; }));
         }
 
@@ -121,6 +123,7 @@ namespace Scramble.Forms
 
             if (RandomizeClothing_Checkbox.Checked)
             {
+                GameRandomizer.RandomizeClothing(LevelOfChaos);
                 RandomizerProgressBar.Value += 1;
             }
 

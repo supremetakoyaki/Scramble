@@ -1,14 +1,10 @@
-﻿using System;
+﻿using NTwewyDb;
+using Scramble.Classes;
+using Scramble.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Numerics;
 using System.Security.Cryptography;
-using NTwewyDb;
-using Scramble.Forms;
-using Scramble.Classes;
-using System.Windows.Forms;
 
 namespace Scramble.GameData
 {
@@ -386,6 +382,92 @@ namespace Scramble.GameData
 
             SelectedSlot.LoadPartyMembers();
             Sukuranburu.SerializePartyMembers();
+        }
+
+        public void RandomizeClothing(RandomizerChaos LevelOfChaos)
+        {
+            int ClothingToAdd;
+            bool UnlimitedAttack;
+            bool TryAvoidDuplicates;
+
+            switch (LevelOfChaos)
+            {
+                case RandomizerChaos.Mild:
+                    ClothingToAdd = GenerateRandomNumber(0, 25);
+                    UnlimitedAttack = false;
+                    TryAvoidDuplicates = true;
+                    break;
+
+                case RandomizerChaos.Moderate:
+                default:
+                    ClothingToAdd = GenerateRandomNumber(0, 100);
+                    UnlimitedAttack = false;
+                    TryAvoidDuplicates = true;
+                    break;
+
+                case RandomizerChaos.Heavy:
+                    ClothingToAdd = GenerateRandomNumber(0, 500);
+                    UnlimitedAttack = false;
+                    TryAvoidDuplicates = false;
+                    break;
+            }
+
+            // Clear all clothing data.
+            for (int i = 0; i < 6; i++)
+            {
+                int OffsetSum = 36 * i;
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedHeadwearIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedTopIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedBottomIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedShoesIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedAccessoryIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+            }
+
+            for (int i = Offsets.ClothingInv_First; i < Offsets.ClothingInv_Last; i += 2)
+            {
+                SelectedSlot.UpdateOffset_UInt16(ClothingInventoryEditor.EMPTY_CLOTHING_ID, 0);
+            }
+
+            foreach (PartyMember Member in SelectedSlot.GetPartyMembers().Values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    Member.EquippedClothingIndexes[i] = -1;
+                }
+            }
+
+            // Generate the clothing enumerable we'll use
+            var EquippableClothing = Sukuranburu.GetItemManager().GetItems().Values.OfType<ClothingItem>();
+            if (!UnlimitedAttack)
+            {
+                EquippableClothing = EquippableClothing.Where(c => c.AtkBoost < 36);
+            }
+
+            // Add clothing
+            Dictionary<int, ClothingItem> Clothing = new Dictionary<int, ClothingItem>(); 
+
+            for (int i = 0; i < ClothingToAdd; i++)
+            {
+                ClothingItem NextClothingItem = null; //
+                bool Valid = false;
+
+                while (NextClothingItem == null || !Valid)
+                {
+                    NextClothingItem = EquippableClothing.ElementAt(GenerateRandomNumber(0, EquippableClothing.Count() - 1));
+                    Valid = TryAvoidDuplicates ? Clothing.Values.Where(c => c == NextClothingItem).Count() < 4 : Clothing.Values.Where(c => c == NextClothingItem).Count() < 9;
+                }
+
+                Clothing.Add(i, NextClothingItem);
+            }
+
+            int CurrentPointer = Offsets.ClothingInv_First;
+            for (int i = 0; i < Clothing.Count; i++)
+            {
+                SelectedSlot.UpdateOffset_UInt16(CurrentPointer, (ushort)(Clothing[i].ParticularId + 1));
+                CurrentPointer += 2;
+            }
+
+            SelectedSlot.UpdateOffset_Int32(Offsets.ClothingInv_Count, Clothing.Count);
         }
 
         public uint GenerateRandomPinExperience(PinItem Pin)
