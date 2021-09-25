@@ -445,6 +445,30 @@ namespace Scramble
             }
         }
 
+        internal void SetDifficulty(int DifficultyToSet)
+        {
+            ReadyForUserInput = true;
+            DifficultyCombo.SelectedIndex = DifficultyToSet;
+        }
+
+        internal void SetFp(int FpToSet)
+        {
+            ReadyForUserInput = true;
+            FpNumericUpDown.Value = FpToSet;
+        }
+
+        internal void SetMoney(int MoneyToSet)
+        {
+            ReadyForUserInput = true;
+            MoneyNUpDown.Value = MoneyToSet;
+        }
+
+        internal void SetExperience(int ExperienceToSet)
+        {
+            ReadyForUserInput = true;
+            ExpNumericUpDown.Value = ExperienceToSet;
+        }
+
         private void OpenSaveFileButton_Click(object sender, EventArgs e)
         {
             if (!ReadyForUserInput)

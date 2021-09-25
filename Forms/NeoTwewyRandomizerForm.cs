@@ -33,6 +33,8 @@ namespace Scramble.Forms
             OverviewGroupBox.Text = Sukuranburu.GetString("{RandomizerOverviewTitle}");
             Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetString("{RandomizerOverviewDesc}"), OverviewRichTextBox);
             RandomizerGroupBox.Text = Sukuranburu.GetString("{Randomizer}");
+            RandomizeMoney_Checkbox.Text = Sukuranburu.GetString("{RandomizeMoney}");
+            RandomizeExperience_Checkbox.Text = Sukuranburu.GetString("{RandomizeExperience}");
             RandomizeDay_Checkbox.Text = Sukuranburu.GetString("{RandomizeDay}");
             RandomizeParty_Checkbox.Text = Sukuranburu.GetString("{RandomizeParty}");
             RandomizePins_Checkbox.Text = Sukuranburu.GetString("{RandomizePins}");
@@ -47,6 +49,10 @@ namespace Scramble.Forms
 
         private void LoadStatusLabels()
         {
+            RandomizeMoney_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_Ok}");
+            RandomizeMoney_StatusLabel.ForeColor = Color.Green;
+            RandomizeExperience_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_Ok}");
+            RandomizeExperience_StatusLabel.ForeColor = Color.Green;
             RandomizeDay_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_Buggy}");
             RandomizeDay_StatusLabel.ForeColor = Color.DarkGoldenrod;
             RandomizeParty_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_HighlyExperimental}");
@@ -65,23 +71,35 @@ namespace Scramble.Forms
 
         private void ShowDice()
         {
-            DicePictureBox.Invoke(new Action(() => { DicePictureBox.Visible = true; }));
+            Invoke(new Action(() => { DicePictureBox.Visible = true; WaitMessage.Text = GameRandomizer.GetWaitingMessage(); }));
 
-            while (RandomizerProgressBar.Maximum != 100)
+            while (RandomizerProgressBar.Value != RandomizerProgressBar.Maximum)
             {
             }
 
-            DicePictureBox.Invoke(new Action(() => { DicePictureBox.Visible = false; }));
+            Invoke(new Action(() => { DicePictureBox.Visible = false; WaitMessage.Text = string.Empty; }));
         }
 
         private void RandomizeButton_Click(object sender, EventArgs e)
         {
             RandomizeButton.Enabled = false;
             RandomizerProgressBar.Value = 0;
-            RandomizerProgressBar.Maximum = Convert.ToByte(RandomizeDay_Checkbox.Checked) + Convert.ToByte(RandomizeParty_Checkbox.Checked) + Convert.ToByte(RandomizePins_Checkbox.Checked) + Convert.ToByte(RandomizeClothing_Checkbox.Checked) + Convert.ToByte(RandomizeSkills_Checkbox.Checked) + Convert.ToByte(RandomizeSocialTree_Checkbox.Checked) + Convert.ToByte(RandomizeTrophies_Checkbox.Checked);
+            RandomizerProgressBar.Maximum = Convert.ToByte(RandomizeMoney_Checkbox.Checked) + Convert.ToByte(RandomizeExperience_Checkbox.Checked) + Convert.ToByte(RandomizeDay_Checkbox.Checked) + Convert.ToByte(RandomizeParty_Checkbox.Checked) + Convert.ToByte(RandomizePins_Checkbox.Checked) + Convert.ToByte(RandomizeClothing_Checkbox.Checked) + Convert.ToByte(RandomizeSkills_Checkbox.Checked) + Convert.ToByte(RandomizeSocialTree_Checkbox.Checked) + Convert.ToByte(RandomizeTrophies_Checkbox.Checked);
             RandomizerChaos LevelOfChaos = (RandomizerChaos)LevelOfChaos_Trackbar.Value;
 
             Task.Factory.StartNew(ShowDice);
+
+            if (RandomizeMoney_Checkbox.Checked)
+            {
+                GameRandomizer.RandomizeMoney(LevelOfChaos);
+                RandomizerProgressBar.Value += 1;
+            }
+
+            if (RandomizeExperience_Checkbox.Checked)
+            {
+                GameRandomizer.RandomizeExperience(LevelOfChaos);
+                RandomizerProgressBar.Value += 1;
+            }
 
             if (RandomizeDay_Checkbox.Checked)
             {
@@ -121,8 +139,7 @@ namespace Scramble.Forms
                 RandomizerProgressBar.Value += 1;
             }
 
-            RandomizerProgressBar.Maximum = 100;
-            RandomizerProgressBar.Value = 100;
+            RandomizerProgressBar.Value = RandomizerProgressBar.Maximum;
             RandomizeButton.Enabled = true;
         }
     }

@@ -33,6 +33,9 @@
             this.OverviewGroupBox = new System.Windows.Forms.GroupBox();
             this.OverviewRichTextBox = new System.Windows.Forms.RichTextBox();
             this.RandomizerGroupBox = new System.Windows.Forms.GroupBox();
+            this.RandomizeMoney_StatusLabel = new System.Windows.Forms.Label();
+            this.RandomizeMoney_Checkbox = new System.Windows.Forms.CheckBox();
+            this.WaitMessage = new System.Windows.Forms.Label();
             this.DicePictureBox = new System.Windows.Forms.PictureBox();
             this.RandomizerProgressBar = new System.Windows.Forms.ProgressBar();
             this.RandomizeButton = new System.Windows.Forms.Button();
@@ -52,6 +55,8 @@
             this.RandomizePins_Checkbox = new System.Windows.Forms.CheckBox();
             this.RandomizeParty_Checkbox = new System.Windows.Forms.CheckBox();
             this.RandomizeDay_Checkbox = new System.Windows.Forms.CheckBox();
+            this.RandomizeExperience_Checkbox = new System.Windows.Forms.CheckBox();
+            this.RandomizeExperience_StatusLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.RandomizerPictureBox)).BeginInit();
             this.OverviewGroupBox.SuspendLayout();
             this.RandomizerGroupBox.SuspendLayout();
@@ -95,6 +100,11 @@
             // 
             // RandomizerGroupBox
             // 
+            this.RandomizerGroupBox.Controls.Add(this.RandomizeExperience_StatusLabel);
+            this.RandomizerGroupBox.Controls.Add(this.RandomizeExperience_Checkbox);
+            this.RandomizerGroupBox.Controls.Add(this.RandomizeMoney_StatusLabel);
+            this.RandomizerGroupBox.Controls.Add(this.RandomizeMoney_Checkbox);
+            this.RandomizerGroupBox.Controls.Add(this.WaitMessage);
             this.RandomizerGroupBox.Controls.Add(this.DicePictureBox);
             this.RandomizerGroupBox.Controls.Add(this.RandomizerProgressBar);
             this.RandomizerGroupBox.Controls.Add(this.RandomizeButton);
@@ -116,15 +126,44 @@
             this.RandomizerGroupBox.Controls.Add(this.RandomizeDay_Checkbox);
             this.RandomizerGroupBox.Location = new System.Drawing.Point(12, 251);
             this.RandomizerGroupBox.Name = "RandomizerGroupBox";
-            this.RandomizerGroupBox.Size = new System.Drawing.Size(724, 293);
+            this.RandomizerGroupBox.Size = new System.Drawing.Size(724, 323);
             this.RandomizerGroupBox.TabIndex = 2;
             this.RandomizerGroupBox.TabStop = false;
             this.RandomizerGroupBox.Text = "{Randomizer}";
             // 
+            // RandomizeMoney_StatusLabel
+            // 
+            this.RandomizeMoney_StatusLabel.AutoSize = true;
+            this.RandomizeMoney_StatusLabel.Location = new System.Drawing.Point(278, 29);
+            this.RandomizeMoney_StatusLabel.Name = "RandomizeMoney_StatusLabel";
+            this.RandomizeMoney_StatusLabel.Size = new System.Drawing.Size(75, 15);
+            this.RandomizeMoney_StatusLabel.TabIndex = 21;
+            this.RandomizeMoney_StatusLabel.Text = "{StatusLabel}";
+            // 
+            // RandomizeMoney_Checkbox
+            // 
+            this.RandomizeMoney_Checkbox.AutoSize = true;
+            this.RandomizeMoney_Checkbox.Checked = true;
+            this.RandomizeMoney_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.RandomizeMoney_Checkbox.Location = new System.Drawing.Point(6, 28);
+            this.RandomizeMoney_Checkbox.Name = "RandomizeMoney_Checkbox";
+            this.RandomizeMoney_Checkbox.Size = new System.Drawing.Size(130, 19);
+            this.RandomizeMoney_Checkbox.TabIndex = 20;
+            this.RandomizeMoney_Checkbox.Text = "{RandomizeMoney}";
+            this.RandomizeMoney_Checkbox.UseVisualStyleBackColor = true;
+            // 
+            // WaitMessage
+            // 
+            this.WaitMessage.AutoSize = true;
+            this.WaitMessage.Location = new System.Drawing.Point(6, 277);
+            this.WaitMessage.Name = "WaitMessage";
+            this.WaitMessage.Size = new System.Drawing.Size(0, 15);
+            this.WaitMessage.TabIndex = 19;
+            // 
             // DicePictureBox
             // 
             this.DicePictureBox.Image = global::Scramble.Properties.Resources.RandomizerEffect;
-            this.DicePictureBox.Location = new System.Drawing.Point(622, 79);
+            this.DicePictureBox.Location = new System.Drawing.Point(622, 109);
             this.DicePictureBox.Name = "DicePictureBox";
             this.DicePictureBox.Size = new System.Drawing.Size(40, 112);
             this.DicePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -134,14 +173,14 @@
             // 
             // RandomizerProgressBar
             // 
-            this.RandomizerProgressBar.Location = new System.Drawing.Point(6, 265);
+            this.RandomizerProgressBar.Location = new System.Drawing.Point(6, 295);
             this.RandomizerProgressBar.Name = "RandomizerProgressBar";
             this.RandomizerProgressBar.Size = new System.Drawing.Size(559, 22);
             this.RandomizerProgressBar.TabIndex = 17;
             // 
             // RandomizeButton
             // 
-            this.RandomizeButton.Location = new System.Drawing.Point(571, 265);
+            this.RandomizeButton.Location = new System.Drawing.Point(571, 295);
             this.RandomizeButton.Name = "RandomizeButton";
             this.RandomizeButton.Size = new System.Drawing.Size(145, 22);
             this.RandomizeButton.TabIndex = 16;
@@ -152,7 +191,7 @@
             // LevelOfChaos_Label
             // 
             this.LevelOfChaos_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LevelOfChaos_Label.Location = new System.Drawing.Point(571, 194);
+            this.LevelOfChaos_Label.Location = new System.Drawing.Point(571, 224);
             this.LevelOfChaos_Label.Name = "LevelOfChaos_Label";
             this.LevelOfChaos_Label.Size = new System.Drawing.Size(145, 17);
             this.LevelOfChaos_Label.TabIndex = 15;
@@ -162,7 +201,7 @@
             // LevelOfChaos_Trackbar
             // 
             this.LevelOfChaos_Trackbar.LargeChange = 1;
-            this.LevelOfChaos_Trackbar.Location = new System.Drawing.Point(571, 214);
+            this.LevelOfChaos_Trackbar.Location = new System.Drawing.Point(571, 244);
             this.LevelOfChaos_Trackbar.Maximum = 2;
             this.LevelOfChaos_Trackbar.Name = "LevelOfChaos_Trackbar";
             this.LevelOfChaos_Trackbar.Size = new System.Drawing.Size(145, 45);
@@ -172,7 +211,7 @@
             // RandomizeTrophies_StatusLabel
             // 
             this.RandomizeTrophies_StatusLabel.AutoSize = true;
-            this.RandomizeTrophies_StatusLabel.Location = new System.Drawing.Point(266, 185);
+            this.RandomizeTrophies_StatusLabel.Location = new System.Drawing.Point(278, 229);
             this.RandomizeTrophies_StatusLabel.Name = "RandomizeTrophies_StatusLabel";
             this.RandomizeTrophies_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeTrophies_StatusLabel.TabIndex = 13;
@@ -181,7 +220,7 @@
             // RandomizeSocialTree_StatusLabel
             // 
             this.RandomizeSocialTree_StatusLabel.AutoSize = true;
-            this.RandomizeSocialTree_StatusLabel.Location = new System.Drawing.Point(266, 160);
+            this.RandomizeSocialTree_StatusLabel.Location = new System.Drawing.Point(278, 204);
             this.RandomizeSocialTree_StatusLabel.Name = "RandomizeSocialTree_StatusLabel";
             this.RandomizeSocialTree_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeSocialTree_StatusLabel.TabIndex = 12;
@@ -190,7 +229,7 @@
             // RandomizeSkills_StatusLabel
             // 
             this.RandomizeSkills_StatusLabel.AutoSize = true;
-            this.RandomizeSkills_StatusLabel.Location = new System.Drawing.Point(266, 135);
+            this.RandomizeSkills_StatusLabel.Location = new System.Drawing.Point(278, 179);
             this.RandomizeSkills_StatusLabel.Name = "RandomizeSkills_StatusLabel";
             this.RandomizeSkills_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeSkills_StatusLabel.TabIndex = 11;
@@ -199,7 +238,7 @@
             // RandomizeClothing_StatusLabel
             // 
             this.RandomizeClothing_StatusLabel.AutoSize = true;
-            this.RandomizeClothing_StatusLabel.Location = new System.Drawing.Point(266, 110);
+            this.RandomizeClothing_StatusLabel.Location = new System.Drawing.Point(278, 154);
             this.RandomizeClothing_StatusLabel.Name = "RandomizeClothing_StatusLabel";
             this.RandomizeClothing_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeClothing_StatusLabel.TabIndex = 10;
@@ -208,7 +247,7 @@
             // RandomizePins_StatusLabel
             // 
             this.RandomizePins_StatusLabel.AutoSize = true;
-            this.RandomizePins_StatusLabel.Location = new System.Drawing.Point(266, 85);
+            this.RandomizePins_StatusLabel.Location = new System.Drawing.Point(278, 129);
             this.RandomizePins_StatusLabel.Name = "RandomizePins_StatusLabel";
             this.RandomizePins_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizePins_StatusLabel.TabIndex = 9;
@@ -217,7 +256,7 @@
             // RandomizeParty_StatusLabel
             // 
             this.RandomizeParty_StatusLabel.AutoSize = true;
-            this.RandomizeParty_StatusLabel.Location = new System.Drawing.Point(266, 60);
+            this.RandomizeParty_StatusLabel.Location = new System.Drawing.Point(278, 104);
             this.RandomizeParty_StatusLabel.Name = "RandomizeParty_StatusLabel";
             this.RandomizeParty_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeParty_StatusLabel.TabIndex = 8;
@@ -226,7 +265,7 @@
             // RandomizeDay_StatusLabel
             // 
             this.RandomizeDay_StatusLabel.AutoSize = true;
-            this.RandomizeDay_StatusLabel.Location = new System.Drawing.Point(266, 35);
+            this.RandomizeDay_StatusLabel.Location = new System.Drawing.Point(278, 79);
             this.RandomizeDay_StatusLabel.Name = "RandomizeDay_StatusLabel";
             this.RandomizeDay_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeDay_StatusLabel.TabIndex = 7;
@@ -235,7 +274,7 @@
             // RandomizeTrophies_Checkbox
             // 
             this.RandomizeTrophies_Checkbox.AutoSize = true;
-            this.RandomizeTrophies_Checkbox.Location = new System.Drawing.Point(6, 184);
+            this.RandomizeTrophies_Checkbox.Location = new System.Drawing.Point(6, 228);
             this.RandomizeTrophies_Checkbox.Name = "RandomizeTrophies_Checkbox";
             this.RandomizeTrophies_Checkbox.Size = new System.Drawing.Size(137, 19);
             this.RandomizeTrophies_Checkbox.TabIndex = 6;
@@ -245,7 +284,7 @@
             // RandomizeSocialTree_Checkbox
             // 
             this.RandomizeSocialTree_Checkbox.AutoSize = true;
-            this.RandomizeSocialTree_Checkbox.Location = new System.Drawing.Point(6, 159);
+            this.RandomizeSocialTree_Checkbox.Location = new System.Drawing.Point(6, 203);
             this.RandomizeSocialTree_Checkbox.Name = "RandomizeSocialTree_Checkbox";
             this.RandomizeSocialTree_Checkbox.Size = new System.Drawing.Size(145, 19);
             this.RandomizeSocialTree_Checkbox.TabIndex = 5;
@@ -255,7 +294,7 @@
             // RandomizeSkills_Checkbox
             // 
             this.RandomizeSkills_Checkbox.AutoSize = true;
-            this.RandomizeSkills_Checkbox.Location = new System.Drawing.Point(6, 134);
+            this.RandomizeSkills_Checkbox.Location = new System.Drawing.Point(6, 178);
             this.RandomizeSkills_Checkbox.Name = "RandomizeSkills_Checkbox";
             this.RandomizeSkills_Checkbox.Size = new System.Drawing.Size(119, 19);
             this.RandomizeSkills_Checkbox.TabIndex = 4;
@@ -265,7 +304,9 @@
             // RandomizeClothing_Checkbox
             // 
             this.RandomizeClothing_Checkbox.AutoSize = true;
-            this.RandomizeClothing_Checkbox.Location = new System.Drawing.Point(6, 109);
+            this.RandomizeClothing_Checkbox.Checked = true;
+            this.RandomizeClothing_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.RandomizeClothing_Checkbox.Location = new System.Drawing.Point(6, 153);
             this.RandomizeClothing_Checkbox.Name = "RandomizeClothing_Checkbox";
             this.RandomizeClothing_Checkbox.Size = new System.Drawing.Size(139, 19);
             this.RandomizeClothing_Checkbox.TabIndex = 3;
@@ -275,7 +316,9 @@
             // RandomizePins_Checkbox
             // 
             this.RandomizePins_Checkbox.AutoSize = true;
-            this.RandomizePins_Checkbox.Location = new System.Drawing.Point(6, 84);
+            this.RandomizePins_Checkbox.Checked = true;
+            this.RandomizePins_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.RandomizePins_Checkbox.Location = new System.Drawing.Point(6, 128);
             this.RandomizePins_Checkbox.Name = "RandomizePins_Checkbox";
             this.RandomizePins_Checkbox.Size = new System.Drawing.Size(115, 19);
             this.RandomizePins_Checkbox.TabIndex = 2;
@@ -285,7 +328,7 @@
             // RandomizeParty_Checkbox
             // 
             this.RandomizeParty_Checkbox.AutoSize = true;
-            this.RandomizeParty_Checkbox.Location = new System.Drawing.Point(6, 59);
+            this.RandomizeParty_Checkbox.Location = new System.Drawing.Point(6, 103);
             this.RandomizeParty_Checkbox.Name = "RandomizeParty_Checkbox";
             this.RandomizeParty_Checkbox.Size = new System.Drawing.Size(120, 19);
             this.RandomizeParty_Checkbox.TabIndex = 1;
@@ -295,18 +338,39 @@
             // RandomizeDay_Checkbox
             // 
             this.RandomizeDay_Checkbox.AutoSize = true;
-            this.RandomizeDay_Checkbox.Location = new System.Drawing.Point(6, 34);
+            this.RandomizeDay_Checkbox.Location = new System.Drawing.Point(6, 78);
             this.RandomizeDay_Checkbox.Name = "RandomizeDay_Checkbox";
             this.RandomizeDay_Checkbox.Size = new System.Drawing.Size(113, 19);
             this.RandomizeDay_Checkbox.TabIndex = 0;
             this.RandomizeDay_Checkbox.Text = "{RandomizeDay}";
             this.RandomizeDay_Checkbox.UseVisualStyleBackColor = true;
             // 
+            // RandomizeExperience_Checkbox
+            // 
+            this.RandomizeExperience_Checkbox.AutoSize = true;
+            this.RandomizeExperience_Checkbox.Checked = true;
+            this.RandomizeExperience_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.RandomizeExperience_Checkbox.Location = new System.Drawing.Point(6, 53);
+            this.RandomizeExperience_Checkbox.Name = "RandomizeExperience_Checkbox";
+            this.RandomizeExperience_Checkbox.Size = new System.Drawing.Size(150, 19);
+            this.RandomizeExperience_Checkbox.TabIndex = 22;
+            this.RandomizeExperience_Checkbox.Text = "{RandomizeExperience}";
+            this.RandomizeExperience_Checkbox.UseVisualStyleBackColor = true;
+            // 
+            // RandomizeExperience_StatusLabel
+            // 
+            this.RandomizeExperience_StatusLabel.AutoSize = true;
+            this.RandomizeExperience_StatusLabel.Location = new System.Drawing.Point(278, 54);
+            this.RandomizeExperience_StatusLabel.Name = "RandomizeExperience_StatusLabel";
+            this.RandomizeExperience_StatusLabel.Size = new System.Drawing.Size(75, 15);
+            this.RandomizeExperience_StatusLabel.TabIndex = 23;
+            this.RandomizeExperience_StatusLabel.Text = "{StatusLabel}";
+            // 
             // NeoTwewyRandomizerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(748, 556);
+            this.ClientSize = new System.Drawing.Size(748, 586);
             this.Controls.Add(this.RandomizerGroupBox);
             this.Controls.Add(this.OverviewGroupBox);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -349,5 +413,10 @@
         private System.Windows.Forms.CheckBox RandomizeClothing_Checkbox;
         private System.Windows.Forms.CheckBox RandomizePins_Checkbox;
         private System.Windows.Forms.PictureBox DicePictureBox;
+        private System.Windows.Forms.Label WaitMessage;
+        private System.Windows.Forms.Label RandomizeMoney_StatusLabel;
+        private System.Windows.Forms.CheckBox RandomizeMoney_Checkbox;
+        private System.Windows.Forms.Label RandomizeExperience_StatusLabel;
+        private System.Windows.Forms.CheckBox RandomizeExperience_Checkbox;
     }
 }
