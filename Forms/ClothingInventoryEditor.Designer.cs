@@ -120,6 +120,7 @@ namespace Scramble.Forms
             this.debug_CountLabel.TabIndex = 41;
             this.debug_CountLabel.Text = "0";
             this.debug_CountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.debug_CountLabel.Visible = false;
             // 
             // AmountNumericUpDown
             // 
