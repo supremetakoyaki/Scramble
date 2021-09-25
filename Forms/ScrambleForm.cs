@@ -83,6 +83,8 @@ namespace Scramble
             AboutLabel.Text = Program.ScrambleVersion;
 
             SetUpGraphics();
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
             DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
             ChangeFormSize(148, 309);

@@ -23,6 +23,8 @@ namespace Scramble.Forms
         {
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
             if (Sukuranburu.RequiresRescaling)
             {
