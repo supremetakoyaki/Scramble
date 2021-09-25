@@ -503,11 +503,9 @@
     <Content Include="Assets\Logo_Legacy.png" />
     <Content Include="Assets\Logo_NTWEWY.png" />
     <Content Include="Assets\Logo_TWEWYFR.png" />
-    <None Include="Resources\RandomizerOverview_Logo.png" />
     <None Include="Assets\RandomizerOverview_Logo.png" />
     <None Include="Assets\RandomizerEffect.gif" />
     <Content Include="FodyWeavers.xml" />
-    <None Include="Assets\SoloRemix_To_FinalRemix.png" />
     <Content Include="Assets\Spoiler_Pin.png" />
   </ItemGroup>
   <ItemGroup>
