@@ -129,6 +129,7 @@ namespace Scramble.Forms
 
             if (RandomizeSkills_Checkbox.Checked)
             {
+                GameRandomizer.RandomizeSkills(LevelOfChaos);
                 RandomizerProgressBar.Value += 1;
             }
 

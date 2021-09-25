@@ -1,10 +1,12 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
 using Scramble.Forms;
+using Scramble.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace Scramble.GameData
 {
@@ -393,20 +395,20 @@ namespace Scramble.GameData
             switch (LevelOfChaos)
             {
                 case RandomizerChaos.Mild:
-                    ClothingToAdd = GenerateRandomNumber(0, 25);
+                    ClothingToAdd = GenerateRandomNumber(0, 40);
                     UnlimitedAttack = false;
                     TryAvoidDuplicates = true;
                     break;
 
                 case RandomizerChaos.Moderate:
                 default:
-                    ClothingToAdd = GenerateRandomNumber(0, 100);
+                    ClothingToAdd = GenerateRandomNumber(0, 350);
                     UnlimitedAttack = false;
                     TryAvoidDuplicates = true;
                     break;
 
                 case RandomizerChaos.Heavy:
-                    ClothingToAdd = GenerateRandomNumber(0, 500);
+                    ClothingToAdd = GenerateRandomNumber(0, 1000);
                     UnlimitedAttack = false;
                     TryAvoidDuplicates = false;
                     break;
@@ -468,6 +470,72 @@ namespace Scramble.GameData
             }
 
             SelectedSlot.UpdateOffset_Int32(Offsets.ClothingInv_Count, Clothing.Count);
+        }
+
+        public void RandomizeSkills(RandomizerChaos LevelOfChaos)
+        {
+            bool LateGameSkills;
+            int ChunkMin;
+            int ChunkMax;
+
+            switch (LevelOfChaos)
+            {
+                case RandomizerChaos.Mild:
+                    ChunkMin = 0;
+                    ChunkMax = 4;
+                    LateGameSkills = false;
+                    break;
+
+                case RandomizerChaos.Moderate:
+                default:
+                    ChunkMin = 0;
+                    ChunkMax = 7;
+                    LateGameSkills = true;
+                    break;
+
+                case RandomizerChaos.Heavy:
+                    ChunkMin = 0;
+                    ChunkMax = 8;
+                    LateGameSkills = true;
+                    break;
+            }
+
+            ushort SkillId = 0;
+            for (int i = 0; i < 16; i++)
+            {
+                byte Entry = 0;
+                byte BitPosition = 0;
+                byte CurrentFulfilledBits = 0;
+                byte FulfillThisAmount = (byte)GenerateRandomNumber(ChunkMin, ChunkMax);
+
+                for (ushort j = SkillId; j < SkillId + 8; j++)
+                {
+                    Skill NextSkill = Sukuranburu.GetSocialNetworkManager().GetSkill(j);
+                    byte BitToSet = 0;
+
+                    if (NextSkill != null && CurrentFulfilledBits < FulfillThisAmount)
+                    {
+                        BitToSet = (byte)GenerateRandomNumber(0, 1);
+
+                        if (!LateGameSkills)
+                        {
+                            SkillTree TreeEntry = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItems().Values.FirstOrDefault(s => s.SkillId == j);
+                            if (TreeEntry == null || TreeEntry.ConnectDay > 14)
+                            {
+                                BitToSet = 0;
+                            }
+                        }
+
+                        CurrentFulfilledBits += BitToSet;
+                    }
+
+                    Entry = ByteUtil.SetBit(Entry, BitPosition, Convert.ToBoolean(BitToSet));
+                    BitPosition += 1;
+                }
+
+                SelectedSlot.UpdateOffset_Byte(Offsets.Skills_First + i, Entry);
+                SkillId += 8;
+            }
         }
 
         public uint GenerateRandomPinExperience(PinItem Pin)
