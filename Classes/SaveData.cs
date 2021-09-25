@@ -107,7 +107,7 @@ namespace Scramble.Classes
                         RetrieveOffset_Int32(Offsets.PartyMember1_EquippedAccessoryIndex + OffsetSum)
                     };
 
-                    PartyMembers.Add(MemberId, new PartyMember(MemberId, (byte)CharacterId, EquippedPinIndexes, EquippedClothing));
+                    PartyMembers.Add(MemberId, new PartyMember(MemberId, (byte)CharacterId, i, EquippedPinIndexes, EquippedClothing));
                 }
             }
         }
