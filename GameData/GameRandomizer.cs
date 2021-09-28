@@ -538,6 +538,78 @@ namespace Scramble.GameData
             }
         }
 
+        public void RandomizeSocialTree(RandomizerChaos LevelOfChaos)
+        {
+            int SocialTreesToAdd;
+            bool LateGameConnections;
+            bool AbsoluteMess;
+
+            switch (LevelOfChaos)
+            {
+                case RandomizerChaos.Mild:
+                    SocialTreesToAdd = GenerateRandomNumber(0, 25);
+                    LateGameConnections = false;
+                    AbsoluteMess = false;
+                    break;
+
+                case RandomizerChaos.Moderate:
+                default:
+                    SocialTreesToAdd = GenerateRandomNumber(0, 52);
+                    LateGameConnections = true;
+                    AbsoluteMess = false;
+                    break;
+
+                case RandomizerChaos.Heavy:
+                    SocialTreesToAdd = GenerateRandomNumber(0, 98);
+                    LateGameConnections = true;
+                    AbsoluteMess = true;
+                    break;
+            }
+
+            // Clear everything first
+            for (int i = 0; i < 128; i++)
+            {
+                SelectedSlot.UpdateOffset_Byte(Offsets.Social_ConnectionStatus_First + i, 0);
+            }
+
+            var SocialTrees = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItems().Values.Where(p => p.SkillId > 0);
+
+            if (!LateGameConnections)
+            {
+                SocialTrees = SocialTrees.Where(p => p.ConnectDay < 18);
+            }
+
+            List<int> SaveIndexes = new List<int>();
+            SkillTree SocialTree = null;
+            int Iterator = 0;
+            while (Iterator < SocialTreesToAdd)
+            {
+                SocialTree = SocialTrees.ElementAt(GenerateRandomNumber(0, SocialTrees.Count() - 1));
+                if (!SaveIndexes.Contains(SocialTree.SaveIndex))
+                {
+                    SaveIndexes.Add(SocialTree.SaveIndex);
+                    Iterator += 1;
+                }
+            }
+
+            foreach (int SaveIndex in SaveIndexes)
+            {
+                int Offset = Offsets.Social_ConnectionStatus_First + SaveIndex;
+                byte ValueToSet = 0x80;
+
+                if (GenerateRandomNumber(0, 188) > 25)
+                {
+                    ValueToSet = 0xC0;
+                }
+                else if (AbsoluteMess)
+                {
+                    ValueToSet = 0x40;
+                }
+
+                SelectedSlot.UpdateOffset_Byte(Offset, ValueToSet);
+            }
+        }
+
         public uint GenerateRandomPinExperience(PinItem Pin)
         {
             uint MaxExperience = Sukuranburu.GetItemManager().GetPinExperienceWithPinIdAndLevel(Pin.ParticularId, Pin.MaxLevel);

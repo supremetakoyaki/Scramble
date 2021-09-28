@@ -135,6 +135,7 @@ namespace Scramble.Forms
 
             if (RandomizeSocialTree_Checkbox.Checked)
             {
+                GameRandomizer.RandomizeSocialTree(LevelOfChaos);
                 RandomizerProgressBar.Value += 1;
             }
 
