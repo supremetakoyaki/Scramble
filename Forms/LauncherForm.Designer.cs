@@ -38,6 +38,8 @@ namespace Scramble.Forms
             this.ConvertSr2Fr_ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.NeoTwewy_ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.TwewyFr_ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.NeoTwewyUtilButton = new System.Windows.Forms.Button();
+            this.NeoTwewyUtilToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Utilities_GroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,10 +64,9 @@ namespace Scramble.Forms
             // Utilities_GroupBox
             // 
             this.Utilities_GroupBox.Controls.Add(this.UpdateChecker_Label);
-            this.Utilities_GroupBox.Controls.Add(this.Convert_FromSoloRemix_Button);
-            this.Utilities_GroupBox.Location = new System.Drawing.Point(10, 189);
+            this.Utilities_GroupBox.Location = new System.Drawing.Point(9, 215);
             this.Utilities_GroupBox.Name = "Utilities_GroupBox";
-            this.Utilities_GroupBox.Size = new System.Drawing.Size(348, 44);
+            this.Utilities_GroupBox.Size = new System.Drawing.Size(348, 38);
             this.Utilities_GroupBox.TabIndex = 3;
             this.Utilities_GroupBox.TabStop = false;
             // 
@@ -74,7 +75,7 @@ namespace Scramble.Forms
             this.UpdateChecker_Label.AutoSize = true;
             this.UpdateChecker_Label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UpdateChecker_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.UpdateChecker_Label.Location = new System.Drawing.Point(5, 23);
+            this.UpdateChecker_Label.Location = new System.Drawing.Point(3, 19);
             this.UpdateChecker_Label.Name = "UpdateChecker_Label";
             this.UpdateChecker_Label.Size = new System.Drawing.Size(124, 13);
             this.UpdateChecker_Label.TabIndex = 4;
@@ -83,9 +84,9 @@ namespace Scramble.Forms
             // 
             // Convert_FromSoloRemix_Button
             // 
-            this.Convert_FromSoloRemix_Button.Location = new System.Drawing.Point(177, 19);
+            this.Convert_FromSoloRemix_Button.Location = new System.Drawing.Point(187, 189);
             this.Convert_FromSoloRemix_Button.Name = "Convert_FromSoloRemix_Button";
-            this.Convert_FromSoloRemix_Button.Size = new System.Drawing.Size(166, 20);
+            this.Convert_FromSoloRemix_Button.Size = new System.Drawing.Size(171, 20);
             this.Convert_FromSoloRemix_Button.TabIndex = 0;
             this.Convert_FromSoloRemix_Button.UseVisualStyleBackColor = true;
             this.Convert_FromSoloRemix_Button.Click += new System.EventHandler(this.Convert_FromSoloRemix_Button_Click);
@@ -102,12 +103,26 @@ namespace Scramble.Forms
             // 
             this.TwewyFr_ToolTip.AutomaticDelay = 250;
             // 
+            // NeoTwewyUtilButton
+            // 
+            this.NeoTwewyUtilButton.Location = new System.Drawing.Point(9, 189);
+            this.NeoTwewyUtilButton.Name = "NeoTwewyUtilButton";
+            this.NeoTwewyUtilButton.Size = new System.Drawing.Size(171, 20);
+            this.NeoTwewyUtilButton.TabIndex = 4;
+            this.NeoTwewyUtilButton.UseVisualStyleBackColor = true;
+            // 
+            // NeoTwewyUtilToolTip
+            // 
+            this.NeoTwewyUtilToolTip.AutomaticDelay = 250;
+            // 
             // LauncherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(369, 244);
+            this.ClientSize = new System.Drawing.Size(369, 265);
+            this.Controls.Add(this.NeoTwewyUtilButton);
             this.Controls.Add(this.Utilities_GroupBox);
+            this.Controls.Add(this.Convert_FromSoloRemix_Button);
             this.Controls.Add(this.TWEWYFR_Button);
             this.Controls.Add(this.NTWEWY_Button);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -130,5 +145,7 @@ namespace Scramble.Forms
         private System.Windows.Forms.ToolTip ConvertSr2Fr_ToolTip;
         private System.Windows.Forms.ToolTip NeoTwewy_ToolTip;
         private System.Windows.Forms.ToolTip TwewyFr_ToolTip;
+        private System.Windows.Forms.Button NeoTwewyUtilButton;
+        private System.Windows.Forms.ToolTip NeoTwewyUtilToolTip;
     }
 }

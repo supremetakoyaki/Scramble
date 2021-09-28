@@ -153,6 +153,16 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Convert_NeoPC_NeoPS4SW {
+            get {
+                object obj = ResourceManager.GetObject("Convert_NeoPC_NeoPS4SW", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Convert_SR_to_FR {
             get {
                 object obj = ResourceManager.GetObject("Convert_SR_to_FR", resourceCulture);

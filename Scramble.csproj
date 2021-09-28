@@ -489,6 +489,7 @@
     <Content Include="Assets\CH07.png" />
     <Content Include="Assets\CH0S.png" />
     <Content Include="Assets\CHR_Spoiler.png" />
+    <None Include="Assets\Convert_NeoPC_NeoPS4SW.png" />
     <Content Include="Assets\Convert_SR_to_FR.png" />
     <Content Include="Assets\Icon.ico" />
     <Content Include="Assets\Icon.png" />

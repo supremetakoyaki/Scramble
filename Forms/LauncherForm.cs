@@ -20,11 +20,13 @@ namespace Scramble.Forms
 
             NTWEWY_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Logo_NTWEWY") as Bitmap, 171, 173, DeviceDpi);
             TWEWYFR_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Logo_TWEWYFR") as Bitmap, 171, 173, DeviceDpi);
-            Convert_FromSoloRemix_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Convert_SR_to_FR") as Bitmap, 166, 20, DeviceDpi);
+            Convert_FromSoloRemix_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Convert_SR_to_FR") as Bitmap, 171, 20, DeviceDpi);
+            NeoTwewyUtilButton.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Convert_NeoPC_NeoPS4SW") as Bitmap, 171, 20, DeviceDpi);
 
             NeoTwewy_ToolTip.SetToolTip(NTWEWY_Button, "\"NEO: The World Ends with You\" Save Editor");
             TwewyFr_ToolTip.SetToolTip(TWEWYFR_Button, "\"The World Ends with You -Final Remix-\" Save Editor");
             ConvertSr2Fr_ToolTip.SetToolTip(Convert_FromSoloRemix_Button, "Convert Solo Remix save file to Final Remix save file");
+            NeoTwewyUtilToolTip.SetToolTip(NeoTwewyUtilButton, "Convert between PC and PS4/Switch NEO:TWEWY save files.");
 
             Task.Run(() =>
             {
