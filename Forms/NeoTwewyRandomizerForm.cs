@@ -17,6 +17,8 @@ namespace Scramble.Forms
 
         private GameRandomizer GameRandomizer;
 
+        private int ThreadProgress;
+
         public NeoTwewyRandomizerForm()
         {
             InitializeComponent();
@@ -72,14 +74,36 @@ namespace Scramble.Forms
 
         private void ShowDice()
         {
-            Invoke(new Action(() => { DicePictureBox.Visible = true; WaitMessage.Text = GameRandomizer.GetWaitingMessage(); }));
-
-            while (RandomizerProgressBar.Value != RandomizerProgressBar.Maximum)
+            if (InvokeRequired)
             {
+                Invoke(new Action(() => { DicePictureBox.Visible = true; WaitMessage.Text = GameRandomizer.GetWaitingMessage(); }));
+            }
+            else
+            {
+                DicePictureBox.Visible = true;
+                WaitMessage.Text = GameRandomizer.GetWaitingMessage();
             }
 
-            Thread.Sleep(1500);
-            Invoke(new Action(() => { DicePictureBox.Visible = false; WaitMessage.Text = string.Empty; }));
+            while (ThreadProgress != RandomizerProgressBar.Maximum)
+            {
+                ThreadProgress = RandomizerProgressBar.Value;
+                Thread.Sleep(500);
+            }
+
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    DicePictureBox.Visible = false;
+                    WaitMessage.Text = string.Empty;
+                }
+                ));
+            }
+            else
+            {
+                DicePictureBox.Visible = false;
+                WaitMessage.Text = string.Empty;
+            }
         }
 
         private void RandomizeButton_Click(object sender, EventArgs e)
@@ -89,59 +113,62 @@ namespace Scramble.Forms
             RandomizerProgressBar.Maximum = Convert.ToByte(RandomizeMoney_Checkbox.Checked) + Convert.ToByte(RandomizeExperience_Checkbox.Checked) + Convert.ToByte(RandomizeDay_Checkbox.Checked) + Convert.ToByte(RandomizeParty_Checkbox.Checked) + Convert.ToByte(RandomizePins_Checkbox.Checked) + Convert.ToByte(RandomizeClothing_Checkbox.Checked) + Convert.ToByte(RandomizeSkills_Checkbox.Checked) + Convert.ToByte(RandomizeSocialTree_Checkbox.Checked) + Convert.ToByte(RandomizeTrophies_Checkbox.Checked);
             RandomizerChaos LevelOfChaos = (RandomizerChaos)LevelOfChaos_Trackbar.Value;
 
+            RandomizerProgressBar.Maximum *= 10;
+
             Task.Factory.StartNew(ShowDice);
 
             if (RandomizeMoney_Checkbox.Checked)
             {
                 GameRandomizer.RandomizeMoney(LevelOfChaos);
-                RandomizerProgressBar.Value += 1;
+                RandomizerProgressBar.Value += 10;
             }
 
             if (RandomizeExperience_Checkbox.Checked)
             {
                 GameRandomizer.RandomizeExperience(LevelOfChaos);
-                RandomizerProgressBar.Value += 1;
+                RandomizerProgressBar.Value += 10;
             }
 
             if (RandomizeDay_Checkbox.Checked)
             {
                 GameRandomizer.RandomizeDay(LevelOfChaos);
-                RandomizerProgressBar.Value += 1;
+                RandomizerProgressBar.Value += 10;
             }
 
             if (RandomizeParty_Checkbox.Checked)
             {
                 GameRandomizer.RandomizeParty(LevelOfChaos);
-                RandomizerProgressBar.Value += 1;
+                RandomizerProgressBar.Value += 10;
             }
 
             if (RandomizePins_Checkbox.Checked)
             {
                 GameRandomizer.RandomizePins(LevelOfChaos);
-                RandomizerProgressBar.Value += 1;
+                RandomizerProgressBar.Value += 10;
             }
 
             if (RandomizeClothing_Checkbox.Checked)
             {
                 GameRandomizer.RandomizeClothing(LevelOfChaos);
-                RandomizerProgressBar.Value += 1;
+                RandomizerProgressBar.Value += 10;
             }
 
             if (RandomizeSkills_Checkbox.Checked)
             {
                 GameRandomizer.RandomizeSkills(LevelOfChaos);
-                RandomizerProgressBar.Value += 1;
+                RandomizerProgressBar.Value += 10;
             }
 
             if (RandomizeSocialTree_Checkbox.Checked)
             {
                 GameRandomizer.RandomizeSocialTree(LevelOfChaos);
-                RandomizerProgressBar.Value += 1;
+                RandomizerProgressBar.Value += 10;
             }
 
             if (RandomizeTrophies_Checkbox.Checked)
             {
-                RandomizerProgressBar.Value += 1;
+                GameRandomizer.RandomizeTrophies(LevelOfChaos);
+                RandomizerProgressBar.Value += 10;
             }
 
             RandomizerProgressBar.Value = RandomizerProgressBar.Maximum;

@@ -610,6 +610,102 @@ namespace Scramble.GameData
             }
         }
 
+        public void RandomizeTrophies(RandomizerChaos LevelOfChaos)
+        {
+            int TrophiesToAdd;
+            bool RotateAndScaleRandomly;
+            bool UndeploySome;
+
+            switch (LevelOfChaos)
+            {
+                case RandomizerChaos.Mild:
+                    TrophiesToAdd = GenerateRandomNumber(0, 26);
+                    RotateAndScaleRandomly = false;
+                    UndeploySome = false;
+                    break;
+
+                case RandomizerChaos.Moderate:
+                default:
+                    TrophiesToAdd = GenerateRandomNumber(0, 39);
+                    RotateAndScaleRandomly = true;
+                    UndeploySome = false;
+                    break;
+
+                case RandomizerChaos.Heavy:
+                    TrophiesToAdd = GenerateRandomNumber(0, 51);
+                    RotateAndScaleRandomly = true;
+                    UndeploySome = true;
+                    break;
+            }
+
+
+            List<Trophy> AddedTrophies = new List<Trophy>();
+            var Trophies = Sukuranburu.GetItemManager().GetTrophies().Values;
+
+            // Clear everything first.
+            foreach (Trophy TrophyItem in Trophies)
+            {
+                int OffsetSum = 15 * TrophyItem.Id;
+                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_ShowAsNew_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, -1);
+                SelectedSlot.UpdateOffset_Float(Offsets.Trophies_Scale_First + OffsetSum, 0.6666667f);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum, 0);
+            }
+
+            // Add trophies randomly.
+            while (AddedTrophies.Count < TrophiesToAdd)
+            {
+                Trophy NextTrophy = Trophies.ElementAt(GenerateRandomNumber(0, Trophies.Count - 1));
+                if (!AddedTrophies.Contains(NextTrophy))
+                {
+                    AddedTrophies.Add(NextTrophy);
+                }
+            }
+
+            // Let's add some spice.
+            if (GenerateRandomNumber(0, 2) == 1)
+            {
+                AddedTrophies.Reverse();
+            }
+
+            short NextLayer = 0;
+            foreach (Trophy TrophyToAdd in AddedTrophies)
+            {
+                float Scale = 0.6666667F;
+                short Rotation = 0;
+                short Xpos = 0;
+                short Ypos = 0;
+                short Layer = -1;
+
+                if (RotateAndScaleRandomly)
+                {
+                    Scale = (float)GenerateRandomNumber(340000, 1000000) / 1000000;
+                    Rotation = (short)GenerateRandomNumber(0, 360);
+                }
+
+                if (!UndeploySome || GenerateRandomNumber(0, 10) < 8)
+                {
+                    Xpos = (short)GenerateRandomNumber(-2000, 2000);
+                    Ypos = (short)GenerateRandomNumber(-340, 340);
+                    Layer = NextLayer++;
+                }
+
+                int OffsetSum = 15 * TrophyToAdd.Id;
+                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum, 1);
+                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_ShowAsNew_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum, Xpos);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum, Ypos);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, Layer);
+                SelectedSlot.UpdateOffset_Float(Offsets.Trophies_Scale_First + OffsetSum, Scale);
+                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum, Rotation);
+            }
+        }
+
         public uint GenerateRandomPinExperience(PinItem Pin)
         {
             uint MaxExperience = Sukuranburu.GetItemManager().GetPinExperienceWithPinIdAndLevel(Pin.ParticularId, Pin.MaxLevel);
@@ -640,6 +736,5 @@ namespace Scramble.GameData
                 }
             }
         }
-
     }
 }
