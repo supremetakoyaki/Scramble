@@ -145,7 +145,7 @@
             "9"});
             this.SaveSlotsListBox.Location = new System.Drawing.Point(6, 22);
             this.SaveSlotsListBox.Name = "SaveSlotsListBox";
-            this.SaveSlotsListBox.Size = new System.Drawing.Size(127, 139);
+            this.SaveSlotsListBox.Size = new System.Drawing.Size(127, 154);
             this.SaveSlotsListBox.TabIndex = 6;
             this.SaveSlotsListBox.SelectedIndexChanged += new System.EventHandler(this.SaveSlotsListBox_SelectedIndexChanged);
             // 
