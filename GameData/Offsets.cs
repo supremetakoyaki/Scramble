@@ -97,7 +97,7 @@
 
         public const int Difficulty = 296836; // 8-bit
 
-        // Shop data. +68 for each shop
+        // Restaurant data. +68 for each shop
         public const int Shop0_unk1 = 301904; // int32
         public const int Shop0_Food_LastOrder_Character1 = 301908; // int32
         public const int Shop0_Food_LastOrder_Character2 = 301912; // int32
@@ -114,5 +114,11 @@
         public const int Shop0_unk4 = 301904; // int32
         public const int Shop0_Food_TimesOrdered = 301904; // int32
 
+        // Shop goods.
+        public const int ShopGoods_Index0_Bought = 310608; //boolean
+        public const int ShopGoods_Index0_ShowAsNew = 310616; //boolean
+
+        // Brand
+        public const int BrandVipScore = 319824; //int32.
     }
 }
