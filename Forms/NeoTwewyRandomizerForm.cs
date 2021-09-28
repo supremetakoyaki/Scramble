@@ -15,7 +15,7 @@ namespace Scramble.Forms
         public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
-        private GameRandomizer GameRandomizer;
+        private readonly GameRandomizer GameRandomizer;
 
         private int ThreadProgress;
 

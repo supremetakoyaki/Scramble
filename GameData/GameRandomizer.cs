@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Windows.Forms;
 
 namespace Scramble.GameData
 {
@@ -15,8 +14,8 @@ namespace Scramble.GameData
         public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
-        private RNGCryptoServiceProvider RngProvider;
-        private byte[] RngBuffer;
+        private readonly RNGCryptoServiceProvider RngProvider;
+        private readonly byte[] RngBuffer;
 
         public GameRandomizer()
         {
@@ -223,7 +222,7 @@ namespace Scramble.GameData
                     }
 
                     SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_CharacterId + OffsetSum, CharacterId);
-                }                
+                }
             }
 
             /*SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck1 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
@@ -289,8 +288,8 @@ namespace Scramble.GameData
 
             // Generate the dictionary of pins we'll add based on save index. 
             Dictionary<int, PinItem> Pins = new Dictionary<int, PinItem>();
-            var TotalEquippablePins = Sukuranburu.GetItemManager().GetItems().Values.OfType<PinItem>().Where(p => p.LevelUpType != 6);
-            var AllPins = Sukuranburu.GetItemManager().GetItems().Values.OfType<PinItem>();
+            IEnumerable<PinItem> TotalEquippablePins = Sukuranburu.GetItemManager().GetItems().Values.OfType<PinItem>().Where(p => p.LevelUpType != 6);
+            IEnumerable<PinItem> AllPins = Sukuranburu.GetItemManager().GetItems().Values.OfType<PinItem>();
 
             if (!IncludeUberPins)
             {
@@ -439,14 +438,14 @@ namespace Scramble.GameData
             }
 
             // Generate the clothing enumerable we'll use
-            var EquippableClothing = Sukuranburu.GetItemManager().GetItems().Values.OfType<ClothingItem>();
+            IEnumerable<ClothingItem> EquippableClothing = Sukuranburu.GetItemManager().GetItems().Values.OfType<ClothingItem>();
             if (!UnlimitedAttack)
             {
                 EquippableClothing = EquippableClothing.Where(c => c.AtkBoost < 36);
             }
 
             // Add clothing
-            Dictionary<int, ClothingItem> Clothing = new Dictionary<int, ClothingItem>(); 
+            Dictionary<int, ClothingItem> Clothing = new Dictionary<int, ClothingItem>();
 
             for (int i = 0; i < ClothingToAdd; i++)
             {
@@ -572,7 +571,7 @@ namespace Scramble.GameData
                 SelectedSlot.UpdateOffset_Byte(Offsets.Social_ConnectionStatus_First + i, 0);
             }
 
-            var SocialTrees = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItems().Values.Where(p => p.SkillId > 0);
+            IEnumerable<SkillTree> SocialTrees = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItems().Values.Where(p => p.SkillId > 0);
 
             if (!LateGameConnections)
             {
@@ -640,7 +639,7 @@ namespace Scramble.GameData
 
 
             List<Trophy> AddedTrophies = new List<Trophy>();
-            var Trophies = Sukuranburu.GetItemManager().GetTrophies().Values;
+            Dictionary<byte, Trophy>.ValueCollection Trophies = Sukuranburu.GetItemManager().GetTrophies().Values;
 
             // Clear everything first.
             foreach (Trophy TrophyItem in Trophies)
@@ -718,9 +717,14 @@ namespace Scramble.GameData
             MaxValue += 1;
 
             if (MinValue > MaxValue)
+            {
                 throw new ArgumentOutOfRangeException("MinValue");
+            }
 
-            if (MinValue == MaxValue) return MinValue;
+            if (MinValue == MaxValue)
+            {
+                return MinValue;
+            }
 
             long Difference = MaxValue - MinValue;
             while (true)
