@@ -99,6 +99,16 @@ namespace Scramble.Classes
                 Languages[0].LanguageStrings.TryGetValue(Key, out ReturnValue);
             }
 
+            if (ReturnValue == null)
+            {
+                Languages[0].LanguageStrings.TryGetValue(Key, out ReturnValue);
+
+                if (ReturnValue == null)
+                {
+                    ReturnValue = "{Error}";
+                }
+            }
+
             return ReturnValue;
         }
     }
