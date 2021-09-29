@@ -5,6 +5,8 @@ It works for:
 - NEO TWEWY save files of any version of the game, of both Switch and PS4.
 - TWEWY Final Remix save files of any version of the game.
 
+**No PC support yet!** Please wait for a future version of the editor in which I will add support for the PC version of the game.
+
 [Click here for the GBATemp thread.](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/)
 
 # How to use
@@ -46,7 +48,9 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 
 # Upcoming features
 **For NEO:**
+- Randomizer
 - Edit shop VIP level and last restaurant order.
+- Support for the PC release of NEO.
 
 # Issues, reporting bugs and requests
 If you found a bug or another issue, you can open an issue here on GitHub. For more questions or requests about anything else, you can leave a reply on the [GBATemp thread](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/). I'm actively working on this so I'll try to resolve it ASAP.
