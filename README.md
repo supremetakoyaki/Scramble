@@ -48,9 +48,9 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 
 # Upcoming features
 **For NEO:**
+- Support for the PC release of NEO. (this is priority at the moment)
 - Randomizer
 - Edit shop VIP level and last restaurant order.
-- Support for the PC release of NEO.
 
 # Issues, reporting bugs and requests
 If you found a bug or another issue, you can open an issue here on GitHub. For more questions or requests about anything else, you can leave a reply on the [GBATemp thread](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/). I'm actively working on this so I'll try to resolve it ASAP.
