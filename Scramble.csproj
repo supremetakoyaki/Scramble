@@ -399,6 +399,7 @@
     <Compile Include="Util\ByteUtil.cs" />
     <Compile Include="Util\ColumnSorter.cs" />
     <Compile Include="Util\ListViewComparer.cs" />
+    <Compile Include="Util\Rijndael.cs" />
     <Compile Include="Util\TwewySaveConverter.cs" />
     <EmbeddedResource Include="Forms\CharacterStatEditor.resx">
       <DependentUpon>CharacterStatEditor.cs</DependentUpon>
