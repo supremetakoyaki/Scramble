@@ -1,4 +1,5 @@
 ﻿using Scramble.GameData;
+using Scramble.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -48,8 +49,6 @@ namespace Scramble.Classes
             private set;
         }
 
-        //Unused: private readonly byte[] Hash;
-
         public byte[] Data
         {
             get;
@@ -58,19 +57,17 @@ namespace Scramble.Classes
 
         public int UnixTimestamp_Integer => BitConverter.ToInt32(UnixTimestamp, 0);
 
-        public byte[] Hash_Valid => CalculateNewChecksum();
+        public byte[] Checksum => TwewyChecksum.CalculateChecksum(Data, 0);
 
         public SaveData(int Id, byte[] FullData)
         {
             this.Id = Id;
 
             UnixTimestamp = new byte[UNIX_LENGTH];
-            //Unused: Hash = new byte[HASH_LENGTH];
             Data = new byte[DATA_LENGTH];
 
             IsValid = FullData[VALID_OFFSET];
             Array.Copy(FullData, UNIX_OFFSET, UnixTimestamp, 0, UNIX_LENGTH);
-            //Unused: Array.Copy(FullData, HASH_OFFSET, Hash, 0, HASH_LENGTH);
             Array.Copy(FullData, DATA_OFFSET, Data, 0, DATA_LENGTH);
 
             LoadPartyMembers();
@@ -302,27 +299,11 @@ namespace Scramble.Classes
             Stream.Write(UnixTimestamp, 0, UNIX_LENGTH);
             CurrentPointer += UNIX_LENGTH;
 
-            Stream.Write(Hash_Valid, 0, HASH_LENGTH);
+            Stream.Write(Checksum, 0, HASH_LENGTH);
             CurrentPointer += HASH_LENGTH;
 
             Stream.Write(Data, 0, DATA_LENGTH);
             CurrentPointer += DATA_LENGTH;
-        }
-
-        private byte[] CalculateNewChecksum()
-        {
-            using (SHA256 _SHA256 = SHA256.Create())
-            {
-                byte[] NewHash = _SHA256.ComputeHash(Data, 0, DATA_LENGTH);
-                byte[] FlippedHash = new byte[32];
-
-                for (int i = 0; i < HASH_LENGTH; i++)
-                {
-                    FlippedHash[i] = (byte)(NewHash[31 - i] ^ 255);
-                }
-
-                return FlippedHash;
-            }
         }
 
         public void RetrieveDayData()

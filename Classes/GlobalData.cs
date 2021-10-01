@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scramble.Util;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 
@@ -15,8 +16,9 @@ namespace Scramble.Classes
         private const int GLOBAL_LENGTH = 555;
 
         private readonly byte[] Magic;
+        private readonly bool IsPcVersion;
 
-        private byte[] Hash_Valid => CalculateNewChecksum();
+        private byte[] Checksum => TwewyChecksum.CalculateChecksum(Data, 0);
 
         private byte[] Data
         {
@@ -31,22 +33,6 @@ namespace Scramble.Classes
 
             Array.Copy(FirstData, 0, Magic, 0, MAGIC_LENGTH);
             Array.Copy(FirstData, GLOBAL_OFFSET, Data, 0, GLOBAL_LENGTH);
-        }
-
-        private byte[] CalculateNewChecksum()
-        {
-            using (SHA256 _SHA256 = SHA256.Create())
-            {
-                byte[] NewHash = _SHA256.ComputeHash(Data, 0, GLOBAL_LENGTH);
-                byte[] FlippedHash = new byte[32];
-
-                for (int i = 0; i < HASH_LENGTH; i++)
-                {
-                    FlippedHash[i] = (byte)(NewHash[31 - i] ^ 255);
-                }
-
-                return FlippedHash;
-            }
         }
 
         public void UpdateOffset_Byte(int Offset, byte Value)
@@ -103,7 +89,7 @@ namespace Scramble.Classes
         {
             MemoryStream Stream = new MemoryStream();
             Stream.Write(Magic, 0, MAGIC_LENGTH);
-            Stream.Write(Hash_Valid, 0, HASH_LENGTH);
+            Stream.Write(Checksum, 0, HASH_LENGTH);
             Stream.Write(Data, 0, GLOBAL_LENGTH);
             return Stream.ToArray();
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scramble.Util;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 
@@ -19,7 +20,7 @@ namespace Scramble.Legacy
 
         public string FilePath { get; set; }
         public byte[] Magic { get; set; }
-        public byte[] Checksum => CalculateNewChecksum();
+        public byte[] Checksum => TwewyChecksum.CalculateChecksum(Data, 0);
         public byte[] Data { get; set; }
 
         public LegacySave(byte[] SaveData, string File, out byte Result)
@@ -38,22 +39,6 @@ namespace Scramble.Legacy
             Array.Copy(SaveData, 0, Magic, 0, MAGIC_SIZE);
             Array.Copy(SaveData, DATA_OFFSET, Data, 0, DATA_SIZE);
             Result = 1;
-        }
-
-        private byte[] CalculateNewChecksum()
-        {
-            using (SHA256 _SHA256 = SHA256.Create())
-            {
-                byte[] NewHash = _SHA256.ComputeHash(Data, 0, DATA_SIZE);
-                byte[] FlippedHash = new byte[32];
-
-                for (int i = 0; i < HASH_SIZE; i++)
-                {
-                    FlippedHash[i] = (byte)(NewHash[31 - i] ^ 255);
-                }
-
-                return FlippedHash;
-            }
         }
 
         public void UpdateOffset_Byte(int Offset, byte Value)

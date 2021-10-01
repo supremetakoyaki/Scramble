@@ -9,14 +9,12 @@ namespace Scramble.Util
         public const int SOLOREMIX_MAGIC_OFFSET = 0;
         public const int SOLOREMIX_MAGIC_LENGTH = 26;
         public const int SOLOREMIX_HASH_OFFSET = 26;
-        public const int SOLOREMIX_HASH_LENGTH = 32;
         public const int SOLOREMIX_DATA_OFFSET = 58;
         public const int SOLOREMIX_DATA_LENGTH = 29130;
         public const int SOLOREMIX_SAVE_SIZE = 29188;
 
         public const int FINALREMIX_MAGIC_OFFSET = 0;
         public const int FINALREMIX_MAGIC_LENGTH = 32;
-        public const int FINALREMIX_HASH_LENGTH = 32;
         public const int FINALREMIX_DATA_OFFSET = 64;
         public const int FINALREMIX_DATA_LENGTH = 51188;
         public const int FINALREMIX_SAVE_SIZE = 51252;
@@ -176,27 +174,10 @@ namespace Scramble.Util
             FinalRemix_Data[41902] = 0x0A;
             FinalRemix_Data[41904] = 0x00;
 
-            Save_Stream.Write(CalculateFinalRemixChecksum(FinalRemix_Data), 0, FINALREMIX_HASH_LENGTH);
+            Save_Stream.Write(TwewyChecksum.CalculateChecksum(FinalRemix_Data, 0, FINALREMIX_DATA_LENGTH), 0, 32);
             Save_Stream.Write(FinalRemix_Data, 0, FINALREMIX_DATA_LENGTH);
 
             return Save_Stream.ToArray();
-        }
-
-
-        private static byte[] CalculateFinalRemixChecksum(byte[] Data)
-        {
-            using (SHA256 _SHA256 = SHA256.Create())
-            {
-                byte[] NewHash = _SHA256.ComputeHash(Data, 0, FINALREMIX_DATA_LENGTH);
-                byte[] FlippedHash = new byte[32];
-
-                for (int i = 0; i < FINALREMIX_HASH_LENGTH; i++)
-                {
-                    FlippedHash[i] = (byte)(NewHash[31 - i] ^ 255);
-                }
-
-                return FlippedHash;
-            }
         }
     }
 }
