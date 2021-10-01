@@ -102,7 +102,7 @@ namespace Scramble.Forms
             int PlayerHp = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerData_FoodHp + OffsetSum);
             int PlayerAtk = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerData_FoodAtk + OffsetSum);
             int PlayerDef = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerData_FoodDef + OffsetSum);
-            ushort PlayerStyle = SelectedSlot.RetrieveOffset_UInt16(GameOffsets.Character1_Style + OffsetSum);
+            ushort PlayerStyle = SelectedSlot.RetrieveOffset_UInt16(GameOffsets.PlayerData_FoodSense + OffsetSum);
             ushort PlayerDropRate = SelectedSlot.RetrieveOffset_UInt16(GameOffsets.PlayerData_FoodDropRate + OffsetSum);
 
             if (PlayerHp < HpValueUpDown.Minimum)
@@ -178,7 +178,7 @@ namespace Scramble.Forms
         private void UpdateStyle(ushort AmountToSet, int CharacterId)
         {
             int OffsetSum = (CharacterId - 1) * 20;
-            SelectedSlot.UpdateOffset_UInt16(GameOffsets.Character1_Style + OffsetSum, AmountToSet);
+            SelectedSlot.UpdateOffset_UInt16(GameOffsets.PlayerData_FoodSense + OffsetSum, AmountToSet);
         }
 
         private void UpdateDropRate(ushort AmountToSet, int CharacterId)
