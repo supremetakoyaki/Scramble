@@ -39,7 +39,7 @@ namespace Scramble.Forms
         {
             MasteredPins = new List<ushort>(400);
 
-            for (int i = Offsets.MasteredPins_First; i < Offsets.MasteredPins_Last; i += 4)
+            for (int i = GameOffsets.TrophyParamCount_BadgeMasterIds; i < (GameOffsets.TrophyParamCount_BadgeMasterIds + 1600); i += 4)
             {
                 uint PinId_UInt = SelectedSlot.RetrieveOffset_UInt32(i);
                 if (PinId_UInt != UNASSIGNED && PinId_UInt <= ushort.MaxValue)
@@ -61,11 +61,11 @@ namespace Scramble.Forms
             }
 
             int Index = 0;
-            for (int i = Offsets.MasteredPins_First; i < Offsets.MasteredPins_Last; i += 4)
+            for (int i = GameOffsets.TrophyParamCount_BadgeMasterIds; i < (GameOffsets.TrophyParamCount_BadgeMasterIds + 1600); i += 4)
             {
                 if (MasteredPins.Count > Index)
                 {
-                    SelectedSlot.UpdateOffset_UInt32(i, MasteredPins[Index]); // It is 4 bytes in the save after all...!
+                    SelectedSlot.UpdateOffset_UInt32(i, MasteredPins[Index]);
                 }
                 else
                 {
@@ -98,7 +98,7 @@ namespace Scramble.Forms
                 string Name = Sukuranburu.GetGameString(Item.Name);
                 string TypeStr = Item.Type.ToString();
 
-                int CurrentPointer = Offsets.RecordInv_First + (SaveId * 2);
+                int CurrentPointer = GameOffsets.CollectionRecord + (SaveId * 2);
 
                 bool Unlocked = SelectedSlot.RetrieveOffset_Byte(CurrentPointer) == 1;
                 bool Flag = SelectedSlot.RetrieveOffset_Byte(CurrentPointer + 1) == 1;
@@ -141,7 +141,7 @@ namespace Scramble.Forms
 
             foreach (ListViewItem Item in RecordInvListView.Items)
             {
-                int CurrentPointer = Offsets.RecordInv_First + (Convert.ToInt32(Item.SubItems[1].Text) * 2);
+                int CurrentPointer = GameOffsets.CollectionRecord + (Convert.ToInt32(Item.SubItems[1].Text) * 2);
 
                 SelectedSlot.UpdateOffset_Byte(CurrentPointer, Change);
             }
@@ -156,7 +156,7 @@ namespace Scramble.Forms
 
             foreach (ListViewItem Item in RecordInvListView.Items)
             {
-                int CurrentPointer = Offsets.RecordInv_First + (Convert.ToInt32(Item.SubItems[1].Text) * 2);
+                int CurrentPointer = GameOffsets.CollectionRecord + (Convert.ToInt32(Item.SubItems[1].Text) * 2);
 
                 SelectedSlot.UpdateOffset_Byte(CurrentPointer + 1, Change);
             }
@@ -176,7 +176,7 @@ namespace Scramble.Forms
             foreach (ListViewItem SelectedValue in RecordInvListView.SelectedItems)
             {
                 int SaveId = Convert.ToInt32(SelectedValue.SubItems[1].Text);
-                int Offset = Offsets.RecordInv_First + (SaveId * 2);
+                int Offset = GameOffsets.CollectionRecord + (SaveId * 2);
 
                 if (Flag)
                 {
@@ -202,7 +202,7 @@ namespace Scramble.Forms
             foreach (ListViewItem SelectedValue in RecordInvListView.SelectedItems)
             {
                 int SaveId = Convert.ToInt32(SelectedValue.SubItems[1].Text);
-                int Offset = Offsets.RecordInv_First + (SaveId * 2);
+                int Offset = GameOffsets.CollectionRecord + (SaveId * 2);
 
                 if (Flag)
                 {

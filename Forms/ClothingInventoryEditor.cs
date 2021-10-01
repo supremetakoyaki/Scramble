@@ -112,11 +112,11 @@ namespace Scramble.Forms
             //Clothing data
             // int16 ID
 
-            int ClothesCount = SelectedSlot.RetrieveOffset_Int32(Offsets.ClothingInv_Count);
+            int ClothesCount = SelectedSlot.RetrieveOffset_Int32(GameOffsets.MyCostumeCount);
 
             for (int Index = 0; Index < ClothesCount; Index++)
             {
-                int ClothingId = SelectedSlot.RetrieveOffset_UInt16(Offsets.ClothingInv_First + (Index * 2));
+                int ClothingId = SelectedSlot.RetrieveOffset_UInt16(GameOffsets.MyCostumeList + (Index * 2));
                 ClothingId -= 1; // you subtract 1 to the ID
 
                 if (ClothingId > 0x8000)
@@ -455,16 +455,16 @@ namespace Scramble.Forms
             for (int i = 0; i < 6; i++)
             {
                 int OffsetSum = 36 * i;
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedHeadwearIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedTopIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedBottomIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedShoesIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedAccessoryIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Head + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Top + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Bottom + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Foot + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Accessory + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
             }
 
             //We're also gonna clear every single clothing in this save slot.
             //Necessary to fix a bug.
-            for (int i = Offsets.ClothingInv_First; i < Offsets.ClothingInv_Last; i += 2)
+            for (int i = GameOffsets.MyCostumeList; i < GameOffsets.MyCostumeList_Last; i += 2)
             {
                 SelectedSlot.UpdateOffset_UInt16(EMPTY_CLOTHING_ID, 0);
             }
@@ -477,14 +477,14 @@ namespace Scramble.Forms
                 }
             }
 
-            int CurrentPointer = Offsets.ClothingInv_First;
+            int CurrentPointer = GameOffsets.MyCostumeList;
             int Indexes = 0;
 
             // Clothing data
             // int16: ID + 1 (+32768 if we want it to show "New")
             foreach (InventoryFashion Clothing in InventoryClothes)
             {
-                if (CurrentPointer == Offsets.PartyMember1_CharacterId)
+                if (CurrentPointer == GameOffsets.EquipPlayerID)
                 {
                     break; // We're done!
                 }
@@ -496,7 +496,7 @@ namespace Scramble.Forms
 
                 for (int i = 0; i < Clothing.Amount; i++)
                 {
-                    if (CurrentPointer == Offsets.PartyMember1_CharacterId)
+                    if (CurrentPointer == GameOffsets.EquipPlayerID)
                     {
                         break; // We're done!
                     }
@@ -511,7 +511,7 @@ namespace Scramble.Forms
                         int OffsetSum = 36 * (Clothing.EquipperId - 1);
                         int SlotSum = 4 * SlotType;
 
-                        int ThisOffset = Offsets.PartyMember1_EquippedHeadwearIndex + OffsetSum + SlotSum;
+                        int ThisOffset = GameOffsets.EquipCosIndex_Head + OffsetSum + SlotSum;
 
                         // check if we didn't add the equipped data already.
                         int StoredValue = SelectedSlot.RetrieveOffset_Int32(ThisOffset);
@@ -534,7 +534,7 @@ namespace Scramble.Forms
                 }
             }
 
-            SelectedSlot.UpdateOffset_Int32(Offsets.ClothingInv_Count, Indexes);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.MyCostumeCount, Indexes);
         }
 
         private void MyClothingInvListView_SelectedIndexChanged(object sender, EventArgs e)

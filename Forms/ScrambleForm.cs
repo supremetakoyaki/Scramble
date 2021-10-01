@@ -23,6 +23,7 @@ namespace Scramble
         public DayEditor DayEditor;
         public TurfWarEditor TurfWarEditor;
         public TrophyEditor TrophyEditor;
+        //public ShopEditor ShopEditor;
 
         public SettingsEditor SettEditor;
         public MiscEditor MiscEditor;
@@ -162,7 +163,7 @@ namespace Scramble
 
             if (SelectedSlot != null)
             {
-                DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
+                DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(GameOffsets.DifficultyLevel);
             }
 
             CaloriesEaten_Label.Text = GetString("{CaloriesEaten}");
@@ -279,13 +280,13 @@ namespace Scramble
             InitializedSlotCheckbox.Checked = SelectedSlot.IsValid_Boolean;
 
             // Check for valid data
-            byte Player_Difficulty = SelectedSlot.RetrieveOffset_Byte(Offsets.Difficulty);
-            int Player_Experience = SelectedSlot.RetrieveOffset_Int32(Offsets.Experience);
-            ushort Player_Current_Level = SelectedSlot.RetrieveOffset_UInt16(Offsets.CurrentLevel);
-            int Player_Money = SelectedSlot.RetrieveOffset_Int32(Offsets.Money);
-            int Player_Fp = SelectedSlot.RetrieveOffset_Int32(Offsets.Fp);
-            int Player_Calories = SelectedSlot.RetrieveOffset_Int32(Offsets.Calories);
-            bool Player_Overate = SelectedSlot.RetrieveOffset_Byte(Offsets.Overate) != 0;
+            byte Player_Difficulty = SelectedSlot.RetrieveOffset_Byte(GameOffsets.DifficultyLevel);
+            int Player_Experience = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerTeam_Exp);
+            ushort Player_Current_Level = SelectedSlot.RetrieveOffset_UInt16(GameOffsets.PlayerTeam_NowLevel);
+            int Player_Money = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerTeam_Money);
+            int Player_Fp = SelectedSlot.RetrieveOffset_Int32(GameOffsets.SkillPoint);
+            int Player_Calories = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerTeam_Satiety);
+            bool Player_Overate = SelectedSlot.RetrieveOffset_Byte(GameOffsets.PlayerTeam_IsSatietyPenalty) != 0;
 
             if (Player_Difficulty < 4)
             {
@@ -505,6 +506,15 @@ namespace Scramble
                     ReadyForUserInput = true;
                     return;
                 }
+                else if (Result == 3) // PC version
+                {
+                    ShowWarning(GetString("DLG_PcVersionNotSupportedYet"));
+                    OpenedSaveFile = null;
+
+                    ChangeFormSize(148, 309);
+                    ReadyForUserInput = true;
+                    return;
+                }
 
                 if (SaveSlotsListBox.SelectedIndex == -1)
                 {
@@ -525,8 +535,8 @@ namespace Scramble
 
         private void UpdateCalories()
         {
-            SelectedSlot.UpdateOffset_Byte(Offsets.Overate, Convert.ToByte(OverateCheckbox.Checked));
-            SelectedSlot.UpdateOffset_Int32(Offsets.Calories, (int)Calories_NumUpDown.Value);
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.PlayerTeam_IsSatietyPenalty, Convert.ToByte(OverateCheckbox.Checked));
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerTeam_Satiety, (int)Calories_NumUpDown.Value);
         }
 
         private void UpdateCaloriesPercentage()
@@ -581,7 +591,7 @@ namespace Scramble
                 return;
             }
 
-            SelectedSlot.UpdateOffset_Byte(Offsets.Difficulty, (byte)DifficultyCombo.SelectedIndex);
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.DifficultyLevel, (byte)DifficultyCombo.SelectedIndex);
         }
 
         private void CurrentLevelNUpDown_ValueChanged(object sender, EventArgs e)
@@ -597,7 +607,7 @@ namespace Scramble
                 CurrentLevelNUpDown.Value = MaxTheoreticalLevel;
             }
 
-            SelectedSlot.UpdateOffset_UInt16(Offsets.CurrentLevel, (ushort)CurrentLevelNUpDown.Value);
+            SelectedSlot.UpdateOffset_UInt16(GameOffsets.PlayerTeam_NowLevel, (ushort)CurrentLevelNUpDown.Value);
         }
 
         private void MoneyNUpDown_ValueChanged(object sender, EventArgs e)
@@ -607,7 +617,7 @@ namespace Scramble
                 return;
             }
 
-            SelectedSlot.UpdateOffset_Int32(Offsets.Money, (int)MoneyNUpDown.Value);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerTeam_Money, (int)MoneyNUpDown.Value);
         }
 
         private void FpNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -617,7 +627,7 @@ namespace Scramble
                 return;
             }
 
-            SelectedSlot.UpdateOffset_Int32(Offsets.Fp, (int)FpNumericUpDown.Value);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.SkillPoint, (int)FpNumericUpDown.Value);
         }
 
         private void Calories_NumUpDown_ValueChanged(object sender, EventArgs e)
@@ -746,7 +756,7 @@ namespace Scramble
                 return;
             }
 
-            SelectedSlot.UpdateOffset_Int32(Offsets.Experience, (int)ExpNumericUpDown.Value);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerTeam_Exp, (int)ExpNumericUpDown.Value);
 
             int TheoreticalLevel = GetCharacterManager().GetLevel((int)ExpNumericUpDown.Value);
             LvLabel.Text = TheoreticalLevel.ToString();
@@ -906,6 +916,12 @@ namespace Scramble
         {
             TrophyEditor = new TrophyEditor();
             TrophyEditor.ShowDialog();
+        }
+
+        private void OpenShopEdit_Button_Click(object sender, EventArgs e)
+        {
+            //ShopEditor = new ShopEditor();
+            //ShopEditor.ShowDialog();
         }
 
         private void LanguageSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)

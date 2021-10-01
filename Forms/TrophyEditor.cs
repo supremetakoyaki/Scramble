@@ -91,7 +91,7 @@ namespace Scramble.Forms
                 };
                 TrophyListView.Items.Add(ItemToAdd);
 
-                short LayerIndex = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + (15 * TrophyItem.Id));
+                short LayerIndex = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + (15 * TrophyItem.Id));
                 LayeredTrophies.Add(new Tuple<byte, short>(TrophyItem.Id, LayerIndex));
             }
         }
@@ -109,7 +109,7 @@ namespace Scramble.Forms
                 if (LayeredTrophies[i].Item2 != -1)
                 {
                     // We don't really need to do this, as we execute it while closing: LayeredTrophies[i] = new Tuple<byte, short>(LayeredTrophies[i].Item1, Index);
-                    SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + (15 * LayeredTrophies[i].Item1), Index);
+                    SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + (15 * LayeredTrophies[i].Item1), Index);
                     Index += 1;
                 }
             }
@@ -139,15 +139,15 @@ namespace Scramble.Forms
                     if (TrophyItem != null)
                     {
                         int OffsetSum = 15 * TrophyId;
-                        bool Unlocked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum) != 0;
-                        bool Deployed = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum) != -1;
+                        bool Unlocked = SelectedSlot.RetrieveOffset_Byte(GameOffsets.TrophyRecord_IsGet + OffsetSum) != 0;
+                        bool Deployed = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + OffsetSum) != -1;
 
                         if (Unlocked && Deployed) // Time to draw!
                         {
-                            short XPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum);
-                            short YPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum);
-                            float Scale = SelectedSlot.RetrieveOffset_Float(Offsets.Trophies_Scale_First + OffsetSum);
-                            short Angle = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum);
+                            short XPos = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutPosition_X + OffsetSum);
+                            short YPos = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Y + OffsetSum);
+                            float Scale = SelectedSlot.RetrieveOffset_Float(GameOffsets.TrophyRecord_PutScale + OffsetSum);
+                            short Angle = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutRotation + OffsetSum);
 
                             Angle = (short)(0 - Angle);
 
@@ -216,24 +216,24 @@ namespace Scramble.Forms
             Rotation_NumUpDown.Enabled = true;
             Scale_NumUpDown.Enabled = true;
 
-            Unlocked_Checkbox.Checked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum) != 0;
-            Unseen_Checkbox.Checked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum) != 0;
-            ShowAsNew_Checkbox.Checked = SelectedSlot.RetrieveOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum) != 0;
+            Unlocked_Checkbox.Checked = SelectedSlot.RetrieveOffset_Byte(GameOffsets.TrophyRecord_IsGet + OffsetSum) != 0;
+            Unseen_Checkbox.Checked = SelectedSlot.RetrieveOffset_Byte(GameOffsets.TrophyRecord_IsGetDialog + OffsetSum) != 0;
+            ShowAsNew_Checkbox.Checked = SelectedSlot.RetrieveOffset_Byte(GameOffsets.TrophyRecord_IsGetDialog + OffsetSum) != 0;
             DeployTrophy_Button.Enabled = Unlocked_Checkbox.Checked;
 
-            short XPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum);
+            short XPos = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutPosition_X + OffsetSum);
             if (XPos < XPos_NumUpDown.Minimum || XPos > XPos_NumUpDown.Maximum)
             {
                 XPos = 0;
             }
 
-            short YPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum);
+            short YPos = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Y + OffsetSum);
             if (YPos < YPos_NumUpDown.Minimum || YPos > YPos_NumUpDown.Maximum)
             {
                 YPos = 0;
             }
 
-            short ZPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum);
+            short ZPos = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + OffsetSum);
             if (ZPos < ZPos_NumUpDown.Minimum)
             {
                 ZPos = (short)ZPos_NumUpDown.Minimum;
@@ -243,7 +243,7 @@ namespace Scramble.Forms
                 ZPos = (short)ZPos_NumUpDown.Maximum;
             }
 
-            decimal Scale = (decimal)SelectedSlot.RetrieveOffset_Float(Offsets.Trophies_Scale_First + OffsetSum);
+            decimal Scale = (decimal)SelectedSlot.RetrieveOffset_Float(GameOffsets.TrophyRecord_PutScale + OffsetSum);
             if (Scale < Scale_NumUpDown.Minimum)
             {
                 Scale = Scale_NumUpDown.Minimum;
@@ -253,7 +253,7 @@ namespace Scramble.Forms
                 Scale = Scale_NumUpDown.Maximum;
             }
 
-            short RotationAngle = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum);
+            short RotationAngle = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutRotation + OffsetSum);
             if (RotationAngle < Rotation_NumUpDown.Minimum || RotationAngle > Rotation_NumUpDown.Maximum)
             {
                 RotationAngle = 0;
@@ -334,7 +334,7 @@ namespace Scramble.Forms
 
             short X_ValueToSet = (short)XPos_NumUpDown.Value;
             int OffsetSum = 15 * SelectedTrophy;
-            SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum, X_ValueToSet);
+            SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_X + OffsetSum, X_ValueToSet);
 
             if (AutoDrawWall_Checkbox.Checked)
             {
@@ -355,7 +355,7 @@ namespace Scramble.Forms
 
             short Y_ValueToSet = (short)YPos_NumUpDown.Value;
             int OffsetSum = 15 * SelectedTrophy;
-            SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum, Y_ValueToSet);
+            SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Y + OffsetSum, Y_ValueToSet);
 
             if (AutoDrawWall_Checkbox.Checked)
             {
@@ -375,9 +375,9 @@ namespace Scramble.Forms
             ReadyForUserInput = false;
             int OffsetSum = 15 * SelectedTrophy;
 
-            short Z_PreviousValue = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum);
+            short Z_PreviousValue = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + OffsetSum);
             short Z_ValueToSet = (short)ZPos_NumUpDown.Value;
-            SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, Z_ValueToSet);
+            SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + OffsetSum, Z_ValueToSet);
 
             UpdateLayer(SelectedTrophy, Z_ValueToSet);
 
@@ -400,7 +400,7 @@ namespace Scramble.Forms
 
             float Scale_ValueToSet = (float)Scale_NumUpDown.Value;
             int OffsetSum = 15 * SelectedTrophy;
-            SelectedSlot.UpdateOffset_Float(Offsets.Trophies_Scale_First + OffsetSum, Scale_ValueToSet);
+            SelectedSlot.UpdateOffset_Float(GameOffsets.TrophyRecord_PutScale + OffsetSum, Scale_ValueToSet);
 
             if (AutoDrawWall_Checkbox.Checked)
             {
@@ -421,7 +421,7 @@ namespace Scramble.Forms
 
             short Rotation_ValueToSet = (short)Rotation_NumUpDown.Value;
             int OffsetSum = 15 * SelectedTrophy;
-            SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum, Rotation_ValueToSet);
+            SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutRotation + OffsetSum, Rotation_ValueToSet);
 
             if (AutoDrawWall_Checkbox.Checked)
             {
@@ -442,7 +442,7 @@ namespace Scramble.Forms
 
             byte FlagToSet = Unlocked_Checkbox.Checked ? (byte)1 : (byte)0;
             int OffsetSum = 15 * SelectedTrophy;
-            SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum, FlagToSet);
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.TrophyRecord_IsGet + OffsetSum, FlagToSet);
             DeployTrophy_Button.Enabled = Unlocked_Checkbox.Checked;
             SortLayers();
 
@@ -465,7 +465,7 @@ namespace Scramble.Forms
 
             byte FlagToSet = Unseen_Checkbox.Checked ? (byte)1 : (byte)0;
             int OffsetSum = 15 * SelectedTrophy;
-            SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum, FlagToSet);
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.TrophyRecord_IsGetDialog + OffsetSum, FlagToSet);
 
             if (AutoDrawWall_Checkbox.Checked)
             {
@@ -488,7 +488,7 @@ namespace Scramble.Forms
             {
                 byte TrophyId = (byte)Trophy.Tag;
                 int OffsetSum = 15 * TrophyId;
-                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum, 1);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.TrophyRecord_IsGet + OffsetSum, 1);
             }
 
             if (SelectedTrophy != 0xFF)
@@ -520,11 +520,11 @@ namespace Scramble.Forms
                 int OffsetSum = 15 * TrophyId;
 
                 //SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum, 1);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum, 0);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum, 0);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, -1);
-                SelectedSlot.UpdateOffset_Float(Offsets.Trophies_Scale_First + OffsetSum, 0.6666667f);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_X + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Y + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + OffsetSum, -1);
+                SelectedSlot.UpdateOffset_Float(GameOffsets.TrophyRecord_PutScale + OffsetSum, 0.6666667f);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutRotation + OffsetSum, 0);
             }
 
             for (int i = 0; i < LayeredTrophies.Count; i++)
@@ -558,17 +558,17 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
             int OffsetSum = 15 * SelectedTrophy;
-            short CurrentZPos = SelectedSlot.RetrieveOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum);
+            short CurrentZPos = SelectedSlot.RetrieveOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + OffsetSum);
 
             if (CurrentZPos != -1)
             {
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, -1);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + OffsetSum, -1);
                 UpdateLayer(SelectedTrophy, -1);
                 ZPos_NumUpDown.Value = -1;
             }
             else
             {
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + OffsetSum, 0);
                 UpdateLayer(SelectedTrophy, 0);
                 ZPos_NumUpDown.Value = 0;
             }
@@ -593,7 +593,7 @@ namespace Scramble.Forms
 
             byte FlagToSet = ShowAsNew_Checkbox.Checked ? (byte)1 : (byte)0;
             int OffsetSum = 15 * SelectedTrophy;
-            SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_ShowAsNew_First + OffsetSum, FlagToSet);
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.TrophyRecord_IsNew + OffsetSum, FlagToSet);
 
             if (AutoDrawWall_Checkbox.Checked)
             {

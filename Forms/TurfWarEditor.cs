@@ -29,10 +29,10 @@ namespace Scramble.Forms
             {
                 if (SelectedSlot.CurrentDay == 10) // w2d3
                 {
-                    return Offsets.TurfWar_CurrentPoints_W2D3;
+                    return GameOffsets.StrugglePoint_w2d3;
                 }
 
-                return Offsets.TurfWar_CurrentPoints;
+                return GameOffsets.StrugglePoint;
             }
         }
 
@@ -124,8 +124,8 @@ namespace Scramble.Forms
             ListViewItem LvItem = TurfWar_ListView.SelectedItems[0];
             int OffsetSum = (5 * (int)LvItem.Tag);
 
-            byte PlacementIndex = SelectedSlot.RetrieveOffset_Byte(Offsets.TurfWar_Placement_First + OffsetSum);
-            uint HighScore = SelectedSlot.RetrieveOffset_UInt32(Offsets.TurfWar_HighScore_First + OffsetSum);
+            byte PlacementIndex = SelectedSlot.RetrieveOffset_Byte(GameOffsets.StruggleClearIsReward + OffsetSum);
+            uint HighScore = SelectedSlot.RetrieveOffset_UInt32(GameOffsets.StruggleHighScore + OffsetSum);
 
             if (HighScore > HighScore_NumUpDown.Maximum)
             {
@@ -212,7 +212,7 @@ namespace Scramble.Forms
             ListViewItem LvItem = TurfWar_ListView.SelectedItems[0];
             int OffsetSum = (5 * (int)LvItem.Tag);
 
-            SelectedSlot.UpdateOffset_UInt32(Offsets.TurfWar_HighScore_First + OffsetSum, (uint)HighScore_NumUpDown.Value);
+            SelectedSlot.UpdateOffset_UInt32(GameOffsets.StruggleHighScore + OffsetSum, (uint)HighScore_NumUpDown.Value);
             ReadyForUserInput = true;
         }
 
@@ -254,7 +254,7 @@ namespace Scramble.Forms
                     break;
             }
 
-            SelectedSlot.UpdateOffset_Byte(Offsets.TurfWar_Placement_First + OffsetSum, ValueToSet);
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.StruggleClearIsReward + OffsetSum, ValueToSet);
             ReadyForUserInput = true;
         }
 
@@ -269,12 +269,12 @@ namespace Scramble.Forms
 
             if (MaxPrizes_AllScrambles_Checkbox.Checked)
             {
-                SelectedSlot.UpdateOffset_Byte(Offsets.TurfWar_Placement_First, TROPHY_YES_FIRSTPLACE);
-                SelectedSlot.UpdateOffset_Byte(Offsets.TurfWar_Placement_First + 5, TROPHY_YES_FIRSTPLACE);
-                SelectedSlot.UpdateOffset_Byte(Offsets.TurfWar_Placement_First + 10, TROPHY_YES_FIRSTPLACE);
-                SelectedSlot.UpdateOffset_UInt32(Offsets.TurfWar_HighScore_First, IDEAL_POINTS_SCRAMBLE_0);
-                SelectedSlot.UpdateOffset_UInt32(Offsets.TurfWar_HighScore_First + 5, IDEAL_POINTS_SCRAMBLE_1);
-                SelectedSlot.UpdateOffset_UInt32(Offsets.TurfWar_HighScore_First + 10, IDEAL_POINTS_SCRAMBLE_2);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.StruggleClearIsReward, TROPHY_YES_FIRSTPLACE);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.StruggleClearIsReward + 5, TROPHY_YES_FIRSTPLACE);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.StruggleClearIsReward + 10, TROPHY_YES_FIRSTPLACE);
+                SelectedSlot.UpdateOffset_UInt32(GameOffsets.StruggleHighScore, IDEAL_POINTS_SCRAMBLE_0);
+                SelectedSlot.UpdateOffset_UInt32(GameOffsets.StruggleHighScore + 5, IDEAL_POINTS_SCRAMBLE_1);
+                SelectedSlot.UpdateOffset_UInt32(GameOffsets.StruggleHighScore + 10, IDEAL_POINTS_SCRAMBLE_2);
 
                 if (TurfWar_ListView.SelectedItems.Count == 1)
                 {
@@ -316,8 +316,8 @@ namespace Scramble.Forms
                 }
 
                 TurfWarPlacement_ComboBox.SelectedIndex = 4;
-                SelectedSlot.UpdateOffset_UInt32(Offsets.TurfWar_HighScore_First + (5 * SaveIndex), (uint)HighScore_NumUpDown.Value);
-                SelectedSlot.UpdateOffset_Byte(Offsets.TurfWar_Placement_First + (5 * SaveIndex), TROPHY_YES_FIRSTPLACE);
+                SelectedSlot.UpdateOffset_UInt32(GameOffsets.StruggleHighScore + (5 * SaveIndex), (uint)HighScore_NumUpDown.Value);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.StruggleClearIsReward + (5 * SaveIndex), TROPHY_YES_FIRSTPLACE);
             }
 
             ReadyForUserInput = true;

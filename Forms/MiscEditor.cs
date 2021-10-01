@@ -35,7 +35,7 @@ namespace Scramble.Forms
 
         private void LoadUnlockedDlc()
         {
-            byte DlcByte = SaveGlobal.RetrieveOffset_Byte(Offsets.Dlc);
+            byte DlcByte = SaveGlobal.RetrieveOffset_Byte(SystemOffsets.DLCFlags);
 
             bool Dlc1_Unlocked = ByteUtil.GetBit(DlcByte, 0);
             bool Dlc2_Unlocked = ByteUtil.GetBit(DlcByte, 1);
@@ -53,9 +53,9 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            byte OgByte = SaveGlobal.RetrieveOffset_Byte(Offsets.Dlc);
+            byte OgByte = SaveGlobal.RetrieveOffset_Byte(SystemOffsets.DLCFlags);
             byte NewByte = ByteUtil.SetBit(OgByte, 0, Dlc1_Checkbox.Checked);
-            SaveGlobal.UpdateOffset_Byte(Offsets.Dlc, NewByte);
+            SaveGlobal.UpdateOffset_Byte(SystemOffsets.DLCFlags, NewByte);
 
             ReadyForUserInput = true;
         }
@@ -69,9 +69,9 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            byte OgByte = SaveGlobal.RetrieveOffset_Byte(Offsets.Dlc);
+            byte OgByte = SaveGlobal.RetrieveOffset_Byte(SystemOffsets.DLCFlags);
             byte NewByte = ByteUtil.SetBit(OgByte, 1, Dlc1_Checkbox.Checked);
-            SaveGlobal.UpdateOffset_Byte(Offsets.Dlc, NewByte);
+            SaveGlobal.UpdateOffset_Byte(SystemOffsets.DLCFlags, NewByte);
 
             ReadyForUserInput = true;
         }

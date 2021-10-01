@@ -439,11 +439,11 @@ namespace Scramble.Forms
             }
 
             int OffsetSum = SkillItem.SaveIndex / 8;
-            byte ByteToSet = SelectedSlot.RetrieveOffset_Byte(Offsets.Skills_First + OffsetSum);
+            byte ByteToSet = SelectedSlot.RetrieveOffset_Byte(GameOffsets.SkillFlag + OffsetSum);
             byte BitIndex = (byte)(SkillItem.SaveIndex % 8);
 
             ByteToSet = ByteUtil.SetBit(ByteToSet, BitIndex, Value);
-            SelectedSlot.UpdateOffset_Byte(Offsets.Skills_First + OffsetSum, ByteToSet);
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.SkillFlag + OffsetSum, ByteToSet);
         }
 
         private bool RetrieveSkillValue(Skill SkillItem)
@@ -459,7 +459,7 @@ namespace Scramble.Forms
             }
 
             int OffsetSum = SkillItem.SaveIndex / 8;
-            byte ByteToSet = SelectedSlot.RetrieveOffset_Byte(Offsets.Skills_First + OffsetSum);
+            byte ByteToSet = SelectedSlot.RetrieveOffset_Byte(GameOffsets.SkillFlag + OffsetSum);
             byte BitIndex = (byte)(SkillItem.SaveIndex % 8);
 
             return ByteUtil.GetBit(ByteToSet, BitIndex);
@@ -477,7 +477,7 @@ namespace Scramble.Forms
                 throw new ArgumentOutOfRangeException();
             }
 
-            int Offset = Offsets.Social_ConnectionStatus_First + TreeItem.SaveIndex;
+            int Offset = GameOffsets.SkillTreeFlags + TreeItem.SaveIndex;
             byte ValueToSet = SelectedSlot.RetrieveOffset_Byte(Offset);
 
             ValueToSet = ByteUtil.SetBit(ValueToSet, 7, Value);
@@ -496,7 +496,7 @@ namespace Scramble.Forms
                 throw new ArgumentOutOfRangeException();
             }
 
-            int Offset = Offsets.Social_ConnectionStatus_First + TreeItem.SaveIndex;
+            int Offset = GameOffsets.SkillTreeFlags + TreeItem.SaveIndex;
             return ByteUtil.GetBit(SelectedSlot.RetrieveOffset_Byte(Offset), 7);
         }
 
@@ -512,7 +512,7 @@ namespace Scramble.Forms
                 throw new ArgumentOutOfRangeException();
             }
 
-            int Offset = Offsets.Social_ConnectionStatus_First + TreeItem.SaveIndex;
+            int Offset = GameOffsets.SkillTreeFlags + TreeItem.SaveIndex;
             byte ValueToSet = SelectedSlot.RetrieveOffset_Byte(Offset);
 
             ValueToSet = ByteUtil.SetBit(ValueToSet, 6, Value);
@@ -531,7 +531,7 @@ namespace Scramble.Forms
                 throw new ArgumentOutOfRangeException();
             }
 
-            int Offset = Offsets.Social_ConnectionStatus_First + TreeItem.SaveIndex;
+            int Offset = GameOffsets.SkillTreeFlags + TreeItem.SaveIndex;
             return ByteUtil.GetBit(SelectedSlot.RetrieveOffset_Byte(Offset), 6);
         }
 

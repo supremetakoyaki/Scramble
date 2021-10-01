@@ -69,7 +69,7 @@ namespace Scramble.Forms
 
                 if (Sukuranburu.ShowSpoilers == false)
                 {
-                    int Offset = Offsets.Noisepedia_Id0_NotEncounteredYet + (13 * Entry.Id);
+                    int Offset = GameOffsets.NoiseRecord_IsNew + (13 * Entry.Id);
                     bool NoiseIsSpoiler = SelectedSlot.RetrieveOffset_Byte(Offset) != 0;
 
                     if (NoiseIsSpoiler)
@@ -140,13 +140,13 @@ namespace Scramble.Forms
 
         private void DisplayNoiseData(NoisepediaEntry Entry, Noise Noizu)
         {
-            int RecordLevel = SelectedSlot.RetrieveOffset_Int32(Offsets.Noisepedia_Id0_RecordLevel + (13 * Entry.Id));
-            int ErasedCount = SelectedSlot.RetrieveOffset_Int32(Offsets.Noisepedia_Id0_Erased + (13 * Entry.Id));
-            bool EasyDrop_Unlocked = SelectedSlot.RetrieveOffset_Byte(Offsets.Noisepedia_Id0_EasyPinUnlocked + (13 * Entry.Id)) != 0;
-            bool NormalDrop_Unlocked = SelectedSlot.RetrieveOffset_Byte(Offsets.Noisepedia_Id0_NormalPinUnlocked + (13 * Entry.Id)) != 0;
-            bool HardDrop_Unlocked = SelectedSlot.RetrieveOffset_Byte(Offsets.Noisepedia_Id0_HardPinUnlocked + (13 * Entry.Id)) != 0;
-            bool UltimateDrop_Unlocked = SelectedSlot.RetrieveOffset_Byte(Offsets.Noisepedia_Id0_UltimatePinUnlocked + (13 * Entry.Id)) != 0;
-            bool NotEncounteredYet = SelectedSlot.RetrieveOffset_Byte(Offsets.Noisepedia_Id0_NotEncounteredYet + (13 * Entry.Id)) != 0;
+            int RecordLevel = SelectedSlot.RetrieveOffset_Int32(GameOffsets.NoiseRecord_DefeatLevel + (13 * Entry.Id));
+            int ErasedCount = SelectedSlot.RetrieveOffset_Int32(GameOffsets.NoiseRecord_DefeatNum + (13 * Entry.Id));
+            bool EasyDrop_Unlocked = SelectedSlot.RetrieveOffset_Byte(GameOffsets.NoiseRecord_DropGetFlag_Easy + (13 * Entry.Id)) != 0;
+            bool NormalDrop_Unlocked = SelectedSlot.RetrieveOffset_Byte(GameOffsets.NoiseRecord_DropGetFlag_Normal + (13 * Entry.Id)) != 0;
+            bool HardDrop_Unlocked = SelectedSlot.RetrieveOffset_Byte(GameOffsets.NoiseRecord_DropGetFlag_Hard + (13 * Entry.Id)) != 0;
+            bool UltimateDrop_Unlocked = SelectedSlot.RetrieveOffset_Byte(GameOffsets.NoiseRecord_DropGetFlag_Ultimate + (13 * Entry.Id)) != 0;
+            bool NotEncounteredYet = SelectedSlot.RetrieveOffset_Byte(GameOffsets.NoiseRecord_IsNew + (13 * Entry.Id)) != 0;
 
             if (Sukuranburu.ShowSpoilers == false && NotEncounteredYet)
             {
@@ -363,23 +363,23 @@ namespace Scramble.Forms
 
         private void UpdateRecordLevel(byte EntryId, int Value)
         {
-            SelectedSlot.UpdateOffset_Int32(Offsets.Noisepedia_Id0_RecordLevel + (13 * EntryId), Value);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.NoiseRecord_DefeatLevel + (13 * EntryId), Value);
         }
 
         private void UpdateErasedCount(byte EntryId, int Value)
         {
-            SelectedSlot.UpdateOffset_Int32(Offsets.Noisepedia_Id0_Erased + (13 * EntryId), Value);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.NoiseRecord_DefeatNum + (13 * EntryId), Value);
         }
 
         private void UpdateEncountered(byte EntryId, bool Value)
         {
             // Note that the offset is called "NOT ENCOUNTERED YET", so the Value should be passed as the complete opposite!
-            SelectedSlot.UpdateOffset_Byte(Offsets.Noisepedia_Id0_NotEncounteredYet + (13 * EntryId), Convert.ToByte(Value));
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.NoiseRecord_IsNew + (13 * EntryId), Convert.ToByte(Value));
         }
 
         private void UpdatePinValue(byte EntryId, byte Difficulty, bool Value)
         {
-            SelectedSlot.UpdateOffset_Byte(Offsets.Noisepedia_Id0_EasyPinUnlocked + (13 * EntryId) + Difficulty, Convert.ToByte(Value));
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.NoiseRecord_DropGetFlag_Easy + (13 * EntryId) + Difficulty, Convert.ToByte(Value));
         }
 
         private void NoisepediaListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -671,8 +671,8 @@ namespace Scramble.Forms
                         }
                     }
 
-                    int RecordLevel = SelectedSlot.RetrieveOffset_Int32(Offsets.Noisepedia_Id0_RecordLevel + (13 * EntryId));
-                    int ErasedCount = SelectedSlot.RetrieveOffset_Int32(Offsets.Noisepedia_Id0_Erased + (13 * EntryId));
+                    int RecordLevel = SelectedSlot.RetrieveOffset_Int32(GameOffsets.NoiseRecord_DefeatLevel + (13 * EntryId));
+                    int ErasedCount = SelectedSlot.RetrieveOffset_Int32(GameOffsets.NoiseRecord_DefeatNum + (13 * EntryId));
 
                     if (RecordLevel == -1)
                     {

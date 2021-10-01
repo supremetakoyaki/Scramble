@@ -87,24 +87,24 @@ namespace Scramble.Classes
                 int OffsetSum = 36 * i;
 
                 int MemberId = i + 1;
-                int CharacterId = RetrieveOffset_Int32(Offsets.PartyMember1_CharacterId + OffsetSum);
+                int CharacterId = RetrieveOffset_Int32(GameOffsets.EquipPlayerID + OffsetSum);
 
                 if (CharacterId != NOT_ASSIGNED_DATA)
                 {
                     Dictionary<byte, int> EquippedPinIndexes = new Dictionary<byte, int>
                     {
-                        { 1, RetrieveOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck1 + OffsetSum) },
-                        { 2, RetrieveOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck2 + OffsetSum) },
-                        { 3, RetrieveOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck3 + OffsetSum) }
+                        { 1, RetrieveOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck1 + OffsetSum) },
+                        { 2, RetrieveOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck2 + OffsetSum) },
+                        { 3, RetrieveOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck3 + OffsetSum) }
                     };
 
                     List<int> EquippedClothing = new List<int>
                     {
-                        RetrieveOffset_Int32(Offsets.PartyMember1_EquippedHeadwearIndex + OffsetSum),
-                        RetrieveOffset_Int32(Offsets.PartyMember1_EquippedTopIndex + OffsetSum),
-                        RetrieveOffset_Int32(Offsets.PartyMember1_EquippedBottomIndex + OffsetSum),
-                        RetrieveOffset_Int32(Offsets.PartyMember1_EquippedShoesIndex + OffsetSum),
-                        RetrieveOffset_Int32(Offsets.PartyMember1_EquippedAccessoryIndex + OffsetSum)
+                        RetrieveOffset_Int32(GameOffsets.EquipCosIndex_Head + OffsetSum),
+                        RetrieveOffset_Int32(GameOffsets.EquipCosIndex_Top + OffsetSum),
+                        RetrieveOffset_Int32(GameOffsets.EquipCosIndex_Bottom + OffsetSum),
+                        RetrieveOffset_Int32(GameOffsets.EquipCosIndex_Foot + OffsetSum),
+                        RetrieveOffset_Int32(GameOffsets.EquipCosIndex_Accessory + OffsetSum)
                     };
 
                     PartyMembers.Add(MemberId, new PartyMember(MemberId, (byte)CharacterId, i, EquippedPinIndexes, EquippedClothing));
@@ -327,8 +327,8 @@ namespace Scramble.Classes
 
         public void RetrieveDayData()
         {
-            CurrentDay = (byte)RetrieveOffset_Int32(Offsets.CurrentDay);
-            FurthestDay = (byte)RetrieveOffset_Int32(Offsets.MaxDay);
+            CurrentDay = (byte)RetrieveOffset_Int32(GameOffsets.CurrentPlayDateDay);
+            FurthestDay = (byte)RetrieveOffset_Int32(GameOffsets.ScenarioNewestDateDay);
         }
 
         public void DumpData(string FilePath)

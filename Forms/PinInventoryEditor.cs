@@ -65,7 +65,7 @@ namespace Scramble.Forms
             // int32: experience
 
             int CurrentIndex = 0;
-            for (int CurrentPointer = Offsets.PinInv_First; CurrentPointer < Offsets.PinInv_VeryLast; CurrentPointer += 8)
+            for (int CurrentPointer = GameOffsets.MyBadgeList; CurrentPointer < GameOffsets.MyBadgeList_Last; CurrentPointer += 8)
             {
                 ushort PinId = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer);
 
@@ -260,9 +260,9 @@ namespace Scramble.Forms
             for (int i = 0; i < 6; i++)
             {
                 int OffsetSum = 36 * i;
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck1 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck2 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck3 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck1 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck2 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck3 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
             }
 
             // Pin data:
@@ -270,7 +270,7 @@ namespace Scramble.Forms
             // int16: level
             // int32: experience
 
-            int CurrentPointer = Offsets.PinInv_First;
+            int CurrentPointer = GameOffsets.MyBadgeList;
             int PinIndexes = 0;
 
             foreach (InventoryPin Pin in InventoryPins)
@@ -291,7 +291,7 @@ namespace Scramble.Forms
                             int DeckOffsetSum = 4 * (DeckId - 1);
 
                             // check if we didn't add the equipped data already, for a duplicate of this pin, for example.
-                            int ThisOffset = Offsets.PartyMember1_EquippedPinIndex_Deck1 + DeckOffsetSum + OffsetSum;
+                            int ThisOffset = GameOffsets.BadgeEquipPlayerIndex_Deck1 + DeckOffsetSum + OffsetSum;
                             int StoredValue = SelectedSlot.RetrieveOffset_Int32(ThisOffset);
 
                             if (StoredValue == SaveData.NOT_ASSIGNED_DATA)
@@ -308,7 +308,7 @@ namespace Scramble.Forms
             }
 
             // Fill in the blanks.
-            for (int i = CurrentPointer; i < Offsets.PinInv_VeryLast; i += 8)
+            for (int i = CurrentPointer; i < GameOffsets.MyBadgeList_Last; i += 8)
             {
                 SelectedSlot.UpdateOffset_UInt16(i, EMPTY_PIN_ID);
                 SelectedSlot.UpdateOffset_UInt16(i + 2, 0);
@@ -316,8 +316,8 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_UInt16(i + 6, 0);
             }
 
-            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_Count, PinIndexes);
-            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_CountOfIndexes, PinIndexes - 1);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEmptyIndex, PinIndexes);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeLastUseIndex, PinIndexes - 1);
         }
 
         private void InsertPinToListView(InventoryPin Pin)

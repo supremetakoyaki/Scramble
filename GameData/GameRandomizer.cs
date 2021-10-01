@@ -134,8 +134,8 @@ namespace Scramble.GameData
                     break;
             }
 
-            SelectedSlot.UpdateOffset_Int32(Offsets.CurrentDay, CurrentDayToSet);
-            SelectedSlot.UpdateOffset_Int32(Offsets.MaxDay, FurthestDayToSet);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.CurrentPlayDateDay, CurrentDayToSet);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ScenarioNewestDateDay, FurthestDayToSet);
         }
 
         public void RandomizeParty(RandomizerChaos LevelOfChaos)
@@ -199,7 +199,7 @@ namespace Scramble.GameData
 
                 if (PartyMembers.Count < i + 1)
                 {
-                    SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_CharacterId + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                    SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
                 }
                 else
                 {
@@ -221,7 +221,7 @@ namespace Scramble.GameData
                         CharacterId = 6; // Neku
                     }
 
-                    SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_CharacterId + OffsetSum, CharacterId);
+                    SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + OffsetSum, CharacterId);
                 }
             }
 
@@ -281,9 +281,9 @@ namespace Scramble.GameData
             for (i = 0; i < 6; i++)
             {
                 int OffsetSum = 36 * i;
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck1 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck2 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck3 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck1 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck2 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck3 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
             }
 
             // Generate the dictionary of pins we'll add based on save index. 
@@ -304,7 +304,7 @@ namespace Scramble.GameData
             }
 
             // Assign a random battle pin to every party member first. This way, the game won't crash.
-            int CurrentPointer = Offsets.PinInv_First;
+            int CurrentPointer = GameOffsets.MyBadgeList;
             for (i = 0; i < SelectedSlot.GetPartyMembers().Count; i++)
             {
                 PinItem NextPinItem = TotalEquippablePins.ElementAt(GenerateRandomNumber(0, TotalEquippablePins.Count() - 1));
@@ -319,9 +319,9 @@ namespace Scramble.GameData
                 Pins.Add(i, NextPinItem);
 
                 int OffsetSum = 36 * (SelectedSlot.GetPartyMembers().Values.ToList()[i].SaveIndex);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck1 + OffsetSum, i);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck2 + OffsetSum, i);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedPinIndex_Deck3 + OffsetSum, i);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck1 + OffsetSum, i);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck2 + OffsetSum, i);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck3 + OffsetSum, i);
 
                 SelectedSlot.UpdateOffset_UInt16(CurrentPointer, NextPinItem.ParticularId);
 
@@ -369,11 +369,11 @@ namespace Scramble.GameData
             }
 
             // Update counts
-            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_Count, PinsToAdd);
-            SelectedSlot.UpdateOffset_Int32(Offsets.PinInv_CountOfIndexes, PinsToAdd - 1);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEmptyIndex, PinsToAdd);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeLastUseIndex, PinsToAdd - 1);
 
             // Fill in the blanks
-            for (i = CurrentPointer; i < Offsets.PinInv_VeryLast; i += 8)
+            for (i = CurrentPointer; i < GameOffsets.MyBadgeList_Last; i += 8)
             {
                 SelectedSlot.UpdateOffset_UInt16(i, PinInventoryEditor.EMPTY_PIN_ID);
                 SelectedSlot.UpdateOffset_UInt16(i + 2, 0);
@@ -417,14 +417,14 @@ namespace Scramble.GameData
             for (int i = 0; i < 6; i++)
             {
                 int OffsetSum = 36 * i;
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedHeadwearIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedTopIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedBottomIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedShoesIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(Offsets.PartyMember1_EquippedAccessoryIndex + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Head + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Top + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Bottom + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Foot + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Accessory + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
             }
 
-            for (int i = Offsets.ClothingInv_First; i < Offsets.ClothingInv_Last; i += 2)
+            for (int i = GameOffsets.MyCostumeList; i < GameOffsets.MyCostumeList_Last; i += 2)
             {
                 SelectedSlot.UpdateOffset_UInt16(ClothingInventoryEditor.EMPTY_CLOTHING_ID, 0);
             }
@@ -461,14 +461,14 @@ namespace Scramble.GameData
                 Clothing.Add(i, NextClothingItem);
             }
 
-            int CurrentPointer = Offsets.ClothingInv_First;
+            int CurrentPointer = GameOffsets.MyCostumeList;
             for (int i = 0; i < Clothing.Count; i++)
             {
                 SelectedSlot.UpdateOffset_UInt16(CurrentPointer, (ushort)(Clothing[i].ParticularId + 1));
                 CurrentPointer += 2;
             }
 
-            SelectedSlot.UpdateOffset_Int32(Offsets.ClothingInv_Count, Clothing.Count);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.MyCostumeCount, Clothing.Count);
         }
 
         public void RandomizeSkills(RandomizerChaos LevelOfChaos)
@@ -532,7 +532,7 @@ namespace Scramble.GameData
                     BitPosition += 1;
                 }
 
-                SelectedSlot.UpdateOffset_Byte(Offsets.Skills_First + i, Entry);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.SkillFlag + i, Entry);
                 SkillId += 8;
             }
         }
@@ -568,7 +568,7 @@ namespace Scramble.GameData
             // Clear everything first
             for (int i = 0; i < 128; i++)
             {
-                SelectedSlot.UpdateOffset_Byte(Offsets.Social_ConnectionStatus_First + i, 0);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.SkillTreeFlags + i, 0);
             }
 
             IEnumerable<SkillTree> SocialTrees = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItems().Values.Where(p => p.SkillId > 0);
@@ -593,7 +593,7 @@ namespace Scramble.GameData
 
             foreach (int SaveIndex in SaveIndexes)
             {
-                int Offset = Offsets.Social_ConnectionStatus_First + SaveIndex;
+                int Offset = GameOffsets.SkillTreeFlags + SaveIndex;
                 byte ValueToSet = 0x80;
 
                 if (GenerateRandomNumber(0, 188) > 25)
@@ -645,14 +645,14 @@ namespace Scramble.GameData
             foreach (Trophy TrophyItem in Trophies)
             {
                 int OffsetSum = 15 * TrophyItem.Id;
-                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum, 0);
-                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_ShowAsNew_First + OffsetSum, 0);
-                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum, 0);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum, 0);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum, 0);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, -1);
-                SelectedSlot.UpdateOffset_Float(Offsets.Trophies_Scale_First + OffsetSum, 0.6666667f);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.TrophyRecord_IsGet + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.TrophyRecord_IsNew + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.TrophyRecord_IsGetDialog + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_X + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Y + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + OffsetSum, -1);
+                SelectedSlot.UpdateOffset_Float(GameOffsets.TrophyRecord_PutScale + OffsetSum, 0.6666667f);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutRotation + OffsetSum, 0);
             }
 
             // Add trophies randomly.
@@ -694,14 +694,14 @@ namespace Scramble.GameData
                 }
 
                 int OffsetSum = 15 * TrophyToAdd.Id;
-                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unlocked_First + OffsetSum, 1);
-                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_ShowAsNew_First + OffsetSum, 0);
-                SelectedSlot.UpdateOffset_Byte(Offsets.Trophies_Unseen_First + OffsetSum, 0);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_XPos_First + OffsetSum, Xpos);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_YPos_First + OffsetSum, Ypos);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_ZPos_First + OffsetSum, Layer);
-                SelectedSlot.UpdateOffset_Float(Offsets.Trophies_Scale_First + OffsetSum, Scale);
-                SelectedSlot.UpdateOffset_Int16(Offsets.Trophies_RotationAngle_First + OffsetSum, Rotation);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.TrophyRecord_IsGet + OffsetSum, 1);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.TrophyRecord_IsNew + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Byte(GameOffsets.TrophyRecord_IsGetDialog + OffsetSum, 0);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_X + OffsetSum, Xpos);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Y + OffsetSum, Ypos);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutPosition_Z + OffsetSum, Layer);
+                SelectedSlot.UpdateOffset_Float(GameOffsets.TrophyRecord_PutScale + OffsetSum, Scale);
+                SelectedSlot.UpdateOffset_Int16(GameOffsets.TrophyRecord_PutRotation + OffsetSum, Rotation);
             }
         }
 

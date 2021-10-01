@@ -99,11 +99,11 @@ namespace Scramble.Forms
 
             int OffsetSum = (SelectedCharacterId - 1) * 20;
 
-            int PlayerHp = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Hp + OffsetSum);
-            int PlayerAtk = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Atk + OffsetSum);
-            int PlayerDef = SelectedSlot.RetrieveOffset_Int32(Offsets.Character1_Def + OffsetSum);
-            ushort PlayerStyle = SelectedSlot.RetrieveOffset_UInt16(Offsets.Character1_Style + OffsetSum);
-            ushort PlayerDropRate = SelectedSlot.RetrieveOffset_UInt16(Offsets.Character1_DropRateBonus + OffsetSum);
+            int PlayerHp = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerData_FoodHp + OffsetSum);
+            int PlayerAtk = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerData_FoodAtk + OffsetSum);
+            int PlayerDef = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerData_FoodDef + OffsetSum);
+            ushort PlayerStyle = SelectedSlot.RetrieveOffset_UInt16(GameOffsets.Character1_Style + OffsetSum);
+            ushort PlayerDropRate = SelectedSlot.RetrieveOffset_UInt16(GameOffsets.PlayerData_FoodDropRate + OffsetSum);
 
             if (PlayerHp < HpValueUpDown.Minimum)
             {
@@ -160,31 +160,31 @@ namespace Scramble.Forms
         private void UpdateHp(int AmountToSet, int CharacterId)
         {
             int OffsetSum = (CharacterId - 1) * 20;
-            SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Hp + OffsetSum, AmountToSet);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerData_FoodHp + OffsetSum, AmountToSet);
         }
 
         private void UpdateAtk(int AmountToSet, int CharacterId)
         {
             int OffsetSum = (CharacterId - 1) * 20;
-            SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Atk + OffsetSum, AmountToSet);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerData_FoodAtk + OffsetSum, AmountToSet);
         }
 
         private void UpdateDef(int AmountToSet, int CharacterId)
         {
             int OffsetSum = (CharacterId - 1) * 20;
-            SelectedSlot.UpdateOffset_Int32(Offsets.Character1_Def + OffsetSum, AmountToSet);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerData_FoodDef + OffsetSum, AmountToSet);
         }
 
         private void UpdateStyle(ushort AmountToSet, int CharacterId)
         {
             int OffsetSum = (CharacterId - 1) * 20;
-            SelectedSlot.UpdateOffset_UInt16(Offsets.Character1_Style + OffsetSum, AmountToSet);
+            SelectedSlot.UpdateOffset_UInt16(GameOffsets.Character1_Style + OffsetSum, AmountToSet);
         }
 
         private void UpdateDropRate(ushort AmountToSet, int CharacterId)
         {
             int OffsetSum = (CharacterId - 1) * 20;
-            SelectedSlot.UpdateOffset_UInt16(Offsets.Character1_DropRateBonus + OffsetSum, AmountToSet);
+            SelectedSlot.UpdateOffset_UInt16(GameOffsets.PlayerData_FoodDropRate + OffsetSum, AmountToSet);
         }
 
 

@@ -472,6 +472,7 @@
             this.OpenShopEdit_Button.TabIndex = 23;
             this.OpenShopEdit_Button.Text = "Shop Editor";
             this.OpenShopEdit_Button.UseVisualStyleBackColor = true;
+            this.OpenShopEdit_Button.Click += new System.EventHandler(this.OpenShopEdit_Button_Click);
             // 
             // CaloriesPercentage_Label
             // 

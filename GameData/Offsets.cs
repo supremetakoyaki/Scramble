@@ -1,124 +1,115 @@
 ﻿namespace Scramble.GameData
 {
-    public class Offsets
+    public class SystemOffsets
     {
-        // GlobalData offsets below.
-        public const int VolumeMusic = 0; // FLOAT
-        public const int VolumeSfx = 4; // FLOAT
-        public const int VolumeVa = 8; // FLOAT
-        public const int VaLanguage = 16; // byte? jp=0 eng=1
-        public const int Vibration = 20; // boolean
-        public const int DialogueAutoplay = 21; // boolean.
-        public const int Subtitles = 23; // boolean
-        public const int Dlc = 299; // byte. bit-based indexes.
+        //SaveDataOption
+        public const int BGMVolume = 0; // float
+        public const int SEVolume = 4; // float
+        public const int VoiceVolume = 8; // float
+        public const int SoundMode = 12; // int                             it seems to be always 5 on Switch
+        public const int VaLanguage = 16; // int
+        public const int IsControllerVibration = 20; // boolean
+        public const int IsAutoMessage = 21; // boolean.
+        public const int IsShowSubTitle = 23; // boolean
+        public const int ScreenResolution_Width = 24; // int
+        public const int ScreenResolution_Height = 28; // int
+        public const int DLCFlags = 299; // byte
+    }
 
-        // SaveData offsets below.
+    public class GameOffsets
+    {
+        // SaveDataRecord
+        // NoiseRecord. +13 for every other noise.
+        public const int NoiseRecord_DefeatLevel = 16; // int                0xFFFF if not unlocked
+        public const int NoiseRecord_DefeatNum = 20; // int                  0xFFFF if not unlocked
+        public const int NoiseRecord_DropGetFlag_Easy = 24; //boolean
+        public const int NoiseRecord_DropGetFlag_Normal = 25; //boolean
+        public const int NoiseRecord_DropGetFlag_Hard = 26; //boolean
+        public const int NoiseRecord_DropGetFlag_Ultimate = 27; //boolean
+        public const int NoiseRecord_IsNew = 28; //boolean
 
-        // Noisepedia + 13 for each noise.
-        public const int Noisepedia_Id0_RecordLevel = 16; //int32. 0xFFFF if not unlocked
-        public const int Noisepedia_Id0_Erased = 20; //int32. 0xFFFF if not unlocked
-        public const int Noisepedia_Id0_EasyPinUnlocked = 24; //boolean.
-        public const int Noisepedia_Id0_NormalPinUnlocked = 25; //boolean.
-        public const int Noisepedia_Id0_HardPinUnlocked = 26; //boolean.
-        public const int Noisepedia_Id0_UltimatePinUnlocked = 27; //boolean.
-        public const int Noisepedia_Id0_NotEncounteredYet = 28; //boolean. im not 100% sure if it means this.
+        // CollectionRecord
+        public const int CollectionRecord = 3344; // boolean & boolean      IsGet & IsNew
 
-        // Collection record.
-        public const int RecordInv_First = 3344; // byte & byte
-        public const int MasteredPins_First = 6352; //int32
-        public const int MasteredPins_Last = 7951;
+        // TrophyRecord
+        public const int TrophyRecord_IsGet = 5392; // boolean
+        public const int TrophyRecord_IsGetDialog = 5393; // boolean
+        public const int TrophyRecord_IsNew = 5394; // boolean
+        public const int TrophyRecord_PutPosition_X = 5395; // short
+        public const int TrophyRecord_PutPosition_Y = 5397; // short
+        public const int TrophyRecord_PutPosition_Z = 5399; // short        This is 0xFFFF when undeployed, otherwise it means layer with 0 being topmost.
+        public const int TrophyRecord_PutScale = 5401; // float             In-game it is possible to set scale between 1/3 and 1, with 2/3 being default.
+        public const int TrophyRecord_PutRotation = 5405; // short
 
-        // Trophies
-        public const int Trophies_Unlocked_First = 5392; // boolean.
-        public const int Trophies_Unseen_First = 5393; // boolean
-        public const int Trophies_ShowAsNew_First = 5394; // boolean
-        public const int Trophies_XPos_First = 5395; // signed int16.
-        public const int Trophies_YPos_First = 5397; // signed int16.
-        public const int Trophies_ZPos_First = 5399; // signed int16. This is always 0 when deployed and 0xFFFF when undeployed.
-        public const int Trophies_Scale_First = 5401; // float
-        public const int Trophies_RotationAngle_First = 5405; // int16. 0 to 360?
+        // TrophyParamCount
+        public const int TrophyParamCount_BadgeMasterIds = 6352; // int     There is space for 400.
 
-        // Turf war
-        public const int TurfWar_CurrentPoints_W2D3 = 8168; // int32
-        public const int TurfWar_CurrentPoints = 9899; // int32
-        public const int TurfWar_Placement_First = 14017; //byte
-        public const int TurfWar_HighScore_First = 14018; //int32
+        // SaveDataStruggle
+        public const int StrugglePoint_w2d3 = 8168; // int
+        public const int StrugglePoint = 9899; // int
 
-        // Hmm?
-        public const int UnkDayFlag = 11432; // could be byte or int16. it's "1" if you beat the game... but I have my doubts.
-        public const int CurrentDay = 11434; // int32
-        public const int MaxDay = 11438; //int32
-        public const int Chatlogs_Start = 14057; //int32. You can have up to 100 chatlogs. IDs are from IdDic.json
+        // SaveDataClearStruggle
+        public const int StruggleClearIsReward = 14017; // byte
+        public const int StruggleHighScore = 14018; // int
 
-        // Basic stats.
-        public const int Experience = 14661; // 32-bit
-        public const int CurrentLevel = 14665; // 16-bit ?
-        public const int Money = 14673; // 32-bit
-        public const int Calories = 14677; // 32-bit
-        public const int Overate = 14681; // boolean
+        // SaveDataField
+        public const int CurrentPlayDateDay = 11434; // int
+        public const int ScenarioNewestDateDay = 11438; // int
 
-        // Character stat data.
-        public const int Character1_Id = 14710; // int32
-        public const int Character1_Hp = 14714; // int 32, base value is in BattleCharacter.txt
-        public const int Character1_Atk = 14718; // int 32, base value is in BattleCharacter.txt
-        public const int Character1_Def = 14722; // int 32, base value is in BattleCharacter.txt
-        public const int Character1_Style = 14726; // int 16, base value is in BattlePlayer.txt
-        public const int Character1_DropRateBonus = 14728; // int 16
+        // SaveDataEventLog
+        public const int EventLog = 14057; // int                           You can have up to 100 chatlogs. IDs are from IdDic.json
 
-        // Social tree
-        public const int Fp = 15056; // actually an int32.
-        public const int Social_ConnectionStatus_First = 15060; // byte.
-                                                                // 0x00    Icon doesn't show (unknown/never met)
-                                                                // 0x80	No glowing (can't interact)
-                                                                // 0xC0	Glowing (can buy the skill if you "connected" the character)
+        // SaveDataPlayerTeam
+        public const int PlayerTeam_Exp = 14661; // int
+        public const int PlayerTeam_NowLevel = 14665; // short?
+        public const int PlayerTeam_Money = 14673; // int
+        public const int PlayerTeam_Satiety = 14677; // int
+        public const int PlayerTeam_IsSatietyPenalty = 14681; // bool
+        public const int PlayerData_PlayerId = 14710; // int
+        public const int PlayerData_FoodHp = 14714; // int                  base value is in BattleCharacter.txt
+        public const int PlayerData_FoodAtk = 14718; // int                 base value is in BattleCharacter.txt
+        public const int PlayerData_FoodDef = 14722; // int                 base value is in BattleCharacter.txt
+        public const int PlayerData_FoodSense = 14726; // int               base value is in BattlePlayer.txt
+        public const int PlayerData_FoodDropRate = 14728; // int
 
-        // Skills data. 8 slots per byte (every bit is changed)
-        public const int Skills_First = 15192;
+        // SaveDataSkill
+        public const int SkillPoint = 15056; // int
+        public const int SkillTreeFlags = 15060; // byte                    There is space for 128
+                                                                            // 0x00    Icon doesn't show (unknown/never met)
+                                                                            // 0x80	   No glowing (can't interact)
+                                                                            // 0xC0	   Glowing (can buy the skill if you "connected" the character)
+        public const int SkillFlag = 15192;                                 // There is space for 128
 
-        public const int PinInv_Count = 15208; // int32
-        public const int PinInv_CountOfIndexes = 15212; // int32, basically count minus one.
-        public const int PinInv_First = 15216; // int16, int16, int16, int16.
-        public const int PinInv_VeryLast = 292415;
+        // SaveDataBadge
+        public const int BadgeEmptyIndex = 15208; // int
+        public const int BadgeLastUseIndex = 15212; // int
+        public const int MyBadgeList = 15216;                               // There is space for 34650
+        public const int MyBadgeList_Last = 292415;
 
-        public const int ClothingInv_Count = 292416; // int 32
-        public const int ClothingInv_First = 292420; // just an int16.
-        public const int ClothingInv_Last = 296619;
+        // SaveDataCostume
+        public const int MyCostumeCount = 292416; // int
+        public const int MyCostumeList = 292420;
+        public const int MyCostumeList_Last = 296619;
 
-        // Party member data. For the next 5 party members we just add +36.
-        public const int PartyMember1_CharacterId = 296620; //Rindo. int32
-        public const int PartyMember1_EquippedPinIndex_Deck1 = 296624; //int32
-        public const int PartyMember1_EquippedPinIndex_Deck2 = 296628; //int32
-        public const int PartyMember1_EquippedPinIndex_Deck3 = 296632; //int32
-        public const int PartyMember1_EquippedHeadwearIndex = 296636; //int32
-        public const int PartyMember1_EquippedTopIndex = 296640; //int32
-        public const int PartyMember1_EquippedBottomIndex = 296644; // int32
-        public const int PartyMember1_EquippedShoesIndex = 296648; //int32
-        public const int PartyMember1_EquippedAccessoryIndex = 296652; //int32
+        // SaveDataEquip
+        public const int EquipPlayerID = 296620; // int                     For the next 5 party members we just add +36.
+        public const int BadgeEquipPlayerIndex_Deck1 = 296624; // int
+        public const int BadgeEquipPlayerIndex_Deck2 = 296628; // int
+        public const int BadgeEquipPlayerIndex_Deck3 = 296632; // int
+        public const int EquipCosIndex_Head = 296636; // int
+        public const int EquipCosIndex_Top = 296640; // int
+        public const int EquipCosIndex_Bottom = 296644; // int
+        public const int EquipCosIndex_Foot = 296648; // int
+        public const int EquipCosIndex_Accessory = 296652; // int
 
-        public const int Difficulty = 296836; // 8-bit
+        public const int DifficultyLevel = 296836; // 8-bit
 
-        // Restaurant data. +68 for each shop
-        public const int Shop0_unk1 = 301904; // int32
-        public const int Shop0_Food_LastOrder_Character1 = 301908; // int32
-        public const int Shop0_Food_LastOrder_Character2 = 301912; // int32
-        public const int Shop0_Food_LastOrder_Character3 = 301916; // int32
-        public const int Shop0_Food_LastOrder_Character4 = 301920; // int32
-        public const int Shop0_Food_LastOrder_Character5 = 301924; // int32
-        public const int Shop0_Food_LastOrder_Character6 = 301928; // int32
-        public const int Shop0_Food_LastOrder_Character7 = 301932; // int32
-        public const int Shop0_Food_LastOrder_Character8 = 301936; // int32
-        public const int Shop0_Food_LastOrder_Character9 = 301940; // int32
-        public const int Shop0_Food_LastOrder_Character10 = 301944; // int32
-        public const int Shop0_unk2 = 301904; // int32
-        public const int Shop0_unk3 = 301904; // int32
-        public const int Shop0_unk4 = 301904; // int32
-        public const int Shop0_Food_TimesOrdered = 301904; // int32
-
-        // Shop goods.
-        public const int ShopGoods_Index0_Bought = 310608; //boolean
-        public const int ShopGoods_Index0_ShowAsNew = 310616; //boolean
-
-        // Brand
-        public const int BrandVipScore = 319824; //int32.
+        // SaveDataShop
+        public const int ShopLastFoods = 301904;                            // There is space for 16 character IDs... what? +68 for every shop
+        public const int ShopNumTimesUsed = 301968; // int
+        public const int ShopGoods_PurchaseNum = 310608; // int             // There is space for 1024 shop goods.
+        public const int ShopGoods_ExchangeNum = 310612; // int
+        public const int ShopGoods_IsNew = 310616; //boolean
+        public const int BrandPoint = 319824; //int                         // There is space for 32 brands.
     }
 }

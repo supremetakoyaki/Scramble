@@ -67,12 +67,12 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            SelectedSlot.UpdateOffset_Int32(Offsets.CurrentDay, CurrentDay_ComboBox.SelectedIndex);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.CurrentPlayDateDay, CurrentDay_ComboBox.SelectedIndex);
 
             if (CurrentDay_ComboBox.SelectedIndex > FurthestDay_ComboBox.SelectedIndex)
             {
                 FurthestDay_ComboBox.SelectedIndex = CurrentDay_ComboBox.SelectedIndex;
-                SelectedSlot.UpdateOffset_Int32(Offsets.MaxDay, FurthestDay_ComboBox.SelectedIndex);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.ScenarioNewestDateDay, FurthestDay_ComboBox.SelectedIndex);
             }
 
             SelectedSlot.RetrieveDayData();
@@ -103,7 +103,7 @@ namespace Scramble.Forms
                 return;
             }
 
-            SelectedSlot.UpdateOffset_Int32(Offsets.MaxDay, FurthestDay_ComboBox.SelectedIndex);
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ScenarioNewestDateDay, FurthestDay_ComboBox.SelectedIndex);
             SelectedSlot.RetrieveDayData();
             ReadyForUserInput = true;
         }
