@@ -35,7 +35,8 @@ namespace Scramble.Forms
 
         private void LoadUnlockedDlc()
         {
-            byte DlcByte = SaveGlobal.RetrieveOffset_Byte(SystemOffsets.DLCFlags);
+            int DlcOffset = SaveGlobal.IsPcVersion ? SystemOffsets.DLCFlags_PC : SystemOffsets.DLCFlags_PS4SW;
+            byte DlcByte = SaveGlobal.RetrieveOffset_Byte(DlcOffset);
 
             bool Dlc1_Unlocked = ByteUtil.GetBit(DlcByte, 0);
             bool Dlc2_Unlocked = ByteUtil.GetBit(DlcByte, 1);
@@ -53,9 +54,10 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            byte OgByte = SaveGlobal.RetrieveOffset_Byte(SystemOffsets.DLCFlags);
+            int DlcOffset = SaveGlobal.IsPcVersion ? SystemOffsets.DLCFlags_PC : SystemOffsets.DLCFlags_PS4SW;
+            byte OgByte = SaveGlobal.RetrieveOffset_Byte(DlcOffset);
             byte NewByte = ByteUtil.SetBit(OgByte, 0, Dlc1_Checkbox.Checked);
-            SaveGlobal.UpdateOffset_Byte(SystemOffsets.DLCFlags, NewByte);
+            SaveGlobal.UpdateOffset_Byte(DlcOffset, NewByte);
 
             ReadyForUserInput = true;
         }
@@ -68,10 +70,10 @@ namespace Scramble.Forms
             }
 
             ReadyForUserInput = false;
-
-            byte OgByte = SaveGlobal.RetrieveOffset_Byte(SystemOffsets.DLCFlags);
+            int DlcOffset = SaveGlobal.IsPcVersion ? SystemOffsets.DLCFlags_PC : SystemOffsets.DLCFlags_PS4SW;
+            byte OgByte = SaveGlobal.RetrieveOffset_Byte(DlcOffset);
             byte NewByte = ByteUtil.SetBit(OgByte, 1, Dlc1_Checkbox.Checked);
-            SaveGlobal.UpdateOffset_Byte(SystemOffsets.DLCFlags, NewByte);
+            SaveGlobal.UpdateOffset_Byte(DlcOffset, NewByte);
 
             ReadyForUserInput = true;
         }

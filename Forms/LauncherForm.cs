@@ -154,6 +154,67 @@ namespace Scramble.Forms
             }
         }
 
+        private void NeoTwewyUtilButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OpenDialog = new OpenFileDialog
+            {
+                Filter = "NEO TWEWY Save File|*.*",
+                AddExtension = true
+            };
+
+            if (OpenDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            byte[] SaveFile;
+
+            try
+            {
+                SaveFile = File.ReadAllBytes(OpenDialog.FileName);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("I couldn't open the file! " + exc.Message);
+                return;
+            }
+
+            if (!NeoTwewySaveConverter.IsValidSaveFile(SaveFile))
+            {
+                MessageBox.Show("This is not a valid NEO: The World Ends with You save file.", "Notice");
+                return;
+            }
+
+            bool FromPcVer;
+            byte[] ConvertedSave = NeoTwewySaveConverter.ProcessFile(SaveFile, out FromPcVer);
+
+            string OutputFileName = "f1fc4b9d54965358d41213ae8ff0a0f7";
+            if (FromPcVer)
+            {
+                OutputFileName = "gamesave";
+            }
+
+            SaveFileDialog SaveDialog = new SaveFileDialog
+            {
+                FileName = OutputFileName,
+                AddExtension = false
+            };
+
+            if (SaveDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (FromPcVer)
+                {
+                    MessageBox.Show("Save file succesfully converted from PC to PS4/Switch.", "Notice");
+                }
+                else
+                {
+                    MessageBox.Show("Save file succesfully converted from PS4/Switch to PC.", "Notice");
+                }
+                File.WriteAllBytes(SaveDialog.FileName, ConvertedSave);
+                return;
+            }
+        }
+
         private void UpdateChecker_Label_Click(object sender, EventArgs e)
         {
             Program.OpenSite("https://github.com/supremetakoyaki/Scramble");

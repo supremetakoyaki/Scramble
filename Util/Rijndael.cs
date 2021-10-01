@@ -13,7 +13,7 @@ namespace Scramble.Util
         private readonly byte[] Key;
         private readonly byte[] IV;
 
-        public Rijndael(byte[] key, byte[] iV, PaddingMode paddingMode, CipherMode cipherMode)
+        public Rijndael(byte[] key, byte[] iV, PaddingMode paddingMode = PaddingMode.None, CipherMode cipherMode = CipherMode.CBC)
         {
             Key = key;
             IV = iV;

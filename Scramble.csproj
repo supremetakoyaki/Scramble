@@ -397,8 +397,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\BitmapUtil.cs" />
     <Compile Include="Util\ByteUtil.cs" />
+    <Compile Include="Util\TwewyChecksum.cs" />
     <Compile Include="Util\ColumnSorter.cs" />
     <Compile Include="Util\ListViewComparer.cs" />
+    <Compile Include="Util\NeoTwewySaveConverter.cs" />
     <Compile Include="Util\Rijndael.cs" />
     <Compile Include="Util\TwewySaveConverter.cs" />
     <EmbeddedResource Include="Forms\CharacterStatEditor.resx">

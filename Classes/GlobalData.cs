@@ -7,16 +7,17 @@ namespace Scramble.Classes
 {
     public class GlobalData
     {
-        private const int MAGIC_OFFSET = 0;
         private const int MAGIC_LENGTH = 32;
 
         private const int HASH_LENGTH = 32;
 
-        private const int GLOBAL_OFFSET = 64;
-        private const int GLOBAL_LENGTH = 555;
+        private const int GLOBAL_OFFSET_PS4SW = 64;
+        private const int GLOBAL_OFFSET_PC = 0;
+        private const int GLOBAL_LENGTH_PS4SW = 555;
+        private const int GLOBAL_LENGTH_PC = 1083;
 
         private readonly byte[] Magic;
-        private readonly bool IsPcVersion;
+        public readonly bool IsPcVersion;
 
         private byte[] Checksum => TwewyChecksum.CalculateChecksum(Data, 0);
 
@@ -26,13 +27,22 @@ namespace Scramble.Classes
             set;
         }
 
-        public GlobalData(byte[] FirstData)
+        public GlobalData(byte[] FirstData, bool IsPcVer)
         {
-            Magic = new byte[MAGIC_LENGTH];
-            Data = new byte[GLOBAL_LENGTH];
+            IsPcVersion = IsPcVer;
 
-            Array.Copy(FirstData, 0, Magic, 0, MAGIC_LENGTH);
-            Array.Copy(FirstData, GLOBAL_OFFSET, Data, 0, GLOBAL_LENGTH);
+            if (IsPcVersion)
+            {
+                Data = new byte[GLOBAL_LENGTH_PC];
+                Array.Copy(FirstData, GLOBAL_OFFSET_PC, Data, 0, GLOBAL_LENGTH_PC);
+            }
+            else
+            {
+                Magic = new byte[MAGIC_LENGTH];
+                Data = new byte[GLOBAL_LENGTH_PS4SW];
+                Array.Copy(FirstData, 0, Magic, 0, MAGIC_LENGTH);
+                Array.Copy(FirstData, GLOBAL_OFFSET_PS4SW, Data, 0, GLOBAL_LENGTH_PS4SW);
+            }
         }
 
         public void UpdateOffset_Byte(int Offset, byte Value)
@@ -88,9 +98,18 @@ namespace Scramble.Classes
         public byte[] ToBytes()
         {
             MemoryStream Stream = new MemoryStream();
-            Stream.Write(Magic, 0, MAGIC_LENGTH);
-            Stream.Write(Checksum, 0, HASH_LENGTH);
-            Stream.Write(Data, 0, GLOBAL_LENGTH);
+
+            if (IsPcVersion)
+            {
+                Stream.Write(Checksum, 0, HASH_LENGTH);
+                Stream.Write(Data, 0, GLOBAL_LENGTH_PC);
+            }
+            else
+            {
+                Stream.Write(Magic, 0, MAGIC_LENGTH);
+                Stream.Write(Checksum, 0, HASH_LENGTH);
+                Stream.Write(Data, 0, GLOBAL_LENGTH_PS4SW);
+            }
             return Stream.ToArray();
         }
     }

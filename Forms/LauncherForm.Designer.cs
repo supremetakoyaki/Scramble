@@ -105,13 +105,12 @@ namespace Scramble.Forms
             // 
             // NeoTwewyUtilButton
             // 
-            this.NeoTwewyUtilButton.Enabled = false;
             this.NeoTwewyUtilButton.Location = new System.Drawing.Point(9, 189);
             this.NeoTwewyUtilButton.Name = "NeoTwewyUtilButton";
             this.NeoTwewyUtilButton.Size = new System.Drawing.Size(171, 20);
             this.NeoTwewyUtilButton.TabIndex = 4;
             this.NeoTwewyUtilButton.UseVisualStyleBackColor = true;
-            this.NeoTwewyUtilButton.Visible = false;
+            this.NeoTwewyUtilButton.Click += new System.EventHandler(this.NeoTwewyUtilButton_Click);
             // 
             // NeoTwewyUtilToolTip
             // 

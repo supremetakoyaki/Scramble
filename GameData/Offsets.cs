@@ -11,9 +11,11 @@
         public const int IsControllerVibration = 20; // boolean
         public const int IsAutoMessage = 21; // boolean.
         public const int IsShowSubTitle = 23; // boolean
-        public const int ScreenResolution_Width = 24; // int
-        public const int ScreenResolution_Height = 28; // int
-        public const int DLCFlags = 299; // byte
+
+        public const int ScreenResolution_Width_PS4SW = 24; // int
+        public const int ScreenResolution_Height_PS4SW = 28; // int
+        public const int DLCFlags_PS4SW = 299; // byte
+        public const int DLCFlags_PC = 859; // byte
     }
 
     public class GameOffsets
