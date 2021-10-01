@@ -17,7 +17,7 @@ namespace Scramble.Classes
         private const int SLOT_LENGTH = 319989;
 
         private const int SAVE_LENGTH = 3200512;
-        private const int PC_SAVE_LENGTH = 3201572;
+        private const int PC_SAVE_LENGTH = 3201072;
 
         public bool IsPcVersion = false;
 
@@ -31,6 +31,7 @@ namespace Scramble.Classes
             }
             else if (File.Length != SAVE_LENGTH)
             {
+                System.Windows.Forms.MessageBox.Show(File.Length.ToString());
                 Result = 0;
                 return;
             }
