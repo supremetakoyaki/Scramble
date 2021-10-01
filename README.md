@@ -1,13 +1,21 @@
 # Scramble
-Scramble is both a "NEO: The World Ends with You" and "The World Ends with You: Final Remix" save editor.
 
-It works for:
-- NEO TWEWY save files of any version of the game, of both Switch and PS4.
-- TWEWY Final Remix save files of any version of the game.
+![Screenshot of the editor launcher and NEO:TWEWY mode](https://i.imgur.com/5VaPZlK.png)
 
-**No PC support yet!** Please wait for a future version of the editor in which I will add support for the PC version of the game.
-
+Scramble is a save editor for games in the The World Ends with You series.
 [Click here for the GBATemp thread.](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/)
+
+# Compatibility
+| Title                                | Platform    | Compatible? |
+|--------------------------------------|-------------|-------------|
+| Neo: The World Ends with You         | PS4         | ✔           |
+| Neo: The World Ends with You         | Switch      | ✔           |
+| Neo: The World Ends with You         | PC          | ❌          |
+| The World Ends with You: Final Remix | Switch      | ✔           |
+| The World Ends with You: Solo Remix  | Android/iOS | ❌*         |
+| The World Ends with You              | Nintendo DS | ❌          |
+
+<sub>\* You can use the editor to convert Solo Remix save files to Final Remix (note that this feature is experimental.)</sub>
 
 # How to use
 You need a decrypted save file of the game. This save file weighs about 3.15MB (NEO), and 50KB (Final Remix).
@@ -38,7 +46,7 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
-**TWEWY Final Remix Save Editing** (a.k.a. "Legacy mode"):
+**TWEWY Final Remix Save Editing**
 - Edit your character and game stats.
 - Edit your items.
 - Edit your pins.
@@ -52,8 +60,11 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 - Randomizer
 - Edit shop VIP level and last restaurant order.
 
+**For Final Remix:**
+- ...Everything else. Final Remix support is still in a very early state but I'll work on it as soon as I have time.
+
 # Issues, reporting bugs and requests
-If you found a bug or another issue, you can open an issue here on GitHub. For more questions or requests about anything else, you can leave a reply on the [GBATemp thread](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/). I'm actively working on this so I'll try to resolve it ASAP.
+If you found a bug or another issue, you can open an issue here on GitHub. For more questions or requests about anything else, you can leave a reply on the [GBATemp thread](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/).
 
 # Information for cloning/forking
-New contributors who clone the repository may find that they need two class libraries, titled "[ntwewy-db](https://github.com/supremetakoyaki/ntwewy-db/releases/)" and "[finalremix-db](https://github.com/supremetakoyaki/finalremix-db/releases/)".
+New contributors who clone the repository may find that they need two class libraries, titled "[ntwewy-db](https://github.com/supremetakoyaki/ntwewy-db/releases/)" and "[finalremix-db](https://github.com/supremetakoyaki/finalremix-db/releases/)". Check for other necessary libraries in the .csproj file.
