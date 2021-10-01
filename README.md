@@ -53,6 +53,7 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 - Edit your pins.
 
 **Other utilities**
+- **Convert between PS4/Switch and PC save files of NEO, and viceversa.**
 - Convert TWEWY Solo Remix save to TWEWY Final Remix.
 
 # Upcoming features
