@@ -1,6 +1,6 @@
 # Scramble
 
-![Screenshot of the editor launcher and NEO:TWEWY mode](https://i.imgur.com/5VaPZlK.png)
+![Screenshot of the editor launcher and NEO:TWEWY mode](https://i.imgur.com/3K6NJJX.png)
 
 Scramble is a save editor for games in the The World Ends with You series.
 [Click here for the GBATemp thread.](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/)
@@ -10,7 +10,7 @@ Scramble is a save editor for games in the The World Ends with You series.
 |--------------------------------------|-------------|-------------|
 | Neo: The World Ends with You         | PS4         | ✔           |
 | Neo: The World Ends with You         | Switch      | ✔           |
-| Neo: The World Ends with You         | PC          | ❌          |
+| Neo: The World Ends with You         | PC          | ✔          |
 | The World Ends with You: Final Remix | Switch      | ✔           |
 | The World Ends with You: Solo Remix  | Android/iOS | ❌*         |
 | The World Ends with You              | Nintendo DS | ❌          |
@@ -43,6 +43,7 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 - Edit your furthest reached day.
 - Edit your scramble slam scores.
 - Edit your graffiti wall / trophies, and export it as an image.
+- Save data randomizer (BETA)
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
@@ -56,12 +57,14 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 
 # Upcoming features
 **For NEO:**
-- Support for the PC release of NEO. (this is priority at the moment)
-- Randomizer
 - Edit shop VIP level and last restaurant order.
+- Continue working on the randomizer
 
 **For Final Remix:**
 - ...Everything else. Final Remix support is still in a very early state but I'll work on it as soon as I have time.
+
+# Special thanks
+- **tafice**, for the encryption keys of the PC version of NEO.
 
 # Issues, reporting bugs and requests
 If you found a bug or another issue, you can open an issue here on GitHub. For more questions or requests about anything else, you can leave a reply on the [GBATemp thread](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/).
