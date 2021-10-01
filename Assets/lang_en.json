@@ -192,7 +192,7 @@
     "{Z:}": "Layer:",
     "DLG_FileNotFound": "The file doesn't exist.",
     "DLG_SaveDataAlreadyOpened": "There is a save file open already. If you didn't save changes, they will be lost.",
-    "DLG_InvalidSaveFile": "This save file is invalid. Size must be exactly 3,200,512 bytes",
+    "DLG_InvalidSaveFile": "This save file is invalid. Size must be exactly 3,200,512 bytes (PS4/Switch) or 3,201,572 bytes (PC)",
     "DLG_BackupCheckboxNotChecked": "You didn't check the \"Make a backup\" checkbox. There's a chance the save file ends up being corrupted.\nDo you wish to continue?",
     "DLG_SaveDataSaved": "The changes have been successfully made to the save file.",
     "DLG_SaveSlotDumped": "The save slot has been dumped.",
@@ -230,6 +230,7 @@
     "{RandomizeTrophies}": "Randomize graffiti",
     "{RandomizeShop}": "Randomize shop/restaurant levels",
     "{LevelOfChaos}": "LEVEL OF CHAOS",
-    "{RandomizeButton}": "Randomize"
+    "{RandomizeButton}": "Randomize",
+    "DLG_PcVersionNotSupportedYet": "Save files of the PC version of NEO are not supported yet. Please wait for a future version!"
   }
 }
