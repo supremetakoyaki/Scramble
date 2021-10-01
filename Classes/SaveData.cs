@@ -3,7 +3,6 @@ using Scramble.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Security.Cryptography;
 
 namespace Scramble.Classes
 {

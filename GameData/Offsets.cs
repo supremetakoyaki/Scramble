@@ -77,9 +77,9 @@
         // SaveDataSkill
         public const int SkillPoint = 15056; // int
         public const int SkillTreeFlags = 15060; // byte                    There is space for 128
-                                                                            // 0x00    Icon doesn't show (unknown/never met)
-                                                                            // 0x80	   No glowing (can't interact)
-                                                                            // 0xC0	   Glowing (can buy the skill if you "connected" the character)
+                                                 // 0x00    Icon doesn't show (unknown/never met)
+                                                 // 0x80	   No glowing (can't interact)
+                                                 // 0xC0	   Glowing (can buy the skill if you "connected" the character)
         public const int SkillFlag = 15192;                                 // There is space for 128
 
         // SaveDataBadge

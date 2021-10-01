@@ -1,7 +1,6 @@
 ﻿using Scramble.Util;
 using System;
 using System.IO;
-using System.Security.Cryptography;
 
 namespace Scramble.Classes
 {
@@ -30,7 +29,7 @@ namespace Scramble.Classes
                 }
                 else
                 {
-                   return TwewyChecksum.CalculateChecksum(Data, 0);
+                    return TwewyChecksum.CalculateChecksum(Data, 0);
                 }
             }
         }
