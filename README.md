@@ -25,6 +25,7 @@ From version 0.9 onwards, Scramble targets .NET Framework 4.8. If you use an upd
 Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/5.0/runtime) in order to run the program. 
 
 # How to get your save file
+- For PC save files, check "Documents/Neo The World Ends with You/Epic Games Store". The file you're looking for is "f1fc4b9d54965358d41213ae8ff0a0f7" (fun fact, it's the MD5 hash of the word "gamesave")
 - If you have a hackable Switch, you'll need to first be [running CFW](https://switch.homebrew.guide/) and then use a homebrew app to get the save file. For example, I use [JKSV](https://github.com/J-D-K/JKSV/releases/) most of the time. 
 - If you have a hackable Switch but still don't want to directly hack it or run CFW, there's a [more obscure method you can use](https://gbatemp.net/threads/edit-ofw-clean-switch-save-data-from-nand-backup-restoring-via-fusee-gelee-payloads.541081/).
 - In case you're running the Switch version of the game on an emulator such as Yuzu or Ryujinx, decrypted saves are in your user profile folder, typically named "user". Look for a file called "gamesave" without extension.
