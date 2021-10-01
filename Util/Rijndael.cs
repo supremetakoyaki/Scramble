@@ -104,7 +104,7 @@ namespace Scramble.Util
 
             using (MemoryStream memStream = new MemoryStream())
             {
-                using (var csEncrypt = GetEncryptionStream(memStream))
+                using (CryptoStream csEncrypt = GetEncryptionStream(memStream))
                 {
                     csEncrypt.Write(data, 0, data.Length);
                     csEncrypt.FlushFinalBlock();

@@ -36,7 +36,6 @@ namespace Scramble.Classes
             }
             else if (File.Length != SAVE_LENGTH)
             {
-                System.Windows.Forms.MessageBox.Show(File.Length.ToString());
                 Result = 0;
                 return;
             }
@@ -124,8 +123,6 @@ namespace Scramble.Classes
 
                     DataStream.Write(NeoTwewySaveConverter.NEOTWEWYPC_UNKNOWN_END, 0, 35);
                     byte[] DecryptedData = DataStream.ToArray();
-
-                    File.WriteAllBytes("isthisright.out", DecryptedData);
 
                     if (SaveRijndael == null)
                     {

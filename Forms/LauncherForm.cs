@@ -185,8 +185,7 @@ namespace Scramble.Forms
                 return;
             }
 
-            bool FromPcVer;
-            byte[] ConvertedSave = NeoTwewySaveConverter.ProcessFile(SaveFile, out FromPcVer);
+            byte[] ConvertedSave = NeoTwewySaveConverter.ProcessFile(SaveFile, out bool FromPcVer);
 
             string OutputFileName = "f1fc4b9d54965358d41213ae8ff0a0f7";
             if (FromPcVer)
