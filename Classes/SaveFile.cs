@@ -12,8 +12,7 @@ namespace Scramble.Classes
         private readonly GlobalData GlobalData;
 
         private const int GLOBAL_DATA_LENGTH_PS4SW = 619;
-        private const int GLOBAL_DATA_LENGTH_PC_WITH_HASH = 1115;
-        private const int GLOBAL_DATA_LENGTH_PC = 1083;
+        private const int GLOBAL_DATA_LENGTH_PC = 1115;
 
         private const int INIT_OFFSET_PS4SW = 619;
         private const int INIT_OFFSET_PC = 1115;
@@ -58,7 +57,7 @@ namespace Scramble.Classes
 
                 byte[] DecryptedData = SaveRijndael.Decrypt(EncryptedData);
                 byte[] GlobalDataPc = new byte[GLOBAL_DATA_LENGTH_PC];
-                Array.Copy(DecryptedData, 32, GlobalDataPc, 0, GLOBAL_DATA_LENGTH_PC);
+                Array.Copy(DecryptedData, 0, GlobalDataPc, 0, GLOBAL_DATA_LENGTH_PC);
 
                 GlobalData = new GlobalData(GlobalDataPc, true);
 
@@ -116,7 +115,7 @@ namespace Scramble.Classes
             {
                 using (MemoryStream DataStream = new MemoryStream())
                 {
-                    DataStream.Write(GlobalData.ToBytes(), 0, GLOBAL_DATA_LENGTH_PC_WITH_HASH);
+                    DataStream.Write(GlobalData.ToBytes(), 0, GLOBAL_DATA_LENGTH_PC);
                     int CurrentPointer = INIT_OFFSET_PC;
                     for (int i = 0; i < 10; i++)
                     {

@@ -231,6 +231,6 @@
     "{RandomizeShop}": "Randomize shop/restaurant levels",
     "{LevelOfChaos}": "LEVEL OF CHAOS",
     "{RandomizeButton}": "Randomize",
-    "DLG_PcVersionNotSupportedYet": "Save files of the PC version of NEO are not supported yet. Please wait for a future version!"
+    "{PcGlobalYouCantEditThisYet}": "You can't edit these settings with a PC save file (for the time being). Please edit these in-game."
   }
 }

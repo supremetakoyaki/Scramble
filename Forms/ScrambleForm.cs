@@ -506,14 +506,22 @@ namespace Scramble
                     ReadyForUserInput = true;
                     return;
                 }
-                else if (Result == 3) // PC version
-                {
-                    ShowWarning(GetString("DLG_PcVersionNotSupportedYet"));
-                    OpenedSaveFile = null;
 
-                    ChangeFormSize(148, 309);
-                    ReadyForUserInput = true;
-                    return;
+                if (OpenedSaveFile.IsPcVersion)
+                {
+                    PlatformLabel.Text = "PC";
+                    PlatformLabel.ForeColor = Color.Navy;
+                    GameSettingsEditorButton.Enabled = false;
+                    MiscFlagsEditorButton.Enabled = false;
+                    PcVersionGlobalEditingNotSupportedToolTip.SetToolTip(GlobalGroupBox, GetString("{PcGlobalYouCantEditThisYet}"));
+                }
+                else
+                {
+                    PlatformLabel.Text = "PS4/Switch";
+                    PlatformLabel.ForeColor = Color.Maroon;
+                    GameSettingsEditorButton.Enabled = true;
+                    MiscFlagsEditorButton.Enabled = true;
+                    PcVersionGlobalEditingNotSupportedToolTip.SetToolTip(GlobalGroupBox, null);
                 }
 
                 if (SaveSlotsListBox.SelectedIndex == -1)

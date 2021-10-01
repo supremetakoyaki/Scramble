@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.OpenSaveFileButton = new System.Windows.Forms.Button();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.SaveSlotsGroupBox = new System.Windows.Forms.GroupBox();
@@ -52,6 +53,7 @@
             this.OpenSocialEditButton = new System.Windows.Forms.Button();
             this.OpenInvEditorButton = new System.Windows.Forms.Button();
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
+            this.PlatformLabel = new System.Windows.Forms.Label();
             this.OpenRandomizerButton = new System.Windows.Forms.Button();
             this.OpenTurfWar_Edit = new System.Windows.Forms.Button();
             this.OpenTrophyEdit_Button = new System.Windows.Forms.Button();
@@ -82,6 +84,7 @@
             this.LanguageSelectComboBox = new System.Windows.Forms.ComboBox();
             this.ShowSpoilersCheckbox = new System.Windows.Forms.CheckBox();
             this.ThankYou_Label = new System.Windows.Forms.Label();
+            this.PcVersionGlobalEditingNotSupportedToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -368,6 +371,7 @@
             // 
             // GeneralGroupBox
             // 
+            this.GeneralGroupBox.Controls.Add(this.PlatformLabel);
             this.GeneralGroupBox.Controls.Add(this.OpenRandomizerButton);
             this.GeneralGroupBox.Controls.Add(this.OpenTurfWar_Edit);
             this.GeneralGroupBox.Controls.Add(this.OpenTrophyEdit_Button);
@@ -411,6 +415,16 @@
             this.GeneralGroupBox.TabIndex = 21;
             this.GeneralGroupBox.TabStop = false;
             this.GeneralGroupBox.Text = "This selected slot";
+            // 
+            // PlatformLabel
+            // 
+            this.PlatformLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.PlatformLabel.Location = new System.Drawing.Point(268, 27);
+            this.PlatformLabel.Name = "PlatformLabel";
+            this.PlatformLabel.Size = new System.Drawing.Size(108, 14);
+            this.PlatformLabel.TabIndex = 34;
+            this.PlatformLabel.Text = "{Platform}";
+            this.PlatformLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // OpenRandomizerButton
             // 
@@ -715,6 +729,10 @@
             this.ThankYou_Label.MouseEnter += new System.EventHandler(this.ThankYou_Label_MouseEnter);
             this.ThankYou_Label.MouseLeave += new System.EventHandler(this.ThankYou_Label_MouseLeave);
             // 
+            // PcVersionGlobalEditingNotSupportedToolTip
+            // 
+            this.PcVersionGlobalEditingNotSupportedToolTip.AutomaticDelay = 250;
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -815,5 +833,7 @@
         private System.Windows.Forms.Button OpenTrophyEdit_Button;
         private System.Windows.Forms.Label ThankYou_Label;
         private System.Windows.Forms.Button OpenRandomizerButton;
+        private System.Windows.Forms.Label PlatformLabel;
+        private System.Windows.Forms.ToolTip PcVersionGlobalEditingNotSupportedToolTip;
     }
 }

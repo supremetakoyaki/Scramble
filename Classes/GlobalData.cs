@@ -12,14 +12,28 @@ namespace Scramble.Classes
         private const int HASH_LENGTH = 32;
 
         private const int GLOBAL_OFFSET_PS4SW = 64;
-        private const int GLOBAL_OFFSET_PC = 0;
+        private const int GLOBAL_OFFSET_PC = 32;
         private const int GLOBAL_LENGTH_PS4SW = 555;
         private const int GLOBAL_LENGTH_PC = 1083;
 
         private readonly byte[] Magic;
+        private readonly byte[] PcHash;
         public readonly bool IsPcVersion;
 
-        private byte[] Checksum => TwewyChecksum.CalculateChecksum(Data, 0);
+        private byte[] Checksum
+        {
+            get
+            {
+                if (IsPcVersion)
+                {
+                    return PcHash;
+                }
+                else
+                {
+                   return TwewyChecksum.CalculateChecksum(Data, 0);
+                }
+            }
+        }
 
         private byte[] Data
         {
@@ -34,6 +48,8 @@ namespace Scramble.Classes
             if (IsPcVersion)
             {
                 Data = new byte[GLOBAL_LENGTH_PC];
+                PcHash = new byte[32];
+                Array.Copy(FirstData, 0, PcHash, 0, 32);
                 Array.Copy(FirstData, GLOBAL_OFFSET_PC, Data, 0, GLOBAL_LENGTH_PC);
             }
             else
