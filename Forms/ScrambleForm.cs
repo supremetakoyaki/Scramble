@@ -30,7 +30,7 @@ namespace Scramble
 
         public NeoTwewyRandomizerForm RandomizerEditor;
 
-        public SaveData SelectedSlot
+        public SaveSlot SelectedSlot
         {
             get
             {

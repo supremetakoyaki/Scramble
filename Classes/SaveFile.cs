@@ -8,7 +8,7 @@ namespace Scramble.Classes
     public class SaveFile
     {
         public string FilePath;
-        private readonly Dictionary<int, SaveData> SaveSlots;
+        private readonly Dictionary<int, SaveSlot> SaveSlots;
         private readonly GlobalData GlobalData;
 
         private const int GLOBAL_DATA_LENGTH_PS4SW = 619;
@@ -60,7 +60,7 @@ namespace Scramble.Classes
 
                 GlobalData = new GlobalData(GlobalDataPc, true);
 
-                SaveSlots = new Dictionary<int, SaveData>();
+                SaveSlots = new Dictionary<int, SaveSlot>();
 
                 int CurrentPointer = INIT_OFFSET_PC;
                 for (int i = 0; i < 10; i++)
@@ -68,7 +68,7 @@ namespace Scramble.Classes
                     byte[] SlotData = new byte[SLOT_LENGTH];
                     Array.Copy(DecryptedData, CurrentPointer, SlotData, 0, SLOT_LENGTH);
 
-                    SaveSlots.Add(i, new SaveData(i, SlotData));
+                    SaveSlots.Add(i, new SaveSlot(i, SlotData));
 
                     CurrentPointer += SLOT_LENGTH;
                 }
@@ -81,7 +81,7 @@ namespace Scramble.Classes
                 Array.Copy(File, 0, FirstData, 0, GLOBAL_DATA_LENGTH_PS4SW);
                 GlobalData = new GlobalData(FirstData, false);
 
-                SaveSlots = new Dictionary<int, SaveData>();
+                SaveSlots = new Dictionary<int, SaveSlot>();
 
                 int CurrentPointer = INIT_OFFSET_PS4SW;
                 for (int i = 0; i < 10; i++)
@@ -89,7 +89,7 @@ namespace Scramble.Classes
                     byte[] SlotData = new byte[SLOT_LENGTH];
                     Array.Copy(File, CurrentPointer, SlotData, 0, SLOT_LENGTH);
 
-                    SaveSlots.Add(i, new SaveData(i, SlotData));
+                    SaveSlots.Add(i, new SaveSlot(i, SlotData));
 
                     CurrentPointer += SLOT_LENGTH;
                 }
@@ -98,7 +98,7 @@ namespace Scramble.Classes
             }
         }
 
-        public SaveData GetSaveSlot(int Id)
+        public SaveSlot GetSaveSlot(int Id)
         {
             return SaveSlots[Id];
         }

@@ -277,7 +277,7 @@
     <Compile Include="Classes\InventoryPin.cs" />
     <Compile Include="Classes\LanguageManager.cs" />
     <Compile Include="Classes\PartyMember.cs" />
-    <Compile Include="Classes\SaveData.cs" />
+    <Compile Include="Classes\SaveSlot.cs" />
     <Compile Include="Classes\SaveFile.cs" />
     <Compile Include="Forms\CharacterStatEditor.cs">
       <SubType>Form</SubType>
@@ -509,6 +509,7 @@
     <Content Include="Assets\Logo_TWEWYFR.png" />
     <None Include="Assets\RandomizerOverview_Logo.png" />
     <None Include="Assets\RandomizerEffect.gif" />
+    <None Include="Assets\Unity3d_Decrypt_Encrypt.png" />
     <Content Include="FodyWeavers.xml" />
     <Content Include="Assets\Spoiler_Pin.png" />
   </ItemGroup>

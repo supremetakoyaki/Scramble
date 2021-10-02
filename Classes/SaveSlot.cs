@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Scramble.Classes
 {
-    public class SaveData
+    public class SaveSlot
     {
         public int Id;
 
@@ -58,7 +58,7 @@ namespace Scramble.Classes
 
         public byte[] Checksum => TwewyChecksum.CalculateChecksum(Data, 0);
 
-        public SaveData(int Id, byte[] FullData)
+        public SaveSlot(int Id, byte[] FullData)
         {
             this.Id = Id;
 
