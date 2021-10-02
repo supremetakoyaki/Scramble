@@ -18,6 +18,7 @@ namespace Scramble.Forms
 
         private bool ReadyForUserInput = false;
         private bool UnlockAll_Flag = false;
+        private bool WarnedAboutSpoilers = false;
 
         public NoisepediaEditor()
         {
@@ -255,6 +256,7 @@ namespace Scramble.Forms
                 EasyPinToolTip.Active = true;
 
                 PinDrop_Easy_PictureBox.Image = ImageMethods.DrawImage(Pin_Easy.Sprite, 64, 64, DeviceDpi);
+                PinDrop_Easy_PictureBox.Tag = null;
             }
 
             if (!Pin_Normal_Checkbox.Checked && Sukuranburu.ShowSpoilers == false)
@@ -403,11 +405,20 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            if (NoisepediaListView.SelectedIndices.Count != 1 || (Sukuranburu.ShowSpoilers == false && Encountered_Checkbox.Checked && Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_ActionWillSpoil")) == false))
+            if (NoisepediaListView.SelectedIndices.Count != 1)
             {
                 Encountered_Checkbox.Checked = !Encountered_Checkbox.Checked;
                 ReadyForUserInput = true;
                 return;
+            }
+            else if ((NoisepediaListView.SelectedIndices.Count != 1) || (Sukuranburu.ShowSpoilers == false && Encountered_Checkbox.Checked && !WarnedAboutSpoilers))
+            {
+                if (Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_ActionWillSpoil")) == false)
+                {
+                    Encountered_Checkbox.Checked = !Encountered_Checkbox.Checked;
+                    ReadyForUserInput = true;
+                    return;
+                }
             }
 
             byte EntryId = (byte)NoisepediaListView.SelectedItems[0].Tag;
@@ -444,6 +455,7 @@ namespace Scramble.Forms
                     }
                 }
 
+                WarnedAboutSpoilers = true;
                 Noise Noizu = Sukuranburu.GetNoiseManager().GetNoiseWithNoisepediaEntry(Entry);
                 DisplayNoiseData(Entry, Noizu);
             }
@@ -460,11 +472,20 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            if (NoisepediaListView.SelectedIndices.Count != 1 || (Sukuranburu.ShowSpoilers == false && Pin_Easy_Checkbox.Checked && Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_ActionWillSpoil")) == false))
+            if (NoisepediaListView.SelectedIndices.Count != 1)
             {
                 Pin_Easy_Checkbox.Checked = !Pin_Easy_Checkbox.Checked;
                 ReadyForUserInput = true;
                 return;
+            }
+            else if ((NoisepediaListView.SelectedIndices.Count != 1) || (Sukuranburu.ShowSpoilers == false && Pin_Easy_Checkbox.Checked && !WarnedAboutSpoilers))
+            {
+                if (Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_ActionWillSpoil")) == false)
+                {
+                    Pin_Easy_Checkbox.Checked = !Pin_Easy_Checkbox.Checked;
+                    ReadyForUserInput = true;
+                    return;
+                }
             }
 
             byte EntryId = (byte)NoisepediaListView.SelectedItems[0].Tag;
@@ -479,6 +500,7 @@ namespace Scramble.Forms
             UpdatePinValue(EntryId, 0, Pin_Easy_Checkbox.Checked);
             if (Sukuranburu.ShowSpoilers == false)
             {
+                WarnedAboutSpoilers = true;
                 Noise Noizu = Sukuranburu.GetNoiseManager().GetNoiseWithNoisepediaEntry(Entry);
                 DisplayNoiseData(Entry, Noizu);
             }
@@ -495,11 +517,20 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            if (NoisepediaListView.SelectedIndices.Count != 1 || (Sukuranburu.ShowSpoilers == false && Pin_Normal_Checkbox.Checked && Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_ActionWillSpoil")) == false))
+            if (NoisepediaListView.SelectedIndices.Count != 1)
             {
                 Pin_Normal_Checkbox.Checked = !Pin_Normal_Checkbox.Checked;
                 ReadyForUserInput = true;
                 return;
+            }
+            else if ((NoisepediaListView.SelectedIndices.Count != 1) || (Sukuranburu.ShowSpoilers == false && Pin_Normal_Checkbox.Checked && !WarnedAboutSpoilers))
+            {
+                if (Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_ActionWillSpoil")) == false)
+                {
+                    Pin_Normal_Checkbox.Checked = !Pin_Normal_Checkbox.Checked;
+                    ReadyForUserInput = true;
+                    return;
+                }
             }
 
             byte EntryId = (byte)NoisepediaListView.SelectedItems[0].Tag;
@@ -514,6 +545,7 @@ namespace Scramble.Forms
             UpdatePinValue(EntryId, 1, Pin_Normal_Checkbox.Checked);
             if (Sukuranburu.ShowSpoilers == false)
             {
+                WarnedAboutSpoilers = true;
                 Noise Noizu = Sukuranburu.GetNoiseManager().GetNoiseWithNoisepediaEntry(Entry);
                 DisplayNoiseData(Entry, Noizu);
             }
@@ -530,11 +562,20 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            if (NoisepediaListView.SelectedIndices.Count != 1 || (Sukuranburu.ShowSpoilers == false && Pin_Hard_Checkbox.Checked && Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_ActionWillSpoil")) == false))
+            if (NoisepediaListView.SelectedIndices.Count != 1)
             {
                 Pin_Hard_Checkbox.Checked = !Pin_Hard_Checkbox.Checked;
                 ReadyForUserInput = true;
                 return;
+            }
+            else if ((NoisepediaListView.SelectedIndices.Count != 1) || (Sukuranburu.ShowSpoilers == false && Pin_Hard_Checkbox.Checked && !WarnedAboutSpoilers))
+            {
+                if (Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_ActionWillSpoil")) == false)
+                {
+                    Pin_Hard_Checkbox.Checked = !Pin_Hard_Checkbox.Checked;
+                    ReadyForUserInput = true;
+                    return;
+                }
             }
 
             byte EntryId = (byte)NoisepediaListView.SelectedItems[0].Tag;
@@ -549,6 +590,7 @@ namespace Scramble.Forms
             UpdatePinValue(EntryId, 2, Pin_Hard_Checkbox.Checked);
             if (Sukuranburu.ShowSpoilers == false)
             {
+                WarnedAboutSpoilers = true;
                 Noise Noizu = Sukuranburu.GetNoiseManager().GetNoiseWithNoisepediaEntry(Entry);
                 DisplayNoiseData(Entry, Noizu);
             }
@@ -565,11 +607,20 @@ namespace Scramble.Forms
 
             ReadyForUserInput = false;
 
-            if (NoisepediaListView.SelectedIndices.Count != 1 || (Sukuranburu.ShowSpoilers == false && Pin_Ultimate_Checkbox.Checked && Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_ActionWillSpoil")) == false))
+            if (NoisepediaListView.SelectedIndices.Count != 1)
             {
                 Pin_Ultimate_Checkbox.Checked = !Pin_Ultimate_Checkbox.Checked;
                 ReadyForUserInput = true;
                 return;
+            }
+            else if ((NoisepediaListView.SelectedIndices.Count != 1) || (Sukuranburu.ShowSpoilers == false && Pin_Ultimate_Checkbox.Checked && !WarnedAboutSpoilers))
+            {
+                if (Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_ActionWillSpoil")) == false)
+                {
+                    Pin_Ultimate_Checkbox.Checked = !Pin_Ultimate_Checkbox.Checked;
+                    ReadyForUserInput = true;
+                    return;
+                }
             }
 
             byte EntryId = (byte)NoisepediaListView.SelectedItems[0].Tag;
@@ -584,6 +635,7 @@ namespace Scramble.Forms
             UpdatePinValue(EntryId, 3, Pin_Ultimate_Checkbox.Checked);
             if (Sukuranburu.ShowSpoilers == false)
             {
+                WarnedAboutSpoilers = true;
                 Noise Noizu = Sukuranburu.GetNoiseManager().GetNoiseWithNoisepediaEntry(Entry);
                 DisplayNoiseData(Entry, Noizu);
             }
