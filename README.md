@@ -1,9 +1,10 @@
-# Scramble
+# Scramble [![Download](https://img.shields.io/github/downloads/supremetakoyaki/Scramble/total.svg?)](https://github.com/supremetakoyaki/Scramble/releases)
 
 ![Screenshot of the editor launcher and NEO:TWEWY mode](https://i.imgur.com/EQkOf9f.png)
 
 Scramble is a save editor for games in the The World Ends with You series.
 [Click here for the GBATemp thread.](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/)
+
 
 # Compatibility
 | Title                                | Platform    | Compatible? |
