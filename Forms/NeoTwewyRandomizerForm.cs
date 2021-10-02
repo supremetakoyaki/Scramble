@@ -39,6 +39,7 @@ namespace Scramble.Forms
             RandomizeMoney_Checkbox.Text = Sukuranburu.GetString("{RandomizeMoney}");
             RandomizeExperience_Checkbox.Text = Sukuranburu.GetString("{RandomizeExperience}");
             RandomizeDay_Checkbox.Text = Sukuranburu.GetString("{RandomizeDay}");
+            RandomizeStats_Checkbox.Text = Sukuranburu.GetString("{RandomizeStats}");
             RandomizeParty_Checkbox.Text = Sukuranburu.GetString("{RandomizeParty}");
             RandomizePins_Checkbox.Text = Sukuranburu.GetString("{RandomizePins}");
             RandomizeClothing_Checkbox.Text = Sukuranburu.GetString("{RandomizeClothing}");
@@ -58,6 +59,8 @@ namespace Scramble.Forms
             RandomizeExperience_StatusLabel.ForeColor = Color.Green;
             RandomizeDay_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_Buggy}");
             RandomizeDay_StatusLabel.ForeColor = Color.DarkGoldenrod;
+            RandomizeStats_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_Ok}");
+            RandomizeStats_StatusLabel.ForeColor = Color.Green;
             RandomizeParty_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_HighlyExperimental}");
             RandomizeParty_StatusLabel.ForeColor = Color.DarkRed;
             RandomizePins_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_Ok}");
@@ -110,7 +113,7 @@ namespace Scramble.Forms
         {
             RandomizeButton.Enabled = false;
             RandomizerProgressBar.Value = 0;
-            RandomizerProgressBar.Maximum = Convert.ToByte(RandomizeMoney_Checkbox.Checked) + Convert.ToByte(RandomizeExperience_Checkbox.Checked) + Convert.ToByte(RandomizeDay_Checkbox.Checked) + Convert.ToByte(RandomizeParty_Checkbox.Checked) + Convert.ToByte(RandomizePins_Checkbox.Checked) + Convert.ToByte(RandomizeClothing_Checkbox.Checked) + Convert.ToByte(RandomizeSkills_Checkbox.Checked) + Convert.ToByte(RandomizeSocialTree_Checkbox.Checked) + Convert.ToByte(RandomizeTrophies_Checkbox.Checked);
+            RandomizerProgressBar.Maximum = Convert.ToByte(RandomizeMoney_Checkbox.Checked) + Convert.ToByte(RandomizeExperience_Checkbox.Checked) + Convert.ToByte(RandomizeDay_Checkbox.Checked) + Convert.ToByte(RandomizeStats_Checkbox.Checked) + Convert.ToByte(RandomizeParty_Checkbox.Checked) + Convert.ToByte(RandomizePins_Checkbox.Checked) + Convert.ToByte(RandomizeClothing_Checkbox.Checked) + Convert.ToByte(RandomizeSkills_Checkbox.Checked) + Convert.ToByte(RandomizeSocialTree_Checkbox.Checked) + Convert.ToByte(RandomizeTrophies_Checkbox.Checked);
             RandomizerChaos LevelOfChaos = (RandomizerChaos)LevelOfChaos_Trackbar.Value;
 
             RandomizerProgressBar.Maximum *= 10;
@@ -132,6 +135,12 @@ namespace Scramble.Forms
             if (RandomizeDay_Checkbox.Checked)
             {
                 GameRandomizer.RandomizeDay(LevelOfChaos);
+                RandomizerProgressBar.Value += 10;
+            }
+
+            if (RandomizeStats_Checkbox.Checked)
+            {
+                GameRandomizer.RandomizeStats(LevelOfChaos);
                 RandomizerProgressBar.Value += 10;
             }
 

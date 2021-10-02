@@ -33,6 +33,8 @@
             this.OverviewGroupBox = new System.Windows.Forms.GroupBox();
             this.OverviewRichTextBox = new System.Windows.Forms.RichTextBox();
             this.RandomizerGroupBox = new System.Windows.Forms.GroupBox();
+            this.RandomizeExperience_StatusLabel = new System.Windows.Forms.Label();
+            this.RandomizeExperience_Checkbox = new System.Windows.Forms.CheckBox();
             this.RandomizeMoney_StatusLabel = new System.Windows.Forms.Label();
             this.RandomizeMoney_Checkbox = new System.Windows.Forms.CheckBox();
             this.WaitMessage = new System.Windows.Forms.Label();
@@ -55,8 +57,8 @@
             this.RandomizePins_Checkbox = new System.Windows.Forms.CheckBox();
             this.RandomizeParty_Checkbox = new System.Windows.Forms.CheckBox();
             this.RandomizeDay_Checkbox = new System.Windows.Forms.CheckBox();
-            this.RandomizeExperience_Checkbox = new System.Windows.Forms.CheckBox();
-            this.RandomizeExperience_StatusLabel = new System.Windows.Forms.Label();
+            this.RandomizeStats_StatusLabel = new System.Windows.Forms.Label();
+            this.RandomizeStats_Checkbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.RandomizerPictureBox)).BeginInit();
             this.OverviewGroupBox.SuspendLayout();
             this.RandomizerGroupBox.SuspendLayout();
@@ -100,6 +102,8 @@
             // 
             // RandomizerGroupBox
             // 
+            this.RandomizerGroupBox.Controls.Add(this.RandomizeStats_StatusLabel);
+            this.RandomizerGroupBox.Controls.Add(this.RandomizeStats_Checkbox);
             this.RandomizerGroupBox.Controls.Add(this.RandomizeExperience_StatusLabel);
             this.RandomizerGroupBox.Controls.Add(this.RandomizeExperience_Checkbox);
             this.RandomizerGroupBox.Controls.Add(this.RandomizeMoney_StatusLabel);
@@ -130,6 +134,27 @@
             this.RandomizerGroupBox.TabIndex = 2;
             this.RandomizerGroupBox.TabStop = false;
             this.RandomizerGroupBox.Text = "{Randomizer}";
+            // 
+            // RandomizeExperience_StatusLabel
+            // 
+            this.RandomizeExperience_StatusLabel.AutoSize = true;
+            this.RandomizeExperience_StatusLabel.Location = new System.Drawing.Point(278, 54);
+            this.RandomizeExperience_StatusLabel.Name = "RandomizeExperience_StatusLabel";
+            this.RandomizeExperience_StatusLabel.Size = new System.Drawing.Size(75, 15);
+            this.RandomizeExperience_StatusLabel.TabIndex = 23;
+            this.RandomizeExperience_StatusLabel.Text = "{StatusLabel}";
+            // 
+            // RandomizeExperience_Checkbox
+            // 
+            this.RandomizeExperience_Checkbox.AutoSize = true;
+            this.RandomizeExperience_Checkbox.Checked = true;
+            this.RandomizeExperience_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.RandomizeExperience_Checkbox.Location = new System.Drawing.Point(6, 53);
+            this.RandomizeExperience_Checkbox.Name = "RandomizeExperience_Checkbox";
+            this.RandomizeExperience_Checkbox.Size = new System.Drawing.Size(150, 19);
+            this.RandomizeExperience_Checkbox.TabIndex = 22;
+            this.RandomizeExperience_Checkbox.Text = "{RandomizeExperience}";
+            this.RandomizeExperience_Checkbox.UseVisualStyleBackColor = true;
             // 
             // RandomizeMoney_StatusLabel
             // 
@@ -211,7 +236,7 @@
             // RandomizeTrophies_StatusLabel
             // 
             this.RandomizeTrophies_StatusLabel.AutoSize = true;
-            this.RandomizeTrophies_StatusLabel.Location = new System.Drawing.Point(278, 229);
+            this.RandomizeTrophies_StatusLabel.Location = new System.Drawing.Point(278, 254);
             this.RandomizeTrophies_StatusLabel.Name = "RandomizeTrophies_StatusLabel";
             this.RandomizeTrophies_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeTrophies_StatusLabel.TabIndex = 13;
@@ -220,7 +245,7 @@
             // RandomizeSocialTree_StatusLabel
             // 
             this.RandomizeSocialTree_StatusLabel.AutoSize = true;
-            this.RandomizeSocialTree_StatusLabel.Location = new System.Drawing.Point(278, 204);
+            this.RandomizeSocialTree_StatusLabel.Location = new System.Drawing.Point(278, 229);
             this.RandomizeSocialTree_StatusLabel.Name = "RandomizeSocialTree_StatusLabel";
             this.RandomizeSocialTree_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeSocialTree_StatusLabel.TabIndex = 12;
@@ -229,7 +254,7 @@
             // RandomizeSkills_StatusLabel
             // 
             this.RandomizeSkills_StatusLabel.AutoSize = true;
-            this.RandomizeSkills_StatusLabel.Location = new System.Drawing.Point(278, 179);
+            this.RandomizeSkills_StatusLabel.Location = new System.Drawing.Point(278, 204);
             this.RandomizeSkills_StatusLabel.Name = "RandomizeSkills_StatusLabel";
             this.RandomizeSkills_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeSkills_StatusLabel.TabIndex = 11;
@@ -238,7 +263,7 @@
             // RandomizeClothing_StatusLabel
             // 
             this.RandomizeClothing_StatusLabel.AutoSize = true;
-            this.RandomizeClothing_StatusLabel.Location = new System.Drawing.Point(278, 154);
+            this.RandomizeClothing_StatusLabel.Location = new System.Drawing.Point(278, 179);
             this.RandomizeClothing_StatusLabel.Name = "RandomizeClothing_StatusLabel";
             this.RandomizeClothing_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeClothing_StatusLabel.TabIndex = 10;
@@ -247,7 +272,7 @@
             // RandomizePins_StatusLabel
             // 
             this.RandomizePins_StatusLabel.AutoSize = true;
-            this.RandomizePins_StatusLabel.Location = new System.Drawing.Point(278, 129);
+            this.RandomizePins_StatusLabel.Location = new System.Drawing.Point(278, 154);
             this.RandomizePins_StatusLabel.Name = "RandomizePins_StatusLabel";
             this.RandomizePins_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizePins_StatusLabel.TabIndex = 9;
@@ -256,7 +281,7 @@
             // RandomizeParty_StatusLabel
             // 
             this.RandomizeParty_StatusLabel.AutoSize = true;
-            this.RandomizeParty_StatusLabel.Location = new System.Drawing.Point(278, 104);
+            this.RandomizeParty_StatusLabel.Location = new System.Drawing.Point(278, 129);
             this.RandomizeParty_StatusLabel.Name = "RandomizeParty_StatusLabel";
             this.RandomizeParty_StatusLabel.Size = new System.Drawing.Size(75, 15);
             this.RandomizeParty_StatusLabel.TabIndex = 8;
@@ -274,7 +299,7 @@
             // RandomizeTrophies_Checkbox
             // 
             this.RandomizeTrophies_Checkbox.AutoSize = true;
-            this.RandomizeTrophies_Checkbox.Location = new System.Drawing.Point(6, 228);
+            this.RandomizeTrophies_Checkbox.Location = new System.Drawing.Point(6, 253);
             this.RandomizeTrophies_Checkbox.Name = "RandomizeTrophies_Checkbox";
             this.RandomizeTrophies_Checkbox.Size = new System.Drawing.Size(137, 19);
             this.RandomizeTrophies_Checkbox.TabIndex = 6;
@@ -284,7 +309,7 @@
             // RandomizeSocialTree_Checkbox
             // 
             this.RandomizeSocialTree_Checkbox.AutoSize = true;
-            this.RandomizeSocialTree_Checkbox.Location = new System.Drawing.Point(6, 203);
+            this.RandomizeSocialTree_Checkbox.Location = new System.Drawing.Point(6, 228);
             this.RandomizeSocialTree_Checkbox.Name = "RandomizeSocialTree_Checkbox";
             this.RandomizeSocialTree_Checkbox.Size = new System.Drawing.Size(145, 19);
             this.RandomizeSocialTree_Checkbox.TabIndex = 5;
@@ -294,7 +319,7 @@
             // RandomizeSkills_Checkbox
             // 
             this.RandomizeSkills_Checkbox.AutoSize = true;
-            this.RandomizeSkills_Checkbox.Location = new System.Drawing.Point(6, 178);
+            this.RandomizeSkills_Checkbox.Location = new System.Drawing.Point(6, 203);
             this.RandomizeSkills_Checkbox.Name = "RandomizeSkills_Checkbox";
             this.RandomizeSkills_Checkbox.Size = new System.Drawing.Size(119, 19);
             this.RandomizeSkills_Checkbox.TabIndex = 4;
@@ -306,7 +331,7 @@
             this.RandomizeClothing_Checkbox.AutoSize = true;
             this.RandomizeClothing_Checkbox.Checked = true;
             this.RandomizeClothing_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RandomizeClothing_Checkbox.Location = new System.Drawing.Point(6, 153);
+            this.RandomizeClothing_Checkbox.Location = new System.Drawing.Point(6, 178);
             this.RandomizeClothing_Checkbox.Name = "RandomizeClothing_Checkbox";
             this.RandomizeClothing_Checkbox.Size = new System.Drawing.Size(139, 19);
             this.RandomizeClothing_Checkbox.TabIndex = 3;
@@ -318,7 +343,7 @@
             this.RandomizePins_Checkbox.AutoSize = true;
             this.RandomizePins_Checkbox.Checked = true;
             this.RandomizePins_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RandomizePins_Checkbox.Location = new System.Drawing.Point(6, 128);
+            this.RandomizePins_Checkbox.Location = new System.Drawing.Point(6, 153);
             this.RandomizePins_Checkbox.Name = "RandomizePins_Checkbox";
             this.RandomizePins_Checkbox.Size = new System.Drawing.Size(115, 19);
             this.RandomizePins_Checkbox.TabIndex = 2;
@@ -328,7 +353,7 @@
             // RandomizeParty_Checkbox
             // 
             this.RandomizeParty_Checkbox.AutoSize = true;
-            this.RandomizeParty_Checkbox.Location = new System.Drawing.Point(6, 103);
+            this.RandomizeParty_Checkbox.Location = new System.Drawing.Point(6, 128);
             this.RandomizeParty_Checkbox.Name = "RandomizeParty_Checkbox";
             this.RandomizeParty_Checkbox.Size = new System.Drawing.Size(120, 19);
             this.RandomizeParty_Checkbox.TabIndex = 1;
@@ -345,26 +370,24 @@
             this.RandomizeDay_Checkbox.Text = "{RandomizeDay}";
             this.RandomizeDay_Checkbox.UseVisualStyleBackColor = true;
             // 
-            // RandomizeExperience_Checkbox
+            // RandomizeStats_StatusLabel
             // 
-            this.RandomizeExperience_Checkbox.AutoSize = true;
-            this.RandomizeExperience_Checkbox.Checked = true;
-            this.RandomizeExperience_Checkbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RandomizeExperience_Checkbox.Location = new System.Drawing.Point(6, 53);
-            this.RandomizeExperience_Checkbox.Name = "RandomizeExperience_Checkbox";
-            this.RandomizeExperience_Checkbox.Size = new System.Drawing.Size(150, 19);
-            this.RandomizeExperience_Checkbox.TabIndex = 22;
-            this.RandomizeExperience_Checkbox.Text = "{RandomizeExperience}";
-            this.RandomizeExperience_Checkbox.UseVisualStyleBackColor = true;
+            this.RandomizeStats_StatusLabel.AutoSize = true;
+            this.RandomizeStats_StatusLabel.Location = new System.Drawing.Point(278, 104);
+            this.RandomizeStats_StatusLabel.Name = "RandomizeStats_StatusLabel";
+            this.RandomizeStats_StatusLabel.Size = new System.Drawing.Size(75, 15);
+            this.RandomizeStats_StatusLabel.TabIndex = 25;
+            this.RandomizeStats_StatusLabel.Text = "{StatusLabel}";
             // 
-            // RandomizeExperience_StatusLabel
+            // RandomizeStats_Checkbox
             // 
-            this.RandomizeExperience_StatusLabel.AutoSize = true;
-            this.RandomizeExperience_StatusLabel.Location = new System.Drawing.Point(278, 54);
-            this.RandomizeExperience_StatusLabel.Name = "RandomizeExperience_StatusLabel";
-            this.RandomizeExperience_StatusLabel.Size = new System.Drawing.Size(75, 15);
-            this.RandomizeExperience_StatusLabel.TabIndex = 23;
-            this.RandomizeExperience_StatusLabel.Text = "{StatusLabel}";
+            this.RandomizeStats_Checkbox.AutoSize = true;
+            this.RandomizeStats_Checkbox.Location = new System.Drawing.Point(6, 103);
+            this.RandomizeStats_Checkbox.Name = "RandomizeStats_Checkbox";
+            this.RandomizeStats_Checkbox.Size = new System.Drawing.Size(118, 19);
+            this.RandomizeStats_Checkbox.TabIndex = 24;
+            this.RandomizeStats_Checkbox.Text = "{RandomizeStats}";
+            this.RandomizeStats_Checkbox.UseVisualStyleBackColor = true;
             // 
             // NeoTwewyRandomizerForm
             // 
@@ -418,5 +441,7 @@
         private System.Windows.Forms.CheckBox RandomizeMoney_Checkbox;
         private System.Windows.Forms.Label RandomizeExperience_StatusLabel;
         private System.Windows.Forms.CheckBox RandomizeExperience_Checkbox;
+        private System.Windows.Forms.Label RandomizeStats_StatusLabel;
+        private System.Windows.Forms.CheckBox RandomizeStats_Checkbox;
     }
 }

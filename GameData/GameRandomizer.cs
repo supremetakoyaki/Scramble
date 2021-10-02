@@ -138,6 +138,46 @@ namespace Scramble.GameData
             SelectedSlot.UpdateOffset_Int32(GameOffsets.ScenarioNewestDateDay, FurthestDayToSet);
         }
 
+        public void RandomizeStats(RandomizerChaos LevelOfChaos)
+        {
+            int MinNum;
+            int MaxNum;
+            ushort DropRateMax;
+
+            switch (LevelOfChaos)
+            {
+                case RandomizerChaos.Mild:
+                    MinNum = GenerateRandomNumber(0, 25);
+                    MaxNum = GenerateRandomNumber(MinNum, 100);
+                    DropRateMax = (ushort)GenerateRandomNumber(0, 4);
+                    break;
+
+                case RandomizerChaos.Moderate:
+                default:
+                    MinNum = GenerateRandomNumber(0, 100);
+                    MaxNum = GenerateRandomNumber(MinNum, 300);
+                    DropRateMax = (ushort)GenerateRandomNumber(0, 9);
+                    break;
+
+                case RandomizerChaos.Heavy:
+                    MinNum = GenerateRandomNumber(0, 500);
+                    MaxNum = GenerateRandomNumber(MinNum, 999);
+                    DropRateMax = (ushort)GenerateRandomNumber(0, 19);
+                    break;
+            }
+
+            for (int i = 0; i < 6; i++)
+            {
+                int OffsetSum = i * 20;
+
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerData_FoodHp + OffsetSum, GenerateRandomNumber(MinNum, MaxNum));
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerData_FoodAtk + OffsetSum, GenerateRandomNumber(MinNum, MaxNum));
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerData_FoodDef + OffsetSum, GenerateRandomNumber(MinNum, MaxNum));
+                SelectedSlot.UpdateOffset_UInt16(GameOffsets.PlayerData_FoodSense + OffsetSum, (ushort)GenerateRandomNumber(MinNum, MaxNum));
+                SelectedSlot.UpdateOffset_UInt16(GameOffsets.PlayerData_FoodDropRate + OffsetSum, (ushort)GenerateRandomNumber(0, DropRateMax));
+            }
+        }
+
         public void RandomizeParty(RandomizerChaos LevelOfChaos)
         {
             int PartyMemberCount;
