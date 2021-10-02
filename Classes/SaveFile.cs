@@ -21,9 +21,11 @@ namespace Scramble.Classes
 
         private const int SAVE_LENGTH = 3200512;
         private const int PC_SAVE_LENGTH = 3201072;
+        private const int PC_UNKNOWN_END_LENGTH = 35;
 
         public bool IsPcVersion = false;
         private readonly byte[] PcMagic;
+        private readonly byte[] PcEnd;
         private Rijndael SaveRijndael;
         public static byte[] RijndaelKey = new byte[] { 0x46, 0x5C, 0x42, 0x2B, 0x65, 0x50, 0x34, 0x3A, 0x38, 0x32, 0x28, 0x70, 0x4D, 0x76, 0x2B, 0x49 };
         public static byte[] RijndaelIv = new byte[] { 0xF3, 0xF4, 0x5F, 0x18, 0xD6, 0xC2, 0xB6, 0xE6, 0xFA, 0xEE, 0x88, 0xAE, 0x57, 0xE5, 0x8E, 0x1A };
@@ -73,6 +75,10 @@ namespace Scramble.Classes
                     CurrentPointer += SLOT_LENGTH;
                 }
 
+                byte[] UnknownEnd = new byte[PC_UNKNOWN_END_LENGTH];
+                Array.Copy(DecryptedData, CurrentPointer, UnknownEnd, 0, PC_UNKNOWN_END_LENGTH);
+                PcEnd = UnknownEnd;
+
                 Result = 1;
             }
             else
@@ -121,7 +127,7 @@ namespace Scramble.Classes
                         GetSaveSlot(i).WriteToStream(DataStream, ref CurrentPointer);
                     }
 
-                    DataStream.Write(NeoTwewySaveConverter.NEOTWEWYPC_UNKNOWN_END, 0, 35);
+                    DataStream.Write(PcEnd, 0, PC_UNKNOWN_END_LENGTH);
                     byte[] DecryptedData = DataStream.ToArray();
 
                     if (SaveRijndael == null)
