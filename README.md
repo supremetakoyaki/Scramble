@@ -1,6 +1,6 @@
 # Scramble
 
-![Screenshot of the editor launcher and NEO:TWEWY mode](https://i.imgur.com/3K6NJJX.png)
+![Screenshot of the editor launcher and NEO:TWEWY mode](https://i.imgur.com/EQkOf9f.png)
 
 Scramble is a save editor for games in the The World Ends with You series.
 [Click here for the GBATemp thread.](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/)
@@ -55,6 +55,7 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 
 **Other utilities**
 - **Convert between PS4/Switch and PC save files of NEO, and viceversa.**
+- Decrypt and re-encrypt .unity3d assets from the PC release of NEO.
 - Convert TWEWY Solo Remix save to TWEWY Final Remix.
 
 # Upcoming features
