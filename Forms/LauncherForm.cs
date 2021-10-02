@@ -22,11 +22,19 @@ namespace Scramble.Forms
             TWEWYFR_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Logo_TWEWYFR") as Bitmap, 171, 173, DeviceDpi);
             Convert_FromSoloRemix_Button.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Convert_SR_to_FR") as Bitmap, 171, 20, DeviceDpi);
             NeoTwewyUtilButton.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Convert_NeoPC_NeoPS4SW") as Bitmap, 171, 20, DeviceDpi);
+            Unity3dDecryptEncryptButton.BackgroundImage = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Unity3d_Decrypt_Encrypt") as Bitmap, 171, 20, DeviceDpi);
+
+            VersionLabel.Text = Program.ScrambleVersion;
+            GithubIconPictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("GithubIcon") as Bitmap, 15, 15, DeviceDpi);
+            GbaTempIconPictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("GbaTempIcon") as Bitmap, 15, 15, DeviceDpi);
 
             NeoTwewy_ToolTip.SetToolTip(NTWEWY_Button, "\"NEO: The World Ends with You\" Save Editor");
             TwewyFr_ToolTip.SetToolTip(TWEWYFR_Button, "\"The World Ends with You -Final Remix-\" Save Editor");
             ConvertSr2Fr_ToolTip.SetToolTip(Convert_FromSoloRemix_Button, "Convert Solo Remix save file to Final Remix save file");
             NeoTwewyUtilToolTip.SetToolTip(NeoTwewyUtilButton, "Convert between PC and PS4/Switch NEO:TWEWY save files.");
+            NeoTwewyUnity3dDecryptToolTip.SetToolTip(Unity3dDecryptEncryptButton, "Decrypt and encrypt .unity3d files from the PC release of NEO:TWEWY");
+            GithubIconTooltip.SetToolTip(GithubIconPictureBox, "Open the Scramble repository in GitHub");
+            GbaTempIconTooltip.SetToolTip(GbaTempIconPictureBox, "Open the Scramble thread in GBATemp");
 
             Task.Run(() =>
             {
@@ -216,7 +224,17 @@ namespace Scramble.Forms
 
         private void UpdateChecker_Label_Click(object sender, EventArgs e)
         {
-            Program.OpenSite("https://github.com/supremetakoyaki/Scramble");
+            Program.OpenSite("https://github.com/supremetakoyaki/Scramble/releases/latest");
+        }
+
+        private void GithubIconPictureBox_Click(object sender, EventArgs e)
+        {
+            Program.OpenSite("https://github.com/supremetakoyaki/Scramble/");
+        }
+
+        private void GbaTempIconPictureBox_Click(object sender, EventArgs e)
+        {
+            Program.OpenSite("https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/");
         }
     }
 }

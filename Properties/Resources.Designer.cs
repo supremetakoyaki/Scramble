@@ -173,6 +173,26 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GbaTempIcon {
+            get {
+                object obj = ResourceManager.GetObject("GbaTempIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GithubIcon {
+            get {
+                object obj = ResourceManager.GetObject("GithubIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon {
             get {
                 object obj = ResourceManager.GetObject("Icon", resourceCulture);
@@ -340,6 +360,16 @@ namespace Scramble.Properties {
         internal static System.Drawing.Bitmap Spoiler_Pin {
             get {
                 object obj = ResourceManager.GetObject("Spoiler_Pin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Unity3d_Decrypt_Encrypt {
+            get {
+                object obj = ResourceManager.GetObject("Unity3d_Decrypt_Encrypt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

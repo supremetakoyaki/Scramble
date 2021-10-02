@@ -41,7 +41,15 @@ namespace Scramble.Forms
             this.NeoTwewyUtilButton = new System.Windows.Forms.Button();
             this.NeoTwewyUtilToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Unity3dDecryptEncryptButton = new System.Windows.Forms.Button();
+            this.NeoTwewyUnity3dDecryptToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.VersionLabel = new System.Windows.Forms.Label();
+            this.GithubIconPictureBox = new System.Windows.Forms.PictureBox();
+            this.GithubIconTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.GbaTempIconPictureBox = new System.Windows.Forms.PictureBox();
+            this.GbaTempIconTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.Utilities_GroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GithubIconPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GbaTempIconPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // NTWEWY_Button
@@ -65,7 +73,7 @@ namespace Scramble.Forms
             // Utilities_GroupBox
             // 
             this.Utilities_GroupBox.Controls.Add(this.UpdateChecker_Label);
-            this.Utilities_GroupBox.Location = new System.Drawing.Point(9, 238);
+            this.Utilities_GroupBox.Location = new System.Drawing.Point(9, 241);
             this.Utilities_GroupBox.Name = "Utilities_GroupBox";
             this.Utilities_GroupBox.Size = new System.Drawing.Size(348, 38);
             this.Utilities_GroupBox.TabIndex = 3;
@@ -76,7 +84,7 @@ namespace Scramble.Forms
             this.UpdateChecker_Label.AutoSize = true;
             this.UpdateChecker_Label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UpdateChecker_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.UpdateChecker_Label.Location = new System.Drawing.Point(3, 19);
+            this.UpdateChecker_Label.Location = new System.Drawing.Point(6, 19);
             this.UpdateChecker_Label.Name = "UpdateChecker_Label";
             this.UpdateChecker_Label.Size = new System.Drawing.Size(124, 13);
             this.UpdateChecker_Label.TabIndex = 4;
@@ -125,11 +133,59 @@ namespace Scramble.Forms
             this.Unity3dDecryptEncryptButton.TabIndex = 5;
             this.Unity3dDecryptEncryptButton.UseVisualStyleBackColor = true;
             // 
+            // NeoTwewyUnity3dDecryptToolTip
+            // 
+            this.NeoTwewyUnity3dDecryptToolTip.AutomaticDelay = 250;
+            // 
+            // VersionLabel
+            // 
+            this.VersionLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 7.55F, System.Drawing.FontStyle.Bold);
+            this.VersionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.VersionLabel.Location = new System.Drawing.Point(274, 220);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(42, 15);
+            this.VersionLabel.TabIndex = 6;
+            this.VersionLabel.Text = "{Ver}";
+            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // GithubIconPictureBox
+            // 
+            this.GithubIconPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.GithubIconPictureBox.Location = new System.Drawing.Point(322, 220);
+            this.GithubIconPictureBox.Name = "GithubIconPictureBox";
+            this.GithubIconPictureBox.Size = new System.Drawing.Size(15, 15);
+            this.GithubIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.GithubIconPictureBox.TabIndex = 7;
+            this.GithubIconPictureBox.TabStop = false;
+            this.GithubIconPictureBox.Click += new System.EventHandler(this.GithubIconPictureBox_Click);
+            // 
+            // GithubIconTooltip
+            // 
+            this.GithubIconTooltip.AutomaticDelay = 250;
+            // 
+            // GbaTempIconPictureBox
+            // 
+            this.GbaTempIconPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.GbaTempIconPictureBox.Location = new System.Drawing.Point(343, 220);
+            this.GbaTempIconPictureBox.Name = "GbaTempIconPictureBox";
+            this.GbaTempIconPictureBox.Size = new System.Drawing.Size(15, 15);
+            this.GbaTempIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.GbaTempIconPictureBox.TabIndex = 8;
+            this.GbaTempIconPictureBox.TabStop = false;
+            this.GbaTempIconPictureBox.Click += new System.EventHandler(this.GbaTempIconPictureBox_Click);
+            // 
+            // GbaTempIconTooltip
+            // 
+            this.GbaTempIconTooltip.AutomaticDelay = 250;
+            // 
             // LauncherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(369, 288);
+            this.ClientSize = new System.Drawing.Size(369, 291);
+            this.Controls.Add(this.GbaTempIconPictureBox);
+            this.Controls.Add(this.GithubIconPictureBox);
+            this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.Unity3dDecryptEncryptButton);
             this.Controls.Add(this.NeoTwewyUtilButton);
             this.Controls.Add(this.Utilities_GroupBox);
@@ -143,6 +199,8 @@ namespace Scramble.Forms
             this.Text = "Scramble — Launcher";
             this.Utilities_GroupBox.ResumeLayout(false);
             this.Utilities_GroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GithubIconPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GbaTempIconPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -159,5 +217,11 @@ namespace Scramble.Forms
         private System.Windows.Forms.Button NeoTwewyUtilButton;
         private System.Windows.Forms.ToolTip NeoTwewyUtilToolTip;
         private System.Windows.Forms.Button Unity3dDecryptEncryptButton;
+        private System.Windows.Forms.ToolTip NeoTwewyUnity3dDecryptToolTip;
+        private System.Windows.Forms.Label VersionLabel;
+        private System.Windows.Forms.PictureBox GithubIconPictureBox;
+        private System.Windows.Forms.ToolTip GithubIconTooltip;
+        private System.Windows.Forms.PictureBox GbaTempIconPictureBox;
+        private System.Windows.Forms.ToolTip GbaTempIconTooltip;
     }
 }

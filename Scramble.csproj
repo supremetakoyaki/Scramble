@@ -494,6 +494,8 @@
     <Content Include="Assets\CHR_Spoiler.png" />
     <None Include="Assets\Convert_NeoPC_NeoPS4SW.png" />
     <Content Include="Assets\Convert_SR_to_FR.png" />
+    <None Include="Assets\GithubIcon.png" />
+    <None Include="Assets\GbaTempIcon.png" />
     <Content Include="Assets\Icon.ico" />
     <Content Include="Assets\Icon.png" />
     <Content Include="Assets\Legacy_Byte_Empty.png" />
