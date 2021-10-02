@@ -34,8 +34,8 @@ namespace Scramble.Forms
             ConvertSr2Fr_ToolTip.SetToolTip(Convert_FromSoloRemix_Button, "Convert Solo Remix save file to Final Remix save file");
             NeoTwewyUtilToolTip.SetToolTip(NeoTwewyUtilButton, "Convert between PC and PS4/Switch NEO:TWEWY save files.");
             NeoTwewyUnity3dDecryptToolTip.SetToolTip(Unity3dDecryptEncryptButton, "Decrypt and encrypt .unity3d files from the PC release of NEO:TWEWY");
-            GithubIconTooltip.SetToolTip(GithubIconPictureBox, "Open the Scramble repository in GitHub");
-            GbaTempIconTooltip.SetToolTip(GbaTempIconPictureBox, "Open the Scramble thread in GBATemp");
+            GithubIconTooltip.SetToolTip(GithubIconPictureBox, "Open the Scramble repository on GitHub");
+            GbaTempIconTooltip.SetToolTip(GbaTempIconPictureBox, "Open the Scramble thread on GBATemp");
 
             Task.Run(() =>
             {
