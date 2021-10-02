@@ -319,6 +319,7 @@ namespace Scramble.Classes
         public void ImportData(byte[] Import)
         {
             Data = Import;
+            IsValid = 1;
 
             LoadPartyMembers();
             RetrieveDayData();
