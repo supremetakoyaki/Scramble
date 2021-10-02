@@ -403,6 +403,7 @@
     <Compile Include="Util\NeoTwewySaveConverter.cs" />
     <Compile Include="Util\Rijndael.cs" />
     <Compile Include="Util\TwewySaveConverter.cs" />
+    <Compile Include="Util\Unity3dCrypto.cs" />
     <EmbeddedResource Include="Forms\CharacterStatEditor.resx">
       <DependentUpon>CharacterStatEditor.cs</DependentUpon>
     </EmbeddedResource>

@@ -3,6 +3,7 @@ using Scramble.Legacy;
 using Scramble.Properties;
 using Scramble.Util;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -220,6 +221,65 @@ namespace Scramble.Forms
                 File.WriteAllBytes(SaveDialog.FileName, ConvertedSave);
                 return;
             }
+        }
+
+        private void Unity3dDecryptEncryptButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OpenDialog = new OpenFileDialog
+            {
+                Title = "Select one or more Unity Assets",
+                Filter = "NEO TWEWY Unity Asset (*.unity3d)|*.unity3d",
+                DefaultExt = "unity3d",
+                AddExtension = true,
+                Multiselect = true
+            };
+
+            if (OpenDialog.ShowDialog() != DialogResult.OK || OpenDialog.FileNames.Length == 0)
+            {
+                return;
+            }
+
+            if (OpenDialog.FileNames.Length > 9)
+            {
+                if (MessageBox.Show("It is possible that this operation may take a long time. Please wait patiently. The program will become unresponsive until the process is done. Continue?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+
+            List<string> ErrorFiles;
+            Dictionary<string, byte[]> ProcessedFiles = Unity3dCrypto.ProcessFiles(OpenDialog.FileNames, out ErrorFiles);
+
+            if (ProcessedFiles.Count == 0)
+            {
+                MessageBox.Show("None of the files were valid.", "Error");
+                return;
+            }
+
+            SaveFileDialog SaveDialog = new SaveFileDialog
+            {
+                Title = "Choose an output folder",
+                FileName = "Save here"
+            };
+
+            if (SaveDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            string Folder = Path.GetDirectoryName(SaveDialog.FileName);
+
+            foreach (string KeyFileName in ProcessedFiles.Keys)
+            {
+                File.WriteAllBytes(string.Format("{0}\\{1}", Folder, KeyFileName), ProcessedFiles[KeyFileName]);
+            }
+
+            if (ErrorFiles != null && ErrorFiles.Count > 0)
+            {
+                MessageBox.Show("The following files were not valid and thus were not processed:" + string.Join("\n- ", ErrorFiles), "Notice");
+            }
+
+            MessageBox.Show("Done.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void UpdateChecker_Label_Click(object sender, EventArgs e)

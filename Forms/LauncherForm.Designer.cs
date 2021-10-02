@@ -132,6 +132,7 @@ namespace Scramble.Forms
             this.Unity3dDecryptEncryptButton.Size = new System.Drawing.Size(171, 20);
             this.Unity3dDecryptEncryptButton.TabIndex = 5;
             this.Unity3dDecryptEncryptButton.UseVisualStyleBackColor = true;
+            this.Unity3dDecryptEncryptButton.Click += new System.EventHandler(this.Unity3dDecryptEncryptButton_Click);
             // 
             // NeoTwewyUnity3dDecryptToolTip
             // 
