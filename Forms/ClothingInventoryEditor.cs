@@ -12,7 +12,7 @@ namespace Scramble.Forms
 {
     public partial class ClothingInventoryEditor : Form
     {
-        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
+        public SaveSlot SelectedSlot => Program.Sukuranburu.SelectedSlot;
 
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
@@ -455,11 +455,11 @@ namespace Scramble.Forms
             for (int i = 0; i < 6; i++)
             {
                 int OffsetSum = 36 * i;
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Head + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Top + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Bottom + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Foot + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Accessory + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Head + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Top + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Bottom + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Foot + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Accessory + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
             }
 
             //We're also gonna clear every single clothing in this save slot.
@@ -516,7 +516,7 @@ namespace Scramble.Forms
                         // check if we didn't add the equipped data already.
                         int StoredValue = SelectedSlot.RetrieveOffset_Int32(ThisOffset);
 
-                        if (StoredValue == SaveData.NOT_ASSIGNED_DATA)
+                        if (StoredValue == SaveSlot.NOT_ASSIGNED_DATA)
                         {
                             SelectedSlot.UpdateOffset_Int32(ThisOffset, Indexes);
                             SelectedSlot.GetPartyMemberWithId(Clothing.EquipperId).EquippedClothingIndexes[SlotType] = Indexes;

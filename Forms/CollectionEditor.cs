@@ -11,7 +11,7 @@ namespace Scramble.Forms
 {
     public partial class CollectionEditor : Form
     {
-        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
+        public SaveSlot SelectedSlot => Program.Sukuranburu.SelectedSlot;
 
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 

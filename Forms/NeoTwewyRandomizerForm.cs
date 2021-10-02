@@ -12,7 +12,7 @@ namespace Scramble.Forms
 {
     public partial class NeoTwewyRandomizerForm : Form
     {
-        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
+        public SaveSlot SelectedSlot => Program.Sukuranburu.SelectedSlot;
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
         private readonly GameRandomizer GameRandomizer;

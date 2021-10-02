@@ -15,7 +15,7 @@ namespace Scramble.Forms
 {
     public partial class TrophyEditor : Form
     {
-        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
+        public SaveSlot SelectedSlot => Program.Sukuranburu.SelectedSlot;
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
         private List<Tuple<byte, short>> LayeredTrophies;

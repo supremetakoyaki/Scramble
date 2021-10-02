@@ -11,7 +11,7 @@ namespace Scramble.GameData
 {
     public class GameRandomizer
     {
-        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
+        public SaveSlot SelectedSlot => Program.Sukuranburu.SelectedSlot;
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
         private readonly RNGCryptoServiceProvider RngProvider;
@@ -199,7 +199,7 @@ namespace Scramble.GameData
 
                 if (PartyMembers.Count < i + 1)
                 {
-                    SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                    SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
                 }
                 else
                 {
@@ -281,9 +281,9 @@ namespace Scramble.GameData
             for (i = 0; i < 6; i++)
             {
                 int OffsetSum = 36 * i;
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck1 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck2 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck3 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck1 + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck2 + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck3 + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
             }
 
             // Generate the dictionary of pins we'll add based on save index. 
@@ -417,11 +417,11 @@ namespace Scramble.GameData
             for (int i = 0; i < 6; i++)
             {
                 int OffsetSum = 36 * i;
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Head + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Top + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Bottom + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Foot + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Accessory + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Head + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Top + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Bottom + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Foot + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Accessory + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
             }
 
             for (int i = GameOffsets.MyCostumeList; i < GameOffsets.MyCostumeList_Last; i += 2)

@@ -40,6 +40,7 @@ namespace Scramble.Forms
             this.TwewyFr_ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.NeoTwewyUtilButton = new System.Windows.Forms.Button();
             this.NeoTwewyUtilToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.Unity3dDecryptEncryptButton = new System.Windows.Forms.Button();
             this.Utilities_GroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +65,7 @@ namespace Scramble.Forms
             // Utilities_GroupBox
             // 
             this.Utilities_GroupBox.Controls.Add(this.UpdateChecker_Label);
-            this.Utilities_GroupBox.Location = new System.Drawing.Point(9, 215);
+            this.Utilities_GroupBox.Location = new System.Drawing.Point(9, 238);
             this.Utilities_GroupBox.Name = "Utilities_GroupBox";
             this.Utilities_GroupBox.Size = new System.Drawing.Size(348, 38);
             this.Utilities_GroupBox.TabIndex = 3;
@@ -116,11 +117,20 @@ namespace Scramble.Forms
             // 
             this.NeoTwewyUtilToolTip.AutomaticDelay = 250;
             // 
+            // Unity3dDecryptEncryptButton
+            // 
+            this.Unity3dDecryptEncryptButton.Location = new System.Drawing.Point(9, 215);
+            this.Unity3dDecryptEncryptButton.Name = "Unity3dDecryptEncryptButton";
+            this.Unity3dDecryptEncryptButton.Size = new System.Drawing.Size(171, 20);
+            this.Unity3dDecryptEncryptButton.TabIndex = 5;
+            this.Unity3dDecryptEncryptButton.UseVisualStyleBackColor = true;
+            // 
             // LauncherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(369, 265);
+            this.ClientSize = new System.Drawing.Size(369, 288);
+            this.Controls.Add(this.Unity3dDecryptEncryptButton);
             this.Controls.Add(this.NeoTwewyUtilButton);
             this.Controls.Add(this.Utilities_GroupBox);
             this.Controls.Add(this.Convert_FromSoloRemix_Button);
@@ -148,5 +158,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.ToolTip TwewyFr_ToolTip;
         private System.Windows.Forms.Button NeoTwewyUtilButton;
         private System.Windows.Forms.ToolTip NeoTwewyUtilToolTip;
+        private System.Windows.Forms.Button Unity3dDecryptEncryptButton;
     }
 }

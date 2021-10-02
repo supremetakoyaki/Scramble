@@ -9,7 +9,7 @@ namespace Scramble.Forms
 {
     public partial class CharacterStatEditor : Form
     {
-        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
+        public SaveSlot SelectedSlot => Program.Sukuranburu.SelectedSlot;
 
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 

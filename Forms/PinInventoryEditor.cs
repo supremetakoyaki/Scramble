@@ -14,7 +14,7 @@ namespace Scramble.Forms
 
     public partial class PinInventoryEditor : Form
     {
-        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
+        public SaveSlot SelectedSlot => Program.Sukuranburu.SelectedSlot;
 
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
@@ -260,9 +260,9 @@ namespace Scramble.Forms
             for (int i = 0; i < 6; i++)
             {
                 int OffsetSum = 36 * i;
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck1 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck2 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
-                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck3 + OffsetSum, SaveData.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck1 + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck2 + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BadgeEquipPlayerIndex_Deck3 + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
             }
 
             // Pin data:
@@ -294,7 +294,7 @@ namespace Scramble.Forms
                             int ThisOffset = GameOffsets.BadgeEquipPlayerIndex_Deck1 + DeckOffsetSum + OffsetSum;
                             int StoredValue = SelectedSlot.RetrieveOffset_Int32(ThisOffset);
 
-                            if (StoredValue == SaveData.NOT_ASSIGNED_DATA)
+                            if (StoredValue == SaveSlot.NOT_ASSIGNED_DATA)
                             {
                                 SelectedSlot.UpdateOffset_Int32(ThisOffset, PinIndexes);
                                 SelectedSlot.GetPartyMemberWithId(PartyMemberId).EquippedPinIndexes[DeckId] = PinIndexes;

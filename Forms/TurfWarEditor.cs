@@ -9,7 +9,7 @@ namespace Scramble.Forms
 {
     public partial class TurfWarEditor : Form
     {
-        public SaveData SelectedSlot => Program.Sukuranburu.SelectedSlot;
+        public SaveSlot SelectedSlot => Program.Sukuranburu.SelectedSlot;
 
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
