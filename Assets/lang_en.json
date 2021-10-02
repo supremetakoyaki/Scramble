@@ -222,6 +222,7 @@
     "{RandomizeMoney}": "Randomize money, FP and difficulty",
     "{RandomizeExperience}": "Randomize EXP and Level",
     "{RandomizeDay}": "Randomize current/reached day",
+    "{RandomizeStats}": "Randomize character stats",
     "{RandomizeParty}": "Randomize party members",
     "{RandomizePins}": "Randomize pins inventory",
     "{RandomizeClothing}": "Randomize clothing inventory",
