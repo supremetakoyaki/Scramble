@@ -41,7 +41,7 @@ namespace Scramble.Util
                     {
                         long Length = Stream.BaseStream.Length - 32;
                         byte[] EncryptedData = Stream.ReadBytes((int)Length);
-                        byte[] DecryptedData = RjindaelCrypto.Decrypt(CombineByteArrays(Magic, EncryptedData));
+                        byte[] DecryptedData = RjindaelCrypto.Decrypt(CombineByteArrays(Header, Magic, EncryptedData));
 
                         string NewFileName = string.Format("{0}_DECRYPTED.unity3d", Path.GetFileNameWithoutExtension(FileName));
                         Output.Add(NewFileName, DecryptedData);
