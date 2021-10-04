@@ -16,6 +16,7 @@ namespace Scramble.Forms
 
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
+        public const short EMPTY_CLOTHING_ID_ACTUAL = -1;
         public const short EMPTY_CLOTHING_ID = 0;
         public const byte SLOT_HEADWEAR = 0;
         public const byte SLOT_TOP = 1;
@@ -124,7 +125,7 @@ namespace Scramble.Forms
                     ClothingId -= 0x8000; // this means the clothing is unseen (says "New" in the inventory).
                 }
 
-                if (ClothingId != EMPTY_CLOTHING_ID && TotalCount < MAXIMUM)
+                if (ClothingId != EMPTY_CLOTHING_ID_ACTUAL && TotalCount < MAXIMUM)
                 {
                     InventoryFashion ClothingToAdd = new InventoryFashion((ushort)ClothingId);
                     int invIndex = InventoryClothes.IndexOf(ClothingToAdd);
