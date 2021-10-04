@@ -113,7 +113,7 @@ namespace Scramble.Forms
 
             if (NoisepediaListView.SelectedIndices.Count != 1)
             {
-                DisplayEmptyNoiseData();
+                // DisplayEmptyNoiseData();
                 ReadyForUserInput = true;
                 return;
             }

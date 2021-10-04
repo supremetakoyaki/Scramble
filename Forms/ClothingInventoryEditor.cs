@@ -53,10 +53,8 @@ namespace Scramble.Forms
                 LoadSpoilerCharacters();
             }
 
-            /*if (!Debugger.IsAttached)
-            {
-                debug_CountLabel.Visible = false;
-            }*/
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
             DisplayLanguageStrings();
             Serialize();
@@ -540,8 +538,12 @@ namespace Scramble.Forms
 
         private void MyClothingInvListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (MyClothingInvListView.SelectedIndices.Count != 1)
+            {
+                return;
+            }
+
             SelectClothing();
-            //debug_CountLabel.Text = TotalCount.ToString();
         }
 
         private void AmountNumericUpDown_ValueChanged(object sender, EventArgs e)

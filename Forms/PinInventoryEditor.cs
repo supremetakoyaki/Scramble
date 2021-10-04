@@ -40,6 +40,9 @@ namespace Scramble.Forms
             PinInputKey_PictureBox.Parent = PinImagePictureBox;
             PinInputKey_PictureBox.Location = new Point(0, 0);
 
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             if (Sukuranburu.RequiresRescaling)
             {
                 MyPinInventoryView.AutoSize = true;
@@ -406,7 +409,6 @@ namespace Scramble.Forms
             PinNameLabel.Text = PinName;
             Sukuranburu.GetGameTextProcessor().SetTaggedText(PinInfo, PinInfo_RichTextBox);
 
-
             PinImagePictureBox.Image = ImageMethods.DrawImage(Pin.BasePin.Sprite, 100, 100, DeviceDpi);
 
             if (PinBrand == null || PinBrand.Id == 0)
@@ -488,6 +490,11 @@ namespace Scramble.Forms
 
         private void MyPinInventoryView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (MyPinInventoryView.SelectedIndices.Count != 1)
+            {
+                return;
+            }    
+
             SelectPin();
         }
 
