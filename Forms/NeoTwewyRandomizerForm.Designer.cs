@@ -33,6 +33,8 @@
             this.OverviewGroupBox = new System.Windows.Forms.GroupBox();
             this.OverviewRichTextBox = new System.Windows.Forms.RichTextBox();
             this.RandomizerGroupBox = new System.Windows.Forms.GroupBox();
+            this.RandomizeStats_StatusLabel = new System.Windows.Forms.Label();
+            this.RandomizeStats_Checkbox = new System.Windows.Forms.CheckBox();
             this.RandomizeExperience_StatusLabel = new System.Windows.Forms.Label();
             this.RandomizeExperience_Checkbox = new System.Windows.Forms.CheckBox();
             this.RandomizeMoney_StatusLabel = new System.Windows.Forms.Label();
@@ -57,8 +59,6 @@
             this.RandomizePins_Checkbox = new System.Windows.Forms.CheckBox();
             this.RandomizeParty_Checkbox = new System.Windows.Forms.CheckBox();
             this.RandomizeDay_Checkbox = new System.Windows.Forms.CheckBox();
-            this.RandomizeStats_StatusLabel = new System.Windows.Forms.Label();
-            this.RandomizeStats_Checkbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.RandomizerPictureBox)).BeginInit();
             this.OverviewGroupBox.SuspendLayout();
             this.RandomizerGroupBox.SuspendLayout();
@@ -81,7 +81,7 @@
             this.OverviewGroupBox.Controls.Add(this.RandomizerPictureBox);
             this.OverviewGroupBox.Location = new System.Drawing.Point(12, 12);
             this.OverviewGroupBox.Name = "OverviewGroupBox";
-            this.OverviewGroupBox.Size = new System.Drawing.Size(724, 233);
+            this.OverviewGroupBox.Size = new System.Drawing.Size(724, 263);
             this.OverviewGroupBox.TabIndex = 1;
             this.OverviewGroupBox.TabStop = false;
             this.OverviewGroupBox.Text = "{Overview}";
@@ -96,7 +96,7 @@
             this.OverviewRichTextBox.Name = "OverviewRichTextBox";
             this.OverviewRichTextBox.ReadOnly = true;
             this.OverviewRichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.OverviewRichTextBox.Size = new System.Drawing.Size(710, 94);
+            this.OverviewRichTextBox.Size = new System.Drawing.Size(710, 124);
             this.OverviewRichTextBox.TabIndex = 0;
             this.OverviewRichTextBox.Text = resources.GetString("OverviewRichTextBox.Text");
             // 
@@ -128,12 +128,31 @@
             this.RandomizerGroupBox.Controls.Add(this.RandomizePins_Checkbox);
             this.RandomizerGroupBox.Controls.Add(this.RandomizeParty_Checkbox);
             this.RandomizerGroupBox.Controls.Add(this.RandomizeDay_Checkbox);
-            this.RandomizerGroupBox.Location = new System.Drawing.Point(12, 251);
+            this.RandomizerGroupBox.Location = new System.Drawing.Point(12, 281);
             this.RandomizerGroupBox.Name = "RandomizerGroupBox";
             this.RandomizerGroupBox.Size = new System.Drawing.Size(724, 323);
             this.RandomizerGroupBox.TabIndex = 2;
             this.RandomizerGroupBox.TabStop = false;
             this.RandomizerGroupBox.Text = "{Randomizer}";
+            // 
+            // RandomizeStats_StatusLabel
+            // 
+            this.RandomizeStats_StatusLabel.AutoSize = true;
+            this.RandomizeStats_StatusLabel.Location = new System.Drawing.Point(278, 104);
+            this.RandomizeStats_StatusLabel.Name = "RandomizeStats_StatusLabel";
+            this.RandomizeStats_StatusLabel.Size = new System.Drawing.Size(75, 15);
+            this.RandomizeStats_StatusLabel.TabIndex = 25;
+            this.RandomizeStats_StatusLabel.Text = "{StatusLabel}";
+            // 
+            // RandomizeStats_Checkbox
+            // 
+            this.RandomizeStats_Checkbox.AutoSize = true;
+            this.RandomizeStats_Checkbox.Location = new System.Drawing.Point(6, 103);
+            this.RandomizeStats_Checkbox.Name = "RandomizeStats_Checkbox";
+            this.RandomizeStats_Checkbox.Size = new System.Drawing.Size(118, 19);
+            this.RandomizeStats_Checkbox.TabIndex = 24;
+            this.RandomizeStats_Checkbox.Text = "{RandomizeStats}";
+            this.RandomizeStats_Checkbox.UseVisualStyleBackColor = true;
             // 
             // RandomizeExperience_StatusLabel
             // 
@@ -370,30 +389,11 @@
             this.RandomizeDay_Checkbox.Text = "{RandomizeDay}";
             this.RandomizeDay_Checkbox.UseVisualStyleBackColor = true;
             // 
-            // RandomizeStats_StatusLabel
-            // 
-            this.RandomizeStats_StatusLabel.AutoSize = true;
-            this.RandomizeStats_StatusLabel.Location = new System.Drawing.Point(278, 104);
-            this.RandomizeStats_StatusLabel.Name = "RandomizeStats_StatusLabel";
-            this.RandomizeStats_StatusLabel.Size = new System.Drawing.Size(75, 15);
-            this.RandomizeStats_StatusLabel.TabIndex = 25;
-            this.RandomizeStats_StatusLabel.Text = "{StatusLabel}";
-            // 
-            // RandomizeStats_Checkbox
-            // 
-            this.RandomizeStats_Checkbox.AutoSize = true;
-            this.RandomizeStats_Checkbox.Location = new System.Drawing.Point(6, 103);
-            this.RandomizeStats_Checkbox.Name = "RandomizeStats_Checkbox";
-            this.RandomizeStats_Checkbox.Size = new System.Drawing.Size(118, 19);
-            this.RandomizeStats_Checkbox.TabIndex = 24;
-            this.RandomizeStats_Checkbox.Text = "{RandomizeStats}";
-            this.RandomizeStats_Checkbox.UseVisualStyleBackColor = true;
-            // 
             // NeoTwewyRandomizerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(748, 586);
+            this.ClientSize = new System.Drawing.Size(748, 616);
             this.Controls.Add(this.RandomizerGroupBox);
             this.Controls.Add(this.OverviewGroupBox);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
