@@ -16,6 +16,8 @@ namespace Scramble.Forms
     {
         public LauncherForm()
         {
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
 
