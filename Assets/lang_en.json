@@ -232,6 +232,7 @@
     "{RandomizeShop}": "Randomize shop/restaurant levels",
     "{LevelOfChaos}": "LEVEL OF CHAOS",
     "{RandomizeButton}": "Randomize",
-    "{PcGlobalYouCantEditThisYet}": "You can't edit these settings with a PC save file (for the time being). Please edit these in-game."
+    "{PcGlobalYouCantEditThisYet}": "You can't edit these settings with a PC save file (for the time being). Please edit these in-game.",
+    "DLG_SaveChangesPrompt":  "Save the changes you've made?"
   }
 }

@@ -780,7 +780,10 @@ namespace Scramble.Forms
 
         private void ClothingInventoryEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveAllData();
+            if (Sukuranburu.ShowPrompt(Sukuranburu.GetString("DLG_SaveChangesPrompt")))
+            {
+                SaveAllData();
+            }
             ColumnSorter.DisposeColumn();
         }
 
