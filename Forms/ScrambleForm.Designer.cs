@@ -479,7 +479,6 @@
             // 
             // OpenShopEdit_Button
             // 
-            this.OpenShopEdit_Button.Enabled = false;
             this.OpenShopEdit_Button.Location = new System.Drawing.Point(400, 225);
             this.OpenShopEdit_Button.Name = "OpenShopEdit_Button";
             this.OpenShopEdit_Button.Size = new System.Drawing.Size(158, 23);

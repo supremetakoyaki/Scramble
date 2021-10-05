@@ -233,6 +233,17 @@
     "{LevelOfChaos}": "LEVEL OF CHAOS",
     "{RandomizeButton}": "Randomize",
     "{PcGlobalYouCantEditThisYet}": "You can't edit these settings with a PC save file (for the time being). Please edit these in-game.",
-    "DLG_SaveChangesPrompt":  "Save the changes you've made?"
+    "DLG_SaveChangesPrompt": "Save the changes you've made?",
+    "{ShopList}": "Shop List",
+    "{Category}": "Category",
+    "{ShopType_0}": "Clothing",
+    "{ShopType_1}": "Restaurant",
+    "{ShopType_2}": "Other",
+    "{SelectedShop}": "Selected Shop",
+    "{TimesUsed:}": "Times used:",
+    "{LastOrderedFood}": "————————————— Last ordered food —————————————",
+    "{ShopGoods}": "Shop items",
+    "{Brands}": "Brands",
+    "{VipLevelNum}": "VIP Level %num%"
   }
 }

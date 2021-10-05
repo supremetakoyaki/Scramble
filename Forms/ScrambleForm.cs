@@ -23,7 +23,7 @@ namespace Scramble
         public DayEditor DayEditor;
         public TurfWarEditor TurfWarEditor;
         public TrophyEditor TrophyEditor;
-        //public ShopEditor ShopEditor;
+        public ShopEditor ShopEditor;
 
         public SettingsEditor SettEditor;
         public MiscEditor MiscEditor;
@@ -928,8 +928,8 @@ namespace Scramble
 
         private void OpenShopEdit_Button_Click(object sender, EventArgs e)
         {
-            //ShopEditor = new ShopEditor();
-            //ShopEditor.ShowDialog();
+            ShopEditor = new ShopEditor();
+            ShopEditor.ShowDialog();
         }
 
         private void LanguageSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -964,7 +964,7 @@ namespace Scramble
             return NoizuManager;
         }
 
-        public string GetGameString(string Key)
+        public string GetGameString(string Key, bool ReplaceSizeTags = false)
         {
             string Value;
 
@@ -979,6 +979,12 @@ namespace Scramble
             }
 
             GetGameTextProcessor().ReplaceCharacterTags(ref Value);
+
+            if (ReplaceSizeTags)
+            {
+                Value = Value.Replace("<size=74%>", "").Replace("</size>", "");
+            }
+
             return Value;
         }
 
