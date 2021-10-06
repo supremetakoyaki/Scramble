@@ -187,6 +187,9 @@ namespace Scramble
 
                         OpenRecordEditButton.Enabled = false;
                         OpenRecordEditButton.Text = "Loading...";
+
+                        OpenShopEdit_Button.Enabled = false;
+                        OpenShopEdit_Button.Text = "Loading...";
                     }));
             }
             else
@@ -199,6 +202,9 @@ namespace Scramble
 
                 OpenRecordEditButton.Enabled = false;
                 OpenRecordEditButton.Text = "Loading...";
+
+                OpenShopEdit_Button.Enabled = false;
+                OpenShopEdit_Button.Text = "Loading...";
             }
 
 
@@ -229,6 +235,9 @@ namespace Scramble
 
                     OpenRecordEditButton.Enabled = true;
                     OpenRecordEditButton.Text = GetString("{CollectionEditor}");
+
+                    OpenShopEdit_Button.Enabled = true;
+                    OpenShopEdit_Button.Text = GetString("{ShopEditor}");
                 }));
             }
             else
@@ -241,6 +250,9 @@ namespace Scramble
 
                 OpenRecordEditButton.Enabled = true;
                 OpenRecordEditButton.Text = GetString("{CollectionEditor}");
+
+                OpenShopEdit_Button.Enabled = true;
+                OpenShopEdit_Button.Text = GetString("{ShopEditor}");
             }
         }
 

@@ -243,7 +243,16 @@
     "{TimesUsed:}": "Times used:",
     "{LastOrderedFood}": "————————————— Last ordered food —————————————",
     "{ShopGoods}": "Shop items",
+    "{SelectedGood}": "Selected item",
+    "{YenNum}": "¥{0}",
+    "{KcalNum}": "{0} calories",
+    "{NumberPurchased:}": "Number purchased:",
+    "{NumberExchanged:}": "Number exchanged:",
+    "{ClothingGoodsNote}": "Note for clothing items: The game will automatically change these values to match the amount in your inventory.",
     "{Brands}": "Brands",
-    "{VipLevelNum}": "VIP Level %num%"
+    "{MaxVipLevelAll}": "Max VIP Level for all",
+    "{SelectedBrand}": "Selected brand",
+    "{Points:}": "Points:",
+    "{VipLevelNum}": "VIP Level {0}"
   }
 }
