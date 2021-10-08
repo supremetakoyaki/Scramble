@@ -142,6 +142,90 @@
   <data name="CH0S" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\CH0S.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Chara1_bad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara1_bad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara1_like" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara1_like.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara1_none" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara1_none.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara1_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara1_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara2_bad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara2_bad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara2_like" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara2_like.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara2_none" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara2_none.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara2_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara2_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara3_bad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara3_bad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara3_like" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara3_like.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara3_none" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara3_none.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara3_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara3_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara4_bad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara4_bad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara4_like" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara4_like.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara4_none" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara4_none.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara4_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara4_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara5_bad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara5_bad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara5_like" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara5_like.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara5_none" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara5_none.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara5_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara5_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara6_bad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara6_bad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara6_like" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara6_like.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara6_none" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara6_none.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara6_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara6_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara7_bad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara7_bad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara7_like" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara7_like.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara7_none" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara7_none.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chara7_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Chara7_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CHR_Spoiler" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\CHR_Spoiler.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -201,6 +285,9 @@
   </data>
   <data name="RandomizerOverview_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\RandomizerOverview_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShopIconVip" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\ShopIconVip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Spoiler_Pin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Spoiler_Pin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

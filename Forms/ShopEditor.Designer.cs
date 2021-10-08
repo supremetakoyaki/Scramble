@@ -34,6 +34,20 @@
             this.NameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CategoryHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ShopDataGroupBox = new System.Windows.Forms.GroupBox();
+            this.SelectedShopCharacter7TasteLabel = new System.Windows.Forms.Label();
+            this.SelectedShopCharacter7PictureBox = new System.Windows.Forms.PictureBox();
+            this.SelectedShopCharacter6TasteLabel = new System.Windows.Forms.Label();
+            this.SelectedShopCharacter6PictureBox = new System.Windows.Forms.PictureBox();
+            this.SelectedShopCharacter5TasteLabel = new System.Windows.Forms.Label();
+            this.SelectedShopCharacter5PictureBox = new System.Windows.Forms.PictureBox();
+            this.SelectedShopCharacter4TasteLabel = new System.Windows.Forms.Label();
+            this.SelectedShopCharacter4PictureBox = new System.Windows.Forms.PictureBox();
+            this.SelectedShopCharacter3TasteLabel = new System.Windows.Forms.Label();
+            this.SelectedShopCharacter2TasteLabel = new System.Windows.Forms.Label();
+            this.SelectedShopCharacter1TasteLabel = new System.Windows.Forms.Label();
+            this.SelectedShopCharacter3PictureBox = new System.Windows.Forms.PictureBox();
+            this.SelectedShopCharacter2PictureBox = new System.Windows.Forms.PictureBox();
+            this.SelectedShopCharacter1PictureBox = new System.Windows.Forms.PictureBox();
             this.SelectedShopSymbolPictureBox = new System.Windows.Forms.PictureBox();
             this.SelectedShopLastFoodCharacter7ComboBox = new System.Windows.Forms.ComboBox();
             this.SelectedShopLastFoodCharacter7Label = new System.Windows.Forms.Label();
@@ -79,11 +93,20 @@
             this.SelectedBrandNameLabel = new System.Windows.Forms.Label();
             this.SelectedBrandPictureBox = new System.Windows.Forms.PictureBox();
             this.SelectedShopGoodGroupBox = new System.Windows.Forms.GroupBox();
+            this.SelectedShopGoodDescRichTextBox = new System.Windows.Forms.RichTextBox();
             this.SelectedShopGoodCaloriesLabel = new System.Windows.Forms.Label();
             this.SelectedBrandGroupBox = new System.Windows.Forms.GroupBox();
-            this.SelectedShopGoodDescRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.SelectedBrandMaxVipLevelButton = new System.Windows.Forms.Button();
+            this.SelectedBrandVipIconPictureBox = new System.Windows.Forms.PictureBox();
             this.ShopListGroupBox.SuspendLayout();
             this.ShopDataGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter7PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter6PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter5PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter4PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter3PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter2PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedShopSymbolPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedShopTimesUsedNumUpDown)).BeginInit();
             this.ShopGoodsGroupBox.SuspendLayout();
@@ -95,6 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SelectedBrandPictureBox)).BeginInit();
             this.SelectedShopGoodGroupBox.SuspendLayout();
             this.SelectedBrandGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedBrandVipIconPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // ShopListGroupBox
@@ -102,7 +126,7 @@
             this.ShopListGroupBox.Controls.Add(this.ShopListListView);
             this.ShopListGroupBox.Location = new System.Drawing.Point(12, 12);
             this.ShopListGroupBox.Name = "ShopListGroupBox";
-            this.ShopListGroupBox.Size = new System.Drawing.Size(474, 607);
+            this.ShopListGroupBox.Size = new System.Drawing.Size(474, 657);
             this.ShopListGroupBox.TabIndex = 0;
             this.ShopListGroupBox.TabStop = false;
             this.ShopListGroupBox.Text = "{ShopList}";
@@ -118,7 +142,7 @@
             this.ShopListListView.Location = new System.Drawing.Point(6, 22);
             this.ShopListListView.MultiSelect = false;
             this.ShopListListView.Name = "ShopListListView";
-            this.ShopListListView.Size = new System.Drawing.Size(462, 579);
+            this.ShopListListView.Size = new System.Drawing.Size(462, 629);
             this.ShopListListView.TabIndex = 0;
             this.ShopListListView.UseCompatibleStateImageBehavior = false;
             this.ShopListListView.View = System.Windows.Forms.View.Details;
@@ -142,6 +166,20 @@
             // 
             // ShopDataGroupBox
             // 
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter7TasteLabel);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter7PictureBox);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter6TasteLabel);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter6PictureBox);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter5TasteLabel);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter5PictureBox);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter4TasteLabel);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter4PictureBox);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter3TasteLabel);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter2TasteLabel);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter1TasteLabel);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter3PictureBox);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter2PictureBox);
+            this.ShopDataGroupBox.Controls.Add(this.SelectedShopCharacter1PictureBox);
             this.ShopDataGroupBox.Controls.Add(this.SelectedShopSymbolPictureBox);
             this.ShopDataGroupBox.Controls.Add(this.SelectedShopLastFoodCharacter7ComboBox);
             this.ShopDataGroupBox.Controls.Add(this.SelectedShopLastFoodCharacter7Label);
@@ -164,14 +202,140 @@
             this.ShopDataGroupBox.Controls.Add(this.SelectedShopCatRichTextBox);
             this.ShopDataGroupBox.Location = new System.Drawing.Point(492, 12);
             this.ShopDataGroupBox.Name = "ShopDataGroupBox";
-            this.ShopDataGroupBox.Size = new System.Drawing.Size(438, 269);
+            this.ShopDataGroupBox.Size = new System.Drawing.Size(535, 343);
             this.ShopDataGroupBox.TabIndex = 1;
             this.ShopDataGroupBox.TabStop = false;
             this.ShopDataGroupBox.Text = "{SelectedShop}";
             // 
+            // SelectedShopCharacter7TasteLabel
+            // 
+            this.SelectedShopCharacter7TasteLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopCharacter7TasteLabel.Location = new System.Drawing.Point(50, 313);
+            this.SelectedShopCharacter7TasteLabel.Name = "SelectedShopCharacter7TasteLabel";
+            this.SelectedShopCharacter7TasteLabel.Size = new System.Drawing.Size(82, 16);
+            this.SelectedShopCharacter7TasteLabel.TabIndex = 33;
+            this.SelectedShopCharacter7TasteLabel.Text = "{Taste}";
+            // 
+            // SelectedShopCharacter7PictureBox
+            // 
+            this.SelectedShopCharacter7PictureBox.Location = new System.Drawing.Point(9, 294);
+            this.SelectedShopCharacter7PictureBox.Name = "SelectedShopCharacter7PictureBox";
+            this.SelectedShopCharacter7PictureBox.Size = new System.Drawing.Size(35, 35);
+            this.SelectedShopCharacter7PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.SelectedShopCharacter7PictureBox.TabIndex = 32;
+            this.SelectedShopCharacter7PictureBox.TabStop = false;
+            // 
+            // SelectedShopCharacter6TasteLabel
+            // 
+            this.SelectedShopCharacter6TasteLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopCharacter6TasteLabel.Location = new System.Drawing.Point(321, 266);
+            this.SelectedShopCharacter6TasteLabel.Name = "SelectedShopCharacter6TasteLabel";
+            this.SelectedShopCharacter6TasteLabel.Size = new System.Drawing.Size(82, 16);
+            this.SelectedShopCharacter6TasteLabel.TabIndex = 31;
+            this.SelectedShopCharacter6TasteLabel.Text = "{Taste}";
+            // 
+            // SelectedShopCharacter6PictureBox
+            // 
+            this.SelectedShopCharacter6PictureBox.Location = new System.Drawing.Point(280, 246);
+            this.SelectedShopCharacter6PictureBox.Name = "SelectedShopCharacter6PictureBox";
+            this.SelectedShopCharacter6PictureBox.Size = new System.Drawing.Size(35, 35);
+            this.SelectedShopCharacter6PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.SelectedShopCharacter6PictureBox.TabIndex = 30;
+            this.SelectedShopCharacter6PictureBox.TabStop = false;
+            // 
+            // SelectedShopCharacter5TasteLabel
+            // 
+            this.SelectedShopCharacter5TasteLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopCharacter5TasteLabel.Location = new System.Drawing.Point(50, 265);
+            this.SelectedShopCharacter5TasteLabel.Name = "SelectedShopCharacter5TasteLabel";
+            this.SelectedShopCharacter5TasteLabel.Size = new System.Drawing.Size(82, 16);
+            this.SelectedShopCharacter5TasteLabel.TabIndex = 29;
+            this.SelectedShopCharacter5TasteLabel.Text = "{Taste}";
+            // 
+            // SelectedShopCharacter5PictureBox
+            // 
+            this.SelectedShopCharacter5PictureBox.Location = new System.Drawing.Point(9, 245);
+            this.SelectedShopCharacter5PictureBox.Name = "SelectedShopCharacter5PictureBox";
+            this.SelectedShopCharacter5PictureBox.Size = new System.Drawing.Size(35, 35);
+            this.SelectedShopCharacter5PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.SelectedShopCharacter5PictureBox.TabIndex = 28;
+            this.SelectedShopCharacter5PictureBox.TabStop = false;
+            // 
+            // SelectedShopCharacter4TasteLabel
+            // 
+            this.SelectedShopCharacter4TasteLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopCharacter4TasteLabel.Location = new System.Drawing.Point(321, 215);
+            this.SelectedShopCharacter4TasteLabel.Name = "SelectedShopCharacter4TasteLabel";
+            this.SelectedShopCharacter4TasteLabel.Size = new System.Drawing.Size(82, 16);
+            this.SelectedShopCharacter4TasteLabel.TabIndex = 27;
+            this.SelectedShopCharacter4TasteLabel.Text = "{Taste}";
+            // 
+            // SelectedShopCharacter4PictureBox
+            // 
+            this.SelectedShopCharacter4PictureBox.Location = new System.Drawing.Point(280, 196);
+            this.SelectedShopCharacter4PictureBox.Name = "SelectedShopCharacter4PictureBox";
+            this.SelectedShopCharacter4PictureBox.Size = new System.Drawing.Size(35, 35);
+            this.SelectedShopCharacter4PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.SelectedShopCharacter4PictureBox.TabIndex = 26;
+            this.SelectedShopCharacter4PictureBox.TabStop = false;
+            // 
+            // SelectedShopCharacter3TasteLabel
+            // 
+            this.SelectedShopCharacter3TasteLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopCharacter3TasteLabel.Location = new System.Drawing.Point(50, 215);
+            this.SelectedShopCharacter3TasteLabel.Name = "SelectedShopCharacter3TasteLabel";
+            this.SelectedShopCharacter3TasteLabel.Size = new System.Drawing.Size(82, 16);
+            this.SelectedShopCharacter3TasteLabel.TabIndex = 25;
+            this.SelectedShopCharacter3TasteLabel.Text = "{Taste}";
+            // 
+            // SelectedShopCharacter2TasteLabel
+            // 
+            this.SelectedShopCharacter2TasteLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopCharacter2TasteLabel.Location = new System.Drawing.Point(321, 166);
+            this.SelectedShopCharacter2TasteLabel.Name = "SelectedShopCharacter2TasteLabel";
+            this.SelectedShopCharacter2TasteLabel.Size = new System.Drawing.Size(82, 16);
+            this.SelectedShopCharacter2TasteLabel.TabIndex = 24;
+            this.SelectedShopCharacter2TasteLabel.Text = "{Taste}";
+            // 
+            // SelectedShopCharacter1TasteLabel
+            // 
+            this.SelectedShopCharacter1TasteLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopCharacter1TasteLabel.Location = new System.Drawing.Point(50, 166);
+            this.SelectedShopCharacter1TasteLabel.Name = "SelectedShopCharacter1TasteLabel";
+            this.SelectedShopCharacter1TasteLabel.Size = new System.Drawing.Size(82, 16);
+            this.SelectedShopCharacter1TasteLabel.TabIndex = 23;
+            this.SelectedShopCharacter1TasteLabel.Text = "{Taste}";
+            // 
+            // SelectedShopCharacter3PictureBox
+            // 
+            this.SelectedShopCharacter3PictureBox.Location = new System.Drawing.Point(9, 196);
+            this.SelectedShopCharacter3PictureBox.Name = "SelectedShopCharacter3PictureBox";
+            this.SelectedShopCharacter3PictureBox.Size = new System.Drawing.Size(35, 35);
+            this.SelectedShopCharacter3PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.SelectedShopCharacter3PictureBox.TabIndex = 22;
+            this.SelectedShopCharacter3PictureBox.TabStop = false;
+            // 
+            // SelectedShopCharacter2PictureBox
+            // 
+            this.SelectedShopCharacter2PictureBox.Location = new System.Drawing.Point(280, 147);
+            this.SelectedShopCharacter2PictureBox.Name = "SelectedShopCharacter2PictureBox";
+            this.SelectedShopCharacter2PictureBox.Size = new System.Drawing.Size(35, 35);
+            this.SelectedShopCharacter2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.SelectedShopCharacter2PictureBox.TabIndex = 21;
+            this.SelectedShopCharacter2PictureBox.TabStop = false;
+            // 
+            // SelectedShopCharacter1PictureBox
+            // 
+            this.SelectedShopCharacter1PictureBox.Location = new System.Drawing.Point(9, 147);
+            this.SelectedShopCharacter1PictureBox.Name = "SelectedShopCharacter1PictureBox";
+            this.SelectedShopCharacter1PictureBox.Size = new System.Drawing.Size(35, 35);
+            this.SelectedShopCharacter1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.SelectedShopCharacter1PictureBox.TabIndex = 20;
+            this.SelectedShopCharacter1PictureBox.TabStop = false;
+            // 
             // SelectedShopSymbolPictureBox
             // 
-            this.SelectedShopSymbolPictureBox.Location = new System.Drawing.Point(348, 22);
+            this.SelectedShopSymbolPictureBox.Location = new System.Drawing.Point(444, 31);
             this.SelectedShopSymbolPictureBox.Name = "SelectedShopSymbolPictureBox";
             this.SelectedShopSymbolPictureBox.Size = new System.Drawing.Size(80, 80);
             this.SelectedShopSymbolPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -181,126 +345,140 @@
             // SelectedShopLastFoodCharacter7ComboBox
             // 
             this.SelectedShopLastFoodCharacter7ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectedShopLastFoodCharacter7ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.SelectedShopLastFoodCharacter7ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SelectedShopLastFoodCharacter7ComboBox.FormattingEnabled = true;
-            this.SelectedShopLastFoodCharacter7ComboBox.Location = new System.Drawing.Point(97, 234);
+            this.SelectedShopLastFoodCharacter7ComboBox.Location = new System.Drawing.Point(138, 294);
             this.SelectedShopLastFoodCharacter7ComboBox.Name = "SelectedShopLastFoodCharacter7ComboBox";
-            this.SelectedShopLastFoodCharacter7ComboBox.Size = new System.Drawing.Size(104, 21);
+            this.SelectedShopLastFoodCharacter7ComboBox.Size = new System.Drawing.Size(120, 23);
             this.SelectedShopLastFoodCharacter7ComboBox.TabIndex = 18;
+            this.SelectedShopLastFoodCharacter7ComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedShopLastFoodCharacter7ComboBox_SelectedIndexChanged);
             // 
             // SelectedShopLastFoodCharacter7Label
             // 
-            this.SelectedShopLastFoodCharacter7Label.Location = new System.Drawing.Point(6, 236);
+            this.SelectedShopLastFoodCharacter7Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopLastFoodCharacter7Label.Location = new System.Drawing.Point(50, 294);
             this.SelectedShopLastFoodCharacter7Label.Name = "SelectedShopLastFoodCharacter7Label";
-            this.SelectedShopLastFoodCharacter7Label.Size = new System.Drawing.Size(85, 19);
+            this.SelectedShopLastFoodCharacter7Label.Size = new System.Drawing.Size(82, 19);
             this.SelectedShopLastFoodCharacter7Label.TabIndex = 17;
             this.SelectedShopLastFoodCharacter7Label.Text = "{Character7:}";
             // 
             // SelectedShopLastFoodCharacter6ComboBox
             // 
             this.SelectedShopLastFoodCharacter6ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectedShopLastFoodCharacter6ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.SelectedShopLastFoodCharacter6ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SelectedShopLastFoodCharacter6ComboBox.FormattingEnabled = true;
-            this.SelectedShopLastFoodCharacter6ComboBox.Location = new System.Drawing.Point(324, 207);
+            this.SelectedShopLastFoodCharacter6ComboBox.Location = new System.Drawing.Point(409, 242);
             this.SelectedShopLastFoodCharacter6ComboBox.Name = "SelectedShopLastFoodCharacter6ComboBox";
-            this.SelectedShopLastFoodCharacter6ComboBox.Size = new System.Drawing.Size(104, 21);
+            this.SelectedShopLastFoodCharacter6ComboBox.Size = new System.Drawing.Size(120, 23);
             this.SelectedShopLastFoodCharacter6ComboBox.TabIndex = 16;
+            this.SelectedShopLastFoodCharacter6ComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedShopLastFoodCharacter6ComboBox_SelectedIndexChanged);
             // 
             // SelectedShopLastFoodCharacter6Label
             // 
-            this.SelectedShopLastFoodCharacter6Label.Location = new System.Drawing.Point(233, 209);
+            this.SelectedShopLastFoodCharacter6Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopLastFoodCharacter6Label.Location = new System.Drawing.Point(321, 243);
             this.SelectedShopLastFoodCharacter6Label.Name = "SelectedShopLastFoodCharacter6Label";
-            this.SelectedShopLastFoodCharacter6Label.Size = new System.Drawing.Size(85, 19);
+            this.SelectedShopLastFoodCharacter6Label.Size = new System.Drawing.Size(82, 19);
             this.SelectedShopLastFoodCharacter6Label.TabIndex = 15;
             this.SelectedShopLastFoodCharacter6Label.Text = "{Character6:}";
             // 
             // SelectedShopLastFoodCharacter5ComboBox
             // 
             this.SelectedShopLastFoodCharacter5ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectedShopLastFoodCharacter5ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.SelectedShopLastFoodCharacter5ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SelectedShopLastFoodCharacter5ComboBox.FormattingEnabled = true;
-            this.SelectedShopLastFoodCharacter5ComboBox.Location = new System.Drawing.Point(97, 207);
+            this.SelectedShopLastFoodCharacter5ComboBox.Location = new System.Drawing.Point(138, 246);
             this.SelectedShopLastFoodCharacter5ComboBox.Name = "SelectedShopLastFoodCharacter5ComboBox";
-            this.SelectedShopLastFoodCharacter5ComboBox.Size = new System.Drawing.Size(104, 21);
+            this.SelectedShopLastFoodCharacter5ComboBox.Size = new System.Drawing.Size(120, 23);
             this.SelectedShopLastFoodCharacter5ComboBox.TabIndex = 14;
+            this.SelectedShopLastFoodCharacter5ComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedShopLastFoodCharacter5ComboBox_SelectedIndexChanged);
             // 
             // SelectedShopLastFoodCharacter5Label
             // 
-            this.SelectedShopLastFoodCharacter5Label.Location = new System.Drawing.Point(6, 209);
+            this.SelectedShopLastFoodCharacter5Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopLastFoodCharacter5Label.Location = new System.Drawing.Point(50, 246);
             this.SelectedShopLastFoodCharacter5Label.Name = "SelectedShopLastFoodCharacter5Label";
-            this.SelectedShopLastFoodCharacter5Label.Size = new System.Drawing.Size(85, 19);
+            this.SelectedShopLastFoodCharacter5Label.Size = new System.Drawing.Size(82, 19);
             this.SelectedShopLastFoodCharacter5Label.TabIndex = 13;
             this.SelectedShopLastFoodCharacter5Label.Text = "{Character5:}";
             // 
             // SelectedShopLastFoodCharacter4ComboBox
             // 
             this.SelectedShopLastFoodCharacter4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectedShopLastFoodCharacter4ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.SelectedShopLastFoodCharacter4ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SelectedShopLastFoodCharacter4ComboBox.FormattingEnabled = true;
-            this.SelectedShopLastFoodCharacter4ComboBox.Location = new System.Drawing.Point(324, 180);
+            this.SelectedShopLastFoodCharacter4ComboBox.Location = new System.Drawing.Point(409, 196);
             this.SelectedShopLastFoodCharacter4ComboBox.Name = "SelectedShopLastFoodCharacter4ComboBox";
-            this.SelectedShopLastFoodCharacter4ComboBox.Size = new System.Drawing.Size(104, 21);
+            this.SelectedShopLastFoodCharacter4ComboBox.Size = new System.Drawing.Size(120, 23);
             this.SelectedShopLastFoodCharacter4ComboBox.TabIndex = 12;
+            this.SelectedShopLastFoodCharacter4ComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedShopLastFoodCharacter4ComboBox_SelectedIndexChanged);
             // 
             // SelectedShopLastFoodCharacter4Label
             // 
-            this.SelectedShopLastFoodCharacter4Label.Location = new System.Drawing.Point(233, 182);
+            this.SelectedShopLastFoodCharacter4Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopLastFoodCharacter4Label.Location = new System.Drawing.Point(321, 196);
             this.SelectedShopLastFoodCharacter4Label.Name = "SelectedShopLastFoodCharacter4Label";
-            this.SelectedShopLastFoodCharacter4Label.Size = new System.Drawing.Size(85, 19);
+            this.SelectedShopLastFoodCharacter4Label.Size = new System.Drawing.Size(82, 19);
             this.SelectedShopLastFoodCharacter4Label.TabIndex = 11;
             this.SelectedShopLastFoodCharacter4Label.Text = "{Character4:}";
             // 
             // SelectedShopLastFoodCharacter3ComboBox
             // 
             this.SelectedShopLastFoodCharacter3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectedShopLastFoodCharacter3ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.SelectedShopLastFoodCharacter3ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SelectedShopLastFoodCharacter3ComboBox.FormattingEnabled = true;
-            this.SelectedShopLastFoodCharacter3ComboBox.Location = new System.Drawing.Point(97, 180);
+            this.SelectedShopLastFoodCharacter3ComboBox.Location = new System.Drawing.Point(138, 196);
             this.SelectedShopLastFoodCharacter3ComboBox.Name = "SelectedShopLastFoodCharacter3ComboBox";
-            this.SelectedShopLastFoodCharacter3ComboBox.Size = new System.Drawing.Size(104, 21);
+            this.SelectedShopLastFoodCharacter3ComboBox.Size = new System.Drawing.Size(120, 23);
             this.SelectedShopLastFoodCharacter3ComboBox.TabIndex = 10;
+            this.SelectedShopLastFoodCharacter3ComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedShopLastFoodCharacter3ComboBox_SelectedIndexChanged);
             // 
             // SelectedShopLastFoodCharacter3Label
             // 
-            this.SelectedShopLastFoodCharacter3Label.Location = new System.Drawing.Point(6, 182);
+            this.SelectedShopLastFoodCharacter3Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopLastFoodCharacter3Label.Location = new System.Drawing.Point(50, 196);
             this.SelectedShopLastFoodCharacter3Label.Name = "SelectedShopLastFoodCharacter3Label";
-            this.SelectedShopLastFoodCharacter3Label.Size = new System.Drawing.Size(85, 19);
+            this.SelectedShopLastFoodCharacter3Label.Size = new System.Drawing.Size(82, 19);
             this.SelectedShopLastFoodCharacter3Label.TabIndex = 9;
             this.SelectedShopLastFoodCharacter3Label.Text = "{Character3:}";
             // 
             // SelectedShopLastFoodCharacter2ComboBox
             // 
             this.SelectedShopLastFoodCharacter2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectedShopLastFoodCharacter2ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.SelectedShopLastFoodCharacter2ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SelectedShopLastFoodCharacter2ComboBox.FormattingEnabled = true;
-            this.SelectedShopLastFoodCharacter2ComboBox.Location = new System.Drawing.Point(324, 153);
+            this.SelectedShopLastFoodCharacter2ComboBox.Location = new System.Drawing.Point(409, 147);
             this.SelectedShopLastFoodCharacter2ComboBox.Name = "SelectedShopLastFoodCharacter2ComboBox";
-            this.SelectedShopLastFoodCharacter2ComboBox.Size = new System.Drawing.Size(104, 21);
+            this.SelectedShopLastFoodCharacter2ComboBox.Size = new System.Drawing.Size(120, 23);
             this.SelectedShopLastFoodCharacter2ComboBox.TabIndex = 8;
+            this.SelectedShopLastFoodCharacter2ComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedShopLastFoodCharacter2ComboBox_SelectedIndexChanged);
             // 
             // SelectedShopLastFoodCharacter2Label
             // 
-            this.SelectedShopLastFoodCharacter2Label.Location = new System.Drawing.Point(233, 155);
+            this.SelectedShopLastFoodCharacter2Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopLastFoodCharacter2Label.Location = new System.Drawing.Point(321, 147);
             this.SelectedShopLastFoodCharacter2Label.Name = "SelectedShopLastFoodCharacter2Label";
-            this.SelectedShopLastFoodCharacter2Label.Size = new System.Drawing.Size(85, 19);
+            this.SelectedShopLastFoodCharacter2Label.Size = new System.Drawing.Size(82, 19);
             this.SelectedShopLastFoodCharacter2Label.TabIndex = 7;
             this.SelectedShopLastFoodCharacter2Label.Text = "{Character2:}";
             // 
             // SelectedShopLastFoodCharacter1ComboBox
             // 
             this.SelectedShopLastFoodCharacter1ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectedShopLastFoodCharacter1ComboBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.SelectedShopLastFoodCharacter1ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.SelectedShopLastFoodCharacter1ComboBox.FormattingEnabled = true;
-            this.SelectedShopLastFoodCharacter1ComboBox.Location = new System.Drawing.Point(97, 153);
+            this.SelectedShopLastFoodCharacter1ComboBox.Location = new System.Drawing.Point(138, 149);
             this.SelectedShopLastFoodCharacter1ComboBox.Name = "SelectedShopLastFoodCharacter1ComboBox";
-            this.SelectedShopLastFoodCharacter1ComboBox.Size = new System.Drawing.Size(104, 21);
+            this.SelectedShopLastFoodCharacter1ComboBox.Size = new System.Drawing.Size(120, 23);
             this.SelectedShopLastFoodCharacter1ComboBox.TabIndex = 6;
+            this.SelectedShopLastFoodCharacter1ComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectedShopLastFoodCharacter1ComboBox_SelectedIndexChanged);
             // 
             // SelectedShopLastFoodCharacter1Label
             // 
-            this.SelectedShopLastFoodCharacter1Label.Location = new System.Drawing.Point(6, 155);
+            this.SelectedShopLastFoodCharacter1Label.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopLastFoodCharacter1Label.Location = new System.Drawing.Point(50, 147);
             this.SelectedShopLastFoodCharacter1Label.Name = "SelectedShopLastFoodCharacter1Label";
-            this.SelectedShopLastFoodCharacter1Label.Size = new System.Drawing.Size(85, 19);
+            this.SelectedShopLastFoodCharacter1Label.Size = new System.Drawing.Size(82, 19);
             this.SelectedShopLastFoodCharacter1Label.TabIndex = 5;
             this.SelectedShopLastFoodCharacter1Label.Text = "{Character1:}";
             // 
@@ -309,9 +487,9 @@
             this.SelectedShopLastFoodsTitleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectedShopLastFoodsTitleLabel.Location = new System.Drawing.Point(6, 122);
             this.SelectedShopLastFoodsTitleLabel.Name = "SelectedShopLastFoodsTitleLabel";
-            this.SelectedShopLastFoodsTitleLabel.Size = new System.Drawing.Size(426, 13);
+            this.SelectedShopLastFoodsTitleLabel.Size = new System.Drawing.Size(523, 13);
             this.SelectedShopLastFoodsTitleLabel.TabIndex = 4;
-            this.SelectedShopLastFoodsTitleLabel.Text = "————————————— Last ordered food —————————————";
+            this.SelectedShopLastFoodsTitleLabel.Text = "———————————————— Last ordered food —————————————————";
             this.SelectedShopLastFoodsTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SelectedShopTimesUsedNumUpDown
@@ -368,9 +546,9 @@
             // ShopGoodsGroupBox
             // 
             this.ShopGoodsGroupBox.Controls.Add(this.ShopGoodsListView);
-            this.ShopGoodsGroupBox.Location = new System.Drawing.Point(492, 287);
+            this.ShopGoodsGroupBox.Location = new System.Drawing.Point(492, 361);
             this.ShopGoodsGroupBox.Name = "ShopGoodsGroupBox";
-            this.ShopGoodsGroupBox.Size = new System.Drawing.Size(438, 332);
+            this.ShopGoodsGroupBox.Size = new System.Drawing.Size(438, 308);
             this.ShopGoodsGroupBox.TabIndex = 2;
             this.ShopGoodsGroupBox.TabStop = false;
             this.ShopGoodsGroupBox.Text = "{ShopGoods}";
@@ -383,10 +561,10 @@
             this.ShopGoodIdHeader});
             this.ShopGoodsListView.FullRowSelect = true;
             this.ShopGoodsListView.HideSelection = false;
-            this.ShopGoodsListView.Location = new System.Drawing.Point(9, 22);
+            this.ShopGoodsListView.Location = new System.Drawing.Point(6, 22);
             this.ShopGoodsListView.MultiSelect = false;
             this.ShopGoodsListView.Name = "ShopGoodsListView";
-            this.ShopGoodsListView.Size = new System.Drawing.Size(419, 304);
+            this.ShopGoodsListView.Size = new System.Drawing.Size(426, 280);
             this.ShopGoodsListView.TabIndex = 0;
             this.ShopGoodsListView.UseCompatibleStateImageBehavior = false;
             this.ShopGoodsListView.View = System.Windows.Forms.View.Details;
@@ -397,7 +575,7 @@
             // 
             this.ShopGoodNameHeader.DisplayIndex = 2;
             this.ShopGoodNameHeader.Text = "{Name}";
-            this.ShopGoodNameHeader.Width = 305;
+            this.ShopGoodNameHeader.Width = 310;
             // 
             // ShopGoodSortIndexHeader
             // 
@@ -415,9 +593,9 @@
             // 
             this.SelectedShopGoodNoticeLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectedShopGoodNoticeLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.SelectedShopGoodNoticeLabel.Location = new System.Drawing.Point(9, 260);
+            this.SelectedShopGoodNoticeLabel.Location = new System.Drawing.Point(6, 254);
             this.SelectedShopGoodNoticeLabel.Name = "SelectedShopGoodNoticeLabel";
-            this.SelectedShopGoodNoticeLabel.Size = new System.Drawing.Size(421, 66);
+            this.SelectedShopGoodNoticeLabel.Size = new System.Drawing.Size(431, 48);
             this.SelectedShopGoodNoticeLabel.TabIndex = 10;
             this.SelectedShopGoodNoticeLabel.Text = "Note for clothing items: The game will automatically change these values to match" +
     " the amount in your inventory.";
@@ -435,7 +613,7 @@
             // SelectedShopGoodShowAsNewCheckbox
             // 
             this.SelectedShopGoodShowAsNewCheckbox.AutoSize = true;
-            this.SelectedShopGoodShowAsNewCheckbox.Location = new System.Drawing.Point(9, 165);
+            this.SelectedShopGoodShowAsNewCheckbox.Location = new System.Drawing.Point(9, 159);
             this.SelectedShopGoodShowAsNewCheckbox.Name = "SelectedShopGoodShowAsNewCheckbox";
             this.SelectedShopGoodShowAsNewCheckbox.Size = new System.Drawing.Size(100, 19);
             this.SelectedShopGoodShowAsNewCheckbox.TabIndex = 8;
@@ -444,7 +622,7 @@
             // 
             // SelectedGoodTimesExchangedNumUpDown
             // 
-            this.SelectedGoodTimesExchangedNumUpDown.Location = new System.Drawing.Point(142, 219);
+            this.SelectedGoodTimesExchangedNumUpDown.Location = new System.Drawing.Point(142, 213);
             this.SelectedGoodTimesExchangedNumUpDown.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -456,7 +634,7 @@
             // 
             // SelectedShopGoodTimesExchangedLabel
             // 
-            this.SelectedShopGoodTimesExchangedLabel.Location = new System.Drawing.Point(6, 221);
+            this.SelectedShopGoodTimesExchangedLabel.Location = new System.Drawing.Point(6, 215);
             this.SelectedShopGoodTimesExchangedLabel.Name = "SelectedShopGoodTimesExchangedLabel";
             this.SelectedShopGoodTimesExchangedLabel.Size = new System.Drawing.Size(130, 17);
             this.SelectedShopGoodTimesExchangedLabel.TabIndex = 6;
@@ -464,7 +642,7 @@
             // 
             // SelectedGoodTimesPurchasedNumUpDown
             // 
-            this.SelectedGoodTimesPurchasedNumUpDown.Location = new System.Drawing.Point(142, 190);
+            this.SelectedGoodTimesPurchasedNumUpDown.Location = new System.Drawing.Point(142, 184);
             this.SelectedGoodTimesPurchasedNumUpDown.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -476,7 +654,7 @@
             // 
             // SelectedShopGoodTimesPurchasedLabel
             // 
-            this.SelectedShopGoodTimesPurchasedLabel.Location = new System.Drawing.Point(6, 192);
+            this.SelectedShopGoodTimesPurchasedLabel.Location = new System.Drawing.Point(6, 186);
             this.SelectedShopGoodTimesPurchasedLabel.Name = "SelectedShopGoodTimesPurchasedLabel";
             this.SelectedShopGoodTimesPurchasedLabel.Size = new System.Drawing.Size(130, 17);
             this.SelectedShopGoodTimesPurchasedLabel.TabIndex = 4;
@@ -493,9 +671,9 @@
             // SelectedShopGoodNameLabel
             // 
             this.SelectedShopGoodNameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.SelectedShopGoodNameLabel.Location = new System.Drawing.Point(6, 19);
+            this.SelectedShopGoodNameLabel.Location = new System.Drawing.Point(5, 22);
             this.SelectedShopGoodNameLabel.Name = "SelectedShopGoodNameLabel";
-            this.SelectedShopGoodNameLabel.Size = new System.Drawing.Size(319, 23);
+            this.SelectedShopGoodNameLabel.Size = new System.Drawing.Size(320, 23);
             this.SelectedShopGoodNameLabel.TabIndex = 1;
             this.SelectedShopGoodNameLabel.Text = "{SelectedShopGood}";
             this.SelectedShopGoodNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -504,9 +682,9 @@
             // 
             this.BrandsGroupBox.Controls.Add(this.BrandsMaxVipLevelAll);
             this.BrandsGroupBox.Controls.Add(this.BrandsListView);
-            this.BrandsGroupBox.Location = new System.Drawing.Point(936, 12);
+            this.BrandsGroupBox.Location = new System.Drawing.Point(1033, 12);
             this.BrandsGroupBox.Name = "BrandsGroupBox";
-            this.BrandsGroupBox.Size = new System.Drawing.Size(243, 269);
+            this.BrandsGroupBox.Size = new System.Drawing.Size(339, 197);
             this.BrandsGroupBox.TabIndex = 3;
             this.BrandsGroupBox.TabStop = false;
             this.BrandsGroupBox.Text = "{Brands}";
@@ -514,12 +692,13 @@
             // BrandsMaxVipLevelAll
             // 
             this.BrandsMaxVipLevelAll.BackColor = System.Drawing.Color.Azure;
-            this.BrandsMaxVipLevelAll.Location = new System.Drawing.Point(74, 240);
+            this.BrandsMaxVipLevelAll.Location = new System.Drawing.Point(201, 168);
             this.BrandsMaxVipLevelAll.Name = "BrandsMaxVipLevelAll";
-            this.BrandsMaxVipLevelAll.Size = new System.Drawing.Size(160, 23);
+            this.BrandsMaxVipLevelAll.Size = new System.Drawing.Size(132, 23);
             this.BrandsMaxVipLevelAll.TabIndex = 1;
             this.BrandsMaxVipLevelAll.Text = "{MaxVipLevelAll}";
             this.BrandsMaxVipLevelAll.UseVisualStyleBackColor = false;
+            this.BrandsMaxVipLevelAll.Click += new System.EventHandler(this.BrandsMaxVipLevelAll_Click);
             // 
             // BrandsListView
             // 
@@ -528,10 +707,10 @@
             this.BrandNameHeader});
             this.BrandsListView.FullRowSelect = true;
             this.BrandsListView.HideSelection = false;
-            this.BrandsListView.Location = new System.Drawing.Point(6, 22);
+            this.BrandsListView.Location = new System.Drawing.Point(9, 22);
             this.BrandsListView.MultiSelect = false;
             this.BrandsListView.Name = "BrandsListView";
-            this.BrandsListView.Size = new System.Drawing.Size(231, 212);
+            this.BrandsListView.Size = new System.Drawing.Size(324, 140);
             this.BrandsListView.TabIndex = 0;
             this.BrandsListView.UseCompatibleStateImageBehavior = false;
             this.BrandsListView.View = System.Windows.Forms.View.Details;
@@ -541,39 +720,39 @@
             // BrandIdHeader
             // 
             this.BrandIdHeader.Text = "{Id}";
-            this.BrandIdHeader.Width = 35;
+            this.BrandIdHeader.Width = 45;
             // 
             // BrandNameHeader
             // 
             this.BrandNameHeader.Text = "{Name}";
-            this.BrandNameHeader.Width = 170;
+            this.BrandNameHeader.Width = 250;
             // 
             // SelectedBrandVipLevelLabel
             // 
             this.SelectedBrandVipLevelLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectedBrandVipLevelLabel.ForeColor = System.Drawing.Color.OrangeRed;
-            this.SelectedBrandVipLevelLabel.Location = new System.Drawing.Point(79, 199);
+            this.SelectedBrandVipLevelLabel.Location = new System.Drawing.Point(201, 86);
             this.SelectedBrandVipLevelLabel.Name = "SelectedBrandVipLevelLabel";
-            this.SelectedBrandVipLevelLabel.Size = new System.Drawing.Size(102, 15);
+            this.SelectedBrandVipLevelLabel.Size = new System.Drawing.Size(132, 15);
             this.SelectedBrandVipLevelLabel.TabIndex = 14;
             this.SelectedBrandVipLevelLabel.Text = "VIP Level %num%";
             this.SelectedBrandVipLevelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SelectedBrandPointsNumUpDown
             // 
-            this.SelectedBrandPointsNumUpDown.Location = new System.Drawing.Point(79, 169);
+            this.SelectedBrandPointsNumUpDown.Location = new System.Drawing.Point(71, 111);
             this.SelectedBrandPointsNumUpDown.Maximum = new decimal(new int[] {
             999999,
             0,
             0,
             0});
             this.SelectedBrandPointsNumUpDown.Name = "SelectedBrandPointsNumUpDown";
-            this.SelectedBrandPointsNumUpDown.Size = new System.Drawing.Size(102, 23);
+            this.SelectedBrandPointsNumUpDown.Size = new System.Drawing.Size(110, 23);
             this.SelectedBrandPointsNumUpDown.TabIndex = 13;
             // 
             // SelectedBrandPointsLabel
             // 
-            this.SelectedBrandPointsLabel.Location = new System.Drawing.Point(6, 171);
+            this.SelectedBrandPointsLabel.Location = new System.Drawing.Point(6, 114);
             this.SelectedBrandPointsLabel.Name = "SelectedBrandPointsLabel";
             this.SelectedBrandPointsLabel.Size = new System.Drawing.Size(59, 20);
             this.SelectedBrandPointsLabel.TabIndex = 12;
@@ -582,7 +761,7 @@
             // SelectedBrandNameLabel
             // 
             this.SelectedBrandNameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.SelectedBrandNameLabel.Location = new System.Drawing.Point(6, 22);
+            this.SelectedBrandNameLabel.Location = new System.Drawing.Point(6, 19);
             this.SelectedBrandNameLabel.Name = "SelectedBrandNameLabel";
             this.SelectedBrandNameLabel.Size = new System.Drawing.Size(175, 17);
             this.SelectedBrandNameLabel.TabIndex = 11;
@@ -591,7 +770,7 @@
             // 
             // SelectedBrandPictureBox
             // 
-            this.SelectedBrandPictureBox.Location = new System.Drawing.Point(6, 69);
+            this.SelectedBrandPictureBox.Location = new System.Drawing.Point(6, 39);
             this.SelectedBrandPictureBox.Name = "SelectedBrandPictureBox";
             this.SelectedBrandPictureBox.Size = new System.Drawing.Size(175, 62);
             this.SelectedBrandPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -611,37 +790,12 @@
             this.SelectedShopGoodGroupBox.Controls.Add(this.SelectedShopGoodTimesPurchasedLabel);
             this.SelectedShopGoodGroupBox.Controls.Add(this.SelectedShopGoodTimesExchangedLabel);
             this.SelectedShopGoodGroupBox.Controls.Add(this.SelectedGoodTimesPurchasedNumUpDown);
-            this.SelectedShopGoodGroupBox.Location = new System.Drawing.Point(936, 287);
+            this.SelectedShopGoodGroupBox.Location = new System.Drawing.Point(936, 361);
             this.SelectedShopGoodGroupBox.Name = "SelectedShopGoodGroupBox";
-            this.SelectedShopGoodGroupBox.Size = new System.Drawing.Size(437, 332);
+            this.SelectedShopGoodGroupBox.Size = new System.Drawing.Size(437, 308);
             this.SelectedShopGoodGroupBox.TabIndex = 4;
             this.SelectedShopGoodGroupBox.TabStop = false;
             this.SelectedShopGoodGroupBox.Text = "{SelectedGood}";
-            // 
-            // SelectedShopGoodCaloriesLabel
-            // 
-            this.SelectedShopGoodCaloriesLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectedShopGoodCaloriesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.SelectedShopGoodCaloriesLabel.Location = new System.Drawing.Point(331, 144);
-            this.SelectedShopGoodCaloriesLabel.Name = "SelectedShopGoodCaloriesLabel";
-            this.SelectedShopGoodCaloriesLabel.Size = new System.Drawing.Size(100, 21);
-            this.SelectedShopGoodCaloriesLabel.TabIndex = 11;
-            this.SelectedShopGoodCaloriesLabel.Text = "%num% calories";
-            this.SelectedShopGoodCaloriesLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // SelectedBrandGroupBox
-            // 
-            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandPictureBox);
-            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandVipLevelLabel);
-            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandNameLabel);
-            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandPointsNumUpDown);
-            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandPointsLabel);
-            this.SelectedBrandGroupBox.Location = new System.Drawing.Point(1185, 12);
-            this.SelectedBrandGroupBox.Name = "SelectedBrandGroupBox";
-            this.SelectedBrandGroupBox.Size = new System.Drawing.Size(187, 269);
-            this.SelectedBrandGroupBox.TabIndex = 15;
-            this.SelectedBrandGroupBox.TabStop = false;
-            this.SelectedBrandGroupBox.Text = "{SelectedBrand}";
             // 
             // SelectedShopGoodDescRichTextBox
             // 
@@ -656,11 +810,56 @@
             this.SelectedShopGoodDescRichTextBox.TabIndex = 20;
             this.SelectedShopGoodDescRichTextBox.Text = "—";
             // 
+            // SelectedShopGoodCaloriesLabel
+            // 
+            this.SelectedShopGoodCaloriesLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectedShopGoodCaloriesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.SelectedShopGoodCaloriesLabel.Location = new System.Drawing.Point(331, 144);
+            this.SelectedShopGoodCaloriesLabel.Name = "SelectedShopGoodCaloriesLabel";
+            this.SelectedShopGoodCaloriesLabel.Size = new System.Drawing.Size(100, 20);
+            this.SelectedShopGoodCaloriesLabel.TabIndex = 11;
+            this.SelectedShopGoodCaloriesLabel.Text = "%num% calories";
+            this.SelectedShopGoodCaloriesLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // SelectedBrandGroupBox
+            // 
+            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandMaxVipLevelButton);
+            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandVipIconPictureBox);
+            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandPictureBox);
+            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandVipLevelLabel);
+            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandNameLabel);
+            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandPointsNumUpDown);
+            this.SelectedBrandGroupBox.Controls.Add(this.SelectedBrandPointsLabel);
+            this.SelectedBrandGroupBox.Location = new System.Drawing.Point(1033, 215);
+            this.SelectedBrandGroupBox.Name = "SelectedBrandGroupBox";
+            this.SelectedBrandGroupBox.Size = new System.Drawing.Size(339, 140);
+            this.SelectedBrandGroupBox.TabIndex = 15;
+            this.SelectedBrandGroupBox.TabStop = false;
+            this.SelectedBrandGroupBox.Text = "{SelectedBrand}";
+            // 
+            // SelectedBrandMaxVipLevelButton
+            // 
+            this.SelectedBrandMaxVipLevelButton.Location = new System.Drawing.Point(201, 111);
+            this.SelectedBrandMaxVipLevelButton.Name = "SelectedBrandMaxVipLevelButton";
+            this.SelectedBrandMaxVipLevelButton.Size = new System.Drawing.Size(132, 23);
+            this.SelectedBrandMaxVipLevelButton.TabIndex = 16;
+            this.SelectedBrandMaxVipLevelButton.Text = "{MaxVipLevel}";
+            this.SelectedBrandMaxVipLevelButton.UseVisualStyleBackColor = true;
+            // 
+            // SelectedBrandVipIconPictureBox
+            // 
+            this.SelectedBrandVipIconPictureBox.Location = new System.Drawing.Point(242, 39);
+            this.SelectedBrandVipIconPictureBox.Name = "SelectedBrandVipIconPictureBox";
+            this.SelectedBrandVipIconPictureBox.Size = new System.Drawing.Size(50, 42);
+            this.SelectedBrandVipIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.SelectedBrandVipIconPictureBox.TabIndex = 15;
+            this.SelectedBrandVipIconPictureBox.TabStop = false;
+            // 
             // ShopEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1384, 631);
+            this.ClientSize = new System.Drawing.Size(1384, 681);
             this.Controls.Add(this.SelectedBrandGroupBox);
             this.Controls.Add(this.SelectedShopGoodGroupBox);
             this.Controls.Add(this.BrandsGroupBox);
@@ -676,6 +875,13 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ShopEditor_FormClosing);
             this.ShopListGroupBox.ResumeLayout(false);
             this.ShopDataGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter7PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter6PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter5PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter4PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter3PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter2PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedShopCharacter1PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedShopSymbolPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedShopTimesUsedNumUpDown)).EndInit();
             this.ShopGoodsGroupBox.ResumeLayout(false);
@@ -688,6 +894,7 @@
             this.SelectedShopGoodGroupBox.ResumeLayout(false);
             this.SelectedShopGoodGroupBox.PerformLayout();
             this.SelectedBrandGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedBrandVipIconPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -748,5 +955,21 @@
         private System.Windows.Forms.GroupBox SelectedBrandGroupBox;
         private System.Windows.Forms.Label SelectedShopGoodCaloriesLabel;
         private System.Windows.Forms.RichTextBox SelectedShopGoodDescRichTextBox;
+        private System.Windows.Forms.PictureBox SelectedShopCharacter1PictureBox;
+        private System.Windows.Forms.Label SelectedShopCharacter7TasteLabel;
+        private System.Windows.Forms.PictureBox SelectedShopCharacter7PictureBox;
+        private System.Windows.Forms.Label SelectedShopCharacter6TasteLabel;
+        private System.Windows.Forms.PictureBox SelectedShopCharacter6PictureBox;
+        private System.Windows.Forms.Label SelectedShopCharacter5TasteLabel;
+        private System.Windows.Forms.PictureBox SelectedShopCharacter5PictureBox;
+        private System.Windows.Forms.Label SelectedShopCharacter4TasteLabel;
+        private System.Windows.Forms.PictureBox SelectedShopCharacter4PictureBox;
+        private System.Windows.Forms.Label SelectedShopCharacter3TasteLabel;
+        private System.Windows.Forms.Label SelectedShopCharacter2TasteLabel;
+        private System.Windows.Forms.Label SelectedShopCharacter1TasteLabel;
+        private System.Windows.Forms.PictureBox SelectedShopCharacter3PictureBox;
+        private System.Windows.Forms.PictureBox SelectedShopCharacter2PictureBox;
+        private System.Windows.Forms.Button SelectedBrandMaxVipLevelButton;
+        private System.Windows.Forms.PictureBox SelectedBrandVipIconPictureBox;
     }
 }

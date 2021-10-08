@@ -40,6 +40,7 @@ namespace Scramble.Forms
 
             ComboBoxFoodIndexes = new Dictionary<int, int>();
             ShopGoodsListView.SmallImageList = Sukuranburu.ItemImageList_32x32;
+            SelectedBrandVipIconPictureBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject("ShopIconVip") as Bitmap, 50, 42, DeviceDpi);
 
             DisplayLanguageStrings();
             SerializeShopList();
@@ -69,65 +70,70 @@ namespace Scramble.Forms
             SelectedShopTimesUsedLabel.Text = Sukuranburu.GetString("{TimesUsed:}");
             SelectedShopLastFoodsTitleLabel.Text = Sukuranburu.GetString("{LastOrderedFood}");
 
-            SelectedShopLastFoodCharacter1Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(1)));
-            SelectedShopLastFoodCharacter3Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(3)));
+            SelectedShopLastFoodCharacter1Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(1));
+            SelectedShopLastFoodCharacter3Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(3));
 
             if (Sukuranburu.ShowSpoilers == false)
             {
                 if (SelectedSlot.FurthestDay > 0) //w1d1 onwards
                 {
-                    SelectedShopLastFoodCharacter7Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(7)));
+                    SelectedShopLastFoodCharacter7Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(7));
                 }
                 else
                 {
-                    SelectedShopLastFoodCharacter7Label.Text = string.Format("{0}:", Sukuranburu.GetString("{Spoiler}"));
+                    SelectedShopLastFoodCharacter7Label.Text = Sukuranburu.GetString("{Spoiler}");
+                    SelectedShopCharacter7PictureBox.Tag = "Spoiler";
                 }
 
                 if (SelectedSlot.FurthestDay > 2) //w1d3 onwards
                 {
-                    SelectedShopLastFoodCharacter4Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(4)));
+                    SelectedShopLastFoodCharacter4Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(4));
                 }
                 else
                 {
-                    SelectedShopLastFoodCharacter4Label.Text = string.Format("{0}:", Sukuranburu.GetString("{Spoiler}"));
+                    SelectedShopLastFoodCharacter4Label.Text = Sukuranburu.GetString("{Spoiler}");
+                    SelectedShopCharacter4PictureBox.Tag = "Spoiler";
                 }
 
                 if (SelectedSlot.FurthestDay > 9) //w2d3 onwards
                 {
-                    SelectedShopLastFoodCharacter5Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(5)));
+                    SelectedShopLastFoodCharacter5Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(5));
                 }
                 else
                 {
-                    SelectedShopLastFoodCharacter5Label.Text = string.Format("{0}:", Sukuranburu.GetString("{Spoiler}"));
+                    SelectedShopLastFoodCharacter5Label.Text = Sukuranburu.GetString("{Spoiler}");
+                    SelectedShopCharacter5PictureBox.Tag = "Spoiler";
                 }
 
                 if (SelectedSlot.FurthestDay > 14) // w3d1 onwards
                 {
-                    SelectedShopLastFoodCharacter2Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(2)));
+                    SelectedShopLastFoodCharacter2Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(2));
                 }
                 else
                 {
-                    SelectedShopLastFoodCharacter2Label.Text = string.Format("{0}:", Sukuranburu.GetString("{Spoiler}"));
+                    SelectedShopLastFoodCharacter2Label.Text = Sukuranburu.GetString("{Spoiler}");
+                    SelectedShopCharacter2PictureBox.Tag = "Spoiler";
                 }
 
                 if (SelectedSlot.FurthestDay > 18) //w3d5 onwards
                 {
-                    SelectedShopLastFoodCharacter6Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(6)));
+                    SelectedShopLastFoodCharacter6Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(6));
                 }
                 else
                 {
-                    SelectedShopLastFoodCharacter6Label.Text = string.Format("{0}:", Sukuranburu.GetString("{Spoiler}"));
+                    SelectedShopLastFoodCharacter6Label.Text = Sukuranburu.GetString("{Spoiler}");
+                    SelectedShopCharacter6PictureBox.Tag = "Spoiler";
                 }
             }
             else
             {
-                SelectedShopLastFoodCharacter1Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(1)));
-                SelectedShopLastFoodCharacter2Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(2)));
-                SelectedShopLastFoodCharacter3Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(3)));
-                SelectedShopLastFoodCharacter4Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(4)));
-                SelectedShopLastFoodCharacter5Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(5)));
-                SelectedShopLastFoodCharacter6Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(6)));
-                SelectedShopLastFoodCharacter7Label.Text = string.Format("{0}:", Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(7)));
+                SelectedShopLastFoodCharacter1Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(1));
+                SelectedShopLastFoodCharacter2Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(2));
+                SelectedShopLastFoodCharacter3Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(3));
+                SelectedShopLastFoodCharacter4Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(4));
+                SelectedShopLastFoodCharacter5Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(5));
+                SelectedShopLastFoodCharacter6Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(6));
+                SelectedShopLastFoodCharacter7Label.Text = Sukuranburu.GetGameString(Sukuranburu.GetCharacterManager().GetCharacterName(7));
             }
 
             ResetCharacterFoodComboBoxes();
@@ -147,6 +153,7 @@ namespace Scramble.Forms
             BrandsMaxVipLevelAll.Text = Sukuranburu.GetString("{MaxVipLevelAll}");
             SelectedBrandGroupBox.Text = Sukuranburu.GetString("{SelectedBrand}");
             SelectedBrandPointsLabel.Text = Sukuranburu.GetString("{Points:}");
+            SelectedBrandMaxVipLevelButton.Text = Sukuranburu.GetString("{MaxVipLevel}");
         }
 
         private void ResetCharacterFoodComboBoxes()
@@ -340,6 +347,8 @@ namespace Scramble.Forms
                 SerializeCharacterFoodComboBoxes(ShopGoodList);
             }
 
+            DisplayTasteForEveryone();
+
             SerializeShopGoods(ShopGoodList);
         }
 
@@ -411,6 +420,79 @@ namespace Scramble.Forms
             SelectedBrandVipLevelLabel.Text = string.Format(Sukuranburu.GetString("{VipLevelNum}"), VipLevel);
         }
 
+        private void DisplayFoodTaste(byte CharacterId, int FoodId, PictureBox IconBox, Label TasteLabel)
+        {
+            FoodItem Food;
+
+            if (FoodId == -1 || (Food = Sukuranburu.GetItemManager().GetFoodItem((ushort)FoodId)) == null)
+            {
+                IconBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject(string.Format("Chara{0}_none", CharacterId)) as Bitmap, 35, 35, DeviceDpi);
+                TasteLabel.ForeColor = SystemColors.ControlText;
+                TasteLabel.Text = "—";
+                return;
+            }
+
+            int Taste = Food.CharaLikeness[CharacterId - 1];
+            string Image;
+            Color Color;
+
+            switch (Taste)
+            {
+                default:
+                    Image = "none";
+                    Color = SystemColors.ControlText;
+                    break;
+
+                case 0:
+                    Image = "normal";
+                    Color = SystemColors.ControlText;
+                    break;
+
+                case 1:
+                    Image = "bad";
+                    Color = Color.DarkRed;
+                    break;
+
+                case 2:
+                    Image = "like";
+                    Color = Color.Green;
+                    break;
+
+                case 3:
+                    Image = "like";
+                    Color = Color.RoyalBlue;
+                    break;
+
+                case 4:
+                    Image = "like";
+                    Color = Color.SlateBlue;
+                    break;
+            }
+
+            if ((string)IconBox.Tag == "Spoiler")
+            {
+                IconBox.Image = null;
+            }
+            else
+            {
+                IconBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject(string.Format("Chara{0}_{1}", CharacterId, Image)) as Bitmap, 35, 35, DeviceDpi);
+            }
+
+            TasteLabel.ForeColor = Color;
+            TasteLabel.Text = Sukuranburu.GetString(string.Format("{{FoodTaste{0}}}", Taste));
+        }
+        
+        private void DisplayTasteForEveryone()
+        {
+            DisplayFoodTaste(1, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter1ComboBox.SelectedIndex], SelectedShopCharacter1PictureBox, SelectedShopCharacter1TasteLabel);
+            DisplayFoodTaste(2, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter2ComboBox.SelectedIndex], SelectedShopCharacter2PictureBox, SelectedShopCharacter2TasteLabel);
+            DisplayFoodTaste(3, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter3ComboBox.SelectedIndex], SelectedShopCharacter3PictureBox, SelectedShopCharacter3TasteLabel);
+            DisplayFoodTaste(4, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter4ComboBox.SelectedIndex], SelectedShopCharacter4PictureBox, SelectedShopCharacter4TasteLabel);
+            DisplayFoodTaste(5, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter5ComboBox.SelectedIndex], SelectedShopCharacter5PictureBox, SelectedShopCharacter5TasteLabel);
+            DisplayFoodTaste(6, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter6ComboBox.SelectedIndex], SelectedShopCharacter6PictureBox, SelectedShopCharacter6TasteLabel);
+            DisplayFoodTaste(7, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter7ComboBox.SelectedIndex], SelectedShopCharacter7PictureBox, SelectedShopCharacter7TasteLabel);
+        }
+
         private void SerializeShopGoods(IOrderedEnumerable<ShopGood> ShopGoodList)
         {
             ShopGoodsListView.Items.Clear();
@@ -439,7 +521,6 @@ namespace Scramble.Forms
             if (ShopGoodsListView.Items.Count > 0)
             {
                 ShopGoodsListView.Items[0].Selected = true;
-                ShopGoodsListView.Select();
             }
         }
 
@@ -554,6 +635,102 @@ namespace Scramble.Forms
         private void ShopEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
             ColumnSorter.DisposeColumn();
+        }
+
+        private void SelectedShopLastFoodCharacter1ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedShop == null || !ComboBoxFoodIndexes.ContainsKey(SelectedShopLastFoodCharacter1ComboBox.SelectedIndex))
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopLastFoods + 4 + (68 * SelectedShop.Id), ComboBoxFoodIndexes[SelectedShopLastFoodCharacter1ComboBox.SelectedIndex]);
+            DisplayFoodTaste(1, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter1ComboBox.SelectedIndex], SelectedShopCharacter1PictureBox, SelectedShopCharacter1TasteLabel);
+            ReadyForUserInput = true;
+        }
+
+        private void SelectedShopLastFoodCharacter2ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedShop == null || !ComboBoxFoodIndexes.ContainsKey(SelectedShopLastFoodCharacter2ComboBox.SelectedIndex))
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopLastFoods + 8 + (68 * SelectedShop.Id), ComboBoxFoodIndexes[SelectedShopLastFoodCharacter2ComboBox.SelectedIndex]);
+            DisplayFoodTaste(2, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter2ComboBox.SelectedIndex], SelectedShopCharacter2PictureBox, SelectedShopCharacter2TasteLabel);
+            ReadyForUserInput = true;
+        }
+
+        private void SelectedShopLastFoodCharacter3ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedShop == null || !ComboBoxFoodIndexes.ContainsKey(SelectedShopLastFoodCharacter3ComboBox.SelectedIndex))
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopLastFoods + 12 + (68 * SelectedShop.Id), ComboBoxFoodIndexes[SelectedShopLastFoodCharacter3ComboBox.SelectedIndex]);
+            DisplayFoodTaste(3, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter3ComboBox.SelectedIndex], SelectedShopCharacter3PictureBox, SelectedShopCharacter3TasteLabel);
+            ReadyForUserInput = true;
+        }
+
+        private void SelectedShopLastFoodCharacter4ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedShop == null || !ComboBoxFoodIndexes.ContainsKey(SelectedShopLastFoodCharacter4ComboBox.SelectedIndex))
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopLastFoods + 16 + (68 * SelectedShop.Id), ComboBoxFoodIndexes[SelectedShopLastFoodCharacter4ComboBox.SelectedIndex]);
+            DisplayFoodTaste(4, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter4ComboBox.SelectedIndex], SelectedShopCharacter4PictureBox, SelectedShopCharacter4TasteLabel);
+            ReadyForUserInput = true;
+        }
+
+        private void SelectedShopLastFoodCharacter5ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedShop == null || !ComboBoxFoodIndexes.ContainsKey(SelectedShopLastFoodCharacter5ComboBox.SelectedIndex))
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopLastFoods + 20 + (68 * SelectedShop.Id), ComboBoxFoodIndexes[SelectedShopLastFoodCharacter5ComboBox.SelectedIndex]);
+            DisplayFoodTaste(5, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter5ComboBox.SelectedIndex], SelectedShopCharacter5PictureBox, SelectedShopCharacter5TasteLabel);
+            ReadyForUserInput = true;
+        }
+
+        private void SelectedShopLastFoodCharacter6ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedShop == null || !ComboBoxFoodIndexes.ContainsKey(SelectedShopLastFoodCharacter6ComboBox.SelectedIndex))
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopLastFoods + 24 + (68 * SelectedShop.Id), ComboBoxFoodIndexes[SelectedShopLastFoodCharacter6ComboBox.SelectedIndex]);
+            DisplayFoodTaste(6, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter6ComboBox.SelectedIndex], SelectedShopCharacter6PictureBox, SelectedShopCharacter6TasteLabel);
+            ReadyForUserInput = true;
+        }
+
+        private void SelectedShopLastFoodCharacter7ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedShop == null || !ComboBoxFoodIndexes.ContainsKey(SelectedShopLastFoodCharacter7ComboBox.SelectedIndex))
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopLastFoods + 28 + (68 * SelectedShop.Id), ComboBoxFoodIndexes[SelectedShopLastFoodCharacter7ComboBox.SelectedIndex]);
+            DisplayFoodTaste(7, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter7ComboBox.SelectedIndex], SelectedShopCharacter7PictureBox, SelectedShopCharacter7TasteLabel);
+            ReadyForUserInput = true;
+        }
+
+        private void BrandsMaxVipLevelAll_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

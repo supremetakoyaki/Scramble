@@ -241,7 +241,12 @@
     "{ShopType_2}": "Other",
     "{SelectedShop}": "Selected Shop",
     "{TimesUsed:}": "Times used:",
-    "{LastOrderedFood}": "————————————— Last ordered food —————————————",
+    "{LastOrderedFood}": "———————————————— Last ordered food —————————————————",
+    "{FoodTaste0}": "Normal",
+    "{FoodTaste1}": "Dislikes it",
+    "{FoodTaste2}": "Likes it",
+    "{FoodTaste3}": "Loves it",
+    "{FoodTaste4}": "Perfection",
     "{ShopGoods}": "Shop items",
     "{SelectedGood}": "Selected item",
     "{YenNum}": "¥{0}",
@@ -252,6 +257,7 @@
     "{Brands}": "Brands",
     "{MaxVipLevelAll}": "Max VIP Level for all",
     "{SelectedBrand}": "Selected brand",
+    "{MaxVipLevel}": "Max VIP Level",
     "{Points:}": "Points:",
     "{VipLevelNum}": "VIP Level {0}"
   }
