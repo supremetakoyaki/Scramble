@@ -268,19 +268,7 @@ namespace Scramble.Forms
         {
             foreach (Shop ShopItem in Sukuranburu.GetItemManager().GetShops().Values)
             {
-                string ShopName = Sukuranburu.GetGameString(ShopItem.Name, true);
-
-                if (Sukuranburu.ShowSpoilers == false)
-                {
-                    bool IsSpoiler = ShopItem.Id != 0 && SelectedSlot.RetrieveOffset_Int32(GameOffsets.ShopNumTimesUsed + (ShopItem.Id * 68)) < 1;
-
-                    if (IsSpoiler)
-                    {
-                        ShopName = Sukuranburu.GetString("{Spoiler}");
-                    }
-                }
-
-                ListViewItem ItemToAdd = new ListViewItem(new string[] { ShopItem.Id.ToString(), ShopName, GetShopTypeString(ShopItem.ShopType) })
+                ListViewItem ItemToAdd = new ListViewItem(new string[] { ShopItem.Id.ToString(), Sukuranburu.GetGameString(ShopItem.Name, true), GetShopTypeString(ShopItem.ShopType) })
                 {
                     Tag = ShopItem.Id
                 };
@@ -311,28 +299,18 @@ namespace Scramble.Forms
             }
 
             SelectedShopTimesUsedNumUpDown.Value = SelectedSlot.RetrieveOffset_Int32(GameOffsets.ShopNumTimesUsed + (SelectedShop.Id * 68));
-            bool IsSpoiler = Sukuranburu.ShowSpoilers == false && SelectedShop.Id != 0 && SelectedShopTimesUsedNumUpDown.Value < 1;
 
-            if (IsSpoiler)
+            Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(SelectedShop.ShopCategory), SelectedShopCatRichTextBox);
+            Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(SelectedShop.Name), SelectedShopNameRichTextBox);
+
+            IGameItem SymbolItem = Sukuranburu.GetItemManager().GetItem(SelectedShop.SymbolItem);
+            if (SymbolItem == null)
             {
-                SelectedShopCatRichTextBox.Text = "—";
-                SelectedShopNameRichTextBox.Text = Sukuranburu.GetString("{Spoiler}");
                 SelectedShopSymbolPictureBox.Image = null;
             }
             else
             {
-                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(SelectedShop.ShopCategory), SelectedShopCatRichTextBox);
-                Sukuranburu.GetGameTextProcessor().SetTaggedText(Sukuranburu.GetGameString(SelectedShop.Name), SelectedShopNameRichTextBox);
-
-                IGameItem SymbolItem = Sukuranburu.GetItemManager().GetItem(SelectedShop.SymbolItem);
-                if (SymbolItem == null)
-                {
-                    SelectedShopSymbolPictureBox.Image = null;
-                }
-                else
-                {
-                    SelectedShopSymbolPictureBox.Image = ImageMethods.DrawImage(SymbolItem.Sprite, 80, 80, DeviceDpi);
-                }
+                SelectedShopSymbolPictureBox.Image = ImageMethods.DrawImage(SymbolItem.Sprite, 80, 80, DeviceDpi);
             }
 
             ResetCharacterFoodComboBoxes();
