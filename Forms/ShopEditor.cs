@@ -66,6 +66,7 @@ namespace Scramble.Forms
             IdHeader.Text = Sukuranburu.GetString("{Id}");
             NameHeader.Text = Sukuranburu.GetString("{Name}");
             CategoryHeader.Text = Sukuranburu.GetString("{Category}");
+            BestFoodForRestaurantsButton.Text = Sukuranburu.GetString("{BestFoodForRestaurants}");
             ShopDataGroupBox.Text = Sukuranburu.GetString("{SelectedShop}");
             SelectedShopTimesUsedLabel.Text = Sukuranburu.GetString("{TimesUsed:}");
             SelectedShopLastFoodsTitleLabel.Text = Sukuranburu.GetString("{LastOrderedFood}");
@@ -348,7 +349,6 @@ namespace Scramble.Forms
             }
 
             DisplayTasteForEveryone();
-
             SerializeShopGoods(ShopGoodList);
         }
 
@@ -426,7 +426,14 @@ namespace Scramble.Forms
 
             if (FoodId == -1 || (Food = Sukuranburu.GetItemManager().GetFoodItem((ushort)FoodId)) == null)
             {
-                IconBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject(string.Format("Chara{0}_none", CharacterId)) as Bitmap, 35, 35, DeviceDpi);
+                if ((string)IconBox.Tag == "Spoiler")
+                {
+                    IconBox.Image = null;
+                }
+                else
+                {
+                    IconBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject(string.Format("Chara{0}_none", CharacterId)) as Bitmap, 35, 35, DeviceDpi);
+                }
                 TasteLabel.ForeColor = SystemColors.ControlText;
                 TasteLabel.Text = "—";
                 return;
@@ -481,7 +488,7 @@ namespace Scramble.Forms
             TasteLabel.ForeColor = Color;
             TasteLabel.Text = Sukuranburu.GetString(string.Format("{{FoodTaste{0}}}", Taste));
         }
-        
+
         private void DisplayTasteForEveryone()
         {
             DisplayFoodTaste(1, ComboBoxFoodIndexes[SelectedShopLastFoodCharacter1ComboBox.SelectedIndex], SelectedShopCharacter1PictureBox, SelectedShopCharacter1TasteLabel);
@@ -509,9 +516,11 @@ namespace Scramble.Forms
 
                 if (Item != null)
                 {
-                    ListViewItem GoodToAdd = new ListViewItem(new string[] { Sukuranburu.GetGameString(Item.Name), i.ToString(), ShopGood.Id.ToString() });
-                    GoodToAdd.ImageKey = Item.Sprite;
-                    GoodToAdd.Tag = ShopGood.Id;
+                    ListViewItem GoodToAdd = new ListViewItem(new string[] { Sukuranburu.GetGameString(Item.Name), i.ToString(), ShopGood.Id.ToString() })
+                    {
+                        ImageKey = Item.Sprite,
+                        Tag = ShopGood.Id
+                    };
 
                     ShopGoodsListView.Items.Add(GoodToAdd);
                     i++;
@@ -589,7 +598,7 @@ namespace Scramble.Forms
             if (!ReadyForUserInput || BrandsListView.SelectedIndices.Count != 1)
             {
                 return;
-            } 
+            }
 
             byte BrandId = (byte)BrandsListView.SelectedItems[0].Tag;
             Brand BrandItem = Sukuranburu.GetItemManager().GetBrand(BrandId);
@@ -605,6 +614,58 @@ namespace Scramble.Forms
             ReadyForUserInput = true;
         }
 
+        private void BestFoodForRestaurantsButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            foreach (Shop ShopItem in Sukuranburu.GetItemManager().GetShops().Values)
+            {
+                if (ShopItem.ShopType == 1) // Restaurant
+                {
+                    FoodItem[] BestFoods = new FoodItem[7];
+                    IOrderedEnumerable<ShopGood> GoodItemList = Sukuranburu.GetItemManager().GetShopGoods(ShopItem.Id);
+
+                    foreach (ShopGood GoodItem in GoodItemList)
+                    {
+                        FoodItem Food = Sukuranburu.GetItemManager().GetItem(GoodItem.Item) as FoodItem;
+                        if (Food != null)
+                        {
+                            for (int i = 0; i < 7; i++)
+                            {
+                                if (Food.CharaLikeness[i] != 1 && BestFoods[i] == null)
+                                {
+                                    BestFoods[i] = Food;
+                                }
+                                else if (Food.CharaLikeness[i] != 1 && Food.CharaLikeness[i] > BestFoods[i].CharaLikeness[i])
+                                {
+                                    BestFoods[i] = Food;
+                                }
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < 7; i++)
+                    {
+                        SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopLastFoods + (4 * (i + 1)) + (68 * ShopItem.Id), BestFoods[i].ParticularId);
+                    }
+
+                    if (ShopItem == SelectedShop)
+                    {
+                        ResetCharacterFoodComboBoxes();
+                        ChangeCharacterFoodComboBoxesEnableStatus(true);
+                        SerializeCharacterFoodComboBoxes(GoodItemList);
+                        DisplayTasteForEveryone();
+                    }
+                }
+            }
+
+            ReadyForUserInput = true;
+        }
+
         private void SelectedShopTimesUsedNumUpDown_ValueChanged(object sender, EventArgs e)
         {
             if (!ReadyForUserInput || SelectedShop == null)
@@ -615,26 +676,6 @@ namespace Scramble.Forms
             ReadyForUserInput = false;
             SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopNumTimesUsed + (68 * SelectedShop.Id), (int)SelectedShopTimesUsedNumUpDown.Value);
             ReadyForUserInput = true;
-        }
-
-        private void ShopListListView_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            ColumnSorter.Sort(ShopListListView, e);
-        }
-
-        private void SelectedShopGoodsListView_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            ColumnSorter.Sort(ShopGoodsListView, e);
-        }
-
-        private void BrandsListView_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            ColumnSorter.Sort(BrandsListView, e);
-        }
-
-        private void ShopEditor_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            ColumnSorter.DisposeColumn();
         }
 
         private void SelectedShopLastFoodCharacter1ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -728,9 +769,110 @@ namespace Scramble.Forms
             ReadyForUserInput = true;
         }
 
+        private void SelectedBrandPointsNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedBrand == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.BrandPoint + (4 * SelectedBrand.Id), (int)SelectedBrandPointsNumUpDown.Value);
+            DisplayVipLevel();
+            ReadyForUserInput = true;
+        }
+
         private void BrandsMaxVipLevelAll_Click(object sender, EventArgs e)
         {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
 
+            ReadyForUserInput = false;
+
+            foreach (Brand BrandItem in Sukuranburu.GetItemManager().GetBrands().Values)
+            {
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.BrandPoint + (4 * BrandItem.Id), BrandItem.RankPoints[3]);
+                if (BrandItem == SelectedBrand)
+                {
+                    SelectedBrandPointsNumUpDown.Value = BrandItem.RankPoints[3];
+                    SelectedBrandVipLevelLabel.Text = string.Format(Sukuranburu.GetString("{VipLevelNum}"), 5);
+                }
+            }
+
+            ReadyForUserInput = true;
+        }
+
+        private void SelectedBrandMaxVipLevelButton_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedBrand == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            int MaxPointsForBrand = SelectedBrand.RankPoints[3];
+            SelectedBrandPointsNumUpDown.Value = MaxPointsForBrand;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.BrandPoint + (4 * SelectedBrand.Id), MaxPointsForBrand);
+            SelectedBrandVipLevelLabel.Text = string.Format(Sukuranburu.GetString("{VipLevelNum}"), 5);
+            ReadyForUserInput = true;
+        }
+
+        private void SelectedShopGoodShowAsNewCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedGood == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.ShopGoods_IsNew + (9 * SelectedGood.SaveIndex), Convert.ToByte(SelectedShopGoodShowAsNewCheckbox.Checked));
+            ReadyForUserInput = true;
+        }
+
+        private void SelectedGoodTimesPurchasedNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedGood == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopGoods_PurchaseNum + (9 * SelectedGood.SaveIndex), (int)SelectedGoodTimesPurchasedNumUpDown.Value);
+            ReadyForUserInput = true;
+        }
+
+        private void SelectedGoodTimesExchangedNumUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput || SelectedGood == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.ShopGoods_ExchangeNum + (9 * SelectedGood.SaveIndex), (int)SelectedGoodTimesExchangedNumUpDown.Value);
+            ReadyForUserInput = true;
+        }
+
+        private void ShopListListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSorter.Sort(ShopListListView, e);
+        }
+
+        private void SelectedShopGoodsListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSorter.Sort(ShopGoodsListView, e);
+        }
+
+        private void BrandsListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSorter.Sort(BrandsListView, e);
+        }
+
+        private void ShopEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ColumnSorter.DisposeColumn();
         }
     }
 }

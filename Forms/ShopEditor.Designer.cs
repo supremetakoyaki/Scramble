@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.ShopListGroupBox = new System.Windows.Forms.GroupBox();
+            this.BestFoodForRestaurantsButton = new System.Windows.Forms.Button();
             this.ShopListListView = new System.Windows.Forms.ListView();
             this.IdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -123,6 +124,7 @@
             // 
             // ShopListGroupBox
             // 
+            this.ShopListGroupBox.Controls.Add(this.BestFoodForRestaurantsButton);
             this.ShopListGroupBox.Controls.Add(this.ShopListListView);
             this.ShopListGroupBox.Location = new System.Drawing.Point(12, 12);
             this.ShopListGroupBox.Name = "ShopListGroupBox";
@@ -130,6 +132,17 @@
             this.ShopListGroupBox.TabIndex = 0;
             this.ShopListGroupBox.TabStop = false;
             this.ShopListGroupBox.Text = "{ShopList}";
+            // 
+            // BestFoodForRestaurantsButton
+            // 
+            this.BestFoodForRestaurantsButton.BackColor = System.Drawing.Color.Honeydew;
+            this.BestFoodForRestaurantsButton.Location = new System.Drawing.Point(168, 628);
+            this.BestFoodForRestaurantsButton.Name = "BestFoodForRestaurantsButton";
+            this.BestFoodForRestaurantsButton.Size = new System.Drawing.Size(300, 23);
+            this.BestFoodForRestaurantsButton.TabIndex = 17;
+            this.BestFoodForRestaurantsButton.Text = "{BestFoodForRestaurants}";
+            this.BestFoodForRestaurantsButton.UseVisualStyleBackColor = false;
+            this.BestFoodForRestaurantsButton.Click += new System.EventHandler(this.BestFoodForRestaurantsButton_Click);
             // 
             // ShopListListView
             // 
@@ -142,7 +155,7 @@
             this.ShopListListView.Location = new System.Drawing.Point(6, 22);
             this.ShopListListView.MultiSelect = false;
             this.ShopListListView.Name = "ShopListListView";
-            this.ShopListListView.Size = new System.Drawing.Size(462, 629);
+            this.ShopListListView.Size = new System.Drawing.Size(462, 600);
             this.ShopListListView.TabIndex = 0;
             this.ShopListListView.UseCompatibleStateImageBehavior = false;
             this.ShopListListView.View = System.Windows.Forms.View.Details;
@@ -619,6 +632,7 @@
             this.SelectedShopGoodShowAsNewCheckbox.TabIndex = 8;
             this.SelectedShopGoodShowAsNewCheckbox.Text = "{ShowAsNew}";
             this.SelectedShopGoodShowAsNewCheckbox.UseVisualStyleBackColor = true;
+            this.SelectedShopGoodShowAsNewCheckbox.CheckedChanged += new System.EventHandler(this.SelectedShopGoodShowAsNewCheckbox_CheckedChanged);
             // 
             // SelectedGoodTimesExchangedNumUpDown
             // 
@@ -631,6 +645,7 @@
             this.SelectedGoodTimesExchangedNumUpDown.Name = "SelectedGoodTimesExchangedNumUpDown";
             this.SelectedGoodTimesExchangedNumUpDown.Size = new System.Drawing.Size(117, 23);
             this.SelectedGoodTimesExchangedNumUpDown.TabIndex = 7;
+            this.SelectedGoodTimesExchangedNumUpDown.ValueChanged += new System.EventHandler(this.SelectedGoodTimesExchangedNumUpDown_ValueChanged);
             // 
             // SelectedShopGoodTimesExchangedLabel
             // 
@@ -651,6 +666,7 @@
             this.SelectedGoodTimesPurchasedNumUpDown.Name = "SelectedGoodTimesPurchasedNumUpDown";
             this.SelectedGoodTimesPurchasedNumUpDown.Size = new System.Drawing.Size(117, 23);
             this.SelectedGoodTimesPurchasedNumUpDown.TabIndex = 5;
+            this.SelectedGoodTimesPurchasedNumUpDown.ValueChanged += new System.EventHandler(this.SelectedGoodTimesPurchasedNumUpDown_ValueChanged);
             // 
             // SelectedShopGoodTimesPurchasedLabel
             // 
@@ -749,6 +765,7 @@
             this.SelectedBrandPointsNumUpDown.Name = "SelectedBrandPointsNumUpDown";
             this.SelectedBrandPointsNumUpDown.Size = new System.Drawing.Size(110, 23);
             this.SelectedBrandPointsNumUpDown.TabIndex = 13;
+            this.SelectedBrandPointsNumUpDown.ValueChanged += new System.EventHandler(this.SelectedBrandPointsNumUpDown_ValueChanged);
             // 
             // SelectedBrandPointsLabel
             // 
@@ -845,6 +862,7 @@
             this.SelectedBrandMaxVipLevelButton.TabIndex = 16;
             this.SelectedBrandMaxVipLevelButton.Text = "{MaxVipLevel}";
             this.SelectedBrandMaxVipLevelButton.UseVisualStyleBackColor = true;
+            this.SelectedBrandMaxVipLevelButton.Click += new System.EventHandler(this.SelectedBrandMaxVipLevelButton_Click);
             // 
             // SelectedBrandVipIconPictureBox
             // 
@@ -971,5 +989,6 @@
         private System.Windows.Forms.PictureBox SelectedShopCharacter2PictureBox;
         private System.Windows.Forms.Button SelectedBrandMaxVipLevelButton;
         private System.Windows.Forms.PictureBox SelectedBrandVipIconPictureBox;
+        private System.Windows.Forms.Button BestFoodForRestaurantsButton;
     }
 }

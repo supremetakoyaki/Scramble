@@ -239,6 +239,7 @@
     "{ShopType_0}": "Clothing",
     "{ShopType_1}": "Restaurant",
     "{ShopType_2}": "Other",
+    "{BestFoodForRestaurants}": "Set the best tasting food possible for all restaurants",
     "{SelectedShop}": "Selected Shop",
     "{TimesUsed:}": "Times used:",
     "{LastOrderedFood}": "———————————————— Last ordered food —————————————————",
