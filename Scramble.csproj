@@ -369,8 +369,8 @@
     <Compile Include="Forms\TurfWarEditor.Designer.cs">
       <DependentUpon>TurfWarEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameData\GameRandomizer.cs" />
-    <Compile Include="GameData\Offsets.cs" />
+    <Compile Include="Classes\GameRandomizer.cs" />
+    <Compile Include="Classes\Offsets.cs" />
     <Compile Include="Legacy\LegacyForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -401,6 +401,11 @@
     <Compile Include="Legacy\LegacyTextProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Util\BitmapUtil.cs" />
     <Compile Include="Util\ByteUtil.cs" />
     <Compile Include="Util\TwewyChecksum.cs" />
@@ -469,14 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Assets\lang_en.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -529,13 +529,20 @@
     <None Include="Assets\Chara5_none.png" />
     <None Include="Assets\Chara6_none.png" />
     <None Include="Assets\Chara7_none.png" />
+    <None Include="Assets\Chara1_party.png" />
+    <None Include="Assets\Chara2_party.png" />
+    <None Include="Assets\Chara3_party.png" />
+    <None Include="Assets\Chara4_party.png" />
+    <None Include="Assets\Chara5_party.png" />
+    <None Include="Assets\Chara6_party.png" />
+    <None Include="Assets\Chara7_party.png" />
     <Content Include="Assets\CHR_Spoiler.png" />
     <None Include="Assets\Convert_NeoPC_NeoPS4SW.png" />
     <Content Include="Assets\Convert_SR_to_FR.png" />
     <None Include="Assets\GithubIcon.png" />
     <None Include="Assets\GbaTempIcon.png" />
     <Content Include="Assets\Icon.ico" />
-    <Content Include="Assets\Icon.png" />
+    <None Include="Assets\KofiDonate.png" />
     <Content Include="Assets\Legacy_Byte_Empty.png" />
     <Content Include="Assets\Legacy_Byte_Fulfilled.png" />
     <Content Include="Assets\Legacy_Byte_X.png" />
@@ -551,6 +558,11 @@
     <None Include="Assets\RandomizerEffect.gif" />
     <None Include="Assets\Unity3d_Decrypt_Encrypt.png" />
     <None Include="Assets\ShopIconVip.png" />
+    <None Include="Assets\Scramble.png" />
+    <None Include="Assets\Scramble_mini.png" />
+    <None Include="Assets\ScrambleIcon.ico" />
+    <None Include="Assets\MrMew_Active.png" />
+    <None Include="Assets\MrMew_Inactive.png" />
     <Content Include="FodyWeavers.xml" />
     <Content Include="Assets\Spoiler_Pin.png" />
   </ItemGroup>
@@ -566,6 +578,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

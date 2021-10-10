@@ -35,8 +35,6 @@
             this.SaveSlotsListBox = new System.Windows.Forms.ListBox();
             this.DateOfSavePicker = new System.Windows.Forms.DateTimePicker();
             this.DateSavedLabel = new System.Windows.Forms.Label();
-            this.SaveChangesButton = new System.Windows.Forms.Button();
-            this.AboutLabel = new System.Windows.Forms.Label();
             this.MoneyLabel = new System.Windows.Forms.Label();
             this.MoneyNUpDown = new System.Windows.Forms.NumericUpDown();
             this.DifficultyLabel = new System.Windows.Forms.Label();
@@ -53,30 +51,38 @@
             this.OpenSocialEditButton = new System.Windows.Forms.Button();
             this.OpenInvEditorButton = new System.Windows.Forms.Button();
             this.GeneralGroupBox = new System.Windows.Forms.GroupBox();
-            this.PlatformLabel = new System.Windows.Forms.Label();
+            this.OtherToolsGroupBox = new System.Windows.Forms.GroupBox();
+            this.OpenMismatchFixerButton = new System.Windows.Forms.Button();
             this.OpenRandomizerButton = new System.Windows.Forms.Button();
-            this.OpenTurfWar_Edit = new System.Windows.Forms.Button();
-            this.OpenTrophyEdit_Button = new System.Windows.Forms.Button();
-            this.OpenDayEditor_Button = new System.Windows.Forms.Button();
-            this.OverateCheckbox = new System.Windows.Forms.CheckBox();
-            this.OpenShopEdit_Button = new System.Windows.Forms.Button();
-            this.CaloriesPercentage_Label = new System.Windows.Forms.Label();
-            this.Calories_NumUpDown = new System.Windows.Forms.NumericUpDown();
-            this.CaloriesEaten_Label = new System.Windows.Forms.Label();
-            this.LvLabel_Pre = new System.Windows.Forms.Label();
-            this.OpenClothEditButton = new System.Windows.Forms.Button();
-            this.PartyMember6_PictureBox = new System.Windows.Forms.PictureBox();
-            this.OpenCharacterEditButton = new System.Windows.Forms.Button();
-            this.OpenNoisepediaEditButton = new System.Windows.Forms.Button();
-            this.PartyMember5_PictureBox = new System.Windows.Forms.PictureBox();
-            this.PartyMember4_PictureBox = new System.Windows.Forms.PictureBox();
-            this.PartyMember3_PictureBox = new System.Windows.Forms.PictureBox();
-            this.PartyMember2_PictureBox = new System.Windows.Forms.PictureBox();
-            this.PartyMember1_PictureBox = new System.Windows.Forms.PictureBox();
-            this.PartyMembersLabel = new System.Windows.Forms.Label();
-            this.LvLabel = new System.Windows.Forms.Label();
+            this.OtherStatsGroupBox = new System.Windows.Forms.GroupBox();
+            this.MenuMusicLabel = new System.Windows.Forms.Label();
+            this.MenuMusicComboBox = new System.Windows.Forms.ComboBox();
+            this.SaveSlotInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.DayNowLabel = new System.Windows.Forms.Label();
             this.DumpSlotDataButton = new System.Windows.Forms.Button();
             this.ImportSlotDataButton = new System.Windows.Forms.Button();
+            this.PartyGroupBox = new System.Windows.Forms.GroupBox();
+            this.OpenPartyMemberEditorButton = new System.Windows.Forms.Button();
+            this.PartyMember5_PictureBox = new System.Windows.Forms.PictureBox();
+            this.PartyMember1_PictureBox = new System.Windows.Forms.PictureBox();
+            this.PartyMember6_PictureBox = new System.Windows.Forms.PictureBox();
+            this.PartyMember4_PictureBox = new System.Windows.Forms.PictureBox();
+            this.PartyMember2_PictureBox = new System.Windows.Forms.PictureBox();
+            this.PartyMember3_PictureBox = new System.Windows.Forms.PictureBox();
+            this.StatsGroupBox = new System.Windows.Forms.GroupBox();
+            this.CaloriesPercentage_Label = new System.Windows.Forms.Label();
+            this.MaxLevelLabel = new System.Windows.Forms.Label();
+            this.Calories_NumUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CaloriesEaten_Label = new System.Windows.Forms.Label();
+            this.OverateCheckbox = new System.Windows.Forms.CheckBox();
+            this.SelectedSlotEditorsGroupBox = new System.Windows.Forms.GroupBox();
+            this.OpenDayEditor_Button = new System.Windows.Forms.Button();
+            this.OpenTurfWar_Edit = new System.Windows.Forms.Button();
+            this.OpenTrophyEdit_Button = new System.Windows.Forms.Button();
+            this.OpenNoisepediaEditButton = new System.Windows.Forms.Button();
+            this.OpenCharacterEditButton = new System.Windows.Forms.Button();
+            this.OpenClothEditButton = new System.Windows.Forms.Button();
+            this.OpenShopEdit_Button = new System.Windows.Forms.Button();
             this.GlobalGroupBox = new System.Windows.Forms.GroupBox();
             this.MiscFlagsEditorButton = new System.Windows.Forms.Button();
             this.GameSettingsEditorButton = new System.Windows.Forms.Button();
@@ -85,6 +91,19 @@
             this.ShowSpoilersCheckbox = new System.Windows.Forms.CheckBox();
             this.ThankYou_Label = new System.Windows.Forms.Label();
             this.PcVersionGlobalEditingNotSupportedToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.SaveChangesButton = new System.Windows.Forms.Button();
+            this.SaveAsButton = new System.Windows.Forms.Button();
+            this.MrMewPictureBox = new System.Windows.Forms.PictureBox();
+            this.PartyMember1Tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.PartyMember2Tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.PartyMember3Tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.PartyMember4Tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.PartyMember5Tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.PartyMember6Tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.GbaTempIconPictureBox = new System.Windows.Forms.PictureBox();
+            this.GithubIconPictureBox = new System.Windows.Forms.PictureBox();
+            this.VersionLabel = new System.Windows.Forms.Label();
+            this.KofiPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -92,19 +111,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.FpNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpNumericUpDown)).BeginInit();
             this.GeneralGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Calories_NumUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PartyMember6_PictureBox)).BeginInit();
+            this.OtherToolsGroupBox.SuspendLayout();
+            this.OtherStatsGroupBox.SuspendLayout();
+            this.SaveSlotInfoGroupBox.SuspendLayout();
+            this.PartyGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember5_PictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PartyMember4_PictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PartyMember3_PictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PartyMember2_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember1_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember6_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember4_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember2_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember3_PictureBox)).BeginInit();
+            this.StatsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Calories_NumUpDown)).BeginInit();
+            this.SelectedSlotEditorsGroupBox.SuspendLayout();
             this.GlobalGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MrMewPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GbaTempIconPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GithubIconPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KofiPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // OpenSaveFileButton
             // 
-            this.OpenSaveFileButton.Location = new System.Drawing.Point(168, 12);
+            this.OpenSaveFileButton.Location = new System.Drawing.Point(218, 12);
             this.OpenSaveFileButton.Name = "OpenSaveFileButton";
             this.OpenSaveFileButton.Size = new System.Drawing.Size(119, 74);
             this.OpenSaveFileButton.TabIndex = 1;
@@ -116,7 +145,7 @@
             // 
             this.LogoPictureBox.Location = new System.Drawing.Point(12, 12);
             this.LogoPictureBox.Name = "LogoPictureBox";
-            this.LogoPictureBox.Size = new System.Drawing.Size(139, 74);
+            this.LogoPictureBox.Size = new System.Drawing.Size(200, 74);
             this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.LogoPictureBox.TabIndex = 6;
             this.LogoPictureBox.TabStop = false;
@@ -124,7 +153,7 @@
             // SaveSlotsGroupBox
             // 
             this.SaveSlotsGroupBox.Controls.Add(this.SaveSlotsListBox);
-            this.SaveSlotsGroupBox.Location = new System.Drawing.Point(12, 107);
+            this.SaveSlotsGroupBox.Location = new System.Drawing.Point(12, 198);
             this.SaveSlotsGroupBox.Name = "SaveSlotsGroupBox";
             this.SaveSlotsGroupBox.Size = new System.Drawing.Size(139, 186);
             this.SaveSlotsGroupBox.TabIndex = 3;
@@ -155,76 +184,51 @@
             // DateOfSavePicker
             // 
             this.DateOfSavePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateOfSavePicker.Location = new System.Drawing.Point(6, 57);
+            this.DateOfSavePicker.Location = new System.Drawing.Point(6, 84);
             this.DateOfSavePicker.MaxDate = new System.DateTime(2037, 12, 31, 0, 0, 0, 0);
             this.DateOfSavePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.DateOfSavePicker.Name = "DateOfSavePicker";
-            this.DateOfSavePicker.Size = new System.Drawing.Size(188, 23);
+            this.DateOfSavePicker.Size = new System.Drawing.Size(144, 23);
             this.DateOfSavePicker.TabIndex = 8;
             this.DateOfSavePicker.ValueChanged += new System.EventHandler(this.DateOfSavePicker_ValueChanged);
             // 
             // DateSavedLabel
             // 
             this.DateSavedLabel.AutoSize = true;
-            this.DateSavedLabel.Location = new System.Drawing.Point(6, 39);
+            this.DateSavedLabel.Location = new System.Drawing.Point(3, 66);
             this.DateSavedLabel.Name = "DateSavedLabel";
             this.DateSavedLabel.Size = new System.Drawing.Size(124, 15);
             this.DateSavedLabel.TabIndex = 5;
             this.DateSavedLabel.Text = "Date and time of save:";
             // 
-            // SaveChangesButton
-            // 
-            this.SaveChangesButton.BackColor = System.Drawing.Color.PowderBlue;
-            this.SaveChangesButton.Location = new System.Drawing.Point(292, 12);
-            this.SaveChangesButton.Name = "SaveChangesButton";
-            this.SaveChangesButton.Size = new System.Drawing.Size(119, 74);
-            this.SaveChangesButton.TabIndex = 2;
-            this.SaveChangesButton.Text = "Save Changes";
-            this.SaveChangesButton.UseVisualStyleBackColor = false;
-            this.SaveChangesButton.Click += new System.EventHandler(this.SaveChangesButton_Click);
-            // 
-            // AboutLabel
-            // 
-            this.AboutLabel.BackColor = System.Drawing.Color.Transparent;
-            this.AboutLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AboutLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.AboutLabel.Location = new System.Drawing.Point(75, 71);
-            this.AboutLabel.Name = "AboutLabel";
-            this.AboutLabel.Size = new System.Drawing.Size(76, 15);
-            this.AboutLabel.TabIndex = 0;
-            this.AboutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
-            // 
             // MoneyLabel
             // 
-            this.MoneyLabel.AutoSize = true;
-            this.MoneyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.MoneyLabel.Location = new System.Drawing.Point(6, 186);
+            this.MoneyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoneyLabel.Location = new System.Drawing.Point(6, 29);
             this.MoneyLabel.Name = "MoneyLabel";
-            this.MoneyLabel.Size = new System.Drawing.Size(45, 13);
+            this.MoneyLabel.Size = new System.Drawing.Size(97, 15);
             this.MoneyLabel.TabIndex = 11;
             this.MoneyLabel.Text = "Money:";
             // 
             // MoneyNUpDown
             // 
-            this.MoneyNUpDown.Location = new System.Drawing.Point(96, 183);
+            this.MoneyNUpDown.Location = new System.Drawing.Point(109, 27);
             this.MoneyNUpDown.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
             this.MoneyNUpDown.Name = "MoneyNUpDown";
-            this.MoneyNUpDown.Size = new System.Drawing.Size(98, 23);
+            this.MoneyNUpDown.Size = new System.Drawing.Size(135, 23);
             this.MoneyNUpDown.TabIndex = 12;
             this.MoneyNUpDown.ValueChanged += new System.EventHandler(this.MoneyNUpDown_ValueChanged);
             // 
             // DifficultyLabel
             // 
-            this.DifficultyLabel.AutoSize = true;
-            this.DifficultyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.DifficultyLabel.Location = new System.Drawing.Point(6, 95);
+            this.DifficultyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DifficultyLabel.Location = new System.Drawing.Point(6, 29);
             this.DifficultyLabel.Name = "DifficultyLabel";
-            this.DifficultyLabel.Size = new System.Drawing.Size(56, 13);
+            this.DifficultyLabel.Size = new System.Drawing.Size(95, 15);
             this.DifficultyLabel.TabIndex = 7;
             this.DifficultyLabel.Text = "Difficulty:";
             // 
@@ -238,32 +242,32 @@
             "NORMAL",
             "HARD",
             "ULTIMATE"});
-            this.DifficultyCombo.Location = new System.Drawing.Point(96, 91);
+            this.DifficultyCombo.Location = new System.Drawing.Point(107, 25);
             this.DifficultyCombo.MaxDropDownItems = 4;
             this.DifficultyCombo.Name = "DifficultyCombo";
-            this.DifficultyCombo.Size = new System.Drawing.Size(98, 23);
+            this.DifficultyCombo.Size = new System.Drawing.Size(133, 23);
             this.DifficultyCombo.TabIndex = 9;
             this.DifficultyCombo.SelectedIndexChanged += new System.EventHandler(this.DifficultyCombo_SelectedIndexChanged);
             // 
             // CurrentLevelLabel
             // 
-            this.CurrentLevelLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.CurrentLevelLabel.Location = new System.Drawing.Point(6, 157);
+            this.CurrentLevelLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentLevelLabel.Location = new System.Drawing.Point(6, 85);
             this.CurrentLevelLabel.Name = "CurrentLevelLabel";
-            this.CurrentLevelLabel.Size = new System.Drawing.Size(80, 15);
+            this.CurrentLevelLabel.Size = new System.Drawing.Size(95, 15);
             this.CurrentLevelLabel.TabIndex = 9;
             this.CurrentLevelLabel.Text = "Current Level:";
             // 
             // CurrentLevelNUpDown
             // 
-            this.CurrentLevelNUpDown.Location = new System.Drawing.Point(96, 154);
+            this.CurrentLevelNUpDown.Location = new System.Drawing.Point(107, 83);
             this.CurrentLevelNUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.CurrentLevelNUpDown.Name = "CurrentLevelNUpDown";
-            this.CurrentLevelNUpDown.Size = new System.Drawing.Size(98, 23);
+            this.CurrentLevelNUpDown.Size = new System.Drawing.Size(133, 23);
             this.CurrentLevelNUpDown.TabIndex = 11;
             this.CurrentLevelNUpDown.Value = new decimal(new int[] {
             1,
@@ -274,33 +278,34 @@
             // 
             // FpLabel
             // 
-            this.FpLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.FpLabel.Location = new System.Drawing.Point(6, 215);
+            this.FpLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FpLabel.Location = new System.Drawing.Point(6, 58);
             this.FpLabel.Name = "FpLabel";
-            this.FpLabel.Size = new System.Drawing.Size(23, 15);
+            this.FpLabel.Size = new System.Drawing.Size(97, 15);
             this.FpLabel.TabIndex = 13;
             this.FpLabel.Text = "FP:";
             // 
             // FpNumericUpDown
             // 
-            this.FpNumericUpDown.Location = new System.Drawing.Point(96, 212);
+            this.FpNumericUpDown.Location = new System.Drawing.Point(109, 56);
             this.FpNumericUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
             this.FpNumericUpDown.Name = "FpNumericUpDown";
-            this.FpNumericUpDown.Size = new System.Drawing.Size(98, 23);
+            this.FpNumericUpDown.Size = new System.Drawing.Size(135, 23);
             this.FpNumericUpDown.TabIndex = 13;
             this.FpNumericUpDown.ValueChanged += new System.EventHandler(this.FpNumericUpDown_ValueChanged);
             // 
             // BackupCheckbox
             // 
+            this.BackupCheckbox.AutoSize = true;
             this.BackupCheckbox.Checked = true;
             this.BackupCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.BackupCheckbox.Location = new System.Drawing.Point(424, 12);
+            this.BackupCheckbox.Location = new System.Drawing.Point(495, 37);
             this.BackupCheckbox.Name = "BackupCheckbox";
-            this.BackupCheckbox.Size = new System.Drawing.Size(132, 19);
+            this.BackupCheckbox.Size = new System.Drawing.Size(111, 19);
             this.BackupCheckbox.TabIndex = 3;
             this.BackupCheckbox.Text = "Make a back-up";
             this.BackupCheckbox.UseVisualStyleBackColor = true;
@@ -308,7 +313,7 @@
             // InitializedSlotCheckbox
             // 
             this.InitializedSlotCheckbox.AutoSize = true;
-            this.InitializedSlotCheckbox.Location = new System.Drawing.Point(6, 22);
+            this.InitializedSlotCheckbox.Location = new System.Drawing.Point(6, 44);
             this.InitializedSlotCheckbox.Name = "InitializedSlotCheckbox";
             this.InitializedSlotCheckbox.Size = new System.Drawing.Size(98, 19);
             this.InitializedSlotCheckbox.TabIndex = 7;
@@ -318,30 +323,29 @@
             // 
             // ExperienceLabel
             // 
-            this.ExperienceLabel.AutoSize = true;
-            this.ExperienceLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.ExperienceLabel.Location = new System.Drawing.Point(6, 128);
+            this.ExperienceLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExperienceLabel.Location = new System.Drawing.Point(6, 56);
             this.ExperienceLabel.Name = "ExperienceLabel";
-            this.ExperienceLabel.Size = new System.Drawing.Size(65, 13);
+            this.ExperienceLabel.Size = new System.Drawing.Size(95, 15);
             this.ExperienceLabel.TabIndex = 15;
             this.ExperienceLabel.Text = "Experience:";
             // 
             // ExpNumericUpDown
             // 
-            this.ExpNumericUpDown.Location = new System.Drawing.Point(96, 125);
+            this.ExpNumericUpDown.Location = new System.Drawing.Point(107, 54);
             this.ExpNumericUpDown.Maximum = new decimal(new int[] {
-            961500,
+            999999,
             0,
             0,
             0});
             this.ExpNumericUpDown.Name = "ExpNumericUpDown";
-            this.ExpNumericUpDown.Size = new System.Drawing.Size(98, 23);
+            this.ExpNumericUpDown.Size = new System.Drawing.Size(133, 23);
             this.ExpNumericUpDown.TabIndex = 10;
             this.ExpNumericUpDown.ValueChanged += new System.EventHandler(this.ExpNumericUpDown_ValueChanged);
             // 
             // OpenRecordEditButton
             // 
-            this.OpenRecordEditButton.Location = new System.Drawing.Point(400, 167);
+            this.OpenRecordEditButton.Location = new System.Drawing.Point(170, 51);
             this.OpenRecordEditButton.Name = "OpenRecordEditButton";
             this.OpenRecordEditButton.Size = new System.Drawing.Size(158, 23);
             this.OpenRecordEditButton.TabIndex = 21;
@@ -351,7 +355,7 @@
             // 
             // OpenSocialEditButton
             // 
-            this.OpenSocialEditButton.Location = new System.Drawing.Point(400, 138);
+            this.OpenSocialEditButton.Location = new System.Drawing.Point(6, 109);
             this.OpenSocialEditButton.Name = "OpenSocialEditButton";
             this.OpenSocialEditButton.Size = new System.Drawing.Size(158, 23);
             this.OpenSocialEditButton.TabIndex = 20;
@@ -361,7 +365,7 @@
             // 
             // OpenInvEditorButton
             // 
-            this.OpenInvEditorButton.Location = new System.Drawing.Point(400, 80);
+            this.OpenInvEditorButton.Location = new System.Drawing.Point(6, 80);
             this.OpenInvEditorButton.Name = "OpenInvEditorButton";
             this.OpenInvEditorButton.Size = new System.Drawing.Size(158, 23);
             this.OpenInvEditorButton.TabIndex = 18;
@@ -371,75 +375,315 @@
             // 
             // GeneralGroupBox
             // 
-            this.GeneralGroupBox.Controls.Add(this.PlatformLabel);
-            this.GeneralGroupBox.Controls.Add(this.OpenRandomizerButton);
-            this.GeneralGroupBox.Controls.Add(this.OpenTurfWar_Edit);
-            this.GeneralGroupBox.Controls.Add(this.OpenTrophyEdit_Button);
-            this.GeneralGroupBox.Controls.Add(this.OpenDayEditor_Button);
-            this.GeneralGroupBox.Controls.Add(this.OverateCheckbox);
-            this.GeneralGroupBox.Controls.Add(this.OpenShopEdit_Button);
-            this.GeneralGroupBox.Controls.Add(this.CaloriesPercentage_Label);
-            this.GeneralGroupBox.Controls.Add(this.Calories_NumUpDown);
-            this.GeneralGroupBox.Controls.Add(this.CaloriesEaten_Label);
-            this.GeneralGroupBox.Controls.Add(this.LvLabel_Pre);
-            this.GeneralGroupBox.Controls.Add(this.OpenClothEditButton);
-            this.GeneralGroupBox.Controls.Add(this.PartyMember6_PictureBox);
-            this.GeneralGroupBox.Controls.Add(this.OpenCharacterEditButton);
-            this.GeneralGroupBox.Controls.Add(this.OpenNoisepediaEditButton);
-            this.GeneralGroupBox.Controls.Add(this.PartyMember5_PictureBox);
-            this.GeneralGroupBox.Controls.Add(this.PartyMember4_PictureBox);
-            this.GeneralGroupBox.Controls.Add(this.PartyMember3_PictureBox);
-            this.GeneralGroupBox.Controls.Add(this.PartyMember2_PictureBox);
-            this.GeneralGroupBox.Controls.Add(this.OpenInvEditorButton);
-            this.GeneralGroupBox.Controls.Add(this.PartyMember1_PictureBox);
-            this.GeneralGroupBox.Controls.Add(this.OpenSocialEditButton);
-            this.GeneralGroupBox.Controls.Add(this.PartyMembersLabel);
-            this.GeneralGroupBox.Controls.Add(this.OpenRecordEditButton);
-            this.GeneralGroupBox.Controls.Add(this.InitializedSlotCheckbox);
-            this.GeneralGroupBox.Controls.Add(this.DateOfSavePicker);
-            this.GeneralGroupBox.Controls.Add(this.DateSavedLabel);
-            this.GeneralGroupBox.Controls.Add(this.MoneyLabel);
-            this.GeneralGroupBox.Controls.Add(this.LvLabel);
-            this.GeneralGroupBox.Controls.Add(this.MoneyNUpDown);
-            this.GeneralGroupBox.Controls.Add(this.ExpNumericUpDown);
-            this.GeneralGroupBox.Controls.Add(this.DifficultyLabel);
-            this.GeneralGroupBox.Controls.Add(this.ExperienceLabel);
-            this.GeneralGroupBox.Controls.Add(this.DifficultyCombo);
-            this.GeneralGroupBox.Controls.Add(this.CurrentLevelLabel);
-            this.GeneralGroupBox.Controls.Add(this.CurrentLevelNUpDown);
-            this.GeneralGroupBox.Controls.Add(this.FpNumericUpDown);
-            this.GeneralGroupBox.Controls.Add(this.FpLabel);
-            this.GeneralGroupBox.Location = new System.Drawing.Point(168, 107);
+            this.GeneralGroupBox.Controls.Add(this.OtherToolsGroupBox);
+            this.GeneralGroupBox.Controls.Add(this.OtherStatsGroupBox);
+            this.GeneralGroupBox.Controls.Add(this.SaveSlotInfoGroupBox);
+            this.GeneralGroupBox.Controls.Add(this.PartyGroupBox);
+            this.GeneralGroupBox.Controls.Add(this.StatsGroupBox);
+            this.GeneralGroupBox.Controls.Add(this.SelectedSlotEditorsGroupBox);
+            this.GeneralGroupBox.Location = new System.Drawing.Point(157, 107);
             this.GeneralGroupBox.Name = "GeneralGroupBox";
-            this.GeneralGroupBox.Size = new System.Drawing.Size(564, 316);
+            this.GeneralGroupBox.Size = new System.Drawing.Size(508, 508);
             this.GeneralGroupBox.TabIndex = 21;
             this.GeneralGroupBox.TabStop = false;
             this.GeneralGroupBox.Text = "This selected slot";
             // 
-            // PlatformLabel
+            // OtherToolsGroupBox
             // 
-            this.PlatformLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.PlatformLabel.Location = new System.Drawing.Point(268, 27);
-            this.PlatformLabel.Name = "PlatformLabel";
-            this.PlatformLabel.Size = new System.Drawing.Size(108, 14);
-            this.PlatformLabel.TabIndex = 34;
-            this.PlatformLabel.Text = "{Platform}";
-            this.PlatformLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.OtherToolsGroupBox.Controls.Add(this.OpenMismatchFixerButton);
+            this.OtherToolsGroupBox.Controls.Add(this.OpenRandomizerButton);
+            this.OtherToolsGroupBox.Location = new System.Drawing.Point(6, 380);
+            this.OtherToolsGroupBox.Name = "OtherToolsGroupBox";
+            this.OtherToolsGroupBox.Size = new System.Drawing.Size(154, 122);
+            this.OtherToolsGroupBox.TabIndex = 40;
+            this.OtherToolsGroupBox.TabStop = false;
+            this.OtherToolsGroupBox.Text = "Other tools";
+            // 
+            // OpenMismatchFixerButton
+            // 
+            this.OpenMismatchFixerButton.BackColor = System.Drawing.Color.Honeydew;
+            this.OpenMismatchFixerButton.Location = new System.Drawing.Point(6, 51);
+            this.OpenMismatchFixerButton.Name = "OpenMismatchFixerButton";
+            this.OpenMismatchFixerButton.Size = new System.Drawing.Size(142, 23);
+            this.OpenMismatchFixerButton.TabIndex = 34;
+            this.OpenMismatchFixerButton.Text = "Mismatch Fixer";
+            this.OpenMismatchFixerButton.UseVisualStyleBackColor = false;
             // 
             // OpenRandomizerButton
             // 
-            this.OpenRandomizerButton.BackColor = System.Drawing.Color.OldLace;
-            this.OpenRandomizerButton.Location = new System.Drawing.Point(268, 283);
+            this.OpenRandomizerButton.BackColor = System.Drawing.Color.Ivory;
+            this.OpenRandomizerButton.Location = new System.Drawing.Point(6, 22);
             this.OpenRandomizerButton.Name = "OpenRandomizerButton";
-            this.OpenRandomizerButton.Size = new System.Drawing.Size(108, 23);
+            this.OpenRandomizerButton.Size = new System.Drawing.Size(142, 23);
             this.OpenRandomizerButton.TabIndex = 33;
             this.OpenRandomizerButton.Text = "Randomizer";
             this.OpenRandomizerButton.UseVisualStyleBackColor = false;
             this.OpenRandomizerButton.Click += new System.EventHandler(this.OpenRandomizerButton_Click);
             // 
+            // OtherStatsGroupBox
+            // 
+            this.OtherStatsGroupBox.Controls.Add(this.MenuMusicLabel);
+            this.OtherStatsGroupBox.Controls.Add(this.FpNumericUpDown);
+            this.OtherStatsGroupBox.Controls.Add(this.MoneyNUpDown);
+            this.OtherStatsGroupBox.Controls.Add(this.MenuMusicComboBox);
+            this.OtherStatsGroupBox.Controls.Add(this.MoneyLabel);
+            this.OtherStatsGroupBox.Controls.Add(this.FpLabel);
+            this.OtherStatsGroupBox.Location = new System.Drawing.Point(166, 380);
+            this.OtherStatsGroupBox.Name = "OtherStatsGroupBox";
+            this.OtherStatsGroupBox.Size = new System.Drawing.Size(336, 122);
+            this.OtherStatsGroupBox.TabIndex = 39;
+            this.OtherStatsGroupBox.TabStop = false;
+            this.OtherStatsGroupBox.Text = "More Stats";
+            // 
+            // MenuMusicLabel
+            // 
+            this.MenuMusicLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuMusicLabel.Location = new System.Drawing.Point(6, 88);
+            this.MenuMusicLabel.Name = "MenuMusicLabel";
+            this.MenuMusicLabel.Size = new System.Drawing.Size(97, 15);
+            this.MenuMusicLabel.TabIndex = 15;
+            this.MenuMusicLabel.Text = "Menu Music:";
+            // 
+            // MenuMusicComboBox
+            // 
+            this.MenuMusicComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MenuMusicComboBox.FormattingEnabled = true;
+            this.MenuMusicComboBox.Location = new System.Drawing.Point(109, 85);
+            this.MenuMusicComboBox.Name = "MenuMusicComboBox";
+            this.MenuMusicComboBox.Size = new System.Drawing.Size(221, 23);
+            this.MenuMusicComboBox.TabIndex = 14;
+            this.MenuMusicComboBox.SelectedIndexChanged += new System.EventHandler(this.MenuMusicComboBox_SelectedIndexChanged);
+            // 
+            // SaveSlotInfoGroupBox
+            // 
+            this.SaveSlotInfoGroupBox.Controls.Add(this.DayNowLabel);
+            this.SaveSlotInfoGroupBox.Controls.Add(this.InitializedSlotCheckbox);
+            this.SaveSlotInfoGroupBox.Controls.Add(this.DumpSlotDataButton);
+            this.SaveSlotInfoGroupBox.Controls.Add(this.ImportSlotDataButton);
+            this.SaveSlotInfoGroupBox.Controls.Add(this.DateSavedLabel);
+            this.SaveSlotInfoGroupBox.Controls.Add(this.DateOfSavePicker);
+            this.SaveSlotInfoGroupBox.Location = new System.Drawing.Point(6, 22);
+            this.SaveSlotInfoGroupBox.Name = "SaveSlotInfoGroupBox";
+            this.SaveSlotInfoGroupBox.Size = new System.Drawing.Size(156, 175);
+            this.SaveSlotInfoGroupBox.TabIndex = 38;
+            this.SaveSlotInfoGroupBox.TabStop = false;
+            this.SaveSlotInfoGroupBox.Text = "Slot Info";
+            // 
+            // DayNowLabel
+            // 
+            this.DayNowLabel.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.DayNowLabel.Location = new System.Drawing.Point(6, 19);
+            this.DayNowLabel.Name = "DayNowLabel";
+            this.DayNowLabel.Size = new System.Drawing.Size(144, 14);
+            this.DayNowLabel.TabIndex = 35;
+            this.DayNowLabel.Text = "WEEK x | DAY x";
+            this.DayNowLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DumpSlotDataButton
+            // 
+            this.DumpSlotDataButton.BackColor = System.Drawing.Color.Snow;
+            this.DumpSlotDataButton.Location = new System.Drawing.Point(6, 142);
+            this.DumpSlotDataButton.Name = "DumpSlotDataButton";
+            this.DumpSlotDataButton.Size = new System.Drawing.Size(144, 23);
+            this.DumpSlotDataButton.TabIndex = 4;
+            this.DumpSlotDataButton.Text = "Dump Slot Data";
+            this.DumpSlotDataButton.UseVisualStyleBackColor = false;
+            this.DumpSlotDataButton.Click += new System.EventHandler(this.DumpSlotDebugButton_Click);
+            // 
+            // ImportSlotDataButton
+            // 
+            this.ImportSlotDataButton.BackColor = System.Drawing.Color.Snow;
+            this.ImportSlotDataButton.Location = new System.Drawing.Point(6, 113);
+            this.ImportSlotDataButton.Name = "ImportSlotDataButton";
+            this.ImportSlotDataButton.Size = new System.Drawing.Size(144, 23);
+            this.ImportSlotDataButton.TabIndex = 5;
+            this.ImportSlotDataButton.Text = "Import Slot Data";
+            this.ImportSlotDataButton.UseVisualStyleBackColor = false;
+            this.ImportSlotDataButton.Click += new System.EventHandler(this.ImportSlotDataButton_Click);
+            // 
+            // PartyGroupBox
+            // 
+            this.PartyGroupBox.Controls.Add(this.OpenPartyMemberEditorButton);
+            this.PartyGroupBox.Controls.Add(this.PartyMember5_PictureBox);
+            this.PartyGroupBox.Controls.Add(this.PartyMember1_PictureBox);
+            this.PartyGroupBox.Controls.Add(this.PartyMember6_PictureBox);
+            this.PartyGroupBox.Controls.Add(this.PartyMember4_PictureBox);
+            this.PartyGroupBox.Controls.Add(this.PartyMember2_PictureBox);
+            this.PartyGroupBox.Controls.Add(this.PartyMember3_PictureBox);
+            this.PartyGroupBox.Location = new System.Drawing.Point(6, 203);
+            this.PartyGroupBox.Name = "PartyGroupBox";
+            this.PartyGroupBox.Size = new System.Drawing.Size(156, 171);
+            this.PartyGroupBox.TabIndex = 37;
+            this.PartyGroupBox.TabStop = false;
+            this.PartyGroupBox.Text = "Party";
+            // 
+            // OpenPartyMemberEditorButton
+            // 
+            this.OpenPartyMemberEditorButton.Location = new System.Drawing.Point(6, 141);
+            this.OpenPartyMemberEditorButton.Name = "OpenPartyMemberEditorButton";
+            this.OpenPartyMemberEditorButton.Size = new System.Drawing.Size(144, 23);
+            this.OpenPartyMemberEditorButton.TabIndex = 25;
+            this.OpenPartyMemberEditorButton.Text = "Edit Party";
+            this.OpenPartyMemberEditorButton.UseVisualStyleBackColor = true;
+            // 
+            // PartyMember5_PictureBox
+            // 
+            this.PartyMember5_PictureBox.Location = new System.Drawing.Point(56, 79);
+            this.PartyMember5_PictureBox.Name = "PartyMember5_PictureBox";
+            this.PartyMember5_PictureBox.Size = new System.Drawing.Size(44, 44);
+            this.PartyMember5_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PartyMember5_PictureBox.TabIndex = 23;
+            this.PartyMember5_PictureBox.TabStop = false;
+            // 
+            // PartyMember1_PictureBox
+            // 
+            this.PartyMember1_PictureBox.Location = new System.Drawing.Point(6, 29);
+            this.PartyMember1_PictureBox.Name = "PartyMember1_PictureBox";
+            this.PartyMember1_PictureBox.Size = new System.Drawing.Size(44, 44);
+            this.PartyMember1_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PartyMember1_PictureBox.TabIndex = 19;
+            this.PartyMember1_PictureBox.TabStop = false;
+            // 
+            // PartyMember6_PictureBox
+            // 
+            this.PartyMember6_PictureBox.Location = new System.Drawing.Point(106, 79);
+            this.PartyMember6_PictureBox.Name = "PartyMember6_PictureBox";
+            this.PartyMember6_PictureBox.Size = new System.Drawing.Size(44, 44);
+            this.PartyMember6_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PartyMember6_PictureBox.TabIndex = 24;
+            this.PartyMember6_PictureBox.TabStop = false;
+            // 
+            // PartyMember4_PictureBox
+            // 
+            this.PartyMember4_PictureBox.Location = new System.Drawing.Point(6, 79);
+            this.PartyMember4_PictureBox.Name = "PartyMember4_PictureBox";
+            this.PartyMember4_PictureBox.Size = new System.Drawing.Size(44, 44);
+            this.PartyMember4_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PartyMember4_PictureBox.TabIndex = 22;
+            this.PartyMember4_PictureBox.TabStop = false;
+            // 
+            // PartyMember2_PictureBox
+            // 
+            this.PartyMember2_PictureBox.Location = new System.Drawing.Point(56, 29);
+            this.PartyMember2_PictureBox.Name = "PartyMember2_PictureBox";
+            this.PartyMember2_PictureBox.Size = new System.Drawing.Size(44, 44);
+            this.PartyMember2_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PartyMember2_PictureBox.TabIndex = 20;
+            this.PartyMember2_PictureBox.TabStop = false;
+            // 
+            // PartyMember3_PictureBox
+            // 
+            this.PartyMember3_PictureBox.Location = new System.Drawing.Point(106, 29);
+            this.PartyMember3_PictureBox.Name = "PartyMember3_PictureBox";
+            this.PartyMember3_PictureBox.Size = new System.Drawing.Size(44, 44);
+            this.PartyMember3_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PartyMember3_PictureBox.TabIndex = 21;
+            this.PartyMember3_PictureBox.TabStop = false;
+            // 
+            // StatsGroupBox
+            // 
+            this.StatsGroupBox.Controls.Add(this.CaloriesPercentage_Label);
+            this.StatsGroupBox.Controls.Add(this.MaxLevelLabel);
+            this.StatsGroupBox.Controls.Add(this.Calories_NumUpDown);
+            this.StatsGroupBox.Controls.Add(this.CaloriesEaten_Label);
+            this.StatsGroupBox.Controls.Add(this.ExperienceLabel);
+            this.StatsGroupBox.Controls.Add(this.ExpNumericUpDown);
+            this.StatsGroupBox.Controls.Add(this.OverateCheckbox);
+            this.StatsGroupBox.Controls.Add(this.DifficultyCombo);
+            this.StatsGroupBox.Controls.Add(this.CurrentLevelLabel);
+            this.StatsGroupBox.Controls.Add(this.CurrentLevelNUpDown);
+            this.StatsGroupBox.Controls.Add(this.DifficultyLabel);
+            this.StatsGroupBox.Location = new System.Drawing.Point(168, 203);
+            this.StatsGroupBox.Name = "StatsGroupBox";
+            this.StatsGroupBox.Size = new System.Drawing.Size(334, 171);
+            this.StatsGroupBox.TabIndex = 36;
+            this.StatsGroupBox.TabStop = false;
+            this.StatsGroupBox.Text = "Party Stats";
+            // 
+            // CaloriesPercentage_Label
+            // 
+            this.CaloriesPercentage_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.CaloriesPercentage_Label.ForeColor = System.Drawing.Color.Green;
+            this.CaloriesPercentage_Label.Location = new System.Drawing.Point(246, 114);
+            this.CaloriesPercentage_Label.Name = "CaloriesPercentage_Label";
+            this.CaloriesPercentage_Label.Size = new System.Drawing.Size(50, 15);
+            this.CaloriesPercentage_Label.TabIndex = 30;
+            this.CaloriesPercentage_Label.Text = "0%";
+            // 
+            // MaxLevelLabel
+            // 
+            this.MaxLevelLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaxLevelLabel.ForeColor = System.Drawing.Color.Crimson;
+            this.MaxLevelLabel.Location = new System.Drawing.Point(246, 56);
+            this.MaxLevelLabel.Name = "MaxLevelLabel";
+            this.MaxLevelLabel.Size = new System.Drawing.Size(50, 15);
+            this.MaxLevelLabel.TabIndex = 27;
+            this.MaxLevelLabel.Text = "LV";
+            // 
+            // Calories_NumUpDown
+            // 
+            this.Calories_NumUpDown.Location = new System.Drawing.Point(107, 112);
+            this.Calories_NumUpDown.Maximum = new decimal(new int[] {
+            12000,
+            0,
+            0,
+            0});
+            this.Calories_NumUpDown.Name = "Calories_NumUpDown";
+            this.Calories_NumUpDown.Size = new System.Drawing.Size(133, 23);
+            this.Calories_NumUpDown.TabIndex = 14;
+            this.Calories_NumUpDown.ValueChanged += new System.EventHandler(this.Calories_NumUpDown_ValueChanged);
+            // 
+            // CaloriesEaten_Label
+            // 
+            this.CaloriesEaten_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CaloriesEaten_Label.Location = new System.Drawing.Point(6, 114);
+            this.CaloriesEaten_Label.Name = "CaloriesEaten_Label";
+            this.CaloriesEaten_Label.Size = new System.Drawing.Size(95, 15);
+            this.CaloriesEaten_Label.TabIndex = 28;
+            this.CaloriesEaten_Label.Text = "Calories Eaten:";
+            // 
+            // OverateCheckbox
+            // 
+            this.OverateCheckbox.Location = new System.Drawing.Point(9, 140);
+            this.OverateCheckbox.Name = "OverateCheckbox";
+            this.OverateCheckbox.Size = new System.Drawing.Size(76, 24);
+            this.OverateCheckbox.TabIndex = 15;
+            this.OverateCheckbox.Text = "{Overate}";
+            this.OverateCheckbox.UseVisualStyleBackColor = true;
+            this.OverateCheckbox.CheckedChanged += new System.EventHandler(this.OverateCheckbox_CheckedChanged);
+            // 
+            // SelectedSlotEditorsGroupBox
+            // 
+            this.SelectedSlotEditorsGroupBox.Controls.Add(this.OpenDayEditor_Button);
+            this.SelectedSlotEditorsGroupBox.Controls.Add(this.OpenRecordEditButton);
+            this.SelectedSlotEditorsGroupBox.Controls.Add(this.OpenSocialEditButton);
+            this.SelectedSlotEditorsGroupBox.Controls.Add(this.OpenTurfWar_Edit);
+            this.SelectedSlotEditorsGroupBox.Controls.Add(this.OpenInvEditorButton);
+            this.SelectedSlotEditorsGroupBox.Controls.Add(this.OpenTrophyEdit_Button);
+            this.SelectedSlotEditorsGroupBox.Controls.Add(this.OpenNoisepediaEditButton);
+            this.SelectedSlotEditorsGroupBox.Controls.Add(this.OpenCharacterEditButton);
+            this.SelectedSlotEditorsGroupBox.Controls.Add(this.OpenClothEditButton);
+            this.SelectedSlotEditorsGroupBox.Controls.Add(this.OpenShopEdit_Button);
+            this.SelectedSlotEditorsGroupBox.Location = new System.Drawing.Point(168, 22);
+            this.SelectedSlotEditorsGroupBox.Name = "SelectedSlotEditorsGroupBox";
+            this.SelectedSlotEditorsGroupBox.Size = new System.Drawing.Size(334, 175);
+            this.SelectedSlotEditorsGroupBox.TabIndex = 35;
+            this.SelectedSlotEditorsGroupBox.TabStop = false;
+            this.SelectedSlotEditorsGroupBox.Text = "Editors";
+            // 
+            // OpenDayEditor_Button
+            // 
+            this.OpenDayEditor_Button.Location = new System.Drawing.Point(6, 22);
+            this.OpenDayEditor_Button.Name = "OpenDayEditor_Button";
+            this.OpenDayEditor_Button.Size = new System.Drawing.Size(158, 23);
+            this.OpenDayEditor_Button.TabIndex = 16;
+            this.OpenDayEditor_Button.Text = "Day Editor";
+            this.OpenDayEditor_Button.UseVisualStyleBackColor = true;
+            this.OpenDayEditor_Button.Click += new System.EventHandler(this.OpenDayEditor_Button_Click);
+            // 
             // OpenTurfWar_Edit
             // 
-            this.OpenTurfWar_Edit.Location = new System.Drawing.Point(400, 283);
+            this.OpenTurfWar_Edit.Location = new System.Drawing.Point(170, 109);
             this.OpenTurfWar_Edit.Name = "OpenTurfWar_Edit";
             this.OpenTurfWar_Edit.Size = new System.Drawing.Size(158, 23);
             this.OpenTurfWar_Edit.TabIndex = 32;
@@ -449,7 +693,7 @@
             // 
             // OpenTrophyEdit_Button
             // 
-            this.OpenTrophyEdit_Button.Location = new System.Drawing.Point(400, 254);
+            this.OpenTrophyEdit_Button.Location = new System.Drawing.Point(170, 138);
             this.OpenTrophyEdit_Button.Name = "OpenTrophyEdit_Button";
             this.OpenTrophyEdit_Button.Size = new System.Drawing.Size(158, 23);
             this.OpenTrophyEdit_Button.TabIndex = 31;
@@ -457,110 +701,9 @@
             this.OpenTrophyEdit_Button.UseVisualStyleBackColor = true;
             this.OpenTrophyEdit_Button.Click += new System.EventHandler(this.OpenTrophyEdit_Button_Click);
             // 
-            // OpenDayEditor_Button
-            // 
-            this.OpenDayEditor_Button.Location = new System.Drawing.Point(400, 22);
-            this.OpenDayEditor_Button.Name = "OpenDayEditor_Button";
-            this.OpenDayEditor_Button.Size = new System.Drawing.Size(158, 23);
-            this.OpenDayEditor_Button.TabIndex = 16;
-            this.OpenDayEditor_Button.Text = "Day Editor";
-            this.OpenDayEditor_Button.UseVisualStyleBackColor = true;
-            this.OpenDayEditor_Button.Click += new System.EventHandler(this.OpenDayEditor_Button_Click);
-            // 
-            // OverateCheckbox
-            // 
-            this.OverateCheckbox.Location = new System.Drawing.Point(95, 270);
-            this.OverateCheckbox.Name = "OverateCheckbox";
-            this.OverateCheckbox.Size = new System.Drawing.Size(76, 24);
-            this.OverateCheckbox.TabIndex = 15;
-            this.OverateCheckbox.Text = "{Overate}";
-            this.OverateCheckbox.UseVisualStyleBackColor = true;
-            this.OverateCheckbox.CheckedChanged += new System.EventHandler(this.OverateCheckbox_CheckedChanged);
-            // 
-            // OpenShopEdit_Button
-            // 
-            this.OpenShopEdit_Button.Location = new System.Drawing.Point(400, 225);
-            this.OpenShopEdit_Button.Name = "OpenShopEdit_Button";
-            this.OpenShopEdit_Button.Size = new System.Drawing.Size(158, 23);
-            this.OpenShopEdit_Button.TabIndex = 23;
-            this.OpenShopEdit_Button.Text = "Shop Editor";
-            this.OpenShopEdit_Button.UseVisualStyleBackColor = true;
-            this.OpenShopEdit_Button.Click += new System.EventHandler(this.OpenShopEdit_Button_Click);
-            // 
-            // CaloriesPercentage_Label
-            // 
-            this.CaloriesPercentage_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.CaloriesPercentage_Label.ForeColor = System.Drawing.Color.Green;
-            this.CaloriesPercentage_Label.Location = new System.Drawing.Point(200, 243);
-            this.CaloriesPercentage_Label.Name = "CaloriesPercentage_Label";
-            this.CaloriesPercentage_Label.Size = new System.Drawing.Size(43, 15);
-            this.CaloriesPercentage_Label.TabIndex = 30;
-            this.CaloriesPercentage_Label.Text = "0%";
-            // 
-            // Calories_NumUpDown
-            // 
-            this.Calories_NumUpDown.Location = new System.Drawing.Point(96, 241);
-            this.Calories_NumUpDown.Maximum = new decimal(new int[] {
-            12000,
-            0,
-            0,
-            0});
-            this.Calories_NumUpDown.Name = "Calories_NumUpDown";
-            this.Calories_NumUpDown.Size = new System.Drawing.Size(98, 23);
-            this.Calories_NumUpDown.TabIndex = 14;
-            this.Calories_NumUpDown.ValueChanged += new System.EventHandler(this.Calories_NumUpDown_ValueChanged);
-            // 
-            // CaloriesEaten_Label
-            // 
-            this.CaloriesEaten_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.CaloriesEaten_Label.Location = new System.Drawing.Point(6, 244);
-            this.CaloriesEaten_Label.Name = "CaloriesEaten_Label";
-            this.CaloriesEaten_Label.Size = new System.Drawing.Size(84, 15);
-            this.CaloriesEaten_Label.TabIndex = 28;
-            this.CaloriesEaten_Label.Text = "Calories Eaten:";
-            // 
-            // LvLabel_Pre
-            // 
-            this.LvLabel_Pre.AutoSize = true;
-            this.LvLabel_Pre.ForeColor = System.Drawing.Color.MediumBlue;
-            this.LvLabel_Pre.Location = new System.Drawing.Point(200, 127);
-            this.LvLabel_Pre.Name = "LvLabel_Pre";
-            this.LvLabel_Pre.Size = new System.Drawing.Size(21, 15);
-            this.LvLabel_Pre.TabIndex = 27;
-            this.LvLabel_Pre.Text = "Lv.";
-            // 
-            // OpenClothEditButton
-            // 
-            this.OpenClothEditButton.Location = new System.Drawing.Point(400, 109);
-            this.OpenClothEditButton.Name = "OpenClothEditButton";
-            this.OpenClothEditButton.Size = new System.Drawing.Size(158, 23);
-            this.OpenClothEditButton.TabIndex = 19;
-            this.OpenClothEditButton.Text = "Clothing Editor";
-            this.OpenClothEditButton.UseVisualStyleBackColor = true;
-            this.OpenClothEditButton.Click += new System.EventHandler(this.OpenClothEditButton_Click);
-            // 
-            // PartyMember6_PictureBox
-            // 
-            this.PartyMember6_PictureBox.Location = new System.Drawing.Point(344, 165);
-            this.PartyMember6_PictureBox.Name = "PartyMember6_PictureBox";
-            this.PartyMember6_PictureBox.Size = new System.Drawing.Size(32, 32);
-            this.PartyMember6_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PartyMember6_PictureBox.TabIndex = 24;
-            this.PartyMember6_PictureBox.TabStop = false;
-            // 
-            // OpenCharacterEditButton
-            // 
-            this.OpenCharacterEditButton.Location = new System.Drawing.Point(400, 51);
-            this.OpenCharacterEditButton.Name = "OpenCharacterEditButton";
-            this.OpenCharacterEditButton.Size = new System.Drawing.Size(158, 23);
-            this.OpenCharacterEditButton.TabIndex = 17;
-            this.OpenCharacterEditButton.Text = "Character Editor";
-            this.OpenCharacterEditButton.UseVisualStyleBackColor = true;
-            this.OpenCharacterEditButton.Click += new System.EventHandler(this.OpenCharacterEditButton_Click);
-            // 
             // OpenNoisepediaEditButton
             // 
-            this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(400, 196);
+            this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(6, 51);
             this.OpenNoisepediaEditButton.Name = "OpenNoisepediaEditButton";
             this.OpenNoisepediaEditButton.Size = new System.Drawing.Size(158, 23);
             this.OpenNoisepediaEditButton.TabIndex = 22;
@@ -568,106 +711,52 @@
             this.OpenNoisepediaEditButton.UseVisualStyleBackColor = true;
             this.OpenNoisepediaEditButton.Click += new System.EventHandler(this.OpenNoisepediaEditButton_Click);
             // 
-            // PartyMember5_PictureBox
+            // OpenCharacterEditButton
             // 
-            this.PartyMember5_PictureBox.Location = new System.Drawing.Point(306, 165);
-            this.PartyMember5_PictureBox.Name = "PartyMember5_PictureBox";
-            this.PartyMember5_PictureBox.Size = new System.Drawing.Size(32, 32);
-            this.PartyMember5_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PartyMember5_PictureBox.TabIndex = 23;
-            this.PartyMember5_PictureBox.TabStop = false;
+            this.OpenCharacterEditButton.Location = new System.Drawing.Point(170, 22);
+            this.OpenCharacterEditButton.Name = "OpenCharacterEditButton";
+            this.OpenCharacterEditButton.Size = new System.Drawing.Size(158, 23);
+            this.OpenCharacterEditButton.TabIndex = 17;
+            this.OpenCharacterEditButton.Text = "Character Editor";
+            this.OpenCharacterEditButton.UseVisualStyleBackColor = true;
+            this.OpenCharacterEditButton.Click += new System.EventHandler(this.OpenCharacterEditButton_Click);
             // 
-            // PartyMember4_PictureBox
+            // OpenClothEditButton
             // 
-            this.PartyMember4_PictureBox.Location = new System.Drawing.Point(268, 165);
-            this.PartyMember4_PictureBox.Name = "PartyMember4_PictureBox";
-            this.PartyMember4_PictureBox.Size = new System.Drawing.Size(32, 32);
-            this.PartyMember4_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PartyMember4_PictureBox.TabIndex = 22;
-            this.PartyMember4_PictureBox.TabStop = false;
+            this.OpenClothEditButton.Location = new System.Drawing.Point(170, 80);
+            this.OpenClothEditButton.Name = "OpenClothEditButton";
+            this.OpenClothEditButton.Size = new System.Drawing.Size(158, 23);
+            this.OpenClothEditButton.TabIndex = 19;
+            this.OpenClothEditButton.Text = "Clothing Editor";
+            this.OpenClothEditButton.UseVisualStyleBackColor = true;
+            this.OpenClothEditButton.Click += new System.EventHandler(this.OpenClothEditButton_Click);
             // 
-            // PartyMember3_PictureBox
+            // OpenShopEdit_Button
             // 
-            this.PartyMember3_PictureBox.Location = new System.Drawing.Point(344, 127);
-            this.PartyMember3_PictureBox.Name = "PartyMember3_PictureBox";
-            this.PartyMember3_PictureBox.Size = new System.Drawing.Size(32, 32);
-            this.PartyMember3_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PartyMember3_PictureBox.TabIndex = 21;
-            this.PartyMember3_PictureBox.TabStop = false;
-            // 
-            // PartyMember2_PictureBox
-            // 
-            this.PartyMember2_PictureBox.Location = new System.Drawing.Point(306, 127);
-            this.PartyMember2_PictureBox.Name = "PartyMember2_PictureBox";
-            this.PartyMember2_PictureBox.Size = new System.Drawing.Size(32, 32);
-            this.PartyMember2_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PartyMember2_PictureBox.TabIndex = 20;
-            this.PartyMember2_PictureBox.TabStop = false;
-            // 
-            // PartyMember1_PictureBox
-            // 
-            this.PartyMember1_PictureBox.Location = new System.Drawing.Point(268, 127);
-            this.PartyMember1_PictureBox.Name = "PartyMember1_PictureBox";
-            this.PartyMember1_PictureBox.Size = new System.Drawing.Size(32, 32);
-            this.PartyMember1_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PartyMember1_PictureBox.TabIndex = 19;
-            this.PartyMember1_PictureBox.TabStop = false;
-            // 
-            // PartyMembersLabel
-            // 
-            this.PartyMembersLabel.Location = new System.Drawing.Point(268, 109);
-            this.PartyMembersLabel.Name = "PartyMembersLabel";
-            this.PartyMembersLabel.Size = new System.Drawing.Size(108, 15);
-            this.PartyMembersLabel.TabIndex = 18;
-            this.PartyMembersLabel.Text = "Your party";
-            this.PartyMembersLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // LvLabel
-            // 
-            this.LvLabel.AutoSize = true;
-            this.LvLabel.ForeColor = System.Drawing.Color.MediumBlue;
-            this.LvLabel.Location = new System.Drawing.Point(230, 127);
-            this.LvLabel.Name = "LvLabel";
-            this.LvLabel.Size = new System.Drawing.Size(13, 15);
-            this.LvLabel.TabIndex = 17;
-            this.LvLabel.Text = "1";
-            // 
-            // DumpSlotDataButton
-            // 
-            this.DumpSlotDataButton.Location = new System.Drawing.Point(424, 34);
-            this.DumpSlotDataButton.Name = "DumpSlotDataButton";
-            this.DumpSlotDataButton.Size = new System.Drawing.Size(132, 23);
-            this.DumpSlotDataButton.TabIndex = 4;
-            this.DumpSlotDataButton.Text = "Dump Slot Data";
-            this.DumpSlotDataButton.UseVisualStyleBackColor = true;
-            this.DumpSlotDataButton.Click += new System.EventHandler(this.DumpSlotDebugButton_Click);
-            // 
-            // ImportSlotDataButton
-            // 
-            this.ImportSlotDataButton.Location = new System.Drawing.Point(424, 63);
-            this.ImportSlotDataButton.Name = "ImportSlotDataButton";
-            this.ImportSlotDataButton.Size = new System.Drawing.Size(132, 23);
-            this.ImportSlotDataButton.TabIndex = 5;
-            this.ImportSlotDataButton.Text = "Import Slot Data";
-            this.ImportSlotDataButton.UseVisualStyleBackColor = true;
-            this.ImportSlotDataButton.Click += new System.EventHandler(this.ImportSlotDataButton_Click);
+            this.OpenShopEdit_Button.Location = new System.Drawing.Point(6, 138);
+            this.OpenShopEdit_Button.Name = "OpenShopEdit_Button";
+            this.OpenShopEdit_Button.Size = new System.Drawing.Size(158, 23);
+            this.OpenShopEdit_Button.TabIndex = 23;
+            this.OpenShopEdit_Button.Text = "Shop Editor";
+            this.OpenShopEdit_Button.UseVisualStyleBackColor = true;
+            this.OpenShopEdit_Button.Click += new System.EventHandler(this.OpenShopEdit_Button_Click);
             // 
             // GlobalGroupBox
             // 
             this.GlobalGroupBox.Controls.Add(this.MiscFlagsEditorButton);
             this.GlobalGroupBox.Controls.Add(this.GameSettingsEditorButton);
-            this.GlobalGroupBox.Location = new System.Drawing.Point(562, 12);
+            this.GlobalGroupBox.Location = new System.Drawing.Point(12, 107);
             this.GlobalGroupBox.Name = "GlobalGroupBox";
-            this.GlobalGroupBox.Size = new System.Drawing.Size(170, 89);
+            this.GlobalGroupBox.Size = new System.Drawing.Size(139, 87);
             this.GlobalGroupBox.TabIndex = 24;
             this.GlobalGroupBox.TabStop = false;
-            this.GlobalGroupBox.Text = "Global";
+            this.GlobalGroupBox.Text = "System";
             // 
             // MiscFlagsEditorButton
             // 
             this.MiscFlagsEditorButton.Location = new System.Drawing.Point(6, 51);
             this.MiscFlagsEditorButton.Name = "MiscFlagsEditorButton";
-            this.MiscFlagsEditorButton.Size = new System.Drawing.Size(158, 23);
+            this.MiscFlagsEditorButton.Size = new System.Drawing.Size(127, 23);
             this.MiscFlagsEditorButton.TabIndex = 27;
             this.MiscFlagsEditorButton.Text = "Misc. Editor";
             this.MiscFlagsEditorButton.UseVisualStyleBackColor = true;
@@ -677,7 +766,7 @@
             // 
             this.GameSettingsEditorButton.Location = new System.Drawing.Point(6, 22);
             this.GameSettingsEditorButton.Name = "GameSettingsEditorButton";
-            this.GameSettingsEditorButton.Size = new System.Drawing.Size(158, 23);
+            this.GameSettingsEditorButton.Size = new System.Drawing.Size(127, 23);
             this.GameSettingsEditorButton.TabIndex = 26;
             this.GameSettingsEditorButton.Text = "Settings Editor";
             this.GameSettingsEditorButton.UseVisualStyleBackColor = true;
@@ -686,7 +775,7 @@
             // SelectLanguageLabel
             // 
             this.SelectLanguageLabel.AutoSize = true;
-            this.SelectLanguageLabel.Location = new System.Drawing.Point(12, 367);
+            this.SelectLanguageLabel.Location = new System.Drawing.Point(492, 65);
             this.SelectLanguageLabel.Name = "SelectLanguageLabel";
             this.SelectLanguageLabel.Size = new System.Drawing.Size(62, 15);
             this.SelectLanguageLabel.TabIndex = 27;
@@ -697,9 +786,9 @@
             this.LanguageSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageSelectComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LanguageSelectComboBox.FormattingEnabled = true;
-            this.LanguageSelectComboBox.Location = new System.Drawing.Point(75, 364);
+            this.LanguageSelectComboBox.Location = new System.Drawing.Point(560, 62);
             this.LanguageSelectComboBox.Name = "LanguageSelectComboBox";
-            this.LanguageSelectComboBox.Size = new System.Drawing.Size(76, 23);
+            this.LanguageSelectComboBox.Size = new System.Drawing.Size(89, 23);
             this.LanguageSelectComboBox.TabIndex = 0;
             this.LanguageSelectComboBox.SelectedIndexChanged += new System.EventHandler(this.LanguageSelectComboBox_SelectedIndexChanged);
             // 
@@ -708,7 +797,7 @@
             this.ShowSpoilersCheckbox.AutoSize = true;
             this.ShowSpoilersCheckbox.Checked = true;
             this.ShowSpoilersCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowSpoilersCheckbox.Location = new System.Drawing.Point(12, 393);
+            this.ShowSpoilersCheckbox.Location = new System.Drawing.Point(495, 12);
             this.ShowSpoilersCheckbox.Name = "ShowSpoilersCheckbox";
             this.ShowSpoilersCheckbox.Size = new System.Drawing.Size(98, 19);
             this.ShowSpoilersCheckbox.TabIndex = 0;
@@ -717,36 +806,141 @@
             // 
             // ThankYou_Label
             // 
-            this.ThankYou_Label.Font = new System.Drawing.Font("Segoe UI Semilight", 7F);
-            this.ThankYou_Label.ForeColor = System.Drawing.SystemColors.Control;
-            this.ThankYou_Label.Location = new System.Drawing.Point(18, 306);
+            this.ThankYou_Label.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ThankYou_Label.ForeColor = System.Drawing.Color.SlateBlue;
+            this.ThankYou_Label.Location = new System.Drawing.Point(16, 442);
             this.ThankYou_Label.Name = "ThankYou_Label";
-            this.ThankYou_Label.Size = new System.Drawing.Size(127, 44);
+            this.ThankYou_Label.Size = new System.Drawing.Size(128, 42);
             this.ThankYou_Label.TabIndex = 28;
-            this.ThankYou_Label.Text = "thank you\r\nfor using\r\nscramble";
+            this.ThankYou_Label.Text = "Thank you\r\nfor using\r\nScramble!";
             this.ThankYou_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ThankYou_Label.MouseEnter += new System.EventHandler(this.ThankYou_Label_MouseEnter);
-            this.ThankYou_Label.MouseLeave += new System.EventHandler(this.ThankYou_Label_MouseLeave);
+            this.ThankYou_Label.Visible = false;
             // 
             // PcVersionGlobalEditingNotSupportedToolTip
             // 
             this.PcVersionGlobalEditingNotSupportedToolTip.AutomaticDelay = 250;
             // 
+            // SaveChangesButton
+            // 
+            this.SaveChangesButton.BackColor = System.Drawing.Color.AliceBlue;
+            this.SaveChangesButton.Location = new System.Drawing.Point(342, 12);
+            this.SaveChangesButton.Name = "SaveChangesButton";
+            this.SaveChangesButton.Size = new System.Drawing.Size(119, 45);
+            this.SaveChangesButton.TabIndex = 2;
+            this.SaveChangesButton.Text = "Save Changes";
+            this.SaveChangesButton.UseVisualStyleBackColor = false;
+            this.SaveChangesButton.Click += new System.EventHandler(this.SaveChangesButton_Click);
+            // 
+            // SaveAsButton
+            // 
+            this.SaveAsButton.BackColor = System.Drawing.Color.MintCream;
+            this.SaveAsButton.Location = new System.Drawing.Point(343, 63);
+            this.SaveAsButton.Name = "SaveAsButton";
+            this.SaveAsButton.Size = new System.Drawing.Size(118, 23);
+            this.SaveAsButton.TabIndex = 35;
+            this.SaveAsButton.Text = "Save as...";
+            this.SaveAsButton.UseVisualStyleBackColor = false;
+            // 
+            // MrMewPictureBox
+            // 
+            this.MrMewPictureBox.Location = new System.Drawing.Point(16, 490);
+            this.MrMewPictureBox.Name = "MrMewPictureBox";
+            this.MrMewPictureBox.Size = new System.Drawing.Size(128, 128);
+            this.MrMewPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.MrMewPictureBox.TabIndex = 36;
+            this.MrMewPictureBox.TabStop = false;
+            this.MrMewPictureBox.MouseEnter += new System.EventHandler(this.MrMewPictureBox_MouseEnter);
+            this.MrMewPictureBox.MouseLeave += new System.EventHandler(this.MrMewPictureBox_MouseLeave);
+            // 
+            // PartyMember1Tooltip
+            // 
+            this.PartyMember1Tooltip.AutomaticDelay = 250;
+            // 
+            // PartyMember2Tooltip
+            // 
+            this.PartyMember2Tooltip.AutomaticDelay = 250;
+            // 
+            // PartyMember3Tooltip
+            // 
+            this.PartyMember3Tooltip.AutomaticDelay = 250;
+            // 
+            // PartyMember4Tooltip
+            // 
+            this.PartyMember4Tooltip.AutomaticDelay = 250;
+            // 
+            // PartyMember5Tooltip
+            // 
+            this.PartyMember5Tooltip.AutomaticDelay = 250;
+            // 
+            // PartyMember6Tooltip
+            // 
+            this.PartyMember6Tooltip.AutomaticDelay = 250;
+            // 
+            // GbaTempIconPictureBox
+            // 
+            this.GbaTempIconPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.GbaTempIconPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.GbaTempIconPictureBox.Location = new System.Drawing.Point(197, 71);
+            this.GbaTempIconPictureBox.Name = "GbaTempIconPictureBox";
+            this.GbaTempIconPictureBox.Size = new System.Drawing.Size(15, 15);
+            this.GbaTempIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.GbaTempIconPictureBox.TabIndex = 39;
+            this.GbaTempIconPictureBox.TabStop = false;
+            this.GbaTempIconPictureBox.Click += new System.EventHandler(this.GbaTempIconPictureBox_Click);
+            // 
+            // GithubIconPictureBox
+            // 
+            this.GithubIconPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.GithubIconPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.GithubIconPictureBox.Location = new System.Drawing.Point(176, 71);
+            this.GithubIconPictureBox.Name = "GithubIconPictureBox";
+            this.GithubIconPictureBox.Size = new System.Drawing.Size(15, 15);
+            this.GithubIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.GithubIconPictureBox.TabIndex = 38;
+            this.GithubIconPictureBox.TabStop = false;
+            this.GithubIconPictureBox.Click += new System.EventHandler(this.GithubIconPictureBox_Click);
+            // 
+            // VersionLabel
+            // 
+            this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.VersionLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 7F, System.Drawing.FontStyle.Bold);
+            this.VersionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.VersionLabel.Location = new System.Drawing.Point(128, 71);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(42, 15);
+            this.VersionLabel.TabIndex = 37;
+            this.VersionLabel.Text = "{Ver}";
+            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // KofiPictureBox
+            // 
+            this.KofiPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.KofiPictureBox.Location = new System.Drawing.Point(18, 408);
+            this.KofiPictureBox.Name = "KofiPictureBox";
+            this.KofiPictureBox.Size = new System.Drawing.Size(128, 25);
+            this.KofiPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.KofiPictureBox.TabIndex = 41;
+            this.KofiPictureBox.TabStop = false;
+            this.KofiPictureBox.Click += new System.EventHandler(this.KofiPictureBox_Click);
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(744, 433);
+            this.ClientSize = new System.Drawing.Size(681, 627);
+            this.Controls.Add(this.KofiPictureBox);
+            this.Controls.Add(this.GbaTempIconPictureBox);
+            this.Controls.Add(this.GithubIconPictureBox);
+            this.Controls.Add(this.VersionLabel);
+            this.Controls.Add(this.MrMewPictureBox);
+            this.Controls.Add(this.SaveAsButton);
             this.Controls.Add(this.ThankYou_Label);
             this.Controls.Add(this.ShowSpoilersCheckbox);
             this.Controls.Add(this.LanguageSelectComboBox);
             this.Controls.Add(this.SelectLanguageLabel);
             this.Controls.Add(this.GlobalGroupBox);
-            this.Controls.Add(this.ImportSlotDataButton);
-            this.Controls.Add(this.DumpSlotDataButton);
             this.Controls.Add(this.GeneralGroupBox);
             this.Controls.Add(this.BackupCheckbox);
-            this.Controls.Add(this.AboutLabel);
             this.Controls.Add(this.SaveChangesButton);
             this.Controls.Add(this.SaveSlotsGroupBox);
             this.Controls.Add(this.LogoPictureBox);
@@ -763,15 +957,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.FpNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpNumericUpDown)).EndInit();
             this.GeneralGroupBox.ResumeLayout(false);
-            this.GeneralGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Calories_NumUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PartyMember6_PictureBox)).EndInit();
+            this.OtherToolsGroupBox.ResumeLayout(false);
+            this.OtherStatsGroupBox.ResumeLayout(false);
+            this.SaveSlotInfoGroupBox.ResumeLayout(false);
+            this.SaveSlotInfoGroupBox.PerformLayout();
+            this.PartyGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember5_PictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PartyMember4_PictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PartyMember3_PictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PartyMember2_PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember1_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember6_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember4_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember2_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartyMember3_PictureBox)).EndInit();
+            this.StatsGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Calories_NumUpDown)).EndInit();
+            this.SelectedSlotEditorsGroupBox.ResumeLayout(false);
             this.GlobalGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MrMewPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GbaTempIconPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GithubIconPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KofiPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -784,8 +988,6 @@
         private System.Windows.Forms.ListBox SaveSlotsListBox;
         private System.Windows.Forms.DateTimePicker DateOfSavePicker;
         private System.Windows.Forms.Label DateSavedLabel;
-        private System.Windows.Forms.Button SaveChangesButton;
-        private System.Windows.Forms.Label AboutLabel;
         private System.Windows.Forms.Label MoneyLabel;
         private System.Windows.Forms.NumericUpDown MoneyNUpDown;
         private System.Windows.Forms.Label DifficultyLabel;
@@ -813,14 +1015,12 @@
         private System.Windows.Forms.PictureBox PartyMember3_PictureBox;
         private System.Windows.Forms.PictureBox PartyMember2_PictureBox;
         private System.Windows.Forms.PictureBox PartyMember1_PictureBox;
-        private System.Windows.Forms.Label PartyMembersLabel;
         private System.Windows.Forms.GroupBox GlobalGroupBox;
         private System.Windows.Forms.Button GameSettingsEditorButton;
         private System.Windows.Forms.Button MiscFlagsEditorButton;
         private System.Windows.Forms.Label SelectLanguageLabel;
         private System.Windows.Forms.ComboBox LanguageSelectComboBox;
-        private System.Windows.Forms.Label LvLabel_Pre;
-        private System.Windows.Forms.Label LvLabel;
+        private System.Windows.Forms.Label MaxLevelLabel;
         private System.Windows.Forms.CheckBox ShowSpoilersCheckbox;
         private System.Windows.Forms.Label CaloriesPercentage_Label;
         private System.Windows.Forms.NumericUpDown Calories_NumUpDown;
@@ -832,7 +1032,30 @@
         private System.Windows.Forms.Button OpenTrophyEdit_Button;
         private System.Windows.Forms.Label ThankYou_Label;
         private System.Windows.Forms.Button OpenRandomizerButton;
-        private System.Windows.Forms.Label PlatformLabel;
         private System.Windows.Forms.ToolTip PcVersionGlobalEditingNotSupportedToolTip;
+        private System.Windows.Forms.GroupBox StatsGroupBox;
+        private System.Windows.Forms.GroupBox SelectedSlotEditorsGroupBox;
+        private System.Windows.Forms.GroupBox PartyGroupBox;
+        private System.Windows.Forms.Button OpenPartyMemberEditorButton;
+        private System.Windows.Forms.GroupBox OtherStatsGroupBox;
+        private System.Windows.Forms.GroupBox SaveSlotInfoGroupBox;
+        private System.Windows.Forms.Button SaveChangesButton;
+        private System.Windows.Forms.Button SaveAsButton;
+        private System.Windows.Forms.ComboBox MenuMusicComboBox;
+        private System.Windows.Forms.Label MenuMusicLabel;
+        private System.Windows.Forms.GroupBox OtherToolsGroupBox;
+        private System.Windows.Forms.PictureBox MrMewPictureBox;
+        private System.Windows.Forms.Label DayNowLabel;
+        private System.Windows.Forms.ToolTip PartyMember1Tooltip;
+        private System.Windows.Forms.ToolTip PartyMember2Tooltip;
+        private System.Windows.Forms.ToolTip PartyMember3Tooltip;
+        private System.Windows.Forms.ToolTip PartyMember4Tooltip;
+        private System.Windows.Forms.ToolTip PartyMember5Tooltip;
+        private System.Windows.Forms.ToolTip PartyMember6Tooltip;
+        private System.Windows.Forms.PictureBox GbaTempIconPictureBox;
+        private System.Windows.Forms.PictureBox GithubIconPictureBox;
+        private System.Windows.Forms.Label VersionLabel;
+        private System.Windows.Forms.Button OpenMismatchFixerButton;
+        private System.Windows.Forms.PictureBox KofiPictureBox;
     }
 }

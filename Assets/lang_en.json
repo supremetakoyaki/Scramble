@@ -26,7 +26,7 @@
     "{CurrentLevel}": "Current level:",
     "{Money}": "Money:",
     "{Fp:}": "FP:",
-    "{Lv}": "Lv.",
+    "{Lv}": "LV ",
     "{YourParty}": "Your party",
     "{CharacterEditor}": "Stats Editor",
     "{PinsEditor}": "Pins Editor",
@@ -260,6 +260,14 @@
     "{SelectedBrand}": "Selected brand",
     "{MaxVipLevel}": "Max VIP Level",
     "{Points:}": "Points:",
-    "{VipLevelNum}": "VIP Level {0}"
+    "{VipLevelNum}": "VIP Level {0}",
+    "{SaveAs}": "Save as...",
+    "{SlotInfo}": "Slot Info",
+    "{EditParty}": "Edit Party",
+    "{OtherTools}": "Other Tools",
+    "{PartyStats}": "Party Stats",
+    "{MoreStats}": "More Stats",
+    "{MenuMusic:}": "Menu Music:",
+    "{MismatchFixer}": "Mismatch Fixer"
   }
 }

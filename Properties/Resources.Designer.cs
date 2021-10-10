@@ -183,6 +183,16 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Chara1_party {
+            get {
+                object obj = ResourceManager.GetObject("Chara1_party", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Chara2_bad {
             get {
                 object obj = ResourceManager.GetObject("Chara2_bad", resourceCulture);
@@ -216,6 +226,16 @@ namespace Scramble.Properties {
         internal static System.Drawing.Bitmap Chara2_normal {
             get {
                 object obj = ResourceManager.GetObject("Chara2_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Chara2_party {
+            get {
+                object obj = ResourceManager.GetObject("Chara2_party", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,6 +283,16 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Chara3_party {
+            get {
+                object obj = ResourceManager.GetObject("Chara3_party", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Chara4_bad {
             get {
                 object obj = ResourceManager.GetObject("Chara4_bad", resourceCulture);
@@ -296,6 +326,16 @@ namespace Scramble.Properties {
         internal static System.Drawing.Bitmap Chara4_normal {
             get {
                 object obj = ResourceManager.GetObject("Chara4_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Chara4_party {
+            get {
+                object obj = ResourceManager.GetObject("Chara4_party", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,6 +383,16 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Chara5_party {
+            get {
+                object obj = ResourceManager.GetObject("Chara5_party", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Chara6_bad {
             get {
                 object obj = ResourceManager.GetObject("Chara6_bad", resourceCulture);
@@ -383,6 +433,16 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Chara6_party {
+            get {
+                object obj = ResourceManager.GetObject("Chara6_party", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Chara7_bad {
             get {
                 object obj = ResourceManager.GetObject("Chara7_bad", resourceCulture);
@@ -416,6 +476,16 @@ namespace Scramble.Properties {
         internal static System.Drawing.Bitmap Chara7_normal {
             get {
                 object obj = ResourceManager.GetObject("Chara7_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Chara7_party {
+            get {
+                object obj = ResourceManager.GetObject("Chara7_party", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -473,9 +543,9 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Icon {
+        internal static System.Drawing.Bitmap KofiDonate {
             get {
-                object obj = ResourceManager.GetObject("Icon", resourceCulture);
+                object obj = ResourceManager.GetObject("KofiDonate", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -617,6 +687,26 @@ namespace Scramble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MrMew_Active {
+            get {
+                object obj = ResourceManager.GetObject("MrMew_Active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MrMew_Inactive {
+            get {
+                object obj = ResourceManager.GetObject("MrMew_Inactive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RandomizerEffect {
             get {
                 object obj = ResourceManager.GetObject("RandomizerEffect", resourceCulture);
@@ -630,6 +720,16 @@ namespace Scramble.Properties {
         internal static System.Drawing.Bitmap RandomizerOverview_Logo {
             get {
                 object obj = ResourceManager.GetObject("RandomizerOverview_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Scramble_mini {
+            get {
+                object obj = ResourceManager.GetObject("Scramble_mini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

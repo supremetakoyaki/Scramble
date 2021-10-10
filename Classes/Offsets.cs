@@ -1,4 +1,4 @@
-﻿namespace Scramble.GameData
+﻿namespace Scramble.Classes
 {
     public class SystemOffsets
     {
@@ -58,12 +58,15 @@
         public const int CurrentPlayDateDay = 11434; // int
         public const int ScenarioNewestDateDay = 11438; // int
 
+        public const int MenuMusic = 14013; // int
+
         // SaveDataEventLog
         public const int EventLog = 14057; // int                           You can have up to 100 chatlogs. IDs are from IdDic.json
 
         // SaveDataPlayerTeam
         public const int PlayerTeam_Exp = 14661; // int
-        public const int PlayerTeam_NowLevel = 14665; // short?
+        public const int PlayerTeam_NowLevel = 14665; // int
+        public const int PlayerTeam_MaxLevel = 14669; // int
         public const int PlayerTeam_Money = 14673; // int
         public const int PlayerTeam_Satiety = 14677; // int
         public const int PlayerTeam_IsSatietyPenalty = 14681; // bool

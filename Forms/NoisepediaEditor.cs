@@ -1,6 +1,5 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
-using Scramble.GameData;
 using Scramble.Properties;
 using Scramble.Util;
 using System;

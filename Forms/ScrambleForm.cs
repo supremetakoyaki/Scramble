@@ -1,7 +1,7 @@
 ﻿using NTwewyDb;
 using Scramble.Classes;
 using Scramble.Forms;
-using Scramble.GameData;
+using Scramble.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -66,6 +66,9 @@ namespace Scramble
         private List<byte> SafeCharacters;
         public bool ShowSpoilers => ShowSpoilersCheckbox.Checked;
 
+        private Bitmap MrMewInactive;
+        private Bitmap MrMewActive;
+
         public double ScaleFactor
         {
             get;
@@ -80,15 +83,29 @@ namespace Scramble
         {
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            LogoPictureBox.Image = ImageMethods.DrawImage(Properties.Resources.ResourceManager.GetObject("Logo") as Bitmap, 139, 74, DeviceDpi);
-            AboutLabel.Text = Program.ScrambleVersion;
+            LogoPictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("Scramble_mini") as Bitmap, 200, 74, DeviceDpi);
+            KofiPictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("KofiDonate") as Bitmap, 128, 25, DeviceDpi);
+
+            VersionLabel.Parent = LogoPictureBox;
+            VersionLabel.Location = new Point(116, 59);
+            VersionLabel.Text = Program.ScrambleVersion;
+            GithubIconPictureBox.Parent = LogoPictureBox;
+            GithubIconPictureBox.Location = new Point(164, 59);
+            GithubIconPictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("GithubIcon") as Bitmap, 15, 15, DeviceDpi);
+            GbaTempIconPictureBox.Parent = LogoPictureBox;
+            GbaTempIconPictureBox.Location = new Point(185, 59);
+            GbaTempIconPictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("GbaTempIcon") as Bitmap, 15, 15, DeviceDpi);
+           
+            MrMewActive = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("MrMew_Active") as Bitmap, 128, 128, DeviceDpi);
+            MrMewInactive = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("MrMew_Inactive") as Bitmap, 128, 128, DeviceDpi);
 
             SetUpGraphics();
             DoubleBuffered = true;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
             DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
-            ChangeFormSize(148, 309);
+            ChangeFormSize(140, 359);
+            MrMewPictureBox.Image = MrMewInactive;
 
             // NEO TWEWY Database instances
             ItmManager = new ItemManager();
@@ -140,8 +157,7 @@ namespace Scramble
             CurrentLevelLabel.Text = GetString("{CurrentLevel}");
             MoneyLabel.Text = GetString("{Money}");
             FpLabel.Text = GetString("{Fp:}");
-            LvLabel_Pre.Text = GetString("{Lv}");
-            PartyMembersLabel.Text = GetString("{YourParty}");
+            MaxLevelLabel.Text = GetString("{Lv}");
 
             OpenCharacterEditButton.Text = GetString("{CharacterEditor}");
             OpenInvEditorButton.Text = GetString("{PinsEditor}");
@@ -161,9 +177,19 @@ namespace Scramble
                 DifficultyCombo.Items.Add(GetGameString(string.Format("Setting_Difficulty{0}", i.ToString("D2"))));
             }
 
+            MenuMusicComboBox.Items.Clear();
+            for (int i = 1; i < 52; i++)
+            {
+                MenuMusicComboBox.Items.Add(GetGameString(string.Format("MSC_Name_00{0}", i.ToString("D2"))));
+            }
+
             if (SelectedSlot != null)
             {
                 DifficultyCombo.SelectedIndex = SelectedSlot.RetrieveOffset_Byte(GameOffsets.DifficultyLevel);
+                MenuMusicComboBox.SelectedIndex = SelectedSlot.RetrieveOffset_Int32(GameOffsets.MenuMusic) - 1001;
+
+                int TheoreticalLevel = GetCharacterManager().GetLevel((int)ExpNumericUpDown.Value);
+                MaxLevelLabel.Text = GetString("{Lv}") + TheoreticalLevel;
             }
 
             CaloriesEaten_Label.Text = GetString("{CaloriesEaten}");
@@ -171,6 +197,15 @@ namespace Scramble
             OpenTrophyEdit_Button.Text = GetString("{TrophyEditor}");
             OpenTurfWar_Edit.Text = GetString("{TurfWarEditor}");
             OpenRandomizerButton.Text = GetString("{Randomizer}");
+
+            SaveAsButton.Text = GetString("{SaveAs}");
+            SaveSlotInfoGroupBox.Text = GetString("{SlotInfo}");
+            OpenPartyMemberEditorButton.Text = GetString("{EditParty}");
+            OtherToolsGroupBox.Text = GetString("{OtherTools}");
+            StatsGroupBox.Text = GetString("{PartyStats}");
+            OtherStatsGroupBox.Text = GetString("{MoreStats}");
+            MenuMusicLabel.Text = GetString("{MenuMusic:}");
+            OpenMismatchFixerButton.Text = GetString("{MismatchFixer}");
         }
 
         private void PopulateImageLists()
@@ -293,6 +328,7 @@ namespace Scramble
 
             // Check for valid data
             byte Player_Difficulty = SelectedSlot.RetrieveOffset_Byte(GameOffsets.DifficultyLevel);
+            int MenuMusic = SelectedSlot.RetrieveOffset_Int32(GameOffsets.MenuMusic);
             int Player_Experience = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerTeam_Exp);
             ushort Player_Current_Level = SelectedSlot.RetrieveOffset_UInt16(GameOffsets.PlayerTeam_NowLevel);
             int Player_Money = SelectedSlot.RetrieveOffset_Int32(GameOffsets.PlayerTeam_Money);
@@ -308,6 +344,13 @@ namespace Scramble
             {
                 DifficultyCombo.SelectedIndex = 1;
             }
+
+            if (MenuMusic < 1001 || MenuMusic > 1051)
+            {
+                MenuMusic = 1001;
+            }
+
+            MenuMusicComboBox.SelectedIndex = MenuMusic - 1001;
 
             if (Player_Experience >= ExpNumericUpDown.Minimum && Player_Experience <= ExpNumericUpDown.Maximum)
             {
@@ -328,7 +371,7 @@ namespace Scramble
             }
 
             int TheoreticalLevel = GetCharacterManager().GetLevel((int)ExpNumericUpDown.Value);
-            LvLabel.Text = TheoreticalLevel.ToString();
+            MaxLevelLabel.Text = GetString("{Lv}") + TheoreticalLevel;
 
             if (CurrentLevelNUpDown.Value > TheoreticalLevel)
             {
@@ -380,6 +423,14 @@ namespace Scramble
             PartyMember5_PictureBox.Image = null;
             PartyMember6_PictureBox.Image = null;
 
+            // Clear the tooltips
+            PartyMember1Tooltip.RemoveAll();
+            PartyMember2Tooltip.RemoveAll();
+            PartyMember3Tooltip.RemoveAll();
+            PartyMember4Tooltip.RemoveAll();
+            PartyMember5Tooltip.RemoveAll();
+            PartyMember6Tooltip.RemoveAll();
+
             SafeCharacters = new List<byte>();
 
             foreach (PartyMember Member in SelectedSlot.GetPartyMembers().Values)
@@ -389,32 +440,38 @@ namespace Scramble
                 switch (Member.Id)
                 {
                     case 1:
-                        PartyMember1_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
+                        PartyMember1_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("Chara{0}_party", Member.CharacterId)) as Bitmap, 44, 44, DeviceDpi);
+                        PartyMember1Tooltip.SetToolTip(PartyMember1_PictureBox, GetGameString(GetCharacterManager().GetCharacterName(Member.CharacterId)));
                         break;
 
                     case 2:
-                        PartyMember2_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
+                        PartyMember2_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("Chara{0}_party", Member.CharacterId)) as Bitmap, 44, 44, DeviceDpi);
+                        PartyMember2Tooltip.SetToolTip(PartyMember2_PictureBox, GetGameString(GetCharacterManager().GetCharacterName(Member.CharacterId)));
                         break;
 
                     case 3:
-                        PartyMember3_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
+                        PartyMember3_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("Chara{0}_party", Member.CharacterId)) as Bitmap, 44, 44, DeviceDpi);
+                        PartyMember3Tooltip.SetToolTip(PartyMember3_PictureBox, GetGameString(GetCharacterManager().GetCharacterName(Member.CharacterId)));
                         break;
 
                     case 4:
-                        PartyMember4_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
+                        PartyMember4_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("Chara{0}_party", Member.CharacterId)) as Bitmap, 44, 44, DeviceDpi);
+                        PartyMember4Tooltip.SetToolTip(PartyMember4_PictureBox, GetGameString(GetCharacterManager().GetCharacterName(Member.CharacterId)));
                         break;
 
                     case 5:
-                        PartyMember5_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
+                        PartyMember5_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("Chara{0}_party", Member.CharacterId)) as Bitmap, 44, 44, DeviceDpi);
+                        PartyMember5Tooltip.SetToolTip(PartyMember5_PictureBox, GetGameString(GetCharacterManager().GetCharacterName(Member.CharacterId)));
                         break;
 
                     case 6:
-                        PartyMember6_PictureBox.Image = ImageMethods.DrawImage(string.Format("Shop_img_chara_status_{0}", Member.CharacterId.ToString("D2")), 32, 32, DeviceDpi);
+                        PartyMember6_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("Chara{0}_party", Member.CharacterId)) as Bitmap, 44, 44, DeviceDpi);
+                        PartyMember6Tooltip.SetToolTip(PartyMember6_PictureBox, GetGameString(GetCharacterManager().GetCharacterName(Member.CharacterId)));
                         break;
                 }
             }
 
-            // Always show Rindoo.
+            // Always show Rindo.
             if (!SafeCharacters.Contains(1))
             {
                 SafeCharacters.Add(1);
@@ -505,32 +562,37 @@ namespace Scramble
                     return;
                 }
 
-                byte[] AllData = File.ReadAllBytes(Dialog.FileName);
+                byte Result = 0;
+                try
+                {
+                    byte[] AllData = File.ReadAllBytes(Dialog.FileName);
+                    OpenedSaveFile = new SaveFile(Dialog.FileName, AllData, out  Result);
+                }
+                catch (Exception Ex)
+                {
+                    ShowWarning(Ex.Message);
+                    ReadyForUserInput = true;
+                    return;
+                }
 
-                OpenedSaveFile = new SaveFile(Dialog.FileName, AllData, out byte Result);
-
-                if (Result == 0) // invalid file size
+                if (Result == 0)
                 {
                     ShowWarning(GetString("DLG_InvalidSaveFile"));
                     OpenedSaveFile = null;
 
-                    ChangeFormSize(148, 309);
+                    ChangeFormSize(140, 359);
                     ReadyForUserInput = true;
                     return;
                 }
 
                 if (OpenedSaveFile.IsPcVersion)
                 {
-                    PlatformLabel.Text = "PC";
-                    PlatformLabel.ForeColor = Color.Navy;
                     GameSettingsEditorButton.Enabled = false;
                     MiscFlagsEditorButton.Enabled = false;
                     PcVersionGlobalEditingNotSupportedToolTip.SetToolTip(GlobalGroupBox, GetString("{PcGlobalYouCantEditThisYet}"));
                 }
                 else
                 {
-                    PlatformLabel.Text = "PS4/Switch";
-                    PlatformLabel.ForeColor = Color.Maroon;
                     GameSettingsEditorButton.Enabled = true;
                     MiscFlagsEditorButton.Enabled = true;
                     PcVersionGlobalEditingNotSupportedToolTip.SetToolTip(GlobalGroupBox, null);
@@ -546,7 +608,7 @@ namespace Scramble
                     SelectSlot(SaveSlotsListBox.SelectedIndex);
                 }
 
-                ChangeFormSize(472, 760);
+                ChangeFormSize(666, 697);
                 Text = "Scramble — NEO TWEWY Save Editor";
             }
 
@@ -612,6 +674,16 @@ namespace Scramble
             }
 
             SelectedSlot.UpdateOffset_Byte(GameOffsets.DifficultyLevel, (byte)DifficultyCombo.SelectedIndex);
+        }
+
+        private void MenuMusicComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.MenuMusic, MenuMusicComboBox.SelectedIndex + 1001);
         }
 
         private void CurrentLevelNUpDown_ValueChanged(object sender, EventArgs e)
@@ -779,7 +851,7 @@ namespace Scramble
             SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerTeam_Exp, (int)ExpNumericUpDown.Value);
 
             int TheoreticalLevel = GetCharacterManager().GetLevel((int)ExpNumericUpDown.Value);
-            LvLabel.Text = TheoreticalLevel.ToString();
+            MaxLevelLabel.Text = GetString("{Lv}") + TheoreticalLevel;
 
             if (CurrentLevelNUpDown.Value > TheoreticalLevel)
             {
@@ -1068,16 +1140,6 @@ namespace Scramble
             Task.Run(PopulateImageLists);
         }
 
-        private void ThankYou_Label_MouseEnter(object sender, EventArgs e)
-        {
-            ThankYou_Label.ForeColor = Color.SeaGreen;
-        }
-
-        private void ThankYou_Label_MouseLeave(object sender, EventArgs e)
-        {
-            ThankYou_Label.ForeColor = SystemColors.Control;
-        }
-
         private void OpenRandomizerButton_Click(object sender, EventArgs e)
         {
             if (ShowSpoilers == false && ShowPrompt(GetString("DLG_ActionWillSpoil")) == false)
@@ -1087,6 +1149,33 @@ namespace Scramble
 
             RandomizerEditor = new NeoTwewyRandomizerForm();
             RandomizerEditor.ShowDialog();
+        }
+
+        private void GithubIconPictureBox_Click(object sender, EventArgs e)
+        {
+            Program.OpenSite("https://github.com/supremetakoyaki/Scramble/");
+        }
+
+        private void GbaTempIconPictureBox_Click(object sender, EventArgs e)
+        {
+            Program.OpenSite("https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/");
+        }
+
+        private void KofiPictureBox_Click(object sender, EventArgs e)
+        {
+            Program.OpenSite("https://ko-fi.com/gyakutensaiban");
+        }
+
+        private void MrMewPictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            MrMewPictureBox.Image = MrMewActive;
+            ThankYou_Label.Visible = true;
+        }
+
+        private void MrMewPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            MrMewPictureBox.Image = MrMewInactive;
+            ThankYou_Label.Visible = false;
         }
     }
 }
