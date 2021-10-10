@@ -407,6 +407,8 @@ namespace Scramble
 
             OverateCheckbox.Checked = Player_Overate;
 
+            DayNowLabel.Text = GetGameString(GetDayName(SelectedSlot.CurrentDay));
+
             SerializePartyMembers();
             UpdateCaloriesPercentage();
 
@@ -857,6 +859,8 @@ namespace Scramble
             {
                 CurrentLevelNUpDown.Value = TheoreticalLevel;
             }
+
+            SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerTeam_MaxLevel, TheoreticalLevel);
         }
 
         private void OpenRecordEditButton_Click(object sender, EventArgs e)
