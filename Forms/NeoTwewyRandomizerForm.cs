@@ -60,7 +60,7 @@ namespace Scramble.Forms
             RandomizeDay_StatusLabel.ForeColor = Color.DarkGoldenrod;
             RandomizeStats_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_Ok}");
             RandomizeStats_StatusLabel.ForeColor = Color.Green;
-            RandomizeParty_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_HighlyExperimental}");
+            RandomizeParty_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_Ok}");
             RandomizeParty_StatusLabel.ForeColor = Color.DarkRed;
             RandomizePins_StatusLabel.Text = Sukuranburu.GetString("{RandomizerChoice_Ok}");
             RandomizePins_StatusLabel.ForeColor = Color.Green;

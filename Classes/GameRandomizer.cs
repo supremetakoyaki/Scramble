@@ -239,6 +239,7 @@ namespace Scramble.Classes
 
                 if (PartyMembers.Count < i + 1)
                 {
+                    SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerTeam_PartyMember + (4 * i), SaveSlot.NOT_ASSIGNED_DATA);
                     SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + OffsetSum, SaveSlot.NOT_ASSIGNED_DATA);
                 }
                 else
@@ -261,6 +262,7 @@ namespace Scramble.Classes
                         CharacterId = 6; // Neku
                     }
 
+                    SelectedSlot.UpdateOffset_Int32(GameOffsets.PlayerTeam_PartyMember + (4 * i), CharacterId - 1);
                     SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + OffsetSum, CharacterId);
                 }
             }

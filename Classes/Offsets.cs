@@ -70,6 +70,7 @@
         public const int PlayerTeam_Money = 14673; // int
         public const int PlayerTeam_Satiety = 14677; // int
         public const int PlayerTeam_IsSatietyPenalty = 14681; // bool
+        public const int PlayerTeam_PartyMember = 14686; // int
         public const int PlayerData_PlayerId = 14710; // int
         public const int PlayerData_FoodHp = 14714; // int                  base value is in BattleCharacter.txt
         public const int PlayerData_FoodAtk = 14718; // int                 base value is in BattleCharacter.txt
