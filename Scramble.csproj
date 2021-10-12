@@ -327,6 +327,12 @@
     <Compile Include="Forms\NoisepediaEditor.Designer.cs">
       <DependentUpon>NoisepediaEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PartyEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PartyEditor.Designer.cs">
+      <DependentUpon>PartyEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PinInventoryEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -439,6 +445,9 @@
     <EmbeddedResource Include="Forms\NoisepediaEditor.resx">
       <DependentUpon>NoisepediaEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PartyEditor.resx">
+      <DependentUpon>PartyEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PinInventoryEditor.resx">
       <DependentUpon>PinInventoryEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -494,12 +503,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CH01.png" />
+    <None Include="Assets\CH01_party.png" />
     <Content Include="Assets\CH02.png" />
+    <None Include="Assets\CH02_party.png" />
     <Content Include="Assets\CH03.png" />
+    <None Include="Assets\CH03_party.png" />
     <Content Include="Assets\CH04.png" />
+    <None Include="Assets\CH04_party.png" />
     <Content Include="Assets\CH05.png" />
+    <None Include="Assets\CH05_party.png" />
     <Content Include="Assets\CH06.png" />
+    <None Include="Assets\CH06_party.png" />
     <Content Include="Assets\CH07.png" />
+    <None Include="Assets\CH07_party.png" />
     <Content Include="Assets\CH0S.png" />
     <None Include="Assets\Chara1_bad.png" />
     <None Include="Assets\Chara1_like.png" />
@@ -558,9 +574,7 @@
     <None Include="Assets\RandomizerEffect.gif" />
     <None Include="Assets\Unity3d_Decrypt_Encrypt.png" />
     <None Include="Assets\ShopIconVip.png" />
-    <None Include="Assets\Scramble.png" />
     <None Include="Assets\Scramble_mini.png" />
-    <None Include="Assets\ScrambleIcon.ico" />
     <None Include="Assets\MrMew_Active.png" />
     <None Include="Assets\MrMew_Inactive.png" />
     <Content Include="FodyWeavers.xml" />

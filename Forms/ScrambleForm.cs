@@ -24,6 +24,7 @@ namespace Scramble
         public TurfWarEditor TurfWarEditor;
         public TrophyEditor TrophyEditor;
         public ShopEditor ShopEditor;
+        public PartyEditor PartyEditor;
 
         public SettingsEditor SettEditor;
         public MiscEditor MiscEditor;
@@ -40,6 +41,32 @@ namespace Scramble
                 }
 
                 return OpenedSaveFile.GetSaveSlot(SaveSlotsListBox.SelectedIndex);
+            }
+        }
+
+        public SaveSlot SafeSelectedSlot
+        {
+            get
+            {
+                if (OpenedSaveFile == null)
+                {
+                    return null;
+                }
+
+                int Slot = 0;
+                if (InvokeRequired)
+                {
+                    Invoke(new Action(() =>
+                    {
+                        Slot = SaveSlotsListBox.SelectedIndex;
+                    }));
+                }
+                else
+                {
+                    Slot = SaveSlotsListBox.SelectedIndex;
+                }
+
+                return OpenedSaveFile.GetSaveSlot(Slot);
             }
         }
 
@@ -118,6 +145,7 @@ namespace Scramble
             GameTextProcessor = new GameTextProcessor();
 
             LanguageSelectComboBox.Text = "English";
+            KofiTooltip.SetToolTip(KofiPictureBox, GetString("{KofiButtonTip}"));
             ReadyForUserInput = true;
 
             Task.Run(() => { PopulateImageLists(); });
@@ -215,31 +243,37 @@ namespace Scramble
                 Invoke(new Action(() =>
                     {
                         OpenClothEditButton.Enabled = false;
-                        OpenClothEditButton.Text = "Loading...";
+                        OpenClothEditButton.Text = GetString("{Loading...}");
 
                         OpenInvEditorButton.Enabled = false;
-                        OpenInvEditorButton.Text = "Loading...";
+                        OpenInvEditorButton.Text = GetString("{Loading...}");
 
                         OpenRecordEditButton.Enabled = false;
-                        OpenRecordEditButton.Text = "Loading...";
+                        OpenRecordEditButton.Text = GetString("{Loading...}");
 
                         OpenShopEdit_Button.Enabled = false;
-                        OpenShopEdit_Button.Text = "Loading...";
+                        OpenShopEdit_Button.Text = GetString("{Loading...}");
+
+                        OpenPartyMemberEditorButton.Enabled = false;
+                        OpenPartyMemberEditorButton.Text = GetString("{Loading...}");
                     }));
             }
             else
             {
                 OpenClothEditButton.Enabled = false;
-                OpenClothEditButton.Text = "Loading...";
+                OpenClothEditButton.Text = GetString("{Loading...}");
 
                 OpenInvEditorButton.Enabled = false;
-                OpenInvEditorButton.Text = "Loading...";
+                OpenInvEditorButton.Text = GetString("{Loading...}");
 
                 OpenRecordEditButton.Enabled = false;
-                OpenRecordEditButton.Text = "Loading...";
+                OpenRecordEditButton.Text = GetString("{Loading...}");
 
                 OpenShopEdit_Button.Enabled = false;
-                OpenShopEdit_Button.Text = "Loading...";
+                OpenShopEdit_Button.Text = GetString("{Loading...}");
+
+                OpenPartyMemberEditorButton.Enabled = false;
+                OpenPartyMemberEditorButton.Text = GetString("{Loading...}");
             }
 
 
@@ -273,6 +307,9 @@ namespace Scramble
 
                     OpenShopEdit_Button.Enabled = true;
                     OpenShopEdit_Button.Text = GetString("{ShopEditor}");
+
+                    OpenPartyMemberEditorButton.Enabled = true;
+                    OpenPartyMemberEditorButton.Text = GetString("{EditParty}");
                 }));
             }
             else
@@ -288,6 +325,9 @@ namespace Scramble
 
                 OpenShopEdit_Button.Enabled = true;
                 OpenShopEdit_Button.Text = GetString("{ShopEditor}");
+
+                OpenPartyMemberEditorButton.Enabled = true;
+                OpenPartyMemberEditorButton.Text = GetString("{EditParty}");
             }
         }
 
@@ -1180,6 +1220,17 @@ namespace Scramble
         {
             MrMewPictureBox.Image = MrMewInactive;
             ThankYou_Label.Visible = false;
+        }
+
+        private void OpenPartyMemberEditorButton_Click(object sender, EventArgs e)
+        {
+            if (ShowSpoilers == false && ShowPrompt(GetString("DLG_ActionWillSpoil")) == false)
+            {
+                return;
+            }
+
+            PartyEditor = new PartyEditor();
+            PartyEditor.ShowDialog();
         }
     }
 }

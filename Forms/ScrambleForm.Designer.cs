@@ -104,6 +104,7 @@
             this.GithubIconPictureBox = new System.Windows.Forms.PictureBox();
             this.VersionLabel = new System.Windows.Forms.Label();
             this.KofiPictureBox = new System.Windows.Forms.PictureBox();
+            this.KofiTooltip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SaveSlotsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyNUpDown)).BeginInit();
@@ -525,6 +526,7 @@
             this.OpenPartyMemberEditorButton.TabIndex = 25;
             this.OpenPartyMemberEditorButton.Text = "Edit Party";
             this.OpenPartyMemberEditorButton.UseVisualStyleBackColor = true;
+            this.OpenPartyMemberEditorButton.Click += new System.EventHandler(this.OpenPartyMemberEditorButton_Click);
             // 
             // PartyMember5_PictureBox
             // 
@@ -923,6 +925,10 @@
             this.KofiPictureBox.TabStop = false;
             this.KofiPictureBox.Click += new System.EventHandler(this.KofiPictureBox_Click);
             // 
+            // KofiTooltip
+            // 
+            this.KofiTooltip.AutomaticDelay = 400;
+            // 
             // ScrambleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1057,5 +1063,6 @@
         private System.Windows.Forms.Label VersionLabel;
         private System.Windows.Forms.Button OpenMismatchFixerButton;
         private System.Windows.Forms.PictureBox KofiPictureBox;
+        private System.Windows.Forms.ToolTip KofiTooltip;
     }
 }

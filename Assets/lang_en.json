@@ -268,6 +268,21 @@
     "{PartyStats}": "Party Stats",
     "{MoreStats}": "More Stats",
     "{MenuMusic:}": "Menu Music:",
-    "{MismatchFixer}": "Mismatch Fixer"
+    "{MismatchFixer}": "Mismatch Fixer",
+    "{KofiButtonTip}": "Scramble is free and open-source! If you want to show support, you can donate! I'll appreciate it ^^",
+    "{PartyEditor}": "Party Editor",
+    "{PartyMembers}": "Party members",
+    "{AdvancedMode}": "Advanced mode",
+    "{EquippableItems}": "Equippable items",
+    "{QuickSearch:}": "Quick search:",
+    "{LoadItems}": "Load items",
+    "{Loading...}": "Loading...",
+    "{ItemsLoaded}": "Items loaded",
+    "{Issues}": "Issues",
+    "{Issue_DuplicatePartyMember}": "There is at least one duplicate party member.",
+    "{Issue_DuplicateEquippedItem}": "There is at least a duplicate equipped item index.",
+    "{Issue_NoEquippedPinOnDeck1}": "There is at least one member without an equipped pin on Deck 1.",
+    "{Issue_EmptyPartyMembers}": "There are no party members.",
+    "{Issue_EquippingNonExistentItem}": "There is at least someone equipping a non-existent item."
   }
 }
