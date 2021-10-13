@@ -298,7 +298,7 @@
             this.TopLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TopLabel1.Location = new System.Drawing.Point(6, 472);
             this.TopLabel1.Name = "TopLabel1";
-            this.TopLabel1.Size = new System.Drawing.Size(80, 15);
+            this.TopLabel1.Size = new System.Drawing.Size(85, 15);
             this.TopLabel1.TabIndex = 72;
             this.TopLabel1.Text = "Top:";
             // 

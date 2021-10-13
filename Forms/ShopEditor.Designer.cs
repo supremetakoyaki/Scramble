@@ -136,9 +136,9 @@
             // BestFoodForRestaurantsButton
             // 
             this.BestFoodForRestaurantsButton.BackColor = System.Drawing.Color.Honeydew;
-            this.BestFoodForRestaurantsButton.Location = new System.Drawing.Point(168, 628);
+            this.BestFoodForRestaurantsButton.Location = new System.Drawing.Point(104, 628);
             this.BestFoodForRestaurantsButton.Name = "BestFoodForRestaurantsButton";
-            this.BestFoodForRestaurantsButton.Size = new System.Drawing.Size(300, 23);
+            this.BestFoodForRestaurantsButton.Size = new System.Drawing.Size(364, 23);
             this.BestFoodForRestaurantsButton.TabIndex = 17;
             this.BestFoodForRestaurantsButton.Text = "{BestFoodForRestaurants}";
             this.BestFoodForRestaurantsButton.UseVisualStyleBackColor = false;
@@ -636,7 +636,7 @@
             // 
             // SelectedGoodTimesExchangedNumUpDown
             // 
-            this.SelectedGoodTimesExchangedNumUpDown.Location = new System.Drawing.Point(142, 213);
+            this.SelectedGoodTimesExchangedNumUpDown.Location = new System.Drawing.Point(168, 213);
             this.SelectedGoodTimesExchangedNumUpDown.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -651,13 +651,13 @@
             // 
             this.SelectedShopGoodTimesExchangedLabel.Location = new System.Drawing.Point(6, 215);
             this.SelectedShopGoodTimesExchangedLabel.Name = "SelectedShopGoodTimesExchangedLabel";
-            this.SelectedShopGoodTimesExchangedLabel.Size = new System.Drawing.Size(130, 17);
+            this.SelectedShopGoodTimesExchangedLabel.Size = new System.Drawing.Size(156, 17);
             this.SelectedShopGoodTimesExchangedLabel.TabIndex = 6;
             this.SelectedShopGoodTimesExchangedLabel.Text = "{NumExchanged:}";
             // 
             // SelectedGoodTimesPurchasedNumUpDown
             // 
-            this.SelectedGoodTimesPurchasedNumUpDown.Location = new System.Drawing.Point(142, 184);
+            this.SelectedGoodTimesPurchasedNumUpDown.Location = new System.Drawing.Point(168, 184);
             this.SelectedGoodTimesPurchasedNumUpDown.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -672,7 +672,7 @@
             // 
             this.SelectedShopGoodTimesPurchasedLabel.Location = new System.Drawing.Point(6, 186);
             this.SelectedShopGoodTimesPurchasedLabel.Name = "SelectedShopGoodTimesPurchasedLabel";
-            this.SelectedShopGoodTimesPurchasedLabel.Size = new System.Drawing.Size(130, 17);
+            this.SelectedShopGoodTimesPurchasedLabel.Size = new System.Drawing.Size(156, 17);
             this.SelectedShopGoodTimesPurchasedLabel.TabIndex = 4;
             this.SelectedShopGoodTimesPurchasedLabel.Text = "{NumPurchased:}";
             // 
@@ -708,9 +708,9 @@
             // BrandsMaxVipLevelAll
             // 
             this.BrandsMaxVipLevelAll.BackColor = System.Drawing.Color.Azure;
-            this.BrandsMaxVipLevelAll.Location = new System.Drawing.Point(201, 168);
+            this.BrandsMaxVipLevelAll.Location = new System.Drawing.Point(143, 168);
             this.BrandsMaxVipLevelAll.Name = "BrandsMaxVipLevelAll";
-            this.BrandsMaxVipLevelAll.Size = new System.Drawing.Size(132, 23);
+            this.BrandsMaxVipLevelAll.Size = new System.Drawing.Size(190, 23);
             this.BrandsMaxVipLevelAll.TabIndex = 1;
             this.BrandsMaxVipLevelAll.Text = "{MaxVipLevelAll}";
             this.BrandsMaxVipLevelAll.UseVisualStyleBackColor = false;

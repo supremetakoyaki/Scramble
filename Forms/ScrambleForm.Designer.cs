@@ -442,7 +442,7 @@
             this.MenuMusicLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuMusicLabel.Location = new System.Drawing.Point(6, 88);
             this.MenuMusicLabel.Name = "MenuMusicLabel";
-            this.MenuMusicLabel.Size = new System.Drawing.Size(97, 15);
+            this.MenuMusicLabel.Size = new System.Drawing.Size(101, 15);
             this.MenuMusicLabel.TabIndex = 15;
             this.MenuMusicLabel.Text = "Menu Music:";
             // 
@@ -609,7 +609,7 @@
             this.CaloriesPercentage_Label.ForeColor = System.Drawing.Color.Green;
             this.CaloriesPercentage_Label.Location = new System.Drawing.Point(246, 114);
             this.CaloriesPercentage_Label.Name = "CaloriesPercentage_Label";
-            this.CaloriesPercentage_Label.Size = new System.Drawing.Size(50, 15);
+            this.CaloriesPercentage_Label.Size = new System.Drawing.Size(82, 15);
             this.CaloriesPercentage_Label.TabIndex = 30;
             this.CaloriesPercentage_Label.Text = "0%";
             // 
@@ -619,7 +619,7 @@
             this.MaxLevelLabel.ForeColor = System.Drawing.Color.Crimson;
             this.MaxLevelLabel.Location = new System.Drawing.Point(246, 56);
             this.MaxLevelLabel.Name = "MaxLevelLabel";
-            this.MaxLevelLabel.Size = new System.Drawing.Size(50, 15);
+            this.MaxLevelLabel.Size = new System.Drawing.Size(82, 15);
             this.MaxLevelLabel.TabIndex = 27;
             this.MaxLevelLabel.Text = "LV";
             // 

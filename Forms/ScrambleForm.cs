@@ -218,6 +218,12 @@ namespace Scramble
 
                 int TheoreticalLevel = GetCharacterManager().GetLevel((int)ExpNumericUpDown.Value);
                 MaxLevelLabel.Text = GetString("{Lv}") + TheoreticalLevel;
+
+                if (OpenedSaveFile.IsPcVersion)
+                {
+                    PcVersionGlobalEditingNotSupportedToolTip.RemoveAll();
+                    PcVersionGlobalEditingNotSupportedToolTip.SetToolTip(GlobalGroupBox, GetString("{PcGlobalYouCantEditThisYet}"));
+                }
             }
 
             CaloriesEaten_Label.Text = GetString("{CaloriesEaten}");
@@ -228,6 +234,7 @@ namespace Scramble
 
             SaveAsButton.Text = GetString("{SaveAs}");
             SaveSlotInfoGroupBox.Text = GetString("{SlotInfo}");
+            PartyGroupBox.Text = GetString("{PartyMembers}");
             OpenPartyMemberEditorButton.Text = GetString("{EditParty}");
             OtherToolsGroupBox.Text = GetString("{OtherTools}");
             StatsGroupBox.Text = GetString("{PartyStats}");
