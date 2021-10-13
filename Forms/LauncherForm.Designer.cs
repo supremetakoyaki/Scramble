@@ -57,7 +57,7 @@ namespace Scramble.Forms
             this.NTWEWY_Button.Location = new System.Drawing.Point(10, 10);
             this.NTWEWY_Button.Name = "NTWEWY_Button";
             this.NTWEWY_Button.Size = new System.Drawing.Size(171, 173);
-            this.NTWEWY_Button.TabIndex = 1;
+            this.NTWEWY_Button.TabIndex = 0;
             this.NTWEWY_Button.UseVisualStyleBackColor = true;
             this.NTWEWY_Button.Click += new System.EventHandler(this.NTWEWY_Button_Click);
             // 
@@ -66,7 +66,7 @@ namespace Scramble.Forms
             this.TWEWYFR_Button.Location = new System.Drawing.Point(187, 10);
             this.TWEWYFR_Button.Name = "TWEWYFR_Button";
             this.TWEWYFR_Button.Size = new System.Drawing.Size(171, 173);
-            this.TWEWYFR_Button.TabIndex = 2;
+            this.TWEWYFR_Button.TabIndex = 3;
             this.TWEWYFR_Button.UseVisualStyleBackColor = true;
             this.TWEWYFR_Button.Click += new System.EventHandler(this.TWEWYFR_Button_Click);
             // 
@@ -96,7 +96,7 @@ namespace Scramble.Forms
             this.Convert_FromSoloRemix_Button.Location = new System.Drawing.Point(187, 189);
             this.Convert_FromSoloRemix_Button.Name = "Convert_FromSoloRemix_Button";
             this.Convert_FromSoloRemix_Button.Size = new System.Drawing.Size(171, 20);
-            this.Convert_FromSoloRemix_Button.TabIndex = 0;
+            this.Convert_FromSoloRemix_Button.TabIndex = 4;
             this.Convert_FromSoloRemix_Button.UseVisualStyleBackColor = true;
             this.Convert_FromSoloRemix_Button.Click += new System.EventHandler(this.Convert_FromSoloRemix_Button_Click);
             // 
@@ -117,7 +117,7 @@ namespace Scramble.Forms
             this.NeoTwewyUtilButton.Location = new System.Drawing.Point(9, 189);
             this.NeoTwewyUtilButton.Name = "NeoTwewyUtilButton";
             this.NeoTwewyUtilButton.Size = new System.Drawing.Size(171, 20);
-            this.NeoTwewyUtilButton.TabIndex = 4;
+            this.NeoTwewyUtilButton.TabIndex = 1;
             this.NeoTwewyUtilButton.UseVisualStyleBackColor = true;
             this.NeoTwewyUtilButton.Click += new System.EventHandler(this.NeoTwewyUtilButton_Click);
             // 
@@ -130,7 +130,7 @@ namespace Scramble.Forms
             this.Unity3dDecryptEncryptButton.Location = new System.Drawing.Point(9, 215);
             this.Unity3dDecryptEncryptButton.Name = "Unity3dDecryptEncryptButton";
             this.Unity3dDecryptEncryptButton.Size = new System.Drawing.Size(171, 20);
-            this.Unity3dDecryptEncryptButton.TabIndex = 5;
+            this.Unity3dDecryptEncryptButton.TabIndex = 2;
             this.Unity3dDecryptEncryptButton.UseVisualStyleBackColor = true;
             this.Unity3dDecryptEncryptButton.Click += new System.EventHandler(this.Unity3dDecryptEncryptButton_Click);
             // 

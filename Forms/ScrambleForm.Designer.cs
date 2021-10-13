@@ -137,7 +137,7 @@
             this.OpenSaveFileButton.Location = new System.Drawing.Point(218, 12);
             this.OpenSaveFileButton.Name = "OpenSaveFileButton";
             this.OpenSaveFileButton.Size = new System.Drawing.Size(119, 74);
-            this.OpenSaveFileButton.TabIndex = 1;
+            this.OpenSaveFileButton.TabIndex = 0;
             this.OpenSaveFileButton.Text = "Open Save File...";
             this.OpenSaveFileButton.UseVisualStyleBackColor = true;
             this.OpenSaveFileButton.Click += new System.EventHandler(this.OpenSaveFileButton_Click);
@@ -179,7 +179,7 @@
             this.SaveSlotsListBox.Location = new System.Drawing.Point(6, 22);
             this.SaveSlotsListBox.Name = "SaveSlotsListBox";
             this.SaveSlotsListBox.Size = new System.Drawing.Size(127, 154);
-            this.SaveSlotsListBox.TabIndex = 6;
+            this.SaveSlotsListBox.TabIndex = 8;
             this.SaveSlotsListBox.SelectedIndexChanged += new System.EventHandler(this.SaveSlotsListBox_SelectedIndexChanged);
             // 
             // DateOfSavePicker
@@ -190,7 +190,7 @@
             this.DateOfSavePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.DateOfSavePicker.Name = "DateOfSavePicker";
             this.DateOfSavePicker.Size = new System.Drawing.Size(144, 23);
-            this.DateOfSavePicker.TabIndex = 8;
+            this.DateOfSavePicker.TabIndex = 10;
             this.DateOfSavePicker.ValueChanged += new System.EventHandler(this.DateOfSavePicker_ValueChanged);
             // 
             // DateSavedLabel
@@ -221,7 +221,7 @@
             0});
             this.MoneyNUpDown.Name = "MoneyNUpDown";
             this.MoneyNUpDown.Size = new System.Drawing.Size(135, 23);
-            this.MoneyNUpDown.TabIndex = 12;
+            this.MoneyNUpDown.TabIndex = 31;
             this.MoneyNUpDown.ValueChanged += new System.EventHandler(this.MoneyNUpDown_ValueChanged);
             // 
             // DifficultyLabel
@@ -247,7 +247,7 @@
             this.DifficultyCombo.MaxDropDownItems = 4;
             this.DifficultyCombo.Name = "DifficultyCombo";
             this.DifficultyCombo.Size = new System.Drawing.Size(133, 23);
-            this.DifficultyCombo.TabIndex = 9;
+            this.DifficultyCombo.TabIndex = 26;
             this.DifficultyCombo.SelectedIndexChanged += new System.EventHandler(this.DifficultyCombo_SelectedIndexChanged);
             // 
             // CurrentLevelLabel
@@ -269,7 +269,7 @@
             0});
             this.CurrentLevelNUpDown.Name = "CurrentLevelNUpDown";
             this.CurrentLevelNUpDown.Size = new System.Drawing.Size(133, 23);
-            this.CurrentLevelNUpDown.TabIndex = 11;
+            this.CurrentLevelNUpDown.TabIndex = 28;
             this.CurrentLevelNUpDown.Value = new decimal(new int[] {
             1,
             0,
@@ -296,7 +296,7 @@
             0});
             this.FpNumericUpDown.Name = "FpNumericUpDown";
             this.FpNumericUpDown.Size = new System.Drawing.Size(135, 23);
-            this.FpNumericUpDown.TabIndex = 13;
+            this.FpNumericUpDown.TabIndex = 32;
             this.FpNumericUpDown.ValueChanged += new System.EventHandler(this.FpNumericUpDown_ValueChanged);
             // 
             // BackupCheckbox
@@ -307,7 +307,7 @@
             this.BackupCheckbox.Location = new System.Drawing.Point(495, 37);
             this.BackupCheckbox.Name = "BackupCheckbox";
             this.BackupCheckbox.Size = new System.Drawing.Size(111, 19);
-            this.BackupCheckbox.TabIndex = 3;
+            this.BackupCheckbox.TabIndex = 4;
             this.BackupCheckbox.Text = "Make a back-up";
             this.BackupCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -317,7 +317,7 @@
             this.InitializedSlotCheckbox.Location = new System.Drawing.Point(6, 44);
             this.InitializedSlotCheckbox.Name = "InitializedSlotCheckbox";
             this.InitializedSlotCheckbox.Size = new System.Drawing.Size(98, 19);
-            this.InitializedSlotCheckbox.TabIndex = 7;
+            this.InitializedSlotCheckbox.TabIndex = 9;
             this.InitializedSlotCheckbox.Text = "Initialized slot";
             this.InitializedSlotCheckbox.UseVisualStyleBackColor = true;
             this.InitializedSlotCheckbox.CheckedChanged += new System.EventHandler(this.InitializedSlotCheckbox_CheckedChanged);
@@ -341,7 +341,7 @@
             0});
             this.ExpNumericUpDown.Name = "ExpNumericUpDown";
             this.ExpNumericUpDown.Size = new System.Drawing.Size(133, 23);
-            this.ExpNumericUpDown.TabIndex = 10;
+            this.ExpNumericUpDown.TabIndex = 27;
             this.ExpNumericUpDown.ValueChanged += new System.EventHandler(this.ExpNumericUpDown_ValueChanged);
             // 
             // OpenRecordEditButton
@@ -349,7 +349,7 @@
             this.OpenRecordEditButton.Location = new System.Drawing.Point(170, 51);
             this.OpenRecordEditButton.Name = "OpenRecordEditButton";
             this.OpenRecordEditButton.Size = new System.Drawing.Size(158, 23);
-            this.OpenRecordEditButton.TabIndex = 21;
+            this.OpenRecordEditButton.TabIndex = 19;
             this.OpenRecordEditButton.Text = "Collection Editor";
             this.OpenRecordEditButton.UseVisualStyleBackColor = true;
             this.OpenRecordEditButton.Click += new System.EventHandler(this.OpenRecordEditButton_Click);
@@ -359,7 +359,7 @@
             this.OpenSocialEditButton.Location = new System.Drawing.Point(6, 109);
             this.OpenSocialEditButton.Name = "OpenSocialEditButton";
             this.OpenSocialEditButton.Size = new System.Drawing.Size(158, 23);
-            this.OpenSocialEditButton.TabIndex = 20;
+            this.OpenSocialEditButton.TabIndex = 22;
             this.OpenSocialEditButton.Text = "Social Tree Editor";
             this.OpenSocialEditButton.UseVisualStyleBackColor = true;
             this.OpenSocialEditButton.Click += new System.EventHandler(this.OpenSocialEditButton_Click);
@@ -369,7 +369,7 @@
             this.OpenInvEditorButton.Location = new System.Drawing.Point(6, 80);
             this.OpenInvEditorButton.Name = "OpenInvEditorButton";
             this.OpenInvEditorButton.Size = new System.Drawing.Size(158, 23);
-            this.OpenInvEditorButton.TabIndex = 18;
+            this.OpenInvEditorButton.TabIndex = 20;
             this.OpenInvEditorButton.Text = "Pins Editor";
             this.OpenInvEditorButton.UseVisualStyleBackColor = true;
             this.OpenInvEditorButton.Click += new System.EventHandler(this.OpenInvEditorButton_Click);
@@ -406,7 +406,7 @@
             this.OpenMismatchFixerButton.Location = new System.Drawing.Point(6, 51);
             this.OpenMismatchFixerButton.Name = "OpenMismatchFixerButton";
             this.OpenMismatchFixerButton.Size = new System.Drawing.Size(142, 23);
-            this.OpenMismatchFixerButton.TabIndex = 34;
+            this.OpenMismatchFixerButton.TabIndex = 15;
             this.OpenMismatchFixerButton.Text = "Mismatch Fixer";
             this.OpenMismatchFixerButton.UseVisualStyleBackColor = false;
             this.OpenMismatchFixerButton.Visible = false;
@@ -417,7 +417,7 @@
             this.OpenRandomizerButton.Location = new System.Drawing.Point(6, 22);
             this.OpenRandomizerButton.Name = "OpenRandomizerButton";
             this.OpenRandomizerButton.Size = new System.Drawing.Size(142, 23);
-            this.OpenRandomizerButton.TabIndex = 33;
+            this.OpenRandomizerButton.TabIndex = 14;
             this.OpenRandomizerButton.Text = "Randomizer";
             this.OpenRandomizerButton.UseVisualStyleBackColor = false;
             this.OpenRandomizerButton.Click += new System.EventHandler(this.OpenRandomizerButton_Click);
@@ -453,7 +453,7 @@
             this.MenuMusicComboBox.Location = new System.Drawing.Point(109, 85);
             this.MenuMusicComboBox.Name = "MenuMusicComboBox";
             this.MenuMusicComboBox.Size = new System.Drawing.Size(221, 23);
-            this.MenuMusicComboBox.TabIndex = 14;
+            this.MenuMusicComboBox.TabIndex = 33;
             this.MenuMusicComboBox.SelectedIndexChanged += new System.EventHandler(this.MenuMusicComboBox_SelectedIndexChanged);
             // 
             // SaveSlotInfoGroupBox
@@ -487,7 +487,7 @@
             this.DumpSlotDataButton.Location = new System.Drawing.Point(6, 142);
             this.DumpSlotDataButton.Name = "DumpSlotDataButton";
             this.DumpSlotDataButton.Size = new System.Drawing.Size(144, 23);
-            this.DumpSlotDataButton.TabIndex = 4;
+            this.DumpSlotDataButton.TabIndex = 12;
             this.DumpSlotDataButton.Text = "Dump Slot Data";
             this.DumpSlotDataButton.UseVisualStyleBackColor = false;
             this.DumpSlotDataButton.Click += new System.EventHandler(this.DumpSlotDebugButton_Click);
@@ -498,7 +498,7 @@
             this.ImportSlotDataButton.Location = new System.Drawing.Point(6, 113);
             this.ImportSlotDataButton.Name = "ImportSlotDataButton";
             this.ImportSlotDataButton.Size = new System.Drawing.Size(144, 23);
-            this.ImportSlotDataButton.TabIndex = 5;
+            this.ImportSlotDataButton.TabIndex = 11;
             this.ImportSlotDataButton.Text = "Import Slot Data";
             this.ImportSlotDataButton.UseVisualStyleBackColor = false;
             this.ImportSlotDataButton.Click += new System.EventHandler(this.ImportSlotDataButton_Click);
@@ -524,7 +524,7 @@
             this.OpenPartyMemberEditorButton.Location = new System.Drawing.Point(6, 141);
             this.OpenPartyMemberEditorButton.Name = "OpenPartyMemberEditorButton";
             this.OpenPartyMemberEditorButton.Size = new System.Drawing.Size(144, 23);
-            this.OpenPartyMemberEditorButton.TabIndex = 25;
+            this.OpenPartyMemberEditorButton.TabIndex = 13;
             this.OpenPartyMemberEditorButton.Text = "Edit Party";
             this.OpenPartyMemberEditorButton.UseVisualStyleBackColor = true;
             this.OpenPartyMemberEditorButton.Click += new System.EventHandler(this.OpenPartyMemberEditorButton_Click);
@@ -633,7 +633,7 @@
             0});
             this.Calories_NumUpDown.Name = "Calories_NumUpDown";
             this.Calories_NumUpDown.Size = new System.Drawing.Size(133, 23);
-            this.Calories_NumUpDown.TabIndex = 14;
+            this.Calories_NumUpDown.TabIndex = 29;
             this.Calories_NumUpDown.ValueChanged += new System.EventHandler(this.Calories_NumUpDown_ValueChanged);
             // 
             // CaloriesEaten_Label
@@ -650,7 +650,7 @@
             this.OverateCheckbox.Location = new System.Drawing.Point(9, 140);
             this.OverateCheckbox.Name = "OverateCheckbox";
             this.OverateCheckbox.Size = new System.Drawing.Size(76, 24);
-            this.OverateCheckbox.TabIndex = 15;
+            this.OverateCheckbox.TabIndex = 30;
             this.OverateCheckbox.Text = "{Overate}";
             this.OverateCheckbox.UseVisualStyleBackColor = true;
             this.OverateCheckbox.CheckedChanged += new System.EventHandler(this.OverateCheckbox_CheckedChanged);
@@ -689,7 +689,7 @@
             this.OpenTurfWar_Edit.Location = new System.Drawing.Point(170, 109);
             this.OpenTurfWar_Edit.Name = "OpenTurfWar_Edit";
             this.OpenTurfWar_Edit.Size = new System.Drawing.Size(158, 23);
-            this.OpenTurfWar_Edit.TabIndex = 32;
+            this.OpenTurfWar_Edit.TabIndex = 23;
             this.OpenTurfWar_Edit.Text = "Turf War Editor";
             this.OpenTurfWar_Edit.UseVisualStyleBackColor = true;
             this.OpenTurfWar_Edit.Click += new System.EventHandler(this.OpenTurfWar_Edit_Click);
@@ -699,7 +699,7 @@
             this.OpenTrophyEdit_Button.Location = new System.Drawing.Point(170, 138);
             this.OpenTrophyEdit_Button.Name = "OpenTrophyEdit_Button";
             this.OpenTrophyEdit_Button.Size = new System.Drawing.Size(158, 23);
-            this.OpenTrophyEdit_Button.TabIndex = 31;
+            this.OpenTrophyEdit_Button.TabIndex = 25;
             this.OpenTrophyEdit_Button.Text = "Graffiti Editor";
             this.OpenTrophyEdit_Button.UseVisualStyleBackColor = true;
             this.OpenTrophyEdit_Button.Click += new System.EventHandler(this.OpenTrophyEdit_Button_Click);
@@ -709,7 +709,7 @@
             this.OpenNoisepediaEditButton.Location = new System.Drawing.Point(6, 51);
             this.OpenNoisepediaEditButton.Name = "OpenNoisepediaEditButton";
             this.OpenNoisepediaEditButton.Size = new System.Drawing.Size(158, 23);
-            this.OpenNoisepediaEditButton.TabIndex = 22;
+            this.OpenNoisepediaEditButton.TabIndex = 18;
             this.OpenNoisepediaEditButton.Text = "Noisepedia Editor";
             this.OpenNoisepediaEditButton.UseVisualStyleBackColor = true;
             this.OpenNoisepediaEditButton.Click += new System.EventHandler(this.OpenNoisepediaEditButton_Click);
@@ -729,7 +729,7 @@
             this.OpenClothEditButton.Location = new System.Drawing.Point(170, 80);
             this.OpenClothEditButton.Name = "OpenClothEditButton";
             this.OpenClothEditButton.Size = new System.Drawing.Size(158, 23);
-            this.OpenClothEditButton.TabIndex = 19;
+            this.OpenClothEditButton.TabIndex = 21;
             this.OpenClothEditButton.Text = "Clothing Editor";
             this.OpenClothEditButton.UseVisualStyleBackColor = true;
             this.OpenClothEditButton.Click += new System.EventHandler(this.OpenClothEditButton_Click);
@@ -739,7 +739,7 @@
             this.OpenShopEdit_Button.Location = new System.Drawing.Point(6, 138);
             this.OpenShopEdit_Button.Name = "OpenShopEdit_Button";
             this.OpenShopEdit_Button.Size = new System.Drawing.Size(158, 23);
-            this.OpenShopEdit_Button.TabIndex = 23;
+            this.OpenShopEdit_Button.TabIndex = 24;
             this.OpenShopEdit_Button.Text = "Shop Editor";
             this.OpenShopEdit_Button.UseVisualStyleBackColor = true;
             this.OpenShopEdit_Button.Click += new System.EventHandler(this.OpenShopEdit_Button_Click);
@@ -760,7 +760,7 @@
             this.MiscFlagsEditorButton.Location = new System.Drawing.Point(6, 51);
             this.MiscFlagsEditorButton.Name = "MiscFlagsEditorButton";
             this.MiscFlagsEditorButton.Size = new System.Drawing.Size(127, 23);
-            this.MiscFlagsEditorButton.TabIndex = 27;
+            this.MiscFlagsEditorButton.TabIndex = 7;
             this.MiscFlagsEditorButton.Text = "Misc. Editor";
             this.MiscFlagsEditorButton.UseVisualStyleBackColor = true;
             this.MiscFlagsEditorButton.Click += new System.EventHandler(this.MiscFlagsEditorButton_Click);
@@ -770,7 +770,7 @@
             this.GameSettingsEditorButton.Location = new System.Drawing.Point(6, 22);
             this.GameSettingsEditorButton.Name = "GameSettingsEditorButton";
             this.GameSettingsEditorButton.Size = new System.Drawing.Size(127, 23);
-            this.GameSettingsEditorButton.TabIndex = 26;
+            this.GameSettingsEditorButton.TabIndex = 6;
             this.GameSettingsEditorButton.Text = "Settings Editor";
             this.GameSettingsEditorButton.UseVisualStyleBackColor = true;
             this.GameSettingsEditorButton.Click += new System.EventHandler(this.GameSettingsEditorButton_Click);
@@ -792,7 +792,7 @@
             this.LanguageSelectComboBox.Location = new System.Drawing.Point(560, 62);
             this.LanguageSelectComboBox.Name = "LanguageSelectComboBox";
             this.LanguageSelectComboBox.Size = new System.Drawing.Size(89, 23);
-            this.LanguageSelectComboBox.TabIndex = 0;
+            this.LanguageSelectComboBox.TabIndex = 5;
             this.LanguageSelectComboBox.SelectedIndexChanged += new System.EventHandler(this.LanguageSelectComboBox_SelectedIndexChanged);
             // 
             // ShowSpoilersCheckbox
@@ -803,7 +803,7 @@
             this.ShowSpoilersCheckbox.Location = new System.Drawing.Point(495, 12);
             this.ShowSpoilersCheckbox.Name = "ShowSpoilersCheckbox";
             this.ShowSpoilersCheckbox.Size = new System.Drawing.Size(98, 19);
-            this.ShowSpoilersCheckbox.TabIndex = 0;
+            this.ShowSpoilersCheckbox.TabIndex = 3;
             this.ShowSpoilersCheckbox.Text = "Show spoilers";
             this.ShowSpoilersCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -829,7 +829,7 @@
             this.SaveChangesButton.Location = new System.Drawing.Point(342, 12);
             this.SaveChangesButton.Name = "SaveChangesButton";
             this.SaveChangesButton.Size = new System.Drawing.Size(119, 45);
-            this.SaveChangesButton.TabIndex = 2;
+            this.SaveChangesButton.TabIndex = 1;
             this.SaveChangesButton.Text = "Save Changes";
             this.SaveChangesButton.UseVisualStyleBackColor = false;
             this.SaveChangesButton.Click += new System.EventHandler(this.SaveChangesButton_Click);
@@ -840,7 +840,7 @@
             this.SaveAsButton.Location = new System.Drawing.Point(343, 63);
             this.SaveAsButton.Name = "SaveAsButton";
             this.SaveAsButton.Size = new System.Drawing.Size(118, 23);
-            this.SaveAsButton.TabIndex = 35;
+            this.SaveAsButton.TabIndex = 2;
             this.SaveAsButton.Text = "Save as...";
             this.SaveAsButton.UseVisualStyleBackColor = false;
             this.SaveAsButton.Click += new System.EventHandler(this.SaveAsButton_Click);
