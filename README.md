@@ -73,6 +73,9 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 # Special thanks
 - **tafice**, for the encryption keys of the PC version of NEO.
 
+# Donations
+If you want to show support, you can [donate on my ko-fi page](https://ko-fi.com/gyakutensaiban)! It is completely voluntary, and I'll appreciate it.
+
 # Issues, reporting bugs and requests
 If you found a bug or another issue, you can open an issue here on GitHub. For more questions or requests about anything else, you can leave a reply on the [GBATemp thread](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/).
 
