@@ -64,7 +64,6 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 
 # Upcoming features
 **For NEO:**
-- Edit shop VIP level and last restaurant order.
 - Continue working on the randomizer
 
 **For Final Remix:**
