@@ -409,6 +409,7 @@
             this.OpenMismatchFixerButton.TabIndex = 34;
             this.OpenMismatchFixerButton.Text = "Mismatch Fixer";
             this.OpenMismatchFixerButton.UseVisualStyleBackColor = false;
+            this.OpenMismatchFixerButton.Visible = false;
             // 
             // OpenRandomizerButton
             // 
@@ -842,6 +843,7 @@
             this.SaveAsButton.TabIndex = 35;
             this.SaveAsButton.Text = "Save as...";
             this.SaveAsButton.UseVisualStyleBackColor = false;
+            this.SaveAsButton.Click += new System.EventHandler(this.SaveAsButton_Click);
             // 
             // MrMewPictureBox
             // 

@@ -1232,5 +1232,25 @@ namespace Scramble
             PartyEditor = new PartyEditor();
             PartyEditor.ShowDialog();
         }
+
+        private void SaveAsButton_Click(object sender, EventArgs e)
+        {
+            ReadyForUserInput = false;
+
+            SaveFileDialog NewDialog = new SaveFileDialog
+            {
+                FileName = "gamesave",
+                AddExtension = false
+            };
+
+            if (NewDialog.ShowDialog() == DialogResult.OK)
+            {
+                OpenedSaveFile.FilePath = NewDialog.FileName;
+                File.WriteAllBytes(OpenedSaveFile.FilePath, OpenedSaveFile.ToBytes());
+                ShowNotice(GetString("DLG_SaveDataSaved"));
+            }
+
+            ReadyForUserInput = true;
+        }
     }
 }
