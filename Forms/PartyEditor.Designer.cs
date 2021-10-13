@@ -99,7 +99,7 @@
             this.PartyMember3_PictureBox = new System.Windows.Forms.PictureBox();
             this.PartyMember4_PictureBox = new System.Windows.Forms.PictureBox();
             this.PartyMember2_PictureBox = new System.Windows.Forms.PictureBox();
-            this.CheckupGroupBox = new System.Windows.Forms.GroupBox();
+            this.IssuesGroupBox = new System.Windows.Forms.GroupBox();
             this.IssuesListRichTextBox = new System.Windows.Forms.RichTextBox();
             this.IssueStatusLabel = new System.Windows.Forms.Label();
             this.IssueIconPictureBox = new System.Windows.Forms.PictureBox();
@@ -112,7 +112,7 @@
             this.CompleteClothingInventoryListView = new System.Windows.Forms.ListView();
             this.ClothingNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ClothingIndexHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ClothingIdIndex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ClothingIdHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CompletePinInventoryListView = new System.Windows.Forms.ListView();
             this.PinNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PinIndexHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -173,7 +173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember3_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember4_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember2_PictureBox)).BeginInit();
-            this.CheckupGroupBox.SuspendLayout();
+            this.IssuesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IssueIconPictureBox)).BeginInit();
             this.EquippableItemsGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -1386,21 +1386,22 @@
             this.PartyMember2_PictureBox.TabIndex = 8;
             this.PartyMember2_PictureBox.TabStop = false;
             // 
-            // CheckupGroupBox
+            // IssuesGroupBox
             // 
-            this.CheckupGroupBox.Controls.Add(this.IssuesListRichTextBox);
-            this.CheckupGroupBox.Controls.Add(this.IssueStatusLabel);
-            this.CheckupGroupBox.Controls.Add(this.IssueIconPictureBox);
-            this.CheckupGroupBox.Location = new System.Drawing.Point(12, 601);
-            this.CheckupGroupBox.Name = "CheckupGroupBox";
-            this.CheckupGroupBox.Size = new System.Drawing.Size(882, 103);
-            this.CheckupGroupBox.TabIndex = 1;
-            this.CheckupGroupBox.TabStop = false;
-            this.CheckupGroupBox.Text = "{Issues}";
+            this.IssuesGroupBox.Controls.Add(this.IssuesListRichTextBox);
+            this.IssuesGroupBox.Controls.Add(this.IssueStatusLabel);
+            this.IssuesGroupBox.Controls.Add(this.IssueIconPictureBox);
+            this.IssuesGroupBox.Location = new System.Drawing.Point(12, 601);
+            this.IssuesGroupBox.Name = "IssuesGroupBox";
+            this.IssuesGroupBox.Size = new System.Drawing.Size(882, 103);
+            this.IssuesGroupBox.TabIndex = 1;
+            this.IssuesGroupBox.TabStop = false;
+            this.IssuesGroupBox.Text = "{Issues}";
             // 
             // IssuesListRichTextBox
             // 
             this.IssuesListRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.IssuesListRichTextBox.Enabled = false;
             this.IssuesListRichTextBox.Location = new System.Drawing.Point(39, 40);
             this.IssuesListRichTextBox.Name = "IssuesListRichTextBox";
             this.IssuesListRichTextBox.ReadOnly = true;
@@ -1494,7 +1495,7 @@
             this.CompleteClothingInventoryListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ClothingNameHeader,
             this.ClothingIndexHeader,
-            this.ClothingIdIndex});
+            this.ClothingIdHeader});
             this.CompleteClothingInventoryListView.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.CompleteClothingInventoryListView.FullRowSelect = true;
             this.CompleteClothingInventoryListView.HideSelection = false;
@@ -1519,11 +1520,11 @@
             this.ClothingIndexHeader.Text = "Index";
             this.ClothingIndexHeader.Width = 50;
             // 
-            // ClothingIdIndex
+            // ClothingIdHeader
             // 
-            this.ClothingIdIndex.DisplayIndex = 1;
-            this.ClothingIdIndex.Text = "ID";
-            this.ClothingIdIndex.Width = 50;
+            this.ClothingIdHeader.DisplayIndex = 1;
+            this.ClothingIdHeader.Text = "ID";
+            this.ClothingIdHeader.Width = 50;
             // 
             // CompletePinInventoryListView
             // 
@@ -1573,7 +1574,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1264, 714);
             this.Controls.Add(this.EquippableItemsGroupBox);
-            this.Controls.Add(this.CheckupGroupBox);
+            this.Controls.Add(this.IssuesGroupBox);
             this.Controls.Add(this.PartyMembersGroupBox);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -1637,7 +1638,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember3_PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember4_PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyMember2_PictureBox)).EndInit();
-            this.CheckupGroupBox.ResumeLayout(false);
+            this.IssuesGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.IssueIconPictureBox)).EndInit();
             this.EquippableItemsGroupBox.ResumeLayout(false);
             this.EquippableItemsGroupBox.PerformLayout();
@@ -1660,14 +1661,14 @@
         private System.Windows.Forms.PictureBox PartyMember1_PictureBox;
         private System.Windows.Forms.PictureBox PartyMember3_PictureBox;
         private System.Windows.Forms.PictureBox PartyMember2_PictureBox;
-        private System.Windows.Forms.GroupBox CheckupGroupBox;
+        private System.Windows.Forms.GroupBox IssuesGroupBox;
         private System.Windows.Forms.GroupBox EquippableItemsGroupBox;
         private System.Windows.Forms.Label IssueStatusLabel;
         private System.Windows.Forms.PictureBox IssueIconPictureBox;
         private System.Windows.Forms.ListView CompleteClothingInventoryListView;
         private System.Windows.Forms.ColumnHeader ClothingNameHeader;
         private System.Windows.Forms.ColumnHeader ClothingIndexHeader;
-        private System.Windows.Forms.ColumnHeader ClothingIdIndex;
+        private System.Windows.Forms.ColumnHeader ClothingIdHeader;
         private System.Windows.Forms.ListView CompletePinInventoryListView;
         private System.Windows.Forms.ColumnHeader PinNameHeader;
         private System.Windows.Forms.ColumnHeader PinIndexHeader;

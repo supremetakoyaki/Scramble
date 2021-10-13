@@ -559,6 +559,8 @@
     <None Include="Assets\GbaTempIcon.png" />
     <Content Include="Assets\Icon.ico" />
     <None Include="Assets\KofiDonate.png" />
+    <None Include="Assets\icon_check.png" />
+    <None Include="Assets\icon_warning.png" />
     <Content Include="Assets\Legacy_Byte_Empty.png" />
     <Content Include="Assets\Legacy_Byte_Fulfilled.png" />
     <Content Include="Assets\Legacy_Byte_X.png" />

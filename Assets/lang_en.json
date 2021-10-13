@@ -273,16 +273,20 @@
     "{PartyEditor}": "Party Editor",
     "{PartyMembers}": "Party members",
     "{AdvancedMode}": "Advanced mode",
+    "{:}": ":",
+    "{Index}": "Index",
     "{EquippableItems}": "Equippable items",
     "{QuickSearch:}": "Quick search:",
     "{LoadItems}": "Load items",
     "{Loading...}": "Loading...",
     "{ItemsLoaded}": "Items loaded",
     "{Issues}": "Issues",
-    "{Issue_DuplicatePartyMember}": "There is at least one duplicate party member.",
-    "{Issue_DuplicateEquippedItem}": "There is at least a duplicate equipped item index.",
-    "{Issue_NoEquippedPinOnDeck1}": "There is at least one member without an equipped pin on Deck 1.",
-    "{Issue_EmptyPartyMembers}": "There are no party members.",
-    "{Issue_EquippingNonExistentItem}": "There is at least someone equipping a non-existent item."
+    "{ThereAreIssues}": "There are some issues that can break your game if they are not resolved:",
+    "{ThereAreNoIssues}": "There were no issues found with the current values.",
+    "{Issue_DuplicatePartyMember}": "- There is at least one duplicate party member.\n",
+    "{Issue_DuplicateEquippedItem}": "- Found {0} duplicate equipped item index(es).\n",
+    "{Issue_NoEquippedPinOnDeck1}": "- There is at least one member without an equipped pin on Deck 1.\n",
+    "{Issue_EmptyPartyMembers}": "- There are no party members.\n",
+    "{Issue_EquippingNonExistentItem}": "- Found {0} non-existent equipped item indexes.\n"
   }
 }

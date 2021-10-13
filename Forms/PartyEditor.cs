@@ -4,10 +4,7 @@ using Scramble.Properties;
 using Scramble.Util;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,15 +17,9 @@ namespace Scramble.Forms
 
         public ScrambleForm Sukuranburu => Program.Sukuranburu;
 
-        private bool ReadyForUserInput = false;
+        private readonly bool ReadyForUserInput = false;
 
-        private bool IsAdvancedMode
-        {
-            get
-            {
-                return AdvancedModeButton.Enabled == false;
-            }
-        }
+        private bool IsAdvancedMode => AdvancedModeButton.Enabled == false;
 
         public PartyEditor()
         {
@@ -62,7 +53,26 @@ namespace Scramble.Forms
             Text = Sukuranburu.GetString("{PartyEditor}");
             PartyMembersGroupBox.Text = Sukuranburu.GetString("{PartyMembers}");
             AdvancedModeButton.Text = Sukuranburu.GetString("{AdvancedMode}");
-
+            Deck1Label1.Text = string.Format("{0}{1}", Sukuranburu.GetString("{DeckOne}"), Sukuranburu.GetString("{:}"));
+            Deck2Label1.Text = string.Format("{0}{1}", Sukuranburu.GetString("{DeckTwo}"), Sukuranburu.GetString("{:}"));
+            Deck3Label1.Text = string.Format("{0}{1}", Sukuranburu.GetString("{DeckThree}"), Sukuranburu.GetString("{:}"));
+            HeadwearLabel1.Text = string.Format("{0}{1}", Sukuranburu.GetString("{WearType0}"), Sukuranburu.GetString("{:}"));
+            TopLabel1.Text = string.Format("{0}{1}", Sukuranburu.GetString("{WearType1}"), Sukuranburu.GetString("{:}"));
+            BottomLabel1.Text = string.Format("{0}{1}", Sukuranburu.GetString("{WearType2}"), Sukuranburu.GetString("{:}"));
+            ShoewearLabel1.Text = string.Format("{0}{1}", Sukuranburu.GetString("{WearType3}"), Sukuranburu.GetString("{:}"));
+            AccessoryLabel1.Text = string.Format("{0}{1}", Sukuranburu.GetString("{WearType4}"), Sukuranburu.GetString("{:}"));
+            IssuesGroupBox.Text = Sukuranburu.GetString("{Issues}");
+            EquippableItemsGroupBox.Text = Sukuranburu.GetString("{EquippableItems}");
+            PinIndexHeader.Text = Sukuranburu.GetString("{Index}");
+            PinIdHeader.Text = Sukuranburu.GetString("{Id}");
+            PinNameHeader.Text = Sukuranburu.GetString("{Name}");
+            PinLevelHeader.Text = Sukuranburu.GetString("{Level}");
+            ClothingIndexHeader.Text = Sukuranburu.GetString("{Index}");
+            ClothingIdHeader.Text = Sukuranburu.GetString("{Id}");
+            ClothingNameHeader.Text = Sukuranburu.GetString("{Name}");
+            QuickSearchLabel1.Text = Sukuranburu.GetString("{QuickSearch:}");
+            QuickSearchLabel2.Text = Sukuranburu.GetString("{QuickSearch:}");
+            LoadItemsButton.Text = Sukuranburu.GetString("{LoadItems}");
         }
 
         private void ChangeFormSize(int Height, int Width)
@@ -81,22 +91,290 @@ namespace Scramble.Forms
 
         private async void CheckIssues()
         {
-            await Task.Run(CheckIssuesParty);
-
-            if (IsAdvancedMode)
+            if (IsAdvancedMode == false)
             {
-                await Task.Run(CheckIssuesSaveIndexes);
+                await Task.Run(CheckIssuesParty);
+                return;
+            }
+
+            string PartyIssues = await Task.Run(CheckIssuesParty);
+            string IndexIssues = await Task.Run(CheckIssuesSaveIndexes);
+
+            if (PartyIssues == string.Empty && IndexIssues == string.Empty)
+            {
+                IssueIconPictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("icon_check") as Bitmap, 24, 24, DeviceDpi);
+                IssueStatusLabel.Text = Sukuranburu.GetString("{ThereAreNoIssues}");
+                IssuesListRichTextBox.Clear();
+            }
+            else
+            {
+                IssueIconPictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("icon_warning") as Bitmap, 24, 24, DeviceDpi);
+                IssueStatusLabel.Text = Sukuranburu.GetString("{ThereAreIssues}");
+                Sukuranburu.GetGameTextProcessor().SetTaggedText(PartyIssues + IndexIssues, IssuesListRichTextBox);
             }
         }
 
-        private void CheckIssuesParty()
+        private string CheckIssuesParty()
         {
+            bool DuplicateFound = false;
 
+            List<int> PartyMembers = new List<int>();
+            Action LoopChecker = new Action(() =>
+            {
+                for (int i = 1; i < 7; i++)
+                {
+                    ComboBox pComboBox = (PartyMembersGroupBox.Controls[string.Format("PartyMember{0}_ComboBox", i)] as ComboBox);
+                    int PartyMemberId = pComboBox.SelectedIndex;
+                    if (PartyMemberId != 0)
+                    {
+                        if (PartyMembers.Contains(PartyMemberId))
+                        {
+                            DuplicateFound = true;
+                            pComboBox.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            pComboBox.ForeColor = SystemColors.ControlText;
+                        }
+
+                        PartyMembers.Add(PartyMemberId);
+                    }
+                    else
+                    {
+                        pComboBox.ForeColor = SystemColors.ControlText;
+                    }
+                }
+            });
+
+            if (InvokeRequired)
+            {
+                Invoke(LoopChecker);
+            }
+            else
+            {
+                LoopChecker();
+            }
+
+            if (DuplicateFound)
+            {
+                return Sukuranburu.GetString("{Issue_DuplicatePartyMember}");
+            }
+            else if (PartyMembers.Count == 0)
+            {
+                return Sukuranburu.GetString("{Issue_EmptyPartyMembers}");
+            }
+
+            return string.Empty;
         }
 
-        private void CheckIssuesSaveIndexes()
+        private string CheckIssuesSaveIndexes()
         {
+            StringBuilder Sb = new StringBuilder();
 
+            List<int> DeckOnePins = new List<int>();
+            List<int> DeckTwoPins = new List<int>();
+            List<int> DeckThreePins = new List<int>();
+            List<int> Headwear = new List<int>();
+            List<int> Tops = new List<int>();
+            List<int> Bottoms = new List<int>();
+            List<int> Shoes = new List<int>();
+            List<int> Accessories = new List<int>();
+
+            int DuplicateItems = 0;
+            int NonExistent = 0;
+
+            Action LoopChecker = new Action(() =>
+            {
+                for (int i = 1; i < 7; i++)
+                {
+                    NumericUpDown DeckOneNumUpDown = PartyMembersGroupBox.Controls[string.Format("PartyMember{0}_Deck1SaveIndex_NumUpDown", i)] as NumericUpDown;
+                    NumericUpDown DeckTwoNumUpDown = PartyMembersGroupBox.Controls[string.Format("PartyMember{0}_Deck2SaveIndex_NumUpDown", i)] as NumericUpDown;
+                    NumericUpDown DeckThreeNumUpDown = PartyMembersGroupBox.Controls[string.Format("PartyMember{0}_Deck3SaveIndex_NumUpDown", i)] as NumericUpDown;
+                    NumericUpDown HeadwearNumUpDown = PartyMembersGroupBox.Controls[string.Format("PartyMember{0}_HeadwearSaveIndex_NumUpDown", i)] as NumericUpDown;
+                    NumericUpDown TopNumUpDown = PartyMembersGroupBox.Controls[string.Format("PartyMember{0}_TopSaveIndex_NumUpDown", i)] as NumericUpDown;
+                    NumericUpDown BottomNumUpDown = PartyMembersGroupBox.Controls[string.Format("PartyMember{0}_BottomSaveIndex_NumUpDown", i)] as NumericUpDown;
+                    NumericUpDown ShoesNumUpDown = PartyMembersGroupBox.Controls[string.Format("PartyMember{0}_ShoesSaveIndex_NumUpDown", i)] as NumericUpDown;
+                    NumericUpDown AccessoryNumUpDown = PartyMembersGroupBox.Controls[string.Format("PartyMember{0}_AccessorySaveIndex_NumUpDown", i)] as NumericUpDown;
+
+                    if (DeckOneNumUpDown.Value != SaveSlot.NOT_ASSIGNED_DATA)
+                    {
+                        if (SelectedSlot.RetrieveOffset_UInt16(GameOffsets.MyBadgeList + (8 * (int)DeckOneNumUpDown.Value)) == PinInventoryEditor.EMPTY_PIN_ID)
+                        {
+                            NonExistent++;
+                            DeckOneNumUpDown.ForeColor = Color.Red;
+                        }
+                        else if (DeckOnePins.Contains((int)DeckOneNumUpDown.Value))
+                        {
+                            DuplicateItems++;
+                            DeckOneNumUpDown.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            DeckOnePins.Add((int)DeckOneNumUpDown.Value);
+                            DeckOneNumUpDown.ForeColor = SystemColors.WindowText;
+                        }
+                    }
+
+                    if (DeckTwoNumUpDown.Value != SaveSlot.NOT_ASSIGNED_DATA)
+                    {
+                        if (SelectedSlot.RetrieveOffset_UInt16(GameOffsets.MyBadgeList + (8 * (int)DeckTwoNumUpDown.Value)) == PinInventoryEditor.EMPTY_PIN_ID)
+                        {
+                            NonExistent++;
+                            DeckTwoNumUpDown.ForeColor = Color.Red;
+                        }
+                        else if (DeckTwoPins.Contains((int)DeckTwoNumUpDown.Value))
+                        {
+                            DuplicateItems++;
+                            DeckTwoNumUpDown.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            DeckTwoPins.Add((int)DeckTwoNumUpDown.Value);
+                            DeckTwoNumUpDown.ForeColor = SystemColors.WindowText;
+                        }
+                    }
+
+                    if (DeckThreeNumUpDown.Value != SaveSlot.NOT_ASSIGNED_DATA)
+                    {
+                        if (SelectedSlot.RetrieveOffset_UInt16(GameOffsets.MyBadgeList + (8 * (int)DeckThreeNumUpDown.Value)) == PinInventoryEditor.EMPTY_PIN_ID)
+                        {
+                            NonExistent++;
+                            DeckThreeNumUpDown.ForeColor = Color.Red;
+                        }
+                        else if (DeckThreePins.Contains((int)DeckThreeNumUpDown.Value))
+                        {
+                            DuplicateItems++;
+                            DeckThreeNumUpDown.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            DeckThreePins.Add((int)DeckThreeNumUpDown.Value);
+                            DeckThreeNumUpDown.ForeColor = SystemColors.WindowText;
+                        }
+                    }
+
+                    if (HeadwearNumUpDown.Value != SaveSlot.NOT_ASSIGNED_DATA)
+                    {
+                        if (SelectedSlot.RetrieveOffset_UInt16(GameOffsets.MyCostumeList + (2 * (int)HeadwearNumUpDown.Value)) - 1 == ClothingInventoryEditor.EMPTY_CLOTHING_ID_ACTUAL)
+                        {
+                            NonExistent++;
+                            HeadwearNumUpDown.ForeColor = Color.Red;
+                        }
+                        else if (Headwear.Contains((int)HeadwearNumUpDown.Value))
+                        {
+                            DuplicateItems++;
+                            HeadwearNumUpDown.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            Headwear.Add((int)HeadwearNumUpDown.Value);
+                            HeadwearNumUpDown.ForeColor = SystemColors.WindowText;
+                        }
+                    }
+
+                    if (TopNumUpDown.Value != SaveSlot.NOT_ASSIGNED_DATA)
+                    {
+                        if (SelectedSlot.RetrieveOffset_UInt16(GameOffsets.MyCostumeList + (2 * (int)TopNumUpDown.Value)) - 1 == ClothingInventoryEditor.EMPTY_CLOTHING_ID_ACTUAL)
+                        {
+                            NonExistent++;
+                            TopNumUpDown.ForeColor = Color.Red;
+                        }
+                        else if (Tops.Contains((int)TopNumUpDown.Value))
+                        {
+                            DuplicateItems++;
+                            TopNumUpDown.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            Tops.Add((int)TopNumUpDown.Value);
+                            TopNumUpDown.ForeColor = SystemColors.WindowText;
+                        }
+                    }
+
+                    if (BottomNumUpDown.Value != SaveSlot.NOT_ASSIGNED_DATA)
+                    {
+                        if (SelectedSlot.RetrieveOffset_UInt16(GameOffsets.MyCostumeList + (2 * (int)BottomNumUpDown.Value)) - 1 == ClothingInventoryEditor.EMPTY_CLOTHING_ID_ACTUAL)
+                        {
+                            NonExistent++;
+                            BottomNumUpDown.ForeColor = Color.Red;
+                        }
+                        else if (Bottoms.Contains((int)BottomNumUpDown.Value))
+                        {
+                            DuplicateItems++;
+                            BottomNumUpDown.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            Bottoms.Add((int)BottomNumUpDown.Value);
+                            BottomNumUpDown.ForeColor = SystemColors.WindowText;
+                        }
+                    }
+
+                    if (ShoesNumUpDown.Value != SaveSlot.NOT_ASSIGNED_DATA)
+                    {
+                        if (SelectedSlot.RetrieveOffset_UInt16(GameOffsets.MyCostumeList + (2 * (int)ShoesNumUpDown.Value)) - 1 == ClothingInventoryEditor.EMPTY_CLOTHING_ID_ACTUAL)
+                        {
+                            NonExistent++;
+                            ShoesNumUpDown.ForeColor = Color.Red;
+                        }
+                        else if (Shoes.Contains((int)ShoesNumUpDown.Value))
+                        {
+                            DuplicateItems++;
+                            ShoesNumUpDown.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            Shoes.Add((int)ShoesNumUpDown.Value);
+                            ShoesNumUpDown.ForeColor = SystemColors.WindowText;
+                        }
+                    }
+
+                    if (AccessoryNumUpDown.Value != SaveSlot.NOT_ASSIGNED_DATA)
+                    {
+                        if (SelectedSlot.RetrieveOffset_UInt16(GameOffsets.MyCostumeList + (2 * (int)AccessoryNumUpDown.Value)) - 1 == ClothingInventoryEditor.EMPTY_CLOTHING_ID_ACTUAL)
+                        {
+                            NonExistent++;
+                            AccessoryNumUpDown.ForeColor = Color.Red;
+                        }
+                        else if (Accessories.Contains((int)AccessoryNumUpDown.Value))
+                        {
+                            DuplicateItems++;
+                            AccessoryNumUpDown.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            Accessories.Add((int)AccessoryNumUpDown.Value);
+                            AccessoryNumUpDown.ForeColor = SystemColors.WindowText;
+                        }
+                    }
+                }
+            });
+
+            if (InvokeRequired)
+            {
+                Invoke(LoopChecker);
+            }
+            else
+            {
+                LoopChecker();
+            }
+
+            if (DeckOnePins.Count == 0)
+            {
+                Sb.Append(Sukuranburu.GetString("{Issue_NoEquippedPinOnDeck1}"));
+            }
+
+            if (NonExistent > 0)
+            {
+                Sb.Append(string.Format(Sukuranburu.GetString("{Issue_EquippingNonExistentItem}"), NonExistent));
+            }
+
+            if (DuplicateItems > 0)
+            {
+                Sb.Append(string.Format(Sukuranburu.GetString("{Issue_DuplicateEquippedItem}"), DuplicateItems));
+            }
+
+            return Sb.ToString();
         }
 
         private void SerializePartyMembers()
@@ -204,9 +482,17 @@ namespace Scramble.Forms
                         PinSprite = Pin.Sprite;
                     }
 
-                    ListViewItem ItemToAdd = new ListViewItem(new string[] { PinName, CurrentIndex.ToString(), PinId.ToString(), Level.ToString() });
-                    ItemToAdd.ImageKey = PinSprite;
-                    ItemToAdd.Tag = CurrentIndex;
+                    string LevelString = Level.ToString();
+                    if (Pin.MaxLevel == Level)
+                    {
+                        LevelString += " ★";
+                    }
+
+                    ListViewItem ItemToAdd = new ListViewItem(new string[] { PinName, CurrentIndex.ToString(), PinId.ToString(), LevelString })
+                    {
+                        ImageKey = PinSprite,
+                        Tag = CurrentIndex
+                    };
 
                     PinItemList.Add(ItemToAdd);
                 }
@@ -217,7 +503,7 @@ namespace Scramble.Forms
             CurrentIndex = 0;
             for (int CurrentPointer = GameOffsets.MyCostumeList; CurrentPointer < GameOffsets.MyCostumeList_Last; CurrentPointer += 2)
             {
-                int ClothingId = Sukuranburu.SafeSelectedSlot.RetrieveOffset_UInt16(CurrentPointer) - 1;
+                int ClothingId = SelectedSlot.RetrieveOffset_UInt16(CurrentPointer) - 1;
 
                 if (ClothingId > 0x8000)
                 {
@@ -236,9 +522,11 @@ namespace Scramble.Forms
                         ClothingSprite = Clothing.Sprite;
                     }
 
-                    ListViewItem ItemToAdd = new ListViewItem(new string[] { ClothingName, CurrentIndex.ToString(), ClothingId.ToString() });
-                    ItemToAdd.ImageKey = ClothingSprite;
-                    ItemToAdd.Tag = CurrentIndex;
+                    ListViewItem ItemToAdd = new ListViewItem(new string[] { ClothingName, CurrentIndex.ToString(), ClothingId.ToString() })
+                    {
+                        ImageKey = ClothingSprite,
+                        Tag = CurrentIndex
+                    };
 
                     ClothingItemList.Add(ItemToAdd);
                 }
@@ -252,12 +540,14 @@ namespace Scramble.Forms
                 {
                     CompletePinInventoryListView.Items.AddRange(PinItemList.ToArray());
                     CompleteClothingInventoryListView.Items.AddRange(ClothingItemList.ToArray());
+                    LoadItemsButton.Text = Sukuranburu.GetString("{ItemsLoaded}");
                 }));
             }
             else
             {
                 CompletePinInventoryListView.Items.AddRange(PinItemList.ToArray());
                 CompleteClothingInventoryListView.Items.AddRange(ClothingItemList.ToArray());
+                LoadItemsButton.Text = Sukuranburu.GetString("{ItemsLoaded}");
             }
         }
 
@@ -280,6 +570,8 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID, PartyMember1_ComboBox.SelectedIndex);
                 PartyMember1_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("CH0{0}_party", PartyMember1_ComboBox.SelectedIndex)) as Bitmap, 140, 220, DeviceDpi);
             }
+
+            CheckIssues();
         }
 
         private void PartyMember2_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -301,6 +593,8 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + 36, PartyMember2_ComboBox.SelectedIndex);
                 PartyMember2_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("CH0{0}_party", PartyMember2_ComboBox.SelectedIndex)) as Bitmap, 140, 220, DeviceDpi);
             }
+
+            CheckIssues();
         }
 
         private void PartyMember3_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -322,6 +616,8 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + (36 * 2), PartyMember3_ComboBox.SelectedIndex);
                 PartyMember3_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("CH0{0}_party", PartyMember3_ComboBox.SelectedIndex)) as Bitmap, 140, 220, DeviceDpi);
             }
+
+            CheckIssues();
         }
 
         private void PartyMember4_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -343,6 +639,8 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + (36 * 3), PartyMember4_ComboBox.SelectedIndex);
                 PartyMember4_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("CH0{0}_party", PartyMember4_ComboBox.SelectedIndex)) as Bitmap, 140, 220, DeviceDpi);
             }
+
+            CheckIssues();
         }
 
         private void PartyMember5_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -364,6 +662,8 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + (36 * 4), PartyMember5_ComboBox.SelectedIndex);
                 PartyMember5_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("CH0{0}_party", PartyMember5_ComboBox.SelectedIndex)) as Bitmap, 140, 220, DeviceDpi);
             }
+
+            CheckIssues();
         }
 
         private void PartyMember6_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -385,11 +685,14 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipPlayerID + (36 * 5), PartyMember6_ComboBox.SelectedIndex);
                 PartyMember6_PictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject(string.Format("CH0{0}_party", PartyMember6_ComboBox.SelectedIndex)) as Bitmap, 140, 220, DeviceDpi);
             }
+
+            CheckIssues();
         }
 
         private void LoadItemsButton_Click(object sender, EventArgs e)
         {
             LoadItemsButton.Enabled = false;
+            LoadItemsButton.Text = Sukuranburu.GetString("{Loading...}");
 
             Task.Run(() => { LoadItemInventory(); });
         }
@@ -447,6 +750,8 @@ namespace Scramble.Forms
             AdvancedModeButton.Visible = false;
             ChangeFormSize(753, 1280);
             PartyMembersGroupBox.Size = new Size(882, 583);
+
+            CheckIssues();
         }
 
         #region Numeric Up Down Value Changed methods >_<
@@ -977,6 +1282,6 @@ namespace Scramble.Forms
             SelectedSlot.UpdateOffset_Int32(GameOffsets.EquipCosIndex_Accessory + (36 * 5), (int)PartyMember6_AccessorySaveIndex_NumUpDown.Value);
             CheckIssues();
         }
-#endregion
+        #endregion
     }
 }
