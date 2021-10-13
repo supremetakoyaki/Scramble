@@ -47,6 +47,7 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 - Edit your furthest reached day.
 - Edit your scramble slam scores.
 - Edit your graffiti wall / trophies, and export it as an image.
+- Edit your shop and brand data.
 - Save data randomizer (BETA)
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
