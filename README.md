@@ -1,6 +1,7 @@
 # Scramble [![Download](https://img.shields.io/github/downloads/supremetakoyaki/Scramble/total.svg?)](https://github.com/supremetakoyaki/Scramble/releases)
 
-![Screenshot of the editor launcher and NEO:TWEWY mode](https://i.imgur.com/EQkOf9f.png)
+![Scramble logo](https://i.imgur.com/cMt6bb6.png)
+![Screenshot of the editor launcher and NEO:TWEWY mode](https://i.imgur.com/tdU8O3k.png)
 
 Scramble is a save editor for games in the The World Ends with You series.
 [Click here for the GBATemp thread.](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/)
@@ -34,9 +35,10 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 
 # Features
 **NEO TWEWY Save Editing:**
-- Edit your game settings, and also unlock DLC items.
+- Edit your game settings, and also unlock DLC items. **(PS4/Switch only)**
 - Edit any of the 10 save slots of the game.
-- Edit your game difficulty, experience, current level, money and FP.
+- Edit your party members.
+- Edit your game difficulty, experience, current level, calories eaten (satiety), money, FP and menu music.
 - Edit your character stats.
 - Edit your pin inventory.
 - Edit your clothing inventory.
@@ -49,7 +51,7 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
-**TWEWY Final Remix Save Editing**
+**TWEWY Final Remix Save Editing (BETA)**
 - Edit your character and game stats.
 - Edit your items.
 - Edit your pins.
