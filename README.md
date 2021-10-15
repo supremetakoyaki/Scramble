@@ -1,6 +1,7 @@
 # Scramble [![Download](https://img.shields.io/github/downloads/supremetakoyaki/Scramble/total.svg?)](https://github.com/supremetakoyaki/Scramble/releases)
 
-![Screenshot of the editor launcher and NEO:TWEWY mode](https://i.imgur.com/EQkOf9f.png)
+![Scramble logo](https://i.imgur.com/cMt6bb6.png)
+![Screenshot of the editor launcher and NEO:TWEWY mode](https://i.imgur.com/tdU8O3k.png)
 
 Scramble is a save editor for games in the The World Ends with You series.
 [Click here for the GBATemp thread.](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/)
@@ -34,9 +35,10 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 
 # Features
 **NEO TWEWY Save Editing:**
-- Edit your game settings, and also unlock DLC items.
+- Edit your game settings, and also unlock DLC items. **(PS4/Switch only)**
 - Edit any of the 10 save slots of the game.
-- Edit your game difficulty, experience, current level, money and FP.
+- Edit your party members.
+- Edit your game difficulty, experience, current level, calories eaten (satiety), money, FP and menu music.
 - Edit your character stats.
 - Edit your pin inventory.
 - Edit your clothing inventory.
@@ -45,11 +47,12 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 - Edit your furthest reached day.
 - Edit your scramble slam scores.
 - Edit your graffiti wall / trophies, and export it as an image.
+- Edit your shop and brand data.
 - Save data randomizer (BETA)
 - Hide character names that you haven't seen or unlocked yet (they will be shown as "Spoiler").
 - Change the UI and game data's text to any of these languages: English, Japanese, Spanish and French.
 
-**TWEWY Final Remix Save Editing**
+**TWEWY Final Remix Save Editing (BETA)**
 - Edit your character and game stats.
 - Edit your items.
 - Edit your pins.
@@ -61,7 +64,6 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 
 # Upcoming features
 **For NEO:**
-- Edit shop VIP level and last restaurant order.
 - Continue working on the randomizer
 
 **For Final Remix:**
@@ -69,6 +71,9 @@ Versions previous to 0.9 require the [.NET 5.0 Desktop Runtime](https://dotnet.m
 
 # Special thanks
 - **tafice**, for the encryption keys of the PC version of NEO.
+
+# Donations
+If you want to show support, you can [donate on my ko-fi page](https://ko-fi.com/gyakutensaiban)! It is completely voluntary, and I'll appreciate it.
 
 # Issues, reporting bugs and requests
 If you found a bug or another issue, you can open an issue here on GitHub. For more questions or requests about anything else, you can leave a reply on the [GBATemp thread](https://gbatemp.net/threads/scramble-neo-the-world-ends-with-you-save-editor.591780/).
