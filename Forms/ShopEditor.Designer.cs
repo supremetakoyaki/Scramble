@@ -877,7 +877,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1384, 681);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1370, 681);
             this.Controls.Add(this.SelectedBrandGroupBox);
             this.Controls.Add(this.SelectedShopGoodGroupBox);
             this.Controls.Add(this.BrandsGroupBox);

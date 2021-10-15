@@ -393,6 +393,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(748, 616);
             this.Controls.Add(this.RandomizerGroupBox);
             this.Controls.Add(this.OverviewGroupBox);

@@ -459,6 +459,7 @@ namespace Scramble.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1234, 541);
             this.Controls.Add(this.CharacterInfoGroupBox);
             this.Controls.Add(this.SkillTreeGroupBox);
