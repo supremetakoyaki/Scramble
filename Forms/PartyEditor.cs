@@ -750,6 +750,7 @@ namespace Scramble.Forms
             AdvancedModeButton.Visible = false;
             ChangeFormSize(753, 1280);
             PartyMembersGroupBox.Size = new Size(882, 583);
+            AutoScroll = true;
 
             CheckIssues();
         }

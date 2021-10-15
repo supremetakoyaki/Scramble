@@ -935,7 +935,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(681, 627);
             this.Controls.Add(this.KofiPictureBox);
             this.Controls.Add(this.GbaTempIconPictureBox);

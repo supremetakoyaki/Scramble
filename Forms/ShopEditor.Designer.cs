@@ -608,7 +608,7 @@
             this.SelectedShopGoodNoticeLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.SelectedShopGoodNoticeLabel.Location = new System.Drawing.Point(6, 254);
             this.SelectedShopGoodNoticeLabel.Name = "SelectedShopGoodNoticeLabel";
-            this.SelectedShopGoodNoticeLabel.Size = new System.Drawing.Size(431, 48);
+            this.SelectedShopGoodNoticeLabel.Size = new System.Drawing.Size(424, 48);
             this.SelectedShopGoodNoticeLabel.TabIndex = 10;
             this.SelectedShopGoodNoticeLabel.Text = "Note for clothing items: The game will automatically change these values to match" +
     " the amount in your inventory.";
@@ -878,7 +878,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1370, 681);
+            this.ClientSize = new System.Drawing.Size(1386, 676);
             this.Controls.Add(this.SelectedBrandGroupBox);
             this.Controls.Add(this.SelectedShopGoodGroupBox);
             this.Controls.Add(this.BrandsGroupBox);

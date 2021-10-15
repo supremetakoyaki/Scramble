@@ -131,6 +131,7 @@ namespace Scramble
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
             DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
+            AutoScroll = false;
             ChangeFormSize(140, 359);
             MrMewPictureBox.Image = MrMewInactive;
 
@@ -628,7 +629,7 @@ namespace Scramble
                 {
                     ShowWarning(GetString("DLG_InvalidSaveFile"));
                     OpenedSaveFile = null;
-
+                    AutoScroll = false;
                     ChangeFormSize(140, 359);
                     ReadyForUserInput = true;
                     return;
@@ -657,6 +658,7 @@ namespace Scramble
                     SelectSlot(SaveSlotsListBox.SelectedIndex);
                 }
 
+                AutoScroll = true;
                 ChangeFormSize(666, 697);
                 Text = "Scramble — NEO TWEWY Save Editor";
             }
