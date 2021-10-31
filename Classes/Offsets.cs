@@ -58,6 +58,9 @@
         public const int CurrentPlayDateDay = 11434; // int
         public const int ScenarioNewestDateDay = 11438; // int
 
+        // SaveDataScenarioDone
+        public const int ScenarioDoneFlag = 12654; // BitArray
+
         public const int MenuMusic = 14013; // int
 
         // SaveDataEventLog

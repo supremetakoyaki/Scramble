@@ -81,6 +81,7 @@ namespace Scramble
         private readonly GameLocaleManager GameLocManager;
         private readonly SocialNetworkManager SocialManager;
         private readonly NoiseManager NoizuManager;
+        private readonly ScenarioManager FlagManager;
         #endregion
 
         #region Image Lists
@@ -141,6 +142,7 @@ namespace Scramble
             GameLocManager = new GameLocaleManager();
             SocialManager = new SocialNetworkManager();
             NoizuManager = new NoiseManager();
+            FlagManager = new ScenarioManager();
 
             LangStrings = new LanguageManager(LanguageSelectComboBox);
             GameTextProcessor = new GameTextProcessor();
@@ -1099,6 +1101,11 @@ namespace Scramble
         public NoiseManager GetNoiseManager()
         {
             return NoizuManager;
+        }
+
+        public ScenarioManager GetScenarioManager()
+        {
+            return FlagManager;
         }
 
         public string GetGameString(string Key, bool ReplaceSizeTags = false)
