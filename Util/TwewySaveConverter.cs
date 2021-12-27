@@ -11,6 +11,7 @@ namespace Scramble.Util
         public const int SOLOREMIX_DATA_OFFSET = 58;
         public const int SOLOREMIX_DATA_LENGTH = 29130;
         public const int SOLOREMIX_SAVE_SIZE = 29188;
+        public const int SOLOREMIX_SAVE_SIZE_UPPER = 31000; //?
 
         public const int FINALREMIX_MAGIC_OFFSET = 0;
         public const int FINALREMIX_MAGIC_LENGTH = 32;
@@ -24,7 +25,7 @@ namespace Scramble.Util
 
         public static bool IsValidSoloRemixSaveFile(byte[] SaveFile)
         {
-            if (SaveFile.Length != SOLOREMIX_SAVE_SIZE)
+            if (SaveFile.Length < SOLOREMIX_SAVE_SIZE || SaveFile.Length > SOLOREMIX_SAVE_SIZE_UPPER)
             {
                 return false;
             }
