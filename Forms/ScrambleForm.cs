@@ -87,6 +87,7 @@ namespace Scramble
         #region Image Lists
         public ImageList ItemImageList_32x32 { get; private set; }
         public ImageList ItemImageList_64x64 { get; private set; }
+        public ImageList ChapterIconImageList_144x32 { get; private set; }
         #endregion
 
         public bool SwitchVersion = true;
@@ -94,8 +95,8 @@ namespace Scramble
         private List<byte> SafeCharacters;
         public bool ShowSpoilers => ShowSpoilersCheckbox.Checked;
 
-        private Bitmap MrMewInactive;
-        private Bitmap MrMewActive;
+        private readonly Bitmap _mrMewInactive;
+        private readonly Bitmap _mrMewActive;
 
         public double ScaleFactor
         {
@@ -124,8 +125,8 @@ namespace Scramble
             GbaTempIconPictureBox.Location = new Point(185, 59);
             GbaTempIconPictureBox.Image = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("GbaTempIcon") as Bitmap, 15, 15, DeviceDpi);
            
-            MrMewActive = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("MrMew_Active") as Bitmap, 128, 128, DeviceDpi);
-            MrMewInactive = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("MrMew_Inactive") as Bitmap, 128, 128, DeviceDpi);
+            _mrMewActive = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("MrMew_Active") as Bitmap, 128, 128, DeviceDpi);
+            _mrMewInactive = ImageMethods.DrawImage(Resources.ResourceManager.GetObject("MrMew_Inactive") as Bitmap, 128, 128, DeviceDpi);
 
             SetUpGraphics();
             DoubleBuffered = true;
@@ -134,7 +135,7 @@ namespace Scramble
             DateOfSavePicker.CustomFormat = "yyyy-MM-dd HH:mm";
             AutoScroll = false;
             ChangeFormSize(140, 359);
-            MrMewPictureBox.Image = MrMewInactive;
+            MrMewPictureBox.Image = _mrMewInactive;
 
             // NEO TWEWY Database instances
             ItmManager = new ItemManager();
@@ -266,6 +267,9 @@ namespace Scramble
 
                         OpenPartyMemberEditorButton.Enabled = false;
                         OpenPartyMemberEditorButton.Text = GetString("{Loading...}");
+
+                        OpenDayEditor_Button.Enabled = false;
+                        OpenDayEditor_Button.Text = GetString("{Loading...}");
                     }));
             }
             else
@@ -284,22 +288,32 @@ namespace Scramble
 
                 OpenPartyMemberEditorButton.Enabled = false;
                 OpenPartyMemberEditorButton.Text = GetString("{Loading...}");
+
+                OpenDayEditor_Button.Enabled = false;
+                OpenDayEditor_Button.Text = GetString("{Loading...}");
             }
 
 
             ItemImageList_32x32 = new ImageList();
             ItemImageList_64x64 = new ImageList();
+            ChapterIconImageList_144x32 = new ImageList();             
 
             ItemImageList_32x32.ImageSize = new Size(32, 32);
             ItemImageList_32x32.ColorDepth = ColorDepth.Depth32Bit;
-
             ItemImageList_64x64.ImageSize = new Size(64, 64);
             ItemImageList_64x64.ColorDepth = ColorDepth.Depth32Bit;
+            ChapterIconImageList_144x32.ImageSize = new Size(144, 32);
+            ChapterIconImageList_144x32.ColorDepth = ColorDepth.Depth32Bit;
 
             foreach (IGameItem GameItem in GetItemManager().GetItems().Values)
             {
                 ItemImageList_32x32.Images.Add(GameItem.Sprite, ImageMethods.DrawImage(GameItem.Sprite, 32, 32, DeviceDpi));
                 ItemImageList_64x64.Images.Add(GameItem.Sprite, ImageMethods.DrawImage(GameItem.Sprite, 64, 64, DeviceDpi));
+            }
+
+            for (int i = 0; i < 25; i++)
+            {
+                ChapterIconImageList_144x32.Images.Add($"Chapter_btn{i:00}", ImageMethods.DrawImage($"Chapter_btn{i:00}", 144, 32, DeviceDpi));
             }
 
             if (InvokeRequired)
@@ -320,6 +334,9 @@ namespace Scramble
 
                     OpenPartyMemberEditorButton.Enabled = true;
                     OpenPartyMemberEditorButton.Text = GetString("{EditParty}");
+
+                    OpenDayEditor_Button.Enabled = true;
+                    OpenDayEditor_Button.Text = GetString("{DayEditor}");
                 }));
             }
             else
@@ -338,6 +355,10 @@ namespace Scramble
 
                 OpenPartyMemberEditorButton.Enabled = true;
                 OpenPartyMemberEditorButton.Text = GetString("{EditParty}");
+
+                OpenDayEditor_Button.Enabled = true;
+                OpenDayEditor_Button.Text = GetString("{DayEditor}");
+
             }
         }
 
@@ -361,7 +382,7 @@ namespace Scramble
             return MessageBox.Show(Message, GetString("{Hey}"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
-        private void SelectSlot(int Id)
+        private void SelectSlot()
         {
             ReadyForUserInput = false;
 
@@ -614,7 +635,7 @@ namespace Scramble
                     return;
                 }
 
-                byte Result = 0;
+                byte Result;
                 try
                 {
                     byte[] AllData = File.ReadAllBytes(Dialog.FileName);
@@ -657,7 +678,7 @@ namespace Scramble
                 }
                 else
                 {
-                    SelectSlot(SaveSlotsListBox.SelectedIndex);
+                    SelectSlot();
                 }
 
                 AutoScroll = true;
@@ -705,7 +726,7 @@ namespace Scramble
         {
             if (SaveSlotsListBox.SelectedIndex != -1 && OpenedSaveFile != null)// && SelectedSlot.Id != SaveSlotsListBox.SelectedIndex)
             {
-                SelectSlot(SaveSlotsListBox.SelectedIndex);
+                SelectSlot();
             }
         }
 
@@ -1001,7 +1022,7 @@ namespace Scramble
                     if (ShowPrompt(GetString("DLG_OverwriteSlotPrompt")))
                     {
                         SelectedSlot.ImportData(ImportedData);
-                        SelectSlot(SelectedSlot.Id);
+                        SelectSlot();
                     }
                 }
                 catch (Exception Exc)
@@ -1228,13 +1249,13 @@ namespace Scramble
 
         private void MrMewPictureBox_MouseEnter(object sender, EventArgs e)
         {
-            MrMewPictureBox.Image = MrMewActive;
+            MrMewPictureBox.Image = _mrMewActive;
             ThankYou_Label.Visible = true;
         }
 
         private void MrMewPictureBox_MouseLeave(object sender, EventArgs e)
         {
-            MrMewPictureBox.Image = MrMewInactive;
+            MrMewPictureBox.Image = _mrMewInactive;
             ThankYou_Label.Visible = false;
         }
 

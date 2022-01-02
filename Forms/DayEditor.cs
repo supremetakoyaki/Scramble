@@ -17,12 +17,10 @@ namespace Scramble.Forms
         {
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            ChapterListListView.SmallImageList = Sukuranburu.ChapterIconImageList_144x32;
 
             DisplayLanguageStrings();
-            FillComboboxes();
-
-            // for the time being.
-            CurrentDay_ComboBox.Enabled = false;
+            FillChapterLists();
 
             ReadyForUserInput = true;
         }
@@ -33,26 +31,40 @@ namespace Scramble.Forms
             ReachedDays_GroupBox.Text = Sukuranburu.GetString("{ReachedDays}");
             CurrentDay_Label.Text = Sukuranburu.GetString("{CurrentDay:}");
             FurthestDay_Label.Text = Sukuranburu.GetString("{FurthestDay:}");
-            ReachedDay_WarningLabel.Text = Sukuranburu.GetString("{ReachedDays_Warning}");
+            ChaptersGroupBox.Text = Sukuranburu.GetString("{Chapters}");
+            NameHeader.Text = Sukuranburu.GetString("{Name}");
+            AdvancedEventGroupBox.Text = Sukuranburu.GetString("{AdvancedEditing}");
+            EditScenarioButton.Text = Sukuranburu.GetString("{EditScenario}");
+            EditEventButton.Text = Sukuranburu.GetString("{EditEvent}");
+            EditEventLogButton.Text = Sukuranburu.GetString("{EditEventLog}");
+            EditEventLogSelectButton.Text = Sukuranburu.GetString("{EditEventLogSelect}");
         }
 
-        private void FillComboboxes()
+        private void FillChapterLists()
         {
             for (int i = 0; i < 25; i++)
             {
                 string DayName = Sukuranburu.GetDayName(i);
-
                 CurrentDay_ComboBox.Items.Add(DayName);
                 FurthestDay_ComboBox.Items.Add(DayName);
+
+                ChapterListListView.Items.Add(new ListViewItem(DayName)
+                {
+                    Tag = i,
+                    ImageKey = $"Chapter_btn{i:00}"
+                });
             }
+
+            FurthestDay_ComboBox.Items.Add(Sukuranburu.GetString("{BeatTheGame}"));
 
             CurrentDay_ComboBox.SelectedIndex = SelectedSlot.CurrentDay;
             if (SelectedSlot.FurthestDay > 24)
             {
-                FurthestDay_ComboBox.SelectedIndex = 24;
+                FurthestDay_ComboBox.SelectedIndex = 25;
             }
             else
             {
+
                 FurthestDay_ComboBox.SelectedIndex = SelectedSlot.FurthestDay;
             }
         }
@@ -92,7 +104,7 @@ namespace Scramble.Forms
                 Sukuranburu.ShowWarning(Sukuranburu.GetString("DLG_FurthestDayCantBeLowerThanCurrentDay"));
                 if (SelectedSlot.FurthestDay > 24)
                 {
-                    FurthestDay_ComboBox.SelectedIndex = 24;
+                    FurthestDay_ComboBox.SelectedIndex = 25;
                 }
                 else
                 {
@@ -102,7 +114,14 @@ namespace Scramble.Forms
                 return;
             }
 
-            SelectedSlot.UpdateOffset_Int32(GameOffsets.ScenarioNewestDateDay, FurthestDay_ComboBox.SelectedIndex);
+            if (FurthestDay_ComboBox.SelectedIndex == 25)
+            {
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.ScenarioNewestDateDay, 99);
+            }
+            else
+            {
+                SelectedSlot.UpdateOffset_Int32(GameOffsets.ScenarioNewestDateDay, FurthestDay_ComboBox.SelectedIndex);
+            }
             SelectedSlot.RetrieveDayData();
             ReadyForUserInput = true;
         }
