@@ -1,4 +1,6 @@
-﻿using Scramble.Classes;
+﻿using NTwewyDb;
+using Scramble.Classes;
+using Scramble.Util;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -17,11 +19,27 @@ namespace Scramble.Forms
         {
             InitializeComponent();
             Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
+            if (Sukuranburu.RequiresRescaling)
+            {
+                ChapterListListView.AutoSize = true;
+                PigNoiseListView.AutoSize = true;
+                ConnectedSocialQuestsListView.AutoSize = true;
+                NagiDiveGoldRanksListView.AutoSize = true;
+            }
+
             ChapterListListView.SmallImageList = Sukuranburu.ChapterIconImageList_144x32;
+            PigNoiseIcon_PictureBox.Image = ImageMethods.DrawImage("Chapter_pig_icon01", 80, 80, DeviceDpi);
+            SocialQuests_PictureBox.Image = ImageMethods.DrawImage("Friendship_icon", 66, 80, DeviceDpi);
+            DiveGoldRanks_PictureBox.Image = ImageMethods.DrawImage("Dive_icon_medal_05", 66, 66, DeviceDpi);
 
             DisplayLanguageStrings();
             FillChapterLists();
 
+            ChapterListListView.Items[0].Selected = true;
+            ChapterListListView.Select();
             ReadyForUserInput = true;
         }
 
@@ -38,6 +56,12 @@ namespace Scramble.Forms
             EditEventButton.Text = Sukuranburu.GetString("{EditEvent}");
             EditEventLogButton.Text = Sukuranburu.GetString("{EditEventLog}");
             EditEventLogSelectButton.Text = Sukuranburu.GetString("{EditEventLogSelect}");
+            PigNoiseLabel.Text = Sukuranburu.GetString("{PigNoise:}");
+            SocialQuestsLabel.Text = Sukuranburu.GetString("{SocialQuests:}");
+            NagiDiveGoldRanksLabel.Text = Sukuranburu.GetString("{NagiDiveGoldRanks:}");
+            PigNoiseIdHeader.Text = Sukuranburu.GetString("{Id}");
+            SocialTreeIdHeader.Text = Sukuranburu.GetString("{Id}");
+            DiveGoldRankIdHeader.Text = Sukuranburu.GetString("{Id}");
         }
 
         private void FillChapterLists()
@@ -66,6 +90,91 @@ namespace Scramble.Forms
             {
 
                 FurthestDay_ComboBox.SelectedIndex = SelectedSlot.FurthestDay;
+            }
+        }
+
+        private void SelectChapter()
+        {
+            if (ChapterListListView.SelectedItems.Count != 1)
+            {
+                return;
+            }
+
+            byte ChapterId = Convert.ToByte((int)ChapterListListView.SelectedItems[0].Tag);
+            Chapter SelectedChapter = Sukuranburu.GetScenarioManager().GetChapter(ChapterId);
+            if (SelectedChapter == null)
+            {
+                return;
+            }
+
+            ChapterNameLabel.Text = Sukuranburu.GetDayName(ChapterId);
+            PigNoiseListView.Items.Clear();
+            ConnectedSocialQuestsListView.Items.Clear();
+            NagiDiveGoldRanksListView.Items.Clear();
+
+            if (SelectedChapter.PigNoise != null && SelectedChapter.PigNoise.Length > 0)
+            {
+                PigNoiseListView.Enabled = true;
+                for (int i = 0; i < SelectedChapter.PigNoise.Length; i++)
+                {
+                    uint PigNoiseId = SelectedChapter.PigNoise[i];
+                    PigNoiseListView.Items.Add(new ListViewItem(PigNoiseId.ToString())
+                    {
+                        Tag = PigNoiseId,
+                        Checked = false
+                    });
+                }
+            }
+            else
+            {
+                PigNoiseListView.Enabled = false;
+            }
+
+            if (SelectedChapter.SubmissionSkill != null && SelectedChapter.SubmissionSkill.Length > 0)
+            {
+                ConnectedSocialQuestsListView.Enabled = true;
+                for (int i = 0; i < SelectedChapter.SubmissionSkill.Length; i++)
+                {
+                    byte SkillTreeId = SelectedChapter.SubmissionSkill[i];
+                    string SkillTreeName = Sukuranburu.GetString("{Unknown}");
+                    bool ConnectionStatus = false;
+
+                    SkillTree SkillTreeItem = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItem(SkillTreeId);
+                    if (SkillTreeItem != null)
+                    {
+                        SkillTreeName = Sukuranburu.GetGameString(SkillTreeItem.CharacterName);
+                        ConnectionStatus = ByteUtil.GetBit(SelectedSlot.RetrieveOffset_Byte(GameOffsets.SkillTreeFlags + SkillTreeItem.SaveIndex), 6);
+                    }
+
+                    ConnectedSocialQuestsListView.Items.Add(new ListViewItem(new string[] { SkillTreeId.ToString(), SkillTreeName })
+                    {
+                        Tag = SkillTreeId,
+                        Checked = ConnectionStatus
+                    });
+                }
+            }
+            else
+            {
+                ConnectedSocialQuestsListView.Enabled = false;
+            }
+
+            if (SelectedChapter.DiveId != null && SelectedChapter.SubmissionSkill.Length > 0)
+            {
+                NagiDiveGoldRanksListView.Enabled = true;
+                for (int i = 0; i < SelectedChapter.DiveId.Length; i++)
+                {
+                    uint DiveId = SelectedChapter.DiveId[i];
+
+                    NagiDiveGoldRanksListView.Items.Add(new ListViewItem(DiveId.ToString())
+                    {
+                        Tag = DiveId,
+                        Checked = false
+                    });
+                }
+            }
+            else
+            {
+                NagiDiveGoldRanksListView.Enabled = false;
             }
         }
 
@@ -123,6 +232,45 @@ namespace Scramble.Forms
                 SelectedSlot.UpdateOffset_Int32(GameOffsets.ScenarioNewestDateDay, FurthestDay_ComboBox.SelectedIndex);
             }
             SelectedSlot.RetrieveDayData();
+            ReadyForUserInput = true;
+        }
+
+        private void ChapterListListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            SelectChapter();
+            ReadyForUserInput = true;
+        }
+
+        private void ConnectedSocialQuestsListView_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ListViewItem Item = e.Item;
+            if (Item == null)
+            {
+                return;
+            }
+
+            SkillTree TreeItem = Sukuranburu.GetSocialNetworkManager().GetSkillTreeItem((byte)Item.Tag);
+            if (TreeItem == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            int Offset = GameOffsets.SkillTreeFlags + TreeItem.SaveIndex;
+            byte ValueToSet = SelectedSlot.RetrieveOffset_Byte(Offset);
+            ValueToSet = ByteUtil.SetBit(ValueToSet, 6, Item.Checked);
+            SelectedSlot.UpdateOffset_Byte(Offset, ValueToSet);
             ReadyForUserInput = true;
         }
     }

@@ -296,7 +296,8 @@
     "{EditEventSelect}": "EventLogSelect",
     "{Chapters}": "List of chapters",
     "{PigNoise:}": "Pig Noise:",
-    "{SocialQuests:}": "Social Quests:",
-    "{NagiDiveGoldRanks:}": "Nagi Dive Gold Ranks:"
+    "{SocialQuests:}": "Social Connection Quests:",
+    "{NagiDiveGoldRanks:}": "Nagi Dive Gold Ranks:",
+    "{Unknown}": "(Unknown)"
   }
 }
