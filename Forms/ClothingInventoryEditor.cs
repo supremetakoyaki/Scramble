@@ -117,7 +117,7 @@ namespace Scramble.Forms
                 int ClothingId = SelectedSlot.RetrieveOffset_UInt16(GameOffsets.MyCostumeList + (Index * 2));
                 ClothingId -= 1; // you subtract 1 to the ID
 
-                if (ClothingId > 0x8000)
+                if (ClothingId >= 0x8000)
                 {
                     ClothingId -= 0x8000; // this means the clothing is unseen (says "New" in the inventory).
                 }
@@ -127,27 +127,34 @@ namespace Scramble.Forms
                     InventoryFashion ClothingToAdd = new InventoryFashion((ushort)ClothingId);
                     int invIndex = InventoryClothes.IndexOf(ClothingToAdd);
 
-                    if (invIndex == -1)
+                    if (ClothingToAdd.BaseClothing != null)
                     {
-                        ClothingToAdd.ListIndex = Index;
-                        ClothingToAdd.Amount = 1;
-                        ClothingToAdd.EquipperId = ClothingToAdd.WhosEquippingThis(Index);
+                        if (invIndex == -1)
+                        {
+                            ClothingToAdd.ListIndex = Index;
+                            ClothingToAdd.Amount = 1;
+                            ClothingToAdd.EquipperId = ClothingToAdd.WhosEquippingThis(Index);
 
-                        TotalCount += 1;
-                        InventoryClothes.Add(ClothingToAdd);
+                            TotalCount += 1;
+                            InventoryClothes.Add(ClothingToAdd);
+                        }
+                        else
+                        {
+                            if (InventoryClothes[invIndex].Amount < 9)
+                            {
+                                InventoryClothes[invIndex].Amount += 1;
+                                TotalCount += 1;
+                            }
+
+                            if (InventoryClothes[invIndex].EquipperId == 0)
+                            {
+                                InventoryClothes[invIndex].EquipperId = ClothingToAdd.WhosEquippingThis(Index);
+                            }
+                        }
                     }
                     else
                     {
-                        if (InventoryClothes[invIndex].Amount < 9)
-                        {
-                            InventoryClothes[invIndex].Amount += 1;
-                            TotalCount += 1;
-                        }
-
-                        if (InventoryClothes[invIndex].EquipperId == 0)
-                        {
-                            InventoryClothes[invIndex].EquipperId = ClothingToAdd.WhosEquippingThis(Index);
-                        }
+                        Sukuranburu.ShowWarning($"You had this clothing ID that apparently doesn't exist (I skipped it): {ClothingId}\nTry to report this.");
                     }
                 }
             }
