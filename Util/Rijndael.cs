@@ -47,27 +47,31 @@ namespace Scramble.Util
             key[13] = (byte)(key[11] + _primes[2] + 1);
             key[14] = (byte)(key[14] - (_primes[8] * _primes[1] + _primes[0] + _primes[0]));
             key[15] = (byte)(key[15] - (_primes[8] * _primes[0] + _primes[0]));
+
+            System.Windows.Forms.MessageBox.Show(BitConverter.ToString(key).Replace("-", " "));
         }
 
         private void GenerateNeoTwewyIV(byte[] iv)
         {
             Array.Reverse(iv);
-            iv[0] = (byte)(iv[0] - (_primes[5] + _primes[7] + 1));
-            iv[1] = (byte)(iv[1] - (_primes[6] + 1));
-            iv[2] = (byte)(iv[2] - (_primes[7] * _primes[0] + 1));
-            iv[3] = (byte)(iv[3] - (_primes[8] * _primes[1] - _primes[0] - _primes[0]));
-            iv[4] = (byte)(iv[4] - _primes[3]);
-            iv[5] = (byte)(iv[5] - _primes[6]);
-            iv[6] = (byte)(iv[6] - (_primes[2] * _primes[1]));
-            iv[7] = (byte)(iv[7] - (_primes[7] * _primes[1]));
-            iv[8] = (byte)(iv[8] - _primes[6]);
-            iv[9] = (byte)(iv[9] - (_primes[6] * _primes[1]));
-            iv[10] = (byte)(iv[10] - (_primes[8] * _primes[1] + 1));
-            iv[11] = (byte)(iv[11] + 1);
-            iv[12] = (byte)(iv[12] - (_primes[8] + 1));
-            iv[13] = (byte)(iv[13] + (_primes[1] * _primes[1]));
-            iv[14] = (byte)(iv[14] - (_primes[8] * _primes[1] - 1));
-            iv[15] = (byte)(iv[15] - (_primes[2] * _primes[0]));
+            iv[0] = (byte)(iv[0] + 140);
+            iv[1] = (byte)(iv[1] + 134);
+            iv[2] = (byte)(iv[2] - (_primes[2] * _primes[0]));
+            iv[3] = (byte)(iv[3] - 84);
+            iv[4] = (byte)(iv[4] + 106);
+            iv[5] = (byte)(iv[5] + 97);
+            iv[6] = (byte)(iv[6] + 115);
+            iv[7] = (byte)(iv[7] + 115);
+            iv[8] = (byte)(iv[8] + 177);
+            iv[9] = (byte)(iv[9] + 137);
+            iv[10] = (byte)(iv[10] + (_primes[0] * _primes[5]));
+            iv[11] = (byte)(iv[11] + (_primes[3] * _primes[1] * _primes[1]));
+            iv[12] = (byte)(iv[12] - (_primes[3] * _primes[0]));
+            iv[13] = (byte)(iv[13] + 120);
+            iv[14] = (byte)(iv[14] + (_primes[0] * _primes[6] - _primes[1]));
+            iv[15] = (byte)(iv[15] - 57);
+
+            System.Windows.Forms.MessageBox.Show(BitConverter.ToString(iv).Replace("-", " "));
         }
 
         private RijndaelManaged GetAlgorithmObject()
