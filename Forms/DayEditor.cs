@@ -61,6 +61,7 @@ namespace Scramble.Forms
             NagiDiveGoldRanksLabel.Text = Sukuranburu.GetString("{NagiDiveGoldRanks:}");
             PigNoiseIdHeader.Text = Sukuranburu.GetString("{Id}");
             SocialTreeIdHeader.Text = Sukuranburu.GetString("{Id}");
+            SocialTreeNameHeader.Text = Sukuranburu.GetString("{Name}");
             DiveGoldRankIdHeader.Text = Sukuranburu.GetString("{Id}");
         }
 
@@ -309,6 +310,22 @@ namespace Scramble.Forms
             byte ValueToSet = SelectedSlot.RetrieveOffset_Byte(Offset);
             ValueToSet = ByteUtil.SetBit(ValueToSet, 6, Item.Checked);
             SelectedSlot.UpdateOffset_Byte(Offset, ValueToSet);
+
+            if (Item.Checked == false)
+            {
+                Skill SkillItem = Sukuranburu.GetSocialNetworkManager().GetSkill((ushort)TreeItem.SkillId);
+
+                if (SkillItem != null)
+                {
+                    int SkillOffsetSum = SkillItem.SaveIndex / 8;
+                    byte SkillByteToSet = SelectedSlot.RetrieveOffset_Byte(GameOffsets.SkillFlag + SkillOffsetSum);
+                    byte SkillBitIndex = (byte)(SkillItem.SaveIndex % 8);
+
+                    SkillByteToSet = ByteUtil.SetBit(SkillByteToSet, SkillBitIndex, false);
+                    SelectedSlot.UpdateOffset_Byte(GameOffsets.SkillFlag + SkillOffsetSum, SkillByteToSet);
+                }
+            }
+
             ReadyForUserInput = true;
         }
 
