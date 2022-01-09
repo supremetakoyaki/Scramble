@@ -88,7 +88,6 @@ namespace Scramble.Forms
             }
             else
             {
-
                 FurthestDay_ComboBox.SelectedIndex = SelectedSlot.FurthestDay;
             }
         }
@@ -121,7 +120,7 @@ namespace Scramble.Forms
                     PigNoiseListView.Items.Add(new ListViewItem(PigNoiseId.ToString())
                     {
                         Tag = PigNoiseId,
-                        Checked = false
+                        Checked = RetrievePigNoiseValue(PigNoiseId)
                     });
                 }
             }
@@ -176,6 +175,25 @@ namespace Scramble.Forms
             {
                 NagiDiveGoldRanksListView.Enabled = false;
             }
+        }
+
+        private bool RetrievePigNoiseValue(uint PigNoiseId)
+        {
+            int OffsetSum = (int)PigNoiseId / 8;
+            byte ByteToSet = SelectedSlot.RetrieveOffset_Byte(GameOffsets.PigDefeatNoiseFlag + OffsetSum);
+            byte BitIndex = (byte)(PigNoiseId % 8);
+
+            return ByteUtil.GetBit(ByteToSet, BitIndex);
+        }
+
+        private void UpdatePigNoiseValue(uint PigNoiseId, bool Value)
+        {
+            int OffsetSum = (int)PigNoiseId / 8;
+            byte ByteToSet = SelectedSlot.RetrieveOffset_Byte(GameOffsets.PigDefeatNoiseFlag + OffsetSum);
+            byte BitIndex = (byte)(PigNoiseId % 8);
+
+            ByteToSet = ByteUtil.SetBit(ByteToSet, BitIndex, Value);
+            SelectedSlot.UpdateOffset_Byte(GameOffsets.PigDefeatNoiseFlag + OffsetSum, ByteToSet);
         }
 
         private void CurrentDay_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -247,6 +265,26 @@ namespace Scramble.Forms
             ReadyForUserInput = true;
         }
 
+
+        private void PigNoiseListView_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ListViewItem Item = e.Item;
+            if (Item == null)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            uint PigNoiseId = (uint)Item.Tag;
+            UpdatePigNoiseValue(PigNoiseId, Item.Checked);
+            ReadyForUserInput = true;
+        }
+
         private void ConnectedSocialQuestsListView_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             if (!ReadyForUserInput)
@@ -271,6 +309,33 @@ namespace Scramble.Forms
             byte ValueToSet = SelectedSlot.RetrieveOffset_Byte(Offset);
             ValueToSet = ByteUtil.SetBit(ValueToSet, 6, Item.Checked);
             SelectedSlot.UpdateOffset_Byte(Offset, ValueToSet);
+            ReadyForUserInput = true;
+        }
+
+        private void PigNoiseDefeatAll_Button_Click(object sender, EventArgs e)
+        {
+            if (!ReadyForUserInput)
+            {
+                return;
+            }
+
+            ReadyForUserInput = false;
+            foreach (ListViewItem Item in PigNoiseListView.Items)
+            {
+                Item.Checked = true;
+            }
+
+            foreach (Chapter ChapterItem in Sukuranburu.GetScenarioManager().GetChapters().Values)
+            {
+                if (ChapterItem.PigNoise != null)
+                {
+                    foreach (uint PigNoiseId in ChapterItem.PigNoise)
+                    {
+                        UpdatePigNoiseValue(PigNoiseId, true);
+                    }
+                }
+            }
+
             ReadyForUserInput = true;
         }
     }

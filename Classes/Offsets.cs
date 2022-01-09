@@ -59,7 +59,11 @@
         public const int ScenarioNewestDateDay = 11438; // int
 
         // SaveDataScenarioDone
-        public const int ScenarioDoneFlag = 12654; // BitArray
+        //public const int ScenarioDoneFlag = 12654; // BitArray
+
+        // SaveDataDefeatNoise
+        public const int DayDefeatNoiseFlag = 13998; // BitArray ,size = 16 (2 bytes)
+        public const int PigDefeatNoiseFlag = 14000; // BitArray, size = 64 (8 bytes)
 
         public const int MenuMusic = 14013; // int
 

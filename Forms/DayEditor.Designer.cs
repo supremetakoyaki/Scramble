@@ -57,6 +57,7 @@ namespace Scramble.Forms
             this.EditEventLogButton = new System.Windows.Forms.Button();
             this.EditEventButton = new System.Windows.Forms.Button();
             this.EditScenarioButton = new System.Windows.Forms.Button();
+            this.PigNoiseDefeatAll_Button = new System.Windows.Forms.Button();
             this.ReachedDays_GroupBox.SuspendLayout();
             this.ChaptersGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiveGoldRanks_PictureBox)).BeginInit();
@@ -121,6 +122,7 @@ namespace Scramble.Forms
             // 
             // ChaptersGroupBox
             // 
+            this.ChaptersGroupBox.Controls.Add(this.PigNoiseDefeatAll_Button);
             this.ChaptersGroupBox.Controls.Add(this.DiveGoldRanks_PictureBox);
             this.ChaptersGroupBox.Controls.Add(this.SocialQuests_PictureBox);
             this.ChaptersGroupBox.Controls.Add(this.PigNoiseIcon_PictureBox);
@@ -242,6 +244,7 @@ namespace Scramble.Forms
             this.PigNoiseListView.TabIndex = 3;
             this.PigNoiseListView.UseCompatibleStateImageBehavior = false;
             this.PigNoiseListView.View = System.Windows.Forms.View.Details;
+            this.PigNoiseListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.PigNoiseListView_ItemChecked);
             // 
             // PigNoiseIdHeader
             // 
@@ -262,7 +265,7 @@ namespace Scramble.Forms
             this.ChapterNameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChapterNameLabel.Location = new System.Drawing.Point(364, 22);
             this.ChapterNameLabel.Name = "ChapterNameLabel";
-            this.ChapterNameLabel.Size = new System.Drawing.Size(232, 17);
+            this.ChapterNameLabel.Size = new System.Drawing.Size(256, 17);
             this.ChapterNameLabel.TabIndex = 1;
             this.ChapterNameLabel.Text = "{SelectedChapterName}";
             // 
@@ -274,7 +277,7 @@ namespace Scramble.Forms
             this.ChapterListListView.Location = new System.Drawing.Point(6, 22);
             this.ChapterListListView.MultiSelect = false;
             this.ChapterListListView.Name = "ChapterListListView";
-            this.ChapterListListView.Size = new System.Drawing.Size(352, 353);
+            this.ChapterListListView.Size = new System.Drawing.Size(352, 324);
             this.ChapterListListView.TabIndex = 0;
             this.ChapterListListView.UseCompatibleStateImageBehavior = false;
             this.ChapterListListView.View = System.Windows.Forms.View.Details;
@@ -350,6 +353,16 @@ namespace Scramble.Forms
             this.EditScenarioButton.Text = "Scenario";
             this.EditScenarioButton.UseVisualStyleBackColor = true;
             // 
+            // PigNoiseDefeatAll_Button
+            // 
+            this.PigNoiseDefeatAll_Button.Location = new System.Drawing.Point(6, 352);
+            this.PigNoiseDefeatAll_Button.Name = "PigNoiseDefeatAll_Button";
+            this.PigNoiseDefeatAll_Button.Size = new System.Drawing.Size(154, 23);
+            this.PigNoiseDefeatAll_Button.TabIndex = 11;
+            this.PigNoiseDefeatAll_Button.Text = "All Pig Noise Defeated";
+            this.PigNoiseDefeatAll_Button.UseVisualStyleBackColor = true;
+            this.PigNoiseDefeatAll_Button.Click += new System.EventHandler(this.PigNoiseDefeatAll_Button_Click);
+            // 
             // DayEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -404,5 +417,6 @@ namespace Scramble.Forms
         private System.Windows.Forms.ColumnHeader SocialTreeNameHeader;
         private System.Windows.Forms.PictureBox DiveGoldRanks_PictureBox;
         private System.Windows.Forms.PictureBox SocialQuests_PictureBox;
+        private System.Windows.Forms.Button PigNoiseDefeatAll_Button;
     }
 }
