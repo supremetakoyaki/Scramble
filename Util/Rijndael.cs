@@ -47,8 +47,6 @@ namespace Scramble.Util
             key[13] = (byte)(key[11] + _primes[2] + 1);
             key[14] = (byte)(key[14] - (_primes[8] * _primes[1] + _primes[0] + _primes[0]));
             key[15] = (byte)(key[15] - (_primes[8] * _primes[0] + _primes[0]));
-
-            System.Windows.Forms.MessageBox.Show(BitConverter.ToString(key).Replace("-", " "));
         }
 
         private void GenerateNeoTwewyIV(byte[] iv)
@@ -70,8 +68,6 @@ namespace Scramble.Util
             iv[13] = (byte)(iv[13] + 120);
             iv[14] = (byte)(iv[14] + (_primes[0] * _primes[6] - _primes[1]));
             iv[15] = (byte)(iv[15] - 57);
-
-            System.Windows.Forms.MessageBox.Show(BitConverter.ToString(iv).Replace("-", " "));
         }
 
         private RijndaelManaged GetAlgorithmObject()
