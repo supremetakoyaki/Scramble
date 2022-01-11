@@ -386,7 +386,7 @@ namespace Scramble
         {
             ReadyForUserInput = false;
 
-            if (SelectedSlot.UnixTimestamp_Integer == 0)
+            if (SelectedSlot.UnixTimestamp_Integer <= 0)
             {
                 DateOfSavePicker.Value = DateOfSavePicker.MinDate;
             }

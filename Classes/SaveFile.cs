@@ -28,8 +28,8 @@ namespace Scramble.Classes
         private readonly byte[] PcMagic;
         private readonly byte[] PcEnd;
         private Rijndael SaveRijndael;
-        public static byte[] RijndaelKey = Encoding.ASCII.GetBytes("LetMe Go Gravity");
-        public static byte[] RijndaelIv = Encoding.ASCII.GetBytes("SomeoneIsCalling");
+        public static byte[] RijndaelKey = new byte[] { 0x46, 0x5C, 0x42, 0x2B, 0x65, 0x50, 0x34, 0x3A, 0x38, 0x32, 0x28, 0x70, 0x4D, 0x76, 0x2B, 0x49 };
+        public static byte[] RijndaelIv = new byte[] { 0xF3, 0xF4, 0x5F, 0x18, 0xD6, 0xC2, 0xB6, 0xE6, 0xFA, 0xEE, 0x88, 0xAE, 0x57, 0xE5, 0x8E, 0x1A };
 
         public SaveFile(string FilePath, byte[] File, out byte Result)
         {
